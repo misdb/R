@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>r-programming-introduction-basics_kr</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+
+
+:root { --side-bar-bg-color: #fafafa; --control-text-color: #777; }
+html { font-size: 16px; }
+body { font-family: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(51, 51, 51); line-height: 1.6; }
+#write { max-width: 860px; margin: 0px auto; padding: 30px 30px 100px; }
+#write > ul:first-child, #write > ol:first-child { margin-top: 30px; }
+a { color: rgb(65, 131, 196); }
+h1, h2, h3, h4, h5, h6 { position: relative; margin-top: 1rem; margin-bottom: 1rem; font-weight: bold; line-height: 1.4; cursor: text; }
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor { text-decoration: none; }
+h1 tt, h1 code { font-size: inherit; }
+h2 tt, h2 code { font-size: inherit; }
+h3 tt, h3 code { font-size: inherit; }
+h4 tt, h4 code { font-size: inherit; }
+h5 tt, h5 code { font-size: inherit; }
+h6 tt, h6 code { font-size: inherit; }
+h1 { padding-bottom: 0.3em; font-size: 2.25em; line-height: 1.2; border-bottom: 1px solid rgb(238, 238, 238); }
+h2 { padding-bottom: 0.3em; font-size: 1.75em; line-height: 1.225; border-bottom: 1px solid rgb(238, 238, 238); }
+h3 { font-size: 1.5em; line-height: 1.43; }
+h4 { font-size: 1.25em; }
+h5 { font-size: 1em; }
+h6 { font-size: 1em; color: rgb(119, 119, 119); }
+p, blockquote, ul, ol, dl, table { margin: 0.8em 0px; }
+li > ol, li > ul { margin: 0px; }
+hr { height: 2px; padding: 0px; margin: 16px 0px; background-color: rgb(231, 231, 231); border: 0px none; overflow: hidden; box-sizing: content-box; }
+li p.first { display: inline-block; }
+ul, ol { padding-left: 30px; }
+ul:first-child, ol:first-child { margin-top: 0px; }
+ul:last-child, ol:last-child { margin-bottom: 0px; }
+blockquote { border-left: 4px solid rgb(223, 226, 229); padding: 0px 15px; color: rgb(119, 119, 119); }
+blockquote blockquote { padding-right: 0px; }
+table { padding: 0px; word-break: initial; }
+table tr { border-top: 1px solid rgb(223, 226, 229); margin: 0px; padding: 0px; }
+table tr:nth-child(2n), thead { background-color: rgb(248, 248, 248); }
+table tr th { font-weight: bold; border-width: 1px 1px 0px; border-top-style: solid; border-right-style: solid; border-left-style: solid; border-top-color: rgb(223, 226, 229); border-right-color: rgb(223, 226, 229); border-left-color: rgb(223, 226, 229); border-image: initial; border-bottom-style: initial; border-bottom-color: initial; margin: 0px; padding: 6px 13px; }
+table tr td { border: 1px solid rgb(223, 226, 229); margin: 0px; padding: 6px 13px; }
+table tr th:first-child, table tr td:first-child { margin-top: 0px; }
+table tr th:last-child, table tr td:last-child { margin-bottom: 0px; }
+.CodeMirror-lines { padding-left: 4px; }
+.code-tooltip { box-shadow: rgba(0, 28, 36, 0.3) 0px 1px 1px 0px; border-top: 1px solid rgb(238, 242, 242); }
+.md-fences, code, tt { border: 1px solid rgb(231, 234, 237); background-color: rgb(248, 248, 248); border-radius: 3px; padding: 2px 4px 0px; font-size: 0.9em; }
+code { background-color: rgb(243, 244, 244); padding: 0px 2px; }
+.md-fences { margin-bottom: 15px; margin-top: 15px; padding-top: 8px; padding-bottom: 6px; }
+.md-task-list-item > input { margin-left: -1.3em; }
+@media print {
+  html { font-size: 13px; }
+  table, pre { break-inside: avoid; }
+  pre { overflow-wrap: break-word; }
+}
+.md-fences { background-color: rgb(248, 248, 248); }
+#write pre.md-meta-block { padding: 1rem; font-size: 85%; line-height: 1.45; background-color: rgb(247, 247, 247); border: 0px; border-radius: 3px; color: rgb(119, 119, 119); margin-top: 0px !important; }
+.mathjax-block > .code-tooltip { bottom: 0.375rem; }
+.md-mathjax-midline { background: rgb(250, 250, 250); }
+#write > h3.md-focus::before { left: -1.5625rem; top: 0.375rem; }
+#write > h4.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
+#write > h5.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
+#write > h6.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
+.md-image > .md-meta { border-radius: 3px; padding: 2px 0px 0px 4px; font-size: 0.9em; color: inherit; }
+.md-tag { color: rgb(167, 167, 167); opacity: 1; }
+.md-toc { margin-top: 20px; padding-bottom: 20px; }
+.sidebar-tabs { border-bottom: none; }
+#typora-quick-open { border: 1px solid rgb(221, 221, 221); background-color: rgb(248, 248, 248); }
+#typora-quick-open-item { background-color: rgb(250, 250, 250); border-color: rgb(254, 254, 254) rgb(229, 229, 229) rgb(229, 229, 229) rgb(238, 238, 238); border-style: solid; border-width: 1px; }
+.on-focus-mode blockquote { border-left-color: rgba(85, 85, 85, 0.12); }
+header, .context-menu, .megamenu-content, footer { font-family: "Segoe UI", Arial, sans-serif; }
+.file-node-content:hover .file-node-icon, .file-node-content:hover .file-node-open-state { visibility: visible; }
+.mac-seamless-mode #typora-sidebar { background-color: var(--side-bar-bg-color); }
+.md-lang { color: rgb(180, 101, 77); }
+.html-for-mac .context-menu { --item-hover-bg-color: #E6F0FE; }
+#md-notification .btn { border: 0px; }
+.dropdown-menu .divider { border-color: rgb(229, 229, 229); }
+.ty-preferences .window-content { background-color: rgb(250, 250, 250); }
+.ty-preferences .nav-group-item.active { color: white; background: rgb(153, 153, 153); }
+
+ .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
+</style>
+</head>
+<body class='typora-export os-windows' >
+<div  id='write'  class = 'is-node'><h1><a name="r-프로그래밍-언어--소개와-기초" class="md-header-anchor"></a><span>R 프로그래밍 언어 : 소개와 기초</span></h1><p>&nbsp;</p><h2><a name="r" class="md-header-anchor"></a><span>R</span></h2><p><span>R 프로그램 언어는 1993년에 Ross Ihaka와 Robert Gentleman가 개발하였다. R은 광범위한 통계와 그래픽 메소드를 보유하고 있다. 기계학습 알고리즘, 선형 회귀분석, 시계열 분석, 통계적 추론 등과 같은 몇 가지 예를 들 수 있다.  대부분의 R libraries들은 R로 작성되었지만, 복잡한 연산 처리를 위해서는 C, C++ and Fortran 코드들이 선호된다.</span></p><p><span>R은 학술분야는 물론 우버, 구글, 에어비엔비, 페이스 북 등과 같은 많은 기업들이 R을 사용하고 있다.</span></p><p><span>R을 이용한 데이터 분석은 일련의 과정으로 이루어 진다; 프로그래밍, 전환, 발견, 모델링 그리고 결과의 전달.</span></p><ul><li><strong><span>프로그램(Program)</span></strong><span>: R은 명확하고 접속가능한 프로그래밍 도구이다.</span></li><li><strong><span>전환(Transform)</span></strong><span>: R은 데이터 과학을 위해 특별히 설계된 라이브러리(library)의 집합으로 구성된다.</span></li><li><strong><span>발견(Discover)</span></strong><span>: 데이터를 관찰하고, 가설을 정제화하고, 분석한다.</span></li><li><strong><span>모델(Model)</span></strong><span>: R은 데이터에 대한 정확한 모델을 발견할 수 있는 다양한 도구들을 제공한다.</span></li><li><strong><span>전달(Communicate)</span></strong><span>: 세상과 공유하기 위해 R Markdown이나 Shiny app 보고서에 코드, 그래프 그리고 출력물을 통합한다.</span></li></ul><p><span>이 튜토리얼을 통해 여러분은 다음의 내용을 학습하게 될 것이다-</span></p><ul><li><a href='./r-programming-introduction-basics_kr.html#1'><span>R의 용도</span></a></li><li><a href='./r-programming-introduction-basics_kr.html#2'><span>산업별 R</span></a></li><li><a href='./r-programming-introduction-basics_kr.html#3'><span>R 패키지</span></a></li><li><a href='./r-programming-introduction-basics_kr.html#4'><span>R과 대화하기</span></a></li><li><a href='./r-programming-introduction-basics_kr.html#5'><span>R을 사용해야 하는 이유</span></a></li><li><a href='./r-programming-introduction-basics_kr.html#6'><span>R을 선택해야만 하는가?</span></a></li><li><a href='./r-programming-introduction-basics_kr.html#7'><span>R은 어려운가?</span></a></li></ul><p>&nbsp;</p><h2><a name="r의-용도" class="md-header-anchor"></a><span>R의 용도</span></h2><ul><li><span>통계적 추론(Statistical inference)</span></li><li><span>데이터 분석(Data analysis)</span></li><li><span>머신러닝 알고리즘(Machine learning algorithm)</span></li></ul><p>&nbsp;</p><h2><a name="산업별-r" class="md-header-anchor"></a><span>산업별 R</span></h2><p><span>산업별 R 사용을 구분해보면, 학술분야가 제일로 많이 사용하고 있음을 알 수 있다. R은 통계적 분석을 위한 언어이다. R은 의료산업이 제일 선두에 있으며, 그 다음이 정부와 컨설팅 분야이다.</span></p><p><a href='https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg1.png'><img src='https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg1.png' alt='img' referrerPolicy='no-referrer' /></a></p><h2><a name="r-패키지" class="md-header-anchor"></a><span>R 패키지</span></h2><p><span>R의 주요 용도는 통계처리, 시각화 그리고 기계학습 분야이다. 다음의 그림은 Stack Overflow에서 가장 많은 질문을 받는 R 패키지를 보여주고 있다. 상위 10위 안의 대부분은 자료준비(data preparation)와 결과의 소통(communicate the results) 등 데이터 과학자들의 워크플로우와 관련이 있다.</span></p><p>&nbsp;</p><p><a href='https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg2.png'><img src='https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg2.png' alt='img' referrerPolicy='no-referrer' /></a></p><p>&nbsp;</p><p><span>거의 1만 2천 개에 이르는 R의 라이브러리들은 CRAN에 저장되어 있다. CRAN은 무료의 오픈 소스이다. 여러분은 기계 학습이나 시계열 분석 등의 수행을 위해 다양한 라이브러리를 다운로드하여 사용할 수 있다.</span></p><p><a href='https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg3.jpg'><img src='https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg3.jpg' alt='img' referrerPolicy='no-referrer' /></a></p><p>&nbsp;</p><h2><a name="r과-대화하기" class="md-header-anchor"></a><span>R과 대화하기</span></h2><p><span>R은 &#39;마크다운 문서&#39;나 &#39;shiny 앱&#39; 등을 통하여 작업을 수행하고 공유할 수 있는 다양한 방법을 가지고 있다.  그리고 모든 내용들을 Rpub, GitHub 또는 기업용 웹사이트에 올릴 수 있다.</span></p><p><span>다음은 </span><a href='https://rpubs.com/'><span>Rpub</span></a><span>에 호스팅 되어 있는 예이다.</span></p><p><a href='https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg4.png'><img src='https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg4.png' alt='img' referrerPolicy='no-referrer' /></a></p><p><span>Rstudio는 문서를 작성하기 위해 markdown을 허용한다. 그리고 이 문서를 다음과 같은 다양한 문서로 변환출력할 수 있다. </span></p><ul><li><p><span>문서(Document) :</span></p><ul><li><span>HTML</span></li><li><span>PDF/Latex</span></li><li><span>Word</span></li></ul></li><li><p><span>변환(Presentation)</span></p><ul><li><span>HTML</span></li><li><span>PDF beamer</span></li></ul></li></ul><p><a href='https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg5.png'><img src='https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg5.png' alt='img' referrerPolicy='no-referrer' /></a></p><p>&nbsp;</p><p><span>Rstudio는 App을 쉽게 만들 수 있는 좋은 도구이다. 다음은 World Bank 데이터를 처리하는 앱의 예이다.</span></p><p>&nbsp;</p><p><a href='https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg6.png'><img src='https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg6.png' alt='img' referrerPolicy='no-referrer' /></a></p><p>&nbsp;</p><h2><a name="r을-사용해야-하는-이유" class="md-header-anchor"></a><span>R을 사용해야 하는 이유</span></h2><p><span>데이터 과학은 기업이 어떻게 운영되고 있는가를 보여주는 것이다. 의심의 여지없이, 인공지능(AI)과 기계를 멀리한다면 기업은 실패하게 될 것이다. 가장 중요한 질문은 어떠한 도구/언어를 사용해야 하는가이다.</span></p><p><span>시장에는 데이터 분석을 수행하는데 이용할 수 있는 수 많은 도구가 있다. 새로운 언어를 학습하는 것은 시간의 투자를 요구한다. 아래의 그림은 언어가 제공하는 기업의 능력과 비교한 학습곡선(learning curve)을 보여주고 있다. 마이너스의 관련성은 무상급식이 없음을 보여준다. 만일 데이터로 부터 가장 훌륭한 통찰력(insight)을 얻고자 한다면, R과 같은 적절한 도구를 학습하는데 시간을 투자할 필요가 있다.</span></p><p><a href='https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg7.png'><img src='https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg7.png' alt='img' referrerPolicy='no-referrer' /></a></p><p><span>도표의 왼쪽 위에 엑셀과 PowerBI가 있음을 알 수 있다. 이 두 개의 도구들은 배우기는 쉽지만, 모델링 측면에서, 뛰어난 기업 능력을 제공하지는 못한다. 중앙에는 Python과 SAS가 위치하고 있다. SAS는 기업을 위한 </span><strong><span>통계적 분석</span></strong><span>을 할 수 있는 전용의 도구이다. SAS는 클릭해서 실행하는 소프트웨어이다. 그러나 Python은 단조로운 학습곡선을 갖는 언어이다. Python은 기계학습과 인공지능을 다루기에 환상적인 도구이지만 의사소통 특성은 약한 면이 있다. 동일한 학습곡선을 갖는 R은 실행과 데이터 분석 사이의 좋은 보상관계에 있다.</span></p><p><span>데이터 시각화(data visualization, DataViz)와 관련해서 여러분은 tableau에 대해서 들어 봤을 것이다. Tableau는 의심의 여지없이 그래프와 차트를 통해 패턴을 발견하는 훌륭한 도구이다. 또한 Tableau 학습은 많은 시간이 소요되지 않는다. 데이터 시각화와 관련한 하나의 큰 문제는 패터의 발견 또는 단지 무수한 무용한 차트의 생성으로 결고 끝나지 않는다는 것이다. Tableau는 데이터의 빠른 시각화 또는 비즈니스 인텔리전스를 위한 훌륭한 도구이다. 통계적 분석과 의사결정을 위해서는 R이 가장 적절한 도구이다.</span></p><p><span>Stack Overflow는 프로그램 언어의 큰 커뮤니티이다. 코딩의 문제가 있거나 모델의 이해가 필요하다면 Stack Overflow는 많은 도움이 될 것이다. 수년간 다른 언어들과 비교하여 R에 대한 질문의견의 비율이 가파르게 증가하고 있다. 이러한 추세는 물론 데이터 과학의 호황기와 크게 관련이 있지만 데이터 과학을 위한 R 언어의 요구를 반영하고 있는 것이다.</span></p><p><a href='https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg8.png'><img src='https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg8.png' alt='img' referrerPolicy='no-referrer' /></a></p><p><span>데이터 과학에서는 서로 경쟁하고 있는 두 개의 도구가 있다. 그것은 R과 Python인데 이 언어들은 데이터 과학을 정의하는 언어라 할 수 있다.</span></p><p>&nbsp;</p><h2><a name="r을-선택해야만-하는가" class="md-header-anchor"></a><span>R을 선택해야만 하는가?</span></h2><p><span>데이터 과학자들은 R과 Python이라는 두 개의 훌륭한 도구를 사용할 수 있다. 여러분이 데이터 과학을 학습하기 시작했다면 이 언어 두개 모두를 학습할 시간이 없을 수도 있다. </span><strong><span>통계적 모형과 알고리즘을 학습</span></strong><span>하는 것이 프로그램 언어를 학습하는 것보다 훨씬 더 중요하다. 프로그램 언어는 계산과 발견을 의사소통하는 도구이다. 데이터 과학에서 가장 중요한 일은 데이터를 다루는 방법(import, clean, prep, feature engineering, feature 선택)이다. 이것이 여러분의 가장 중요한 초점이 되어야 한다. 만일 통계학에 대한 든든한 선지식없이 동시에 R과 Python을 공부하고자 한다면, 어리석은 일이 아닐 수 없다. 데이터 과학자들은 프로그래머가 아니다. 그들의 직무는 데이터를 이해하고, 데이터를 조작하여 가장 훌륭한 접근방법을 제시하는 것이다. 만일 여러분이 어떤 언어를 공부할까 고민하고 있다면, 어떠한 언어가 여러분에게 가장 적절한지 살펴보자.</span></p><p><span>데이터 과학의 가장 중요한 대상은 기업 전문가들이다. 기업에서 하나의 큰 함의는 의사소통이다. 의사소통을 하는데에는 보고서, 웹 앱, 대시보드 등과 같은 많은 방법들이 있다. 여러분은 이러한 모든 것은 동시에 처리할 수 있는 도구를 필요로 한다.</span></p><p>&nbsp;</p><h2><a name="r은-어려운가" class="md-header-anchor"></a><span>R은 어려운가?</span></h2><p><span>여러 해 전에는 R은 마스터하기 워려운 언어였다. 이 언어는 혼란스럽고 다른 언어 도구들처럼 구조적이지도 못했다. 이러한 중요한 문제를 극복하기 위해 Hadley Wickham은 tidyverse라는 패키지 묶음을 개발하였다. 게임의 규칙이 결국에는 좋은 방향으로 바뀌었다. 데이터 조작은 사소하고 직관적인 것이 되었다. 그래프 작성은 더 이상 어렵지 않게 되었다.</span></p><p><span>기계학습을 위한 최선의 알고리즘이 R로 실행될 수 있다. Kera와 Tensorflow와 같은 패키지들은 최고의 기계학습기법의 생성을 가능케 하였다. R은 또한 Kaggle 경쟁을 위한 가장 최선의 알고리즘 중의 하나인 Xgboost를 수행하는 패키지를 가지고 있다.</span></p><p><span>R은 다른 언어와도 소통할 수 있다. R에서 Java, C++ 등을 호출할 수 있다. 빅데이터 분야도 R로 접근할 수 있다. 또한 Spark나 Hadoop 등과 같은 상이한 데이터베이스에 여러분은 R을 연결할 수 있다.</span></p><p><span>끝으로, R은 연산의 속도를 빠르게 하기 위해 병렬 연산을 위해 진화하고 허용하게 되었다. 사실 R은 한번에 하나의 CPU만을 사용하는 것으로 비난받기도 했다. 병렬 패키지가 컴퓨터의 다른 코어에서 태스크를 수행할 수 있게 해준다.</span></p><p>&nbsp;</p><h2><a name="요약" class="md-header-anchor"></a><span>요약</span></h2><p><span>한 마디로, R은 데이터를 검토하고 조사하기 위한 훌륭한 도구이다. 클러스터링, 상관분석, 그리고 데이터 축소 등과 같은 정교한 분석이 R로 처리된다. 이는 가장 중요한 부분인데 훌륭한 feature engineering과 모델없이 기계학습의 전개는 의미있는 결과를 주지 못할 것이다.</span></p><p>&nbsp;</p></div>
+</body>
+</html>
