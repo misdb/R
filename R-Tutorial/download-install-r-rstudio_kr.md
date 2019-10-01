@@ -45,27 +45,23 @@ Anaconda는 Python이나 R에 요구되는 library를 관리하는데 도움을 
 
 기본적으로 Chrome은 여러분의 시스템의 downloading page를 선택한다. 이 튜토리얼에서는 Mac 용 설치에 대하여 알아본다. 여러분이 Windows나 Linux를 이용하고 있다면, Windows의 경우는 Wndows Installer를 위해 Anaconda 5.1을, Linux의 경우 Linux Instaler를 위한 Anaconda 5.1을 다운로드한다.
 
-
-
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo2.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo2.png)
-
-
+<img src="../../misdb.github.io/R/R-Tutorial/images/032818_0958_HowtoDownlo2.png" alt="032818_0958_HowtoDownlo2" style="zoom:80%;" />
 
 **단계 2)** 이제 Anaconda를 설치할 준비가 되었다. 설치를 시작하기 위해 다운로드한 파일을 더블 클릭한다. Mac에서는 .dmg 파일을, Windows는 .exe 파일이다. 설치를 확인하는지 묻는다. **Continue** 버튼을 클릭한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo3.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo3.png)
+[<img src="../../misdb.github.io/R/R-Tutorial/images/032818_0958_HowtoDownlo3.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo3.png)
 
 
 
 **Anaconda3 Installer**가 나타난다..
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo4.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo4.png)
+[<img src="../../misdb.github.io/R/R-Tutorial/images/032818_0958_HowtoDownlo4.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo4.png)
 
 
 
 **단계 3)** 다음 창은 **ReadMe**를 표시한다. 문서의 내용을 읽은 후 **Continue**를 클릭한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo5.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo5.png)
+[<img src="../../misdb.github.io/R/R-Tutorial/images/032818_0958_HowtoDownlo5.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo5.png)
 
 
 
