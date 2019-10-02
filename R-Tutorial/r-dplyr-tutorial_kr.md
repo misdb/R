@@ -19,7 +19,7 @@ R에는 데이터 변환을 돕는 `dplyr`이라는 라이브러리가 있다.
 
 이 튜토리얼에서는 `dplyr` 라이브러리를 사용하여 데이터 프레임을 조작하는 방법에 대하여 학습할 것이다.
 
-[<img src="032818_1112_RDplyrTutor1.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor1.png)
+![032818_1112_RDplyrTutor1](images/032818_1112_RDplyrTutor1.png)
 
 이 튜토리얼에서는 다음에 대하여 학습한다:
 
@@ -53,7 +53,7 @@ R에는 데이터 변환을 돕는 `dplyr`이라는 라이브러리가 있다.
 
 우선 두 개의 데이터 세트를 만든다. Table 1은 `ID`와 `y`의 두 변수를 포함하고, Table 2는 `ID`와 `z`를 수집한다. 각각의 경우에  **키-쌍** 변수가 필요하다. 우리의 경우, `ID`는 **key** 변수이다. 그 기능은 두 Table에서 동일한 값을 찾고 반환 값을 Table 1의 오른쪽에 결합한다.
 
-[<img src="032818_1112_RDplyrTutor2.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor2.png)
+![032818_1112_RDplyrTutor2](images/032818_1112_RDplyrTutor2.png)
 
 ```
 library(dplyr)
@@ -79,9 +79,7 @@ df_secondary <- tribble(
 
 두 데이터 세트를 병합하는 가장 일반적인 방법은 `left_join()` 함수를 사용하는 것이다. 아래 그림에서 키-쌍이 두 데이터 세트의 `A`, `B`, `C` 및 `D` 행과 완벽하게 일치한다는 것을 알 수 있다. 그러나 `E`와 `F` 행은 남겨져 있다. 이 두 가지 관찰 데이터는 어떻게 처리할까? `left_join()`으로 모든 변수를 원래 표에 보관하고 대상 표에 키-쌍이 없는 변수는 고려하지 않는다. 우리의 예에서 변수 `E`는 Table 1에 존재하지 않는다. 따라서, 그 줄은 삭제될 것이다. 변수 `F`는 원래 Table에서 나온다. 그것은 `left_join()` 뒤에 보관되며, `z`열에 `NA`를 반환한다. 아래 그림은 `left_join()`으로 일어날 일을 재현한다.
 
-
-
-[<img src="032818_1112_RDplyrTutor3.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor3.png)
+![032818_1112_RDplyrTutor3](images/032818_1112_RDplyrTutor3.png)
 
 ```
 left_join(df_primary, df_secondary, by ='ID')
@@ -107,7 +105,7 @@ left_join(df_primary, df_secondary, by ='ID')
 
 `right_join()` 함수는` left_join()`처럼 똑같이 작동한다. 유일한 차이점은 사라지는 행이다. 대상 데이터 프레임에서 사용할 수 있는 값 `E`는 새 Table에 존재하며, `y`열에 대한 값은 `NA`를 취한다.
 
-[<img src="032818_1112_RDplyrTutor4.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor4.png)
+![032818_1112_RDplyrTutor4](images/032818_1112_RDplyrTutor4.png)
 
 ```
 right_join(df_primary, df_secondary, by = 'ID')
@@ -135,9 +133,7 @@ right_join(df_primary, df_secondary, by = 'ID')
 
 `inner_join()`이 도움이 된다. 이 함수는 대응이 되지 않는 행들은 제외한다.
 
-
-
-[<img src="032818_1112_RDplyrTutor5.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor5.png)
+![032818_1112_RDplyrTutor5](images/032818_1112_RDplyrTutor5.png)
 
 
 
@@ -166,7 +162,7 @@ inner_join(df_primary, df_secondary, by ='ID')
 
 
 
-[<img src="032818_1112_RDplyrTutor6.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor6.png)
+![032818_1112_RDplyrTutor6](images/032818_1112_RDplyrTutor6.png)
 
 ```
 full_join(df_primary, df_secondary, by = 'ID')
@@ -192,7 +188,7 @@ full_join(df_primary, df_secondary, by = 'ID')
 
 마지막으로 중요한 것은 데이터 세트에 복수 개의 키가 있을 수 있다는 점이다. 고객이 구매한 제품 `items` 또는 `year`가 있는 다음의 데이터 세트를 고려해보자.
 
-[<img src="032818_1112_RDplyrTutor7.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor7.png)
+![032818_1112_RDplyrTutor7](images/032818_1112_RDplyrTutor7.png)
 
 
 
@@ -281,7 +277,7 @@ Arguments:
 
 
 
-[<img src="032818_1112_RDplyrTutor8.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor8.png)
+![032818_1112_RDplyrTutor8](images/032818_1112_RDplyrTutor8.png)
 
 
 
