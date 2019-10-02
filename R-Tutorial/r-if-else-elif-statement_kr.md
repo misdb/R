@@ -14,7 +14,7 @@ if (condition) {
 }
 ```
 
-[![img](https://www.guru99.com/images/r_programming/032818_1241_IFELSEELIF1.png)](https://www.guru99.com/images/r_programming/032818_1241_IFELSEELIF1.png)
+[<img src="images/032818_1241_IFELSEELIF1.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_1241_IFELSEELIF1.png)
 
 
 
@@ -42,8 +42,6 @@ if (quantity > 20) {
 
 
 ## else if 구문
-
-We can further customize the control level with the else if statement. With elif, you can add as many conditions as we want. The syntax is:
 
 `else if` 구문을 사용하여 제어 수준을 추가로 정의할 수 있다. `else if`만 있으면 얼마든지 조건을 추가할 수 있다. 구문법은 다음과 같다 :
 

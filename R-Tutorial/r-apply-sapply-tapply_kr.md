@@ -48,7 +48,7 @@ a_m1
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0401_applysapply1.png)](https://www.guru99.com/images/r_programming/032918_0401_applysapply1.png)
+[<img src="032918_0401_applysapply1.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0401_applysapply1.png)
 
 좋은 사용 방법 : 결과를 console에 출력하기 전에 변수에 저장한다.
 
@@ -153,7 +153,7 @@ lmxcars <- lapply(dt, max)
 lmxcars
 ```
 
-**Output:**
+**결과 : **
 
 ```
 ## $speed
@@ -170,7 +170,7 @@ smxcars <- sapply(dt, max)
 smxcars
 ```
 
-**Output:**
+**결과 :**
 
 ```
 ## speed  dist 
@@ -179,11 +179,7 @@ smxcars
 
 
 
-We can use a user built-in function into lapply() or sapply(). We create a function named avg to compute the average of the minimum and maximum of the vector.
-
 우리는 내장함수를 `lapply()` 또는 `sapply()`에 사용할 수 있다. 벡터의 최소값(min)과 최대값(max)의 평균값(average)을 계산하기 위해 `avg`라는 함수를 생성한다.
-
-
 
 ```
 avg <- function(x) {  
@@ -192,7 +188,7 @@ fcars <- sapply(dt, avg)
 fcars
 ```
 
-**Output**
+**결과 : **
 
 ```
 ## speed  dist
@@ -256,8 +252,6 @@ tapply(X, INDEX, FUN = NULL)
 데이터 과학자 또는 연구자가 할 일의 일부는 변수에 대한 요약정보을 계산하는 것이다. 예를 들어, 특성을 기준으로 평균 또는 그룹 데이터를 측정한다. 대부분의 데이터는 ID, 시, 국가 등에 따라 분류된다. 그룹별로 요약하면 더 흥미로운 패턴이 드러난다.
 
 작동 방식을 이해하려면 `iris` 데이터 세트를 사용하자. 이 데이터 세트는 기계 학습 세계에서 매우 유명하다. 이 데이터 세트의 목적은 `Sepal`, `Versicolor`, `Virginica`  등 세 종류의 꽃 종류를 각각 예측하는 것이다. 데이터 세트는 각 종류별 꽃의 길이와 너비에 대한 정보를 수집한다.
-
-As a prior work, we can compute the median of the length for each species. tapply() is a quick way to perform this computation.
 
 선행 연구로서 각 종에 대한 길이의 중앙값을 계산할 수 있다. tapply()   함수는 이 계산을 수행하는 빠른 방법이다.
 

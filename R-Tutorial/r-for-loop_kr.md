@@ -24,7 +24,7 @@ For (i in vector) {
 
 R은 벡터 내에 있는 모든 변수들에 대해 반복할 것이며 Exp 내에 작성된 연산을 수행할 것이다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_1243_ForLoopinRw1.png)](https://www.guru99.com/images/r_programming/032818_1243_ForLoopinRw1.png)
+[<img src="images/032818_1243_ForLoopinRw1.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_1243_ForLoopinRw1.png)
 
 
 

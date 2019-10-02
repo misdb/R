@@ -73,7 +73,7 @@ For instance, if you have 5 observations, you need to compare our t-value with t
 
 
 
-[![img](https://www.guru99.com/images/r_programming/032918_0821_TTestinROn1.png)](https://www.guru99.com/images/r_programming/032918_0821_TTestinROn1.png)
+[![img](images/032918_0821_TTestinROn1.png)](https://www.guru99.com/images/r_programming/032918_0821_TTestinROn1.png)
 
 
 
@@ -125,7 +125,7 @@ t.test(sugar_cookie, mu = 10)
 
 **결과 :** 
 
-[![img](https://www.guru99.com/images/r_programming/032918_0821_TTestinROn2.png)](https://www.guru99.com/images/r_programming/032918_0821_TTestinROn2.png)
+[![img](images/032918_0821_TTestinROn2.png)](https://www.guru99.com/images/r_programming/032918_0821_TTestinROn2.png)
 
 단일 표본 t-검정의 p-값은 0.1079이고 0.05 이상이다. 기계에 의해 첨가된 설탕의 양이 9.973~10.002 그램 사이라는 것을 95%로 확신할 수 있다. 당신은 귀무가설(H~0~)을 기각할 수 없다. 기계가 첨가한 설탕의 양이 조리법을 따르지 않는다는 증거가 충분하지 않다.
 
@@ -174,7 +174,7 @@ sales_after <- rnorm(7, mean = 50075, sd = 50)
 t.test(sales_before, sales_after,var.equal = TRUE)
 ```
 
-[![img](https://www.guru99.com/images/r_programming/032918_0821_TTestinROn3.png)](https://www.guru99.com/images/r_programming/032918_0821_TTestinROn3.png)
+[![img](images/032918_0821_TTestinROn3.png)](https://www.guru99.com/images/r_programming/032918_0821_TTestinROn3.png)
 
 p-값이 0.04606이다. 이 p-값이 0.05보다 낮으므로, 귀무가설을 받아들일 수 없다. 따라서 두 그룹의 평균이 같지 않다고 결론을 내린다. 그 프로그램은 가게의 매출액을 향상시켰다.
 

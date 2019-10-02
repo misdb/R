@@ -21,8 +21,6 @@
 
 ## CSV 파일 읽기
 
-One of the most widely data store is the .csv (comma-separated values) file formats. R loads an array of libraries during the start-up, including the utils package. This package is convenient to open csv files combined with the reading.csv() function. Here is the syntax for read.csv
-
 가장 널리 사용되는 데이터 저장소 중 하나는 `.csv`(comma separated values) 파일 형식이다. R은 시작 시 `utils` 패키지를 포함한 일련의 라이브러리를 적재한다. 이 패키지는 `read.csv()` 함수와 연결된 csv 파일을 열 수 있어 편리하다. `read.csv()`의 표현법은 다음과 같다 :
 
 ```
@@ -146,7 +144,7 @@ library(readxl)
 readxl_example()
 ```
 
-[![img](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai1.png)](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai1.png)
+[<img src="images/032918_0411_ImportDatai1.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai1.png)
 
 
 
@@ -156,7 +154,7 @@ readxl_example()
 readxl_example("geometry.xls")
 ```
 
-[![img](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai2.png)](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai2.png)
+[<img src="images/032918_0411_ImportDatai2.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai2.png)
 
 conda와 함께 R을 설치하며, 스프레드시트는 `Anaconda3/lib/R/library/readxl/extdata/filename.xls` 에 위치한다.
 
@@ -250,7 +248,7 @@ iris <-read_excel(example, n_max =5, col_names =TRUE)
 iris
 ```
 
-[![img](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai3.png)](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai3.png)
+[<img src="https://www.guru99.com/images/r_programming/032918_0411_ImportDatai3.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai3.png)
 
 
 
@@ -264,7 +262,7 @@ iris_no_header
 
 `iris_no_header` 데이터 프레임에서 , R은 x_1, x_2, x_3, x_4, x_5 등의 다섯 변수를 생성했다.
 
-[![img](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai4.png)](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai4.png)
+[<img src="images/032918_0411_ImportDatai4.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai4.png)
 
 
 
@@ -286,7 +284,7 @@ dim(example_1)
 
 우리는 example_1이 2개의 열, 4개의 행을 반환한다는 것을 알 수 있다. 데이터 세트는 헤더를 가지고 있고, 차수는 4x2 이다.
 
-[![img](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai5.png)](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai5.png)
+[<img src="images/032918_0411_ImportDatai5.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai5.png)
 
 
 
@@ -308,7 +306,7 @@ dim(example_2)
 
 그러나 example_2는 4x5 행렬이다. `iris` 데이터 세트는 헤더가 있는 5개의 열을 가지고 있다. 모든 열의 헤더와 함께 처음 네 개의 행을 반환한다.
 
-[![img](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai6.png)](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai6.png)
+[<img src="images/032918_0411_ImportDatai6.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai6.png)
 
 
 
@@ -319,7 +317,7 @@ iris_row_with_header <- read_excel(example, range = cell_rows(2:3), col_names = 
 iris_row_no_header <- read_excel(example, range = cell_rows(2:3),col_names = FALSE)
 ```
 
-[![img](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai7.png)](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai7.png)
+[<img src="images/032918_0411_ImportDatai7.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai7.png)
 
 
 
@@ -338,7 +336,7 @@ dim(col)
 
 **주의 :** `range = cell_cols("A:B")`는 Null이 아닌 값을 가진 모든 셀을 출력한다. 데이터 세트는 150개의 행을 포함하므로 `read_excel()`은 최대 150개의 행을 반환한다. 이것은 dim() 함수로 확인된다.
 
-read_excel() returns NA when a symbol without numerical value appears in the cell. We can count the number of missing values with the combination of two functions
+
 
 `read_excel()`은 셀에 숫자 값이 없는 기호가 나타나면 `NA`를 반환한다. 두 함수의 조합으로 결측치(missing values)의 갯수를 셀 수 있다.
 

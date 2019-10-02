@@ -171,7 +171,7 @@ select_home <- filter(df, GoingTo == "Home")
 dim(select_home)
 ```
 
-**Output:**
+**결과 :**
 
 ```
 ## [1] 100  14
@@ -186,7 +186,7 @@ select_work <- filter(df, GoingTo == "GSK")
 dim(select_work)
 ```
 
-**Output:**
+**결과 :**
 
 ```
 ## [1] 105  14	
@@ -203,7 +203,7 @@ select_home_wed <- filter(df, GoingTo == "Home" & DayOfWeek == "Wednesday")
 dim(select_home_wed)
 ```
 
-**Output:**
+**결과 :**
 
 ```
 ## [1] 23 14	
@@ -227,8 +227,6 @@ dim(select_home_wed)
 
 `dplyr` 라이브러리는 **파이프라인**이라고 하는 실용적인 연산자 `%>%`를 함께 제공한다. 파이프라인은 사용하면 조작이 깨끗하고 빠르며 오류 발생이 최소화된다.
 
-This operator is a code which performs steps without saving intermediate steps to the hard drive. If you are back to our example from above, you can select the variables of interest and filter them. We have three steps:
-
 이 연산자는 하드 드라이브로 중간 단계를 저장하지 않고도 단계를 수행하게 해 주는 코드이다. 위에서 본 사례로 돌아가면 관심 변수를 선택하여 필터링할 수 있다. 다음의 세 가지 단계가 있다 :
 
 - 1단계: 데이터 불러오기: `gps` 데이터 불러오기
@@ -251,7 +249,7 @@ step_3 <- filter(step_2, GoingTo == "Home", DayOfWeek == "Wednesday")
 head(step_3)
 ```
 
-**Output:**
+**결과 :**
 
 ```
 ##   GoingTo DayOfWeek
@@ -338,7 +336,7 @@ step_2_df <-step_1_df %>%
 head(step_2_df)
 ```
 
-**Output:**
+**결과 :**
 
 ```
 ##     X       Date StartTime DayOfWeek GoingTo Distance MaxSpeed AvgSpeed

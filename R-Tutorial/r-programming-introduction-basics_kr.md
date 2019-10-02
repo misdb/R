@@ -40,7 +40,7 @@ R을 이용한 데이터 분석은 일련의 과정으로 이루어 진다; 프�
 
 산업별 R 사용을 구분해보면, 학술분야가 제일로 많이 사용하고 있음을 알 수 있다. R은 통계적 분석을 위한 언어이다. R은 의료산업이 제일 선두에 있으며, 그 다음이 정부와 컨설팅 분야이다.
 
-[![img](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg1.png)](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg1.png)
+[<img src="images/032918_1002_WhatisRProg1.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg1.png)
 
 ## R 패키지
 
@@ -48,13 +48,13 @@ R의 주요 용도는 통계처리, 시각화 그리고 기계학습 분야이�
 
 
 
-[![img](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg2.png)](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg2.png)
+[<img src="images/032918_1002_WhatisRProg2.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg2.png)
 
 
 
 거의 1만 2천 개에 이르는 R의 라이브러리들은 CRAN에 저장되어 있다. CRAN은 무료의 오픈 소스이다. 여러분은 기계 학습이나 시계열 분석 등의 수행을 위해 다양한 라이브러리를 다운로드하여 사용할 수 있다.
 
-[![img](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg3.jpg)](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg3.jpg)
+[<img src="images/032918_1002_WhatisRProg3.jpg" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg3.jpg)
 
 
 
@@ -64,7 +64,7 @@ R은 '마크다운 문서'나 'shiny 앱' 등을 통하여 작업을 수행하�
 
 다음은 [Rpub](https://rpubs.com/)에 호스팅 되어 있는 예이다.
 
-[![img](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg4.png)](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg4.png)
+[<img src="images/032918_1002_WhatisRProg4.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg4.png)
 
 Rstudio는 문서를 작성하기 위해 markdown을 허용한다. 그리고 이 문서를 다음과 같은 다양한 문서로 변환출력할 수 있다. 
 
@@ -76,7 +76,7 @@ Rstudio는 문서를 작성하기 위해 markdown을 허용한다. 그리고 이
   - HTML
   - PDF beamer
 
-[![img](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg5.png)](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg5.png)
+[<img src="images/032918_1002_WhatisRProg5.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg5.png)
 
 
 
@@ -84,7 +84,7 @@ Rstudio는 App을 쉽게 만들 수 있는 좋은 도구이다. 다음은 World 
 
 
 
-[![img](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg6.png)](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg6.png)
+[<img src="images/032918_1002_WhatisRProg6.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg6.png)
 
 
 
@@ -94,7 +94,7 @@ Rstudio는 App을 쉽게 만들 수 있는 좋은 도구이다. 다음은 World 
 
 시장에는 데이터 분석을 수행하는데 이용할 수 있는 수 많은 도구가 있다. 새로운 언어를 학습하는 것은 시간의 투자를 요구한다. 아래의 그림은 언어가 제공하는 기업의 능력과 비교한 학습곡선(learning curve)을 보여주고 있다. 마이너스의 관련성은 무상급식이 없음을 보여준다. 만일 데이터로 부터 가장 훌륭한 통찰력(insight)을 얻고자 한다면, R과 같은 적절한 도구를 학습하는데 시간을 투자할 필요가 있다.
 
-[![img](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg7.png)](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg7.png)
+[<img src="images/032918_1002_WhatisRProg7.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg7.png)
 
 도표의 왼쪽 위에 엑셀과 PowerBI가 있음을 알 수 있다. 이 두 개의 도구들은 배우기는 쉽지만, 모델링 측면에서, 뛰어난 기업 능력을 제공하지는 못한다. 중앙에는 Python과 SAS가 위치하고 있다. SAS는 기업을 위한 **통계적 분석**을 할 수 있는 전용의 도구이다. SAS는 클릭해서 실행하는 소프트웨어이다. 그러나 Python은 단조로운 학습곡선을 갖는 언어이다. Python은 기계학습과 인공지능을 다루기에 환상적인 도구이지만 의사소통 특성은 약한 면이 있다. 동일한 학습곡선을 갖는 R은 실행과 데이터 분석 사이의 좋은 보상관계에 있다.
 
@@ -102,7 +102,7 @@ Rstudio는 App을 쉽게 만들 수 있는 좋은 도구이다. 다음은 World 
 
 Stack Overflow는 프로그램 언어의 큰 커뮤니티이다. 코딩의 문제가 있거나 모델의 이해가 필요하다면 Stack Overflow는 많은 도움이 될 것이다. 수년간 다른 언어들과 비교하여 R에 대한 질문의견의 비율이 가파르게 증가하고 있다. 이러한 추세는 물론 데이터 과학의 호황기와 크게 관련이 있지만 데이터 과학을 위한 R 언어의 요구를 반영하고 있는 것이다.
 
-[![img](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg8.png)](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg8.png)
+[<img src="images/032918_1002_WhatisRProg8.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1002_WhatisRProg8.png)
 
 데이터 과학에서는 서로 경쟁하고 있는 두 개의 도구가 있다. 그것은 R과 Python인데 이 언어들은 데이터 과학을 정의하는 언어라 할 수 있다.
 

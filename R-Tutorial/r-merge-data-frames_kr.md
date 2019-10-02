@@ -144,8 +144,6 @@ identical(m1, m2)
 
 두 데이터 프레임이 동일한 공통 key 변수를 가지고 있지 않다는 것은 놀라운 일이 아니다. **완전 대응(full matching)**에서 데이터프레임은 `x`와 `y` 데이터 프레임 모두에서 발견되는 **행만** 반환한다. **부분 병합(partial merging)**을 사용하면 다른 데이터 프레임에 대응하는 행이 없는 행을 유지할 수 있다. 이러한 행은 대개 `y` 값들로 채워진 열에 `NA`를 가진다. 우리는 `all.x=TRUE`라고 설정함으로써 그렇게 할 수 있다.
 
-For instance, we can add a new producer, Lucas, in the producer data frame without the movie references in movies data frame. If we set all.x= FALSE, R will join only the matching values in both data set. In our case, the producer Lucas will not be join to the merge because it is missing from one dataset.
-
 예를 들어, `movies`데이터 프레임에 영화 참조가 없는 `producer`데이터 프레임에 새로운 프로듀서로 `Lucas`를 추가할 수 있다. 만일 `all.x = FALSE`로 설정하면, R은 두 데이터 세트의 일치 값만 결합한다. 우리의 경우, `producer` `Lucas`는 하나의 데이터 세트에서 누락되었기 때문에 합병에 참여하지 않을 것이다.
 
 `all.x=TRUE`를 지정할 때와 그렇지 않을 때 각 결과의 차원을 살펴보자.
@@ -162,7 +160,7 @@ m3
 
 **결과 : **
 
-[![img](https://www.guru99.com/images/r_programming/merge_data_frames.png)](https://www.guru99.com/images/r_programming/merge_data_frames.png)
+[<img src="merge_data_frames.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/merge_data_frames.png)
 
 ```
 # Compare the dimension of each data frame

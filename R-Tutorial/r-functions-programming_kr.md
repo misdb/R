@@ -44,7 +44,7 @@ R에는 많은 함수들이 내장되어 있다. R은 값이나 위치로 함수
 
 **주의** : 콘솔에서 함수 자체의 이름을 실행하여 함수의 소스 코드를 볼 수 있다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0812_Functionsin1.png)](https://www.guru99.com/images/r_programming/032818_0812_Functionsin1.png)
+[<img src="https://www.guru99.com/images/r_programming/032818_0812_Functionsin1.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0812_Functionsin1.png)
 
 
 
@@ -64,11 +64,7 @@ R에는 많은 함수들이 내장되어 있다. R은 값이나 위치로 함수
 
 ### diff() 함수
 
-If you work on **time series**, you need to stationary the series by taking their **lag values**. A **stationary process** allows constant mean, variance and autocorrelation over time. This mainly improves the prediction of a time series. It can be easily done with the function diff(). We can build a random time-series data with a trend and then use the function diff() to stationary the series. The diff() function accepts one argument, a vector, and return suitable lagged and iterated difference.
-
-*만약 당신이 **시계열 분석(time series)**을 한다면, 너는 그들의**lag values**고 하여 시리즈 stationary 필요가 있다. A**stationary process** 시간에 대해 끊임없이 나쁜 차액과 자기 상관을 허용한다. 이것은 주로 시간 시리즈의 예측을 향상시킨다. 쉽게 기능 diff() 할 수 있다. 우리는 추세를 섞고 이 기능을 사용하는 대로 time-series 데이터를 시리즈 stationary에 diff()을 지을 수 있다. 그 diff()기능 및 반환 적합하고 차이iterated은 뒤처져 하나의 논쟁, 벡터를 받아들입니다.*
-
-**Note**: We often need to create random data, but for learning and comparison we want the numbers to be identical across machines. To ensure we all generate the same data, we use the set.seed() function with arbitrary values of 123. The set.seed() function is generated through the process of pseudorandom number generator that make every modern computers to have the same sequence of numbers. If we don't use set.seed() function, we will all have different sequence of numbers.
+만약 당신이 **시계열 분석(time series)**을 한다면, 너는 그들의**lag values**고 하여 시리즈 stationary 필요가 있다. A**stationary process** 시간에 대해 끊임없이 나쁜 차액과 자기 상관을 허용한다. 이것은 주로 시간 시리즈의 예측을 향상시킨다. 쉽게 기능 diff() 할 수 있다. 우리는 추세를 섞고 이 기능을 사용하는 대로 time-series 데이터를 시리즈 stationary에 diff()을 지을 수 있다. 그 diff()기능 및 반환 적합하고 차이iterated은 뒤처져 하나의 논쟁, 벡터를 받아들입니다.
 
 **참고**: 우리는 종종 무작위 데이터를 만들어야 하지만, 학습과 비교를 위해 우리는 기계 간에 숫자가 동일하기를 원한다. 우리 모두가 동일한 데이터를 생성하도록 하기 위해, 우리는 임의의 값이 123인 set.seed() 함수를 사용한다. set.seed() 함수는 모든 현대 컴퓨터가 동일한 수의 시퀀스를 갖도록 하는 의사 난수 생성기의 과정을 통해 생성된다. set.seed() 함수를 사용하지 않으면, 우리는 모두 다른 숫자의 순서를 갖게 될 것이다.
 
@@ -85,7 +81,7 @@ plot(ts, type='l')
 plot(diff(ts), type='l')
 ```
 
-[![img](https://www.guru99.com/images/r_programming/032818_0812_Functionsin2.png)](https://www.guru99.com/images/r_programming/032818_0812_Functionsin2.png)
+[<img src="images/032818_0812_Functionsin2.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0812_Functionsin2.png)
 
 ### length() function
 
@@ -415,7 +411,7 @@ To clarify the difference between **전역(global)**과 **부분 환경(local en
 
 이 함수는 x의 값을 인수로 받아들여 함수의 외부에 정의되어 있는 y값을 가져와서 함수 내부에서 합한다. 
 
-[![img](https://www.guru99.com/images/r_programming/032818_0812_Functionsin3.png)](https://www.guru99.com/images/r_programming/032818_0812_Functionsin3.png)
+[<img src="images/032818_0812_Functionsin3.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0812_Functionsin3.png)
 
 함수 `f(5)`는 15 값을 반환한다. 이것은 `y` 가 전역 환경에서 정의되어 있기 때문이다. 전역 환경에서 정의되어 있는 변수는 부분 환경에서도 이용될 수 있다. 변수`y`는 함수가 호출되어 있는 동안에서는 10의 값을 가지며 언제든지 이용가능하다.
 
@@ -425,7 +421,7 @@ To clarify the difference between **전역(global)**과 **부분 환경(local en
 
 
 
-[![img](https://www.guru99.com/images/r_programming/032818_0812_Functionsin4.png)](https://www.guru99.com/images/r_programming/032818_0812_Functionsin4.png)
+[<img src="images/032818_0812_Functionsin4.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0812_Functionsin4.png)
 
 우리가 `f(5)`를 호출하면 결과는 15이지만, `y` 값을 인쇄하려고 하면 오류를 반환한다. 이제 변수 `y`는 전역 환경에 있지 않기 때문이다.
 
@@ -433,7 +429,7 @@ To clarify the difference between **전역(global)**과 **부분 환경(local en
 
 마지막으로 R은 함수 본체 내부를 통과하기 위해 가장 최근의 변수 정의를 사용한다. 다음 예를 고려해 보자.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0812_Functionsin5.png)](https://www.guru99.com/images/r_programming/032818_0812_Functionsin5.png)
+[<img src="images/032818_0812_Functionsin5.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0812_Functionsin5.png)
 
 R은 함수 본체 내에 `y` 변수를 명시적으로 생성했기 때문에 함수 외부에 정의된 `y` 값을 무시한다.
 
@@ -475,8 +471,6 @@ data_frame <- tibble(
   c3 = rnorm(50, 5, 1.5),    
 )
 ```
-
-We will proceed in two steps to compute the function described above. In the first step, we will create a variable called c1_norm which is the rescaling of c1. In step two, we just copy and paste the code of c1_norm and change with c2 and c3.
 
 우리는 위에서 설명한 함수 계산을 위해 두 단계를 밟아야 할 것이다. 첫 단계에서는 `c1`을 정규화하여  `c1_norm`이라는 변수를 만들 것이다. 2단계에서는 `c1_norm` 코드를 복사하여 붙여넣기 방식으로 해서 `c2`와 `c3`도 변경한다.
 
@@ -596,11 +590,7 @@ data_frame$c3_norm_function <- normalize(data_frame$c3)
 
 ## 조건을 포함하는 함수
 
-Sometimes, we need to include conditions into a function to allow the code to return different outputs.
-
 때때로, 우리는 코드가 다른 출력을 반환할 수 있도록 함수에 조건을 포함시킬 필요가 있다.
-
-In Machine Learning tasks, we need to split the dataset between a train set and a test set. The train set allows the algorithm to learn from the data. In order to test the performance of our model, we can use the test set to return the performance measure. R does not have a function to create two datasets. We can write our own function to do that. Our function takes two arguments and is called split_data(). The idea behind is simple, we multiply the length of dataset (i.e. number of observations) with 0.8. For instance, if we want to split the dataset 80/20, and our dataset contains 100 rows, then our function will multiply 0.8*100 = 80. 80 rows will be selected to become our training data.
 
 기계 학습 과제에서는 데이터 세트를 훈련 세트(train set)와 시험 세트(test set)로 분할해야 한다. 훈련 세트는 알고리즘이 데이터로부터 학습할 수 있게 해준다. 모델 성능을 테스트하기 위해 시험 세트를 사용하여 성능 측정값을 반환할 수 있다. R에는 두 개의 데이터 세트를 생성하는 기능이 없다. 우리는 이를 위해 함수를 작성한다. 우리의 함수는 두 개의 인수를 가지고 있으며 `split_data()`라고 이름을 붙인다. 이면의 아이디어는 간단하다. 데이터 집합의 길이(예: 관측 데이터의 수)를 0.8로 곱한다. 예를 들어, 데이터 세트를 80:20으로 분할하고, 데이터 세트에 100개의 행이 포함되어 있다면, 우리의 함수는 0.8*100 = 80을 반환한다. 이제 80개의 행이 우리의 훈련 데이터로 선택될 것이다.
 

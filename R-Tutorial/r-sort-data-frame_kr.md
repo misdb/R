@@ -2,8 +2,6 @@
 
 
 
-In data analysis you can **sort** your data according to a certain variable in the dataset. In R, we can use the help of the function order(). In R, we can easily sort a vector of continuous variable or factor variable. Arranging the data can be of **ascending** or **descending** order.
-
 데이터 분석에서 데이터 세트의 특정 변수에 따라 데이터를 **정렬(sort)**할 수 있다. 
 R에서는 `order()` 함수를 이용할 수 있다. 
 R에서는 연속 변수나 factor 변수의 벡터를 쉽게 정렬할 수 있다. 

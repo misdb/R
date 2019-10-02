@@ -2,10 +2,6 @@
 
 
 
-A bivariate relationship describes a relationship -or correlation- between two variables, and . In this tutorial, we discuss the concept of **correlation** and show how it can be used to measure the relationship between any two variables.
-
-There are two primary methods to compute the correlation between two variables.
-
 이변량 관계(bivariate relationship)는 두 변수 사이의 관계 또는 상관관계를 설명한다. 이 튜토리얼에서는 **상관관계(correlation)**의 개념을 논의하고, 두 변수 사이의 관계를 측정하는 데에 어떻게 사용될 수 있는가를 살펴보겠다.
 
 두 변수 사이의 상관관계를 계산하는 두 가지 기본 방법이 있다.
@@ -89,8 +85,6 @@ cor(x, y, method)
 
 벡터가 결측치를 포함한다면 추가적인 인수로 `use = "complete.obs"`를 추가할 수 있다.
 
-We will use the BudgetUK dataset. This dataset reports the budget allocation of British households between 1980 and 1982. There are 1519 observations with ten features, among them:
-
 우리는 `BudgetUK` 데이터 세트를 사용할 것이다. 이 데이터 세트는 1980년과 1982년 사이 영국 가계의 예산 배분을 기록하고 있다. 10가지 특징(변수)을 가진 1,519개의 관측치가 있으며, 그 변수들은 다음과 같다.
 
 - X : 데이터의 행 번호
@@ -148,7 +142,7 @@ glimpse(data3)
 ## $ children_fac <ord> Yes, Yes, Yes, Yes, No, No, No, No, No, No, Yes, ...
 ```
 
-We can compute the correlation coefficient between income and wfood variables with the "pearson" and "spearman" methods.
+
 
 이제 "피어슨"과 "스피어맨" 방법을 사용하여 `income(소득)`과 `wfood(식음료)` 변수수 사이의 상관 계수를 계산할 수 있다.
 
@@ -230,8 +224,6 @@ mat_1
 conda install -c r r-hmisc   # or 'install.packages("Hmisc")' in RStudion console
 ```
 
-The rcorr() requires a data frame to be stored as a matrix. We can convert our data into a matrix before to compute the correlation matrix with the p-value.
-
 `rcorr()`는 데이터 프레임을 행렬로 저장해야 한다. p-값으로 상관계수 행렬을 계산하기 전에 데이터를 행렬로 변환할 수 있다.
 
 ```
@@ -289,7 +281,7 @@ log_totexp 0.000 0.000  0.000 0.000  0.000  0.000 0.000      0.000         NA
 install.packages("GGally")
 ```
 
-[![img](https://www.guru99.com/images/r_programming/032918_0543_PearsonSpea1.png)](https://www.guru99.com/images/r_programming/032918_0543_PearsonSpea1.png)
+[<img src="images/032918_0543_PearsonSpea1.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0543_PearsonSpea1.png)
 
 
 
@@ -363,7 +355,7 @@ ggcorr(data3,
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0543_PearsonSpea3.png)](https://www.guru99.com/images/r_programming/032918_0543_PearsonSpea3.png)
+[<img src="images/032918_0543_PearsonSpea3.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0543_PearsonSpea3.png)
 
 ### 열 지도에 데이터 값 표시하기
 
@@ -385,7 +377,7 @@ ggcorr(data3,
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0543_PearsonSpea4.png)](https://www.guru99.com/images/r_programming/032918_0543_PearsonSpea4.png)
+[![img](images/032918_0543_PearsonSpea4.png)](https://www.guru99.com/images/r_programming/032918_0543_PearsonSpea4.png)
 
 ### ggpairs
 
@@ -436,7 +428,7 @@ ggpairs(data3, columns = c("log_totexp", "log_income", "age", "wtrans"),
 - upper = list() : 그래프의 상단부 즉 대각선 윗 부분을 제어
   - continuous = wrap("cor", size = 3)) : `continuous` 인수는 wrap() 함수 안에 사용할 함수("cor" : 상관계수)와 그래프 글자의 크기(size = 3)를 표시한다.
 - lower = list() : 그래프의 하단 부, 즉 대각선 아래 부분을 제어
-  - continuous = wrap("smooth", alpha = 0.3, size=0.1) : Add a scatter plot with a linear trend. We wrap the argument continuous inside the wrap() function to control for the aesthetic of the graph ( i.e. size=0.1, alpha=0.3)
+  - continuous = wrap("smooth", alpha = 0.3, size=0.1) : 선형 경향을 갖는 산포도 추가. `wrap()` 함수 내부의 인수로 그래프트이 aes를 제어한다. (즉, size=0.1, alpha=0.3)
 - mapping = aes(color = children_fac) : 우리는 `children_fac` 변수(자녀가 없으면 '1', 있으면 '2'값을 가짐) 별로 그래프의 각 부분을 누적하고자 한다. 
 
 결과:**

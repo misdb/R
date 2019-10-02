@@ -241,8 +241,6 @@ slice_vector[1:5]
 
 값의 범위를 생성하는 가장 간단한 방법은 두 개의 수 사이에 `:`를 사용하는 것이다. 예를 들어, 위의 예에서와 같이 우리는 1부터 10까지의 숫자 벡터를 생성하기 위해 `c(1:10)` 또는 `1:10`이라고 작성할 수 있다.
 
-The shortest way to create a range of value is to use the: between two numbers. For instance, from the above example, we can write c(1:10) to create a vector of value from one to ten.
-
 ```
 # Faster way to create adjacent values
 c(1:10)

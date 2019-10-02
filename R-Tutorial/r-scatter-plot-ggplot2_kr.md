@@ -10,7 +10,7 @@
 - 그 이후에 가장 눈에 띄는 업무 중 하나가 바로 '피쳐 엔지니어링(feature engineering)'이다. 데이터 과학자가 데이터를 수집하여, 조작하고 정리해야 한다.
 - 이 단계가 완료되면 데이터 세트의 탐색을 시작할 수 있다. 때로는 새로운 발견에 따라 인해 원래의 가설을 다듬고 변화시킬 필요가 있다.  
 
-[![img](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot1.png)](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot1.png)
+[![img](images/032918_0732_Scatterplot1.png)](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot1.png)
 
 
 
@@ -136,7 +136,7 @@ ggplot(mtcars, aes(x = log(mpg), y = log(drat))) +
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot4.png)](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot4.png)
+[<img src="images/032918_0732_Scatterplot4.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot4.png)
 
 
 
@@ -165,7 +165,7 @@ my_graph
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot5.png)](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot5.png)
+[<img src="images/032918_0732_Scatterplot5.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot5.png)
 
 주의 : 이용가능한 평활 방법은 다음과 같다.
 
@@ -224,7 +224,7 @@ my_graph +
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot6.png)](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot6.png)
+[<img src="images/032918_0732_Scatterplot6.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot6.png)
 
 
 
@@ -289,7 +289,7 @@ my_graph + labs(
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot7.png)](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot7.png)
+[<img src="images/032918_0732_Scatterplot7.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot7.png)
 
 
 
@@ -319,7 +319,7 @@ my_graph +
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot8.png)](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot8.png)
+[<img src="images/032918_0732_Scatterplot8.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot8.png)
 
 
 
@@ -347,7 +347,7 @@ my_graph +
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot9.png)](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot9.png)
+[<img src="images/032918_0732_Scatterplot9.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot9.png)
 
 
 
@@ -410,7 +410,7 @@ my_graph +
 
 **결과 : **
 
-[![img](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot10.png)](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot10.png)
+[<img src="images/032918_0732_Scatterplot10.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot10.png)
 
 
 
@@ -442,7 +442,7 @@ my_graph +
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot11.png)](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot11.png)
+[<img src="images/032918_0732_Scatterplot11.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot11.png)
 
 
 
@@ -474,7 +474,7 @@ my_graph +
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot12.png)](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot12.png)
+[<img src="images/032918_0732_Scatterplot12.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0732_Scatterplot12.png)
 
 ```
 ggsave("my_fantastic_plot.png")

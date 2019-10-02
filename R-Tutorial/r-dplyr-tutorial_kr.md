@@ -19,7 +19,7 @@ R에는 데이터 변환을 돕는 `dplyr`이라는 라이브러리가 있다.
 
 이 튜토리얼에서는 `dplyr` 라이브러리를 사용하여 데이터 프레임을 조작하는 방법에 대하여 학습할 것이다.
 
-[![img](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor1.png)](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor1.png)
+[<img src="032818_1112_RDplyrTutor1.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor1.png)
 
 이 튜토리얼에서는 다음에 대하여 학습한다:
 
@@ -53,7 +53,7 @@ R에는 데이터 변환을 돕는 `dplyr`이라는 라이브러리가 있다.
 
 우선 두 개의 데이터 세트를 만든다. Table 1은 `ID`와 `y`의 두 변수를 포함하고, Table 2는 `ID`와 `z`를 수집한다. 각각의 경우에  **키-쌍** 변수가 필요하다. 우리의 경우, `ID`는 **key** 변수이다. 그 기능은 두 Table에서 동일한 값을 찾고 반환 값을 Table 1의 오른쪽에 결합한다.
 
-[![img](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor2.png)](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor2.png)
+[<img src="032818_1112_RDplyrTutor2.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor2.png)
 
 ```
 library(dplyr)
@@ -81,7 +81,7 @@ df_secondary <- tribble(
 
 
 
-[![img](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor3.png)](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor3.png)
+[<img src="032818_1112_RDplyrTutor3.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor3.png)
 
 ```
 left_join(df_primary, df_secondary, by ='ID')
@@ -107,7 +107,7 @@ left_join(df_primary, df_secondary, by ='ID')
 
 `right_join()` 함수는` left_join()`처럼 똑같이 작동한다. 유일한 차이점은 사라지는 행이다. 대상 데이터 프레임에서 사용할 수 있는 값 `E`는 새 Table에 존재하며, `y`열에 대한 값은 `NA`를 취한다.
 
-[![img](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor4.png)](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor4.png)
+[<img src="032818_1112_RDplyrTutor4.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor4.png)
 
 ```
 right_join(df_primary, df_secondary, by = 'ID')
@@ -137,7 +137,7 @@ right_join(df_primary, df_secondary, by = 'ID')
 
 
 
-[![img](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor5.png)](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor5.png)
+[<img src="032818_1112_RDplyrTutor5.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor5.png)
 
 
 
@@ -166,7 +166,7 @@ inner_join(df_primary, df_secondary, by ='ID')
 
 
 
-[![img](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor6.png)](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor6.png)
+[<img src="032818_1112_RDplyrTutor6.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor6.png)
 
 ```
 full_join(df_primary, df_secondary, by = 'ID')
@@ -192,7 +192,7 @@ full_join(df_primary, df_secondary, by = 'ID')
 
 마지막으로 중요한 것은 데이터 세트에 복수 개의 키가 있을 수 있다는 점이다. 고객이 구매한 제품 `items` 또는 `year`가 있는 다음의 데이터 세트를 고려해보자.
 
-[![img](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor7.png)](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor7.png)
+[<img src="032818_1112_RDplyrTutor7.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor7.png)
 
 
 
@@ -245,13 +245,6 @@ left_join(df_primary, df_secondary, by = c('ID', 'year'))
 
 ## 데이터 클린징 함수
 
-Following are four important functions to tidy the data:
-
-- gather(): Transform the data from wide to long
-- spread(): Transform the data from long to wide
-- separate(): Split one variable into two
-- unit(): Unit two variables into one
-
 다음은 데이터를 정리하는 4가지 중요한 함수들이다.
 
 - `gather()` : **넓은 형태(wide format)**의 데이터를 **긴 형태(long format)**의 데이터로 변환
@@ -288,7 +281,7 @@ Arguments:
 
 
 
-[![img](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor8.png)](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor8.png)
+[<img src="032818_1112_RDplyrTutor8.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming//032818_1112_RDplyrTutor8.png)
 
 
 
@@ -451,8 +444,6 @@ unit(data, col, conc ,sep= "", remove = TRUE)
 - **remove** : 이전 열의 제거 여부. 기본 값은 `TRUE`
 
 
-
-In the above example, we separated quarter from year. What if we want to merge them. We use the following code:
 
 위의 예에서, 우리는 `quarter`와 `year`를 분리했다. 만약 우리가 그것들을 병합하고 싶다면, 다음 코드를 사용한다.
 

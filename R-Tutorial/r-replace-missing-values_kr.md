@@ -8,7 +8,7 @@
 
  (데이타 분석 : 데이터 조작, 데이터 클린징, 데이터 시각화)
 
-[![img](https://www.guru99.com/images/r_programming/032918_0440_ReplaceMiss1.png)](https://www.guru99.com/images/r_programming/032918_0440_ReplaceMiss1.png)
+[<img src="images/032918_0440_ReplaceMiss1.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0440_ReplaceMiss1.png)
 
 이 튜토리얼에서는 다음에 대하여 학습한다.
 

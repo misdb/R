@@ -71,11 +71,11 @@ ggplot(mtcars, aes(x = factor(cyl))) +
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis1.png)](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis1.png)
+[<img src="images/032918_0752_BarChartHis1.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis1.png)
 
 **주의** : 변수를 factor 타입으로 변환하는지 확인하라. 그렇지 않으면 R은 변수를 숫자로 처리한다. 아래의 예를 참조하라.
 
-[![img](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis2.png)](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis2.png)
+[<img src="images/032918_0752_BarChartHis2.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis2.png)
 
 
 
@@ -102,7 +102,7 @@ ggplot(mtcars, aes(x = factor(cyl))) +
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis3.png)](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis3.png)
+[<img src="images/032918_0752_BarChartHis3.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis3.png)
 
 다음의 코드를 사용할 수 있다.
 
@@ -133,7 +133,7 @@ ggplot(mtcars,
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis4.png)](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis4.png)
+[<img src="images/032918_0752_BarChartHis4.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis4.png)
 
 
 
@@ -156,7 +156,7 @@ ggplot(mtcars, aes(factor(cyl),
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis5.png)](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis5.png)
+[<img src="images/032918_0752_BarChartHis5.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis5.png)
 
 
 
@@ -198,7 +198,7 @@ ggplot(data, aes(x = cyl, fill = am)) +
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis6.png)](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis6.png)
+[<img src="images/032918_0752_BarChartHis6.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis6.png)
 
 맵핑은 각 수준별별로 두 가지 색으로 막대를 채울 것이다. 데이터 세트에 있는 다른 factor 변수를 선택하여 그룹을 쉽게 변경할 수 있다.
 
@@ -223,7 +223,7 @@ ggplot(data, aes(x = cyl, fill = am)) +
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis7.png)](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis7.png)
+[<img src="images/032918_0752_BarChartHis7.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis7.png)
 
 
 
@@ -244,7 +244,7 @@ ggplot(data, aes(x = cyl, fill = am)) +
 
 **Output :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis8.png)](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis8.png)
+[<img src="images/032918_0752_BarChartHis8.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis8.png)
 
 ## 히스토그램
 
@@ -291,7 +291,7 @@ ggplot(data_histogram, aes(x = cyl, y = mean_mpg)) +
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis9.png)](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis9.png)
+[<img src="images/032918_0752_BarChartHis9.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis9.png)
 
 **단계 3)** 방향 변경
 
@@ -310,7 +310,7 @@ ggplot(data_histogram, aes(x = cyl, y = mean_mpg)) +
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis10.png)](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis10.png)
+[<img src="images/032918_0752_BarChartHis10.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis10.png)
 
 **단계 4)** 색상 변경
 
@@ -330,7 +330,7 @@ ggplot(data_histogram, aes(x = cyl, y = mean_mpg, fill = cyl)) +
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis11.png)](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis11.png)
+[<img src="images/032918_0752_BarChartHis11.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis11.png)
 
 **단계 5)** 크기 변경
 
@@ -354,7 +354,7 @@ graph
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis12.png)](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis12.png)
+[<img src="images/032918_0752_BarChartHis12.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis12.png)
 
 **Step 6)** 그래프에 라벨 추가
 
@@ -381,7 +381,7 @@ graph +
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis13.png)](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis13.png)
+[<img src="images/032918_0752_BarChartHis13.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0752_BarChartHis13.png)
 
 
 

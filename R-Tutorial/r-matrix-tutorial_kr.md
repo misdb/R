@@ -8,7 +8,7 @@
 
 **주의:** R에서는 2차원 이상의 배열을 생성할 수 있다.
 
-[![R Matrix Tutorial](https://www.guru99.com/images/r_programming/032918_1422_RMatrixTuto1.png)](https://www.guru99.com/images/r_programming/032918_1422_RMatrixTuto1.png)
+[<img src="images/032918_1422_RMatrixTuto1.png" alt="R Matrix Tutorial" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1422_RMatrixTuto1.png)
 
 
 
@@ -37,7 +37,7 @@ matrix_a
 
 결과:
 
-[![R Matrix Tutorial](https://www.guru99.com/images/r_programming/032918_1422_RMatrixTuto2.png)](https://www.guru99.com/images/r_programming/032918_1422_RMatrixTuto2.png)
+[<img src="images/032918_1422_RMatrixTuto2.png" alt="R Matrix Tutorial" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1422_RMatrixTuto2.png)
 
 
 
@@ -49,7 +49,7 @@ matrix_b
 
 Output:
 
-[![R Matrix Tutorial](https://www.guru99.com/images/r_programming/032918_1422_RMatrixTuto3.png)](https://www.guru99.com/images/r_programming/032918_1422_RMatrixTuto3.png)
+[<img src="images/032918_1422_RMatrixTuto3.png" alt="R Matrix Tutorial" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1422_RMatrixTuto3.png)
 
 
 
@@ -218,6 +218,6 @@ dim(matrix_c)
 
 
 
-[![R Matrix Tutorial](https://www.guru99.com/images/r_programming/032918_1422_RMatrixTuto4.png)](https://www.guru99.com/images/r_programming/032918_1422_RMatrixTuto4.png)
+[<img src="images/032918_1422_RMatrixTuto4.png" alt="R Matrix Tutorial" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1422_RMatrixTuto4.png)
 
  

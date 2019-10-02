@@ -107,7 +107,7 @@ str(df)
 
 
 
-[![img](https://www.guru99.com/images/r_programming/032918_1452_RDataFrames1.png)](https://www.guru99.com/images/r_programming/032918_1452_RDataFrames1.png)
+[<img src="images/032918_1452_RDataFrames1.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1452_RDataFrames1.png)
 
 
 
@@ -122,7 +122,7 @@ str(df)
 
 
 
-[![img](https://www.guru99.com/images/r_programming/032918_1452_RDataFrames2.png)](https://www.guru99.com/images/r_programming/032918_1452_RDataFrames2.png)
+[<img src="images/032918_1452_RDataFrames2.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1452_RDataFrames2.png)
 
 
 

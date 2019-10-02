@@ -10,11 +10,9 @@ while (condition) {
 }
 ```
 
-[![img](https://www.guru99.com/images/r_programming/032818_1244_WhileLoopin1.png)](https://www.guru99.com/images/r_programming/032818_1244_WhileLoopin1.png)
+[<img src="images/032818_1244_WhileLoopin1.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_1244_WhileLoopin1.png)
 
 while 반복구문의 흐름도
-
-**Note**: Remember to write a closing condition at some point otherwise the loop will go on indefinitely.
 
 **주의 **: 반복문이 무한정 반복되지 않게 하려면 어느 시점에선가 종료 조건을 작성해야 한다는 것을 기억하십시오.
 

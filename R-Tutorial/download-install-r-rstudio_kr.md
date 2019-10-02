@@ -45,83 +45,83 @@ Anaconda는 Python이나 R에 요구되는 library를 관리하는데 도움을 
 
 기본적으로 Chrome은 여러분의 시스템의 downloading page를 선택한다. 이 튜토리얼에서는 Mac 용 설치에 대하여 알아본다. 여러분이 Windows나 Linux를 이용하고 있다면, Windows의 경우는 Wndows Installer를 위해 Anaconda 5.1을, Linux의 경우 Linux Instaler를 위한 Anaconda 5.1을 다운로드한다.
 
-<img src="../../misdb.github.io/R/R-Tutorial/images/032818_0958_HowtoDownlo2.png" alt="032818_0958_HowtoDownlo2" style="zoom:80%;" />
+<img src="images/032818_0958_HowtoDownlo2.png" alt="032818_0958_HowtoDownlo2" style="zoom:80%;" />
 
 **단계 2)** 이제 Anaconda를 설치할 준비가 되었다. 설치를 시작하기 위해 다운로드한 파일을 더블 클릭한다. Mac에서는 .dmg 파일을, Windows는 .exe 파일이다. 설치를 확인하는지 묻는다. **Continue** 버튼을 클릭한다.
 
-[<img src="../../misdb.github.io/R/R-Tutorial/images/032818_0958_HowtoDownlo3.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo3.png)
+[<img src="images/032818_0958_HowtoDownlo3.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo3.png)
 
 
 
 **Anaconda3 Installer**가 나타난다..
 
-[<img src="../../misdb.github.io/R/R-Tutorial/images/032818_0958_HowtoDownlo4.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo4.png)
+[<img src="images/032818_0958_HowtoDownlo4.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo4.png)
 
 
 
 **단계 3)** 다음 창은 **ReadMe**를 표시한다. 문서의 내용을 읽은 후 **Continue**를 클릭한다.
 
-[<img src="../../misdb.github.io/R/R-Tutorial/images/032818_0958_HowtoDownlo5.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo5.png)
+[<img src="images/032818_0958_HowtoDownlo5.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo5.png)
 
 
 
 **단계 4)** 이 창은 Anaconda End User License Agreement를 보여준다. 동의하기 위해 **Continue**를 클릭한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo6.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo6.png)
+[<img src="images/032818_0958_HowtoDownlo6.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo6.png)
 
 
 
 **단계 5)** 다음 단계로 가기 위해 **Agree** 버튼을 클릭한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo7.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo7.png)
+[<img src="images/032818_0958_HowtoDownlo7.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo7.png)
 
 
 
 **단계 6)** Anaconda의 설치 위치를 지정하기 위해 **Change Install Location**를 클릭한다. 기본으로, Anaconda는 사용자의 환경(**Users/YOURNAME/**)에 설치된다. 
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo8.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo8.png)
+[<img src="images/032818_0958_HowtoDownlo8.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo8.png)
 
 
 
 나만 접속할 수 있게 **Install for me only**를 선택한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo9.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo9.png)
+[<img src="images/032818_0958_HowtoDownlo9.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo9.png)
 
 
 
 **단계 7)** 이제 Anaconda를 설치할 수 있다. 설치를 진행하기 위해 **Install**을 클릭한다. Anaconda는 하드 드라이브의 2.5GB 정도를 차지한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo10.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo10.png)
+[<img src="images/032818_0958_HowtoDownlo10.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo10.png)
 
 
 
 메시지 상자가 나타나고, 여기에 사용자 이름(User Name)과 비밀번호(Password)를 입력한다. **Install Software**를 클릭한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo11.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo11.png)
+[<img src="images/032818_0958_HowtoDownlo11.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo11.png)
 
 
 
 설치하는데 약간의 시간이 소요되며 그 시간은 여러분의 컴퓨터에 따라 다르다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo12.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo12.png)
+[<img src="images/032818_0958_HowtoDownlo12.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo12.png)
 
 
 
 **단계 8)** Anaconda는 Microsoft VSCode를 설치할 것인지 묻는다. 무시하고 **Continue**를 클릭한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo13.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo13.png)
+[<img src="images/032818_0958_HowtoDownlo13.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo13.png)
 
 
 
 **단계 9)** 설치가 완료되었다. 이제 창을 닫을 수 있다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo14.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo14.png)
+[<img src="images/032818_0958_HowtoDownlo14.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo14.png)
 
 
 
 이제 "Anaconda3" Installer를 삭제할 것인지 묻는다. **Move to Trash**를 클릭한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo15.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo15.png)
+[<img src="images/032818_0958_HowtoDownlo15.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo15.png)
 
 
 
@@ -133,37 +133,37 @@ Anaconda는 Python이나 R에 요구되는 library를 관리하는데 도움을 
 
 **단계 1)** 다운로드한 exe를 실행하고, **Next**를 클릭한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo16.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo16.png)
+[<img src="images/032818_0958_HowtoDownlo16.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo16.png)
 
 
 
 **단계 2)** License Agreement를 승인한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo17.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo17.png)
+[<img src="images/032818_0958_HowtoDownlo17.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo17.png)
 
 
 
 **단계 3)** **Just Me**를 선택하고 **Next**를 클릭한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo18.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo18.png)
+[<img src="images/032818_0958_HowtoDownlo18.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo18.png)
 
 
 
 **단계 4)**  **Destination Folder**를 선택하고 **Next**를 클릭한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo19.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo19.png)
+[<img src="images/032818_0958_HowtoDownlo19.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo19.png)
 
 
 
 **단계 5)** **Install** 버튼을 클릭한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo20.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo20.png)
+[<img src="images/032818_0958_HowtoDownlo20.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo20.png)
 
 
 
 **단계 6)** 설치가 시작된다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo21.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo21.png)
+[<img src="images/032818_0958_HowtoDownlo21.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo21.png)
 
 **Anaconda가 설치될 것이다.**
 
@@ -177,13 +177,13 @@ Anaconda는 Python이나 R에 요구되는 library를 관리하는데 도움을 
 
 **Computer**를 연다음 **Users**, **USERNAME** 그리고 **anaconda3**를 선택한다. 우리가 올바른 경로에 Anaconda를 설치한 것을 확인시켜 준다. 이제 macOS가 어떻게 경로를 작성하는지 살펴보자.  오른쪽 마우스로 클릭한 다음 **Get Info**를 클릭한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo22.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo22.png)
+[<img src="images/032818_0958_HowtoDownlo22.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo22.png)
 
 
 
 경로 **Where**를 선택한 다음, **Copy**를 클릭한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo23.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo23.png)
+[<img src="images/032818_0958_HowtoDownlo23.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo23.png)
 
 
 
@@ -191,7 +191,7 @@ Anaconda는 Python이나 R에 요구되는 library를 관리하는데 도움을 
 
 - 가장 간단한 방법은 **Spotlight Search**를 사용하는 것이고, 그곳에  **terminal**을 입력한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo24.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo24.png)
+[<img src="images/032818_0958_HowtoDownlo24.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo24.png)
 
 
 
@@ -199,7 +199,7 @@ terminal은 기본 작업 디렉토리를 **Users/USERNAME**으로 설정한다.
 
 텍스트 편집기의 경로가 작업 디렉토리와 일치하지 않는다면 terminal에서 cd PATH를 입력해서 변경할 수 있다.  **PATH**는 텍스트 편집기에 붙여 넣었던 경로이다. Don't forget to wrap the PATH with **"PATH"**를 PATH로 감싸는 것을 잊지 마라. 이 행동은 작업 디렉토리를 **PATH**로 변경할 것이다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo25.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo25.png)
+[<img src="images/032818_0958_HowtoDownlo25.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo25.png)
 
 **단계 4)** 이제 R을 설치할 준비가 되었다. 나는 여러분이 terminal에서 모든 패키지와 conda 명령어와의 종속성을 설치할 것을 추천한다.
 
@@ -212,25 +212,25 @@ conda install r-essentials --yes
 
 r-essentials는 conda가 R과 데이터 과학자가 사용할 모든 필요한 library를 설치하는 것을 의미한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo26.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo26.png)
+[<img src="images/032818_0958_HowtoDownlo26.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo26.png)
 
 **Conda**가 library들을 다운로드할 것이다. 
 
 모든 library를 업로드하는데 시간이 걸린다. 인내하라. 모든 것이 준비가 되었다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo27.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo27.png)
+[<img src="images/032818_0958_HowtoDownlo27.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo27.png)
 
 terminal에서 여러분은 'Excecuting transaction : done' 메시지를 확인해야 한다. 그렇다면 성공적으로 R을 설치한 것이다.
 
 어디에 R에 위치하고 있는지 확인할 수 있다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo28.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo28.png)
+[<img src="images/032818_0958_HowtoDownlo28.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo28.png)
 
 ### Windows 사용자
 
 **단계 1)** Anaconda 명령 프롬프트를 연다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo29.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo29.png)
+[<img src="images/032818_0958_HowtoDownlo29.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo29.png)
 
 
 
@@ -240,17 +240,17 @@ terminal에서 여러분은 'Excecuting transaction : done' 메시지를 확인�
 2. 환경이 결정될 것이다.
 3. 설치될 패키지 목록이 나열될 것이다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo30.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo30.png)
+[<img src="images/032818_0958_HowtoDownlo30.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo30.png)
 
 
 
 **Step 3)** 설치를 시작하기 위해 y를 입력하고 <return>키를 친다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo31.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo31.png)
+[<img src="images/032818_0958_HowtoDownlo31.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo31.png)
 
 **단계 4)** 설치하는데 시간이 걸릴 것이고, done 메시지를 보게 될 것이다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo32.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo32.png)
+[<img src="images/032818_0958_HowtoDownlo32.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo32.png)
 
 
 
@@ -265,7 +265,7 @@ terminal에서 다음의 코드를 입력한다.
 conda install -c r rstudio --yes
 ```
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo33.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo33.png)
+[<img src="images/032818_0958_HowtoDownlo33.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo33.png)
 
 terminal에서 'Executing transaction: done' 메시지를 확인해야 한다. 그렇다면, **Rstudio**를 성공적으로 설치한 것이다.
 
@@ -277,19 +277,19 @@ terminal에서 'Executing transaction: done' 메시지를 확인해야 한다. �
 
 **단계 1)** Anaconda 프롬프트에서 R Studio 설치를 위한 명령어를 입력한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo34.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo34.png)
+[<img src="images/032818_0958_HowtoDownlo34.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo34.png)
 
 
 
 **단계 2)** 설치될 패키지 목록을 확인할 수 있을 것이다. y를 입력한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo35.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo35.png)
+[<img src="images/032818_0958_HowtoDownlo35.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo35.png)
 
 
 
 **단계 3)** R Studio가 설치될 것이다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo36.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo36.png)
+[<img src="images/032818_0958_HowtoDownlo36.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo36.png)
 
 
 
@@ -299,19 +299,19 @@ Python과 R을 위해 pip를 사용하는 library를 설치하는 것은 가능�
 
 
 
-## Rstudio 싫ㅇ
+## Rstudio 실행
 
 Rstudio를 열기위해 terminal의 명령어 라인에서 직접 실행한다. terminal을 열고 rstudio 라고 입력한다. 또한 데스크탑 단축키를 사용할 수도 있다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo37.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo37.png)
+[<img src="images/032818_0958_HowtoDownlo37.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo37.png)
 
 Or
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo38.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo38.png)
+[<img src="images/032818_0958_HowtoDownlo38.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo38.png)
 
 **Rstudio** 창이 새롭게 열릴 것이다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo39.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo39.png)
+[<img src="images/032818_0958_HowtoDownlo39.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo39.png)
 
 
 
@@ -327,7 +327,7 @@ Terminal에서 Rstudio를 열고 스크립트를 열어라. 그리고 다음의 
 
 3. Output을 확인한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo40.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo40.png)
+[<img src="images/032818_0958_HowtoDownlo40.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo40.png)
 
 
 
@@ -339,19 +339,19 @@ Terminal에서 Rstudio를 열고 스크립트를 열어라. 그리고 다음의 
 
 anaconda 패키지 설치는 사소한 일이다. 선호하는 브라우저를 열고 library 이름 다음에 **anaconda r** 를 입력하라..
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo41.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo41.png)
+[<img src="images/032818_0958_HowtoDownlo41.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo41.png)
 
 anaconda를 지시하는 링크를 선택한다. 그리고 terminal로 그 library를 복사하여 붙여 넣는다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo42.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo42.png)
+[<img src="images/032818_0958_HowtoDownlo42.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo42.png)
 
 예를 들어,  랜덤 포리스트에 관한 튜토리얼을 위해 randomForest를 설치할 필요가 있다:  [**https://anaconda.org/r/r-randomforest**](https://anaconda.org/r/r-randomforest)**.**
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo43.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo43.png)
+[<img src="images/032818_0958_HowtoDownlo43.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo43.png)
 
 terminal 에서 `conda install -c r r-randomforest --yes`를 입력한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo44.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo44.png)
+[<img src="images/032818_0958_HowtoDownlo44.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo44.png)
 
 설치가 완료되었다.
 
@@ -380,18 +380,18 @@ R에서 코드를 실행하는데에는 두 가지 방법이 있다.
 
 1. 우리는 Console 내에서 code를 실행할 수 있다. 우리의 데이터는 Global Environment에 저장이 될 것이지만 history는 기록되지 않는다. 일단 R을 닫고 나면 그 결과를 복사할 수 없을 것이다. 그러면 우리는 코드 전체를 다시 입력해야 한다. 코드를 저장하기 원한다면 이 방법은 추천하고 싶지 않다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo45.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo45.png)
+[<img src="images/032818_0958_HowtoDownlo45.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo45.png)
 
 2. script에 코드를 작성하라. 우리가 원하는 만큼의 많은 줄의 코드를 작성할 수 있다. 코드를 실행하기 위하여 원하는 줄들을 단순히 선택하라. 그리고 run 을 클릭한다. 그러면 Console 에서 그 결과를 볼 수 있다. 스크립트를 저장하여 나중에 열어 볼 수 있다. 우리의 결과를 잃어버리지 않을 것이다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo46.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo46.png)
+[<img src="images/032818_0958_HowtoDownlo46.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo46.png)
 
 **주의**: 두번쨰 줄(즉, `slice_vector[1:5]`)에 커서를 위치시킨 다음 run을 클릭하면, Console은 에러를 표시한다. 그것은 우리가 첫번째 줄을 실행하지 않았기 때문이다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo47.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo47.png)
+[<img src="images/032818_0958_HowtoDownlo47.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo47.png)
 
 마찬가지로, 빈 줄에 커서를 위치시키고 run을 클릭하면 R은 빈 출력을 반환한다.
 
-[![img](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo48.png)](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo48.png)
+[<img src="images/032818_0958_HowtoDownlo48.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo48.png)
 
  

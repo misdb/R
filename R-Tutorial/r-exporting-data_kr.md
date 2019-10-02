@@ -485,8 +485,6 @@ drive_find("table_car") %>% drive_rm()
 
 ## 드랍 박스로 내보내기
 
-R interacts with Dropbox via the rdrop2 library. The library is not available at Anaconda as well. You can install it via the console
-
 R은 `rdrop2` 라이브러리를 통해 드랍 박스(Dropbox)와 상호 작용한다. 이 라이브러리는 anaconda에서도 이용할 수 없다. console을 통해 설치할 수 있다.
 
 ```

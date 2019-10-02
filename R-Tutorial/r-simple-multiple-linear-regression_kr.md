@@ -54,7 +54,7 @@ where
 
 다음의 그래프를 보자 :
 
-[![img](https://www.guru99.com/images/r_programming/032918_1024_RSimpleMult1.png)](https://www.guru99.com/images/r_programming/032918_1024_RSimpleMult1.png)
+[<img src="images/032918_1024_RSimpleMult1.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1024_RSimpleMult1.png)
 
 
 
@@ -82,7 +82,7 @@ geom_point()
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_1024_RSimpleMult2.png)](https://www.guru99.com/images/r_programming/032918_1024_RSimpleMult2.png)
+[<img src="images/032918_1024_RSimpleMult2.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1024_RSimpleMult2.png)
 
 이 산점도는 x가 증가할수록 y가 증가하는 일반적인 경향을 보여준다. 다음 단계에서는 각 추가 항목에 대해 얼마나 증가하는지 측정할 것이다.
 

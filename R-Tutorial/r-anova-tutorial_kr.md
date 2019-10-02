@@ -64,7 +64,7 @@ F-통계량은 **그룹간 변동성(between group variation)**을  **그룹내 
 
 
 
-[![img](https://www.guru99.com/images/r_programming/032918_0906_RANOVATutor1.png)](https://www.guru99.com/images/r_programming/032918_0906_RANOVATutor1.png)
+[<img src="images/032918_0906_RANOVATutor1.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0906_RANOVATutor1.png)
 
 
 
@@ -80,7 +80,7 @@ The right part shows exactly the same samples (identical mean) but with lower va
 
 
 
-[![img](https://www.guru99.com/images/r_programming/032918_0906_RANOVATutor2.png)](https://www.guru99.com/images/r_programming/032918_0906_RANOVATutor2.png)
+[<img src="images/032918_0906_RANOVATutor2.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0906_RANOVATutor2.png)
 
 
 
@@ -200,7 +200,7 @@ ggplot(df, aes(x = poison, y = time, fill = poison)) +
 
 **결과 :**
 
-[![img](https://www.guru99.com/images/r_programming/032918_0906_RANOVATutor3.png)](https://www.guru99.com/images/r_programming/032918_0906_RANOVATutor3.png)
+[<img src="images/032918_0906_RANOVATutor3.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0906_RANOVATutor3.png)
 
 **Step 4)** `aov()` 명령을 사용하여 일원 ANOVA 검정을 실행할 수 있다. ANOVA 검정의 기본 구문은 다음과 같다 :
 
@@ -260,7 +260,7 @@ TukeyHSD(anova_one_way)
 
 **결과 : **
 
-[![img](https://www.guru99.com/images/r_programming/032918_0906_RANOVATutor4.png)](https://www.guru99.com/images/r_programming/032918_0906_RANOVATutor4.png)
+[<img src="images/032918_0906_RANOVATutor4.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0906_RANOVATutor4.png)
 
 
 
