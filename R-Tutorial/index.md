@@ -64,7 +64,7 @@ R은 데이터 과학자나 구글, 에어비엔비, 페이스북 등과 같은 
 | [ **Tutorial**](https://www.guru99.com/r-generalized-linear-model.html) | 일반화 선형 모델(GLM) (예제 포함)                  |
 | [ **Tutorial**](https://www.guru99.com/r-k-means-clustering.html) | K-means 클러스터링 분석 (예제 포함)                |
 
-**확인!**
+**확인!!**
 
 | [ **Tutorial**](https://www.guru99.com/r-vs-python.html)     | R Vs Python의 차이점은?                  |
 | ------------------------------------------------------------ | ---------------------------------------- |
