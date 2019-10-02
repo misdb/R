@@ -15,12 +15,14 @@
 install.packages("ggmap")
 library(ggmap)
 
-register_google(key="Google API Key")      # https://console.cloud.google.com 에서 확인
+register_google(key="AIzaSyAf8vkz_1OJj4o8zCUkPJMYY7nEK8LbFJw")      # https://console.cloud.google.com 에서 확인
 
 gc <- geocode(enc2utf8('서울'))       # 1) 원하는 지역의 geocode확인 : '대전', '대구', Daejeon, Daegu, Seoul
+gc
 gc <- geocode('Daejeon')                     #    gc <- geocode('Seoul') : 지역명을 영문으로 하는 경우 코드변환 불필요
+gc
 
-cen <- as.numeric(gc)                # 2) geocode를 수치형 데이터로 변형하고, 그 중심위치 찾기
+cen <- as.numeric(gc); cen           # 2) geocode를 수치형 데이터로 변형하고, 그 중심위치 찾기
 map <- get_googlemap(center=cen)     # 3) 중심점(cen)을 중심으로 하는 지도정보 확인
 ggmap(map)                           # 4) 지도 그리기
 
@@ -30,7 +32,7 @@ ggmap(map)                           # 4) 지도 그리기
 ##################################
 
 gc <- geocode(enc2utf8('충청북도 단양군'))          # 1) 원하는 지역의 geocode 확인
-cen <- as.numeric(gc)                            # 2) geocode를 수치로 변형하고, 중심점 찾기
+cen <- as.numeric(gc); cen                       # 2) geocode를 수치로 변형하고, 중심점 찾기
 map <- get_googlemap(center=cen,                 # 3) 지도정보 확인 : ?get_googlemap()
        maptype="roadmap")                        #    단, 지도형태를 'terrain'으로 한다.
                                                  #        maptype = c("terrain", "satellite", "roadmap", "hybrid")
@@ -47,7 +49,7 @@ ggmap(map, extent="device")                            # 4) 지도 그리기 형태 변�
 # p.183 마커 출력
 ##################################
 
-gc <- geocode(enc2utf8('대전광역시 유성구 지족동 834'))       # 1) geocode 확인
+gc <- geocode(enc2utf8('대전광역시 서구 도안북로 88'))       # 1) geocode 확인
 cen <- as.numeric(gc)                         # 2) 중심점 확인
 map <- get_googlemap(center=cen,              # 3) gc 코드를 마커로 지정
                      maptype="roadmap", 
