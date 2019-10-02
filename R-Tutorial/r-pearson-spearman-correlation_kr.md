@@ -25,21 +25,15 @@
 피어슨 상관관계 방법은 보통 두 변수 사이의 관계를 일차적으로 검토하기 위해 사용된다.
 
 **상관 계수(coefficient of correlation)**는 두 변수와의 **선형** 관계의 강도에 대한 척도로 다음과 같이 계산된다.
-$$
-r = \frac{{Cov}(x,y)}{\sigma_x \sigma_y}
-$$
+
+[![img](https://www.guru99.com/images/r_programming/032918_0543_PearsonSpea7.jpg)](https://www.guru99.com/images/r_programming/032918_0543_PearsonSpea7.jpg)
+
 여기에서,
 
-- $$
-  \sigma_x = \sqrt{\frac{1}{N} \sum_{i=1}^N (x_i - \mu_x)^2} : {\text(즉, \space x의 \space표준편차)}
-  $$
-
+- [![img](https://www.guru99.com/images/r_programming/032918_0543_PearsonSpea8.jpg)](https://www.guru99.com/images/r_programming/032918_0543_PearsonSpea8.jpg) : x 의 표준편차
   
-
-- $$
-  \sigma_y = \sqrt{\frac{1}{N} \sum_{i=1}^N (y_i - \mu_y)^2} : {\text(즉, \space y의 \space표준편차)}
-  $$
-
+- [![img](https://www.guru99.com/images/r_programming/032918_0543_PearsonSpea9.jpg)](https://www.guru99.com/images/r_programming/032918_0543_PearsonSpea9.jpg) : y의 표준편차
+  
   
 
 상관계수의 범위는 ~1에서 1이다.
@@ -51,9 +45,10 @@ $$
 
 
 다음과 같이 t-검증 값을 계산하여, 자유도를 갖는 분포표를 확인할 수 있다.
-$$
-t = \frac{r}{\sqrt{1-r^2}} \sqrt{n-2}
-$$
+
+[![img](https://www.guru99.com/images/r_programming/032918_0543_PearsonSpea10.jpg)](https://www.guru99.com/images/r_programming/032918_0543_PearsonSpea10.jpg)
+
+
 
 
 ## 스피어만 순위 상관관계
@@ -61,9 +56,11 @@ $$
 순위 상관 관계는 관측치를 순위별로 정렬하고 그 순위 간의 유사성 수준을 계산한다. 순위 상관관계는 특이치(outliers)에 강하다는 장점이 있으며, 데이터의 분포와 연결되지 않는다는 점이다. 순위 상관 관계는 서열 변수(ordinal variable)에 적합하다는 점에 주의 하기 바란다. (두 변수 간의 **스피어만** **상관 계수**는 두 변수의 순위 값 사이의 [피어슨 상관 계수](./r-pearson-spearman-correlation_kr.html#1)와 같다.)
 
 스피어만의 순위 상관계수는 항상 -1과 1 사이에 있고, 양 극단에 다가갈수록 강한 관계를 나타낸다. 이 계수는 다음과 같이 계산된다.
-$$
-\rho = \frac {Cov(rg_x, rg_y)} {\sigma_{rg_x}\sigma_{rg_y}}
-$$
+
+[![img](https://www.guru99.com/images/r_programming/032918_0543_PearsonSpea11.jpg)](https://www.guru99.com/images/r_programming/032918_0543_PearsonSpea11.jpg)
+
+
+
 여기에서, 분자는 순위 척도 rg~x~와 rg~y~ 사이의 공분산을, 그리고 분모는 각 변수의 표준편차를 나타낸다.
 
 
@@ -303,15 +300,15 @@ ggcorr(df, method = c("pairwise", "pearson"),
 
 **인수 :**                                       
 
-- **df**: Dataset used
-- **method**: Formula to compute the correlation. By default, pairwise and Pearson are computed
-- **nbreaks**: Return a categorical range for the coloration of the coefficients. By default, no break and the color gradient is continuous
-- **digits**: Round the correlation coefficient. By default, set to 2
-- **low**: Control the lower level of the coloration
-- **mid**: Control the middle level of the coloration
-- **high**: Control the high level of the coloration
-- **geom**: Control the shape of the geometric argument. By default, "tile"
-- **label**: Boolean value. Display or not the label. By default, set to `FALSE`
+- **df** : 사용되는 데이터 세트
+- **method** : 상관관계 계산 공식. 기본 값, 쌍대 피어슨
+- **nbreaks** : 계수의 색상을 위한 범주형 범위 반환. 기본 값으로 'no break'이고 색 그래디언트는 연속형.
+- **digits** : 상관계수를 반올림. 기본 값으로 2자리.
+- **low** : 색상의 가장 낮은 수준 제어
+- **mid**: 색상의 중간 수준 제어
+- **high**: 색상의 가장 높은 수준 제어
+- **geom**: 기하학적 인수의 모양 제어. 기본 값은 'tile'
+- **label**: 부울이안 값. 라베의 표시 여부. 기본 값은 `FALSE`
 
 
 
@@ -330,7 +327,9 @@ ggcorr(data3)
 
 **결과 :**
 
-![1569632062864](C:\Users\Kim_DaeHo\AppData\Roaming\Typora\typora-user-images\1569632062864.png)
+[<img src="images/032918_0543_PearsonSpea2.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0543_PearsonSpea2.png)
+
+
 
 ### 열 지도에 제어기 추가하기
 
@@ -433,7 +432,7 @@ ggpairs(data3, columns = c("log_totexp", "log_income", "age", "wtrans"),
 
 결과:**
 
-![1569633883263](C:\Users\Kim_DaeHo\AppData\Roaming\Typora\typora-user-images\1569633883263.png)
+[<img src="images/032918_0543_PearsonSpea5.png" alt="img" style="zoom:80%;" />
 
 
 
@@ -459,7 +458,7 @@ ggpairs(data3, columns = c("log_totexp", "log_income", "age", "wtrans"),
 
 **결과 :**
 
-![1569635159175](C:\Users\Kim_DaeHo\AppData\Roaming\Typora\typora-user-images\1569635159175.png)
+<img src="images/032918_0543_PearsonSpea6.png" alt="img" style="zoom:80%;" />
 
 
 
