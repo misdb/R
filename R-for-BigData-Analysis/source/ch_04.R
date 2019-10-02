@@ -15,7 +15,7 @@
 install.packages("ggmap")
 library(ggmap)
 
-register_google(key="AIzaSyAf8vkz_1OJj4o8zCUkPJMYY7nEK8LbFJw")      # https://console.cloud.google.com 에서 확인
+register_google(key="Google API Key")      # https://console.cloud.google.com 에서 확인
 
 gc <- geocode(enc2utf8('서울'))       # 1) 원하는 지역의 geocode확인 : '대전', '대구', Daejeon, Daegu, Seoul
 gc
