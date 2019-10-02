@@ -62,11 +62,7 @@ F-통계량은 **그룹간 변동성(between group variation)**을  **그룹내 
 
 '오른쪽 그래프'는 서로 떨어진 세 개의 분포를 나타내며, 그 중 어느 것도 겹치지 않는다. 전체 평균과 그룹 평균의 차이가 클 가능성이 높다.
 
-
-
-[<img src="images/032918_0906_RANOVATutor1.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0906_RANOVATutor1.png)
-
-
+<img src="images/032918_0906_RANOVATutor1.png" alt="032918_0906_RANOVATutor1" style="zoom:80%;" />
 
 **그룹 내 변동성(within group variability)** 그룹 간의 차이를 고려한다. 이 편차(variation)는 개별 관측치에서 비롯된다. 일부 점들은 집합 평균과 완전히 다를 수 있다. **그룹 내 변동성**은 이 효과를 파악하고 샘플링 오류를 참조한다.
 
@@ -78,11 +74,7 @@ The right part shows exactly the same samples (identical mean) but with lower va
 
 '오른쪽 부분'은 정확히 동일한 표본(같은 평균)을 보여주지만, 변동성은 더 낮다. 그것은 F-검정의 증가로 이어지고 대립 가설을 찬성하는 경향을 갖게 된다.
 
-
-
-[<img src="images/032918_0906_RANOVATutor2.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0906_RANOVATutor2.png)
-
-
+<img src="images/032918_0906_RANOVATutor2.png" alt="032918_0906_RANOVATutor2" style="zoom:80%;" />
 
 F-통계량을 구성하기 위해 두 가지 척도를 모두 사용할 수 있다. F-통계량을 이해하는 것은 매우 직관적이다. 만약 분자(그룹 내 변동성)가 증가한다면, 그것은 그룹간 변동성이 높다는 것을 의미하며, 표본의 집단이 완전히 다른 분포로부터 도출되었을 가능성이 높은 것을 의미한다.
 
@@ -200,7 +192,7 @@ ggplot(df, aes(x = poison, y = time, fill = poison)) +
 
 **결과 :**
 
-[<img src="images/032918_0906_RANOVATutor3.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0906_RANOVATutor3.png)
+<img src="images/1569993724310.png" alt="1569993724310" style="zoom:80%;" />
 
 **Step 4)** `aov()` 명령을 사용하여 일원 ANOVA 검정을 실행할 수 있다. ANOVA 검정의 기본 구문은 다음과 같다 :
 
@@ -260,7 +252,20 @@ TukeyHSD(anova_one_way)
 
 **결과 : **
 
-[<img src="images/032918_0906_RANOVATutor4.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0906_RANOVATutor4.png)
+```
+##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = time ~ poison, data = df)
+## 
+## $`poison`
+##          diff        lwr         upr     p adj
+## 2-1 -0.073125 -0.2525046  0.10625464 0.5881654
+## 3-1 -0.341250 -0.5206296 -0.16187036 0.0000971
+## 3-2 -0.268125 -0.4475046 -0.08874536 0.0020924
+```
+
+
 
 
 
@@ -283,8 +288,6 @@ $$
 - H~1~ : 평균은 두 변수 모두 다르다.
 
 당신은 우리의 모델에 `treat` 변수를 추가한다. 이 변수는 기니 피그에게 주어진 치료법을 나타낸다. 당신은 기니 피그에게 주어진 `poison`과 `treat` 사이에 통계적 의존성이 존재하는지에 대해 관심이 있다.
-
-We adjust our code by adding treat with the other independent variable.
 
 우리는 다른 독립변수로 `treat`를 추가하여 코드를 수정한다.
 

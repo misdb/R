@@ -73,7 +73,7 @@ For instance, if you have 5 observations, you need to compare our t-value with t
 
 
 
-[![img](images/032918_0821_TTestinROn1.png)](https://www.guru99.com/images/r_programming/032918_0821_TTestinROn1.png)
+[<img src="images/032918_0821_TTestinROn1.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0821_TTestinROn1.png)
 
 
 

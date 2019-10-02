@@ -39,6 +39,11 @@ ggplot(data, aes(x = cyl, fill = am)) +
     geom_bar(position = "fill") +
     theme_classic()
 
+# Bar chart side by side
+ggplot(data, aes(x = cyl, fill = am)) +
+    geom_bar(position = position_dodge()) +
+    theme_classic()
+
 # Histogram
 
 # Step 1. Create a new variable

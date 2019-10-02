@@ -54,7 +54,7 @@ where
 
 다음의 그래프를 보자 :
 
-[<img src="images/032918_1024_RSimpleMult1.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1024_RSimpleMult1.png)
+<img src="images/032918_1024_RSimpleMult1.png" alt="032918_1024_RSimpleMult1" style="zoom:80%;" />
 
 
 
@@ -82,15 +82,13 @@ geom_point()
 
 **결과 :**
 
-[<img src="images/032918_1024_RSimpleMult2.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1024_RSimpleMult2.png)
+<img src="images/032918_1024_RSimpleMult2.png" alt="032918_1024_RSimpleMult2" style="zoom:80%;" />
 
 이 산점도는 x가 증가할수록 y가 증가하는 일반적인 경향을 보여준다. 다음 단계에서는 각 추가 항목에 대해 얼마나 증가하는지 측정할 것이다.
 
 
 
 ### 최소자승 추정
-
-In a simple OLS regression, the computation of [![img](https://www.guru99.com/images/r_programming/032918_1024_RSimpleMult18.jpg)](https://www.guru99.com/images/r_programming/032918_1024_RSimpleMult18.jpg) and[![img](https://www.guru99.com/images/r_programming/032918_1024_RSimpleMult9.jpg)](https://www.guru99.com/images/r_programming/032918_1024_RSimpleMult9.jpg) is straightforward. The goal is not to show the derivation in this tutorial. You will only write the formula.
 
 간단한 OLS 회귀 분석에서] [![img](https://www.guru99.com/images/r_programming/032918_1024_RSimpleMult18.jpg)](https://www.guru99.com/images/r_programming/032918_1024_RSimpleMult18.jpg) 와 [![img](https://www.guru99.com/images/r_programming/032918_1024_RSimpleMult9.jpg)](https://www.guru99.com/images/r_programming/032918_1024_RSimpleMult9.jpg) 의 계산은 간단하다. 이 튜토리얼에서의 목표는 그 도출과정을 보여주는 것이 아니다. 단지 공식만을 사용하기로 한다.
 
@@ -210,8 +208,6 @@ glimpse(df)
 ## $ wt   <dbl> 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.190, 3...
 ## $ qsec <dbl> 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.00, 2...
 ```
-
-You can use the lm() function to compute the parameters. The basic syntax of this function is:
 
 `lm()` 함수를 사용하여 파라미터를 계산할 수 있다. 이 함수의 기본 구문은 다음과 같다 :
 
@@ -384,7 +380,7 @@ plot(fit)
 
 **결과 :**
 
-![1569830426742](C:\Users\Kim_DaeHo\AppData\Roaming\Typora\typora-user-images\1569830426742.png)
+<img src="images/1569994047751.png" alt="1569994047751" style="zoom:80%;" />
 
 lm() 함수는 유용한 정보가 많이 포함된 리스트를 반환한다. 앞에서 작성한 `fit`에 대해 그 정보들을 확인할 수 있는데, fit 다음에 $ 기호와 추출하고자 하는 정보를 추가할 수 있다.
 
