@@ -103,9 +103,7 @@ box_plot +
 
 **결과 :**
 
-![1569699272858](C:\Users\Kim_DaeHo\AppData\Roaming\Typora\typora-user-images\1569699272858.png)
-
-
+<img src="images/1569992583895.png" alt="1569992583895" style="zoom:80%;" />
 
 ### 그래프의 방향 변경
 
@@ -126,9 +124,7 @@ box_plot +
 
 **결과 :**
 
-![1569699494097](C:\Users\Kim_DaeHo\AppData\Roaming\Typora\typora-user-images\1569699494097.png)
-
-
+<img src="images/1569992598264.png" alt="1569992598264" style="zoom:80%;" />
 
 ### 특이치의 색 변경
 
@@ -151,7 +147,7 @@ box_plot +
 
 **결과 :**
 
-![1569699741346](C:\Users\Kim_DaeHo\AppData\Roaming\Typora\typora-user-images\1569699741346.png)
+<img src="images/1569992610352.png" alt="1569992610352" style="zoom:80%;" />
 
 
 
@@ -181,7 +177,7 @@ box_plot +
 
 **결과 :**
 
-![1569699824739](C:\Users\Kim_DaeHo\AppData\Roaming\Typora\typora-user-images\1569699824739.png)
+<img src="images/1569992625617.png" alt="1569992625617" style="zoom:80%;" />
 
 
 
@@ -212,9 +208,7 @@ box_plot +
 
 **결과 :**
 
-![1569700260534](C:\Users\Kim_DaeHo\AppData\Roaming\Typora\typora-user-images\1569700260534.png)
-
-
+<img src="images/1569992648765.png" alt="1569992648765" style="zoom:80%;" />
 
 # 상자도표의 aes() 제어
 
@@ -234,9 +228,7 @@ ggplot(data_air_nona, aes(x = Month, y = Ozone, color = Month)) +
 
 **결과 :**
 
-![1569700406668](C:\Users\Kim_DaeHo\AppData\Roaming\Typora\typora-user-images\1569700406668.png)
-
-
+<img src="images/1569992669590.png" alt="1569992669590" style="zoom:80%;" />
 
 ### 복수 그룹의 상자도표
 
@@ -256,7 +248,7 @@ ggplot(data_air_nona, aes(Month, Ozone)) +
 
 **결과 :**
 
-![1569700647102](C:\Users\Kim_DaeHo\AppData\Roaming\Typora\typora-user-images\1569700647102.png)
+<img src="images/1569992716647.png" alt="1569992716647" style="zoom:80%;" />
 
 
 
@@ -285,7 +277,7 @@ box_plot +
 
 **Output:**
 
-![1569701004338](C:\Users\Kim_DaeHo\AppData\Roaming\Typora\typora-user-images\1569701004338.png)
+<img src="images/1569992732158.png" alt="1569992732158" style="zoom:80%;" />
 
 
 
@@ -301,7 +293,7 @@ box_plot +
 
 **결과 :**
 
-![1569701154187](C:\Users\Kim_DaeHo\AppData\Roaming\Typora\typora-user-images\1569701154187.png)
+<img src="images/1569992771461.png" alt="1569992771461" style="zoom:80%;" />
 
 
 
@@ -327,9 +319,7 @@ box_plot +
 
 **결과 :**
 
-![1569701950540](C:\Users\Kim_DaeHo\AppData\Roaming\Typora\typora-user-images\1569701950540.png)
-
-
+<img src="images/1569992788684.png" alt="1569992788684" style="zoom:80%;" />
 
 ## 요약
 
