@@ -48,7 +48,7 @@ a_m1
 
 **결과 :**
 
-[<img src="032918_0401_applysapply1.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0401_applysapply1.png)
+![032918_0401_applysapply1](images/032918_0401_applysapply1.png)
 
 좋은 사용 방법 : 결과를 console에 출력하기 전에 변수에 저장한다.
 

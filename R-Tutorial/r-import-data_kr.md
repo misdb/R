@@ -144,7 +144,7 @@ library(readxl)
 readxl_example()
 ```
 
-[<img src="images/032918_0411_ImportDatai1.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai1.png)
+![032918_0411_ImportDatai1](images/032918_0411_ImportDatai1.png)
 
 
 
@@ -154,7 +154,7 @@ readxl_example()
 readxl_example("geometry.xls")
 ```
 
-[<img src="images/032918_0411_ImportDatai2.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai2.png)
+![032918_0411_ImportDatai2](images/032918_0411_ImportDatai2.png)
 
 conda와 함께 R을 설치하며, 스프레드시트는 `Anaconda3/lib/R/library/readxl/extdata/filename.xls` 에 위치한다.
 
@@ -248,7 +248,7 @@ iris <-read_excel(example, n_max =5, col_names =TRUE)
 iris
 ```
 
-[<img src="https://www.guru99.com/images/r_programming/032918_0411_ImportDatai3.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai3.png)
+<img src="images/032918_0411_ImportDatai3.png" alt="032918_0411_ImportDatai3" style="zoom:80%;" />
 
 
 
@@ -262,7 +262,7 @@ iris_no_header
 
 `iris_no_header` 데이터 프레임에서 , R은 x_1, x_2, x_3, x_4, x_5 등의 다섯 변수를 생성했다.
 
-[<img src="images/032918_0411_ImportDatai4.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai4.png)
+<img src="images/032918_0411_ImportDatai4.png" alt="032918_0411_ImportDatai4" style="zoom:80%;" />
 
 
 
@@ -284,7 +284,7 @@ dim(example_1)
 
 우리는 example_1이 2개의 열, 4개의 행을 반환한다는 것을 알 수 있다. 데이터 세트는 헤더를 가지고 있고, 차수는 4x2 이다.
 
-[<img src="images/032918_0411_ImportDatai5.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai5.png)
+![032918_0411_ImportDatai5](images/032918_0411_ImportDatai5.png)
 
 
 
@@ -306,7 +306,7 @@ dim(example_2)
 
 그러나 example_2는 4x5 행렬이다. `iris` 데이터 세트는 헤더가 있는 5개의 열을 가지고 있다. 모든 열의 헤더와 함께 처음 네 개의 행을 반환한다.
 
-[<img src="images/032918_0411_ImportDatai6.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai6.png)
+![032918_0411_ImportDatai6](images/032918_0411_ImportDatai6.png)
 
 
 
@@ -317,7 +317,7 @@ iris_row_with_header <- read_excel(example, range = cell_rows(2:3), col_names = 
 iris_row_no_header <- read_excel(example, range = cell_rows(2:3),col_names = FALSE)
 ```
 
-[<img src="images/032918_0411_ImportDatai7.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_0411_ImportDatai7.png)
+![032918_0411_ImportDatai7](images/032918_0411_ImportDatai7.png)
 
 
 
