@@ -50,9 +50,9 @@ t.test(x, y = NULL,
 ## 단일 표본 t-검정
 
 t-검정은 이론적 평균( [![img](https://www.guru99.com/images/r_programming/032918_0821_TTestinROn6.jpg)](https://www.guru99.com/images/r_programming/032918_0821_TTestinROn6.jpg))에 대하여 벡터의 평균을 비교한다. t-검정을 위해 사용되는 공식은 다음과 같다 :
-$$
-t = \frac{(m-\mu)} {{s}/{\sqrt{n}}}
-$$
+
+[![img](https://www.guru99.com/images/r_programming/032918_0821_TTestinROn4.jpg)](https://www.guru99.com/images/r_programming/032918_0821_TTestinROn4.jpg)
+
 여기서, 
 
 - [![img](https://www.guru99.com/images/r_programming/032918_0821_TTestinROn5.jpg)](https://www.guru99.com/images/r_programming/032918_0821_TTestinROn5.jpg) : 표본평균
