@@ -95,7 +95,9 @@ ggplot(mtcars, aes(x = drat, y = mpg)) +
 
 **결과 :**
 
-![1569663167066](C:\Users\Kim_DaeHo\AppData\Roaming\Typora\typora-user-images\1569663167066.png)
+<img src="images/1569992347523.png" alt="1569992347523" style="zoom:80%;" />
+
+
 
 
 
@@ -115,7 +117,7 @@ ggplot(mtcars, aes(x = mpg, y = drat)) +
 
 **결과 :**
 
-![1569663508759](C:\Users\Kim_DaeHo\AppData\Roaming\Typora\typora-user-images\1569663508759.png)
+<img src="images/1569992375136.png" alt="1569992375136" style="zoom:80%;" />
 
 
 
