@@ -212,3 +212,13 @@ summary(y[,"value"])
 
 [ **[R Source](./source/ch_3_Exercise.R)** ] [ []() ]
 
+  ![[pdf](pdf/ch_05_Chart.pdf)](images/pdf.PNG)
+
+
+
+------
+
+![[pdf](pdf/ch_05_Chart.R)](images/r.PNG)  ![[pdf](pdf/ch_05_Chart.pdf)](images/pdf.PNG)
+
+
+
