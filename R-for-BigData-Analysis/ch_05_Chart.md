@@ -7,7 +7,6 @@
 [TOC]
 
 <div style="page-break-after: always;"></div>
-
 ### 2. 파이차트
 
 #### 2-1. 기본 파이차트 출력 :  `pie()`
@@ -26,7 +25,6 @@ pie(x,                     # 파이조각으로 표시될 데이터 : x (벡터)
 <img src=".\images\1569915703990.png" alt="1569915703990" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 #### 2-2. 기준선 변경
 
 `init.angle=90`으로 기준선 변경. 
@@ -43,7 +41,6 @@ pie (x,
 <img src=".\images\1569915812644.png" alt="1569915812644" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 #### 2-3. 색과 라벨 수정
 
 - `col =` 로 색 지정.
@@ -66,7 +63,6 @@ pie(x,
 <img src=".\images\1569915846669.png" alt="1569915846669" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 #### 2-4. 3D 파이 차트 : `pie3D()`
 
 - `explode()`로 조작 간의 간격 조정.
@@ -83,12 +79,11 @@ pie3D(x,
       main = "부서별 영업 실적")
 ```
 
-<img src=".\images\1569915927229.png" alt="1569915927229" style="zoom:80%;" />
+**결과 :**
 
-
+![1570144208631](images/1570144208631.png)
 
 <div style="page-break-after: always;"></div>
-
 ### 3. 바차트
 
 #### 3-1. 기본 바 차트 출력 : `barplot()`
@@ -105,7 +100,6 @@ barplot(height,                     # 막대로 표시되는 데이터 : height 
 <img src=".\images\1569915954597.png" alt="1569915954597" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 #### 3-2. 막대의 색 지정
 
 `col = ` 인수로 색 지정
@@ -120,7 +114,6 @@ barplot(height,
 <img src=".\images\1569915979077.png" alt="1569915979077" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 #### 3-3. x, y축의 제목 달기
 
 `xlab =" " ` 과  `ylab =" "  `이용하여, x축의 제목과 y축의 제목 지정
@@ -137,7 +130,6 @@ barplot(height,
 <img src=".\images\1569916012189.png" alt="1569916012189" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 #### 3-4. y축의 상한치 조정
 
 `ylim = c(min, max)`로 y축의 하한치와 상한치 조정
@@ -157,7 +149,6 @@ barplot(height,
 
 
 <div style="page-break-after: always;"></div>
-
 #### 3-5. 데이터 라벨 출력
 
 ##### 1) 바의 상단면 위에 라벨 출력 : `text()`
@@ -181,7 +172,6 @@ text(x = bp,                    # 바에 라벨 출력, x값은 bp
 <img src=".\images\1569916093668.png" alt="1569916093668" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 ##### 2) 바의 상단면 하단에 라벨 출력
 
 ```{r}
@@ -202,7 +192,6 @@ text(x=bp,
 <img src=".\images\1569916124797.png" alt="1569916124797" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 #### 3-6. 바 차트의 수평 회전(가로 막대)
 
 `horiz = TRUE`로 바 차트의 방향을 수평을 바꿈.
@@ -221,7 +210,6 @@ barplot(height,
 <img src=".\images\1569916148118.png" alt="1569916148118" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 ### 4. 스택형/그룹형 바 차트
 
 - `beside = TRUE`로 바차트를 그룹형으로 바꿀 수 있음. 
@@ -251,7 +239,6 @@ barplot(height, main="부서별 영업 실적",
 <img src=".\images\1569916174013.png" alt="1569916174013" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 #### 4-2. 그룹형 바 차트(Grouped Bar Chart)
 
 ```{r}
@@ -271,7 +258,6 @@ barplot(height, main="부서별 영업 실적",
 
 
 <div style="page-break-after: always;"></div>
-
 ### 5. X-Y 플로팅
 
 #### 5-1. 기본 x-y 플로팅
@@ -291,7 +277,6 @@ plot(weight)               # weight 출력
 <img src="./images/1569918676589.png" alt="1569918676589" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 **변수가 2개인 경우**, x-축, y축 출력됨.
 
 ```{r}
@@ -305,7 +290,6 @@ plot(height, weight,       # x축에 height, y 축에 weight
 <img src=".\images\1569916226062.png" alt="1569916226062" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 #### 5-2. 그래프 출력 모양 지정하기
 
 `type = `에 따를 출력 모향 지정. 교재 p. 135 참고
@@ -322,7 +306,6 @@ plot(height, weight,
 
 
 <div style="page-break-after: always;"></div>
-
 #### 5-3. 그래프 선의 유형
 
 `type = "l"`로 지정하면 그래프가 선의 모양이 됨
@@ -344,7 +327,6 @@ plot(height, weight,
 <img src=".\images\1569916357469.png" alt="1569916357469" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 #### 5-4. 플로팅 문자의 출력 
 
 `pch = `에 의해 플로팅 문자 지정. **교재 137, 참고**
@@ -362,9 +344,7 @@ plot(height, weight,    # x축에 height, y 축에 weight
 <img src=".\images\1569916374067.png" alt="1569916374067" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 <div style="page-break-after: always;"></div>
-
 ### 6. 히스토그램
 
 - 바차트 : x 축이 범주형 변수
@@ -389,7 +369,6 @@ hp
 <img src=".\images\1569916433204.png" alt="1569916433204" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 ```{r}
 #====== hist() -> barplot()으로 전환해서 라벨달기
 head(quakes)
@@ -414,7 +393,6 @@ bp <- barplot(height,
 <img src=".\images\1569916506398.png" alt="1569916506398" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 ```{r}
 text(x=bp, 
      y=height, 
@@ -428,7 +406,6 @@ text(x=bp,
 
 
 <div style="page-break-after: always;"></div>
-
 #### 6-2. 계급 구간과 색 
 
 - `col = ` : 계급의 색 지정
@@ -448,7 +425,6 @@ hp
 <img src=".\images\1569916571165.png" alt="1569916571165" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 ```{r}
 #====== hist() -> barplot()으로 전환해서 라벨달기
 head(quakes)
@@ -477,7 +453,6 @@ bp
 <img src=".\images\1569916635229.png" alt="1569916635229" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 ```{r}
 text(x=bp, 
      y=height, 
@@ -494,7 +469,6 @@ text(x=bp,
 `ylim = c(0, 600)` 을 추가하면 잘 보임.
 
 <div style="page-break-after: always;"></div>
-
 ```{r}
 bp <- barplot(height, 
               names.arg = name, 
@@ -515,7 +489,6 @@ text(x=bp,
 
 
 <div style="page-break-after: always;"></div>
-
 #### 6-3. 확률밀도
 
 연속 변수의 빈도수를 히스트로그램으로 그린 것이 **확률밀도**그림이다. 
@@ -535,7 +508,6 @@ hist(mag,
 <img src="./images/1569917184324.png" alt="1569917184324" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 ```{r}
 lines(density(mag)) 
 ```
@@ -543,7 +515,6 @@ lines(density(mag))
 <img src="./images/1569917247780.png" alt="1569917247780" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 #### 6-4. 상대도수 출력하기
 
 빈도수를 전체 관측수로 나누면 이것이 **상대도수**가 된다. 
@@ -561,7 +532,6 @@ h
 <img src="./images/1569922394643.png" alt="1569922394643" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 ```{r}
 h$density <- h$counts/sum(h$counts)       # 상대도수 구하기.
 plot(h,                                   # 상대도수 그림 그리기
@@ -577,7 +547,6 @@ plot(h,                                   # 상대도수 그림 그리기
 
 
 <div style="page-break-after: always;"></div>
-
 #### 6-5. 계급의 수
 
 `breaks = "Sturges"`가 기본값임.
@@ -597,7 +566,6 @@ hist(mag,
 
 
 <div style="page-break-after: always;"></div>
-
 ### 7. 박스 플롯
 
 `summary( )`를 그림으로 나타내는 것이 `boxplot()`이다.
@@ -624,7 +592,6 @@ boxplot(mag,     # summary(mag)를 그림으로 표시함.
 <img src="./images/1569917409900.png" alt="1569917409900" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 #### 7-2. 수평 박스 플롯
 
 `horizontal = TRUE`로 박스 플롯의 방향을 수평으로 바꾼다.
@@ -641,7 +608,6 @@ boxplot(mag,     # summary(mag)를 그림으로 표시함.
 <img src="./images/1569917506604.png" alt="1569917506604" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
-
 #### 7-3. V자형 박스 플롯
 
 `notch = TRUE`를 이용하여 V자형 박스 플롯을 그린다.
@@ -657,3 +623,5 @@ boxplot(mag,     # summary(mag)를 그림으로 표시함.
 ```
 
 <img src="./images/1569917553037.png" alt="1569917553037" style="zoom:80%;" />
+
+**[ [R Source](data/ch_05_Chart.R) ]**
