@@ -626,5 +626,3 @@ boxplot(mag,     # summary(mag)를 그림으로 표시함.
 
 ------
 
-![[R Source](source/ch_05_Chart.R)](images/R.png)  ![[pdf](pdf/ch_05_Chart.pdf)](images/pdf.png)
-
