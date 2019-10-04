@@ -90,4 +90,5 @@ dev.off()
 
 ------
 
- [<img src="images/R.png" alt="R" style="zoom:80%;" />](source/ch_6_Animation.R) [<img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](pdf/ch_6_Animation.pdf)
+ [<img src="images/R.png" alt="R" style="zoom:80%;" />](source/ch_06_Animation.R) [<img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](pdf/ch_06_Animation.pdf)
+
