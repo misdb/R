@@ -18,7 +18,7 @@ height
 ## height2    9   15   20    6
 ```
 
-
+<div style="page-break-after: always;"></div>
 
 ```{r}
 name <- c("영업 1팀", "영업 2팀", "영업 3팀", "영업 4팀")
