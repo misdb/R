@@ -156,5 +156,7 @@ ggmap(map)
 
 ![1570056116746](images/1570056116746.png)
 
-**[ [R Source](source/ch_4_Excel_Address_Google_Map.R) ]**
+--------
+
+[<img src="images/R.png" alt="R" style="zoom:80%;" />](source/ch_4_Excel_Address_Google_Map.R) [<img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](pdf/ch_4_Excel_Address_Google_Map.pdf)
 
