@@ -60,7 +60,7 @@ pie(x,
     main="부서별 영업 실적")
 ```
 
-<img src=".\images\1569915846669.png" alt="1569915846669" style="zoom:80%;" />
+<img src="images/1569915927229.png" alt="1569915927229" style="zoom:80%;" />
 
 <div style="page-break-after: always;"></div>
 #### 2-4. 3D 파이 차트 : `pie3D()`
