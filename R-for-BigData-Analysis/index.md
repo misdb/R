@@ -8,7 +8,7 @@
 
 - [연습문제](ch_3_Exercise.html)
 
-제4장 무조건 해 보기
+[제4장 무조건 해 보기](ch_4_Just_Do_It.html)
 
 - [엑셀 주소록을 구글 맵에 표시하기](ch_4_Excel_Address_Google_Map.html)
 
