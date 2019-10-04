@@ -27,9 +27,10 @@
 - [차트그리기](ch_5_Examples_of_Chart_3D.html) : 3D Barplot, Cloud, WireFrame, Plot3D 등
 - [실습과제](ch_5_solution_exercise.html)
 
-제6장 애니메이션
+[제6장 애니메이션](ch_06_Animation.html)
 
 [제7장 지도 활용하기](ch_07_Google_Map.html)
+
 - [대전 지하철 노선도 (1)](ch_7_Subway_Geocode_Daejeon.html)
 - [대전 지하철 노선도 (2)](ch_7_Subway_Stations_Daejeon)
 - [ggmap() 이용하기](ch_7_using_ggmap.html)
