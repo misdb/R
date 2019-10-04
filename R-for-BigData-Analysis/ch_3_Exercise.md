@@ -214,3 +214,9 @@ summary(y[,"value"])
 
 ![[R Source](source/ch_3_Exercise.R)](images/r.PNG)  ![[pdf](pdf/ch_3_Exercise.pdf)](images/pdf_image.PNG)
 
+![R](images/R.png)![pdf_image](images/pdf_image.png)
+
+```html
+<a href="source/ch_3_Exercise.R"><img src="images/R.png"</a> <a href="source/ch_3_Exercise.pdf"><img src="images/pdf.png"</a>
+```
+
