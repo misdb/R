@@ -212,4 +212,5 @@ summary(y[,"value"])
 
 ------
 
-[![R](images/R.png)](source/ch_3_Exercise.R) [![pdf_image](images/pdf_image.png)](pdf/ch_3_Exercise.pdf)
+[<img src="images/R.png" alt="R" style="zoom:80%;" />](source/ch_3_Exercise.R) [<img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](pdf/ch_3_Exercise.pdf)
+
