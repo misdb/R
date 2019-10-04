@@ -213,9 +213,7 @@ ggplot(aes(x = lgID, y = mean_home_run, fill = lgID)) +
 
 **결과 : **
 
-![1569642206263](C:\Users\Kim_DaeHo\AppData\Roaming\Typora\typora-user-images\1569642206263.png)
-
-
+<img src="images/1570156710542.png" alt="1570156710542" style="zoom:80%;" />
 
 
 
@@ -298,7 +296,7 @@ ggplot(ex1, aes(x = yearID, y = mean_game_year)) +
 
 **결과 :**
 
-![1569643698616](C:\Users\Kim_DaeHo\AppData\Roaming\Typora\typora-user-images\1569643698616.png)
+<img src="images/1570156749273.png" alt="1570156749273" style="zoom:80%;" />
 
 
 
@@ -558,16 +556,16 @@ data %>%
 ## # A tibble: 149 x 2
 ##    teamID second_game
 ##    <fctr>       <int>
-##  1    BS1        1871
-##  2    CH1        1871
-##  3    FW1        1871
-##  4    NY2        1871
-##  5    RC1        1871
-##  6    BR1        1872
-##  7    BR2        1872
-##  8    CL1        1872
-##  9    MID        1872
-## 10    TRO        1872
+##  1 BS1           1871
+##  2 CH1           1871
+##  3 FW1           1871
+##  4 RC1           1871
+##  5 BR1           1872
+##  6 CL1           1872
+##  7 MID           1872
+##  8 TRO           1872
+##  9 WS3           1872
+## 10 WS4           1872
 ## # ... with 139 more rows
 ```
 
@@ -719,16 +717,16 @@ data %>%
 ## # Groups:   yearID [147]
 ##    yearID teamID mean_games
 ##     <int> <fct>       <dbl>
-##  1   2017 ARI          52.4
-##  2   2017 ATL          48.4
-##  3   2017 BAL          47.0
-##  4   2017 BOS          47.6
-##  5   2017 CHA          44.9
-##  6   2017 CHN          51.5
-##  7   2017 CIN          49.4
-##  8   2017 CLE          57.7
-##  9   2017 COL          57.9
-## 10   2017 DET          47.7
+##  1   1884 WSU         19.8 
+##  2   1891 WS9         33.7 
+##  3   1886 WS8         29.9 
+##  4   1887 WS8         54.6 
+##  5   1888 WS8         47.3 
+##  6   1889 WS8         40.2 
+##  7   1884 WS7         22.9 
+##  8   1875 WS6         13.4 
+##  9   1873 WS5         23.4 
+## 10   1872 WS4          7.07
 ## # ... with 2,855 more rows
 ```
 
