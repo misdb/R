@@ -29,5 +29,5 @@ text(x=hp$mids, y=height, labels=height, pos=3)
 
 ------
 
- <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />
+ [<img src="images/R.png" alt="R" style="zoom:80%;" />](source/ch_5_131_Labelling_Grouped_Bar_Chart.R) [<img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](pdf/ch_5_131_Labelling_Grouped_Bar_Chart.prf)
 

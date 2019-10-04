@@ -43,4 +43,5 @@ text(x=h$mids, y=h$density, labels=h$density, pos=3)
 
 ------
 
- <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />
+ [<img src="images/R.png" alt="R" style="zoom:80%;" />](source/ch_5_143_Labelling_Relative_Frequency_Chart.R) [<img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](pdf/ch_5_143_Labelling_Relative_Frequency_Chart.pdf)
+
