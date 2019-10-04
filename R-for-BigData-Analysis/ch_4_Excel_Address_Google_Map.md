@@ -156,7 +156,9 @@ ggmap(map)
 
 ![1570056116746](images/1570056116746.png)
 
---------
 
-[<img src="images/R.png" alt="R" style="zoom:80%;" />](source/ch_4_Excel_Address_Google_Map.R) [<img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](pdf/ch_4_Excel_Address_Google_Map.pdf)
+
+------
+
+[<img src="https://misdb.github.io/R/R-for-BigData-Analysis/images/R.png" alt="R" style="zoom:80%;" />](https://misdb.github.io/R/R-for-BigData-Analysis/source/ch_4_Excel_Address_Google_Map.R) [<img src="https://misdb.github.io/R/R-for-BigData-Analysis/images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](https://misdb.github.io/R/R-for-BigData-Analysis/pdf/ch_4_Excel_Address_Google_Map.pdf)
 

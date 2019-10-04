@@ -81,3 +81,9 @@ lines(density(mag))
 
 **[ [R Source](source/ch_5_142_Labelling_PDF_Histogram.R) ]**
 
+
+
+------
+
+ <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />
+

@@ -134,3 +134,8 @@ hist(quantity,
 
 **[ [R Source](source/ch_5_solution_exercise.R) ]**
 
+
+
+------
+
+ <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />

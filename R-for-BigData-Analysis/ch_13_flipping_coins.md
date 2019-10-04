@@ -57,3 +57,8 @@ for (x in 1:iteration) {
 
 **[ [R Source](source/ch_13_flipping_coins.R) ]**
 
+
+
+------
+
+ <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />

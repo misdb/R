@@ -33,3 +33,8 @@ for(x in 1:iteration) {
 
 **[ [R Source](source/ch_11_throwing_dice.R) ]**
 
+
+
+------
+
+ <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />

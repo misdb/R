@@ -37,5 +37,9 @@ text(x=height,               # x 축이 영업실적.  이에 대하여 라벨�
 
 ![1570059796821](images/1570059796821.png)
 
-**[ [R Source](source/ch_5_130_Labelling_Horizontal_Bar_Chart.R) ]**
+
+
+------
+
+ <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />
 

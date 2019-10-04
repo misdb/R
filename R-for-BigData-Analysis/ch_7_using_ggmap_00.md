@@ -60,8 +60,6 @@ p1 + geom_point(data = locationInfo, aes(x = lon, y = lat))   # 그림 2.
 
 
 
-
-
 ```{r}
 # 지도 확대하기
 getmap <- get_googlemap("gangnamgu", zoom = 12)
@@ -177,3 +175,8 @@ p5 + ggtitle("maptype : satellite")           # 그림 8.
 
 **[ [R Source](source/ch_7_using_ggmap_00.R) ]**
 
+
+
+------
+
+ <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />

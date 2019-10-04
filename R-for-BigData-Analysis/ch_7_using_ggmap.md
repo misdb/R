@@ -91,3 +91,7 @@ http://www.mokwon.ac.kr/mobile030204
 전국대학 주소록 : http://design-people.co.kr/art/board.php?board=peoplenotice&command=body&no=15
 
 
+
+------
+
+ <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />

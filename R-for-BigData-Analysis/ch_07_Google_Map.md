@@ -370,3 +370,9 @@ ggmap(map, fullpage = TRUE) +
 ```
 
 ![1570001017751](images/1570001017751.png)
+
+
+
+------
+
+ <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />

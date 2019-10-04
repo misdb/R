@@ -47,3 +47,8 @@ abs(prob_real - prob_expt)
 
 **[ [R Source](source/ch_13_solution_exercise.R) ]**
 
+
+
+------
+
+ <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />

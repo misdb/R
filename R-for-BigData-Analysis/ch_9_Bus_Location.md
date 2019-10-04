@@ -383,3 +383,9 @@ geom_text(data=gc,
 ![1570100276375](images/1570100276375.png)
 
 **[ [R Source](source/ch_9_Bus_Location.R) ]**
+
+
+
+------
+
+ <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />

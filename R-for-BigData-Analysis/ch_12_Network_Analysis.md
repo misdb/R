@@ -263,3 +263,9 @@ centralization.betweenness(g, normalized=FALSE)$centralization / tmax
 ![img](http://cyber.mokwon.ac.kr/lmsdata/business/course/2018_1_2161333_11/COMF_1805211033413bb70dae.gif)
 
 
+
+
+
+------
+
+ <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />

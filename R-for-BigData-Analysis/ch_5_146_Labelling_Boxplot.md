@@ -57,3 +57,8 @@ text( boxstats$out,                                    # x 축 변경
 
 **[ [R Source](source/ch_5_146_Labelling_Boxplot.R) ]**
 
+
+
+------
+
+ <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />

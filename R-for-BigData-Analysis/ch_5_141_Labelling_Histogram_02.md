@@ -77,3 +77,9 @@ text(x=hp$mids, y=height, labels=height, pos=3)
 
 **[ [R Source](source/ch_5_141_Labelling_Histogram_02.R) ]**
 
+
+
+------
+
+ <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />
+

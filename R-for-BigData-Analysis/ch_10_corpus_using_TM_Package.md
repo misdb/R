@@ -342,3 +342,8 @@ wordcloud(names(freq2), freq2, colors=rainbow(20))
 
 **[ [R Source](./source/ch_10_corpus_using_TM_Package.R) ]**
 
+
+
+------
+
+ <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />

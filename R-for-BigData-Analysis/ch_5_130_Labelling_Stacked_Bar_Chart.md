@@ -57,3 +57,9 @@ text(x=bp, y=height1 + height2, labels=round(height2,0), pos=3)  # 2015년 데�
 
 **[ [R Source](source/ch_5_130_Labelling_Stacked_Bar_Chart.R) ]**
 
+
+
+------
+
+ <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />
+

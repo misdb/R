@@ -39,3 +39,8 @@ text(x=h$mids, y=h$density, labels=h$density, pos=3)
 
 **[ [R Source](source/ch_5_143_Labelling_Relative_Frequency_Chart.R) ]**
 
+
+
+------
+
+ <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />

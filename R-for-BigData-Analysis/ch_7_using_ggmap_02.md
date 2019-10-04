@@ -462,3 +462,9 @@ p_line
 
 
 **[ [R Source](source/ch_7_using_ggmap_02.R) ]**
+
+
+
+------
+
+ <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />

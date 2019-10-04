@@ -28,3 +28,8 @@ while(TRUE) {
 
 **[ [R Source](source/ch_5_165_Labelling_Moving_Chart.R) ]**
 
+
+
+------
+
+ <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />

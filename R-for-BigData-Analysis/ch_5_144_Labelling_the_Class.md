@@ -41,3 +41,8 @@ text(x=h$mids, y=height, labels=round(height,0), pos=3)
 
 **[ [R Source](source/ch_5_144_Labelling_the_Class.R) ]**
 
+
+
+------
+
+ <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />

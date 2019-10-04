@@ -624,5 +624,9 @@ boxplot(mag,     # summary(mag)를 그림으로 표시함.
 
 <img src="./images/1569917553037.png" alt="1569917553037" style="zoom:80%;" />
 
+
+
 ------
+
+ <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />
 
