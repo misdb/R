@@ -1,4 +1,4 @@
-## 제3장 연습문제
+## 제3장 연습문제 
 
 
 
@@ -212,5 +212,5 @@ summary(y[,"value"])
 
 ------
 
-[<img src="images/R.png" alt="R" style="zoom:80%;" />](source/ch_3_Exercise.R) [<img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](pdf/ch_3_Exercise.pdf)
+[<img src="https://misdb.github.io/R/R-for-BigData-Analysis/images/R.png" alt="R" style="zoom:80%;" />](https://misdb.github.io/R/R-for-BigData-Analysis/source/ch_3_Exercise.R) [<img src="https://misdb.github.io/R/R-for-BigData-Analysis/images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](https://misdb.github.io/R/R-for-BigData-Analysis/pdf/ch_3_Exercise.pdf)
 
