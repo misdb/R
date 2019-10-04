@@ -336,4 +336,5 @@ map3 + geom_density2d()
 
 ------
 
- <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />
+ [<img src="images/R.png" alt="R" style="zoom:80%;" />](source/ch_7_using_ggmap_01.R)  [<img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](pdf/ch_7_using_ggmap_01.pdf) 
+

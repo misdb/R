@@ -210,4 +210,5 @@ long_table
 
 ------
 
- <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />
+ [<img src="images/R.png" alt="R" style="zoom:80%;" />](source/r-Table_Conversion_Wide-Long.R) [<img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](pdf/r-Table_Conversion_Wide-Long.pdf) 
+

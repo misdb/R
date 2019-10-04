@@ -56,4 +56,5 @@ wordcloud(names(word_count),freq=word_count,scale=c(6,0.3),min.freq=3, random.or
 
 ------
 
- <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />
+ [<img src="images/R.png" alt="R" style="zoom:80%;" />](source/solution_228.R) [<img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](pdf/solution_228.pdf) 
+

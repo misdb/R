@@ -94,4 +94,4 @@ http://www.mokwon.ac.kr/mobile030204
 
 ------
 
- <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />
+ [<img src="images/R.png" alt="R" style="zoom:80%;" />](source/ch_7_using_ggmap.R)  [<img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](pdf/ch_7_using_ggmap.pdf) 

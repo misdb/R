@@ -318,4 +318,6 @@ gmap +
 
 ------
 
- <img src="images/R.png" alt="R" style="zoom:80%;" /> <img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />
+ [<img src="images/R.png" alt="R" style="zoom:80%;" />](source/ch_9_Bus_Route_of_Daejeon_106.R) [<img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](pdf/ch_9_Bus_Route_of_Daejeon_106.pdf) 
+
+ 
