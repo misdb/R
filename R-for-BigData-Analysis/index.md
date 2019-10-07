@@ -4,7 +4,10 @@
 
 제2장 R환경 구축
 
-제3장 데이터 구조의 이해와 코딩의 시작
+[제3장 데이터 구조의 이해와 코딩의 시작](ch_03_Data_Types.html)
+
+- [함수](ch_03_01_Function.html)
+- [데이터 불러오기(Import)](ch_03_02_Data_Import.html)
 
 - [연습문제](ch_3_Exercise.html)
 
@@ -39,19 +42,21 @@
 - [ggmap 패키지 실습 (02)](ch_7_using_ggmap_02.html)
 - [연습문제](ch_7_Exercise.html)
 
-제8장 텍스트 마이닝과 워드 클라우드 활용
+[제8장 텍스트 마이닝과 워드 클라우드 활용](ch_08_Wordcloud.html)
+
 - [(연습) 워드클라우드](ch_8_Example_of_Wordcloud.html)
 - [wordcloud2()](ch_8_wordcloud2.html)
 
-제9장 공공 데이터 활용
+[제9장 공공 데이터 활용](ch_09_Using_Public_Data.html)
+
 - [버스노선 및 (실시간) 버스위치 구글지도에 표시하기](ch_9_Bus_Location.html)
 - [노선별 경유 정류소 구글지도에 표시하기](ch_9_Bus_Route_of_Daejeon_106.html)
 
-제10장 네이버 오픈 API 활용
+[제10장 네이버 오픈 API 활용](ch_10_Using_Naver_Open_API.html)
 
 - [tm 패키지를 이용한 Corpus 실습](ch_10_corpus_using_TM_Package.html)
 
-제11장 웹 스크래핑의 활용
+[제11장 웹 스크래핑의 활용](ch_11_Using_Web_Scrapping.html)
 
 - [주사위 백 번 던지기](ch_11_throwing_dice.html)
 
