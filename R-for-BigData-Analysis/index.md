@@ -9,8 +9,8 @@
 [제3장 데이터 구조의 이해와 코딩의 시작](ch_03_Data_Types.html)
 
 - [함수](ch_03_01_Function.html)
+- [테이블 변환 : Long Table <-> Wide Table](r-Table_Conversion_Wide-Long.html)
 - [데이터 불러오기(Import)](ch_03_02_Data_Import.html)
-
 - [연습문제](ch_3_Exercise.html)
 
 [제4장 무조건 해 보기](ch_4_Just_Do_It.html)
