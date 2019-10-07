@@ -1,6 +1,10 @@
 # Table Conversion : Wide Table <-> Long Table 
 
 
+
+[TOC]
+
+
 ### 1. tidyr package installation
 
 ```install.packages(&quot;tidyr&quot;)
