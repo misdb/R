@@ -38,5 +38,5 @@ text(x=bp, y=height, labels=round(height,0), pos=3)
 
 ------
 
-[<img src="images/l-arrow.png" alt="l-arrow" style="zoom:67%;" />](ch_5__130_Labelling_Stacked_Bar_Chart.html)    [<img src="images/home-arrow.png" alt="home-arrow" style="zoom:67%;" />](index.html)    [<img src="images/r-arrow.png" alt="r-arrow" style="zoom:67%;" />](ch_5_139_Labelling_Histogram_01.html)
+[<img src="images/l-arrow.png" alt="l-arrow" style="zoom:67%;" />](ch_5_130_Labelling_Stacked_Bar_Chart.html)    [<img src="images/home-arrow.png" alt="home-arrow" style="zoom:67%;" />](index.html)    [<img src="images/r-arrow.png" alt="r-arrow" style="zoom:67%;" />](ch_5_139_Labelling_Histogram_01.html)
 
