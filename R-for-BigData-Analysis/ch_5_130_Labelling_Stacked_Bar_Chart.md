@@ -64,7 +64,6 @@ text(x=bp, y=height1 + height2, labels=round(height2,0), pos=3)  # 2015년 데�
 
 ------
 
-[<img src="images/l-arrow.png" alt="l-arrow" style="zoom:67%;" />](ch_5__130_Labelling_Horizontal_Bar_Chart.html)    [<img src="images/home-arrow.png" alt="home-arrow" style="zoom:67%;" />](index.html)    [<img src="images/r-arrow.png" alt="r-arrow" style="zoom:67%;" />](ch_5_131_Labelling_Grouped_Bar_Chart.html)
-
+[<img src="images/l-arrow.png" alt="l-arrow" style="zoom:67%;" />](ch_5_130_Labelling_Horizontal_Bar_Chart.html)    [<img src="images/home-arrow.png" alt="home-arrow" style="zoom:67%;" />](index.html)    [<img src="images/r-arrow.png" alt="r-arrow" style="zoom:67%;" />](ch_5_131_Labelling_Grouped_Bar_Chart.html)
 
 
