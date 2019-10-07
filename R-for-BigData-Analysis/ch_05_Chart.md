@@ -83,6 +83,8 @@ pie3D(x,
 
 ![1570144208631](images/1570144208631.png)
 
+[ **[연습문제](http://blog.naver.com/PostView.nhn?blogId=hsj2864&logNo=220604182306&parentCategoryNo=&categoryNo=36&viewDate=&isShowPopularPosts=false&from=postView)** ]
+
 <div style="page-break-after: always;"></div>
 ### 3. 바차트
 
@@ -625,6 +627,10 @@ boxplot(mag,     # summary(mag)를 그림으로 표시함.
 <img src="./images/1569917553037.png" alt="1569917553037" style="zoom:80%;" />
 
 
+
+### 8. [R Graph Gallery](https://www.r-graph-gallery.com/all-graphs.html)
+
+https://www.r-graph-gallery.com/index.html
 
 ------
 
