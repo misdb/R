@@ -79,8 +79,6 @@ lines(density(mag))
 
 ![1570060334269](images/1570060334269.png)
 
-**[ [R Source](source/ch_5_142_Labelling_PDF_Histogram.R) ]**
-
 
 
 ------

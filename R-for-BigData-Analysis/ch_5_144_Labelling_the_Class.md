@@ -39,8 +39,6 @@ text(x=h$mids, y=height, labels=round(height,0), pos=3)
 
 ![1570061416283](images/1570061416283.png)
 
-**[ [R Source](source/ch_5_144_Labelling_the_Class.R) ]**
-
 
 
 ------

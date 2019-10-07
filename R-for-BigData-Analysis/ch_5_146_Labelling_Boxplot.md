@@ -55,8 +55,6 @@ text( boxstats$out,                                    # x 축 변경
 
 ![img](images/COMF_1804021114327df017c8.bmp)
 
-**[ [R Source](source/ch_5_146_Labelling_Boxplot.R) ]**
-
 
 
 ------

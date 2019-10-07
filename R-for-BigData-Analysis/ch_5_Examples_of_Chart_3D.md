@@ -140,7 +140,7 @@ jj <- which(Hypsometry$y > 10 & Hypsometry$y < 40)
 zlim <- c(-10000, 0)
 ```
 
-결과 : ![img](images/COMF_180328102539acda2ce4.bmp)**[ [R Source](source/ch_5_Examples_of_Chart_3D.R) ]**
+결과 : ![img](images/COMF_180328102539acda2ce4.bmp)
 
 
 
