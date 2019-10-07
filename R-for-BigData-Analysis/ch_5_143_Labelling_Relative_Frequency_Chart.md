@@ -37,8 +37,6 @@ text(x=h$mids, y=h$density, labels=h$density, pos=3)
 
 ![1570060779493](images/1570060779493.png)
 
-**[ [R Source](source/ch_5_143_Labelling_Relative_Frequency_Chart.R) ]**
-
 
 
 ------
@@ -47,5 +45,5 @@ text(x=h$mids, y=h$density, labels=h$density, pos=3)
 
 ------
 
-[<img src="images/l-arrow.png" alt="l-arrow" style="zoom:67%;" />](ch_5_142_Labelling_PDF_Histogram.html)    [<img src="images/home-arrow.png" alt="home-arrow" style="zoom:67%;" />](index.html)    [<img src="images/r-arrow.png" alt="r-arrow" style="zoom:67%;" />](ch_5_143_Labelling_the_Class.html)
+[<img src="images/l-arrow.png" alt="l-arrow" style="zoom:67%;" />](ch_5_142_Labelling_PDF_Histogram.html)    [<img src="images/home-arrow.png" alt="home-arrow" style="zoom:67%;" />](index.html)    [<img src="images/r-arrow.png" alt="r-arrow" style="zoom:67%;" />](ch_5_144_Labelling_the_Class.html)
 
