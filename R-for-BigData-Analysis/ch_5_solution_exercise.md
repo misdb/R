@@ -132,8 +132,6 @@ hist(quantity,
 
 ![1570062555085](images/1570062555085.png)
 
-**[ [R Source](source/ch_5_solution_exercise.R) ]**
-
 
 
 ------
