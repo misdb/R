@@ -632,5 +632,5 @@ boxplot(mag,     # summary(mag)를 그림으로 표시함.
 
 ------
 
-[<img src="images/l-arrow.png" alt="l-arrow" style="zoom:67%;" />](ch_4_Excel_Address_Google_Map.html)    [<img src="C:/Users/Dae%20Ho%20Kim/Pictures/home-arrow.png" alt="home-arrow" style="zoom:67%;" />](index.html)    [<img src="C:/Users/Dae%20Ho%20Kim/Pictures/r-arrow.png" alt="r-arrow" style="zoom:67%;" />](ch_5_130_Labelling_Horizontal_Bar_Chart.html)
+[<img src="images/l-arrow.png" alt="l-arrow" style="zoom:67%;" />](ch_4_Excel_Address_Google_Map.html)    [<img src="images/home-arrow.png" alt="home-arrow" style="zoom:67%;" />](index.html)    [<img src="images/r-arrow.png" alt="r-arrow" style="zoom:67%;" />](ch_5_130_Labelling_Horizontal_Bar_Chart.html)
 
