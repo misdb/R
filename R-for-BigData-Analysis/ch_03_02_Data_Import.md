@@ -205,9 +205,11 @@ barplot(nid, main="학과별 수강생 수")
 • 적은 메모리 사용으로 빠르게 데이터를 읽어옴	
 • 결과는 데이터프레임이 아니라 tibble형식으로 저장됨 - tibble형식은 데이터프레임의 확장된 데이터클래스임	
 	
-• 1980~2018년까지 연도별/성별 고용율 자료 (http://www.index.go.kr/potal/stts/idxMain/selectPoSttsIdxSearch.do?idx_cd=1494)	
+• 1980~2018년까지 연도별/성별 고용률 자료 (http://www.index.go.kr/potal/stts/idxMain/selectPoSttsIdxSearch.do?idx_cd=1494)	
 
 #### 3-1. 엑셀파일 불러오기
+
+데이터 세트 : [고용률.xls](data/고용률.xls)
 
 ```{r}
 # install.packages("readxl", dependencies=T)	
