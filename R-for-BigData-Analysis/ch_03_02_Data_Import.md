@@ -266,5 +266,5 @@ list.files(pattern="*.xlsx")
 
 ------
 
-[<img src="images/l-arrow.png" alt="l-arrow" style="zoom:67%;" />](ch_03_01_Function.html)    [<img src="images/home-arrow.png" alt="home-arrow" style="zoom:67%;" />](index.html)    [<img src="images/r-arrow.png" alt="r-arrow" style="zoom:67%;" />](ch_3_Exercise.html)
+[<img src="images/l-arrow.png" alt="l-arrow" style="zoom:67%;" />](r-Table_Conversion_Wide-Long.html)    [<img src="images/home-arrow.png" alt="home-arrow" style="zoom:67%;" />](index.html)    [<img src="images/r-arrow.png" alt="r-arrow" style="zoom:67%;" />](ch_3_Exercise.html)
 
