@@ -23,8 +23,6 @@ text(x=hp$mids, y=height, labels=height, pos=3)
 
 ![img](images/COMF_1803281514197df00079.bmp)
 
-**[ [R Source](source/ch_5_139_Labelling_Histogram_01.R) ]**
-
 
 
 ------
@@ -33,5 +31,5 @@ text(x=hp$mids, y=height, labels=height, pos=3)
 
 ------
 
-[<img src="images/l-arrow.png" alt="l-arrow" style="zoom:67%;" />](ch_5_130_Labelling_Grouped_Bar_Chart.html)    [<img src="images/home-arrow.png" alt="home-arrow" style="zoom:67%;" />](index.html)    [<img src="images/r-arrow.png" alt="r-arrow" style="zoom:67%;" />](ch_5_141_Labelling_Histogram_02.html)
+[<img src="images/l-arrow.png" alt="l-arrow" style="zoom:67%;" />](ch_5_131_Labelling_Grouped_Bar_Chart.html)    [<img src="images/home-arrow.png" alt="home-arrow" style="zoom:67%;" />](index.html)    [<img src="images/r-arrow.png" alt="r-arrow" style="zoom:67%;" />](ch_5_141_Labelling_Histogram_02.html)
 
