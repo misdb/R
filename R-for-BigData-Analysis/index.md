@@ -4,6 +4,8 @@
 
 제2장 R환경 구축
 
+- [R과 R 패키지 업데이트](ch_02_R_Update.html)
+
 [제3장 데이터 구조의 이해와 코딩의 시작](ch_03_Data_Types.html)
 
 - [함수](ch_03_01_Function.html)
@@ -42,10 +44,12 @@
 - [ggmap 패키지 실습 (02)](ch_7_using_ggmap_02.html)
 - [연습문제](ch_7_Exercise.html)
 
-[제8장 텍스트 마이닝과 워드 클라우드 활용](ch_08_Wordcloud.html)
+[제8장 텍스트 마이닝과 워드 클라우드 활용](Ch_08_Text_Mining_Word_Cloud.html)
 
+- [워드클라우드](ch_08_Wordcloud.html)
 - [(연습) 워드클라우드](ch_8_Example_of_Wordcloud.html)
 - [wordcloud2()](ch_8_wordcloud2.html)
+- [실습과제](ch_8_solution.html)
 
 [제9장 공공 데이터 활용](ch_09_Using_Public_Data.html)
 
@@ -58,11 +62,12 @@
 
 [제11장 웹 스크래핑의 활용](ch_11_Using_Web_Scrapping.html)
 
-- [주사위 백 번 던지기](ch_11_throwing_dice.html)
-
 [제12장 네트워크 분석](ch_12_Network_Analysis.html)
 
 제13장 시뮬레이션
+
+- [주사위 백 번 던지기](ch_13_throwing_dice.html)
+- [동전던지기](ch_13_throwing_dice.html)
 
 - [실습과제](ch_13_solution_exercise.html)
 

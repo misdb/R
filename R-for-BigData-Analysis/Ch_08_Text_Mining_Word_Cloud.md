@@ -153,3 +153,8 @@ dev.off()
 ------
 
  [<img src="images/R.png" alt="R" style="zoom:80%;" />](source/ch_06_Animation.R) [<img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](pdf/ch_06_Animation.pdf)
+
+------
+
+[<img src="images/l-arrow.png" alt="l-arrow" style="zoom:67%;" />](ch_7_Exercise.html)    [<img src="images/home-arrow.png" alt="home-arrow" style="zoom:67%;" />](index.html)    [<img src="images/r-arrow.png" alt="r-arrow" style="zoom:67%;" />](ch_08_Wordcloud.html)
+

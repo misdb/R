@@ -5,8 +5,6 @@
 
 [TOC]
 
-
-
 ### I. 특정 웹 페이지의 상품 정보 스크래핑 : 단일 웹 페이지
 
 
@@ -111,4 +109,8 @@ df.products
 ------
 
 [<img src="https://misdb.github.io/R/R-for-BigData-Analysis/images/R.png" alt="R" style="zoom:80%;" />](https://misdb.github.io/R/R-for-BigData-Analysis/source/ch_11_Using_Web_Scrapping.R) [<img src="https://misdb.github.io/R/R-for-BigData-Analysis/images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](https://misdb.github.io/R/R-for-BigData-Analysis/pdf/ch_11_Using_Web_Scrapping.pdf)
+
+------
+
+[<img src="images/l-arrow.png" alt="l-arrow" style="zoom:67%;" />](ch_10_corpus_using_TM_Package.html)    [<img src="images/home-arrow.png" alt="home-arrow" style="zoom:67%;" />](index.html)    [<img src="images/r-arrow.png" alt="r-arrow" style="zoom:67%;" />](ch_12_Network_Analysis.html)
 

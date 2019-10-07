@@ -45,10 +45,11 @@ abs(prob_real - prob_expt)
 
 
 
-**[ [R Source](source/ch_13_solution_exercise.R) ]**
-
-
-
 ------
 
  [<img src="images/R.png" alt="R" style="zoom:80%;" />](source/ch_13_solution_exercise.R) [<img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](pdf/ch_13_solution_exercise.pdf) 
+
+------
+
+[<img src="images/l-arrow.png" alt="l-arrow" style="zoom:67%;" />](ch_13_flipping_coins.html)    [<img src="images/home-arrow.png" alt="home-arrow" style="zoom:67%;" />](index.html)    [<img src="images/r-arrow.png" alt="r-arrow" style="zoom:67%;" />](ch_14_Artificial_Neural_Network.html)
+

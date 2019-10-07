@@ -4,8 +4,6 @@
 
 [TOC]
 
-
-
 ### I. 네트워크 만들기 
 
 ==> vertex()와 edge() 함수 이용하기
@@ -452,4 +450,8 @@ get.all.shortest.paths(sn10.graph, "5", c("8", "9")) # 5번 사용자와 8번, 9
 ------
 
 [<img src="https://misdb.github.io/R/R-for-BigData-Analysis/images/R.png" alt="R" style="zoom:80%;" />](https://misdb.github.io/R/R-for-BigData-Analysis/source/ch_12_Network_Analysis.R) [<img src="https://misdb.github.io/R/R-for-BigData-Analysis/images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](https://misdb.github.io/R/R-for-BigData-Analysis/pdf/ch_12_Network_Analysis.pdf)
+
+------
+
+[<img src="images/l-arrow.png" alt="l-arrow" style="zoom:67%;" />](ch_11_Using_Web_Scrapping.html)    [<img src="images/home-arrow.png" alt="home-arrow" style="zoom:67%;" />](index.html)    [<img src="images/r-arrow.png" alt="r-arrow" style="zoom:67%;" />](ch_13_throwing_dice.html)
 

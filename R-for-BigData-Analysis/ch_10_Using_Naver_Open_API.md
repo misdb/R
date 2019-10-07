@@ -4,8 +4,6 @@
 
 [TOC]
 
-
-
 ### 1. Naver Open API를 통한 블로그 검색 => 데이터 확보
 
 ```{r}
@@ -164,4 +162,8 @@ wordcloud(names(wordcount),
 ------
 
 [<img src="https://misdb.github.io/R/R-for-BigData-Analysis/images/R.png" alt="R" style="zoom:80%;" />](https://misdb.github.io/R/R-for-BigData-Analysis/source/ch_10_Using_Naver_Open_API.R) [<img src="https://misdb.github.io/R/R-for-BigData-Analysis/images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](https://misdb.github.io/R/R-for-BigData-Analysis/pdf/ch_10_Using_Naver_Open_API.pdf)
+
+------
+
+[<img src="images/l-arrow.png" alt="l-arrow" style="zoom:67%;" />](ch_9_Bus_Route_of_Daejeon.html)    [<img src="images/home-arrow.png" alt="home-arrow" style="zoom:67%;" />](index.html)    [<img src="images/r-arrow.png" alt="r-arrow" style="zoom:67%;" />](ch_10_corpus_using_TM_Package.html)
 
