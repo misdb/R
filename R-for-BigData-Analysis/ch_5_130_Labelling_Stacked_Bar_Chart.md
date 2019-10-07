@@ -19,7 +19,6 @@ height
 ```
 
 <div style="page-break-after: always;"></div>
-
 ```{r}
 name <- c("영업 1팀", "영업 2팀", "영업 3팀", "영업 4팀")
 legend_lbl <- c("2014년", "2015년")
@@ -62,4 +61,10 @@ text(x=bp, y=height1 + height2, labels=round(height2,0), pos=3)  # 2015년 데�
 ------
 
  [<img src="images/R.png" alt="R" style="zoom:80%;" />](source/ch_5_130_Labelling_Stacked_Bar_Chart.R) [<img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](pdf/ch_5_130_Labelling_Stacked_Bar_Chart.pdf)
+
+------
+
+[<img src="images/l-arrow.png" alt="l-arrow" style="zoom:67%;" />](ch_5__130_Labelling_Horizontal_Bar_Chart.html)    [<img src="C:/Users/Dae%20Ho%20Kim/Pictures/home-arrow.png" alt="home-arrow" style="zoom:67%;" />](index.html)    [<img src="C:/Users/Dae%20Ho%20Kim/Pictures/r-arrow.png" alt="r-arrow" style="zoom:67%;" />](ch_5_131_Labelling_Grouped_Bar_Chart.html)
+
+
 

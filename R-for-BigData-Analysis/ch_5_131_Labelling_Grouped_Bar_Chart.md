@@ -36,3 +36,7 @@ text(x=bp, y=height, labels=round(height,0), pos=3)
 
  [<img src="images/R.png" alt="R" style="zoom:80%;" />](source/ch_5_131_Labelling_Grouped_Bar_Chart.R) [<img src="images/pdf_image.png" alt="pdf_image" style="zoom:80%;" />](pdf/ch_5_131_Labelling_Grouped_Bar_Chart.pdf)
 
+------
+
+[<img src="images/l-arrow.png" alt="l-arrow" style="zoom:67%;" />](ch_5__130_Labelling_Stacked_Bar_Chart.html)    [<img src="C:/Users/Dae%20Ho%20Kim/Pictures/home-arrow.png" alt="home-arrow" style="zoom:67%;" />](index.html)    [<img src="C:/Users/Dae%20Ho%20Kim/Pictures/r-arrow.png" alt="r-arrow" style="zoom:67%;" />](ch_5_139_Labelling_Histogram_01.html)
+
