@@ -34,6 +34,8 @@ gc <- geocode(enc2utf8('서울'))       # 1) 원하는 지역의 geocode확인 :
 gc
 ```
 
+**결과 :** 
+
 ```{}
 ## # A tibble: 1 x 2
 ##     lon   lat
@@ -47,6 +49,8 @@ gc
 gc <- geocode('Daejeon')             #    gc <- geocode('Seoul') : 지역명을 영문으로 하는 경우 코드변환 불필요
 gc
 ```
+
+**결과 :**
 
 ```{}
 ## # A tibble: 1 x 2
@@ -63,6 +67,8 @@ gc
 cen <- as.numeric(gc); cem          # 2) geocode를 수치형 데이터로 변형하고, 그 중심위치 찾기
 ```
 
+**결과 :**
+
 ```{r}
 ## [1] 127.38455  36.35041
 ```
@@ -76,7 +82,9 @@ map <- get_googlemap(center=cen)     # 3) 중심점(cen)을 중심으로 하는 
 ggmap(map)                           # 4) 지도 그리기
 ```
 
-![1569999465760](images/1569999465760.png)
+**결과 :**
+
+<img src="images/1569999465760.png" alt="1569999465760" style="zoom:80%;" />
 
 
 
@@ -90,6 +98,8 @@ ggmap(map)                           # 4) 지도 그리기
 gc <- geocode(enc2utf8('충청북도 단양군'))          # 1) 원하는 지역의 geocode 확인
 cen <- as.numeric(gc); cen                        # 2) geocode를 수치로 변형하고, 중심점 찾기
 ```
+
+**결과 :**
 
 ```{r}
 ## [1] 128.36552  36.98455
@@ -106,9 +116,9 @@ map <- get_googlemap(center=cen,                 # 3) 지도정보 확인 : ?get
 ggmap(map)                                       # 4) 지도 그리기
 ```
 
+**결과 :**
 
-
-![1569999836368](images/1569999836368.png)
+<img src="images/1569999836368.png" alt="1569999836368" style="zoom:80%;" />
 
 
 
@@ -118,7 +128,9 @@ map <- get_googlemap(center=cen, maptype="roadmap")    # 3) 지도형태 변경 
 ggmap(map, extent="device")                            # 4) 지도 그리기 형태 변경 : 환면 전체 
 ```
 
-![1569999908776](images/1569999908776.png)
+**결과 :**
+
+<img src="images/1569999908776.png" alt="1569999908776" style="zoom:80%;" />
 
 **주의 :** 위의 2-2. 2)와의 차이점을 주목하기 바람. 이 지도는 위도와 경도의 표시가 없다.
 
@@ -137,7 +149,9 @@ ggmap(map, extent="device")                   # 4) 지도 그리기
 ggmap(map) 
 ```
 
-![1570000041991](images/1570000041991.png)
+**결과 :**
+
+<img src="images/1570000041991.png" alt="1570000041991" style="zoom:80%;" />
 
 
 
@@ -212,6 +226,8 @@ cen <- c(mean(dflon), mean(dflat))        # 2-2) gc의 중심위치 찾기
 cen
 ```
 
+**결과 :**
+
 ```{}
 ## [1] 128.3061  36.9143
 ```
@@ -229,7 +245,9 @@ map <- get_googlemap(center=cen,            # 3) 지도 정보 확인
 ggmap(map)                                  # 4) 지도 그리기
 ```
 
-![1570000429375](images/1570000429375.png)
+**결과 :**
+
+<img src="images/1570000429375.png" alt="1570000429375" style="zoom:80%;" />
 
 
 
@@ -242,7 +260,8 @@ gmap + geom_text(data=df,                   # 6) 지도정보
                  label=df$name)             # 7) 지점정보 (라벨 지정)
 ```
 
-![1570000450167](images/1570000450167.png)
+**결과 :**
+<img src="images/1570000450167.png" alt="1570000450167" style="zoom:80%;" />
 
 #### 3-3. 범례 출력
 ```{r}
@@ -259,7 +278,9 @@ gmap + geom_text(data=df,                       # 5) 지도위에 표시될 라�
                  label=seq_along(df$name))
 ```
 
-![1570000472952](images/1570000472952.png)
+**결과 :**
+
+<img src="images/1570000472952.png" alt="1570000472952" style="zoom:80%;" />
 
 
 
@@ -279,6 +300,8 @@ library(ggmap)
 df <- head(quakes, 100)                   # 1) 지진 위치 정보 데이터 : geocode
 df
 ```
+
+**결과 :**
 
 ```{r}
 ##        lat   long depth mag stations
@@ -305,6 +328,8 @@ cen <- c(mean(dflong), mean(dflat))     # 2) 중심지점 확인
 cen
 ```
 
+**결과 :**
+
 ```{}
 ## [1] 179.1387 -19.9468
 ```
@@ -318,6 +343,8 @@ gc <- data.frame(lon=dflong, lat=dflat)
 gclon <- ifelse(gclon>180, -(360-gclon), gclon)
 gc
 ```
+
+**결과 :**
 
 ```{}
 ##         lon    lat
@@ -349,7 +376,9 @@ map <- get_googlemap(center=cen,
 ggmap(map, extent="device")       # extent = "device"
 ```
 
-![1570000992959](images/1570000992959.png)
+**결과 :**
+
+<img src="images/1570000992959.png" alt="1570000992959" style="zoom:80%;" />
 
 
 
@@ -369,7 +398,9 @@ ggmap(map, fullpage = TRUE) +
                  alpha=0.5)
 ```
 
-![1570001017751](images/1570001017751.png)
+**결과 :**
+
+<img src="images/1570001017751.png" alt="1570001017751" style="zoom:80%;" />
 
 
 
