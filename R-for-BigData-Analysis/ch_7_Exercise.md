@@ -42,7 +42,7 @@
 
 ------
 
-[<img src="images/l-arrow.png" alt="l-arrow" style="zoom:67%;" />](ch_7_using_ggmap_02.html)    [<img src="images/home-arrow.png" alt="home-arrow" style="zoom:67%;" />](index.html)    [<img src="images/r-arrow.png" alt="r-arrow" style="zoom:67%;" />](ch_08_WordCloud.html)
+[<img src="images/l-arrow.png" alt="l-arrow" style="zoom:67%;" />](ch_7_using_ggmap_02.html)    [<img src="images/home-arrow.png" alt="home-arrow" style="zoom:67%;" />](index.html)    [<img src="images/r-arrow.png" alt="r-arrow" style="zoom:67%;" />](ch_08_Wordcloud.html)
 
 
 
