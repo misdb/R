@@ -44,7 +44,7 @@
 - [ggmap 패키지 실습 (02)](ch_7_using_ggmap_02.html)
 - [연습문제](ch_7_Exercise.html)
 
-[제8장 텍스트 마이닝과 워드 클라우드 활용](Ch_08_Wordcloud.html)
+[제8장 텍스트 마이닝과 워드 클라우드 활용](ch_08_Wordcloud.html)
 
 - [(연습) 워드클라우드](ch_8_Example_of_Wordcloud.html)
 - [wordcloud2()](ch_8_wordcloud2.html)
