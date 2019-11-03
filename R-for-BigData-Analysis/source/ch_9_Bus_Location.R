@@ -58,7 +58,7 @@ gc
 cen <- c(mean(gc$lon), mean(gc$lat))
 cen
 #================ 현재 위치 마커 표시 : 
-register_google(key="AIzaSyAf8vkz_1OJj4o8zCUkPJMYY7nEK8LbFJw")            # 구글 API 인증
+register_google(key="Google Key")            # 구글 API 인증
 
 map <- get_googlemap(center=cen, maptype="roadmap",zoom=12, marker=gc)
 ggmap(map, extent="device")
