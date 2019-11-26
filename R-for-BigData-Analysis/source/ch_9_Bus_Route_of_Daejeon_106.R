@@ -11,8 +11,8 @@ library(ggmap)
 #===============================================
 # 노선버스정보 조회 (노선버스 전체)
 #===============================================
-busRtNm <- "106"                # 노선번호
-API_key <- "Google API Key"     # https://console.cloud.google.com/
+busRtNm <- "106"                              # 노선번호
+API_key <- "data.go.kr API Key"               # data.go.kr에서 발급받은 API_key 입력
 
 url <- paste("http://openapitraffic.daejeon.go.kr/api/rest/busRouteInfo/getRouteInfoAll?serviceKey=", API_key, "&reqPage=1", sep="")
 xmefile <- xmlParse(url)
@@ -21,9 +21,13 @@ xmlRoot(xmefile)
 df <- xmlToDataFrame(getNodeSet(xmefile, "//itemList"), stringsAsFactors = FALSE)
 head(df)
 
+# 노선 ID 확인 방법 #1)
+busRoute <- df[which(df$ROUTE_NO==busRtNm), names(df) %in% c("ROUTE_CD")]  # df$ROUTE_NO == busRtNm인 ROUTE_CD (노선ID) 값 반환
+busRoute
+
+# 노선 ID 확인 방법 #2)
 df_busRoute <- subset(df, ROUTE_NO==busRtNm)   # 노선번호로 검색
 df_busRoute
-
 (busRoute <- df_busRoute$ROUTE_CD)             # 노선 ID 확인
 
 #===============================================
