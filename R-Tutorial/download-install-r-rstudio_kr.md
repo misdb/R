@@ -47,6 +47,8 @@ Anaconda는 Python이나 R에 요구되는 library를 관리하는데 도움을 
 
 <img src="images/032818_0958_HowtoDownlo2.png" alt="032818_0958_HowtoDownlo2" style="zoom:80%;" />
 
+
+
 **단계 2)** 이제 Anaconda를 설치할 준비가 되었다. 설치를 시작하기 위해 다운로드한 파일을 더블 클릭한다. Mac에서는 .dmg 파일을, Windows는 .exe 파일이다. 설치를 확인하는지 묻는다. **Continue** 버튼을 클릭한다.
 
 [<img src="images/032818_0958_HowtoDownlo3.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo3.png)
@@ -165,6 +167,8 @@ Anaconda는 Python이나 R에 요구되는 library를 관리하는데 도움을 
 
 [<img src="images/032818_0958_HowtoDownlo21.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo21.png)
 
+
+
 **Anaconda가 설치될 것이다.**
 
 
@@ -228,6 +232,8 @@ terminal에서 여러분은 'Excecuting transaction : done' 메시지를 확인�
 
 ### Windows 사용자
 
+
+
 **단계 1)** Anaconda 명령 프롬프트를 연다.
 
 [<img src="images/032818_0958_HowtoDownlo29.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo29.png)
@@ -236,17 +242,25 @@ terminal에서 여러분은 'Excecuting transaction : done' 메시지를 확인�
 
 **단계 2)** 명령 프롬프트에서 
 
-1. R install 명령어를 입력한다.
+1. **R install** 명령어를 입력한다.  
+
+   ```
+   conda install r-essentials
+   ```
+
 2. 환경이 결정될 것이다.
+
 3. 설치될 패키지 목록이 나열될 것이다.
 
 [<img src="images/032818_0958_HowtoDownlo30.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo30.png)
 
 
 
-**Step 3)** 설치를 시작하기 위해 y를 입력하고 <return>키를 친다.
+**Step 3)** 설치를 시작하기 위해 `y`를 입력하고 <return>키를 친다.
 
 [<img src="images/032818_0958_HowtoDownlo31.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo31.png)
+
+
 
 **단계 4)** 설치하는데 시간이 걸릴 것이고, done 메시지를 보게 될 것이다.
 
@@ -277,11 +291,15 @@ terminal에서 'Executing transaction: done' 메시지를 확인해야 한다. �
 
 **단계 1)** Anaconda 프롬프트에서 R Studio 설치를 위한 명령어를 입력한다.
 
+```
+conda install -c r rstudio
+```
+
 [<img src="images/032818_0958_HowtoDownlo34.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo34.png)
 
 
 
-**단계 2)** 설치될 패키지 목록을 확인할 수 있을 것이다. y를 입력한다.
+**단계 2)** 설치될 패키지 목록을 확인할 수 있을 것이다. `y`를 입력한다.
 
 [<img src="images/032818_0958_HowtoDownlo35.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo35.png)
 
@@ -315,23 +333,29 @@ Or
 
 
 
-## 시험
+## 시험(Test)
 
 Terminal에서 Rstudio를 열고 스크립트를 열어라. 그리고 다음의 명령어를 입력하라.
 
 1. \## In Rstudio 
 
-   **summary**(cars)
+   ```
+   summary(cars)
+   ```
+
+   
 
 2. Run을 클릭
 
 3. Output을 확인한다.
 
+
+
 [<img src="images/032818_0958_HowtoDownlo40.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo40.png)
 
 
 
-여러분이 summary 통계수치를 확인할 수 있다면 이제 작동하는 것이다. 파일을 저장하지 말고 Rstudio를 닫을 수 있다.
+여러분이 **summary** 통계수치를 확인할 수 있다면 이제 작동하는 것이다. 파일을 저장하지 말고 Rstudio를 닫을 수 있다.
 
 
 
@@ -388,10 +412,15 @@ R에서 코드를 실행하는데에는 두 가지 방법이 있다.
 
 **주의**: 두번쨰 줄(즉, `slice_vector[1:5]`)에 커서를 위치시킨 다음 run을 클릭하면, Console은 에러를 표시한다. 그것은 우리가 첫번째 줄을 실행하지 않았기 때문이다.
 
+
+
 [<img src="images/032818_0958_HowtoDownlo47.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo47.png)
 
 마찬가지로, 빈 줄에 커서를 위치시키고 run을 클릭하면 R은 빈 출력을 반환한다.
 
+
+
 [<img src="images/032818_0958_HowtoDownlo48.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032818_0958_HowtoDownlo48.png)
 
  
+

@@ -358,3 +358,57 @@ degree(sn.df, vmax)   # vmax 노드의 연결정도 값
 degree(sn.df, "1")    # "1" 노드의 연결정도 값
 
 summary(degree(sn.df))  # 연결 정도에 대한 요약
+
+plot(degree(sn.df), xlab="사용자 번호", ylab="연결 정도", type='h')  # 사용자별 연결정도 그래프
+
+sn.df.dist <- degree.distribution(sn.df)     # 연결 정도에 대한 분포
+
+plot(sn.df.dist, xlab="연결 정도", ylab="확률")  # 연결 정도 분포의 출력
+
+#---------------------------------------------------------------
+# 6. 근접 중심성/중심화 (p.352)
+#---------------------------------------------------------------
+closeness(sn.df, normalized=TRUE)
+
+tmax <- centralization.closeness.tmax(sn.df)
+centralization.closeness(sn.df, normalized=FALSE)$centralization / tmax
+
+#---------------------------------------------------------------
+# 7. 중개 중심성/중심화 (p.353)
+#---------------------------------------------------------------
+betweenness(sn.df, normalized=TRUE)
+
+tmax <- centralization.betweenness.tmax(sn.df)
+centralization.betweenness(sn.df, normalized=FALSE)$centralization / tmax
+
+#---------------------------------------------------------------
+# 8. 밀도 (p.353)
+#---------------------------------------------------------------
+graph.density(sn.df)   # 총 연결 정도를 연결 가능한 수로 나눈 비율
+
+#---------------------------------------------------------------
+# 9. 경로 (p.354)
+#---------------------------------------------------------------
+
+# 9-1. 경로 평균
+#---------------------------------------------------------------
+average.path.length(sn.df)   # 네트워크 경로들에 대한 평균 => 임의의 두 사용자를 연결할 때의 단계 수
+
+# 9-2 부분 네트워크
+#---------------------------------------------------------------
+sn10 <- subset(sn, sn$V1<10 & sn$V2<10)   # 10보다 작은 사용자 ID를 갖는 네트워크
+sn10.graph <- graph.data.frame(sn10, directed=FALSE) # 그래프 데이터 프레임으로 변환
+
+plot(sn10.graph)                                     # 시각화
+
+# 9-3 최단 경로
+#---------------------------------------------------------------
+shortest.paths(sn10.graph)                           # 0~9번 사용자의 최단 경로 행렬
+
+get.shortest.paths(sn10.graph, "5")                  # 5번 사용자와 연결된 최단 경로
+get.shortest.paths(sn10.graph, "5", "9")             # 5번 사용자와 9번 사용자간 최단 경로
+
+get.all.shortest.paths(sn10.graph, "5", c("8", "9")) # 5번 사용자와 8번, 9번 사용자간 최단 경로
+   
+###############################
+
