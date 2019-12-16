@@ -19,7 +19,7 @@ R은 데이터 과학자나 구글, 에어비엔비, 페이스북 등과 같은 
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [ **Tutorial 01**](./r-programming-introduction-basics_kr.html) | R 프로그래밍 언어 : 소개와 기초                              |
 | [ **Tutorial 02**](./download-install-r-rstudio_kr.html)     | Mac이나 Windows용 R, RStudio, Anaconda의 다운로드와 설치방법 |
-| [ **Tutorial 03**](./r-data-types-operator_kr.html)          | 데이터 타입, 산술 및 논리 연산자 (예제 포함)                 |
+| [ **Tutorial 03**](./r-data-types-operator_kr.html)          | 데이터 타입, 산술 및 논리 연산자                             |
 | [ **Tutorial 04**](./r-matrix-tutorial_kr.html)              | 행렬 : 생성, 출력, 열의 추가, 분할                           |
 | [ **Tutorial 05**](./r-factor-categorical-continuous_kr.html) | Factor: 범주형 변수와 연속형 변수                            |
 
@@ -28,7 +28,7 @@ R은 데이터 과학자나 구글, 에어비엔비, 페이스북 등과 같은 
 | 자료 준비                                             | (Data Preparation)                                         |
 | ----------------------------------------------------- | ---------------------------------------------------------- |
 | [ **Tutorial 06**](./r-data-frames_kr.html)           | 데이터 프레임: 생성, 추가, 선택, 부분집합                  |
-| [ **Tutorial 07**](./r-lists-create-select_kr.html)   | 리스트 : 생성, 요소의 선택 (예제 포함)                     |
+| [ **Tutorial 07**](./r-lists-create-select_kr.html)   | 리스트 : 생성, 요소의 선택                                 |
 | [ **Tutorial 08**](./r-sort-data-frame_kr.html)       | order( )를 이용한 데이터 프레임 정렬                       |
 | [ **Tutorial 09**](./r-dplyr-tutorial_kr.html)        | dplyr : 자료 결합 & 클린징                                 |
 | [ **Tutorial 10**](./r-merge-data-frames_kr.html)     | 데이터 프레임 결합(Merge): 완전(Full) & 부분(Partial) 대응 |
