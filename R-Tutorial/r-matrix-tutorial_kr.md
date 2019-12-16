@@ -88,6 +88,8 @@ matrix_c
 
 ## dim()를 이용하여 행렬의 차원을 출력하기
 
+
+
 **예제 1:** `matrix_a`의 차원 출력하기
 
 ```
@@ -103,7 +105,7 @@ dim(matrix_a)
 
 
 
-**예제 :**
+**예제 2:**
 
 ```
 dim(matrix_c)
@@ -117,9 +119,55 @@ dim(matrix_c)
 
 
 
-## 행렬에 '열(column)' 추가하기 : `cbind()` 함수 이용
+>**dim()을 이용한 행렬 생성 방법**
+>
+>```{r}
+>c <- 1:6
+>dim(c) <- c(3,2)
+>```
+>
+>결과: 
+>
+>```{r}
+>##      [,1] [,2]
+>## [1,]    1    4
+>## [2,]    2    5
+>## [3,]    3    6
+>```
+
+
+
+### 행의 갯수와 열의 갯수 확인하기 : `nrow()`와 `ncol()` 함수 이용
+
+벡터의 `length()` 함수가 행렬에서는 `nrow()`와 `ncol()`로 확장된다.
+
+
+
+**예제 3:**
+
+```{r}
+nrow(matrix_a)
+ncol(matrix_a)
+```
+
+**결과 :** 
+
+```
+> nrow(matrix_a)
+## [1] 5
+> ncol(matrix_a)
+## [1] 2
+```
+
+
+
+## 행렬에 '행(row) / 열(column)' 추가하기
 
 `cbind( )` 함수를 이용하여 하나의 행렬에 **열을 추가**할 수 있다. `cbind( )`는 column binding을 의미한다. cbind( )는 지정한 만큼의 행 또는 열을 결합시킬 수 있다. 예를 들어, 앞의 예는 5x2 행렬을 생성하였다. 이 행렬에 3번째 열을 추가하고 차원이 5x3 인지 확인해 보자.
+
+
+
+### 열 추가하기 : `cbind()`함수 이용
 
 
 
@@ -197,7 +245,15 @@ dim(matrix_d)
 
 
 
-`cbind()`는 열을 결합시키는 반면, `rbind()`는 행을 결합한다. matrix_c 행렬에 하나의 행을 추가해 보고 차원이 5x3인지 확인해 보자.
+### 행 추가하기 : `rbind()`함수 이용
+
+
+
+`cbind()`는 열을 결합시키는 반면, `rbind()`는 행(row)을 결합한다. matrix_c 행렬에 하나의 행을 추가해 보고 차원이 5x3인지 확인해 보자.
+
+
+
+**예제 5:**
 
 ```
 matrix_c <-matrix(1:12, byrow = FALSE, ncol = 3)
@@ -211,10 +267,61 @@ matrix_c <- rbind(matrix_c, add_row)
 dim(matrix_c)
 ```
 
-결과:
+**결과:**
 
 ```
 ## [1] 5 3
+```
+
+
+
+## 행과 열에 이름 붙이고 확인하기
+
+벡터에서 사용한 `names()`가 행에 대하여는 `rownames()`로, 열에 대해서는 `colnames()`로 확장된다. 
+
+
+
+**예제 1:**
+
+```{r}
+# Construct a matrix with 5 rows that contain the numbers 1 up to 10 and 'byrow =  TRUE' 
+matrix_a <-matrix(1:10, byrow = TRUE, nrow = 5)
+matrix_a
+
+rownames(matrix_a) <- c("Row 1", "Row 2", "Row 3", "Row 4", "Row 5")
+colnames(matrix_a) <- c("Col 1", "Col 2")
+matrix_a
+
+rownames(matrix_a)
+colnames(matrix_a)
+```
+
+**결과:**
+
+```
+> matrix_a
+##      [,1] [,2]
+## [1,]    1    2
+## [2,]    3    4
+## [3,]    5    6
+## [4,]    7    8
+## [5,]    9   10
+> 
+> rownames(matrix_a) <- c("Row 1", "Row 2", "Row 3", "Row 4", "Row 5")
+> colnames(matrix_a) <- c("Col 1", "Col 2")
+> matrix_a
+##       Col 1 Col 2
+## Row 1     1     2
+## Row 2     3     4
+## Row 3     5     6
+## Row 4     7     8
+## Row 5     9    10
+>
+> colnames(matrix_a)
+## [1] "Col 1" "Col 2"
+> rownames(matrix_a)
+## [1] "Row 1" "Row 2" "Row 3" "Row 4" "Row 5"
+
 ```
 
 
