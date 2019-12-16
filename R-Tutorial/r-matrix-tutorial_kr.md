@@ -8,7 +8,7 @@
 
 **주의:** R에서는 2차원 이상의 배열을 생성할 수 있다.
 
-[<img src="images/032918_1422_RMatrixTuto1.png" alt="R Matrix Tutorial" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1422_RMatrixTuto1.png)
+![images/032918_1422_RMatrixTuto1.png](images/032918_1422_RMatrixTuto1.png)
 
 
 
@@ -25,7 +25,11 @@ matrix(data, nrow, ncol, byrow = FALSE)
 - **data**: 행렬의 행과 열에 정렬될 요소들의 집합.
 - **nrow**: 행의 수
 - **ncol**: 열의 수
-- **byrow**: 행 우선으로 데이터가 왼쪽에서 오른쪽 방향으로 채워진다. 열 우선으로 행렬의 값을 채우고 싶다면 즉, 데이터가 열 우선으로 위에서 아래로 채워지게 하고 싶다면  `byrow = FALSE` (기본 값)를 사용한다.
+- **byrow**: **행 우선**으로 데이터가 왼쪽에서 오른쪽 방향으로 채워진다. 열 우선으로 행렬의 값을 채우고 싶다면 즉, 데이터가 열 우선으로 위에서 아래로 채워지게 하고 싶다면  `byrow = FALSE` (기본 값)를 사용한다.
+
+
+
+**예제 1:**
 
 1에서 10의 연속된 수로 2개의 5x2 행렬을 만들어 보자. 하나는 `byrow=TRUE`를 이용하고, 다른 하나는 `byrow=FALSE`를 사용하고 그 차이를 살펴보자.
 
@@ -35,11 +39,15 @@ matrix_a <-matrix(1:10, byrow = TRUE, nrow = 5)
 matrix_a
 ```
 
-결과:
+**결과:**
 
-[<img src="images/032918_1422_RMatrixTuto2.png" alt="R Matrix Tutorial" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1422_RMatrixTuto2.png)
+![images/032918_1422_RMatrixTuto2.png](images/032918_1422_RMatrixTuto2.png)
 
 
+
+
+
+**예제 2:** 
 
 ```
 # Construct a matrix with 5 rows that contain the numbers 1 up to 10 and byrow =  FALSE
@@ -47,13 +55,17 @@ matrix_b <-matrix(1:10, byrow = FALSE, nrow = 5)
 matrix_b
 ```
 
-Output:
+**결과:**
 
-[<img src="images/032918_1422_RMatrixTuto3.png" alt="R Matrix Tutorial" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1422_RMatrixTuto3.png)
+![images/032918_1422_RMatrixTuto3.png](images/032918_1422_RMatrixTuto3.png)
 
 
 
 **주의**: `matrix_b <-matrix(1:10, byrow = FALSE, ncol = 2)` 명령을 사용하면 위와 동일한 결과를 가지게 될 것이다.
+
+
+
+**예제 3:**
 
 `ncol`을 이용해서 4 x 3 행렬을 생성할 수 있다.  R은 3개의 열을 생성하여 각 줄을 위에서 아래 방향으로 행을 채우게 될 것이다. 다음의 예를 확인하라.
 
@@ -62,7 +74,7 @@ matrix_c <-matrix(1:12, byrow = FALSE, ncol = 3)
 matrix_c
 ```
 
-결과:
+**결과:**
 
 ```
 ##       [,1] [,2] [,3]
@@ -74,7 +86,9 @@ matrix_c
 
 
 
-#### dim()를 이용하여 행렬의 차원을 출력하기
+## dim()를 이용하여 행렬의 차원을 출력하기
+
+**예제 1:** `matrix_a`의 차원 출력하기
 
 ```
 # Print dimension of the matrix with dim()
@@ -103,9 +117,11 @@ dim(matrix_c)
 
 
 
-## 행렬에 열 추가하기 : `cbind()` 함수 이용
+## 행렬에 '열(column)' 추가하기 : `cbind()` 함수 이용
 
-`cbind( )` 함수를 이용하여 하나의 행렬에 열을 추가할 수 있다. `cbind( )`는 column binding을 의미한다. cbind( )는 지정한 만큼의 행 또는 열을 결합시킬 수 있다. 예를 들어, 앞의 예는 5x2 행렬을 생성하였다. 이 행렬에 3번째 열을 추가하고 차원이 5x3 인지 확인해 보자.
+`cbind( )` 함수를 이용하여 하나의 행렬에 **열을 추가**할 수 있다. `cbind( )`는 column binding을 의미한다. cbind( )는 지정한 만큼의 행 또는 열을 결합시킬 수 있다. 예를 들어, 앞의 예는 5x2 행렬을 생성하였다. 이 행렬에 3번째 열을 추가하고 차원이 5x3 인지 확인해 보자.
+
+
 
 **예제 1 :**
 
@@ -116,7 +132,7 @@ matrix_a1 <- cbind(matrix_a, 1:5)
 dim(matrix_a1)
 ```
 
-결과:
+**결과:**
 
 ```
 ## [1] 5 3
@@ -124,13 +140,13 @@ dim(matrix_a1)
 
 
 
-**예제 :**
+**예제 2:**
 
 ```
 matrix_a1
 ```
 
-결과 :
+**결과 :**
 
 ```
 ##       [,1] [,2] [,3]
@@ -141,15 +157,17 @@ matrix_a1
 ## [5,]    9   10    5
 ```
 
-**예제 2:**
 
-우리는 한 개 이상의 열도 추가할 수 있다. 다음의 수열로 만들어진 martix_a2 행렬을 살펴보자. 새 행렬의 차원은 13에서 24까지의 숫자로 이루어진 4x6이 될 것이다.
+
+**예제 3:**
+
+우리는 **한 개 이상의 열도 추가**할 수 있다. 다음의 수열로 만들어진 martix_a2 행렬을 살펴보자. 새 행렬의 차원은 13에서 24까지의 숫자로 이루어진 4x3 행렬이 될 것이다.
 
 ```
 matrix_a2 <-matrix(13:24, byrow = FALSE, ncol = 3)
 ```
 
-결과:
+**결과:**
 
 ```
 ##      [,1] [,2] [,3]
@@ -161,7 +179,7 @@ matrix_a2 <-matrix(13:24, byrow = FALSE, ncol = 3)
 
 
 
-**예제 :**
+**예제 4:**
 
 ```
 matrix_c <-matrix(1:12, byrow = FALSE, ncol = 3)		
@@ -169,7 +187,7 @@ matrix_d <- cbind(matrix_a2, matrix_c)
 dim(matrix_d)
 ```
 
-결과:
+**결과:**
 
 ```
 ## [1] 4 6
@@ -179,7 +197,7 @@ dim(matrix_d)
 
 
 
-`cbind()`는 열을 결합시키는 반면, `rbind()`는 행을 결합한다. matrix_c 행렬에 하나의 행을 추가해 보고 차원이 6x3인지 확인해 보자.
+`cbind()`는 열을 결합시키는 반면, `rbind()`는 행을 결합한다. matrix_c 행렬에 하나의 행을 추가해 보고 차원이 5x3인지 확인해 보자.
 
 ```
 matrix_c <-matrix(1:12, byrow = FALSE, ncol = 3)
@@ -187,7 +205,7 @@ matrix_c <-matrix(1:12, byrow = FALSE, ncol = 3)
 add_row <- 1:3
 
 # Append to the matrix
-matrix_c <- rbind(matrix_b, add_row)
+matrix_c <- rbind(matrix_c, add_row)
 
 # Check the dimension
 dim(matrix_c)
@@ -196,14 +214,14 @@ dim(matrix_c)
 결과:
 
 ```
-## [1] 6 3
+## [1] 5 3
 ```
 
 
 
 ## 행렬의 분할
 
-우리는 대괄호(`[]`)를 이용하여 행렬로부터 하나 또는 그 이상의 요소들을 선택할 수 있다. 이것이 행렬 분할의 원리이다.
+우리는 **대괄호(`[]`)를 이용**하여 <u>행렬로부터 하나 또는 그 이상의 요소들을 선택</u>할 수 있다. 이것이 **행렬 분할**의 원리이다.
 
 예를 들어: 
 
@@ -211,13 +229,32 @@ dim(matrix_c)
 - `matrix_c[1:3,2:3]`는 1,2,3 행과 2,3 열의 데이터로 이루어진 행렬이다.
 - `matrix_c[,1]` 는 첫번째 열의 모든 요소를 선택한다.
 - `matrix_c[1,]`는 첫번째 행의 모든 요소를 선택한다.
+- `matrix_c[-1,]`는 첫번째 행을 제외한 모든 요소를 선택한다.
+- `matrix_c[,-1]` 는 첫번째 열을 제외한 모든 요소를 선택한다.
 
 
 
 위의 코드에 대해 여러분이 얻게 될 결과는 다음과 같다.
 
+![images/032918_1422_RMatrixTuto4.png](images/032918_1422_RMatrixTuto4.png)
 
 
-[<img src="images/032918_1422_RMatrixTuto4.png" alt="R Matrix Tutorial" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1422_RMatrixTuto4.png)
 
- 
+ **예제 1 :**
+
+```{r}
+matrix_c[1,2]
+
+matrix_c[1:3, 2:3]
+
+matrix_c[,1]
+
+matrix_c[1,]
+
+matrix_c[-1,]
+
+matrix_c[,-1]
+```
+
+
+
