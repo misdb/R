@@ -25,16 +25,14 @@ factor(x = character(), levels, labels = levels, ordered = is.ordered(x))
 
 **인수(Arguments):**
 
-- **x**: 데이터의 벡터. 실수가 아닌 문자열이나 정수여야 한다.
-- **Levels**: x가 가질 수 있는 가능한 값의 벡터. 이 인수는 선택사항이다. 기본 값은 벡터 x의 각 항목들의 단일값 목록이다.
-- **Labels**: x 데이터에 라벨을 추가한다. 예를 들어,  `male`라벨에는 1을, 반면에  `female`라벨에는 0.
+- **x**: 데이터의 벡터. 실수가 아닌 **문자열**이나 **정수**여야 한다.
+- **Levels**: **x가 가질 수 있는 가능한 값의 벡터**. 이 인수는 선택사항이다. 기본 값은 벡터 x의 각 항목들의 단일값 목록이다.
+- **Labels**: x 데이터에 **라벨**을 추가한다. 예를 들어,  `male`라벨에는 1을, 반면에  `female`라벨에는 0.
 - **ordered**: levels이 서열화되어야 하는지를 결정한다.
 
 
 
-**예제 :**
-
-factor 데이터 프레임을 생성해 보자.
+**예제 :** factor 데이터 프레임을 생성해 보자.
 
 ```
 # Create gender vector
@@ -61,7 +59,7 @@ class(factor_gender_vector)
 
 ### 범주형 변수
 
-서너 개의 값을 갖는 범주형 변수로 순서가 중요하지 않다. 예를 들어, 남성 혹은 여성은 범주형 변수이지만 서열을 가지고 있지 않다.
+서너 개의 값을 갖는 범주형 변수로 <u>순서가 중요하지 않다</u>. 예를 들어, 남성 혹은 여성은 범주형 변수이지만 서열을 가지고 있지 않다.
 
 ```
 # Create a color vector
@@ -85,19 +83,21 @@ factor_color
 
 ### 서열 범주형 변수
 
-서열 명목형 변수(Ordinal categorical variables)는  자연스런 서열을 가지고 있다. 물론 가장 낮은 서열부터 높은 서열 순을 나타내기 위해 `order = TRUE`를 이용하고, 가장 높은 서열에서 가장 낮은 서열로 나타내기 위해서는 `order = FALSE`를 이용하는 등 그 서열을 정할 수도 있다. 
+**서열 명목형 변수(Ordinal categorical variables)**는  자연스런 서열을 가지고 있다. 물론 가장 낮은 서열부터 높은 서열 순을 나타내기 위해 `order = TRUE`를 이용하고, 가장 높은 서열에서 가장 낮은 서열로 나타내기 위해서는 `order = FALSE`를 이용하는 등 그 서열을 정할 수도 있다. 
 
 
 
-**예제:**
+**예제 1:**
 
 우리는 각각의 factor 값을 세기 위해 `summary()` 함수를 사용할 수 있다.
 
 ```
 # Create Ordinal categorical vector 
 day_vector <- c('evening', 'morning', 'afternoon', 'midday', 'midnight', 'evening')
+
 # Convert `day_vector` to a factor with ordered level
 factor_day <- factor(day_vector, order = TRUE, levels =c('morning', 'midday', 'afternoon', 'evening', 'midnight'))
+
 # Print the new variable
 factor_day
 ```
@@ -111,7 +111,7 @@ midnight  evening
 
 
 
-**예제:**
+**예제 2:**
 
 ```
 ## Levels: morning < midday < afternoon < evening < midnight
@@ -133,7 +133,7 @@ R은 `levels=`를 이용하여 'morning'에서 부터 'midnight' 순으로 level
 
 ## 연속형 변수
 
-연속형 변수(Continuous class variables)는 R에서 기본 값이다. 이 변수들은 숫자 또는 정수를 저장한다. 우리는 다음의 데이터 세트에서 그것에 대해 살펴볼 수 있다. `mtcars`는 R에 내장된 데이터 세트이다. 이 데이터 세트는 다양한 유형의 자동차에 관한 정보를 담고 있다. 우리는 `mtcars`를 이용하여 그 데이터를 import 할 수 있다. mpg(mile per gallon) 변수의 class를 확인해 보자. 그것은 연속형 변수를 포함하는 `numeric` 값을 반환한다.
+**연속형 변수(Continuous class variables)**는 R에서 기본 값이다. 이 변수들은 숫자 또는 정수를 저장한다. 우리는 다음의 데이터 세트에서 그것에 대해 살펴볼 수 있다. `mtcars`는 <u>R에 내장된 데이터 세트</u>이다. 이 데이터 세트는 다양한 유형의 자동차에 관한 정보를 담고 있다. 우리는 `mtcars`를 이용하여 그 데이터를 import 할 수 있다. mpg(mile per gallon) 변수의 class를 확인해 보자. 그것은 연속형 변수를 포함하는 `numeric` 값을 반환한다.
 
 ```
 dataset <- mtcars
@@ -147,4 +147,3 @@ class(dataset$mpg)
 ```
 
  
-
