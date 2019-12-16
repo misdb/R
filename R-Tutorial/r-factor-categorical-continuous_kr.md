@@ -4,18 +4,18 @@
 
 ## factor
 
-factor는 제한된 수의 상이한 값을 갖는 R의 변수이며 그러한 변수는 종종 범주형 변수(categorical variables)라 불린다.
+factor는 제한된 수의 상이한 값을 갖는 R의 변수이며 그러한 변수는 종종 **범주형 변수(categorical variables)**라 불린다.
 
-데이터 세트에서 우리는 **범주형**과 **연속형**의 두 가지 유형의 변수를 구분할 수 있다.
+R에서 사용하는 데이터 세트는 **범주형**과 **연속형**의 두 가지 유형의 변수로 구분될 수 있다.
 
-- 범주형 변수에서는 그 값들이 제한되어 있고 보통 특정 유한한 그룹에 기반한다. 예를 들어, 범주형 변수에는 국가, 연도, 성별, 그리고 직업 등을 들 수 있다.
-- 그러나 연속형 변수(continuous variable)는 정수형에서 실수에 이르는 어떠한 값도 가질 수 있다. 예를 들어, 수익, 주식의 가격 등이 있다.
+- **범주형 변수**에서는 그 값들이 제한되어 있고 보통 특정 유한한 그룹에 기반한다. 예를 들어, 범주형 변수에는 국가, 연도, 성별, 그리고 직업 등을 들 수 있다.
+- 그러나 **연속형 변수(continuous variable)**는 정수형에서 실수에 이르는 어떠한 값도 가질 수 있다. 예를 들어, 수익, 주식의 가격 등이 있다.
 
 
 
 ## 범주형 변수
 
-R은 범주형 변수를 factor로 저장한다. 문자 변수를 factor 변수로 변환하는 아래의 코드를 검토해 보자. 문자들은 기계 학습 알고리즘에서는 지원되지 않으며, 유일한 방법은 문자열을 정수로 변환하는 것이다.
+R은 범주형 변수를 **factor**로 저장한다. 문자 변수를 factor 변수로 변환하는 아래의 코드를 검토해 보자. 문자들은 기계 학습 알고리즘에서는 지원되지 않으며, 유일한 방법은 문자열을 정수로 변환하는 것이다.
 
 **Syntax**
 
@@ -32,15 +32,15 @@ factor(x = character(), levels, labels = levels, ordered = is.ordered(x))
 
 
 
-**예제 :** factor 데이터 프레임을 생성해 보자.
+**예제 1:** factor 데이터를 생성해 보자.
 
-```
+```{r}
 # Create gender vector
 gender_vector <- c("Male", "Female", "Female", "Male", "Male")
 class(gender_vector)
 
 # Convert gender_vector to a factor
-factor_gender_vector <-factor(gender_vector)
+factor_gender_vector <- factor(gender_vector)
 class(factor_gender_vector)
 ```
 
@@ -57,9 +57,13 @@ class(factor_gender_vector)
 
 
 
-### 범주형 변수
+### 명목 범주형 변수
 
-서너 개의 값을 갖는 범주형 변수로 <u>순서가 중요하지 않다</u>. 예를 들어, 남성 혹은 여성은 범주형 변수이지만 서열을 가지고 있지 않다.
+**명목 범주형 변수(Nominal categorical variable)**는 서너 개의 값을 갖는 범주형 변수로 <u>순서가 중요하지 않다</u>. 예를 들어, 남성 혹은 여성은 범주형 변수이지만 서열을 가지고 있지 않다.
+
+
+
+**예제 2:**
 
 ```
 # Create a color vector
@@ -77,7 +81,7 @@ factor_color
 ## Levels: black blue green red white yellow
 ```
 
-`factor_color` 변수에서 우리는 색깔의 서열을 구분할 수 없다.
+`factor_color` 변수에서 우리는 색깔의 서열을 구분할 수 없다 (**알파벳 순**으로 level이 결정된다).
 
 
 
@@ -87,7 +91,7 @@ factor_color
 
 
 
-**예제 1:**
+**예제 3:**
 
 우리는 각각의 factor 값을 세기 위해 `summary()` 함수를 사용할 수 있다.
 
@@ -111,7 +115,7 @@ midnight  evening
 
 
 
-**예제 2:**
+**예제 4:**
 
 ```
 ## Levels: morning < midday < afternoon < evening < midnight
