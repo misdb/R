@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 네트워크를 igraph 개체로 변환하기 | R을 이용한 네트워크 분석과 시각화</title>
+  <meta name="description" content="Katherine Ognyanova의 ‘Network Analysis and Visualization with R’ 세미나 자료를 번역한 것입니다. 번역의 오류는 번역자의 잘못입니다. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 네트워크를 igraph 개체로 변환하기 | R을 이용한 네트워크 분석과 시각화" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Katherine Ognyanova의 ‘Network Analysis and Visualization with R’ 세미나 자료를 번역한 것입니다. 번역의 오류는 번역자의 잘못입니다. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="Network-Analysis" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 네트워크를 igraph 개체로 변환하기 | R을 이용한 네트워크 분석과 시각화" />
+  
+  <meta name="twitter:description" content="Katherine Ognyanova의 ‘Network Analysis and Visualization with R’ 세미나 자료를 번역한 것입니다. 번역의 오류는 번역자의 잘못입니다. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Translated by Dae Ho Kim, Mokwon University" />
+
+
+<meta name="date" content="2020-12-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="Reading-Network-Data-Files.html"/>
+<link rel="next" href="Plotting-Networks-with-Igraph.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> R을 이용한 네트워크 분석과 시각화</a></li>
+<li class="chapter" data-level="2" data-path="R-Basics.html"><a href="R-Basics.html"><i class="fa fa-check"></i><b>2</b> R 기초 복습</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="R-Basics.html"><a href="R-Basics.html#할당assignment"><i class="fa fa-check"></i><b>2.1</b> <em>할당(Assignment)</em></a></li>
+<li class="chapter" data-level="2.2" data-path="R-Basics.html"><a href="R-Basics.html#값의-비교value-comparisons"><i class="fa fa-check"></i><b>2.2</b> <em>값의 비교(Value comparisons)</em></a></li>
+<li class="chapter" data-level="2.3" data-path="R-Basics.html"><a href="R-Basics.html#특별한-상수special-constants"><i class="fa fa-check"></i><b>2.3</b> <em>특별한 상수(Special constants)</em></a></li>
+<li class="chapter" data-level="2.4" data-path="R-Basics.html"><a href="R-Basics.html#벡터vectors"><i class="fa fa-check"></i><b>2.4</b> <em>벡터(Vectors)</em></a></li>
+<li class="chapter" data-level="2.5" data-path="R-Basics.html"><a href="R-Basics.html#factors"><i class="fa fa-check"></i><b>2.5</b> <em>Factors</em></a></li>
+<li class="chapter" data-level="2.6" data-path="R-Basics.html"><a href="R-Basics.html#행렬과-배열matrces-arrays"><i class="fa fa-check"></i><b>2.6</b> <em>행렬과 배열(Matrces &amp; Arrays)</em></a></li>
+<li class="chapter" data-level="2.7" data-path="R-Basics.html"><a href="R-Basics.html#리스트lists"><i class="fa fa-check"></i><b>2.7</b> <em>리스트(Lists)</em></a></li>
+<li class="chapter" data-level="2.8" data-path="R-Basics.html"><a href="R-Basics.html#데이터-프레임data-frames"><i class="fa fa-check"></i><b>2.8</b> <em>데이터 프레임(Data Frames)</em></a></li>
+<li class="chapter" data-level="2.9" data-path="R-Basics.html"><a href="R-Basics.html#흐름-제어와-반복-구문flow-control-and-loops"><i class="fa fa-check"></i><b>2.9</b> <em>흐름 제어와 반복 구문(Flow Control and loops)</em></a></li>
+<li class="chapter" data-level="2.10" data-path="R-Basics.html"><a href="R-Basics.html#r-플롯과-색-지정"><i class="fa fa-check"></i><b>2.10</b> <em>R 플롯과 색 지정</em></a></li>
+<li class="chapter" data-level="2.11" data-path="R-Basics.html"><a href="R-Basics.html#r-문제-해결"><i class="fa fa-check"></i><b>2.11</b> <em>R 문제 해결</em></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html"><i class="fa fa-check"></i><b>3</b> <code>igraph</code>를 이용한 네트워크</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html#네트워크-생성create-networks"><i class="fa fa-check"></i><b>3.1</b> <em>네트워크 생성(Create networks)</em></a></li>
+<li class="chapter" data-level="3.2" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html#에지edge-정점vertex-그리고-네트워크-속성network-attributes"><i class="fa fa-check"></i><b>3.2</b> <em>에지(Edge), 정점(vertex), 그리고 네트워크 속성(network attributes)</em></a></li>
+<li class="chapter" data-level="3.3" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html#특수-그래프specific-graphs와-그래프-모델graph-models"><i class="fa fa-check"></i><b>3.3</b> <em>특수 그래프(Specific graphs)와 그래프 모델(graph models)</em></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html"><i class="fa fa-check"></i><b>4</b> 파일로 부터 네트워크 데이터 읽어오기</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html#데이터-세트-1-에지-목록edgelist"><i class="fa fa-check"></i><b>4.1</b> <em>데이터 세트 1: 에지 목록(edgelist)</em></a></li>
+<li class="chapter" data-level="4.2" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html#데이터-세트-2-인접-행렬adjacent-matrix"><i class="fa fa-check"></i><b>4.2</b> <em>데이터 세트 2: 인접 행렬(adjacent matrix)</em></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Turning-Networks-into-Igraph.html"><a href="Turning-Networks-into-Igraph.html"><i class="fa fa-check"></i><b>5</b> 네트워크를 igraph 개체로 변환하기</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="Turning-Networks-into-Igraph.html"><a href="Turning-Networks-into-Igraph.html#데이터-세트-1"><i class="fa fa-check"></i><b>5.1</b> <em>데이터 세트 1</em></a></li>
+<li class="chapter" data-level="5.2" data-path="Turning-Networks-into-Igraph.html"><a href="Turning-Networks-into-Igraph.html#데이터-세트-2"><i class="fa fa-check"></i><b>5.2</b> <em>데이터 세트 2</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html"><i class="fa fa-check"></i><b>6</b> igraph를 이용한 네트워크 시각화</a>
+<ul>
+<li><a href="Plotting-Networks-with-Igraph.html#plotting-parameters"><em>Plotting parameters</em></a></li>
+<li class="chapter" data-level="6.1" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#network-layouts"><i class="fa fa-check"></i><b>6.1</b> <em>Network layouts</em></a></li>
+<li class="chapter" data-level="6.2" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#네트워크-시각화-개선"><i class="fa fa-check"></i><b>6.2</b> <em>네트워크 시각화 개선</em></a></li>
+<li class="chapter" data-level="6.3" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#tkplot-패키지를-이용한-상호대화식-시각화"><i class="fa fa-check"></i><b>6.3</b> <em><code>tkplot</code> 패키지를 이용한 상호대화식 시각화</em></a></li>
+<li class="chapter" data-level="6.4" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#다른-네트워크-시각화-방법"><i class="fa fa-check"></i><b>6.4</b> <em>다른 네트워크 시각화 방법</em></a></li>
+<li class="chapter" data-level="6.5" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#igraph로-2-모드-네트워크-시각화하기"><i class="fa fa-check"></i><b>6.5</b> <em>igraph로 2-모드 네트워크 시각화하기</em></a></li>
+<li class="chapter" data-level="" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#참고자료"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html"><i class="fa fa-check"></i><b>7</b> 네트워크과 노드 설명</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#밀도density"><i class="fa fa-check"></i><b>7.1</b> <em>밀도(Density)</em></a></li>
+<li class="chapter" data-level="7.2" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#호혜성reciprocity"><i class="fa fa-check"></i><b>7.2</b> <em>호혜성(Reciprocity)</em></a></li>
+<li class="chapter" data-level="7.3" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#이행성transitivity"><i class="fa fa-check"></i><b>7.3</b> <em>이행성(Transitivity)</em></a></li>
+<li class="chapter" data-level="7.4" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#지름diameter"><i class="fa fa-check"></i><b>7.4</b> <em>지름(Diameter)</em></a></li>
+<li class="chapter" data-level="7.5" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#노드-연결-정도node-degrees"><i class="fa fa-check"></i><b>7.5</b> <em>노드 연결 정도(Node degrees)</em></a></li>
+<li class="chapter" data-level="7.6" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#연결-정도-분포degree-distribution"><i class="fa fa-check"></i><b>7.6</b> <em>연결 정도 분포(Degree distribution)</em></a></li>
+<li class="chapter" data-level="7.7" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#중심성과-중심화centrality-centralization"><i class="fa fa-check"></i><b>7.7</b> <em>중심성과 중심화(Centrality &amp; centralization)</em></a></li>
+<li class="chapter" data-level="7.8" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#허브와-오쏘러티hubs-and-authorities"><i class="fa fa-check"></i><b>7.8</b> <em>허브와 오쏘러티(Hubs and authorities)</em></a></li>
+<li class="chapter" data-level="" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#참고자료-1"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="Distances-and-Paths.html"><a href="Distances-and-Paths.html"><i class="fa fa-check"></i><b>8</b> 거리와 경로(Distances and paths)</a></li>
+<li class="chapter" data-level="9" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html"><i class="fa fa-check"></i><b>9</b> 서브 그룹과 커뮤니티</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html#클릭cliques"><i class="fa fa-check"></i><b>9.1</b> <em>클릭(Cliques)</em></a></li>
+<li class="chapter" data-level="9.2" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html#커뮤니티-발견community-detection"><i class="fa fa-check"></i><b>9.2</b> <em>커뮤니티 발견(Community detection)</em></a></li>
+<li class="chapter" data-level="" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html#참고자료-2"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="Assortativity-and-Homophily.html"><a href="Assortativity-and-Homophily.html"><i class="fa fa-check"></i><b>10</b> 동류성과 동질성</a>
+<ul>
+<li class="chapter" data-level="" data-path="Assortativity-and-Homophily.html"><a href="Assortativity-and-Homophily.html#참고자료-3"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R을 이용한 네트워크 분석과 시각화</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Turning_Networks_into_Igraph" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> 네트워크를 igraph 개체로 변환하기</h1>
+<p>원 데이터를 igraph 네트워크 개체로 변환하면서 시작한다. 여기서는 <code>d</code>와 <code>vertices</code>라는 두 개의 데이터 프레임을 취하는 <code>graph.data.frame()</code> 함수를 사용한다. 이 함수의 주요 인수는 다음과 같다.</p>
+<ul>
+<li><strong>d</strong>는 네트워크의 에지들을 서술한다. 첫 두 개의 열은 각 에지의 소스와 대상 노드의 ID 들이다. 다음의 열들은 에지 속성(<code>weight</code>, <code>type</code>, <code>label</code>, 또는 그 밖의 속성)들이다.</li>
+<li><strong>vertices</strong> 는 노드 ID들의 열로 시작한다. 이어지는 열들은 노드의 속성들로 해석된다.</li>
+</ul>
+<div id="데이터-세트-1" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> <em>데이터 세트 1</em></h2>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="Turning-Networks-into-Igraph.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb281-2"><a href="Turning-Networks-into-Igraph.html#cb281-2" aria-hidden="true" tabindex="-1"></a>net <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(<span class="at">d=</span>links, <span class="at">vertices=</span>nodes, <span class="at">directed=</span>T) </span>
+<span id="cb281-3"><a href="Turning-Networks-into-Igraph.html#cb281-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(net)</span></code></pre></div>
+<pre><code>## [1] &quot;igraph&quot;</code></pre>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="Turning-Networks-into-Igraph.html#cb283-1" aria-hidden="true" tabindex="-1"></a>net</span></code></pre></div>
+<pre><code>## IGRAPH 9239b68 DNW- 17 49 -- 
+## + attr: name (v/c), media (v/c), media.type (v/n), type.label (v/c),
+## | audience.size (v/n), type (e/c), weight (e/n)
+## + edges from 9239b68 (vertex names):
+##  [1] s01-&gt;s02 s01-&gt;s03 s01-&gt;s04 s01-&gt;s15 s02-&gt;s01 s02-&gt;s03 s02-&gt;s09 s02-&gt;s10
+##  [9] s03-&gt;s01 s03-&gt;s04 s03-&gt;s05 s03-&gt;s08 s03-&gt;s10 s03-&gt;s11 s03-&gt;s12 s04-&gt;s03
+## [17] s04-&gt;s06 s04-&gt;s11 s04-&gt;s12 s04-&gt;s17 s05-&gt;s01 s05-&gt;s02 s05-&gt;s09 s05-&gt;s15
+## [25] s06-&gt;s06 s06-&gt;s16 s06-&gt;s17 s07-&gt;s03 s07-&gt;s08 s07-&gt;s10 s07-&gt;s14 s08-&gt;s03
+## [33] s08-&gt;s07 s08-&gt;s09 s09-&gt;s10 s10-&gt;s03 s12-&gt;s06 s12-&gt;s13 s12-&gt;s14 s13-&gt;s12
+## [41] s13-&gt;s17 s14-&gt;s11 s14-&gt;s13 s15-&gt;s01 s15-&gt;s04 s15-&gt;s06 s16-&gt;s06 s16-&gt;s17
+## [49] s17-&gt;s04</code></pre>
+<p>우리는 다음과 같이 노드, 에지 그리고 속성들에 쉽게 접근할 수 있다.</p>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="Turning-Networks-into-Igraph.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="fu">E</span>(net)           <span class="co"># &quot;net&quot; 개체의 에지들</span></span></code></pre></div>
+<pre><code>## + 49/49 edges from 9239b68 (vertex names):
+##  [1] s01-&gt;s02 s01-&gt;s03 s01-&gt;s04 s01-&gt;s15 s02-&gt;s01 s02-&gt;s03 s02-&gt;s09 s02-&gt;s10
+##  [9] s03-&gt;s01 s03-&gt;s04 s03-&gt;s05 s03-&gt;s08 s03-&gt;s10 s03-&gt;s11 s03-&gt;s12 s04-&gt;s03
+## [17] s04-&gt;s06 s04-&gt;s11 s04-&gt;s12 s04-&gt;s17 s05-&gt;s01 s05-&gt;s02 s05-&gt;s09 s05-&gt;s15
+## [25] s06-&gt;s06 s06-&gt;s16 s06-&gt;s17 s07-&gt;s03 s07-&gt;s08 s07-&gt;s10 s07-&gt;s14 s08-&gt;s03
+## [33] s08-&gt;s07 s08-&gt;s09 s09-&gt;s10 s10-&gt;s03 s12-&gt;s06 s12-&gt;s13 s12-&gt;s14 s13-&gt;s12
+## [41] s13-&gt;s17 s14-&gt;s11 s14-&gt;s13 s15-&gt;s01 s15-&gt;s04 s15-&gt;s06 s16-&gt;s06 s16-&gt;s17
+## [49] s17-&gt;s04</code></pre>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="Turning-Networks-into-Igraph.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(net)           <span class="co"># &quot;net&quot; 개체의 정점들</span></span></code></pre></div>
+<pre><code>## + 17/17 vertices, named, from 9239b68:
+##  [1] s01 s02 s03 s04 s05 s06 s07 s08 s09 s10 s11 s12 s13 s14 s15 s16 s17</code></pre>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="Turning-Networks-into-Igraph.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="fu">E</span>(net)<span class="sc">$</span>type      <span class="co"># 에지 속성 &quot;type&quot;</span></span></code></pre></div>
+<pre><code>##  [1] &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;mention&quot;   &quot;hyperlink&quot; &quot;hyperlink&quot;
+##  [7] &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;hyperlink&quot;
+## [13] &quot;mention&quot;   &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;mention&quot;   &quot;mention&quot;  
+## [19] &quot;hyperlink&quot; &quot;mention&quot;   &quot;mention&quot;   &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;mention&quot;  
+## [25] &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;mention&quot;   &quot;mention&quot;   &quot;mention&quot;   &quot;hyperlink&quot;
+## [31] &quot;mention&quot;   &quot;hyperlink&quot; &quot;mention&quot;   &quot;mention&quot;   &quot;mention&quot;   &quot;hyperlink&quot;
+## [37] &quot;mention&quot;   &quot;hyperlink&quot; &quot;mention&quot;   &quot;hyperlink&quot; &quot;mention&quot;   &quot;mention&quot;  
+## [43] &quot;mention&quot;   &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;mention&quot;  
+## [49] &quot;hyperlink&quot;</code></pre>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="Turning-Networks-into-Igraph.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(net)<span class="sc">$</span>media     <span class="co"># 정점 속성 &quot;media&quot;</span></span></code></pre></div>
+<pre><code>##  [1] &quot;NY Times&quot;            &quot;Washington Post&quot;     &quot;Wall Street Journal&quot;
+##  [4] &quot;USA Today&quot;           &quot;LA Times&quot;            &quot;New York Post&quot;      
+##  [7] &quot;CNN&quot;                 &quot;MSNBC&quot;               &quot;FOX News&quot;           
+## [10] &quot;ABC&quot;                 &quot;BBC&quot;                 &quot;Yahoo News&quot;         
+## [13] &quot;Google News&quot;         &quot;Reuters.com&quot;         &quot;NYTimes.com&quot;        
+## [16] &quot;WashingtonPost.com&quot;  &quot;AOL.com&quot;</code></pre>
+<p>이제 igraph 네트워크 개체가 마련되었다. 이를 그림으로 시각해 보기로 한다.</p>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="Turning-Networks-into-Igraph.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net, <span class="at">edge.arrow.size=</span>.<span class="dv">4</span>,<span class="at">vertex.label=</span><span class="cn">NA</span>)</span></code></pre></div>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
+<p>그렇게 멋져 보이지는 않는다. 그래프 내의 loop를 제거해서 수정해 보기로 한다.</p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="Turning-Networks-into-Igraph.html#cb294-1" aria-hidden="true" tabindex="-1"></a>net <span class="ot">&lt;-</span> <span class="fu">simplify</span>(net, <span class="at">remove.multiple =</span> F, <span class="at">remove.loops =</span> T) </span></code></pre></div>
+<p><code>simplify()</code> 함수를 이용하여 <code>simplify(net, edge.attr.comb=list(weight="sum","ignore"))</code>와 같은 명령을 이용하여 복수 개의 에지들의 가중치를 합함으로써 복수 개의 에지들을 결합할 수 있음을 알게 될 것이다. 문제는 이것이 복수의 에지 유형들(이 데이터에서는 “<code>hyperlinks</code>”와 “<code>mentions</code>”)도 결합하게 된다는 것이다.</p>
+<p>이 유형들이 필요하다면, igraph 네트워크로 부터 에지 목록(edge list)이나 인접 행렬(adjacent matrix)을 추출할 수 있다.</p>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="Turning-Networks-into-Igraph.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_edgelist</span>(net, <span class="at">names=</span>T)</span></code></pre></div>
+<pre><code>##       [,1]  [,2] 
+##  [1,] &quot;s01&quot; &quot;s02&quot;
+##  [2,] &quot;s01&quot; &quot;s03&quot;
+##  [3,] &quot;s01&quot; &quot;s04&quot;
+##  [4,] &quot;s01&quot; &quot;s15&quot;
+##  [5,] &quot;s02&quot; &quot;s01&quot;
+##  [6,] &quot;s02&quot; &quot;s03&quot;
+##  [7,] &quot;s02&quot; &quot;s09&quot;
+##  [8,] &quot;s02&quot; &quot;s10&quot;
+##  [9,] &quot;s03&quot; &quot;s01&quot;
+## [10,] &quot;s03&quot; &quot;s04&quot;
+## [11,] &quot;s03&quot; &quot;s05&quot;
+## [12,] &quot;s03&quot; &quot;s08&quot;
+## [13,] &quot;s03&quot; &quot;s10&quot;
+## [14,] &quot;s03&quot; &quot;s11&quot;
+## [15,] &quot;s03&quot; &quot;s12&quot;
+## [16,] &quot;s04&quot; &quot;s03&quot;
+## [17,] &quot;s04&quot; &quot;s06&quot;
+## [18,] &quot;s04&quot; &quot;s11&quot;
+## [19,] &quot;s04&quot; &quot;s12&quot;
+## [20,] &quot;s04&quot; &quot;s17&quot;
+## [21,] &quot;s05&quot; &quot;s01&quot;
+## [22,] &quot;s05&quot; &quot;s02&quot;
+## [23,] &quot;s05&quot; &quot;s09&quot;
+## [24,] &quot;s05&quot; &quot;s15&quot;
+## [25,] &quot;s06&quot; &quot;s16&quot;
+## [26,] &quot;s06&quot; &quot;s17&quot;
+## [27,] &quot;s07&quot; &quot;s03&quot;
+## [28,] &quot;s07&quot; &quot;s08&quot;
+## [29,] &quot;s07&quot; &quot;s10&quot;
+## [30,] &quot;s07&quot; &quot;s14&quot;
+## [31,] &quot;s08&quot; &quot;s03&quot;
+## [32,] &quot;s08&quot; &quot;s07&quot;
+## [33,] &quot;s08&quot; &quot;s09&quot;
+## [34,] &quot;s09&quot; &quot;s10&quot;
+## [35,] &quot;s10&quot; &quot;s03&quot;
+## [36,] &quot;s12&quot; &quot;s06&quot;
+## [37,] &quot;s12&quot; &quot;s13&quot;
+## [38,] &quot;s12&quot; &quot;s14&quot;
+## [39,] &quot;s13&quot; &quot;s12&quot;
+## [40,] &quot;s13&quot; &quot;s17&quot;
+## [41,] &quot;s14&quot; &quot;s11&quot;
+## [42,] &quot;s14&quot; &quot;s13&quot;
+## [43,] &quot;s15&quot; &quot;s01&quot;
+## [44,] &quot;s15&quot; &quot;s04&quot;
+## [45,] &quot;s15&quot; &quot;s06&quot;
+## [46,] &quot;s16&quot; &quot;s06&quot;
+## [47,] &quot;s16&quot; &quot;s17&quot;
+## [48,] &quot;s17&quot; &quot;s04&quot;</code></pre>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="Turning-Networks-into-Igraph.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_adjacency_matrix</span>(net, <span class="at">attr=</span><span class="st">&quot;weight&quot;</span>)</span></code></pre></div>
+<pre><code>## 17 x 17 sparse Matrix of class &quot;dgCMatrix&quot;</code></pre>
+<pre><code>##    [[ suppressing 17 column names &#39;s01&#39;, &#39;s02&#39;, &#39;s03&#39; ... ]]</code></pre>
+<pre><code>##                                                      
+## s01  . 22 22 21 .  .  .  .  .  .  .  .  .  . 20  .  .
+## s02 23  . 21  . .  .  .  .  1  5  .  .  .  .  .  .  .
+## s03 21  .  . 22 1  .  .  4  .  2  1  1  .  .  .  .  .
+## s04  .  . 23  . .  1  .  .  .  . 22  3  .  .  .  .  2
+## s05  1 21  .  . .  .  .  .  2  .  .  .  .  . 21  .  .
+## s06  .  .  .  . .  .  .  .  .  .  .  .  .  .  . 21 21
+## s07  .  .  1  . .  .  . 22  . 21  .  .  .  4  .  .  .
+## s08  .  .  2  . .  . 21  . 23  .  .  .  .  .  .  .  .
+## s09  .  .  .  . .  .  .  .  . 21  .  .  .  .  .  .  .
+## s10  .  .  2  . .  .  .  .  .  .  .  .  .  .  .  .  .
+## s11  .  .  .  . .  .  .  .  .  .  .  .  .  .  .  .  .
+## s12  .  .  .  . .  2  .  .  .  .  .  . 22 22  .  .  .
+## s13  .  .  .  . .  .  .  .  .  .  . 21  .  .  .  .  1
+## s14  .  .  .  . .  .  .  .  .  .  1  . 21  .  .  .  .
+## s15 22  .  .  1 .  4  .  .  .  .  .  .  .  .  .  .  .
+## s16  .  .  .  . . 23  .  .  .  .  .  .  .  .  .  . 21
+## s17  .  .  .  4 .  .  .  .  .  .  .  .  .  .  .  .  .</code></pre>
+<p>또는 데이터 프레임으로 노드와 에지를 설명할 수 있다.</p>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="Turning-Networks-into-Igraph.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_data_frame</span>(net, <span class="at">what=</span><span class="st">&quot;edges&quot;</span>)</span></code></pre></div>
+<pre><code>##    from  to      type weight
+## 1   s01 s02 hyperlink     22
+## 2   s01 s03 hyperlink     22
+## 3   s01 s04 hyperlink     21
+## 4   s01 s15   mention     20
+## 5   s02 s01 hyperlink     23
+## 6   s02 s03 hyperlink     21
+## 7   s02 s09 hyperlink      1
+## 8   s02 s10 hyperlink      5
+## 9   s03 s01 hyperlink     21
+## 10  s03 s04 hyperlink     22
+## 11  s03 s05 hyperlink      1
+## 12  s03 s08 hyperlink      4
+## 13  s03 s10   mention      2
+## 14  s03 s11 hyperlink      1
+## 15  s03 s12 hyperlink      1
+## 16  s04 s03 hyperlink     23
+## 17  s04 s06   mention      1
+## 18  s04 s11   mention     22
+## 19  s04 s12 hyperlink      3
+## 20  s04 s17   mention      2
+## 21  s05 s01   mention      1
+## 22  s05 s02 hyperlink     21
+## 23  s05 s09 hyperlink      2
+## 24  s05 s15   mention     21
+## 25  s06 s16 hyperlink     21
+## 26  s06 s17   mention     21
+## 27  s07 s03   mention      1
+## 28  s07 s08   mention     22
+## 29  s07 s10 hyperlink     21
+## 30  s07 s14   mention      4
+## 31  s08 s03 hyperlink      2
+## 32  s08 s07   mention     21
+## 33  s08 s09   mention     23
+## 34  s09 s10   mention     21
+## 35  s10 s03 hyperlink      2
+## 36  s12 s06   mention      2
+## 37  s12 s13 hyperlink     22
+## 38  s12 s14   mention     22
+## 39  s13 s12 hyperlink     21
+## 40  s13 s17   mention      1
+## 41  s14 s11   mention      1
+## 42  s14 s13   mention     21
+## 43  s15 s01 hyperlink     22
+## 44  s15 s04 hyperlink      1
+## 45  s15 s06 hyperlink      4
+## 46  s16 s06 hyperlink     23
+## 47  s16 s17   mention     21
+## 48  s17 s04 hyperlink      4</code></pre>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="Turning-Networks-into-Igraph.html#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_data_frame</span>(net, <span class="at">what=</span><span class="st">&quot;vertices&quot;</span>)</span></code></pre></div>
+<pre><code>##     name               media media.type type.label audience.size
+## s01  s01            NY Times          1  Newspaper            20
+## s02  s02     Washington Post          1  Newspaper            25
+## s03  s03 Wall Street Journal          1  Newspaper            30
+## s04  s04           USA Today          1  Newspaper            32
+## s05  s05            LA Times          1  Newspaper            20
+## s06  s06       New York Post          1  Newspaper            50
+## s07  s07                 CNN          2         TV            56
+## s08  s08               MSNBC          2         TV            34
+## s09  s09            FOX News          2         TV            60
+## s10  s10                 ABC          2         TV            23
+## s11  s11                 BBC          2         TV            34
+## s12  s12          Yahoo News          3     Online            33
+## s13  s13         Google News          3     Online            23
+## s14  s14         Reuters.com          3     Online            12
+## s15  s15         NYTimes.com          3     Online            24
+## s16  s16  WashingtonPost.com          3     Online            28
+## s17  s17             AOL.com          3     Online            33</code></pre>
+</div>
+<div id="데이터-세트-2" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> <em>데이터 세트 2</em></h2>
+<p>앞에서 살펴본 바와 같이, 이번에는 네트워크의 에지들이 행렬 형태로 되어 있다. 이러한 데이터를 <code>graph_from_incidence_matrix()</code> 함수를 이용하여, 그래프 개체로 읽어 들일 수 있다. <code>igraph</code>에서 이분할 네트워크는 정점들에 대해 한 모드에서는 <code>FALSE</code>(또는 <code>0</code>) 값을 갖고 또 다른 모드에서는 <code>TRUE</code>(또는 <code>1</code>)값을 갖는 <code>type</code>이라 불리는 속성을 갖는다.</p>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="Turning-Networks-into-Igraph.html#cb305-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(nodes2)</span></code></pre></div>
+<pre><code>##    id   media media.type media.name audience.size
+## 1 s01     NYT          1  Newspaper            20
+## 2 s02    WaPo          1  Newspaper            25
+## 3 s03     WSJ          1  Newspaper            30
+## 4 s04    USAT          1  Newspaper            32
+## 5 s05 LATimes          1  Newspaper            20
+## 6 s06     CNN          2         TV            56</code></pre>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="Turning-Networks-into-Igraph.html#cb307-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(links2)</span></code></pre></div>
+<pre><code>##     U01 U02 U03 U04 U05 U06 U07 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19
+## s01   1   1   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+## s02   0   0   0   1   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+## s03   0   0   0   0   0   1   1   1   1   0   0   0   0   0   0   0   0   0   0
+## s04   0   0   0   0   0   0   0   0   1   1   1   0   0   0   0   0   0   0   0
+## s05   0   0   0   0   0   0   0   0   0   0   1   1   1   0   0   0   0   0   0
+## s06   0   0   0   0   0   0   0   0   0   0   0   0   1   1   0   0   1   0   0
+##     U20
+## s01   0
+## s02   1
+## s03   0
+## s04   0
+## s05   0
+## s06   0</code></pre>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="Turning-Networks-into-Igraph.html#cb309-1" aria-hidden="true" tabindex="-1"></a>net2 <span class="ot">&lt;-</span> <span class="fu">graph_from_incidence_matrix</span>(links2)</span>
+<span id="cb309-2"><a href="Turning-Networks-into-Igraph.html#cb309-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">V</span>(net2)<span class="sc">$</span>type)</span></code></pre></div>
+<pre><code>## 
+## FALSE  TRUE 
+##    10    20</code></pre>
+<p><strong>1 모드 네트워크</strong>를 <code>igraph</code> 개체로 변환하기 위해서는 대신에 <code>graph_from_adjacency_matrix()</code> 함수를 사용한다.</p>
+<ul>
+<li>[참고자료 : 1-mode 네트워크 : <a href="https://yjkim81.wordpress.com/network-data_1mode/" class="uri">https://yjkim81.wordpress.com/network-data_1mode/</a>]</li>
+</ul>
+<p>또한 <strong>2 모드 네트워크</strong>에 대한 이분할 프로젝션을 쉽게 생성할 수 있다. (<em>공동 멤버십</em>은 네트워크 행렬과 그 전치 행렬을 곱함으로써 또는 <code>igraph</code>의 <code>bipartite.projection()</code> 함수를 사용함으로써 쉽게 계산할 수 있다.)</p>
+<ul>
+<li>[참고자료 : 2-mode 네트워크 : <a href="https://yjkim81.wordpress.com/network-data-2-mode/" class="uri">https://yjkim81.wordpress.com/network-data-2-mode/</a>]</li>
+</ul>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="Turning-Networks-into-Igraph.html#cb311-1" aria-hidden="true" tabindex="-1"></a>net2.bp <span class="ot">&lt;-</span> <span class="fu">bipartite.projection</span>(net2)</span></code></pre></div>
+<p>또한 손으로도 프로젝션을 계산할 수 있다.</p>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="Turning-Networks-into-Igraph.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_incidence_matrix</span>(net2) <span class="sc">%*%</span> <span class="fu">t</span>(<span class="fu">as_incidence_matrix</span>(net2)) </span></code></pre></div>
+<pre><code>##     s01 s02 s03 s04 s05 s06 s07 s08 s09 s10
+## s01   3   0   0   0   0   0   0   0   0   1
+## s02   0   3   0   0   0   0   0   0   1   0
+## s03   0   0   4   1   0   0   0   0   1   0
+## s04   0   0   1   3   1   0   0   0   0   1
+## s05   0   0   0   1   3   1   0   0   0   1
+## s06   0   0   0   0   1   3   1   1   0   0
+## s07   0   0   0   0   0   1   3   1   0   0
+## s08   0   0   0   0   0   1   1   4   1   0
+## s09   0   1   1   0   0   0   0   1   3   0
+## s10   1   0   0   1   1   0   0   0   0   2</code></pre>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="Turning-Networks-into-Igraph.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">as_incidence_matrix</span>(net2)) <span class="sc">%*%</span> <span class="fu">as_incidence_matrix</span>(net2)</span></code></pre></div>
+<pre><code>##     U01 U02 U03 U04 U05 U06 U07 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19
+## U01   2   1   1   0   0   0   0   0   0   0   1   0   0   0   0   0   0   0   0
+## U02   1   1   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+## U03   1   1   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+## U04   0   0   0   1   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+## U05   0   0   0   1   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+## U06   0   0   0   0   0   2   1   1   1   0   0   0   0   0   0   0   0   0   1
+## U07   0   0   0   0   0   1   1   1   1   0   0   0   0   0   0   0   0   0   0
+## U08   0   0   0   0   0   1   1   1   1   0   0   0   0   0   0   0   0   0   0
+## U09   0   0   0   0   0   1   1   1   2   1   1   0   0   0   0   0   0   0   0
+## U10   0   0   0   0   0   0   0   0   1   1   1   0   0   0   0   0   0   0   0
+## U11   1   0   0   0   0   0   0   0   1   1   3   1   1   0   0   0   0   0   0
+## U12   0   0   0   0   0   0   0   0   0   0   1   1   1   0   0   0   0   0   0
+## U13   0   0   0   0   0   0   0   0   0   0   1   1   2   1   0   0   1   0   0
+## U14   0   0   0   0   0   0   0   0   0   0   0   0   1   2   1   1   1   0   0
+## U15   0   0   0   0   0   0   0   0   0   0   0   0   0   1   1   1   0   0   0
+## U16   0   0   0   0   0   0   0   0   0   0   0   0   0   1   1   2   1   1   1
+## U17   0   0   0   0   0   0   0   0   0   0   0   0   1   1   0   1   2   1   1
+## U18   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   1   1   1   1
+## U19   0   0   0   0   0   1   0   0   0   0   0   0   0   0   0   1   1   1   2
+## U20   0   0   0   1   1   1   0   0   0   0   0   0   0   0   0   0   0   0   1
+##     U20
+## U01   0
+## U02   0
+## U03   0
+## U04   1
+## U05   1
+## U06   1
+## U07   0
+## U08   0
+## U09   0
+## U10   0
+## U11   0
+## U12   0
+## U13   0
+## U14   0
+## U15   0
+## U16   0
+## U17   0
+## U18   0
+## U19   1
+## U20   2</code></pre>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="Turning-Networks-into-Igraph.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net2.bp<span class="sc">$</span>proj1, <span class="at">vertex.label.color=</span><span class="st">&quot;black&quot;</span>, <span class="at">vertex.label.dist=</span><span class="dv">1</span>,</span>
+<span id="cb316-2"><a href="Turning-Networks-into-Igraph.html#cb316-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.size=</span><span class="dv">7</span>, <span class="at">vertex.label=</span>nodes2<span class="sc">$</span>media[<span class="sc">!</span><span class="fu">is.na</span>(nodes2<span class="sc">$</span>media.type)])</span></code></pre></div>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="Turning-Networks-into-Igraph.html#cb317-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net2.bp<span class="sc">$</span>proj2, <span class="at">vertex.label.color=</span><span class="st">&quot;black&quot;</span>, <span class="at">vertex.label.dist=</span><span class="dv">1</span>,</span>
+<span id="cb317-2"><a href="Turning-Networks-into-Igraph.html#cb317-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.size=</span><span class="dv">7</span>, <span class="at">vertex.label=</span>nodes2<span class="sc">$</span>media[ <span class="fu">is.na</span>(nodes2<span class="sc">$</span>media.type)])</span></code></pre></div>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-82-2.png" width="672" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Reading-Network-Data-Files.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Plotting-Networks-with-Igraph.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/4-Turning_Networks_into_igraph_Objects.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

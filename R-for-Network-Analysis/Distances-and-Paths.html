@@ -4,19 +4,19 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>8 거리와 경로(Distances and paths) | R을 이용한 네트워크 분석과 시각화</title>
+  <title>Chapter 8 거리와 경로(Distances and paths) | R을 이용한 네트워크 분석과 시각화</title>
   <meta name="description" content="Katherine Ognyanova의 ‘Network Analysis and Visualization with R’ 세미나 자료를 번역한 것입니다. 번역의 오류는 번역자의 잘못입니다. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="8 거리와 경로(Distances and paths) | R을 이용한 네트워크 분석과 시각화" />
+  <meta property="og:title" content="Chapter 8 거리와 경로(Distances and paths) | R을 이용한 네트워크 분석과 시각화" />
   <meta property="og:type" content="book" />
   
   
   <meta property="og:description" content="Katherine Ognyanova의 ‘Network Analysis and Visualization with R’ 세미나 자료를 번역한 것입니다. 번역의 오류는 번역자의 잘못입니다. The output format for this example is bookdown::gitbook." />
-  <meta name="github-repo" content="rstudio/bookdown-demo" />
+  <meta name="github-repo" content="Network-Analysis" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8 거리와 경로(Distances and paths) | R을 이용한 네트워크 분석과 시각화" />
+  <meta name="twitter:title" content="Chapter 8 거리와 경로(Distances and paths) | R을 이용한 네트워크 분석과 시각화" />
   
   <meta name="twitter:description" content="Katherine Ognyanova의 ‘Network Analysis and Visualization with R’ 세미나 자료를 번역한 것입니다. 번역의 오류는 번역자의 잘못입니다. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="Netword-and-Node-Description.html"/>
+<link rel="prev" href="Network-and-Node-Description.html"/>
 <link rel="next" href="Subgroups-and-Communities.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -55,25 +56,26 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -82,9 +84,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -117,6 +119,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -129,8 +132,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> R을 이용한 네트워크 분석과 시각화</a></li>
-<li class="chapter" data-level="2" data-path="R-Basics.html"><a href="R-Basics.html"><i class="fa fa-check"></i><b>2</b> R 기초 복습</a><ul>
+<li class="chapter" data-level="2" data-path="R-Basics.html"><a href="R-Basics.html"><i class="fa fa-check"></i><b>2</b> R 기초 복습</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="R-Basics.html"><a href="R-Basics.html#할당assignment"><i class="fa fa-check"></i><b>2.1</b> <em>할당(Assignment)</em></a></li>
 <li class="chapter" data-level="2.2" data-path="R-Basics.html"><a href="R-Basics.html#값의-비교value-comparisons"><i class="fa fa-check"></i><b>2.2</b> <em>값의 비교(Value comparisons)</em></a></li>
 <li class="chapter" data-level="2.3" data-path="R-Basics.html"><a href="R-Basics.html#특별한-상수special-constants"><i class="fa fa-check"></i><b>2.3</b> <em>특별한 상수(Special constants)</em></a></li>
@@ -143,48 +150,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10" data-path="R-Basics.html"><a href="R-Basics.html#r-플롯과-색-지정"><i class="fa fa-check"></i><b>2.10</b> <em>R 플롯과 색 지정</em></a></li>
 <li class="chapter" data-level="2.11" data-path="R-Basics.html"><a href="R-Basics.html#r-문제-해결"><i class="fa fa-check"></i><b>2.11</b> <em>R 문제 해결</em></a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html"><i class="fa fa-check"></i><b>3</b> <code>igraph</code>를 이용한 네트워크</a><ul>
+<li class="chapter" data-level="3" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html"><i class="fa fa-check"></i><b>3</b> <code>igraph</code>를 이용한 네트워크</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html#네트워크-생성create-networks"><i class="fa fa-check"></i><b>3.1</b> <em>네트워크 생성(Create networks)</em></a></li>
 <li class="chapter" data-level="3.2" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html#에지edge-정점vertex-그리고-네트워크-속성network-attributes"><i class="fa fa-check"></i><b>3.2</b> <em>에지(Edge), 정점(vertex), 그리고 네트워크 속성(network attributes)</em></a></li>
 <li class="chapter" data-level="3.3" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html#특수-그래프specific-graphs와-그래프-모델graph-models"><i class="fa fa-check"></i><b>3.3</b> <em>특수 그래프(Specific graphs)와 그래프 모델(graph models)</em></a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html"><i class="fa fa-check"></i><b>4</b> 파일로 부터 네트워크 데이터 읽어오기</a><ul>
+<li class="chapter" data-level="4" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html"><i class="fa fa-check"></i><b>4</b> 파일로 부터 네트워크 데이터 읽어오기</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html#데이터-세트-1-에지-목록edgelist"><i class="fa fa-check"></i><b>4.1</b> <em>데이터 세트 1: 에지 목록(edgelist)</em></a></li>
 <li class="chapter" data-level="4.2" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html#데이터-세트-2-인접-행렬adjacent-matrix"><i class="fa fa-check"></i><b>4.2</b> <em>데이터 세트 2: 인접 행렬(adjacent matrix)</em></a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="Turing-Networks-into-Igraph.html"><a href="Turing-Networks-into-Igraph.html"><i class="fa fa-check"></i><b>5</b> 네트워크를 igraph 개체로 변환하기</a><ul>
-<li class="chapter" data-level="5.1" data-path="Turing-Networks-into-Igraph.html"><a href="Turing-Networks-into-Igraph.html#데이터-세트-1"><i class="fa fa-check"></i><b>5.1</b> <em>데이터 세트 1</em></a></li>
-<li class="chapter" data-level="5.2" data-path="Turing-Networks-into-Igraph.html"><a href="Turing-Networks-into-Igraph.html#데이터-세트-2"><i class="fa fa-check"></i><b>5.2</b> <em>데이터 세트 2</em></a></li>
+<li class="chapter" data-level="5" data-path="Turning-Networks-into-Igraph.html"><a href="Turning-Networks-into-Igraph.html"><i class="fa fa-check"></i><b>5</b> 네트워크를 igraph 개체로 변환하기</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="Turning-Networks-into-Igraph.html"><a href="Turning-Networks-into-Igraph.html#데이터-세트-1"><i class="fa fa-check"></i><b>5.1</b> <em>데이터 세트 1</em></a></li>
+<li class="chapter" data-level="5.2" data-path="Turning-Networks-into-Igraph.html"><a href="Turning-Networks-into-Igraph.html#데이터-세트-2"><i class="fa fa-check"></i><b>5.2</b> <em>데이터 세트 2</em></a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html"><i class="fa fa-check"></i><b>6</b> igraph를 이용한 네트워크 시각화</a><ul>
-<li class="chapter" data-level="6.1" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#plotting-parameters"><i class="fa fa-check"></i><b>6.1</b> <em>Plotting parameters</em></a></li>
-<li class="chapter" data-level="6.2" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#network-layouts"><i class="fa fa-check"></i><b>6.2</b> <em>Network layouts</em></a></li>
-<li class="chapter" data-level="6.3" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#네트워크-시각화-개선"><i class="fa fa-check"></i><b>6.3</b> <em>네트워크 시각화 개선</em></a></li>
-<li class="chapter" data-level="6.4" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#tkplot-패키지를-이용한-상호대화식-시각화"><i class="fa fa-check"></i><b>6.4</b> <em><code>tkplot</code> 패키지를 이용한 상호대화식 시각화</em></a></li>
-<li class="chapter" data-level="6.5" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#다른-네트워크-시각화-방법"><i class="fa fa-check"></i><b>6.5</b> <em>다른 네트워크 시각화 방법</em></a></li>
-<li class="chapter" data-level="6.6" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#igraph로-2-모드-네트워크-시각화하기"><i class="fa fa-check"></i><b>6.6</b> <em>igraph로 2-모드 네트워크 시각화하기</em></a></li>
+<li class="chapter" data-level="6" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html"><i class="fa fa-check"></i><b>6</b> igraph를 이용한 네트워크 시각화</a>
+<ul>
+<li><a href="Plotting-Networks-with-Igraph.html#plotting-parameters"><em>Plotting parameters</em></a></li>
+<li class="chapter" data-level="6.1" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#network-layouts"><i class="fa fa-check"></i><b>6.1</b> <em>Network layouts</em></a></li>
+<li class="chapter" data-level="6.2" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#네트워크-시각화-개선"><i class="fa fa-check"></i><b>6.2</b> <em>네트워크 시각화 개선</em></a></li>
+<li class="chapter" data-level="6.3" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#tkplot-패키지를-이용한-상호대화식-시각화"><i class="fa fa-check"></i><b>6.3</b> <em><code>tkplot</code> 패키지를 이용한 상호대화식 시각화</em></a></li>
+<li class="chapter" data-level="6.4" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#다른-네트워크-시각화-방법"><i class="fa fa-check"></i><b>6.4</b> <em>다른 네트워크 시각화 방법</em></a></li>
+<li class="chapter" data-level="6.5" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#igraph로-2-모드-네트워크-시각화하기"><i class="fa fa-check"></i><b>6.5</b> <em>igraph로 2-모드 네트워크 시각화하기</em></a></li>
 <li class="chapter" data-level="" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#참고자료"><i class="fa fa-check"></i>참고자료</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="Netword-and-Node-Description.html"><a href="Netword-and-Node-Description.html"><i class="fa fa-check"></i><b>7</b> 네트워크과 노드 설명</a><ul>
-<li class="chapter" data-level="7.1" data-path="Netword-and-Node-Description.html"><a href="Netword-and-Node-Description.html#밀도density"><i class="fa fa-check"></i><b>7.1</b> <em>밀도(Density)</em></a></li>
-<li class="chapter" data-level="7.2" data-path="Netword-and-Node-Description.html"><a href="Netword-and-Node-Description.html#호혜성reciprocity"><i class="fa fa-check"></i><b>7.2</b> <em>호혜성(Reciprocity)</em></a></li>
-<li class="chapter" data-level="7.3" data-path="Netword-and-Node-Description.html"><a href="Netword-and-Node-Description.html#이행성transitivity"><i class="fa fa-check"></i><b>7.3</b> <em>이행성(Transitivity)</em></a></li>
-<li class="chapter" data-level="7.4" data-path="Netword-and-Node-Description.html"><a href="Netword-and-Node-Description.html#지름diameter"><i class="fa fa-check"></i><b>7.4</b> <em>지름(Diameter)</em></a></li>
-<li class="chapter" data-level="7.5" data-path="Netword-and-Node-Description.html"><a href="Netword-and-Node-Description.html#노드-연결-정도node-degrees"><i class="fa fa-check"></i><b>7.5</b> <em>노드 연결 정도(Node degrees)</em></a></li>
-<li class="chapter" data-level="7.6" data-path="Netword-and-Node-Description.html"><a href="Netword-and-Node-Description.html#연결-정도-분포degree-distribution"><i class="fa fa-check"></i><b>7.6</b> <em>연결 정도 분포(Degree distribution)</em></a></li>
-<li class="chapter" data-level="7.7" data-path="Netword-and-Node-Description.html"><a href="Netword-and-Node-Description.html#중심성과-중심화centrality-centralization"><i class="fa fa-check"></i><b>7.7</b> <em>중심성과 중심화(Centrality &amp; centralization)</em></a></li>
-<li class="chapter" data-level="7.8" data-path="Netword-and-Node-Description.html"><a href="Netword-and-Node-Description.html#허브와-오쏘러티hubs-and-authorities"><i class="fa fa-check"></i><b>7.8</b> <em>허브와 오쏘러티(Hubs and authorities)</em></a></li>
-<li class="chapter" data-level="" data-path="Netword-and-Node-Description.html"><a href="Netword-and-Node-Description.html#참고자료-1"><i class="fa fa-check"></i>참고자료</a></li>
+<li class="chapter" data-level="7" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html"><i class="fa fa-check"></i><b>7</b> 네트워크과 노드 설명</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#밀도density"><i class="fa fa-check"></i><b>7.1</b> <em>밀도(Density)</em></a></li>
+<li class="chapter" data-level="7.2" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#호혜성reciprocity"><i class="fa fa-check"></i><b>7.2</b> <em>호혜성(Reciprocity)</em></a></li>
+<li class="chapter" data-level="7.3" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#이행성transitivity"><i class="fa fa-check"></i><b>7.3</b> <em>이행성(Transitivity)</em></a></li>
+<li class="chapter" data-level="7.4" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#지름diameter"><i class="fa fa-check"></i><b>7.4</b> <em>지름(Diameter)</em></a></li>
+<li class="chapter" data-level="7.5" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#노드-연결-정도node-degrees"><i class="fa fa-check"></i><b>7.5</b> <em>노드 연결 정도(Node degrees)</em></a></li>
+<li class="chapter" data-level="7.6" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#연결-정도-분포degree-distribution"><i class="fa fa-check"></i><b>7.6</b> <em>연결 정도 분포(Degree distribution)</em></a></li>
+<li class="chapter" data-level="7.7" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#중심성과-중심화centrality-centralization"><i class="fa fa-check"></i><b>7.7</b> <em>중심성과 중심화(Centrality &amp; centralization)</em></a></li>
+<li class="chapter" data-level="7.8" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#허브와-오쏘러티hubs-and-authorities"><i class="fa fa-check"></i><b>7.8</b> <em>허브와 오쏘러티(Hubs and authorities)</em></a></li>
+<li class="chapter" data-level="" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#참고자료-1"><i class="fa fa-check"></i>참고자료</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="Distances-and-Paths.html"><a href="Distances-and-Paths.html"><i class="fa fa-check"></i><b>8</b> 거리와 경로(Distances and paths)</a></li>
-<li class="chapter" data-level="9" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html"><i class="fa fa-check"></i><b>9</b> 서브 그룹과 커뮤니티</a><ul>
+<li class="chapter" data-level="9" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html"><i class="fa fa-check"></i><b>9</b> 서브 그룹과 커뮤니티</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html#클릭cliques"><i class="fa fa-check"></i><b>9.1</b> <em>클릭(Cliques)</em></a></li>
 <li class="chapter" data-level="9.2" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html#커뮤니티-발견community-detection"><i class="fa fa-check"></i><b>9.2</b> <em>커뮤니티 발견(Community detection)</em></a></li>
 <li class="chapter" data-level="" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html#참고자료-2"><i class="fa fa-check"></i>참고자료</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="Assortativity-and-Homophily.html"><a href="Assortativity-and-Homophily.html"><i class="fa fa-check"></i><b>10</b> 동류성과 동질성</a><ul>
+<li class="chapter" data-level="10" data-path="Assortativity-and-Homophily.html"><a href="Assortativity-and-Homophily.html"><i class="fa fa-check"></i><b>10</b> 동류성과 동질성</a>
+<ul>
 <li class="chapter" data-level="" data-path="Assortativity-and-Homophily.html"><a href="Assortativity-and-Homophily.html#참고자료-3"><i class="fa fa-check"></i>참고자료</a></li>
 </ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
       </nav>
@@ -202,15 +219,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Distances_and_Paths" class="section level1">
-<h1><span class="header-section-number">8</span> 거리와 경로(Distances and paths)</h1>
+<div id="Distances_and_Paths" class="section level1" number="8">
+<h1><span class="header-section-number">Chapter 8</span> 거리와 경로(Distances and paths)</h1>
 <p><strong>평균 경로 길이</strong> : (방향성 그래프에 대해서는 양 방향에서) 네트워크에 있는 노드들 사이의 최단 거리의 평균 - <code>mean_distance()</code> 함수</p>
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb435-1" title="1"><span class="kw">mean_distance</span>(net, <span class="dt">directed=</span>F)</a></code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="Distances-and-Paths.html#cb435-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean_distance</span>(net, <span class="at">directed=</span>F)</span></code></pre></div>
 <pre><code>## [1] 2.058824</code></pre>
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb437-1" title="1"><span class="kw">mean_distance</span>(net, <span class="dt">directed=</span>T)</a></code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="Distances-and-Paths.html#cb437-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean_distance</span>(net, <span class="at">directed=</span>T)</span></code></pre></div>
 <pre><code>## [1] 2.742188</code></pre>
 <p>또한 그래프에서 <strong>모든 최단 경로들의 길이(the length of the shortest paths)</strong>를 찾을 수 있다 : <code>distances()</code> 함수</p>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb439-1" title="1"><span class="kw">distances</span>(net)                 <span class="co"># 에지 가중치 고려</span></a></code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="Distances-and-Paths.html#cb439-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distances</span>(net)                 <span class="co"># 에지 가중치 고려</span></span></code></pre></div>
 <pre><code>##     s01 s02 s03 s04 s05 s06 s07 s08 s09 s10 s11 s12 s13 s14 s15 s16 s17
 ## s01   0   4   2   6   1   5   3   4   3   4   3   3   9   4   7  26   8
 ## s02   4   0   4   8   3   7   5   6   1   5   5   5  11   6   9  28  10
@@ -229,7 +246,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## s15   7   9   5   1   6   2   6   7   8   7   6   4   4   7   0  23   3
 ## s16  26  28  24  22  25  21  25  26  27  26  25  23  22  26  23   0  21
 ## s17   8  10   6   2   7   3   7   8   9   8   7   5   1   8   3  21   0</code></pre>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb441-1" title="1"><span class="kw">distances</span>(net, <span class="dt">weights=</span><span class="ot">NA</span>)     <span class="co"># 에지 가중치 무시 </span></a></code></pre></div>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="Distances-and-Paths.html#cb441-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distances</span>(net, <span class="at">weights=</span><span class="cn">NA</span>)     <span class="co"># 에지 가중치 무시 </span></span></code></pre></div>
 <pre><code>##     s01 s02 s03 s04 s05 s06 s07 s08 s09 s10 s11 s12 s13 s14 s15 s16 s17
 ## s01   0   1   1   1   1   2   2   2   2   2   2   2   3   3   1   3   2
 ## s02   1   0   1   2   1   3   2   2   1   1   2   2   3   3   2   4   3
@@ -249,64 +266,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## s16   3   4   3   2   3   1   4   4   4   4   3   2   2   3   2   0   1
 ## s17   2   3   2   1   3   1   3   3   4   3   2   2   1   2   2   1   0</code></pre>
 <p>우리가 <strong>관심을 갖는 노드나 노드 집합에 대한 거리</strong>들을 추출할 수 있다. 예를 들어, <code>New York Times</code> 중심에서 모든 미디어의 거리를 계산해 보자.</p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb443-1" title="1">dist.from.NYT &lt;-<span class="st"> </span><span class="kw">distances</span>(net, <span class="dt">v=</span><span class="kw">V</span>(net)[media<span class="op">==</span><span class="st">&quot;NY Times&quot;</span>], <span class="dt">to=</span><span class="kw">V</span>(net), <span class="dt">weights=</span><span class="ot">NA</span>)</a>
-<a class="sourceLine" id="cb443-2" title="2"></a>
-<a class="sourceLine" id="cb443-3" title="3"><span class="co"># 거리를 시각화하는 색 설정:</span></a>
-<a class="sourceLine" id="cb443-4" title="4">oranges &lt;-<span class="st"> </span><span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;dark red&quot;</span>, <span class="st">&quot;gold&quot;</span>))</a>
-<a class="sourceLine" id="cb443-5" title="5">col &lt;-<span class="st"> </span><span class="kw">oranges</span>(<span class="kw">max</span>(dist.from.NYT)<span class="op">+</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb443-6" title="6">col &lt;-<span class="st"> </span>col[dist.from.NYT<span class="op">+</span><span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb443-7" title="7"></a>
-<a class="sourceLine" id="cb443-8" title="8"><span class="kw">plot</span>(net, <span class="dt">vertex.color=</span>col, <span class="dt">vertex.label=</span>dist.from.NYT, <span class="dt">edge.arrow.size=</span>.<span class="dv">6</span>, </a>
-<a class="sourceLine" id="cb443-9" title="9">     <span class="dt">vertex.label.color=</span><span class="st">&quot;white&quot;</span>)</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-130-1.png" width="672" /></p>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="Distances-and-Paths.html#cb443-1" aria-hidden="true" tabindex="-1"></a>dist.from.NYT <span class="ot">&lt;-</span> <span class="fu">distances</span>(net, <span class="at">v=</span><span class="fu">V</span>(net)[media<span class="sc">==</span><span class="st">&quot;NY Times&quot;</span>], <span class="at">to=</span><span class="fu">V</span>(net), <span class="at">weights=</span><span class="cn">NA</span>)</span>
+<span id="cb443-2"><a href="Distances-and-Paths.html#cb443-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb443-3"><a href="Distances-and-Paths.html#cb443-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 거리를 시각화하는 색 설정:</span></span>
+<span id="cb443-4"><a href="Distances-and-Paths.html#cb443-4" aria-hidden="true" tabindex="-1"></a>oranges <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;dark red&quot;</span>, <span class="st">&quot;gold&quot;</span>))</span>
+<span id="cb443-5"><a href="Distances-and-Paths.html#cb443-5" aria-hidden="true" tabindex="-1"></a>col <span class="ot">&lt;-</span> <span class="fu">oranges</span>(<span class="fu">max</span>(dist.from.NYT)<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb443-6"><a href="Distances-and-Paths.html#cb443-6" aria-hidden="true" tabindex="-1"></a>col <span class="ot">&lt;-</span> col[dist.from.NYT<span class="sc">+</span><span class="dv">1</span>]</span>
+<span id="cb443-7"><a href="Distances-and-Paths.html#cb443-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb443-8"><a href="Distances-and-Paths.html#cb443-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net, <span class="at">vertex.color=</span>col, <span class="at">vertex.label=</span>dist.from.NYT, <span class="at">edge.arrow.size=</span>.<span class="dv">6</span>, </span>
+<span id="cb443-9"><a href="Distances-and-Paths.html#cb443-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.label.color=</span><span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-130-1.png" width="672" /></p>
 <p>또한 특정 노드 사이의 <strong>최단 경로(shortest paths)</strong>를 찾아낼 수도 있다. <code>shortest_paths()</code> 함수</p>
 <p>여기서는 MSNBC와 New York Post 사이의 최단 경로를 찾아보자.</p>
-<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb444-1" title="1">news.path &lt;-<span class="st"> </span><span class="kw">shortest_paths</span>(net, </a>
-<a class="sourceLine" id="cb444-2" title="2">                            <span class="dt">from =</span> <span class="kw">V</span>(net)[media<span class="op">==</span><span class="st">&quot;MSNBC&quot;</span>], </a>
-<a class="sourceLine" id="cb444-3" title="3">                             <span class="dt">to  =</span> <span class="kw">V</span>(net)[media<span class="op">==</span><span class="st">&quot;New York Post&quot;</span>],</a>
-<a class="sourceLine" id="cb444-4" title="4">                             <span class="dt">output =</span> <span class="st">&quot;both&quot;</span>) <span class="co"># 노드와 에지 모두</span></a>
-<a class="sourceLine" id="cb444-5" title="5"></a>
-<a class="sourceLine" id="cb444-6" title="6"><span class="co"># 경로를 시각화하기 위한 에지 색 변수 생성</span></a>
-<a class="sourceLine" id="cb444-7" title="7">ecol &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">&quot;gray80&quot;</span>, <span class="kw">ecount</span>(net))</a>
-<a class="sourceLine" id="cb444-8" title="8">ecol[<span class="kw">unlist</span>(news.path<span class="op">$</span>epath)] &lt;-<span class="st"> &quot;orange&quot;</span></a>
-<a class="sourceLine" id="cb444-9" title="9"></a>
-<a class="sourceLine" id="cb444-10" title="10"><span class="co"># 경로를 시각화하기 위한 에지 넓이(width) 변수 생성</span></a>
-<a class="sourceLine" id="cb444-11" title="11">ew &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">2</span>, <span class="kw">ecount</span>(net))</a>
-<a class="sourceLine" id="cb444-12" title="12">ew[<span class="kw">unlist</span>(news.path<span class="op">$</span>epath)] &lt;-<span class="st"> </span><span class="dv">4</span></a>
-<a class="sourceLine" id="cb444-13" title="13"></a>
-<a class="sourceLine" id="cb444-14" title="14"><span class="co"># 경로를 시각화하기 위한 노드 색 변수 설정</span></a>
-<a class="sourceLine" id="cb444-15" title="15">vcol &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">&quot;gray40&quot;</span>, <span class="kw">vcount</span>(net))</a>
-<a class="sourceLine" id="cb444-16" title="16">vcol[<span class="kw">unlist</span>(news.path<span class="op">$</span>vpath)] &lt;-<span class="st"> &quot;gold&quot;</span></a>
-<a class="sourceLine" id="cb444-17" title="17"><span class="kw">plot</span>(net, <span class="dt">vertex.color=</span>vcol, <span class="dt">edge.color=</span>ecol, </a>
-<a class="sourceLine" id="cb444-18" title="18">     <span class="dt">edge.width=</span>ew, <span class="dt">edge.arrow.mode=</span><span class="dv">0</span>)</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="Distances-and-Paths.html#cb444-1" aria-hidden="true" tabindex="-1"></a>news.path <span class="ot">&lt;-</span> <span class="fu">shortest_paths</span>(net, </span>
+<span id="cb444-2"><a href="Distances-and-Paths.html#cb444-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">from =</span> <span class="fu">V</span>(net)[media<span class="sc">==</span><span class="st">&quot;MSNBC&quot;</span>], </span>
+<span id="cb444-3"><a href="Distances-and-Paths.html#cb444-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">to  =</span> <span class="fu">V</span>(net)[media<span class="sc">==</span><span class="st">&quot;New York Post&quot;</span>],</span>
+<span id="cb444-4"><a href="Distances-and-Paths.html#cb444-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">output =</span> <span class="st">&quot;both&quot;</span>) <span class="co"># 노드와 에지 모두</span></span>
+<span id="cb444-5"><a href="Distances-and-Paths.html#cb444-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb444-6"><a href="Distances-and-Paths.html#cb444-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 경로를 시각화하기 위한 에지 색 변수 생성</span></span>
+<span id="cb444-7"><a href="Distances-and-Paths.html#cb444-7" aria-hidden="true" tabindex="-1"></a>ecol <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">&quot;gray80&quot;</span>, <span class="fu">ecount</span>(net))</span>
+<span id="cb444-8"><a href="Distances-and-Paths.html#cb444-8" aria-hidden="true" tabindex="-1"></a>ecol[<span class="fu">unlist</span>(news.path<span class="sc">$</span>epath)] <span class="ot">&lt;-</span> <span class="st">&quot;orange&quot;</span></span>
+<span id="cb444-9"><a href="Distances-and-Paths.html#cb444-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb444-10"><a href="Distances-and-Paths.html#cb444-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 경로를 시각화하기 위한 에지 넓이(width) 변수 생성</span></span>
+<span id="cb444-11"><a href="Distances-and-Paths.html#cb444-11" aria-hidden="true" tabindex="-1"></a>ew <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">2</span>, <span class="fu">ecount</span>(net))</span>
+<span id="cb444-12"><a href="Distances-and-Paths.html#cb444-12" aria-hidden="true" tabindex="-1"></a>ew[<span class="fu">unlist</span>(news.path<span class="sc">$</span>epath)] <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb444-13"><a href="Distances-and-Paths.html#cb444-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb444-14"><a href="Distances-and-Paths.html#cb444-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 경로를 시각화하기 위한 노드 색 변수 설정</span></span>
+<span id="cb444-15"><a href="Distances-and-Paths.html#cb444-15" aria-hidden="true" tabindex="-1"></a>vcol <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">&quot;gray40&quot;</span>, <span class="fu">vcount</span>(net))</span>
+<span id="cb444-16"><a href="Distances-and-Paths.html#cb444-16" aria-hidden="true" tabindex="-1"></a>vcol[<span class="fu">unlist</span>(news.path<span class="sc">$</span>vpath)] <span class="ot">&lt;-</span> <span class="st">&quot;gold&quot;</span></span>
+<span id="cb444-17"><a href="Distances-and-Paths.html#cb444-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net, <span class="at">vertex.color=</span>vcol, <span class="at">edge.color=</span>ecol, </span>
+<span id="cb444-18"><a href="Distances-and-Paths.html#cb444-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">edge.width=</span>ew, <span class="at">edge.arrow.mode=</span><span class="dv">0</span>)</span></code></pre></div>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
 <p>예를 들어, WSJ이라는 <strong>정점으로 들어가거나 정점에서 나오는 에지들</strong>을 확인해 보자. 단일 노드의 경우, <code>incident()</code> 함수를 사용하고, 복수 노드인 경우는 <code>incident_edges()</code> 함수를 사용한다.</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb445-1" title="1">inc.edges &lt;-<span class="st"> </span><span class="kw">incident</span>(net,  <span class="kw">V</span>(net)[media<span class="op">==</span><span class="st">&quot;Wall Street Journal&quot;</span>], <span class="dt">mode=</span><span class="st">&quot;all&quot;</span>)</a>
-<a class="sourceLine" id="cb445-2" title="2"></a>
-<a class="sourceLine" id="cb445-3" title="3"><span class="co"># 선택된 에지를 시각화하기 위해 색 설정</span></a>
-<a class="sourceLine" id="cb445-4" title="4">ecol &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">&quot;gray80&quot;</span>, <span class="kw">ecount</span>(net))</a>
-<a class="sourceLine" id="cb445-5" title="5">ecol[inc.edges] &lt;-<span class="st"> &quot;orange&quot;</span></a>
-<a class="sourceLine" id="cb445-6" title="6">vcol &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">&quot;grey40&quot;</span>, <span class="kw">vcount</span>(net))</a>
-<a class="sourceLine" id="cb445-7" title="7">vcol[<span class="kw">V</span>(net)<span class="op">$</span>media<span class="op">==</span><span class="st">&quot;Wall Street Journal&quot;</span>] &lt;-<span class="st"> &quot;gold&quot;</span></a>
-<a class="sourceLine" id="cb445-8" title="8"><span class="kw">plot</span>(net, <span class="dt">vertex.color=</span>vcol, <span class="dt">edge.color=</span>ecol)</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="Distances-and-Paths.html#cb445-1" aria-hidden="true" tabindex="-1"></a>inc.edges <span class="ot">&lt;-</span> <span class="fu">incident</span>(net,  <span class="fu">V</span>(net)[media<span class="sc">==</span><span class="st">&quot;Wall Street Journal&quot;</span>], <span class="at">mode=</span><span class="st">&quot;all&quot;</span>)</span>
+<span id="cb445-2"><a href="Distances-and-Paths.html#cb445-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb445-3"><a href="Distances-and-Paths.html#cb445-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 선택된 에지를 시각화하기 위해 색 설정</span></span>
+<span id="cb445-4"><a href="Distances-and-Paths.html#cb445-4" aria-hidden="true" tabindex="-1"></a>ecol <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">&quot;gray80&quot;</span>, <span class="fu">ecount</span>(net))</span>
+<span id="cb445-5"><a href="Distances-and-Paths.html#cb445-5" aria-hidden="true" tabindex="-1"></a>ecol[inc.edges] <span class="ot">&lt;-</span> <span class="st">&quot;orange&quot;</span></span>
+<span id="cb445-6"><a href="Distances-and-Paths.html#cb445-6" aria-hidden="true" tabindex="-1"></a>vcol <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">&quot;grey40&quot;</span>, <span class="fu">vcount</span>(net))</span>
+<span id="cb445-7"><a href="Distances-and-Paths.html#cb445-7" aria-hidden="true" tabindex="-1"></a>vcol[<span class="fu">V</span>(net)<span class="sc">$</span>media<span class="sc">==</span><span class="st">&quot;Wall Street Journal&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;gold&quot;</span></span>
+<span id="cb445-8"><a href="Distances-and-Paths.html#cb445-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net, <span class="at">vertex.color=</span>vcol, <span class="at">edge.color=</span>ecol)</span></code></pre></div>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
 <p>또한 WSJ라는 정점과 인접한 <strong>이웃들(neighbors)</strong>을 쉽게 식별할 수도 있다. <code>neighbors()</code> 함수는 관심 노드에서 한 단계 인접한 모든 노드들을 찾아준다. 복수 노드들의 이웃을 찾기 위해서는 <code>neighbors()</code> 대신에 <code>adjacent_vertices()</code> 함수를 이용한다. 한 단계 이상의 이웃 노드들을 찾기 위해서는 관심 노드(들)로 부터 떨어진 단계의 수를 <code>order</code> 파라미터로 설정하는 <code>ego()</code> 함수를 이용한다.</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb446-1" title="1">neigh.nodes &lt;-<span class="st"> </span><span class="kw">neighbors</span>(net, <span class="kw">V</span>(net)[media<span class="op">==</span><span class="st">&quot;Wall Street Journal&quot;</span>], <span class="dt">mode=</span><span class="st">&quot;out&quot;</span>)</a>
-<a class="sourceLine" id="cb446-2" title="2"></a>
-<a class="sourceLine" id="cb446-3" title="3"><span class="co"># 이웃들을 시각화하기 위해 색 설정</span></a>
-<a class="sourceLine" id="cb446-4" title="4">vcol[neigh.nodes] &lt;-<span class="st"> &quot;#ff9d00&quot;</span></a>
-<a class="sourceLine" id="cb446-5" title="5"><span class="kw">plot</span>(net, <span class="dt">vertex.color=</span>vcol)</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-133-1.png" width="672" /></p>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="Distances-and-Paths.html#cb446-1" aria-hidden="true" tabindex="-1"></a>neigh.nodes <span class="ot">&lt;-</span> <span class="fu">neighbors</span>(net, <span class="fu">V</span>(net)[media<span class="sc">==</span><span class="st">&quot;Wall Street Journal&quot;</span>], <span class="at">mode=</span><span class="st">&quot;out&quot;</span>)</span>
+<span id="cb446-2"><a href="Distances-and-Paths.html#cb446-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb446-3"><a href="Distances-and-Paths.html#cb446-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 이웃들을 시각화하기 위해 색 설정</span></span>
+<span id="cb446-4"><a href="Distances-and-Paths.html#cb446-4" aria-hidden="true" tabindex="-1"></a>vcol[neigh.nodes] <span class="ot">&lt;-</span> <span class="st">&quot;#ff9d00&quot;</span></span>
+<span id="cb446-5"><a href="Distances-and-Paths.html#cb446-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net, <span class="at">vertex.color=</span>vcol)</span></code></pre></div>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-133-1.png" width="672" /></p>
 <p><strong>에지 순서의 색인화를 위한 특별한 연산자</strong>들 : <code>%–%</code>, <code>%-&gt;%</code>, <code>%&lt;-%</code>
 * <code>E(network)[X %–% Y]</code> : 방향은 무시하고 정점 X와 Y 집합 사이의 에지들 선택
 * <code>E(network)[X %-&gt;% Y]</code> : 정점집합 X에서 정점 집합 Y로 향하는 모든 에지들 선택
 * <code>E(network)[X %&lt;-% Y]</code> : 정점집합 Y에서 정점 집합 X로 향하는 모든 에지들 선택</p>
 <p>예를 들어, 정점의 <code>type.label</code>이 <code>newpaper</code>에서 <code>online</code> 출처로 향하는 모든 에지들을 선택해 보자.</p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb447-1" title="1"><span class="kw">E</span>(net)[ <span class="kw">V</span>(net)[type.label<span class="op">==</span><span class="st">&quot;Newspaper&quot;</span>] <span class="op">%-&gt;%</span><span class="st"> </span><span class="kw">V</span>(net)[type.label<span class="op">==</span><span class="st">&quot;Online&quot;</span>] ]</a></code></pre></div>
-<pre><code>## + 7/48 edges from 161b34c (vertex names):
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="Distances-and-Paths.html#cb447-1" aria-hidden="true" tabindex="-1"></a><span class="fu">E</span>(net)[ <span class="fu">V</span>(net)[type.label<span class="sc">==</span><span class="st">&quot;Newspaper&quot;</span>] <span class="sc">%-&gt;%</span> <span class="fu">V</span>(net)[type.label<span class="sc">==</span><span class="st">&quot;Online&quot;</span>] ]</span></code></pre></div>
+<pre><code>## + 7/48 edges from 924fee6 (vertex names):
 ## [1] s01-&gt;s15 s03-&gt;s12 s04-&gt;s12 s04-&gt;s17 s05-&gt;s15 s06-&gt;s16 s06-&gt;s17</code></pre>
 <p><strong>공동 인용(Co-citation</strong>)(노드들에 대해, 얼마나 많이 서로 이름들을 공유하고 있는지를 나타냄) : cocitations() 함수 사용</p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb449-1" title="1"><span class="kw">cocitation</span>(net)</a></code></pre></div>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="Distances-and-Paths.html#cb449-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cocitation</span>(net)</span></code></pre></div>
 <pre><code>##     s01 s02 s03 s04 s05 s06 s07 s08 s09 s10 s11 s12 s13 s14 s15 s16 s17
 ## s01   0   1   1   2   1   1   0   1   2   2   1   1   0   0   1   0   0
 ## s02   1   0   1   1   0   0   0   0   1   0   0   0   0   0   2   0   0
@@ -332,7 +349,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="Netword-and-Node-Description.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Network-and-Node-Description.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="Subgroups-and-Communities.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -364,8 +381,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/7-Distances_and_Paths.Rmd",
+"text": "Edit"
 },
 "history": {
 "link": null,
