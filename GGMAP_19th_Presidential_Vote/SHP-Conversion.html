@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 지리정보의 좌표계 변환 | Visualization of the 19th Presidential Vote with R</title>
+  <meta name="description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 지리정보의 좌표계 변환 | Visualization of the 19th Presidential Vote with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 지리정보의 좌표계 변환 | Visualization of the 19th Presidential Vote with R" />
+  
+  <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Dae Ho Kim" />
+
+
+<meta name="date" content="2020-11-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="create-CTPRVN-dataset.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>제19대 대통령선거 후보자별 득표 [시도별 : CTPRVN.shp]</a></li>
+<li class="chapter" data-level="1" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html"><i class="fa fa-check"></i><b>1</b> 지리정보의 좌표계 변환</a><ul>
+<li class="chapter" data-level="" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#사용할-패키지-불러오기"><i class="fa fa-check"></i>사용할 패키지 불러오기</a></li>
+<li class="chapter" data-level="1.1" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#시도별-지리정보-파일"><i class="fa fa-check"></i><b>1.1</b> 시도별 지리정보 파일</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#시도-지리정보-파일-다운받기"><i class="fa fa-check"></i><b>1.1.1</b> 시도 지리정보 파일 다운받기</a></li>
+<li class="chapter" data-level="1.1.2" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#시도-지리정보-파일-불러오기"><i class="fa fa-check"></i><b>1.1.2</b> 시도 지리정보 파일 불러오기</a></li>
+<li class="chapter" data-level="1.1.3" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#지리정보-파일의-속성-확인"><i class="fa fa-check"></i><b>1.1.3</b> 지리정보 파일의 속성 확인</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#지리정보의-좌표계-변환"><i class="fa fa-check"></i><b>1.2</b> 지리정보의 좌표계 변환</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#좌표계-변환-인자-설정"><i class="fa fa-check"></i><b>1.2.1</b> 좌표계 변환 인자 설정</a></li>
+<li class="chapter" data-level="1.2.2" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#좌표계-변환"><i class="fa fa-check"></i><b>1.2.2</b> 좌표계 변환</a></li>
+<li class="chapter" data-level="1.2.3" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#좌표계의-요약정보-확인"><i class="fa fa-check"></i><b>1.2.3</b> 좌표계의 요약정보 확인</a></li>
+<li class="chapter" data-level="1.2.4" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#변환된-좌표계의-슬롯-확인"><i class="fa fa-check"></i><b>1.2.4</b> 변환된 좌표계의 슬롯 확인</a></li>
+<li class="chapter" data-level="1.2.5" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#슬롯의-속성-확인"><i class="fa fa-check"></i><b>1.2.5</b> 슬롯의 속성 확인</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="create-CTPRVN-dataset.html"><a href="create-CTPRVN-dataset.html"><i class="fa fa-check"></i><b>2</b> 데이터 세트의 생성</a><ul>
+<li class="chapter" data-level="" data-path="create-CTPRVN-dataset.html"><a href="create-CTPRVN-dataset.html#사용할-패키지-불러오기-1"><i class="fa fa-check"></i>사용할 패키지 불러오기</a></li>
+<li class="chapter" data-level="2.1" data-path="create-CTPRVN-dataset.html"><a href="create-CTPRVN-dataset.html#시도-데이터-세트-생성"><i class="fa fa-check"></i><b>2.1</b> <code>시도 데이터 세트</code> 생성</a></li>
+<li class="chapter" data-level="2.2" data-path="create-CTPRVN-dataset.html"><a href="create-CTPRVN-dataset.html#시도-지리정보-데이터-세트-생성"><i class="fa fa-check"></i><b>2.2</b> <code>시도 지리정보 데이터 세트</code> 생성</a></li>
+<li class="chapter" data-level="2.3" data-path="create-CTPRVN-dataset.html"><a href="create-CTPRVN-dataset.html#시도-데이터-세트와-시도-지리정보-데이터-세트의-결합"><i class="fa fa-check"></i><b>2.3</b> ’시도 데이터 세트<code>와  '시도 지리정보 데이터 세트</code>의 결합</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dataset-visualization.html"><a href="dataset-visualization.html"><i class="fa fa-check"></i><b>3</b> 지도 시각화용 데이터 세트 생성</a><ul>
+<li class="chapter" data-level="" data-path="dataset-visualization.html"><a href="dataset-visualization.html#사용할-패키지-불러오기-2"><i class="fa fa-check"></i>사용할 패키지 불러오기</a></li>
+<li class="chapter" data-level="3.1" data-path="dataset-visualization.html"><a href="dataset-visualization.html#득표수-데이터-파일-불러오기"><i class="fa fa-check"></i><b>3.1</b> 득표수 데이터 파일 불러오기</a></li>
+<li class="chapter" data-level="3.2" data-path="dataset-visualization.html"><a href="dataset-visualization.html#시도별-후보자-득표수-데이터-세트-만들기"><i class="fa fa-check"></i><b>3.2</b> 시도별 후보자 득표수 데이터 세트 만들기</a></li>
+<li class="chapter" data-level="3.3" data-path="dataset-visualization.html"><a href="dataset-visualization.html#득표수-데이터-세트의-모양-변환"><i class="fa fa-check"></i><b>3.3</b> 득표수 데이터 세트의 모양 변환</a></li>
+<li class="chapter" data-level="3.4" data-path="dataset-visualization.html"><a href="dataset-visualization.html#득표수-데이터-세트와-지리정보-데이터-세트-결합"><i class="fa fa-check"></i><b>3.4</b> 득표수 데이터 세트와 지리정보 데이터 세트 결합</a></li>
+<li class="chapter" data-level="3.5" data-path="dataset-visualization.html"><a href="dataset-visualization.html#후보자-이름-컬럼을-factor-형으로-변환"><i class="fa fa-check"></i><b>3.5</b> 후보자 이름 컬럼을 factor 형으로 변환</a></li>
+<li class="chapter" data-level="3.6" data-path="dataset-visualization.html"><a href="dataset-visualization.html#데이터-세트-저장하기"><i class="fa fa-check"></i><b>3.6</b> 데이터 세트 저장하기</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>4</b> 득표수 데이터 시각화 : 지도 그리기</a><ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#사용할-패키지-불러오기-3"><i class="fa fa-check"></i>사용할 패키지 불러오기</a></li>
+<li class="chapter" data-level="4.1" data-path="visualization.html"><a href="visualization.html#전체-후보자-득표수-시각화"><i class="fa fa-check"></i><b>4.1</b> 전체 후보자 득표수 시각화</a></li>
+<li class="chapter" data-level="4.2" data-path="visualization.html"><a href="visualization.html#후보별-득표수-시각화"><i class="fa fa-check"></i><b>4.2</b> 후보별 득표수 시각화</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="visualization.html"><a href="visualization.html#문재인-후보-득표수"><i class="fa fa-check"></i><b>4.2.1</b> 문재인 후보 득표수</a></li>
+<li class="chapter" data-level="4.2.2" data-path="visualization.html"><a href="visualization.html#홍준표-후보-득표수"><i class="fa fa-check"></i><b>4.2.2</b> 홍준표 후보 득표수</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="visualization.html"><a href="visualization.html#viridis-패키지-활용"><i class="fa fa-check"></i><b>4.3</b> viridis 패키지 활용</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="visualization.html"><a href="visualization.html#패키지-불러오기"><i class="fa fa-check"></i><b>4.3.1</b> 패키지 불러오기</a></li>
+<li class="chapter" data-level="4.3.2" data-path="visualization.html"><a href="visualization.html#전체-후보자"><i class="fa fa-check"></i><b>4.3.2</b> 전체 후보자</a></li>
+<li class="chapter" data-level="4.3.3" data-path="visualization.html"><a href="visualization.html#문재인-후보"><i class="fa fa-check"></i><b>4.3.3</b> 문재인 후보</a></li>
+<li class="chapter" data-level="4.3.4" data-path="visualization.html"><a href="visualization.html#홍준표-후보"><i class="fa fa-check"></i><b>4.3.4</b> 홍준표 후보</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Visualization of the 19th Presidential Vote with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="SHP_Conversion" class="section level1">
+<h1><span class="header-section-number">1</span> 지리정보의 좌표계 변환</h1>
+<div id="사용할-패키지-불러오기" class="section level2 unnumbered">
+<h2>사용할 패키지 불러오기</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(ggmap)</a></code></pre></div>
+<pre><code>## Loading required package: ggplot2</code></pre>
+<pre><code>## Google&#39;s Terms of Service: https://cloud.google.com/maps-platform/terms/.</code></pre>
+<pre><code>## Please cite ggmap if you use it! See citation(&quot;ggmap&quot;) for details.</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="kw">library</span>(raster)</a></code></pre></div>
+<pre><code>## Loading required package: sp</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">library</span>(rgeos)</a></code></pre></div>
+<pre><code>## rgeos version: 0.5-5, (SVN revision 640)
+##  GEOS runtime version: 3.8.0-CAPI-1.13.1 
+##  Linking to sp version: 1.4-4 
+##  Polygon checking: TRUE</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">library</span>(maptools)</a></code></pre></div>
+<pre><code>## Checking rgeos availability: TRUE</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">library</span>(rgdal)</a></code></pre></div>
+<pre><code>## rgdal: version: 1.5-18, (SVN revision 1082)
+## Geospatial Data Abstraction Library extensions to R successfully loaded
+## Loaded GDAL runtime: GDAL 3.0.4, released 2020/01/28
+## Path to GDAL shared files: C:/Program Files/R/R-4.0.3/library/rgdal/gdal
+## GDAL binary built with GEOS: TRUE 
+## Loaded PROJ runtime: Rel. 6.3.1, February 10th, 2020, [PJ_VERSION: 631]
+## Path to PROJ shared files: C:/Program Files/R/R-4.0.3/library/rgdal/proj
+## Linking to sp version:1.4-4
+## To mute warnings of possible GDAL/OSR exportToProj4() degradation,
+## use options(&quot;rgdal_show_exportToProj4_warnings&quot;=&quot;none&quot;) before loading rgdal.</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --</code></pre>
+<pre><code>## √ tibble  3.0.4     √ dplyr   1.0.2
+## √ tidyr   1.1.2     √ stringr 1.4.0
+## √ readr   1.4.0     √ forcats 0.5.0
+## √ purrr   0.3.4</code></pre>
+<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x tidyr::extract() masks raster::extract()
+## x dplyr::filter()  masks stats::filter()
+## x dplyr::lag()     masks stats::lag()
+## x dplyr::select()  masks raster::select()</code></pre>
+</div>
+<div id="시도별-지리정보-파일" class="section level2">
+<h2><span class="header-section-number">1.1</span> 시도별 지리정보 파일</h2>
+<div id="시도-지리정보-파일-다운받기" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> 시도 지리정보 파일 다운받기</h3>
+<p><a href="http://www.gisdeveloper.co.kr/?p=2332">행정구역 SHP 파일</a>에서 <strong>시도(<code>CTPRVN</code>) / 시군구(<code>SIG</code>) / 읍명동(<code>EMD</code>) / 리</strong> 구분하여 최신의 파일을 다운받을 수 있다.</p>
+<p>2017년 5월에 대선이 있었으므로, 2017년 3월의 업데이터 파일을 다운받는다.</p>
+</div>
+<div id="시도-지리정보-파일-불러오기" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> 시도 지리정보 파일 불러오기</h3>
+<p><code>rgdal</code> 패키지의 <code>readOGR()</code> 함수를 이용하여, <strong>시도 지리정보</strong> 파일인 “<strong><code>TL_SCCO_CTPRVN.shp</code></strong>”을 불러온다.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">shp_CTPRVN_grs &lt;-<span class="st"> </span><span class="kw">readOGR</span>(<span class="st">&#39;shp/TL_SCCO_CTPRVN.shp&#39;</span>)</a></code></pre></div>
+<pre><code>## OGR data source with driver: ESRI Shapefile 
+## Source: &quot;C:\Users\김대호\OneDrive - 목원대학교\Kim_DaeHo(insoo_notebook)\Lectures\BigDataAnalysis\BDA-2020\강의용 PDF\Ch07\지역지도\19-President-Vote\시도-득표수분석(최종)\shp\TL_SCCO_CTPRVN.shp&quot;, layer: &quot;TL_SCCO_CTPRVN&quot;
+## with 17 features
+## It has 3 fields</code></pre>
+</div>
+<div id="지리정보-파일의-속성-확인" class="section level3">
+<h3><span class="header-section-number">1.1.3</span> 지리정보 파일의 속성 확인</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">summary</span>(shp_CTPRVN_grs)</a></code></pre></div>
+<pre><code>## Object of class SpatialPolygonsDataFrame
+## Coordinates:
+##         min     max
+## x  746110.3 1387950
+## y 1458754.0 2066200
+## Is projected: TRUE 
+## proj4string :
+## [+proj=tmerc +lat_0=38 +lon_0=127.5 +k=0.9996 +x_0=1000000 +y_0=2000000
+## +ellps=GRS80 +units=m +no_defs]
+## Data attributes:
+##   CTPRVN_CD          CTP_ENG_NM         CTP_KOR_NM       
+##  Length:17          Length:17          Length:17         
+##  Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character</code></pre>
+</div>
+</div>
+<div id="지리정보의-좌표계-변환" class="section level2">
+<h2><span class="header-section-number">1.2</span> 지리정보의 좌표계 변환</h2>
+<p>기본적으로 제공하는 (시도) 지리정보 파일은 <code>GRS80 좌표계</code>를 담고 있다.</p>
+<p>이 좌표계를 <strong><code>WGS84 경도/위도 좌표계</code></strong>로 변환한다.</p>
+<div id="좌표계-변환-인자-설정" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> 좌표계 변환 인자 설정</h3>
+<p>좌표계 변환을 위한 Proj4. 인자를 다음과 같이 설정한다.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">from_crs &lt;-<span class="st"> </span><span class="kw">CRS</span>(<span class="st">&quot;+proj=tmerc +lat_0=38 +lon_0=127.5 +k=0.9996 +x_0=1000000 +y_0=2000000 +ellps=GRS80 +units=m&quot;</span>)</a>
+<a class="sourceLine" id="cb21-2" title="2">to_crs &lt;-<span class="st"> </span><span class="kw">CRS</span>(<span class="st">&quot;+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs&quot;</span>)</a></code></pre></div>
+</div>
+<div id="좌표계-변환" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> 좌표계 변환</h3>
+<p><code>sp</code> 패키지의 <code>spTransform( )</code> 함수를 이용하여 좌표계 변경 인자 <strong><code>to_crs</code></strong>를 활용하여 경도/위도 좌표계로 변환하고 shp_CTPRVN에 대입한다.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">shp_CTPRVN &lt;-<span class="st"> </span><span class="kw">spTransform</span>(shp_CTPRVN_grs, to_crs)</a></code></pre></div>
+</div>
+<div id="좌표계의-요약정보-확인" class="section level3">
+<h3><span class="header-section-number">1.2.3</span> 좌표계의 요약정보 확인</h3>
+<p><code>shp_CTRPVN</code>은 <code>S4 Class</code> 이며, Slot으로 구성된다.</p>
+<p><code>summary()</code> 함수를 이용하여 변수의 요약정보를 확인한다.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw">summary</span>(shp_CTPRVN)</a></code></pre></div>
+<pre><code>## Object of class SpatialPolygonsDataFrame
+## Coordinates:
+##         min       max
+## x 124.60971 131.87278
+## y  33.11371  38.59339
+## Is projected: FALSE 
+## proj4string : [+proj=longlat +datum=WGS84 +no_defs]
+## Data attributes:
+##   CTPRVN_CD          CTP_ENG_NM         CTP_KOR_NM       
+##  Length:17          Length:17          Length:17         
+##  Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character</code></pre>
+</div>
+<div id="변환된-좌표계의-슬롯-확인" class="section level3">
+<h3><span class="header-section-number">1.2.4</span> 변환된 좌표계의 슬롯 확인</h3>
+<p>이제 <code>shp_CTPRVN</code>의 슬롯을 확인한다.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">slotNames</span>(shp_CTPRVN)</a></code></pre></div>
+<pre><code>## [1] &quot;data&quot;        &quot;polygons&quot;    &quot;plotOrder&quot;   &quot;bbox&quot;        &quot;proj4string&quot;</code></pre>
+</div>
+<div id="슬롯의-속성-확인" class="section level3">
+<h3><span class="header-section-number">1.2.5</span> 슬롯의 속성 확인</h3>
+<p><code>data</code> 슬롯의 속성을 확인한다.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">head</span>(shp_CTPRVN<span class="op">@</span>data)</a></code></pre></div>
+<pre><code>##   CTPRVN_CD CTP_ENG_NM CTP_KOR_NM
+## 0        11      Seoul 서울특별시
+## 1        26      Busan 부산광역시
+## 2        27      Daegu 대구광역시
+## 3        28    Incheon 인천광역시
+## 4        29    Gwangju 광주광역시
+## 5        30    Daejeon 대전광역시</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">slotNames</span>(shp_CTPRVN<span class="op">@</span>data)</a></code></pre></div>
+<pre><code>## [1] &quot;.Data&quot;     &quot;names&quot;     &quot;row.names&quot; &quot;.S3Class&quot;</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="create-CTPRVN-dataset.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

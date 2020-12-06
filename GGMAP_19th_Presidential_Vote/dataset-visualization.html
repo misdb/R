@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 지도 시각화용 데이터 세트 생성 | Visualization of the 19th Presidential Vote with R</title>
+  <meta name="description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 지도 시각화용 데이터 세트 생성 | Visualization of the 19th Presidential Vote with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 지도 시각화용 데이터 세트 생성 | Visualization of the 19th Presidential Vote with R" />
+  
+  <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Dae Ho Kim" />
+
+
+<meta name="date" content="2020-11-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="create-CTPRVN-dataset.html"/>
+<link rel="next" href="visualization.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>제19대 대통령선거 후보자별 득표 [시도별 : CTPRVN.shp]</a></li>
+<li class="chapter" data-level="1" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html"><i class="fa fa-check"></i><b>1</b> 지리정보의 좌표계 변환</a><ul>
+<li class="chapter" data-level="" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#사용할-패키지-불러오기"><i class="fa fa-check"></i>사용할 패키지 불러오기</a></li>
+<li class="chapter" data-level="1.1" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#시도별-지리정보-파일"><i class="fa fa-check"></i><b>1.1</b> 시도별 지리정보 파일</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#시도-지리정보-파일-다운받기"><i class="fa fa-check"></i><b>1.1.1</b> 시도 지리정보 파일 다운받기</a></li>
+<li class="chapter" data-level="1.1.2" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#시도-지리정보-파일-불러오기"><i class="fa fa-check"></i><b>1.1.2</b> 시도 지리정보 파일 불러오기</a></li>
+<li class="chapter" data-level="1.1.3" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#지리정보-파일의-속성-확인"><i class="fa fa-check"></i><b>1.1.3</b> 지리정보 파일의 속성 확인</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#지리정보의-좌표계-변환"><i class="fa fa-check"></i><b>1.2</b> 지리정보의 좌표계 변환</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#좌표계-변환-인자-설정"><i class="fa fa-check"></i><b>1.2.1</b> 좌표계 변환 인자 설정</a></li>
+<li class="chapter" data-level="1.2.2" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#좌표계-변환"><i class="fa fa-check"></i><b>1.2.2</b> 좌표계 변환</a></li>
+<li class="chapter" data-level="1.2.3" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#좌표계의-요약정보-확인"><i class="fa fa-check"></i><b>1.2.3</b> 좌표계의 요약정보 확인</a></li>
+<li class="chapter" data-level="1.2.4" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#변환된-좌표계의-슬롯-확인"><i class="fa fa-check"></i><b>1.2.4</b> 변환된 좌표계의 슬롯 확인</a></li>
+<li class="chapter" data-level="1.2.5" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#슬롯의-속성-확인"><i class="fa fa-check"></i><b>1.2.5</b> 슬롯의 속성 확인</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="create-CTPRVN-dataset.html"><a href="create-CTPRVN-dataset.html"><i class="fa fa-check"></i><b>2</b> 데이터 세트의 생성</a><ul>
+<li class="chapter" data-level="" data-path="create-CTPRVN-dataset.html"><a href="create-CTPRVN-dataset.html#사용할-패키지-불러오기-1"><i class="fa fa-check"></i>사용할 패키지 불러오기</a></li>
+<li class="chapter" data-level="2.1" data-path="create-CTPRVN-dataset.html"><a href="create-CTPRVN-dataset.html#시도-데이터-세트-생성"><i class="fa fa-check"></i><b>2.1</b> <code>시도 데이터 세트</code> 생성</a></li>
+<li class="chapter" data-level="2.2" data-path="create-CTPRVN-dataset.html"><a href="create-CTPRVN-dataset.html#시도-지리정보-데이터-세트-생성"><i class="fa fa-check"></i><b>2.2</b> <code>시도 지리정보 데이터 세트</code> 생성</a></li>
+<li class="chapter" data-level="2.3" data-path="create-CTPRVN-dataset.html"><a href="create-CTPRVN-dataset.html#시도-데이터-세트와-시도-지리정보-데이터-세트의-결합"><i class="fa fa-check"></i><b>2.3</b> ’시도 데이터 세트<code>와  '시도 지리정보 데이터 세트</code>의 결합</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dataset-visualization.html"><a href="dataset-visualization.html"><i class="fa fa-check"></i><b>3</b> 지도 시각화용 데이터 세트 생성</a><ul>
+<li class="chapter" data-level="" data-path="dataset-visualization.html"><a href="dataset-visualization.html#사용할-패키지-불러오기-2"><i class="fa fa-check"></i>사용할 패키지 불러오기</a></li>
+<li class="chapter" data-level="3.1" data-path="dataset-visualization.html"><a href="dataset-visualization.html#득표수-데이터-파일-불러오기"><i class="fa fa-check"></i><b>3.1</b> 득표수 데이터 파일 불러오기</a></li>
+<li class="chapter" data-level="3.2" data-path="dataset-visualization.html"><a href="dataset-visualization.html#시도별-후보자-득표수-데이터-세트-만들기"><i class="fa fa-check"></i><b>3.2</b> 시도별 후보자 득표수 데이터 세트 만들기</a></li>
+<li class="chapter" data-level="3.3" data-path="dataset-visualization.html"><a href="dataset-visualization.html#득표수-데이터-세트의-모양-변환"><i class="fa fa-check"></i><b>3.3</b> 득표수 데이터 세트의 모양 변환</a></li>
+<li class="chapter" data-level="3.4" data-path="dataset-visualization.html"><a href="dataset-visualization.html#득표수-데이터-세트와-지리정보-데이터-세트-결합"><i class="fa fa-check"></i><b>3.4</b> 득표수 데이터 세트와 지리정보 데이터 세트 결합</a></li>
+<li class="chapter" data-level="3.5" data-path="dataset-visualization.html"><a href="dataset-visualization.html#후보자-이름-컬럼을-factor-형으로-변환"><i class="fa fa-check"></i><b>3.5</b> 후보자 이름 컬럼을 factor 형으로 변환</a></li>
+<li class="chapter" data-level="3.6" data-path="dataset-visualization.html"><a href="dataset-visualization.html#데이터-세트-저장하기"><i class="fa fa-check"></i><b>3.6</b> 데이터 세트 저장하기</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>4</b> 득표수 데이터 시각화 : 지도 그리기</a><ul>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#사용할-패키지-불러오기-3"><i class="fa fa-check"></i>사용할 패키지 불러오기</a></li>
+<li class="chapter" data-level="4.1" data-path="visualization.html"><a href="visualization.html#전체-후보자-득표수-시각화"><i class="fa fa-check"></i><b>4.1</b> 전체 후보자 득표수 시각화</a></li>
+<li class="chapter" data-level="4.2" data-path="visualization.html"><a href="visualization.html#후보별-득표수-시각화"><i class="fa fa-check"></i><b>4.2</b> 후보별 득표수 시각화</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="visualization.html"><a href="visualization.html#문재인-후보-득표수"><i class="fa fa-check"></i><b>4.2.1</b> 문재인 후보 득표수</a></li>
+<li class="chapter" data-level="4.2.2" data-path="visualization.html"><a href="visualization.html#홍준표-후보-득표수"><i class="fa fa-check"></i><b>4.2.2</b> 홍준표 후보 득표수</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="visualization.html"><a href="visualization.html#viridis-패키지-활용"><i class="fa fa-check"></i><b>4.3</b> viridis 패키지 활용</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="visualization.html"><a href="visualization.html#패키지-불러오기"><i class="fa fa-check"></i><b>4.3.1</b> 패키지 불러오기</a></li>
+<li class="chapter" data-level="4.3.2" data-path="visualization.html"><a href="visualization.html#전체-후보자"><i class="fa fa-check"></i><b>4.3.2</b> 전체 후보자</a></li>
+<li class="chapter" data-level="4.3.3" data-path="visualization.html"><a href="visualization.html#문재인-후보"><i class="fa fa-check"></i><b>4.3.3</b> 문재인 후보</a></li>
+<li class="chapter" data-level="4.3.4" data-path="visualization.html"><a href="visualization.html#홍준표-후보"><i class="fa fa-check"></i><b>4.3.4</b> 홍준표 후보</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Visualization of the 19th Presidential Vote with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="dataset_visualization" class="section level1">
+<h1><span class="header-section-number">3</span> 지도 시각화용 데이터 세트 생성</h1>
+<div id="사용할-패키지-불러오기-2" class="section level2 unnumbered">
+<h2>사용할 패키지 불러오기</h2>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="kw">library</span>(ggmap)</a>
+<a class="sourceLine" id="cb46-2" title="2"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb46-3" title="3"><span class="kw">library</span>(raster)</a>
+<a class="sourceLine" id="cb46-4" title="4"><span class="kw">library</span>(rgeos)</a>
+<a class="sourceLine" id="cb46-5" title="5"><span class="kw">library</span>(maptools)</a>
+<a class="sourceLine" id="cb46-6" title="6"><span class="kw">library</span>(rgdal)</a>
+<a class="sourceLine" id="cb46-7" title="7"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+</div>
+<div id="득표수-데이터-파일-불러오기" class="section level2">
+<h2><span class="header-section-number">3.1</span> 득표수 데이터 파일 불러오기</h2>
+<p>제19대 대통령선거 특표 데이터를 불러온다.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb47-2" title="2"></a>
+<a class="sourceLine" id="cb47-3" title="3">data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/19-President_Total.csv&quot;</span>, </a>
+<a class="sourceLine" id="cb47-4" title="4">                 <span class="dt">locale =</span> <span class="kw">locale</span>(<span class="st">&quot;ko&quot;</span>, <span class="dt">encoding =</span> <span class="st">&quot;euc-kr&quot;</span>))</a></code></pre></div>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   .default = col_double(),
+##   CTPRVN_NM = col_character(),
+##   SIG_NM = col_character(),
+##   EMD_NM = col_character(),
+##   VOTE_NM = col_character()
+## )
+## i Use `spec()` for the full column specifications.</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1"><span class="kw">str</span>(data)</a></code></pre></div>
+<pre><code>## tibble [22,214 x 22] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ CTPRVN_NM: chr [1:22214] &quot;전국&quot; &quot;서울특별시&quot; &quot;서울특별시&quot; &quot;서울특별시&quot; ...
+##  $ SIG_NM   : chr [1:22214] NA &quot;합계&quot; &quot;종로구&quot; &quot;종로구&quot; ...
+##  $ EMD_NM   : chr [1:22214] NA NA &quot;합계&quot; &quot;거소·선상투표&quot; ...
+##  $ VOTE_NM  : chr [1:22214] NA NA NA NA ...
+##  $ N_People : num [1:22214] 42479710 8382999 133769 218 12803 ...
+##  $ N_Vote   : num [1:22214] 32807908 6590646 102566 206 12803 ...
+##  $ Moon_J   : num [1:22214] 13423800 2781345 42512 64 5842 ...
+##  $ Hong_J   : num [1:22214] 7852849 1365285 22325 42 2025 ...
+##  $ Ahn_Ch   : num [1:22214] 6998342 1492767 22313 65 2509 ...
+##  $ You_S    : num [1:22214] 2208771 476973 7412 8 1156 ...
+##  $ Shim_S   : num [1:22214] 2017458 425459 7113 15 1145 ...
+##  $ Cho_W    : num [1:22214] 42949 9987 228 0 17 ...
+##  $ Oh       : num [1:22214] 6040 789 5 1 0 0 0 0 0 0 ...
+##  $ Chang    : num [1:22214] 21709 3554 78 3 4 ...
+##  $ Lee_J    : num [1:22214] 9140 1938 31 1 2 ...
+##  $ Kim      : num [1:22214] 27229 3416 63 0 15 ...
+##  $ Lee_K    : num [1:22214] 11355 1277 26 0 6 ...
+##  $ Yoon_H   : num [1:22214] 18543 2177 47 0 9 ...
+##  $ Kim_M    : num [1:22214] 33990 3950 49 2 6 ...
+##  $ Sum      : num [1:22214] 32672175 6568917 102202 201 12736 ...
+##  $ Invalid  : num [1:22214] 135733 21729 364 5 67 ...
+##  $ blank    : num [1:22214] 9671802 1792353 31203 12 0 ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   CTPRVN_NM = col_character(),
+##   ..   SIG_NM = col_character(),
+##   ..   EMD_NM = col_character(),
+##   ..   VOTE_NM = col_character(),
+##   ..   N_People = col_double(),
+##   ..   N_Vote = col_double(),
+##   ..   Moon_J = col_double(),
+##   ..   Hong_J = col_double(),
+##   ..   Ahn_Ch = col_double(),
+##   ..   You_S = col_double(),
+##   ..   Shim_S = col_double(),
+##   ..   Cho_W = col_double(),
+##   ..   Oh = col_double(),
+##   ..   Chang = col_double(),
+##   ..   Lee_J = col_double(),
+##   ..   Kim = col_double(),
+##   ..   Lee_K = col_double(),
+##   ..   Yoon_H = col_double(),
+##   ..   Kim_M = col_double(),
+##   ..   Sum = col_double(),
+##   ..   Invalid = col_double(),
+##   ..   blank = col_double()
+##   .. )</code></pre>
+</div>
+<div id="시도별-후보자-득표수-데이터-세트-만들기" class="section level2">
+<h2><span class="header-section-number">3.2</span> 시도별 후보자 득표수 데이터 세트 만들기</h2>
+<ul>
+<li>행의 선택 : 불러온 데이터의 <code>SIG_NM</code> 컬럼 값이 “합계” 행들이 시도별 후보자 득표수 합계를 보여주고 있다.</li>
+<li>컬럼 선택 : 시도명 컬럼(<code>CTPRVN_NM</code>), 후보자 득표수 컬럼</li>
+<li>컬럼 생성 : 기타 후보자(<code>etc</code>) 득표수 컬럼</li>
+</ul>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1">vote_CTPRVN &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(SIG_NM <span class="op">==</span><span class="st"> &quot;합계&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb51-2" title="2"><span class="st">        </span><span class="kw">mutate</span>(<span class="dt">etc =</span> Sum <span class="op">-</span><span class="st"> </span>(Moon_J <span class="op">+</span><span class="st"> </span>Hong_J <span class="op">+</span><span class="st"> </span>Ahn_Ch <span class="op">+</span><span class="st"> </span>You_S <span class="op">+</span><span class="st"> </span>Shim_S)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb51-3" title="3"><span class="st">        </span><span class="kw">select</span>(CTPRVN_NM, Moon_J, Hong_J, Ahn_Ch, You_S, Shim_S)</a>
+<a class="sourceLine" id="cb51-4" title="4"><span class="kw">str</span>(vote_CTPRVN)</a></code></pre></div>
+<pre><code>## tibble [17 x 6] (S3: tbl_df/tbl/data.frame)
+##  $ CTPRVN_NM: chr [1:17] &quot;서울특별시&quot; &quot;부산광역시&quot; &quot;대구광역시&quot; &quot;인천광역시&quot; ...
+##  $ Moon_J   : num [1:17] 2781345 872127 342620 747090 583847 ...
+##  $ Hong_J   : num [1:17] 1365285 720484 714205 379191 14882 ...
+##  $ Ahn_Ch   : num [1:17] 1492767 378907 235757 428888 287222 ...
+##  $ You_S    : num [1:17] 476973 162480 198459 118691 20862 ...
+##  $ Shim_S   : num [1:17] 425459 109329 74440 129925 43719 ...</code></pre>
+</div>
+<div id="득표수-데이터-세트의-모양-변환" class="section level2">
+<h2><span class="header-section-number">3.3</span> 득표수 데이터 세트의 모양 변환</h2>
+<p>득표수 데이터 세트를 보면, 후보자별 득표수 데이터가 후보자별 컬럼에 저장되어 있다. 즉, wide 형태로 되어 있다.</p>
+<p>데이터 세트의 분석력을 높이기 위해 이를 long 형태로 변환하는 것이 좋다.</p>
+<p><code>vote_CTPRVN</code> 데이터 세트를 long 형태로 변환한다.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1">vote_CTPRVN_long &lt;-<span class="st"> </span>vote_CTPRVN <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pivot_longer</span>(<span class="dt">names_to =</span> <span class="st">&quot;name&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;n_vote&quot;</span>, <span class="dv">-1</span>)</a>
+<a class="sourceLine" id="cb53-2" title="2"><span class="kw">str</span>(vote_CTPRVN_long)</a></code></pre></div>
+<pre><code>## tibble [85 x 3] (S3: tbl_df/tbl/data.frame)
+##  $ CTPRVN_NM: chr [1:85] &quot;서울특별시&quot; &quot;서울특별시&quot; &quot;서울특별시&quot; &quot;서울특별시&quot; ...
+##  $ name     : chr [1:85] &quot;Moon_J&quot; &quot;Hong_J&quot; &quot;Ahn_Ch&quot; &quot;You_S&quot; ...
+##  $ n_vote   : num [1:85] 2781345 1365285 1492767 476973 425459 ...</code></pre>
+<ul>
+<li>이제 17개 이던 행의 갯수가 102개로 늘어 났다. (6명 후보 * 17개 시도 = 102개 행)</li>
+</ul>
+</div>
+<div id="득표수-데이터-세트와-지리정보-데이터-세트-결합" class="section level2">
+<h2><span class="header-section-number">3.4</span> 득표수 데이터 세트와 지리정보 데이터 세트 결합</h2>
+<ul>
+<li>왼쪽 테이블 : vote_CTPRVN, 주키 : CTPRVN_NM</li>
+<li>오른쪽 테이블 : result, 주키 : CTP_KOR_NM</li>
+<li>join 에 사용될 주키의 이름이 다르다.</li>
+</ul>
+<p>두 데이터 세트를 결합하여 <code>vote</code>에 대입한다.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1">vote &lt;-<span class="st"> </span>vote_CTPRVN_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb55-2" title="2"><span class="st">  </span><span class="kw">left_join</span>(result, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;CTPRVN_NM&quot;</span> =<span class="st"> &quot;CTP_KOR_NM&quot;</span>))</a>
+<a class="sourceLine" id="cb55-3" title="3"><span class="kw">str</span>(vote)</a></code></pre></div>
+<pre><code>## tibble [3,994,190 x 11] (S3: tbl_df/tbl/data.frame)
+##  $ CTPRVN_NM : chr [1:3994190] &quot;서울특별시&quot; &quot;서울특별시&quot; &quot;서울특별시&quot; &quot;서울특별시&quot; ...
+##  $ name      : chr [1:3994190] &quot;Moon_J&quot; &quot;Moon_J&quot; &quot;Moon_J&quot; &quot;Moon_J&quot; ...
+##  $ n_vote    : num [1:3994190] 2781345 2781345 2781345 2781345 2781345 ...
+##  $ long      : num [1:3994190] 127 127 127 127 127 ...
+##  $ lat       : num [1:3994190] 37.6 37.6 37.6 37.6 37.6 ...
+##  $ order     : int [1:3994190] 1 2 3 4 5 6 7 8 9 10 ...
+##  $ hole      : logi [1:3994190] FALSE FALSE FALSE FALSE FALSE FALSE ...
+##  $ piece     : Factor w/ 2228 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ id        : chr [1:3994190] &quot;11&quot; &quot;11&quot; &quot;11&quot; &quot;11&quot; ...
+##  $ group     : Factor w/ 4558 levels &quot;11.1&quot;,&quot;11.2&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ CTP_ENG_NM: chr [1:3994190] &quot;Seoul&quot; &quot;Seoul&quot; &quot;Seoul&quot; &quot;Seoul&quot; ...</code></pre>
+</div>
+<div id="후보자-이름-컬럼을-factor-형으로-변환" class="section level2">
+<h2><span class="header-section-number">3.5</span> 후보자 이름 컬럼을 factor 형으로 변환</h2>
+<p><code>vote</code>의 <code>name</code> 컬럼을 <code>factor</code> 형으로 변환한다. 그 순서는 후보자 번호 순으로 한다.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1">vote<span class="op">$</span>name &lt;-<span class="st"> </span><span class="kw">factor</span>(vote<span class="op">$</span>name, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;Moon_J&quot;</span>, <span class="st">&quot;Hong_J&quot;</span>, <span class="st">&quot;Ahn_Ch&quot;</span>, <span class="st">&quot;You_S&quot;</span>, <span class="st">&quot;Shim_S&quot;</span>, <span class="st">&quot;etc&quot;</span>))</a>
+<a class="sourceLine" id="cb57-2" title="2"><span class="kw">str</span>(vote)</a></code></pre></div>
+<pre><code>## tibble [3,994,190 x 11] (S3: tbl_df/tbl/data.frame)
+##  $ CTPRVN_NM : chr [1:3994190] &quot;서울특별시&quot; &quot;서울특별시&quot; &quot;서울특별시&quot; &quot;서울특별시&quot; ...
+##  $ name      : Factor w/ 6 levels &quot;Moon_J&quot;,&quot;Hong_J&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ n_vote    : num [1:3994190] 2781345 2781345 2781345 2781345 2781345 ...
+##  $ long      : num [1:3994190] 127 127 127 127 127 ...
+##  $ lat       : num [1:3994190] 37.6 37.6 37.6 37.6 37.6 ...
+##  $ order     : int [1:3994190] 1 2 3 4 5 6 7 8 9 10 ...
+##  $ hole      : logi [1:3994190] FALSE FALSE FALSE FALSE FALSE FALSE ...
+##  $ piece     : Factor w/ 2228 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ id        : chr [1:3994190] &quot;11&quot; &quot;11&quot; &quot;11&quot; &quot;11&quot; ...
+##  $ group     : Factor w/ 4558 levels &quot;11.1&quot;,&quot;11.2&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ CTP_ENG_NM: chr [1:3994190] &quot;Seoul&quot; &quot;Seoul&quot; &quot;Seoul&quot; &quot;Seoul&quot; ...</code></pre>
+</div>
+<div id="데이터-세트-저장하기" class="section level2">
+<h2><span class="header-section-number">3.6</span> 데이터 세트 저장하기</h2>
+<p>이제 득표수 데이터에 지리정보가 결합된 데이터 세트 M을 <code>02-vote_CTPRVN_last.rds</code> 파일로 저장한다.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" title="1"><span class="kw">write_rds</span>(vote, <span class="st">&quot;data/03-vote_CTPRVN_last.rds&quot;</span>)</a></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="create-CTPRVN-dataset.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="visualization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
