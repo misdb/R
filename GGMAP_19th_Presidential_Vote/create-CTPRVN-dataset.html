@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 데이터 세트의 생성 | Visualization of the 19th Presidential Vote with R</title>
+  <title>Chapter 2 데이터 세트의 생성 | Visualization of the 19th Presidential Vote with R</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 데이터 세트의 생성 | Visualization of the 19th Presidential Vote with R" />
+  <meta property="og:title" content="Chapter 2 데이터 세트의 생성 | Visualization of the 19th Presidential Vote with R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 데이터 세트의 생성 | Visualization of the 19th Presidential Vote with R" />
+  <meta name="twitter:title" content="Chapter 2 데이터 세트의 생성 | Visualization of the 19th Presidential Vote with R" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2020-11-09" />
+<meta name="date" content="2020-12-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="SHP-Conversion.html"/>
 <link rel="next" href="dataset-visualization.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -55,25 +56,26 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -82,9 +84,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -130,14 +132,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>제19대 대통령선거 후보자별 득표 [시도별 : CTPRVN.shp]</a></li>
-<li class="chapter" data-level="1" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html"><i class="fa fa-check"></i><b>1</b> 지리정보의 좌표계 변환</a><ul>
+<li class="chapter" data-level="1" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html"><i class="fa fa-check"></i><b>1</b> 지리정보의 좌표계 변환</a>
+<ul>
 <li class="chapter" data-level="" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#사용할-패키지-불러오기"><i class="fa fa-check"></i>사용할 패키지 불러오기</a></li>
-<li class="chapter" data-level="1.1" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#시도별-지리정보-파일"><i class="fa fa-check"></i><b>1.1</b> 시도별 지리정보 파일</a><ul>
+<li class="chapter" data-level="1.1" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#시도별-지리정보-파일"><i class="fa fa-check"></i><b>1.1</b> 시도별 지리정보 파일</a>
+<ul>
 <li class="chapter" data-level="1.1.1" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#시도-지리정보-파일-다운받기"><i class="fa fa-check"></i><b>1.1.1</b> 시도 지리정보 파일 다운받기</a></li>
 <li class="chapter" data-level="1.1.2" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#시도-지리정보-파일-불러오기"><i class="fa fa-check"></i><b>1.1.2</b> 시도 지리정보 파일 불러오기</a></li>
 <li class="chapter" data-level="1.1.3" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#지리정보-파일의-속성-확인"><i class="fa fa-check"></i><b>1.1.3</b> 지리정보 파일의 속성 확인</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#지리정보의-좌표계-변환"><i class="fa fa-check"></i><b>1.2</b> 지리정보의 좌표계 변환</a><ul>
+<li class="chapter" data-level="1.2" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#지리정보의-좌표계-변환"><i class="fa fa-check"></i><b>1.2</b> 지리정보의 좌표계 변환</a>
+<ul>
 <li class="chapter" data-level="1.2.1" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#좌표계-변환-인자-설정"><i class="fa fa-check"></i><b>1.2.1</b> 좌표계 변환 인자 설정</a></li>
 <li class="chapter" data-level="1.2.2" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#좌표계-변환"><i class="fa fa-check"></i><b>1.2.2</b> 좌표계 변환</a></li>
 <li class="chapter" data-level="1.2.3" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#좌표계의-요약정보-확인"><i class="fa fa-check"></i><b>1.2.3</b> 좌표계의 요약정보 확인</a></li>
@@ -145,13 +150,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2.5" data-path="SHP-Conversion.html"><a href="SHP-Conversion.html#슬롯의-속성-확인"><i class="fa fa-check"></i><b>1.2.5</b> 슬롯의 속성 확인</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="create-CTPRVN-dataset.html"><a href="create-CTPRVN-dataset.html"><i class="fa fa-check"></i><b>2</b> 데이터 세트의 생성</a><ul>
+<li class="chapter" data-level="2" data-path="create-CTPRVN-dataset.html"><a href="create-CTPRVN-dataset.html"><i class="fa fa-check"></i><b>2</b> 데이터 세트의 생성</a>
+<ul>
 <li class="chapter" data-level="" data-path="create-CTPRVN-dataset.html"><a href="create-CTPRVN-dataset.html#사용할-패키지-불러오기-1"><i class="fa fa-check"></i>사용할 패키지 불러오기</a></li>
 <li class="chapter" data-level="2.1" data-path="create-CTPRVN-dataset.html"><a href="create-CTPRVN-dataset.html#시도-데이터-세트-생성"><i class="fa fa-check"></i><b>2.1</b> <code>시도 데이터 세트</code> 생성</a></li>
 <li class="chapter" data-level="2.2" data-path="create-CTPRVN-dataset.html"><a href="create-CTPRVN-dataset.html#시도-지리정보-데이터-세트-생성"><i class="fa fa-check"></i><b>2.2</b> <code>시도 지리정보 데이터 세트</code> 생성</a></li>
 <li class="chapter" data-level="2.3" data-path="create-CTPRVN-dataset.html"><a href="create-CTPRVN-dataset.html#시도-데이터-세트와-시도-지리정보-데이터-세트의-결합"><i class="fa fa-check"></i><b>2.3</b> ’시도 데이터 세트<code>와  '시도 지리정보 데이터 세트</code>의 결합</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="dataset-visualization.html"><a href="dataset-visualization.html"><i class="fa fa-check"></i><b>3</b> 지도 시각화용 데이터 세트 생성</a><ul>
+<li class="chapter" data-level="3" data-path="dataset-visualization.html"><a href="dataset-visualization.html"><i class="fa fa-check"></i><b>3</b> 지도 시각화용 데이터 세트 생성</a>
+<ul>
 <li class="chapter" data-level="" data-path="dataset-visualization.html"><a href="dataset-visualization.html#사용할-패키지-불러오기-2"><i class="fa fa-check"></i>사용할 패키지 불러오기</a></li>
 <li class="chapter" data-level="3.1" data-path="dataset-visualization.html"><a href="dataset-visualization.html#득표수-데이터-파일-불러오기"><i class="fa fa-check"></i><b>3.1</b> 득표수 데이터 파일 불러오기</a></li>
 <li class="chapter" data-level="3.2" data-path="dataset-visualization.html"><a href="dataset-visualization.html#시도별-후보자-득표수-데이터-세트-만들기"><i class="fa fa-check"></i><b>3.2</b> 시도별 후보자 득표수 데이터 세트 만들기</a></li>
@@ -160,14 +167,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="dataset-visualization.html"><a href="dataset-visualization.html#후보자-이름-컬럼을-factor-형으로-변환"><i class="fa fa-check"></i><b>3.5</b> 후보자 이름 컬럼을 factor 형으로 변환</a></li>
 <li class="chapter" data-level="3.6" data-path="dataset-visualization.html"><a href="dataset-visualization.html#데이터-세트-저장하기"><i class="fa fa-check"></i><b>3.6</b> 데이터 세트 저장하기</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>4</b> 득표수 데이터 시각화 : 지도 그리기</a><ul>
+<li class="chapter" data-level="4" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>4</b> 득표수 데이터 시각화 : 지도 그리기</a>
+<ul>
 <li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html#사용할-패키지-불러오기-3"><i class="fa fa-check"></i>사용할 패키지 불러오기</a></li>
 <li class="chapter" data-level="4.1" data-path="visualization.html"><a href="visualization.html#전체-후보자-득표수-시각화"><i class="fa fa-check"></i><b>4.1</b> 전체 후보자 득표수 시각화</a></li>
-<li class="chapter" data-level="4.2" data-path="visualization.html"><a href="visualization.html#후보별-득표수-시각화"><i class="fa fa-check"></i><b>4.2</b> 후보별 득표수 시각화</a><ul>
+<li class="chapter" data-level="4.2" data-path="visualization.html"><a href="visualization.html#후보별-득표수-시각화"><i class="fa fa-check"></i><b>4.2</b> 후보별 득표수 시각화</a>
+<ul>
 <li class="chapter" data-level="4.2.1" data-path="visualization.html"><a href="visualization.html#문재인-후보-득표수"><i class="fa fa-check"></i><b>4.2.1</b> 문재인 후보 득표수</a></li>
 <li class="chapter" data-level="4.2.2" data-path="visualization.html"><a href="visualization.html#홍준표-후보-득표수"><i class="fa fa-check"></i><b>4.2.2</b> 홍준표 후보 득표수</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="visualization.html"><a href="visualization.html#viridis-패키지-활용"><i class="fa fa-check"></i><b>4.3</b> viridis 패키지 활용</a><ul>
+<li class="chapter" data-level="4.3" data-path="visualization.html"><a href="visualization.html#viridis-패키지-활용"><i class="fa fa-check"></i><b>4.3</b> viridis 패키지 활용</a>
+<ul>
 <li class="chapter" data-level="4.3.1" data-path="visualization.html"><a href="visualization.html#패키지-불러오기"><i class="fa fa-check"></i><b>4.3.1</b> 패키지 불러오기</a></li>
 <li class="chapter" data-level="4.3.2" data-path="visualization.html"><a href="visualization.html#전체-후보자"><i class="fa fa-check"></i><b>4.3.2</b> 전체 후보자</a></li>
 <li class="chapter" data-level="4.3.3" data-path="visualization.html"><a href="visualization.html#문재인-후보"><i class="fa fa-check"></i><b>4.3.3</b> 문재인 후보</a></li>
@@ -191,29 +201,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="create_CTPRVN_dataset" class="section level1">
-<h1><span class="header-section-number">2</span> 데이터 세트의 생성</h1>
+<div id="create_CTPRVN_dataset" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> 데이터 세트의 생성</h1>
 <div id="사용할-패키지-불러오기-1" class="section level2 unnumbered">
 <h2>사용할 패키지 불러오기</h2>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="kw">library</span>(ggmap)</a>
-<a class="sourceLine" id="cb31-2" title="2"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb31-3" title="3"><span class="kw">library</span>(raster)</a>
-<a class="sourceLine" id="cb31-4" title="4"><span class="kw">library</span>(rgeos)</a>
-<a class="sourceLine" id="cb31-5" title="5"><span class="kw">library</span>(maptools)</a>
-<a class="sourceLine" id="cb31-6" title="6"><span class="kw">library</span>(rgdal)</a>
-<a class="sourceLine" id="cb31-7" title="7"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="create-CTPRVN-dataset.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggmap)</span>
+<span id="cb31-2"><a href="create-CTPRVN-dataset.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb31-3"><a href="create-CTPRVN-dataset.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb31-4"><a href="create-CTPRVN-dataset.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgeos)</span>
+<span id="cb31-5"><a href="create-CTPRVN-dataset.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maptools)</span>
+<span id="cb31-6"><a href="create-CTPRVN-dataset.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgdal)</span>
+<span id="cb31-7"><a href="create-CTPRVN-dataset.html#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 </div>
-<div id="시도-데이터-세트-생성" class="section level2">
+<div id="시도-데이터-세트-생성" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> <code>시도 데이터 세트</code> 생성</h2>
 <p>앞의 “지리정보”에는 <strong>시도에 대한 데이터</strong>가 <code>data</code> 슬롯에 포함되어 있다.</p>
 <p>즉, <code>shp_CTPRVN@data</code>에 시도에 대한 데이터가 수록되어 있는데, 이를 <code>data_CTPRVN</code> 이라는 변수에 대입한다.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1">data_CTPRVN &lt;-<span class="st"> </span>shp_CTPRVN<span class="op">@</span>data</a>
-<a class="sourceLine" id="cb32-2" title="2"><span class="kw">str</span>(data_CTPRVN)</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="create-CTPRVN-dataset.html#cb32-1" aria-hidden="true" tabindex="-1"></a>data_CTPRVN <span class="ot">&lt;-</span> shp_CTPRVN<span class="sc">@</span>data</span>
+<span id="cb32-2"><a href="create-CTPRVN-dataset.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data_CTPRVN)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    17 obs. of  3 variables:
 ##  $ CTPRVN_CD : chr  &quot;11&quot; &quot;26&quot; &quot;27&quot; &quot;28&quot; ...
 ##  $ CTP_ENG_NM: chr  &quot;Seoul&quot; &quot;Busan&quot; &quot;Daegu&quot; &quot;Incheon&quot; ...
 ##  $ CTP_KOR_NM: chr  &quot;서울특별시&quot; &quot;부산광역시&quot; &quot;대구광역시&quot; &quot;인천광역시&quot; ...</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">head</span>(data_CTPRVN)</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="create-CTPRVN-dataset.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_CTPRVN)</span></code></pre></div>
 <pre><code>##   CTPRVN_CD CTP_ENG_NM CTP_KOR_NM
 ## 0        11      Seoul 서울특별시
 ## 1        26      Busan 부산광역시
@@ -226,14 +236,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>CTP_ENG_NM, CTP_KOR_NM : 시도 영문/한글명</li>
 </ul>
 </div>
-<div id="시도-지리정보-데이터-세트-생성" class="section level2">
+<div id="시도-지리정보-데이터-세트-생성" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> <code>시도 지리정보 데이터 세트</code> 생성</h2>
 <p><code>shp_CTPRVN</code>은 S4 클래스 구조인데, 이를 데이터 프레임 형태의 지리정보 데이터 세트(<code>shp_result</code>)로 변환한다.</p>
 <p><code>ggplot2</code> 패키지의 <code>fortify()</code> 함수를 이용하여 <code>shp_CTPRVN</code> 변수를 데이터 프레임으로 변환한다.</p>
 <p>이때 <code>region = "CTPRVN_CD"</code>를 인수로 이용한다.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1">shp_result &lt;-<span class="st"> </span><span class="kw">fortify</span>(shp_CTPRVN, <span class="dt">region=</span><span class="st">&quot;CTPRVN_CD&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="create-CTPRVN-dataset.html#cb36-1" aria-hidden="true" tabindex="-1"></a>shp_result <span class="ot">&lt;-</span> <span class="fu">fortify</span>(shp_CTPRVN, <span class="at">region=</span><span class="st">&quot;CTPRVN_CD&quot;</span>)</span></code></pre></div>
 <pre><code>## SpP is invalid</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="kw">str</span>(shp_result)</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="create-CTPRVN-dataset.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(shp_result)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    798838 obs. of  7 variables:
 ##  $ long : num  127 127 127 127 127 ...
 ##  $ lat  : num  37.6 37.6 37.6 37.6 37.6 ...
@@ -242,7 +252,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ piece: Factor w/ 2228 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ id   : chr  &quot;11&quot; &quot;11&quot; &quot;11&quot; &quot;11&quot; ...
 ##  $ group: Factor w/ 4558 levels &quot;11.1&quot;,&quot;11.2&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="kw">head</span>(shp_result)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="create-CTPRVN-dataset.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(shp_result)</span></code></pre></div>
 <pre><code>##       long      lat order  hole piece id group
 ## 1 127.1108 37.63841     1 FALSE     1 11  11.1
 ## 2 127.1108 37.63841     2 FALSE     1 11  11.1
@@ -255,7 +265,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>나머지 컬럼들 : 좌표계를 포함한 지리정보</li>
 </ul>
 </div>
-<div id="시도-데이터-세트와-시도-지리정보-데이터-세트의-결합" class="section level2">
+<div id="시도-데이터-세트와-시도-지리정보-데이터-세트의-결합" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> ’시도 데이터 세트<code>와  '시도 지리정보 데이터 세트</code>의 결합</h2>
 <p><code>시도 데이터 세트</code>에는 좌표계 정보가 포함되어 있지 않다. (시도 코드와 시도 한글/영문명 으로 구성)</p>
 <p>반면에 <code>시도 지리 정보 데이터 세트</code>에는 좌표계 정보가 포함되어 있지만 <code>시도명</code>에 대한 데이터가 포함되어 있지 않다.(시도 코드와 좌표계 정보 포함)</p>
@@ -266,8 +276,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>왼쪽 테이브과 오른쪽 테이블을 결합하기 위한 key의 이름이 다름다.</li>
 </ul>
 <p>이제 데이터 세트를 <code>left_join()</code> 함수를 이용하여 결합한다. (<code>inner_join()</code> 함수를 사용해도 같은 결과)</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1">result &lt;-<span class="st"> </span>shp_result <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(data_CTPRVN, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;id&quot;</span> =<span class="st"> &quot;CTPRVN_CD&quot;</span>))</a>
-<a class="sourceLine" id="cb42-2" title="2"><span class="kw">str</span>(result)</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="create-CTPRVN-dataset.html#cb42-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> shp_result <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(data_CTPRVN, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;id&quot;</span> <span class="ot">=</span> <span class="st">&quot;CTPRVN_CD&quot;</span>))</span>
+<span id="cb42-2"><a href="create-CTPRVN-dataset.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(result)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    798838 obs. of  9 variables:
 ##  $ long      : num  127 127 127 127 127 ...
 ##  $ lat       : num  37.6 37.6 37.6 37.6 37.6 ...
@@ -278,7 +288,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ group     : Factor w/ 4558 levels &quot;11.1&quot;,&quot;11.2&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ CTP_ENG_NM: chr  &quot;Seoul&quot; &quot;Seoul&quot; &quot;Seoul&quot; &quot;Seoul&quot; ...
 ##  $ CTP_KOR_NM: chr  &quot;서울특별시&quot; &quot;서울특별시&quot; &quot;서울특별시&quot; &quot;서울특별시&quot; ...</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="kw">head</span>(result)</a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="create-CTPRVN-dataset.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(result)</span></code></pre></div>
 <pre><code>##       long      lat order  hole piece id group CTP_ENG_NM CTP_KOR_NM
 ## 1 127.1108 37.63841     1 FALSE     1 11  11.1      Seoul 서울특별시
 ## 2 127.1108 37.63841     2 FALSE     1 11  11.1      Seoul 서울특별시
