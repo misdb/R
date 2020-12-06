@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>R을 이용한 네트워크 분석과 시각화</title>
+  <meta name="description" content="Katherine Ognyanova의 ‘Network Analysis and Visualization with R’ 세미나 자료를 번역한 것입니다. 번역의 오류는 번역자의 잘못입니다. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="R을 이용한 네트워크 분석과 시각화" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Katherine Ognyanova의 ‘Network Analysis and Visualization with R’ 세미나 자료를 번역한 것입니다. 번역의 오류는 번역자의 잘못입니다. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R을 이용한 네트워크 분석과 시각화" />
+  
+  <meta name="twitter:description" content="Katherine Ognyanova의 ‘Network Analysis and Visualization with R’ 세미나 자료를 번역한 것입니다. 번역의 오류는 번역자의 잘못입니다. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Translated by Dae Ho Kim, Mokwon University" />
+
+
+<meta name="date" content="2020-12-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="R-Basics.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> R을 이용한 네트워크 분석과 시각화</a></li>
+<li class="chapter" data-level="2" data-path="R-Basics.html"><a href="R-Basics.html"><i class="fa fa-check"></i><b>2</b> R 기초 복습</a><ul>
+<li class="chapter" data-level="2.1" data-path="R-Basics.html"><a href="R-Basics.html#할당assignment"><i class="fa fa-check"></i><b>2.1</b> <em>할당(Assignment)</em></a></li>
+<li class="chapter" data-level="2.2" data-path="R-Basics.html"><a href="R-Basics.html#값의-비교value-comparisons"><i class="fa fa-check"></i><b>2.2</b> <em>값의 비교(Value comparisons)</em></a></li>
+<li class="chapter" data-level="2.3" data-path="R-Basics.html"><a href="R-Basics.html#특별한-상수special-constants"><i class="fa fa-check"></i><b>2.3</b> <em>특별한 상수(Special constants)</em></a></li>
+<li class="chapter" data-level="2.4" data-path="R-Basics.html"><a href="R-Basics.html#벡터vectors"><i class="fa fa-check"></i><b>2.4</b> <em>벡터(Vectors)</em></a></li>
+<li class="chapter" data-level="2.5" data-path="R-Basics.html"><a href="R-Basics.html#factors"><i class="fa fa-check"></i><b>2.5</b> <em>Factors</em></a></li>
+<li class="chapter" data-level="2.6" data-path="R-Basics.html"><a href="R-Basics.html#행렬과-배열matrces-arrays"><i class="fa fa-check"></i><b>2.6</b> <em>행렬과 배열(Matrces &amp; Arrays)</em></a></li>
+<li class="chapter" data-level="2.7" data-path="R-Basics.html"><a href="R-Basics.html#리스트lists"><i class="fa fa-check"></i><b>2.7</b> <em>리스트(Lists)</em></a></li>
+<li class="chapter" data-level="2.8" data-path="R-Basics.html"><a href="R-Basics.html#데이터-프레임data-frames"><i class="fa fa-check"></i><b>2.8</b> <em>데이터 프레임(Data Frames)</em></a></li>
+<li class="chapter" data-level="2.9" data-path="R-Basics.html"><a href="R-Basics.html#흐름-제어와-반복-구문flow-control-and-loops"><i class="fa fa-check"></i><b>2.9</b> <em>흐름 제어와 반복 구문(Flow Control and loops)</em></a></li>
+<li class="chapter" data-level="2.10" data-path="R-Basics.html"><a href="R-Basics.html#r-플롯과-색-지정"><i class="fa fa-check"></i><b>2.10</b> <em>R 플롯과 색 지정</em></a></li>
+<li class="chapter" data-level="2.11" data-path="R-Basics.html"><a href="R-Basics.html#r-문제-해결"><i class="fa fa-check"></i><b>2.11</b> <em>R 문제 해결</em></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html"><i class="fa fa-check"></i><b>3</b> <code>igraph</code>를 이용한 네트워크</a><ul>
+<li class="chapter" data-level="3.1" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html#네트워크-생성create-networks"><i class="fa fa-check"></i><b>3.1</b> <em>네트워크 생성(Create networks)</em></a></li>
+<li class="chapter" data-level="3.2" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html#에지edge-정점vertex-그리고-네트워크-속성network-attributes"><i class="fa fa-check"></i><b>3.2</b> <em>에지(Edge), 정점(vertex), 그리고 네트워크 속성(network attributes)</em></a></li>
+<li class="chapter" data-level="3.3" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html#특수-그래프specific-graphs와-그래프-모델graph-models"><i class="fa fa-check"></i><b>3.3</b> <em>특수 그래프(Specific graphs)와 그래프 모델(graph models)</em></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html"><i class="fa fa-check"></i><b>4</b> 파일로 부터 네트워크 데이터 읽어오기</a><ul>
+<li class="chapter" data-level="4.1" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html#데이터-세트-1-에지-목록edgelist"><i class="fa fa-check"></i><b>4.1</b> <em>데이터 세트 1: 에지 목록(edgelist)</em></a></li>
+<li class="chapter" data-level="4.2" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html#데이터-세트-2-인접-행렬adjacent-matrix"><i class="fa fa-check"></i><b>4.2</b> <em>데이터 세트 2: 인접 행렬(adjacent matrix)</em></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Turing-Networks-into-Igraph.html"><a href="Turing-Networks-into-Igraph.html"><i class="fa fa-check"></i><b>5</b> 네트워크를 igraph 개체로 변환하기</a><ul>
+<li class="chapter" data-level="5.1" data-path="Turing-Networks-into-Igraph.html"><a href="Turing-Networks-into-Igraph.html#데이터-세트-1"><i class="fa fa-check"></i><b>5.1</b> <em>데이터 세트 1</em></a></li>
+<li class="chapter" data-level="5.2" data-path="Turing-Networks-into-Igraph.html"><a href="Turing-Networks-into-Igraph.html#데이터-세트-2"><i class="fa fa-check"></i><b>5.2</b> <em>데이터 세트 2</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html"><i class="fa fa-check"></i><b>6</b> igraph를 이용한 네트워크 시각화</a><ul>
+<li class="chapter" data-level="6.1" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#plotting-parameters"><i class="fa fa-check"></i><b>6.1</b> <em>Plotting parameters</em></a></li>
+<li class="chapter" data-level="6.2" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#network-layouts"><i class="fa fa-check"></i><b>6.2</b> <em>Network layouts</em></a></li>
+<li class="chapter" data-level="6.3" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#네트워크-시각화-개선"><i class="fa fa-check"></i><b>6.3</b> <em>네트워크 시각화 개선</em></a></li>
+<li class="chapter" data-level="6.4" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#tkplot-패키지를-이용한-상호대화식-시각화"><i class="fa fa-check"></i><b>6.4</b> <em><code>tkplot</code> 패키지를 이용한 상호대화식 시각화</em></a></li>
+<li class="chapter" data-level="6.5" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#다른-네트워크-시각화-방법"><i class="fa fa-check"></i><b>6.5</b> <em>다른 네트워크 시각화 방법</em></a></li>
+<li class="chapter" data-level="6.6" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#igraph로-2-모드-네트워크-시각화하기"><i class="fa fa-check"></i><b>6.6</b> <em>igraph로 2-모드 네트워크 시각화하기</em></a></li>
+<li class="chapter" data-level="" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#참고자료"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="Netword-and-Node-Description.html"><a href="Netword-and-Node-Description.html"><i class="fa fa-check"></i><b>7</b> 네트워크과 노드 설명</a><ul>
+<li class="chapter" data-level="7.1" data-path="Netword-and-Node-Description.html"><a href="Netword-and-Node-Description.html#밀도density"><i class="fa fa-check"></i><b>7.1</b> <em>밀도(Density)</em></a></li>
+<li class="chapter" data-level="7.2" data-path="Netword-and-Node-Description.html"><a href="Netword-and-Node-Description.html#호혜성reciprocity"><i class="fa fa-check"></i><b>7.2</b> <em>호혜성(Reciprocity)</em></a></li>
+<li class="chapter" data-level="7.3" data-path="Netword-and-Node-Description.html"><a href="Netword-and-Node-Description.html#이행성transitivity"><i class="fa fa-check"></i><b>7.3</b> <em>이행성(Transitivity)</em></a></li>
+<li class="chapter" data-level="7.4" data-path="Netword-and-Node-Description.html"><a href="Netword-and-Node-Description.html#지름diameter"><i class="fa fa-check"></i><b>7.4</b> <em>지름(Diameter)</em></a></li>
+<li class="chapter" data-level="7.5" data-path="Netword-and-Node-Description.html"><a href="Netword-and-Node-Description.html#노드-연결-정도node-degrees"><i class="fa fa-check"></i><b>7.5</b> <em>노드 연결 정도(Node degrees)</em></a></li>
+<li class="chapter" data-level="7.6" data-path="Netword-and-Node-Description.html"><a href="Netword-and-Node-Description.html#연결-정도-분포degree-distribution"><i class="fa fa-check"></i><b>7.6</b> <em>연결 정도 분포(Degree distribution)</em></a></li>
+<li class="chapter" data-level="7.7" data-path="Netword-and-Node-Description.html"><a href="Netword-and-Node-Description.html#중심성과-중심화centrality-centralization"><i class="fa fa-check"></i><b>7.7</b> <em>중심성과 중심화(Centrality &amp; centralization)</em></a></li>
+<li class="chapter" data-level="7.8" data-path="Netword-and-Node-Description.html"><a href="Netword-and-Node-Description.html#허브와-오쏘러티hubs-and-authorities"><i class="fa fa-check"></i><b>7.8</b> <em>허브와 오쏘러티(Hubs and authorities)</em></a></li>
+<li class="chapter" data-level="" data-path="Netword-and-Node-Description.html"><a href="Netword-and-Node-Description.html#참고자료-1"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="Distances-and-Paths.html"><a href="Distances-and-Paths.html"><i class="fa fa-check"></i><b>8</b> 거리와 경로(Distances and paths)</a></li>
+<li class="chapter" data-level="9" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html"><i class="fa fa-check"></i><b>9</b> 서브 그룹과 커뮤니티</a><ul>
+<li class="chapter" data-level="9.1" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html#클릭cliques"><i class="fa fa-check"></i><b>9.1</b> <em>클릭(Cliques)</em></a></li>
+<li class="chapter" data-level="9.2" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html#커뮤니티-발견community-detection"><i class="fa fa-check"></i><b>9.2</b> <em>커뮤니티 발견(Community detection)</em></a></li>
+<li class="chapter" data-level="" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html#참고자료-2"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="Assortativity-and-Homophily.html"><a href="Assortativity-and-Homophily.html"><i class="fa fa-check"></i><b>10</b> 동류성과 동질성</a><ul>
+<li class="chapter" data-level="" data-path="Assortativity-and-Homophily.html"><a href="Assortativity-and-Homophily.html#참고자료-3"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R을 이용한 네트워크 분석과 시각화</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">R을 이용한 네트워크 분석과 시각화</h1>
+<p class="author"><em>Translated by Dae Ho Kim, Mokwon University</em></p>
+<p class="date"><em>2020-12-06</em></p>
+</div>
+<div id="r을-이용한-네트워크-분석과-시각화" class="section level1">
+<h1><span class="header-section-number">1</span> R을 이용한 네트워크 분석과 시각화</h1>
+<p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="R-Basics.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
