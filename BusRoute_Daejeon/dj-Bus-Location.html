@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 노선 버스의 실시간 위치 확인 | Open API - Daejeon Bus Information with R</title>
+  <title>Chapter 4 노선 버스의 실시간 위치 확인 | Open API - Daejeon Bus Information with R</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 노선 버스의 실시간 위치 확인 | Open API - Daejeon Bus Information with R" />
+  <meta property="og:title" content="Chapter 4 노선 버스의 실시간 위치 확인 | Open API - Daejeon Bus Information with R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 노선 버스의 실시간 위치 확인 | Open API - Daejeon Bus Information with R" />
+  <meta name="twitter:title" content="Chapter 4 노선 버스의 실시간 위치 확인 | Open API - Daejeon Bus Information with R" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2020-11-09" />
+<meta name="date" content="2020-12-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="dj-Bus-Route-Visualization.html"/>
 <link rel="next" href="dj-Bus-Location-Visualization.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -55,25 +56,26 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -82,9 +84,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -130,51 +132,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Open API를 이용한 대전광역시 버스 정보 조회 및 시각화</a></li>
-<li class="chapter" data-level="1" data-path="dj-Bus-ID.html"><a href="dj-Bus-ID.html"><i class="fa fa-check"></i><b>1</b> 대전광역시 버스 노선 ID 확인하기</a><ul>
+<li class="chapter" data-level="1" data-path="dj-Bus-ID.html"><a href="dj-Bus-ID.html"><i class="fa fa-check"></i><b>1</b> 대전광역시 버스 노선 ID 확인하기</a>
+<ul>
 <li class="chapter" data-level="" data-path="dj-Bus-ID.html"><a href="dj-Bus-ID.html#패키지-불러오기"><i class="fa fa-check"></i>1. 패키지 불러오기</a></li>
-<li class="chapter" data-level="1.1" data-path="dj-Bus-ID.html"><a href="dj-Bus-ID.html#대전광역시의-전체-노선-정보-확인"><i class="fa fa-check"></i><b>1.1</b> 2. 대전광역시의 전체 노선 정보 확인</a><ul>
+<li class="chapter" data-level="1.1" data-path="dj-Bus-ID.html"><a href="dj-Bus-ID.html#대전광역시의-전체-노선-정보-확인"><i class="fa fa-check"></i><b>1.1</b> 2. 대전광역시의 전체 노선 정보 확인</a>
+<ul>
 <li class="chapter" data-level="1.1.1" data-path="dj-Bus-ID.html"><a href="dj-Bus-ID.html#api-key-인증받기"><i class="fa fa-check"></i><b>1.1.1</b> 2-1. API Key 인증받기</a></li>
 <li class="chapter" data-level="1.1.2" data-path="dj-Bus-ID.html"><a href="dj-Bus-ID.html#전체-노선정보-조회"><i class="fa fa-check"></i><b>1.1.2</b> 2-2. 전체 노선정보 조회</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="dj-Bus-ID.html"><a href="dj-Bus-ID.html#번-버스의-노선-id-확인"><i class="fa fa-check"></i><b>1.2</b> 3. 106번 버스의 노선 ID 확인</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="dj-Bus-Route.html"><a href="dj-Bus-Route.html"><i class="fa fa-check"></i><b>2</b> 대전광역시 버스 노선 정류소 정보 조회</a><ul>
+<li class="chapter" data-level="2" data-path="dj-Bus-Route.html"><a href="dj-Bus-Route.html"><i class="fa fa-check"></i><b>2</b> 대전광역시 버스 노선 정류소 정보 조회</a>
+<ul>
 <li class="chapter" data-level="" data-path="dj-Bus-Route.html"><a href="dj-Bus-Route.html#패키지-불러오기-1"><i class="fa fa-check"></i>1. 패키지 불러오기</a></li>
-<li class="chapter" data-level="2.1" data-path="dj-Bus-Route.html"><a href="dj-Bus-Route.html#노선별-정류소-정보-확인"><i class="fa fa-check"></i><b>2.1</b> 2. 노선별 정류소 정보 확인</a><ul>
+<li class="chapter" data-level="2.1" data-path="dj-Bus-Route.html"><a href="dj-Bus-Route.html#노선별-정류소-정보-확인"><i class="fa fa-check"></i><b>2.1</b> 2. 노선별 정류소 정보 확인</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="dj-Bus-Route.html"><a href="dj-Bus-Route.html#api-key-인증받기-1"><i class="fa fa-check"></i><b>2.1.1</b> 2-1. API Key 인증받기</a></li>
 <li class="chapter" data-level="2.1.2" data-path="dj-Bus-Route.html"><a href="dj-Bus-Route.html#노선별-정류소-목록-조회하기"><i class="fa fa-check"></i><b>2.1.2</b> 2-2. 노선별 정류소 목록 조회하기</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html"><i class="fa fa-check"></i><b>3</b> 대전광역시 버스 노선 정류소 시각화</a><ul>
+<li class="chapter" data-level="3" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html"><i class="fa fa-check"></i><b>3</b> 대전광역시 버스 노선 정류소 시각화</a>
+<ul>
 <li class="chapter" data-level="" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#패키지-불러오기-2"><i class="fa fa-check"></i>1. 패키지 불러오기</a></li>
-<li class="chapter" data-level="3.1" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#버스-정류소-위치를-marker로-표시하기"><i class="fa fa-check"></i><b>3.1</b> 2. 버스 정류소 위치를 Marker로 표시하기</a><ul>
+<li class="chapter" data-level="3.1" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#버스-정류소-위치를-marker로-표시하기"><i class="fa fa-check"></i><b>3.1</b> 2. 버스 정류소 위치를 Marker로 표시하기</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#google-api-인증"><i class="fa fa-check"></i><b>3.1.1</b> 2-1. Google API 인증</a></li>
 <li class="chapter" data-level="3.1.2" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#버스-위치의-중심점-찾기"><i class="fa fa-check"></i><b>3.1.2</b> 2-2. 버스 위치의 중심점 찾기</a></li>
 <li class="chapter" data-level="3.1.3" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#구글-지도-정보-가져오기"><i class="fa fa-check"></i><b>3.1.3</b> 2-3. 구글 지도 정보 가져오기</a></li>
 <li class="chapter" data-level="3.1.4" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#구글-지도-그리기"><i class="fa fa-check"></i><b>3.1.4</b> 2-4. 구글 지도 그리기</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#버스-정류소-위치에-정류소-이름-표시하기"><i class="fa fa-check"></i><b>3.2</b> 3. 버스 정류소 위치에 정류소 이름 표시하기</a><ul>
+<li class="chapter" data-level="3.2" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#버스-정류소-위치에-정류소-이름-표시하기"><i class="fa fa-check"></i><b>3.2</b> 3. 버스 정류소 위치에 정류소 이름 표시하기</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#구글-지도-정보-가져오기-1"><i class="fa fa-check"></i><b>3.2.1</b> 3-1. 구글 지도 정보 가져오기</a></li>
 <li class="chapter" data-level="3.2.2" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#정류소-위치를-점으로-표시하기"><i class="fa fa-check"></i><b>3.2.2</b> 3-2. 정류소 위치를 점으로 표시하기</a></li>
 <li class="chapter" data-level="3.2.3" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#정류소-이름을-표시하기"><i class="fa fa-check"></i><b>3.2.3</b> 3-3. 정류소 이름을 표시하기</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="dj-Bus-Location.html"><a href="dj-Bus-Location.html"><i class="fa fa-check"></i><b>4</b> 노선 버스의 실시간 위치 확인</a><ul>
+<li class="chapter" data-level="4" data-path="dj-Bus-Location.html"><a href="dj-Bus-Location.html"><i class="fa fa-check"></i><b>4</b> 노선 버스의 실시간 위치 확인</a>
+<ul>
 <li class="chapter" data-level="" data-path="dj-Bus-Location.html"><a href="dj-Bus-Location.html#패키지-불러오기-3"><i class="fa fa-check"></i>패키지 불러오기</a></li>
-<li class="chapter" data-level="4.1" data-path="dj-Bus-Location.html"><a href="dj-Bus-Location.html#특정-노선의-실시간-위치"><i class="fa fa-check"></i><b>4.1</b> 1. 특정 노선의 실시간 위치</a><ul>
+<li class="chapter" data-level="4.1" data-path="dj-Bus-Location.html"><a href="dj-Bus-Location.html#특정-노선의-실시간-위치"><i class="fa fa-check"></i><b>4.1</b> 1. 특정 노선의 실시간 위치</a>
+<ul>
 <li class="chapter" data-level="4.1.1" data-path="dj-Bus-Location.html"><a href="dj-Bus-Location.html#api-key-인증받기-2"><i class="fa fa-check"></i><b>4.1.1</b> 2-1. API Key 인증받기</a></li>
 <li class="chapter" data-level="4.1.2" data-path="dj-Bus-Location.html"><a href="dj-Bus-Location.html#실시간-버스-위치-정보-조회"><i class="fa fa-check"></i><b>4.1.2</b> 2-2. 실시간 버스 위치 정보 조회</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html"><i class="fa fa-check"></i><b>5</b> 실시간 버스 위치의 시각화</a><ul>
+<li class="chapter" data-level="5" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html"><i class="fa fa-check"></i><b>5</b> 실시간 버스 위치의 시각화</a>
+<ul>
 <li class="chapter" data-level="" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#패키지-불러오기-4"><i class="fa fa-check"></i>1. 패키지 불러오기</a></li>
-<li class="chapter" data-level="5.1" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#실시간-위치를-marker로-표시하기"><i class="fa fa-check"></i><b>5.1</b> 2. 실시간 위치를 Marker로 표시하기</a><ul>
+<li class="chapter" data-level="5.1" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#실시간-위치를-marker로-표시하기"><i class="fa fa-check"></i><b>5.1</b> 2. 실시간 위치를 Marker로 표시하기</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#google-api-인증-1"><i class="fa fa-check"></i><b>5.1.1</b> 2-1. Google API 인증</a></li>
 <li class="chapter" data-level="5.1.2" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#버스-위치의-중심점-찾기-1"><i class="fa fa-check"></i><b>5.1.2</b> 2-2. 버스 위치의 중심점 찾기</a></li>
 <li class="chapter" data-level="5.1.3" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#구글-지도-정보-가져오기-2"><i class="fa fa-check"></i><b>5.1.3</b> 2-3. 구글 지도 정보 가져오기</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#구글-지도-그리기-1"><i class="fa fa-check"></i><b>5.2</b> 2-4. 구글 지도 그리기</a></li>
-<li class="chapter" data-level="5.3" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#차량의-현지-운행-지점을-점으로-찍기"><i class="fa fa-check"></i><b>5.3</b> 3. 차량의 현지 운행 지점을 점으로 찍기</a><ul>
+<li class="chapter" data-level="5.3" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#차량의-현지-운행-지점을-점으로-찍기"><i class="fa fa-check"></i><b>5.3</b> 3. 차량의 현지 운행 지점을 점으로 찍기</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#지도-정보-가져오기"><i class="fa fa-check"></i><b>5.3.1</b> 3-1. 지도 정보 가져오기</a></li>
 <li class="chapter" data-level="5.3.2" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#차량-위치를-점으로-찍기"><i class="fa fa-check"></i><b>5.3.2</b> 3-2. 차량 위치를 점으로 찍기</a></li>
 <li class="chapter" data-level="5.3.3" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#지도위에-버스-번호-표시하기"><i class="fa fa-check"></i><b>5.3.3</b> 3-3. 지도위에 버스 번호 표시하기</a></li>
@@ -198,74 +212,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="dj_Bus_Location" class="section level1">
-<h1><span class="header-section-number">4</span> 노선 버스의 실시간 위치 확인</h1>
+<div id="dj_Bus_Location" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> 노선 버스의 실시간 위치 확인</h1>
 <p><code>data.go.kr</code>의 Open API 활용 방법을 학습하기 위해, 대전광역시에서 운행중인 버스의 실시간 위치 정보 조회 방법을 알아보기로 한다.</p>
 <p>(OpenAPI활용가이드_대전광역시_버스정보시스템_v1.0.docx 참고)</p>
 <div id="패키지-불러오기-3" class="section level2 unnumbered">
 <h2>패키지 불러오기</h2>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="kw">library</span>(XML)</a>
-<a class="sourceLine" id="cb37-2" title="2"><span class="kw">library</span>(ggmap)</a>
-<a class="sourceLine" id="cb37-3" title="3"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="dj-Bus-Location.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(XML)</span>
+<span id="cb37-2"><a href="dj-Bus-Location.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggmap)</span>
+<span id="cb37-3"><a href="dj-Bus-Location.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 </div>
-<div id="특정-노선의-실시간-위치" class="section level2">
+<div id="특정-노선의-실시간-위치" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> 1. 특정 노선의 실시간 위치</h2>
 <p>먼저 Open API를 사용하기 위해 data.go.kr에서 발급받은 API Key를 인증받는다.</p>
-<div id="api-key-인증받기-2" class="section level3">
+<div id="api-key-인증받기-2" class="section level3" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> 2-1. API Key 인증받기</h3>
 <pre><code>API_key &lt;- &quot;XNamCEPA1y........w2oz2Hqld26g%3D%3D&quot;               
 # data.go.kr에서 발급받은 API_key 입력</code></pre>
 </div>
-<div id="실시간-버스-위치-정보-조회" class="section level3">
+<div id="실시간-버스-위치-정보-조회" class="section level3" number="4.1.2">
 <h3><span class="header-section-number">4.1.2</span> 2-2. 실시간 버스 위치 정보 조회</h3>
 <p>(OpenAPI활용가이드_대전광역시_버스정보시스템_v1.0.docx P. 23 ~ 26. 참고)</p>
-<div id="조회할-노선-id" class="section level4">
+<div id="조회할-노선-id" class="section level4" number="4.1.2.1">
 <h4><span class="header-section-number">4.1.2.1</span> 1) 조회할 노선 ID</h4>
 <p>노선번호 106번인 버스의 노선 ID는 bus_ID에 저장되어 있으며 “30300041” 이다.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1">busRtNm &lt;-<span class="st"> &quot;30300041&quot;</span>                     <span class="co"># 검색할 노선버스 번호를 빈문자로 정한다. </span></a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="dj-Bus-Location.html#cb39-1" aria-hidden="true" tabindex="-1"></a>busRtNm <span class="ot">&lt;-</span> <span class="st">&quot;30300041&quot;</span>                     <span class="co"># 검색할 노선버스 번호를 빈문자로 정한다. </span></span></code></pre></div>
 </div>
-<div id="운행-중인-버스의-실시간-위치-정보-조회-서비스-url" class="section level4">
+<div id="운행-중인-버스의-실시간-위치-정보-조회-서비스-url" class="section level4" number="4.1.2.2">
 <h4><span class="header-section-number">4.1.2.2</span> 2) 운행 중인 버스의 실시간 위치 정보 조회 서비스 URL</h4>
 <p>노선정보조회 서비스 url을 입력한다.</p>
 <ul>
 <li>기본 url : “<a href="http://openapitraffic.daejeon.go.kr/api/rest/busposinfo/getBusPosByRtid?serviceKey=" class="uri">http://openapitraffic.daejeon.go.kr/api/rest/busposinfo/getBusPosByRtid?serviceKey=</a>”</li>
 <li><code>&amp;busRouteId=</code> : busRtNm</li>
 </ul>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1">url &lt;-<span class="st"> &quot;http://openapitraffic.daejeon.go.kr/api/rest/busposinfo/getBusPosByRtid?serviceKey=&quot;</span></a>
-<a class="sourceLine" id="cb40-2" title="2">srch_url &lt;-<span class="st"> </span><span class="kw">paste0</span>(url, API_key, <span class="st">&quot;&amp;busRouteId=&quot;</span>, busRtNm)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="dj-Bus-Location.html#cb40-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;http://openapitraffic.daejeon.go.kr/api/rest/busposinfo/getBusPosByRtid?serviceKey=&quot;</span></span>
+<span id="cb40-2"><a href="dj-Bus-Location.html#cb40-2" aria-hidden="true" tabindex="-1"></a>srch_url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(url, API_key, <span class="st">&quot;&amp;busRouteId=&quot;</span>, busRtNm)</span></code></pre></div>
 </div>
-<div id="실시간-위치-정보-조회" class="section level4">
+<div id="실시간-위치-정보-조회" class="section level4" number="4.1.2.3">
 <h4><span class="header-section-number">4.1.2.3</span> 3) 실시간 위치 정보 조회</h4>
 <p><code>xmlParse()</code> 함수를 이용하여 실시간 위치 정보 데이터를 다운로드하여, <code>xmlfile</code>에 대입한다.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">xmlfile &lt;-<span class="st"> </span><span class="kw">xmlParse</span>(srch_url)      <span class="co"># 해당 url에 데이터를 요구(request)하고, </span></a>
-<a class="sourceLine" id="cb41-2" title="2">                                   <span class="co"># 그 결과(response)를 xmlfile 변수에 저장한다.</span></a>
-<a class="sourceLine" id="cb41-3" title="3"><span class="co"># xmlRoot(xmlfile)                 # xmlfile 변수의 내용을 출력한다. </span></a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="dj-Bus-Location.html#cb41-1" aria-hidden="true" tabindex="-1"></a>xmlfile <span class="ot">&lt;-</span> <span class="fu">xmlParse</span>(srch_url)      <span class="co"># 해당 url에 데이터를 요구(request)하고, </span></span>
+<span id="cb41-2"><a href="dj-Bus-Location.html#cb41-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="co"># 그 결과(response)를 xmlfile 변수에 저장한다.</span></span>
+<span id="cb41-3"><a href="dj-Bus-Location.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># xmlRoot(xmlfile)                 # xmlfile 변수의 내용을 출력한다. </span></span></code></pre></div>
 </div>
-<div id="조회한-정보를-데이터-프레임-형태로-변환-2" class="section level4">
+<div id="조회한-정보를-데이터-프레임-형태로-변환-2" class="section level4" number="4.1.2.4">
 <h4><span class="header-section-number">4.1.2.4</span> 4) 조회한 정보를 데이터 프레임 형태로 변환</h4>
 <p><code>xmlToDataFrmae()</code> 함수를 이용하여, <code>xmlfile</code>을 데이터 프레임 형태로 변환하여 <code>dj_location</code> 변수에 대입한다.</p>
 <p>이제 <code>dj_location</code> 변수는 <strong>노선 번호가 106번인 운행 중인 버스들의 실시간 위치 정보</strong>를 담고 있다.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1">dj_location &lt;-<span class="st"> </span><span class="kw">xmlToDataFrame</span>(<span class="kw">getNodeSet</span>(xmlfile, <span class="st">&quot;//itemList&quot;</span>))</a>
-<a class="sourceLine" id="cb42-2" title="2"><span class="kw">str</span>(dj_location)</a></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    2 obs. of  12 variables:
-##  $ ARR_TIME   : chr  &quot;20201109233546&quot; &quot;20201109233605&quot;
-##  $ BUS_NODE_ID: chr  &quot;8001499&quot; &quot;8070029&quot;
-##  $ BUS_STOP_ID: chr  &quot;51610&quot; &quot;41800&quot;
-##  $ DIR        : chr  &quot;0&quot; &quot;1&quot;
-##  $ EVT_CD     : chr  &quot;1&quot; &quot;1&quot;
-##  $ GPS_LATI   : chr  &quot;36.358196&quot; &quot;36.334234&quot;
-##  $ GPS_LONG   : chr  &quot;127.450963&quot; &quot;127.338142&quot;
-##  $ PLATE_NO   : chr  &quot;대전75자3304&quot; &quot;대전75자3324&quot;
-##  $ ROUTE_CD   : chr  &quot;30300041&quot; &quot;30300041&quot;
-##  $ STRE_DT    : chr  &quot;20201109233547&quot; &quot;20201109233609&quot;
-##  $ TOTAL_DIST : chr  &quot;19711&quot; &quot;39929&quot;
-##  $ ud_type    : chr  &quot;0&quot; &quot;1&quot;</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="dj-Bus-Location.html#cb42-1" aria-hidden="true" tabindex="-1"></a>dj_location <span class="ot">&lt;-</span> <span class="fu">xmlToDataFrame</span>(<span class="fu">getNodeSet</span>(xmlfile, <span class="st">&quot;//itemList&quot;</span>))</span>
+<span id="cb42-2"><a href="dj-Bus-Location.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dj_location)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    12 obs. of  12 variables:
+##  $ ARR_TIME   : chr  &quot;20201206203124&quot; &quot;20201206203106&quot; &quot;20201206203033&quot; &quot;20201206203020&quot; ...
+##  $ BUS_NODE_ID: chr  &quot;8070030&quot; &quot;8001570&quot; &quot;8001801&quot; &quot;8002997&quot; ...
+##  $ BUS_STOP_ID: chr  &quot;41810&quot; &quot;31930&quot; &quot;51580&quot; &quot;41360&quot; ...
+##  $ DIR        : chr  &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; ...
+##  $ EVT_CD     : chr  &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; ...
+##  $ GPS_LATI   : chr  &quot;36.333409&quot; &quot;36.354264&quot; &quot;36.359368&quot; &quot;36.357786&quot; ...
+##  $ GPS_LONG   : chr  &quot;127.338262&quot; &quot;127.374276&quot; &quot;127.449021&quot; &quot;127.343119&quot; ...
+##  $ PLATE_NO   : chr  &quot;대전75자3309&quot; &quot;대전75자3311&quot; &quot;대전75자3305&quot; &quot;대전75자3313&quot; ...
+##  $ ROUTE_CD   : chr  &quot;30300041&quot; &quot;30300041&quot; &quot;30300041&quot; &quot;30300041&quot; ...
+##  $ STRE_DT    : chr  &quot;20201206203127&quot; &quot;20201206203108&quot; &quot;20201206203037&quot; &quot;20201206203025&quot; ...
+##  $ TOTAL_DIST : chr  &quot;509&quot; &quot;7533&quot; &quot;19335&quot; &quot;3529&quot; ...
+##  $ ud_type    : chr  &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; ...</code></pre>
 <ul>
 <li>30300041 노선 버스들의 실시간 위치 정보를 보여 준다. 현재 13대의 버스가 운행 중이다.</li>
 <li>컬럼의 갯수는 12개 : 이들에 대한 자세한 내용은 “(OpenAPI활용가이드_대전광역시_버스정보시스템_v1.0.docx P. 23 ~ 26. 참고)”</li>
 </ul>
 </div>
-<div id="분석용-데이터-세트-생성" class="section level4">
+<div id="분석용-데이터-세트-생성" class="section level4" number="4.1.2.5">
 <h4><span class="header-section-number">4.1.2.5</span> 5) 분석용 데이터 세트 생성</h4>
 <p><code>dj_location</code> 데이터 세트의 <code>PLATE_NO(버스차량 번호)</code>, <code>GPS_LATI(위도)</code>, <code>GPS_LONG(경도)</code> 컬럼을 선택하여 다음과 같이 변환시켜 <code>bus_location</code> 데이터 세트를 생성한다.</p>
 <ul>
@@ -273,22 +287,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>GPS_LAT1 -&gt; 숫자형 변환 -&gt; gpsY로 이름 변경</li>
 <li>GPS_LONG -&gt; 숫자형 변환 -&gt; gpsX로 이름 변경</li>
 </ul>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1">gpsX &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(dj_location<span class="op">$</span>GPS_LONG)</a>
-<a class="sourceLine" id="cb44-2" title="2">gpsY &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(dj_location<span class="op">$</span>GPS_LATI)</a>
-<a class="sourceLine" id="cb44-3" title="3"></a>
-<a class="sourceLine" id="cb44-4" title="4">bus_location &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">busNo =</span> dj_location<span class="op">$</span>PLATE_NO, <span class="dt">lon=</span>gpsX, <span class="dt">lat=</span>gpsY)</a>
-<a class="sourceLine" id="cb44-5" title="5"><span class="kw">str</span>(bus_location)</a></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    2 obs. of  3 variables:
-##  $ busNo: chr  &quot;대전75자3304&quot; &quot;대전75자3324&quot;
-##  $ lon  : num  127 127
-##  $ lat  : num  36.4 36.3</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="dj-Bus-Location.html#cb44-1" aria-hidden="true" tabindex="-1"></a>gpsX <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(dj_location<span class="sc">$</span>GPS_LONG)</span>
+<span id="cb44-2"><a href="dj-Bus-Location.html#cb44-2" aria-hidden="true" tabindex="-1"></a>gpsY <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(dj_location<span class="sc">$</span>GPS_LATI)</span>
+<span id="cb44-3"><a href="dj-Bus-Location.html#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="dj-Bus-Location.html#cb44-4" aria-hidden="true" tabindex="-1"></a>bus_location <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">busNo =</span> dj_location<span class="sc">$</span>PLATE_NO, <span class="at">lon=</span>gpsX, <span class="at">lat=</span>gpsY)</span>
+<span id="cb44-5"><a href="dj-Bus-Location.html#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(bus_location)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    12 obs. of  3 variables:
+##  $ busNo: chr  &quot;대전75자3309&quot; &quot;대전75자3311&quot; &quot;대전75자3305&quot; &quot;대전75자3313&quot; ...
+##  $ lon  : num  127 127 127 127 127 ...
+##  $ lat  : num  36.3 36.4 36.4 36.4 36.3 ...</code></pre>
 <ul>
 <li>현재 12대의 버스가 운행 중임을 알 수 있다.</li>
 </ul>
 </div>
-<div id="데이터-세트-저장하기-1" class="section level4">
+<div id="데이터-세트-저장하기-1" class="section level4" number="4.1.2.6">
 <h4><span class="header-section-number">4.1.2.6</span> 6) 데이터 세트 저장하기</h4>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="kw">write_rds</span>(bus_location, <span class="st">&quot;data/bus_location.rds&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="dj-Bus-Location.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(bus_location, <span class="st">&quot;data/bus_location.rds&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 대전광역시 버스 노선 정류소 시각화 | Open API - Daejeon Bus Information with R</title>
+  <title>Chapter 3 대전광역시 버스 노선 정류소 시각화 | Open API - Daejeon Bus Information with R</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 대전광역시 버스 노선 정류소 시각화 | Open API - Daejeon Bus Information with R" />
+  <meta property="og:title" content="Chapter 3 대전광역시 버스 노선 정류소 시각화 | Open API - Daejeon Bus Information with R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 대전광역시 버스 노선 정류소 시각화 | Open API - Daejeon Bus Information with R" />
+  <meta name="twitter:title" content="Chapter 3 대전광역시 버스 노선 정류소 시각화 | Open API - Daejeon Bus Information with R" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2020-11-09" />
+<meta name="date" content="2020-12-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="dj-Bus-Route.html"/>
 <link rel="next" href="dj-Bus-Location.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -55,25 +56,26 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -82,9 +84,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -130,51 +132,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Open API를 이용한 대전광역시 버스 정보 조회 및 시각화</a></li>
-<li class="chapter" data-level="1" data-path="dj-Bus-ID.html"><a href="dj-Bus-ID.html"><i class="fa fa-check"></i><b>1</b> 대전광역시 버스 노선 ID 확인하기</a><ul>
+<li class="chapter" data-level="1" data-path="dj-Bus-ID.html"><a href="dj-Bus-ID.html"><i class="fa fa-check"></i><b>1</b> 대전광역시 버스 노선 ID 확인하기</a>
+<ul>
 <li class="chapter" data-level="" data-path="dj-Bus-ID.html"><a href="dj-Bus-ID.html#패키지-불러오기"><i class="fa fa-check"></i>1. 패키지 불러오기</a></li>
-<li class="chapter" data-level="1.1" data-path="dj-Bus-ID.html"><a href="dj-Bus-ID.html#대전광역시의-전체-노선-정보-확인"><i class="fa fa-check"></i><b>1.1</b> 2. 대전광역시의 전체 노선 정보 확인</a><ul>
+<li class="chapter" data-level="1.1" data-path="dj-Bus-ID.html"><a href="dj-Bus-ID.html#대전광역시의-전체-노선-정보-확인"><i class="fa fa-check"></i><b>1.1</b> 2. 대전광역시의 전체 노선 정보 확인</a>
+<ul>
 <li class="chapter" data-level="1.1.1" data-path="dj-Bus-ID.html"><a href="dj-Bus-ID.html#api-key-인증받기"><i class="fa fa-check"></i><b>1.1.1</b> 2-1. API Key 인증받기</a></li>
 <li class="chapter" data-level="1.1.2" data-path="dj-Bus-ID.html"><a href="dj-Bus-ID.html#전체-노선정보-조회"><i class="fa fa-check"></i><b>1.1.2</b> 2-2. 전체 노선정보 조회</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="dj-Bus-ID.html"><a href="dj-Bus-ID.html#번-버스의-노선-id-확인"><i class="fa fa-check"></i><b>1.2</b> 3. 106번 버스의 노선 ID 확인</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="dj-Bus-Route.html"><a href="dj-Bus-Route.html"><i class="fa fa-check"></i><b>2</b> 대전광역시 버스 노선 정류소 정보 조회</a><ul>
+<li class="chapter" data-level="2" data-path="dj-Bus-Route.html"><a href="dj-Bus-Route.html"><i class="fa fa-check"></i><b>2</b> 대전광역시 버스 노선 정류소 정보 조회</a>
+<ul>
 <li class="chapter" data-level="" data-path="dj-Bus-Route.html"><a href="dj-Bus-Route.html#패키지-불러오기-1"><i class="fa fa-check"></i>1. 패키지 불러오기</a></li>
-<li class="chapter" data-level="2.1" data-path="dj-Bus-Route.html"><a href="dj-Bus-Route.html#노선별-정류소-정보-확인"><i class="fa fa-check"></i><b>2.1</b> 2. 노선별 정류소 정보 확인</a><ul>
+<li class="chapter" data-level="2.1" data-path="dj-Bus-Route.html"><a href="dj-Bus-Route.html#노선별-정류소-정보-확인"><i class="fa fa-check"></i><b>2.1</b> 2. 노선별 정류소 정보 확인</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="dj-Bus-Route.html"><a href="dj-Bus-Route.html#api-key-인증받기-1"><i class="fa fa-check"></i><b>2.1.1</b> 2-1. API Key 인증받기</a></li>
 <li class="chapter" data-level="2.1.2" data-path="dj-Bus-Route.html"><a href="dj-Bus-Route.html#노선별-정류소-목록-조회하기"><i class="fa fa-check"></i><b>2.1.2</b> 2-2. 노선별 정류소 목록 조회하기</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html"><i class="fa fa-check"></i><b>3</b> 대전광역시 버스 노선 정류소 시각화</a><ul>
+<li class="chapter" data-level="3" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html"><i class="fa fa-check"></i><b>3</b> 대전광역시 버스 노선 정류소 시각화</a>
+<ul>
 <li class="chapter" data-level="" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#패키지-불러오기-2"><i class="fa fa-check"></i>1. 패키지 불러오기</a></li>
-<li class="chapter" data-level="3.1" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#버스-정류소-위치를-marker로-표시하기"><i class="fa fa-check"></i><b>3.1</b> 2. 버스 정류소 위치를 Marker로 표시하기</a><ul>
+<li class="chapter" data-level="3.1" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#버스-정류소-위치를-marker로-표시하기"><i class="fa fa-check"></i><b>3.1</b> 2. 버스 정류소 위치를 Marker로 표시하기</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#google-api-인증"><i class="fa fa-check"></i><b>3.1.1</b> 2-1. Google API 인증</a></li>
 <li class="chapter" data-level="3.1.2" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#버스-위치의-중심점-찾기"><i class="fa fa-check"></i><b>3.1.2</b> 2-2. 버스 위치의 중심점 찾기</a></li>
 <li class="chapter" data-level="3.1.3" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#구글-지도-정보-가져오기"><i class="fa fa-check"></i><b>3.1.3</b> 2-3. 구글 지도 정보 가져오기</a></li>
 <li class="chapter" data-level="3.1.4" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#구글-지도-그리기"><i class="fa fa-check"></i><b>3.1.4</b> 2-4. 구글 지도 그리기</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#버스-정류소-위치에-정류소-이름-표시하기"><i class="fa fa-check"></i><b>3.2</b> 3. 버스 정류소 위치에 정류소 이름 표시하기</a><ul>
+<li class="chapter" data-level="3.2" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#버스-정류소-위치에-정류소-이름-표시하기"><i class="fa fa-check"></i><b>3.2</b> 3. 버스 정류소 위치에 정류소 이름 표시하기</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#구글-지도-정보-가져오기-1"><i class="fa fa-check"></i><b>3.2.1</b> 3-1. 구글 지도 정보 가져오기</a></li>
 <li class="chapter" data-level="3.2.2" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#정류소-위치를-점으로-표시하기"><i class="fa fa-check"></i><b>3.2.2</b> 3-2. 정류소 위치를 점으로 표시하기</a></li>
 <li class="chapter" data-level="3.2.3" data-path="dj-Bus-Route-Visualization.html"><a href="dj-Bus-Route-Visualization.html#정류소-이름을-표시하기"><i class="fa fa-check"></i><b>3.2.3</b> 3-3. 정류소 이름을 표시하기</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="dj-Bus-Location.html"><a href="dj-Bus-Location.html"><i class="fa fa-check"></i><b>4</b> 노선 버스의 실시간 위치 확인</a><ul>
+<li class="chapter" data-level="4" data-path="dj-Bus-Location.html"><a href="dj-Bus-Location.html"><i class="fa fa-check"></i><b>4</b> 노선 버스의 실시간 위치 확인</a>
+<ul>
 <li class="chapter" data-level="" data-path="dj-Bus-Location.html"><a href="dj-Bus-Location.html#패키지-불러오기-3"><i class="fa fa-check"></i>패키지 불러오기</a></li>
-<li class="chapter" data-level="4.1" data-path="dj-Bus-Location.html"><a href="dj-Bus-Location.html#특정-노선의-실시간-위치"><i class="fa fa-check"></i><b>4.1</b> 1. 특정 노선의 실시간 위치</a><ul>
+<li class="chapter" data-level="4.1" data-path="dj-Bus-Location.html"><a href="dj-Bus-Location.html#특정-노선의-실시간-위치"><i class="fa fa-check"></i><b>4.1</b> 1. 특정 노선의 실시간 위치</a>
+<ul>
 <li class="chapter" data-level="4.1.1" data-path="dj-Bus-Location.html"><a href="dj-Bus-Location.html#api-key-인증받기-2"><i class="fa fa-check"></i><b>4.1.1</b> 2-1. API Key 인증받기</a></li>
 <li class="chapter" data-level="4.1.2" data-path="dj-Bus-Location.html"><a href="dj-Bus-Location.html#실시간-버스-위치-정보-조회"><i class="fa fa-check"></i><b>4.1.2</b> 2-2. 실시간 버스 위치 정보 조회</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html"><i class="fa fa-check"></i><b>5</b> 실시간 버스 위치의 시각화</a><ul>
+<li class="chapter" data-level="5" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html"><i class="fa fa-check"></i><b>5</b> 실시간 버스 위치의 시각화</a>
+<ul>
 <li class="chapter" data-level="" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#패키지-불러오기-4"><i class="fa fa-check"></i>1. 패키지 불러오기</a></li>
-<li class="chapter" data-level="5.1" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#실시간-위치를-marker로-표시하기"><i class="fa fa-check"></i><b>5.1</b> 2. 실시간 위치를 Marker로 표시하기</a><ul>
+<li class="chapter" data-level="5.1" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#실시간-위치를-marker로-표시하기"><i class="fa fa-check"></i><b>5.1</b> 2. 실시간 위치를 Marker로 표시하기</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#google-api-인증-1"><i class="fa fa-check"></i><b>5.1.1</b> 2-1. Google API 인증</a></li>
 <li class="chapter" data-level="5.1.2" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#버스-위치의-중심점-찾기-1"><i class="fa fa-check"></i><b>5.1.2</b> 2-2. 버스 위치의 중심점 찾기</a></li>
 <li class="chapter" data-level="5.1.3" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#구글-지도-정보-가져오기-2"><i class="fa fa-check"></i><b>5.1.3</b> 2-3. 구글 지도 정보 가져오기</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#구글-지도-그리기-1"><i class="fa fa-check"></i><b>5.2</b> 2-4. 구글 지도 그리기</a></li>
-<li class="chapter" data-level="5.3" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#차량의-현지-운행-지점을-점으로-찍기"><i class="fa fa-check"></i><b>5.3</b> 3. 차량의 현지 운행 지점을 점으로 찍기</a><ul>
+<li class="chapter" data-level="5.3" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#차량의-현지-운행-지점을-점으로-찍기"><i class="fa fa-check"></i><b>5.3</b> 3. 차량의 현지 운행 지점을 점으로 찍기</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#지도-정보-가져오기"><i class="fa fa-check"></i><b>5.3.1</b> 3-1. 지도 정보 가져오기</a></li>
 <li class="chapter" data-level="5.3.2" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#차량-위치를-점으로-찍기"><i class="fa fa-check"></i><b>5.3.2</b> 3-2. 차량 위치를 점으로 찍기</a></li>
 <li class="chapter" data-level="5.3.3" data-path="dj-Bus-Location-Visualization.html"><a href="dj-Bus-Location-Visualization.html#지도위에-버스-번호-표시하기"><i class="fa fa-check"></i><b>5.3.3</b> 3-3. 지도위에 버스 번호 표시하기</a></li>
@@ -198,77 +212,77 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="dj_Bus_Route_Visualization" class="section level1">
-<h1><span class="header-section-number">3</span> 대전광역시 버스 노선 정류소 시각화</h1>
+<div id="dj_Bus_Route_Visualization" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> 대전광역시 버스 노선 정류소 시각화</h1>
 <p><code>data.go.kr</code>의 Open API 활용 방법을 학습하기 위해, 현재 대전광역시 운행중인 버스 노선에 대한 정보 조회 방법을 예로 들어본다.</p>
 <p>버스 노선별 정류소를 구글 지도에 시각화해 보기로 한다</p>
 <div id="패키지-불러오기-2" class="section level2 unnumbered">
 <h2>1. 패키지 불러오기</h2>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">library</span>(XML)</a>
-<a class="sourceLine" id="cb27-2" title="2"><span class="kw">library</span>(ggmap)</a>
-<a class="sourceLine" id="cb27-3" title="3"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="dj-Bus-Route-Visualization.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(XML)</span>
+<span id="cb27-2"><a href="dj-Bus-Route-Visualization.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggmap)</span>
+<span id="cb27-3"><a href="dj-Bus-Route-Visualization.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 </div>
-<div id="버스-정류소-위치를-marker로-표시하기" class="section level2">
+<div id="버스-정류소-위치를-marker로-표시하기" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> 2. 버스 정류소 위치를 Marker로 표시하기</h2>
-<div id="google-api-인증" class="section level3">
+<div id="google-api-인증" class="section level3" number="3.1.1">
 <h3><span class="header-section-number">3.1.1</span> 2-1. Google API 인증</h3>
 <pre><code>register_google(key=&quot;API Key&quot;)      # https://console.cloud.google.com 에서 확인</code></pre>
 </div>
-<div id="버스-위치의-중심점-찾기" class="section level3">
+<div id="버스-위치의-중심점-찾기" class="section level3" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> 2-2. 버스 위치의 중심점 찾기</h3>
 <p>station 데이터 세트에서 위치정보 컬럼만 선택하여, gc 에 대입한다.</p>
 <p>그리고 버스 정류소의 중심 위치를 확인하여 cen에 대입한다.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">station &lt;-<span class="st"> </span><span class="kw">read_rds</span>(<span class="st">&quot;data/bus_station.rds&quot;</span>)</a>
-<a class="sourceLine" id="cb29-2" title="2"></a>
-<a class="sourceLine" id="cb29-3" title="3">gc &lt;-<span class="st"> </span>station[, <span class="dv">2</span><span class="op">:</span><span class="dv">3</span>]            <span class="co"># lon, lat 컬럼만 추출</span></a>
-<a class="sourceLine" id="cb29-4" title="4">cen &lt;-<span class="st"> </span><span class="kw">sapply</span>(gc, mean)      <span class="co"># 차량위치의 중심점</span></a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="dj-Bus-Route-Visualization.html#cb29-1" aria-hidden="true" tabindex="-1"></a>station <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">&quot;data/bus_station.rds&quot;</span>)</span>
+<span id="cb29-2"><a href="dj-Bus-Route-Visualization.html#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="dj-Bus-Route-Visualization.html#cb29-3" aria-hidden="true" tabindex="-1"></a>gc <span class="ot">&lt;-</span> station[, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]            <span class="co"># lon, lat 컬럼만 추출</span></span>
+<span id="cb29-4"><a href="dj-Bus-Route-Visualization.html#cb29-4" aria-hidden="true" tabindex="-1"></a>cen <span class="ot">&lt;-</span> <span class="fu">sapply</span>(gc, mean)      <span class="co"># 차량위치의 중심점</span></span></code></pre></div>
 </div>
-<div id="구글-지도-정보-가져오기" class="section level3">
+<div id="구글-지도-정보-가져오기" class="section level3" number="3.1.3">
 <h3><span class="header-section-number">3.1.3</span> 2-3. 구글 지도 정보 가져오기</h3>
 <p><code>get_googlemap()</code> 함수를 이용하여 구글 지도 정보를 가져온다. 그 결과는 <code>map</code>에 대입한다.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">map &lt;-<span class="st"> </span><span class="kw">get_googlemap</span>(<span class="dt">center =</span> cen, </a>
-<a class="sourceLine" id="cb30-2" title="2">                     <span class="dt">maptype =</span> <span class="st">&quot;roadmap&quot;</span>,</a>
-<a class="sourceLine" id="cb30-3" title="3">                     <span class="dt">zoom =</span> <span class="dv">11</span>, </a>
-<a class="sourceLine" id="cb30-4" title="4">                     <span class="dt">marker =</span> gc)</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="dj-Bus-Route-Visualization.html#cb30-1" aria-hidden="true" tabindex="-1"></a>map <span class="ot">&lt;-</span> <span class="fu">get_googlemap</span>(<span class="at">center =</span> cen, </span>
+<span id="cb30-2"><a href="dj-Bus-Route-Visualization.html#cb30-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">maptype =</span> <span class="st">&quot;roadmap&quot;</span>,</span>
+<span id="cb30-3"><a href="dj-Bus-Route-Visualization.html#cb30-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">zoom =</span> <span class="dv">11</span>, </span>
+<span id="cb30-4"><a href="dj-Bus-Route-Visualization.html#cb30-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">marker =</span> gc)</span></code></pre></div>
 <pre><code>## Source : https://maps.googleapis.com/maps/api/staticmap?center=36.350464,127.395379&amp;zoom=11&amp;size=640x640&amp;scale=2&amp;maptype=roadmap&amp;markers=36.329674,127.33825%7C36.333813,127.338264%7C36.33707,127.33825%7C36.341488,127.33867%7C36.34515,127.34043%7C36.35159,127.34072%7C36.354378,127.342026%7C36.358105,127.34342%7C36.361355,127.34468%7C36.359398,127.35449%7C36.358505,127.361%7C36.359715,127.36569%7C36.35968,127.371956%7C36.359173,127.37414%7C36.356583,127.37412%7C36.353825,127.37399%7C36.351604,127.37698%7C36.351147,127.38076%7C36.351116,127.384865%7C36.351143,127.38867%7C36.351124,127.39167%7C36.35111,127.39719%7C36.350384,127.40151%7C36.347336,127.401566%7C36.341076,127.41007%7C36.338676,127.41313%7C36.33962,127.42015%7C36.345608,127.422134%7C36.346455,127.42565%7C36.345467,127.4298%7C36.34904,127.43719%7C36.350216,127.440475%7C36.348995,127.443214%7C36.346027,127.44738%7C36.348312,127.45116%7C36.350624,127.45246%7C36.353428,127.4541%7C36.356636,127.45446%7C36.35839,127.45051%7C36.359646,127.44942%7C36.36065,127.450066%7C36.360332,127.44997%7C36.359825,127.44932%7C36.35832,127.45011%7C36.357056,127.453514%7C36.354073,127.45417%7C36.350567,127.45212%7C36.34835,127.45088%7C36.346153,127.44707%7C36.34641,127.44533%7C36.348618,127.44393%7C36.350426,127.43968%7C36.349014,127.43566%7C36.345703,127.42946%7C36.34656,127.42596%7C36.345478,127.42163%7C36.340084,127.42007%7C36.339115,127.41302%7C36.34149,127.41003%7C36.345898,127.402145%7C36.351364,127.39831%7C36.3514,127.393265%7C36.351402,127.38817%7C36.35139,127.3835%7C36.351402,127.3806%7C36.351944,127.37698%7C36.353165,127.374466%7C36.355083,127.37443%7C36.359123,127.37448%7C36.359947,127.370865%7C36.359947,127.366585%7C36.358727,127.362434%7C36.359795,127.35469%7C36.36134,127.3472%7C36.36156,127.34411%7C36.35776,127.3426%7C36.354877,127.34152%7C36.35236,127.34095%7C36.346264,127.34013%7C36.34161,127.33818%7C36.33774,127.338036%7C36.333828,127.338104%7C36.329712,127.338104&amp;key=xxx</code></pre>
 </div>
-<div id="구글-지도-그리기" class="section level3">
+<div id="구글-지도-그리기" class="section level3" number="3.1.4">
 <h3><span class="header-section-number">3.1.4</span> 2-4. 구글 지도 그리기</h3>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="kw">ggmap</span>(map)</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="dj-Bus-Route-Visualization.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggmap</span>(map)</span></code></pre></div>
+<p><img src="BusInformation_DJ_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 </div>
 </div>
-<div id="버스-정류소-위치에-정류소-이름-표시하기" class="section level2">
+<div id="버스-정류소-위치에-정류소-이름-표시하기" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> 3. 버스 정류소 위치에 정류소 이름 표시하기</h2>
-<div id="구글-지도-정보-가져오기-1" class="section level3">
+<div id="구글-지도-정보-가져오기-1" class="section level3" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> 3-1. 구글 지도 정보 가져오기</h3>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1">map1 &lt;-<span class="st"> </span><span class="kw">get_googlemap</span>(<span class="dt">center =</span> cen, </a>
-<a class="sourceLine" id="cb33-2" title="2">                     <span class="dt">maptype =</span> <span class="st">&quot;roadmap&quot;</span>,</a>
-<a class="sourceLine" id="cb33-3" title="3">                     <span class="dt">zoom =</span> <span class="dv">11</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="dj-Bus-Route-Visualization.html#cb33-1" aria-hidden="true" tabindex="-1"></a>map1 <span class="ot">&lt;-</span> <span class="fu">get_googlemap</span>(<span class="at">center =</span> cen, </span>
+<span id="cb33-2"><a href="dj-Bus-Route-Visualization.html#cb33-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">maptype =</span> <span class="st">&quot;roadmap&quot;</span>,</span>
+<span id="cb33-3"><a href="dj-Bus-Route-Visualization.html#cb33-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">zoom =</span> <span class="dv">11</span>)</span></code></pre></div>
 <pre><code>## Source : https://maps.googleapis.com/maps/api/staticmap?center=36.350464,127.395379&amp;zoom=11&amp;size=640x640&amp;scale=2&amp;maptype=roadmap&amp;key=xxx</code></pre>
 </div>
-<div id="정류소-위치를-점으로-표시하기" class="section level3">
+<div id="정류소-위치를-점으로-표시하기" class="section level3" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> 3-2. 정류소 위치를 점으로 표시하기</h3>
 <p><code>geom_point()</code> 함수를 이용하여 정류소의 위치에 점을 찍는다.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="kw">ggmap</span>(map1) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">data =</span> station,            <span class="co"># 데이터 세트</span></a>
-<a class="sourceLine" id="cb35-2" title="2">                         <span class="kw">aes</span>(<span class="dt">x=</span> lon, <span class="dt">y =</span> lat),   <span class="co"># 위치 정보</span></a>
-<a class="sourceLine" id="cb35-3" title="3">                         <span class="dt">size =</span> <span class="dv">1</span>,               <span class="co"># 점의 크기</span></a>
-<a class="sourceLine" id="cb35-4" title="4">                         <span class="dt">colour =</span> <span class="st">&#39;blue&#39;</span>)        <span class="co"># 점의 색깔</span></a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="dj-Bus-Route-Visualization.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggmap</span>(map1) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">data =</span> station,            <span class="co"># 데이터 세트</span></span>
+<span id="cb35-2"><a href="dj-Bus-Route-Visualization.html#cb35-2" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">aes</span>(<span class="at">x=</span> lon, <span class="at">y =</span> lat),   <span class="co"># 위치 정보</span></span>
+<span id="cb35-3"><a href="dj-Bus-Route-Visualization.html#cb35-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">size =</span> <span class="dv">1</span>,               <span class="co"># 점의 크기</span></span>
+<span id="cb35-4"><a href="dj-Bus-Route-Visualization.html#cb35-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">colour =</span> <span class="st">&#39;blue&#39;</span>)        <span class="co"># 점의 색깔</span></span></code></pre></div>
+<p><img src="BusInformation_DJ_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 </div>
-<div id="정류소-이름을-표시하기" class="section level3">
+<div id="정류소-이름을-표시하기" class="section level3" number="3.2.3">
 <h3><span class="header-section-number">3.2.3</span> 3-3. 정류소 이름을 표시하기</h3>
 <p><code>geom_text()</code> 함수를 이용하여 <code>station</code> 데이터 세트의 <code>stationNm</code> 컬럼을 <code>label</code>의 인수로 지정하여 지도를 그린다.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="kw">ggmap</span>(map1) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">data =</span> station,            <span class="co"># 데이터 세트</span></a>
-<a class="sourceLine" id="cb36-2" title="2">                         <span class="kw">aes</span>(<span class="dt">x=</span> lon, <span class="dt">y =</span> lat),   <span class="co"># 위치 정보</span></a>
-<a class="sourceLine" id="cb36-3" title="3">                         <span class="dt">size =</span> <span class="dv">1</span>,               <span class="co"># 점의 크기</span></a>
-<a class="sourceLine" id="cb36-4" title="4">                         <span class="dt">colour =</span> <span class="st">&#39;blue&#39;</span>) <span class="op">+</span><span class="st">       </span><span class="co"># 점의 색깔</span></a>
-<a class="sourceLine" id="cb36-5" title="5"><span class="st">     </span><span class="kw">geom_text</span>(<span class="dt">data =</span> station,                   <span class="co"># 데이터 세트</span></a>
-<a class="sourceLine" id="cb36-6" title="6">               <span class="kw">aes</span>(<span class="dt">x =</span> lon, <span class="dt">y =</span> lat),         <span class="co"># 위치 정보</span></a>
-<a class="sourceLine" id="cb36-7" title="7">               <span class="dt">size =</span> <span class="dv">2</span>,                      <span class="co"># 글자의 크기</span></a>
-<a class="sourceLine" id="cb36-8" title="8">               <span class="dt">label =</span> station<span class="op">$</span>stationNm,             <span class="co"># 정류소 이름</span></a>
-<a class="sourceLine" id="cb36-9" title="9">               <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="dj-Bus-Route-Visualization.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggmap</span>(map1) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">data =</span> station,            <span class="co"># 데이터 세트</span></span>
+<span id="cb36-2"><a href="dj-Bus-Route-Visualization.html#cb36-2" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">aes</span>(<span class="at">x=</span> lon, <span class="at">y =</span> lat),   <span class="co"># 위치 정보</span></span>
+<span id="cb36-3"><a href="dj-Bus-Route-Visualization.html#cb36-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">size =</span> <span class="dv">1</span>,               <span class="co"># 점의 크기</span></span>
+<span id="cb36-4"><a href="dj-Bus-Route-Visualization.html#cb36-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">colour =</span> <span class="st">&#39;blue&#39;</span>) <span class="sc">+</span>       <span class="co"># 점의 색깔</span></span>
+<span id="cb36-5"><a href="dj-Bus-Route-Visualization.html#cb36-5" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_text</span>(<span class="at">data =</span> station,                   <span class="co"># 데이터 세트</span></span>
+<span id="cb36-6"><a href="dj-Bus-Route-Visualization.html#cb36-6" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">x =</span> lon, <span class="at">y =</span> lat),         <span class="co"># 위치 정보</span></span>
+<span id="cb36-7"><a href="dj-Bus-Route-Visualization.html#cb36-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">size =</span> <span class="dv">2</span>,                      <span class="co"># 글자의 크기</span></span>
+<span id="cb36-8"><a href="dj-Bus-Route-Visualization.html#cb36-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">label =</span> station<span class="sc">$</span>stationNm,             <span class="co"># 정류소 이름</span></span>
+<span id="cb36-9"><a href="dj-Bus-Route-Visualization.html#cb36-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="BusInformation_DJ_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 
 </div>
 </div>
