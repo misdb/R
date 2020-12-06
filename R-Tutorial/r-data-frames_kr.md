@@ -16,7 +16,7 @@
 
 
 
-## 데이터 프레임 생성 방법
+## 데이터 프레임 생성
 
 우리는 변수 a, b, c, d를 `data.frame()` 함수에 투입하여 데이터 프레임을 생성할 수 있다. 우리는 `name()` 함수를 이용하여 열에 이름을 붙일 수 있고, 단순히변수들의 이름을 지정할 수도 있다.
 
@@ -32,6 +32,8 @@ data.frame(df, stringsAsFactors = TRUE)
 
 
 우리는 같은 길이를 갖는 4개의 변수를 결합하여 첫 데이터 세트를 생성할 수 있다.
+
+**예제 1:**
 
 ```
 # Create a, b, c, d variables
@@ -56,7 +58,13 @@ df
 
 
 
+## 데이터 프레임의 열에 제목 달기
+
 여기서 우리는 열 제목(column heading)이 변수의 이름과 같은 것을 알 수 있다. `names()` 함수를 이용하여 열의 이름을 변경할 수 있다. 다음의 예를 확인해 보자.
+
+
+
+**예제 1:**
 
 ```
 # Name the data frame
@@ -77,7 +85,13 @@ df
 
 
 
+## 데이터 프레임의 구조 학인
+
 데이터 프레임 변수의 구조를 확인하기 위해 `str( )`를 이용한다.
+
+
+
+**예제 1:**
 
 ```
 str(df)
@@ -105,9 +119,7 @@ str(df)
 
 아래의 그램에서 왼쪽 부분은 **행(rows)**을 나타내고, 오른쪽 부분은 **열(column)**을 나타낸다. 여기서 `:`기호는 '까지'(to)를 의미한다. 예를 들어 1:3은 1부터 3**까지**의 값을 선택하는 것을 나타낸다.
 
-
-
-[<img src="images/032918_1452_RDataFrames1.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1452_RDataFrames1.png)
+![032918_1452_RDataFrames1](images/032918_1452_RDataFrames1.png)
 
 
 
@@ -122,41 +134,64 @@ str(df)
 
 
 
-[<img src="images/032918_1452_RDataFrames2.png" alt="img" style="zoom:80%;" />](https://www.guru99.com/images/r_programming/032918_1452_RDataFrames2.png)
+![032918_1452_RDataFrames2](images/032918_1452_RDataFrames2.png)
 
 
 
 우리는 console에서 코드를 실행할 수 있다.
 
+**예제 1:**
+
 ```
-## Select row 1 in column 2
+# Select row 1 in column 2
 df[1,2]
 ```
 
-**결과 :**
+결과:
 
 ```
 ## [1] book
 ## Levels: book pen pencil_case textbook
-## Select Rows 1 to 2
+```
+
+
+
+**예제 2 :**
+
+```
+# Select Rows 1 to 2
 df[1:2,]
 ```
 
-**결과 :**
+결과:
 
 ```
 ##   ID items store price
 ## 1 10  book  TRUE   2.5
 ## 2 20   pen FALSE   8.0
-## Select Columns 1
+```
+
+
+
+**예제 3 :**
+
+```
+# Select Columns 1
 df[,1]
 ```
 
-**결과 :**
+결과:
 
 ```
 ## [1] 10 20 30 40
-## Select Rows 1 to 3 and columns 3 to 4
+```
+
+
+
+**예제 4 :**
+
+```
+# Select Rows 1 to 3 and columns 3 to 4
 df[1:3, 3:4]
 ```
 
@@ -173,7 +208,7 @@ df[1:3, 3:4]
 
 또한 열의 이름을 이용해서 열을 선택할 수도 있다. 예를 들어, 아래의 코드는 `ID`와 `store`라는 **두 개의 열**을 추출한다.
 
-
+**예제 5:**
 
 ```
 # Slice with columns name
@@ -196,6 +231,10 @@ df[, c('ID', 'store')]
 
 데이터 프레임에 열을 추가할 수 있다. `$` 기호를 이용하여 새로운 변수를 추가할 수 있다. 
 
+
+
+**예제 1:**
+
 ```
 # Create a new vector
 quantity <- c(10, 35, 40, 5)
@@ -215,7 +254,9 @@ df
 ## 4 40 pencil_case FALSE   7.0        5
 ```
 
-주의 : 벡터에 있는 요소의 갯수는 데이터 프레임에 있는 요소의 갯수와 같아야 한다. 다음의 구문을 실행해보자.
+
+
+**주의** : 벡터에 있는 요소의 갯수는 데이터 프레임에 있는 요소의 갯수와 같아야 한다. 다음의 구문을 실행해보자.
 
 ```
 quantity <- c(10, 35, 40)
@@ -232,9 +273,55 @@ Error in `$<-.data.frame`(`*tmp*`, quantity, value = c(10, 35, 40))
 
 
 
+>`cbind()`를 이용하여 데이터 프레임에 열과 행을 추가할 수도 있다.
+>
+> 
+>
+>```{r}
+># Create a, b, c, d variables
+>a <- c(10,20,30,40)
+>b <- c('book', 'pen', 'textbook', 'pencil_case')
+>c <- c(TRUE,FALSE,TRUE,FALSE)
+>d <- c(2.5, 8, 10, 7)
+># Join the variables to create a data frame
+>df <- data.frame(a,b,c,d)
+>df
+>
+>e <- c(10, 35, 40, 5)
+>df <- cbind(df, e)   # 열 e 추가하기
+>```
+>
+> **결과 :**
+>
+>```
+>> df
+>##    a           b     c    d
+>## 1 10        book  TRUE  2.5
+>## 2 20         pen FALSE  8.0
+>## 3 30    textbook  TRUE 10.0
+>## 4 40 pencil_case FALSE  7.0
+>> 
+>> e <- c(10, 35, 40, 5)
+>> df <- cbind(df, e)   # 열 e 추가하기
+>> df
+>##    a           b     c    d  e
+>## 1 10        book  TRUE  2.5 10
+>## 2 20         pen FALSE  8.0 35
+>## 3 30    textbook  TRUE 10.0 40
+>## 4 40 pencil_case FALSE  7.0  5
+>```
+>
+>
+
+
+
 ## 데이터 프레임의 열 선택
 
 때때로 우리는 나중 사용을 위해 데이터 열을 저장하거나 열 단위의 연산을 수행할 필요가 있다. 이때 우리는 데이터 프레임의 열을 선택하기 위해 `$` 기호를 사용할 수 있다.
+
+
+
+**예제 1:**
 
 ```
 # Select the column ID
@@ -249,7 +336,7 @@ df$ID
 
 
 
-### 데이터 프레임의 부분집합
+## 데이터 프레임의 부분집합
 
 앞의 절에서 우리는 조건없이 전체 열을 선택하였다. 특정 조건이 true 인지에 따라 **부분집합(subset)**을 만들 수 있다.
 
@@ -261,12 +348,12 @@ subset(x, condition)
 
 **인수(arguments) :**
 
-- x: 부분집합 수행에 사용될 데이터 프레임
-- condition: 조건문을 정의
+- x : 부분집합 수행에 사용될 데이터 프레임
+- condition : 조건문을 정의
 
 
 
-price가 5보다 큰(`price > 5`) 항목들만 출력하고 싶다면 다음과 같이 할 수 있다.
+**예제 1:** price가 5보다 큰(`price > 5`) 항목들만 출력하고 싶다면 다음과 같이 할 수 있다.
 
 ```
 # Select price above 5
