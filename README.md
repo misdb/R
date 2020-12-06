@@ -17,4 +17,6 @@
 ### Data Visualization
 
 - [19th Presidential Vote](./GGMAP_19th_Presidential_Vote)
+- [Bus Information and Real-time Location of Bus in Seoul](./BusRoute_Seoul/index.html)
+- [Bus Information and Real-time Location of Bus in Daejeon](./BusRoute_Daejeon/index.html)
 
