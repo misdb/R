@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Relational Data | Data Management with R</title>
+  <meta name="description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 Relational Data | Data Management with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Relational Data | Data Management with R" />
+  
+  <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Dae Ho Kim" />
+
+
+<meta name="date" content="2020-10-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="piping-operator.html"/>
+<link rel="next" href="tidy-data.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.16/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
+<script src="libs/str_view-binding-1.4.0/str_view.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="1" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>1</b> Data Import and Export</a><ul>
+<li class="chapter" data-level="1.1" data-path="data-import.html"><a href="data-import.html#data-import"><i class="fa fa-check"></i><b>1.1</b> Data Import</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="data-import.html"><a href="data-import.html#준비하기"><i class="fa fa-check"></i><b>1.1.1</b> 준비하기</a></li>
+<li class="chapter" data-level="1.1.2" data-path="data-import.html"><a href="data-import.html#시작하기"><i class="fa fa-check"></i><b>1.1.2</b> 시작하기</a></li>
+<li class="chapter" data-level="1.1.3" data-path="data-import.html"><a href="data-import.html#벡터-파싱하기"><i class="fa fa-check"></i><b>1.1.3</b> 벡터 파싱하기</a></li>
+<li class="chapter" data-level="1.1.4" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>1.1.4</b> 연습문제</a></li>
+<li class="chapter" data-level="1.1.5" data-path="data-import.html"><a href="data-import.html#파일-파싱하기"><i class="fa fa-check"></i><b>1.1.5</b> 파일 파싱하기</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="data-import.html"><a href="data-import.html#data_export"><i class="fa fa-check"></i><b>1.2</b> Data Export</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="data-import.html"><a href="data-import.html#write_csv"><i class="fa fa-check"></i><b>1.2.1</b> <code>write_csv()</code></a></li>
+<li class="chapter" data-level="1.2.2" data-path="data-import.html"><a href="data-import.html#write_rds"><i class="fa fa-check"></i><b>1.2.2</b> <code>write_rds()</code></a></li>
+<li class="chapter" data-level="1.2.3" data-path="data-import.html"><a href="data-import.html#write_feather"><i class="fa fa-check"></i><b>1.2.3</b> <code>write_feather()</code></a></li>
+<li class="chapter" data-level="1.2.4" data-path="data-import.html"><a href="data-import.html#read_csv와-read_rds의-비교"><i class="fa fa-check"></i><b>1.2.4</b> <code>read_csv()</code>와 <code>read_rds()</code>의 비교</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="data-import.html"><a href="data-import.html#data_import_additional"><i class="fa fa-check"></i><b>1.3</b> Read Tabular Data의 보충설명</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="data-import.html"><a href="data-import.html#read_csv의-예"><i class="fa fa-check"></i><b>1.3.1</b> <code>read_csv()</code>의 예</a></li>
+<li class="chapter" data-level="1.3.2" data-path="data-import.html"><a href="data-import.html#read_csv2의-예"><i class="fa fa-check"></i><b>1.3.2</b> <code>read_csv2()</code>의 예</a></li>
+<li class="chapter" data-level="1.3.3" data-path="data-import.html"><a href="data-import.html#read_delim의-예"><i class="fa fa-check"></i><b>1.3.3</b> <code>read_delim()</code>의 예</a></li>
+<li class="chapter" data-level="1.3.4" data-path="data-import.html"><a href="data-import.html#read_fwf의-예"><i class="fa fa-check"></i><b>1.3.4</b> <code>read_fwf()</code>의 예</a></li>
+<li class="chapter" data-level="1.3.5" data-path="data-import.html"><a href="data-import.html#read_tsv의-예"><i class="fa fa-check"></i><b>1.3.5</b> read_tsv()의 예</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html"><i class="fa fa-check"></i><b>2</b> Dataframe, Tibble and Factor</a><ul>
+<li class="chapter" data-level="2.1" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#dataframe"><i class="fa fa-check"></i><b>2.1</b> Data Frame</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#데이터-프레임의-생성"><i class="fa fa-check"></i><b>2.1.1</b> 데이터 프레임의 생성</a></li>
+<li class="chapter" data-level="2.1.2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#데이터-프레임의-구조"><i class="fa fa-check"></i><b>2.1.2</b> 데이터 프레임의 구조</a></li>
+<li class="chapter" data-level="2.1.3" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#행열-추가하기"><i class="fa fa-check"></i><b>2.1.3</b> 행/열 추가하기</a></li>
+<li class="chapter" data-level="2.1.4" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#행과-열-접근하기"><i class="fa fa-check"></i><b>2.1.4</b> 행과 열 접근하기</a></li>
+<li class="chapter" data-level="2.1.5" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-2"><i class="fa fa-check"></i><b>2.1.5</b> 연습문제</a></li>
+<li class="chapter" data-level="2.1.6" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#행과-열의-이름-지정하기"><i class="fa fa-check"></i><b>2.1.6</b> 행과 열의 이름 지정하기</a></li>
+<li class="chapter" data-level="2.1.7" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#데이터-타입-변환"><i class="fa fa-check"></i><b>2.1.7</b> 데이터 타입 변환</a></li>
+<li class="chapter" data-level="2.1.8" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-3"><i class="fa fa-check"></i><b>2.1.8</b> 연습문제</a></li>
+<li class="chapter" data-level="2.1.9" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#실습-과제"><i class="fa fa-check"></i><b>2.1.9</b> 실습 과제</a></li>
+<li class="chapter" data-level="2.1.10" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#apply-함수-이해하기"><i class="fa fa-check"></i><b>2.1.10</b> <code>apply()</code> 함수 이해하기</a></li>
+<li class="chapter" data-level="2.1.11" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-4"><i class="fa fa-check"></i><b>2.1.11</b> 연습문제</a></li>
+<li class="chapter" data-level="2.1.12" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-5"><i class="fa fa-check"></i><b>2.1.12</b> 연습문제</a></li>
+<li class="chapter" data-level="2.1.13" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#apply-함수의-사촌들"><i class="fa fa-check"></i><b>2.1.13</b> <code>apply()</code> 함수의 사촌들</a></li>
+<li class="chapter" data-level="2.1.14" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-6"><i class="fa fa-check"></i><b>2.1.14</b> 연습문제</a></li>
+<li class="chapter" data-level="" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#참고-sampling"><i class="fa fa-check"></i>[참고 : Sampling]</a></li>
+<li class="chapter" data-level="" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#reference"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#tibble"><i class="fa fa-check"></i><b>2.2</b> tibble</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#티블-생성"><i class="fa fa-check"></i><b>2.2.1</b> 티블 생성</a></li>
+<li class="chapter" data-level="2.2.2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#강제변환coercion"><i class="fa fa-check"></i><b>2.2.2</b> 강제변환(Coercion)</a></li>
+<li class="chapter" data-level="2.2.3" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#티블과-데이터-프레임의-비교"><i class="fa fa-check"></i><b>2.2.3</b> 티블과 데이터 프레임의 비교</a></li>
+<li class="chapter" data-level="2.2.4" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#이전-코드와-상호작용"><i class="fa fa-check"></i><b>2.2.4</b> 이전 코드와 상호작용</a></li>
+<li class="chapter" data-level="2.2.5" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#외부-데이터-가져오기-importing"><i class="fa fa-check"></i><b>2.2.5</b> 외부 데이터 가져오기 (importing)</a></li>
+<li class="chapter" data-level="2.2.6" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-7"><i class="fa fa-check"></i><b>2.2.6</b> 연습문제</a></li>
+<li class="chapter" data-level="" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#references"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#factor"><i class="fa fa-check"></i><b>2.3</b> Factor</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#범주형-자료"><i class="fa fa-check"></i><b>2.3.1</b> 범주형 자료</a></li>
+<li class="chapter" data-level="2.3.2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#factor의-요소-및-특징"><i class="fa fa-check"></i><b>2.3.2</b> Factor의 요소 및 특징</a></li>
+<li class="chapter" data-level="2.3.3" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#factor-함수의-형식"><i class="fa fa-check"></i><b>2.3.3</b> <code>factor()</code> 함수의 형식</a></li>
+<li class="chapter" data-level="2.3.4" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#factor-생성"><i class="fa fa-check"></i><b>2.3.4</b> factor 생성</a></li>
+<li class="chapter" data-level="" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#reference-1"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-cleansing.html"><a href="data-cleansing.html"><i class="fa fa-check"></i><b>3</b> Data Cleansing</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_summary"><i class="fa fa-check"></i><b>3.1</b> Data Cleansing</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="data-cleansing.html"><a href="data-cleansing.html#변수-요약"><i class="fa fa-check"></i><b>3.1.1</b> 변수 요약</a></li>
+<li class="chapter" data-level="3.1.2" data-path="data-cleansing.html"><a href="data-cleansing.html#데이터-세트-4"><i class="fa fa-check"></i><b>3.1.2</b> 데이터 세트</a></li>
+<li class="chapter" data-level="3.1.3" data-path="data-cleansing.html"><a href="data-cleansing.html#데이터-세트의-통계적-요약-정보"><i class="fa fa-check"></i><b>3.1.3</b> 데이터 세트의 통계적 요약 정보</a></li>
+<li class="chapter" data-level="3.1.4" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_describe"><i class="fa fa-check"></i><b>3.1.4</b> <code>Hmisc</code> 패키지의 <code>describe()</code> 함수</a></li>
+<li class="chapter" data-level="3.1.5" data-path="data-cleansing.html"><a href="data-cleansing.html#의심스러운-값"><i class="fa fa-check"></i><b>3.1.5</b> 의심스러운 값</a></li>
+<li class="chapter" data-level="3.1.6" data-path="data-cleansing.html"><a href="data-cleansing.html#describe함수의-결과의-시각화"><i class="fa fa-check"></i><b>3.1.6</b> <code>describe()</code>함수의 결과의 시각화</a></li>
+<li class="chapter" data-level="3.1.7" data-path="data-cleansing.html"><a href="data-cleansing.html#의심스러운-값을-결측치로-바꾸기"><i class="fa fa-check"></i><b>3.1.7</b> 의심스러운 값을 결측치로 바꾸기</a></li>
+<li class="chapter" data-level="3.1.8" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_Complete_cases"><i class="fa fa-check"></i><b>3.1.8</b> <code>NA</code>가 없는 완전한 데이터</a></li>
+<li class="chapter" data-level="3.1.9" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_after_cleansing"><i class="fa fa-check"></i><b>3.1.9</b> 데이터 정제 후의 <code>describe()</code>함수 결과 그림</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_missing_value"><i class="fa fa-check"></i><b>3.2</b> 결측치(Missing Values) 처리</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data-cleansing.html"><a href="data-cleansing.html#결측값이-포함되어-있는지-확인하는-방법-is.na"><i class="fa fa-check"></i><b>3.2.1</b> 결측값이 포함되어 있는지 확인하는 방법: <code>is.na()</code></a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-cleansing.html"><a href="data-cleansing.html#결측치-갯수-sumis.na"><i class="fa fa-check"></i><b>3.2.2</b> 결측치 갯수: <code>sum(is.na())</code></a></li>
+<li class="chapter" data-level="3.2.3" data-path="data-cleansing.html"><a href="data-cleansing.html#결측치를-통계-분석시-제외시키기-na.rm-true"><i class="fa fa-check"></i><b>3.2.3</b> 결측치를 통계 분석시 제외시키기 : <code>na.rm = TRUE</code></a></li>
+<li class="chapter" data-level="3.2.4" data-path="data-cleansing.html"><a href="data-cleansing.html#결측치가-있는-행-제거-na.omit"><i class="fa fa-check"></i><b>3.2.4</b> 결측치가 있는 행 제거: <code>na.omit()</code></a></li>
+<li class="chapter" data-level="3.2.5" data-path="data-cleansing.html"><a href="data-cleansing.html#결측치를-다른-값으로-대체"><i class="fa fa-check"></i><b>3.2.5</b> 결측치를 다른 값으로 대체</a></li>
+<li class="chapter" data-level="" data-path="data-cleansing.html"><a href="data-cleansing.html#reference-2"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_outlier"><i class="fa fa-check"></i><b>3.3</b> 이상치(Outlier) 처리 {#outlier}</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="data-cleansing.html"><a href="data-cleansing.html#표준값-z를-이용한-이상치-확인-및-처리"><i class="fa fa-check"></i><b>3.3.1</b> 표준값 Z를 이용한 이상치 확인 및 처리</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data-cleansing.html"><a href="data-cleansing.html#수정된-표준값을-이용한-이상치-확인-및-처리"><i class="fa fa-check"></i><b>3.3.2</b> 수정된 표준값을 이용한 이상치 확인 및 처리</a></li>
+<li class="chapter" data-level="3.3.3" data-path="data-cleansing.html"><a href="data-cleansing.html#사분위수를-이용한-이상치-확인-및-처리"><i class="fa fa-check"></i><b>3.3.3</b> 사분위수를 이용한 이상치 확인 및 처리</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="preprocessing.html"><a href="preprocessing.html"><i class="fa fa-check"></i><b>4</b> Data Preprocessing</a><ul>
+<li class="chapter" data-level="4.1" data-path="preprocessing.html"><a href="preprocessing.html#들어가는-말"><i class="fa fa-check"></i><b>4.1</b> 들어가는 말</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="preprocessing.html"><a href="preprocessing.html#데이터-전처리란"><i class="fa fa-check"></i><b>4.1.1</b> 데이터 전처리란?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="preprocessing.html"><a href="preprocessing.html#왜-dplyr-패키지-인가"><i class="fa fa-check"></i><b>4.1.2</b> 왜 <code>dplyr</code> 패키지 인가?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="preprocessing.html"><a href="preprocessing.html#dplyr-패키지에-있는-함수들"><i class="fa fa-check"></i><b>4.2</b> <code>dplyr</code> 패키지에 있는 함수들</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="preprocessing.html"><a href="preprocessing.html#패키지-설치"><i class="fa fa-check"></i><b>4.2.1</b> 패키지 설치</a></li>
+<li class="chapter" data-level="4.2.2" data-path="preprocessing.html"><a href="preprocessing.html#예제-데이터-확인"><i class="fa fa-check"></i><b>4.2.2</b> 예제 데이터 확인</a></li>
+<li class="chapter" data-level="4.2.3" data-path="preprocessing.html"><a href="preprocessing.html#dplyr-패키지의-주요-함수-목록"><i class="fa fa-check"></i><b>4.2.3</b> <code>dplyr</code> 패키지의 주요 함수 목록</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="preprocessing.html"><a href="preprocessing.html#데이터-프레임의-컬럼-선택-select"><i class="fa fa-check"></i><b>4.3</b> 데이터 프레임의 컬럼 선택: <code>select()</code></a><ul>
+<li class="chapter" data-level="4.3.1" data-path="preprocessing.html"><a href="preprocessing.html#select-함수의-기본-형식"><i class="fa fa-check"></i><b>4.3.1</b> <code>select()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.3.2" data-path="preprocessing.html"><a href="preprocessing.html#a번째-부터-n번째의-연속적-컬럼-선택"><i class="fa fa-check"></i><b>4.3.2</b> a번째 부터 n번째의 연속적 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.3" data-path="preprocessing.html"><a href="preprocessing.html#a번째-부터-n번째의-연속적-컬럼을-제외한-선택"><i class="fa fa-check"></i><b>4.3.3</b> <code>a</code>번째 부터 <code>n</code>번째의 연속적 컬럼을 제외한 선택</a></li>
+<li class="chapter" data-level="4.3.4" data-path="preprocessing.html"><a href="preprocessing.html#컬럼-이름의-앞-부분을-지정하여-선택"><i class="fa fa-check"></i><b>4.3.4</b> 컬럼 이름의 ’앞 부분’을 지정하여 선택</a></li>
+<li class="chapter" data-level="4.3.5" data-path="preprocessing.html"><a href="preprocessing.html#컬럼-이름의-끝-부분을-지정하여-선택"><i class="fa fa-check"></i><b>4.3.5</b> 컬럼 이름의 ’끝 부분’을 지정하여 선택</a></li>
+<li class="chapter" data-level="4.3.6" data-path="preprocessing.html"><a href="preprocessing.html#컬럼-이름의-일부를-포함하는-컬럼-선택"><i class="fa fa-check"></i><b>4.3.6</b> 컬럼 이름의 일부를 포함하는 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.7" data-path="preprocessing.html"><a href="preprocessing.html#정규-표현식과-일치하는-문자열을-포함하는-컬럼-선택"><i class="fa fa-check"></i><b>4.3.7</b> 정규 표현식과 일치하는 문자열을 포함하는 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.8" data-path="preprocessing.html"><a href="preprocessing.html#원하는-컬럼-명의-그룹에-포함된-컬럼-선택"><i class="fa fa-check"></i><b>4.3.8</b> 원하는 컬럼 명의 그룹에 포함된 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.9" data-path="preprocessing.html"><a href="preprocessing.html#컬럼-이름의-접두사와-숫자-범위를-조합하여-컬럼-선택"><i class="fa fa-check"></i><b>4.3.9</b> 컬럼 이름의 접두사와 숫자 범위를 조합하여 컬럼 선택</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="preprocessing.html"><a href="preprocessing.html#filter-함수를-이용한-행의-선택"><i class="fa fa-check"></i><b>4.4</b> <code>filter()</code> 함수를 이용한 행의 선택</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="preprocessing.html"><a href="preprocessing.html#filter-함수의-기본-형식"><i class="fa fa-check"></i><b>4.4.1</b> <code>filter()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.4.2" data-path="preprocessing.html"><a href="preprocessing.html#단일-조건에-의한-행의-선택"><i class="fa fa-check"></i><b>4.4.2</b> 단일 조건에 의한 행의 선택</a></li>
+<li class="chapter" data-level="4.4.3" data-path="preprocessing.html"><a href="preprocessing.html#복수-조건을-and로-결합한-행의-선택"><i class="fa fa-check"></i><b>4.4.3</b> 복수 조건을 AND(<code>,</code>)로 결합한 행의 선택</a></li>
+<li class="chapter" data-level="4.4.4" data-path="preprocessing.html"><a href="preprocessing.html#복수-조건을-or로-결합한-행의-선택"><i class="fa fa-check"></i><b>4.4.4</b> 복수 조건을 OR(<code>|</code>)로 결합한 행의 선택</a></li>
+<li class="chapter" data-level="4.4.5" data-path="preprocessing.html"><a href="preprocessing.html#행의-위치를-지정해서-행의-데이터-부분집합-선택"><i class="fa fa-check"></i><b>4.4.5</b> 행의 위치를 지정해서 행의 데이터 부분집합 선택</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="preprocessing.html"><a href="preprocessing.html#arrange-함수를-이용한-행의-정렬"><i class="fa fa-check"></i><b>4.5</b> <code>arrange()</code> 함수를 이용한 행의 정렬</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="preprocessing.html"><a href="preprocessing.html#arrange-함수의-기본-형식"><i class="fa fa-check"></i><b>4.5.1</b> <code>arrange()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.5.2" data-path="preprocessing.html"><a href="preprocessing.html#복수-개의-정렬-기준으로-행을-정렬하기"><i class="fa fa-check"></i><b>4.5.2</b> 복수 개의 정렬 기준으로 행을 정렬하기</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="preprocessing.html"><a href="preprocessing.html#preprocessing_rename"><i class="fa fa-check"></i><b>4.6</b> <code>rename()</code> 함수를 이용한 데이터 프레임의 컬럼 이름 변경</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="preprocessing.html"><a href="preprocessing.html#rename-함수의-기본-형식"><i class="fa fa-check"></i><b>4.6.1</b> <code>rename()</code> 함수의 기본 형식</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="preprocessing.html"><a href="preprocessing.html#distinct-함수를-이용한-유일한-값-추출"><i class="fa fa-check"></i><b>4.7</b> <code>distinct()</code> 함수를 이용한 유일한 값 추출</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="preprocessing.html"><a href="preprocessing.html#distinct-함수의-기본-형식"><i class="fa fa-check"></i><b>4.7.1</b> <code>distinct()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.7.2" data-path="preprocessing.html"><a href="preprocessing.html#단일-기준에-의한-유일-값-추출"><i class="fa fa-check"></i><b>4.7.2</b> 단일 기준에 의한 유일 값 추출</a></li>
+<li class="chapter" data-level="4.7.3" data-path="preprocessing.html"><a href="preprocessing.html#복수-기준에-의한-유일-값-추출"><i class="fa fa-check"></i><b>4.7.3</b> 복수 기준에 의한 유일 값 추출</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="preprocessing.html"><a href="preprocessing.html#무작위-표본-추출"><i class="fa fa-check"></i><b>4.8</b> 무작위 표본 추출</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="preprocessing.html"><a href="preprocessing.html#정해진-갯수-만큼의-표본-무작위-추출"><i class="fa fa-check"></i><b>4.8.1</b> 정해진 갯수 만큼의 표본 무작위 추출</a></li>
+<li class="chapter" data-level="4.8.2" data-path="preprocessing.html"><a href="preprocessing.html#정해진-비율로-표본-무작위-추출"><i class="fa fa-check"></i><b>4.8.2</b> 정해진 비율로 표본 무작위 추출</a></li>
+<li class="chapter" data-level="4.8.3" data-path="preprocessing.html"><a href="preprocessing.html#정해진-갯수-만큼의-표본-복원-추출"><i class="fa fa-check"></i><b>4.8.3</b> 정해진 갯수 만큼의 표본 복원 추출</a></li>
+<li class="chapter" data-level="4.8.4" data-path="preprocessing.html"><a href="preprocessing.html#집단별-층화-표본-추출"><i class="fa fa-check"></i><b>4.8.4</b> 집단별 층화 표본 추출</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="preprocessing.html"><a href="preprocessing.html#mutate-함수를-이용한-새로운-컬럼-생성"><i class="fa fa-check"></i><b>4.9</b> <code>mutate()</code> 함수를 이용한 새로운 컬럼 생성</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="preprocessing.html"><a href="preprocessing.html#mutate-함수의-기본-형식"><i class="fa fa-check"></i><b>4.9.1</b> <code>mutate()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.9.2" data-path="preprocessing.html"><a href="preprocessing.html#새로운-컬럼-생성-예"><i class="fa fa-check"></i><b>4.9.2</b> 새로운 컬럼 생성 예</a></li>
+<li class="chapter" data-level="4.9.3" data-path="preprocessing.html"><a href="preprocessing.html#새로운-만든-컬럼변수를-이용하여-또-다른-컬럼-생성하기"><i class="fa fa-check"></i><b>4.9.3</b> 새로운 만든 컬럼(변수)를 이용하여 또 다른 컬럼 생성하기</a></li>
+<li class="chapter" data-level="4.9.4" data-path="preprocessing.html"><a href="preprocessing.html#컬럼의-값을-새로운-값으로-변경하기"><i class="fa fa-check"></i><b>4.9.4</b> 컬럼의 값을 새로운 값으로 변경하기</a></li>
+<li class="chapter" data-level="4.9.5" data-path="preprocessing.html"><a href="preprocessing.html#keep-인수의-사용-예"><i class="fa fa-check"></i><b>4.9.5</b> <code>.keep</code> 인수의 사용 예</a></li>
+<li class="chapter" data-level="4.9.6" data-path="preprocessing.html"><a href="preprocessing.html#after와-.before-인수의-사용-예"><i class="fa fa-check"></i><b>4.9.6</b> <code>.after</code>와 <code>.before</code> 인수의 사용 예</a></li>
+<li class="chapter" data-level="4.9.7" data-path="preprocessing.html"><a href="preprocessing.html#transmute-함수를-이용한-새로운-컬럼-생성"><i class="fa fa-check"></i><b>4.9.7</b> <code>transmute()</code> 함수를 이용한 새로운 컬럼 생성</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="preprocessing.html"><a href="preprocessing.html#preprocessing_summarise"><i class="fa fa-check"></i><b>4.10</b> <code>summarise()</code>함수를 이용한 요약 통계량 계산</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="preprocessing.html"><a href="preprocessing.html#summarise-함수의-기본-형식"><i class="fa fa-check"></i><b>4.10.1</b> <code>summarise()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.10.2" data-path="preprocessing.html"><a href="preprocessing.html#summarise-함수를-이용한-요약-통계-계산"><i class="fa fa-check"></i><b>4.10.2</b> <code>summarise()</code> 함수를 이용한 요약 통계 계산</a></li>
+<li class="chapter" data-level="4.10.3" data-path="preprocessing.html"><a href="preprocessing.html#summarise를-이용한-관측치의-갯수-및-색인-찾기"><i class="fa fa-check"></i><b>4.10.3</b> <code>summarise()</code>를 이용한 관측치의 갯수 및 색인 찾기</a></li>
+<li class="chapter" data-level="4.10.4" data-path="preprocessing.html"><a href="preprocessing.html#summarise-함수를-이용한-그룹별-요약-통계량-계산"><i class="fa fa-check"></i><b>4.10.4</b> <code>summarise()</code> 함수를 이용한 그룹별 요약 통계량 계산</a></li>
+<li class="chapter" data-level="4.10.5" data-path="preprocessing.html"><a href="preprocessing.html#복수-개의-변수에-동일한-summarise-함수-적용하기"><i class="fa fa-check"></i><b>4.10.5</b> 복수 개의 변수에 동일한 <code>summarise()</code> 함수 적용하기</a></li>
+<li class="chapter" data-level="" data-path="preprocessing.html"><a href="preprocessing.html#reference-3"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="piping-operator.html"><a href="piping-operator.html"><i class="fa fa-check"></i><b>5</b> Pipe Operator</a><ul>
+<li class="chapter" data-level="5.1" data-path="piping-operator.html"><a href="piping-operator.html#파이프-연산자"><i class="fa fa-check"></i><b>5.1</b> 파이프 연산자 : <code>%&gt;%</code></a><ul>
+<li class="chapter" data-level="5.1.1" data-path="piping-operator.html"><a href="piping-operator.html#파이프-연산자의-사용-예"><i class="fa fa-check"></i><b>5.1.1</b> 파이프 연산자의 사용 예</a></li>
+<li class="chapter" data-level="5.1.2" data-path="piping-operator.html"><a href="piping-operator.html#또-다른-예"><i class="fa fa-check"></i><b>5.1.2</b> 또 다른 예</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="piping-operator.html"><a href="piping-operator.html#piping_point_usage"><i class="fa fa-check"></i><b>5.2</b> 파이프된 명령어에 <code>‘.’</code> 사용하기</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="relational-data-top.html"><a href="relational-data-top.html"><i class="fa fa-check"></i><b>6</b> Relational Data</a><ul>
+<li class="chapter" data-level="6.1" data-path="relational-data-top.html"><a href="relational-data-top.html#결합append"><i class="fa fa-check"></i><b>6.1</b> 결합(Append)</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="relational-data-top.html"><a href="relational-data-top.html#데이터-프레임의-결합append"><i class="fa fa-check"></i><b>6.1.1</b> 데이터 프레임의 결합(append)</a></li>
+<li class="chapter" data-level="6.1.2" data-path="relational-data-top.html"><a href="relational-data-top.html#결합의-두-가지-방법-rbind-함수와-bind_rows함수"><i class="fa fa-check"></i><b>6.1.2</b> 결합의 두 가지 방법 : <code>rbind()</code> 함수와 <code>bind_rows()</code>함수</a></li>
+<li class="chapter" data-level="6.1.3" data-path="relational-data-top.html"><a href="relational-data-top.html#데이터-세트-결합의-예대응되지-않는-컬럼이-있는-경우"><i class="fa fa-check"></i><b>6.1.3</b> 데이터 세트 결합의 예(대응되지 않는 컬럼이 있는 경우)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="relational-data-top.html"><a href="relational-data-top.html#데이터-세트의-병합merge"><i class="fa fa-check"></i><b>6.2</b> 데이터 세트의 병합(Merge)</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="relational-data-top.html"><a href="relational-data-top.html#join-함수를-이용한-병합-예"><i class="fa fa-check"></i><b>6.2.1</b> join 함수를 이용한 병합 예</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="relational-data-top.html"><a href="relational-data-top.html#relational-data"><i class="fa fa-check"></i><b>6.3</b> Relational Data</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="relational-data-top.html"><a href="relational-data-top.html#들어가기"><i class="fa fa-check"></i><b>6.3.1</b> 들어가기</a></li>
+<li class="chapter" data-level="6.3.2" data-path="relational-data-top.html"><a href="relational-data-top.html#준비하기-1"><i class="fa fa-check"></i><b>6.3.2</b> 준비하기</a></li>
+<li class="chapter" data-level="6.3.3" data-path="relational-data-top.html"><a href="relational-data-top.html#nycflights13-패키지-내의-데이터-세트"><i class="fa fa-check"></i><b>6.3.3</b> <code>nycflights13</code> 패키지 내의 데이터 세트</a></li>
+<li class="chapter" data-level="6.3.4" data-path="relational-data-top.html"><a href="relational-data-top.html#연습문제-8"><i class="fa fa-check"></i><b>6.3.4</b> 연습문제</a></li>
+<li class="chapter" data-level="6.3.5" data-path="relational-data-top.html"><a href="relational-data-top.html#키key"><i class="fa fa-check"></i><b>6.3.5</b> 키(Key)</a></li>
+<li class="chapter" data-level="6.3.6" data-path="relational-data-top.html"><a href="relational-data-top.html#연습문제-9"><i class="fa fa-check"></i><b>6.3.6</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="relational-data-top.html"><a href="relational-data-top.html#변환-조인mutating-join"><i class="fa fa-check"></i><b>6.4</b> 변환 조인(Mutating Join)</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="relational-data-top.html"><a href="relational-data-top.html#조인-이해하기"><i class="fa fa-check"></i><b>6.4.1</b> 조인 이해하기</a></li>
+<li class="chapter" data-level="6.4.2" data-path="relational-data-top.html"><a href="relational-data-top.html#내부-조인-inner-join"><i class="fa fa-check"></i><b>6.4.2</b> 내부 조인 (inner join)</a></li>
+<li class="chapter" data-level="6.4.3" data-path="relational-data-top.html"><a href="relational-data-top.html#외부-조인-outer-join"><i class="fa fa-check"></i><b>6.4.3</b> 외부 조인 (outer join)</a></li>
+<li class="chapter" data-level="6.4.4" data-path="relational-data-top.html"><a href="relational-data-top.html#중복키"><i class="fa fa-check"></i><b>6.4.4</b> 중복키</a></li>
+<li class="chapter" data-level="6.4.5" data-path="relational-data-top.html"><a href="relational-data-top.html#키열-정의하기"><i class="fa fa-check"></i><b>6.4.5</b> 키열 정의하기</a></li>
+<li class="chapter" data-level="6.4.6" data-path="relational-data-top.html"><a href="relational-data-top.html#연습문제-10"><i class="fa fa-check"></i><b>6.4.6</b> 연습문제</a></li>
+<li class="chapter" data-level="6.4.7" data-path="relational-data-top.html"><a href="relational-data-top.html#기타-구현"><i class="fa fa-check"></i><b>6.4.7</b> 기타 구현</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="relational-data-top.html"><a href="relational-data-top.html#필터링-조인"><i class="fa fa-check"></i><b>6.5</b> 필터링 조인</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="relational-data-top.html"><a href="relational-data-top.html#연습문제-11"><i class="fa fa-check"></i><b>6.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="relational-data-top.html"><a href="relational-data-top.html#조인-문제"><i class="fa fa-check"></i><b>6.6</b> 조인 문제</a></li>
+<li class="chapter" data-level="6.7" data-path="relational-data-top.html"><a href="relational-data-top.html#집합-연산"><i class="fa fa-check"></i><b>6.7</b> 집합 연산</a><ul>
+<li class="chapter" data-level="" data-path="relational-data-top.html"><a href="relational-data-top.html#reference-4"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="relational-data-top.html"><a href="relational-data-top.html#join_exercises"><i class="fa fa-check"></i><b>6.8</b> Join Exercises</a><ul>
+<li class="chapter" data-level="6.8.1" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-데이터의-생성-1"><i class="fa fa-check"></i><b>6.8.1</b> 예제 데이터의 생성</a></li>
+<li class="chapter" data-level="6.8.2" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-1-inner_join"><i class="fa fa-check"></i><b>6.8.2</b> 예제 1: <code>inner_join()</code></a></li>
+<li class="chapter" data-level="6.8.3" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-2-left_join"><i class="fa fa-check"></i><b>6.8.3</b> 예제 2: <code>left_join()</code></a></li>
+<li class="chapter" data-level="6.8.4" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-3-right_join"><i class="fa fa-check"></i><b>6.8.4</b> 예제 3: <code>right_join()</code></a></li>
+<li class="chapter" data-level="6.8.5" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-4-full_join"><i class="fa fa-check"></i><b>6.8.5</b> 예제 4: <code>full_join()</code></a></li>
+<li class="chapter" data-level="6.8.6" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-5-semi_join"><i class="fa fa-check"></i><b>6.8.6</b> 예제 5: <code>semi_join()</code></a></li>
+<li class="chapter" data-level="6.8.7" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-6-anti_join"><i class="fa fa-check"></i><b>6.8.7</b> 예제 6 : <code>anti_join()</code></a></li>
+<li class="chapter" data-level="6.8.8" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-7-복수-개의-데이터-프레임-조인"><i class="fa fa-check"></i><b>6.8.8</b> 예제 7: 복수 개의 데이터 프레임 조인</a></li>
+<li class="chapter" data-level="6.8.9" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-8-복수-컬럼에-의한-조인"><i class="fa fa-check"></i><b>6.8.9</b> 예제 8: 복수 컬럼에 의한 조인</a></li>
+<li class="chapter" data-level="6.8.10" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-9-데이터-조인과-id-삭제"><i class="fa fa-check"></i><b>6.8.10</b> 예제 9: 데이터 조인과 ID 삭제</a></li>
+<li class="chapter" data-level="" data-path="relational-data-top.html"><a href="relational-data-top.html#further-reading"><i class="fa fa-check"></i>Further Reading</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>7</b> Tidy Data</a><ul>
+<li class="chapter" data-level="7.1" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_philosophy"><i class="fa fa-check"></i><b>7.1</b> 타이디 데이터 철학</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="tidy-data.html"><a href="tidy-data.html#분석의-단위"><i class="fa fa-check"></i><b>7.1.1</b> 분석의 단위</a></li>
+<li class="chapter" data-level="7.1.2" data-path="tidy-data.html"><a href="tidy-data.html#데이터-세트-5"><i class="fa fa-check"></i><b>7.1.2</b> 데이터 세트</a></li>
+<li class="chapter" data-level="7.1.3" data-path="tidy-data.html"><a href="tidy-data.html#docid-별-그루핑"><i class="fa fa-check"></i><b>7.1.3</b> <code>docid</code> 별 그루핑</a></li>
+<li class="chapter" data-level="7.1.4" data-path="tidy-data.html"><a href="tidy-data.html#요약-정보-확인"><i class="fa fa-check"></i><b>7.1.4</b> 요약 정보 확인</a></li>
+<li class="chapter" data-level="7.1.5" data-path="tidy-data.html"><a href="tidy-data.html#다중-레벨-데이터-확인"><i class="fa fa-check"></i><b>7.1.5</b> 다중 레벨 데이터 확인</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_untidy"><i class="fa fa-check"></i><b>7.2</b> Untidy data</a></li>
+<li class="chapter" data-level="7.3" data-path="tidy-data.html"><a href="tidy-data.html#컬럼-제목들이-변수-명이-아니고-값들인-경우"><i class="fa fa-check"></i><b>7.3</b> 컬럼 제목들이 변수 명이 아니고 값들인 경우</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="tidy-data.html"><a href="tidy-data.html#데이터-세트-6"><i class="fa fa-check"></i><b>7.3.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="7.3.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_functions"><i class="fa fa-check"></i><b>7.3.2</b> 사용할 수 있는 함수의 종류</a></li>
+<li class="chapter" data-level="7.3.3" data-path="tidy-data.html"><a href="tidy-data.html#pivot_longer-함수"><i class="fa fa-check"></i><b>7.3.3</b> <code>pivot_longer()</code> 함수</a></li>
+<li class="chapter" data-level="7.3.4" data-path="tidy-data.html"><a href="tidy-data.html#gather-함수"><i class="fa fa-check"></i><b>7.3.4</b> <code>gather()</code> 함수</a></li>
+<li class="chapter" data-level="7.3.5" data-path="tidy-data.html"><a href="tidy-data.html#melt-함수"><i class="fa fa-check"></i><b>7.3.5</b> <code>melt()</code> 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_one_column"><i class="fa fa-check"></i><b>7.4</b> 하나의 컬럼에 복수 개의 변수들이 있는 경우</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="tidy-data.html"><a href="tidy-data.html#데이터-세트-7"><i class="fa fa-check"></i><b>7.4.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="7.4.2" data-path="tidy-data.html"><a href="tidy-data.html#사용할-수-있는-함수의-종류"><i class="fa fa-check"></i><b>7.4.2</b> 사용할 수 있는 함수의 종류</a></li>
+<li class="chapter" data-level="7.4.3" data-path="tidy-data.html"><a href="tidy-data.html#pivot_wider-함수"><i class="fa fa-check"></i><b>7.4.3</b> <code>pivot_wider()</code> 함수</a></li>
+<li class="chapter" data-level="7.4.4" data-path="tidy-data.html"><a href="tidy-data.html#spread-함수"><i class="fa fa-check"></i><b>7.4.4</b> <code>spread()</code> 함수</a></li>
+<li class="chapter" data-level="7.4.5" data-path="tidy-data.html"><a href="tidy-data.html#dcast-함수"><i class="fa fa-check"></i><b>7.4.5</b> <code>dcast()</code> 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_one_cell"><i class="fa fa-check"></i><b>7.5</b> 하나의 셀에 저장된 여러 변수 또는 여러 셀에 흩어져 있는 한 변수</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="tidy-data.html"><a href="tidy-data.html#데이터-세트-8"><i class="fa fa-check"></i><b>7.5.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="" data-path="tidy-data.html"><a href="tidy-data.html#data-wrangling-with-dplyr-and-tidyr"><i class="fa fa-check"></i>Data Wrangling with dplyr and tidyr</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="tidy-data.html"><a href="tidy-data.html#separate-함수와-unite-함수"><i class="fa fa-check"></i><b>7.6</b> <code>separate()</code> 함수와 <code>unite()</code> 함수</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="tidy-data.html"><a href="tidy-data.html#separate-함수"><i class="fa fa-check"></i><b>7.6.1</b> <code>separate()</code> 함수</a></li>
+<li class="chapter" data-level="7.6.2" data-path="tidy-data.html"><a href="tidy-data.html#unite-함수"><i class="fa fa-check"></i><b>7.6.2</b> <code>unite()</code> 함수</a></li>
+<li class="chapter" data-level="7.6.3" data-path="tidy-data.html"><a href="tidy-data.html#separate-함수와-unite-함수의-예"><i class="fa fa-check"></i><b>7.6.3</b> <code>separate()</code> 함수와 <code>unite()</code> 함수의 예</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_reference_table"><i class="fa fa-check"></i><b>7.7</b> <code>tidyverse</code> 참조표</a></li>
+<li class="chapter" data-level="" data-path="tidy-data.html"><a href="tidy-data.html#references-1"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>8</b> Dates</a><ul>
+<li class="chapter" data-level="8.1" data-path="dates.html"><a href="dates.html#dates_in_R"><i class="fa fa-check"></i><b>8.1</b> R에서의 날짜 데이터</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="dates.html"><a href="dates.html#as.date-함수"><i class="fa fa-check"></i><b>8.1.1</b> <code>as.Date()</code> 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="dates.html"><a href="dates.html#dates_lubridate"><i class="fa fa-check"></i><b>8.2</b> <code>lubridate</code> 패키지</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="dates.html"><a href="dates.html#lubridate-패키지의-활용"><i class="fa fa-check"></i><b>8.2.1</b> <code>lubridate</code> 패키지의 활용</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="dates.html"><a href="dates.html#dates_variables"><i class="fa fa-check"></i><b>8.3</b> 날짜-시간 변수</a></li>
+<li class="chapter" data-level="8.4" data-path="dates.html"><a href="dates.html#dates_elements"><i class="fa fa-check"></i><b>8.4</b> <code>Date</code> 변수에서 정보 추출하기</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="dates.html"><a href="dates.html#관련-함수"><i class="fa fa-check"></i><b>8.4.1</b> 관련 함수</a></li>
+<li class="chapter" data-level="8.4.2" data-path="dates.html"><a href="dates.html#date-변수의-정보-추출-예"><i class="fa fa-check"></i><b>8.4.2</b> <code>Date</code> 변수의 정보 추출 예</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="dates.html"><a href="dates.html#dates_POSIXct"><i class="fa fa-check"></i><b>8.5</b> 날짜-시간(<code>POSIXct</code>) 변수에서 정보 추출하기</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="dates.html"><a href="dates.html#관련-함수-1"><i class="fa fa-check"></i><b>8.5.1</b> 관련 함수</a></li>
+<li class="chapter" data-level="8.5.2" data-path="dates.html"><a href="dates.html#posixct-변수에서-정보-추출-예"><i class="fa fa-check"></i><b>8.5.2</b> <code>POSIXct</code> 변수에서 정보 추출 예</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="dates.html"><a href="dates.html#dates_functions"><i class="fa fa-check"></i><b>8.6</b> 날짜-시간 산술연산을 위한 두 종류의 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="dates-and-time.html"><a href="dates-and-time.html"><i class="fa fa-check"></i><b>9</b> Dates and Times</a><ul>
+<li class="chapter" data-level="9.1" data-path="dates-and-time.html"><a href="dates-and-time.html#dates_time_intro"><i class="fa fa-check"></i><b>9.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="dates-and-time.html"><a href="dates-and-time.html#준비하기-2"><i class="fa fa-check"></i><b>9.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="dates-and-time.html"><a href="dates-and-time.html#dates_time_create"><i class="fa fa-check"></i><b>9.2</b> 날짜/시간 생성하기</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="dates-and-time.html"><a href="dates-and-time.html#문자열에서-생성"><i class="fa fa-check"></i><b>9.2.1</b> 문자열에서 생성</a></li>
+<li class="chapter" data-level="9.2.2" data-path="dates-and-time.html"><a href="dates-and-time.html#개별-구성요소로-생성"><i class="fa fa-check"></i><b>9.2.2</b> 개별 구성요소로 생성</a></li>
+<li class="chapter" data-level="9.2.3" data-path="dates-and-time.html"><a href="dates-and-time.html#기타-유형에서-생성"><i class="fa fa-check"></i><b>9.2.3</b> 기타 유형에서 생성</a></li>
+<li class="chapter" data-level="9.2.4" data-path="dates-and-time.html"><a href="dates-and-time.html#연습문제-12"><i class="fa fa-check"></i><b>9.2.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="dates-and-time.html"><a href="dates-and-time.html#dates_time_arguments"><i class="fa fa-check"></i><b>9.3</b> 데이트-타임형 구성요소</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="dates-and-time.html"><a href="dates-and-time.html#구성요소-가져오기"><i class="fa fa-check"></i><b>9.3.1</b> 구성요소 가져오기</a></li>
+<li class="chapter" data-level="9.3.2" data-path="dates-and-time.html"><a href="dates-and-time.html#반올림"><i class="fa fa-check"></i><b>9.3.2</b> 반올림</a></li>
+<li class="chapter" data-level="9.3.3" data-path="dates-and-time.html"><a href="dates-and-time.html#구성요소-설정"><i class="fa fa-check"></i><b>9.3.3</b> 구성요소 설정</a></li>
+<li class="chapter" data-level="9.3.4" data-path="dates-and-time.html"><a href="dates-and-time.html#연습문제-13"><i class="fa fa-check"></i><b>9.3.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="dates-and-time.html"><a href="dates-and-time.html#dates_time_time_span"><i class="fa fa-check"></i><b>9.4</b> 시간 범위</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="dates-and-time.html"><a href="dates-and-time.html#듀레이션형"><i class="fa fa-check"></i><b>9.4.1</b> 듀레이션형</a></li>
+<li class="chapter" data-level="9.4.2" data-path="dates-and-time.html"><a href="dates-and-time.html#피리어드형"><i class="fa fa-check"></i><b>9.4.2</b> 피리어드형</a></li>
+<li class="chapter" data-level="9.4.3" data-path="dates-and-time.html"><a href="dates-and-time.html#인터벌형"><i class="fa fa-check"></i><b>9.4.3</b> 인터벌형</a></li>
+<li class="chapter" data-level="9.4.4" data-path="dates-and-time.html"><a href="dates-and-time.html#요약"><i class="fa fa-check"></i><b>9.4.4</b> 요약</a></li>
+<li class="chapter" data-level="9.4.5" data-path="dates-and-time.html"><a href="dates-and-time.html#연습문제-14"><i class="fa fa-check"></i><b>9.4.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="dates-and-time.html"><a href="dates-and-time.html#dates_time_EST"><i class="fa fa-check"></i><b>9.5</b> 시간대</a></li>
+<li class="chapter" data-level="" data-path="dates-and-time.html"><a href="dates-and-time.html#references-2"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>10</b> Strings</a><ul>
+<li class="chapter" data-level="10.1" data-path="strings.html"><a href="strings.html#strings_intro"><i class="fa fa-check"></i><b>10.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="strings.html"><a href="strings.html#준비하기-3"><i class="fa fa-check"></i><b>10.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="strings.html"><a href="strings.html#strings_basic"><i class="fa fa-check"></i><b>10.2</b> 문자열 기초</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="strings.html"><a href="strings.html#문자열-길이"><i class="fa fa-check"></i><b>10.2.1</b> 문자열 길이</a></li>
+<li class="chapter" data-level="10.2.2" data-path="strings.html"><a href="strings.html#문자열-결합"><i class="fa fa-check"></i><b>10.2.2</b> 문자열 결합</a></li>
+<li class="chapter" data-level="10.2.3" data-path="strings.html"><a href="strings.html#문자열-서브셋하기"><i class="fa fa-check"></i><b>10.2.3</b> 문자열 서브셋하기</a></li>
+<li class="chapter" data-level="10.2.4" data-path="strings.html"><a href="strings.html#로케일"><i class="fa fa-check"></i><b>10.2.4</b> 로케일</a></li>
+<li class="chapter" data-level="10.2.5" data-path="strings.html"><a href="strings.html#연습문제-15"><i class="fa fa-check"></i><b>10.2.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="strings.html"><a href="strings.html#pattern_matching"><i class="fa fa-check"></i><b>10.3</b> 정규표현식을 이용한 패턴 매칭</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="strings.html"><a href="strings.html#기본-매칭"><i class="fa fa-check"></i><b>10.3.1</b> 기본 매칭</a></li>
+<li class="chapter" data-level="10.3.2" data-path="strings.html"><a href="strings.html#앵커"><i class="fa fa-check"></i><b>10.3.2</b> 앵커</a></li>
+<li class="chapter" data-level="10.3.3" data-path="strings.html"><a href="strings.html#문자-클래스와-대체구문"><i class="fa fa-check"></i><b>10.3.3</b> 문자 클래스와 대체구문</a></li>
+<li class="chapter" data-level="10.3.4" data-path="strings.html"><a href="strings.html#반복"><i class="fa fa-check"></i><b>10.3.4</b> 반복</a></li>
+<li class="chapter" data-level="10.3.5" data-path="strings.html"><a href="strings.html#그룹화와-역참조"><i class="fa fa-check"></i><b>10.3.5</b> 그룹화와 역참조</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="strings.html"><a href="strings.html#tools"><i class="fa fa-check"></i><b>10.4</b> 패턴 매칭</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="strings.html"><a href="strings.html#매칭-탐지"><i class="fa fa-check"></i><b>10.4.1</b> 매칭 탐지</a></li>
+<li class="chapter" data-level="10.4.2" data-path="strings.html"><a href="strings.html#매칭-추출"><i class="fa fa-check"></i><b>10.4.2</b> 매칭 추출</a></li>
+<li class="chapter" data-level="10.4.3" data-path="strings.html"><a href="strings.html#그룹화-매칭"><i class="fa fa-check"></i><b>10.4.3</b> 그룹화 매칭</a></li>
+<li class="chapter" data-level="10.4.4" data-path="strings.html"><a href="strings.html#매칭-치환"><i class="fa fa-check"></i><b>10.4.4</b> 매칭 치환</a></li>
+<li class="chapter" data-level="10.4.5" data-path="strings.html"><a href="strings.html#문자열-분할"><i class="fa fa-check"></i><b>10.4.5</b> 문자열 분할</a></li>
+<li class="chapter" data-level="10.4.6" data-path="strings.html"><a href="strings.html#매치-찾기"><i class="fa fa-check"></i><b>10.4.6</b> 매치 찾기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="strings.html"><a href="strings.html#other_patterns"><i class="fa fa-check"></i><b>10.5</b> 기타 패턴 유형</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="strings.html"><a href="strings.html#연습문제-26"><i class="fa fa-check"></i><b>10.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="strings.html"><a href="strings.html#reg_other_usage"><i class="fa fa-check"></i><b>10.6</b> 정규 표현식의 기타 용도</a></li>
+<li class="chapter" data-level="10.7" data-path="strings.html"><a href="strings.html#stringi"><i class="fa fa-check"></i><b>10.7</b> <code>stringi</code></a><ul>
+<li class="chapter" data-level="10.7.1" data-path="strings.html"><a href="strings.html#연습문제-27"><i class="fa fa-check"></i><b>10.7.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="strings.html"><a href="strings.html#reference-5"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Management with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="relational_data_top" class="section level1">
+<h1><span class="header-section-number">6</span> Relational Data</h1>
+<div id="결합append" class="section level2">
+<h2><span class="header-section-number">6.1</span> 결합(Append)</h2>
+<div class="sourceCode" id="cb1170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1170-1" title="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div id="데이터-프레임의-결합append" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> 데이터 프레임의 결합(append)</h3>
+<p>종종 데이터 세트들은 여러 개의 파일로 분리되어 있는데, 이는 아마도 데이터들이 여러 원천에서 또는 여러 연구자들이 수집하기 때문일 것이다.</p>
+<p>파일들이 같은 변수들을 공유하고 있다면(희망사항이긴 하지만), 데이터 세트들을 결합하거나 행들을 함께 묶을 수 있다.</p>
+<p><img src="images/ch06/Fri,%2026%20Jun%202020%20125701.png" alt="img" style="zoom:80%;" /></p>
+<ul>
+<li>위의 그림에서 보듯이 <strong>결합(append)</strong>은 여러 개의 파일들이 컬럼 변수들을 같이 공유할 때 이 <strong>파일들의 행(rows)</strong>을 묶어 준다.</li>
+</ul>
+<p>위의 그림에서 위의 표는 <code>tb1</code>, 아래의 표는 <code>tb2</code> 등으로 하여, <code>rbind()</code>로 결합을 한 <code>tb3</code>는 다음과 같다.</p>
+<div class="sourceCode" id="cb1171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1171-1" title="1"><span class="co"># two tibbles</span></a>
+<a class="sourceLine" id="cb1171-2" title="2">tb1 &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">ID =</span> <span class="kw">c</span>(<span class="st">&quot;101&quot;</span>, <span class="st">&quot;102&quot;</span>),</a>
+<a class="sourceLine" id="cb1171-3" title="3">              <span class="dt">Age =</span> <span class="kw">c</span>(<span class="dv">27</span>, <span class="dv">45</span>),</a>
+<a class="sourceLine" id="cb1171-4" title="4">              <span class="dt">Pre =</span> <span class="kw">c</span>(<span class="fl">56.3</span>, <span class="fl">52.4</span>),</a>
+<a class="sourceLine" id="cb1171-5" title="5">              <span class="dt">Post =</span> <span class="kw">c</span>(<span class="fl">74.5</span>, <span class="fl">55.5</span>))</a>
+<a class="sourceLine" id="cb1171-6" title="6">tb2 &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">ID =</span> <span class="kw">c</span>(<span class="st">&quot;201&quot;</span>, <span class="st">&quot;202&quot;</span>),</a>
+<a class="sourceLine" id="cb1171-7" title="7">              <span class="dt">Age =</span> <span class="kw">c</span>(<span class="dv">35</span>, <span class="dv">47</span>),</a>
+<a class="sourceLine" id="cb1171-8" title="8">              <span class="dt">Pre =</span> <span class="kw">c</span>(<span class="fl">35.7</span>, <span class="fl">25.4</span>),</a>
+<a class="sourceLine" id="cb1171-9" title="9">              <span class="dt">Post =</span> <span class="kw">c</span>(<span class="fl">25.6</span>, <span class="fl">23.6</span>))</a>
+<a class="sourceLine" id="cb1171-10" title="10"></a>
+<a class="sourceLine" id="cb1171-11" title="11"><span class="co"># append using rbind()</span></a>
+<a class="sourceLine" id="cb1171-12" title="12">tb3 &lt;-<span class="st"> </span><span class="kw">rbind</span>(tb1, tb2)</a>
+<a class="sourceLine" id="cb1171-13" title="13">tb3</a></code></pre></div>
+<pre><code>## # A tibble: 4 x 4
+##   ID      Age   Pre  Post
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 101      27  56.3  74.5
+## 2 102      45  52.4  55.5
+## 3 201      35  35.7  25.6
+## 4 202      47  25.4  23.6</code></pre>
+<div class="sourceCode" id="cb1173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1173-1" title="1"><span class="co"># append using bind_rows()</span></a>
+<a class="sourceLine" id="cb1173-2" title="2">tb4 &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(tb1, tb2)</a>
+<a class="sourceLine" id="cb1173-3" title="3">tb4</a></code></pre></div>
+<pre><code>## # A tibble: 4 x 4
+##   ID      Age   Pre  Post
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 101      27  56.3  74.5
+## 2 102      45  52.4  55.5
+## 3 201      35  35.7  25.6
+## 4 202      47  25.4  23.6</code></pre>
+<ul>
+<li>여기서 <code>tb1</code>과 <code>tb2</code>의 컬럼 구조는 동일하다.</li>
+</ul>
+</div>
+<div id="결합의-두-가지-방법-rbind-함수와-bind_rows함수" class="section level3">
+<h3><span class="header-section-number">6.1.2</span> 결합의 두 가지 방법 : <code>rbind()</code> 함수와 <code>bind_rows()</code>함수</h3>
+<p>이러한 결합은 <code>base</code> 패키지의 <code>rbind()</code> 함수나 <code>dplyr</code> 패키지의 <code>bind_rows()</code> 함수로 수행할 수 있다.</p>
+<p>이 두 함수의 차이점은 대응되지 않는 컬럼이 있는 데이터 세트들을 결합할 때 처리방법이 다르다는 것이다.</p>
+<ul>
+<li><code>rbind()</code> 함수는 에러가 발생한다.</li>
+<li><code>bind_rows()</code> 함수는 데이터 세트를 결합하되 대응되지 않는 컬럼에 대해서는 결측값인 <code>NA</code>로 채우게 된다.</li>
+</ul>
+<p><img src="images/ch06/Fri,%2026%20Jun%202020%20130349.png" alt="img" style="zoom:80%;" /></p>
+<div class="sourceCode" id="cb1175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1175-1" title="1"><span class="co"># two tibbles</span></a>
+<a class="sourceLine" id="cb1175-2" title="2">tb1 &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">ID =</span> <span class="kw">c</span>(<span class="st">&quot;101&quot;</span>, <span class="st">&quot;102&quot;</span>),</a>
+<a class="sourceLine" id="cb1175-3" title="3">              <span class="dt">Age =</span> <span class="kw">c</span>(<span class="dv">27</span>, <span class="dv">45</span>),</a>
+<a class="sourceLine" id="cb1175-4" title="4">              <span class="dt">Pre =</span> <span class="kw">c</span>(<span class="fl">56.3</span>, <span class="fl">52.4</span>),</a>
+<a class="sourceLine" id="cb1175-5" title="5">              <span class="dt">Post =</span> <span class="kw">c</span>(<span class="fl">74.5</span>, <span class="fl">55.5</span>))</a>
+<a class="sourceLine" id="cb1175-6" title="6">tb2 &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">ID =</span> <span class="kw">c</span>(<span class="st">&quot;201&quot;</span>, <span class="st">&quot;202&quot;</span>),</a>
+<a class="sourceLine" id="cb1175-7" title="7">              <span class="dt">Age =</span> <span class="kw">c</span>(<span class="dv">35</span>, <span class="dv">47</span>),</a>
+<a class="sourceLine" id="cb1175-8" title="8">              <span class="dt">Pre =</span> <span class="kw">c</span>(<span class="fl">35.7</span>, <span class="fl">25.4</span>))</a>
+<a class="sourceLine" id="cb1175-9" title="9"></a>
+<a class="sourceLine" id="cb1175-10" title="10"><span class="co"># append using rbind()</span></a>
+<a class="sourceLine" id="cb1175-11" title="11">tb5 &lt;-<span class="st"> </span><span class="kw">rbind</span>(tb1, tb2)</a></code></pre></div>
+<pre><code>## Error in rbind(deparse.level, ...): numbers of columns of arguments do not match</code></pre>
+<div class="sourceCode" id="cb1177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1177-1" title="1">tb5</a></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): 객체 &#39;tb5&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode" id="cb1179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1179-1" title="1"><span class="co"># append using bind_rows()</span></a>
+<a class="sourceLine" id="cb1179-2" title="2">tb6 &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(tb1, tb2)</a>
+<a class="sourceLine" id="cb1179-3" title="3">tb6</a></code></pre></div>
+<pre><code>## # A tibble: 4 x 4
+##   ID      Age   Pre  Post
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 101      27  56.3  74.5
+## 2 102      45  52.4  55.5
+## 3 201      35  35.7  NA  
+## 4 202      47  25.4  NA</code></pre>
+<ul>
+<li><code>tb1</code>과 <code>tb2</code>의 컬럼 구조가 서로 다른 경우</li>
+<li><code>rbind()</code>를 이욯한 결합은 error가 발생</li>
+<li><code>bind_rows()</code>를 이용한 결합의 경우에는 대응되지 않는 컬럼의 값은 <code>NA</code>로 채워진다ㅏ.</li>
+</ul>
+<p>이 두 함수들은 두 개의 데이터 세트에 있는 <strong>동일한 컬럼이 서로 다른 데이터 타입일 때</strong> 이를 처리하는 방법에도 차이가 있다. (예를 들어, 하나는 문자형이고 다른 하나는 숫자형인 경우)</p>
+<ul>
+<li><code>rbind()</code> 함수는 강제적으로 형을 변환하여 결합한다.(강제 형 변환의 순서 : 논리형 &gt; 정수형 &gt; 더블형(실수형) &gt; 문자형)</li>
+<li><code>bind_rows()</code> 함수는 에러를 발생시킨다.</li>
+</ul>
+<div class="sourceCode" id="cb1181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1181-1" title="1"><span class="co"># two tibbles</span></a>
+<a class="sourceLine" id="cb1181-2" title="2">tb1 &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">ID =</span> <span class="kw">c</span>(<span class="st">&quot;101&quot;</span>, <span class="st">&quot;102&quot;</span>),</a>
+<a class="sourceLine" id="cb1181-3" title="3">              <span class="dt">Age =</span> <span class="kw">c</span>(<span class="st">&quot;27&quot;</span>, <span class="st">&quot;45&quot;</span>),</a>
+<a class="sourceLine" id="cb1181-4" title="4">              <span class="dt">Pre =</span> <span class="kw">c</span>(<span class="fl">56.3</span>, <span class="fl">52.4</span>),</a>
+<a class="sourceLine" id="cb1181-5" title="5">              <span class="dt">Post =</span> <span class="kw">c</span>(<span class="fl">74.5</span>, <span class="fl">55.5</span>))</a>
+<a class="sourceLine" id="cb1181-6" title="6">tb2 &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">ID =</span> <span class="kw">c</span>(<span class="st">&quot;201&quot;</span>, <span class="st">&quot;202&quot;</span>),</a>
+<a class="sourceLine" id="cb1181-7" title="7">              <span class="dt">Age =</span> <span class="kw">c</span>(<span class="dv">35</span>, <span class="dv">47</span>),</a>
+<a class="sourceLine" id="cb1181-8" title="8">              <span class="dt">Pre =</span> <span class="kw">c</span>(<span class="fl">35.7</span>, <span class="fl">25.4</span>),</a>
+<a class="sourceLine" id="cb1181-9" title="9">              <span class="dt">Post =</span> <span class="kw">c</span>(<span class="fl">25.6</span>, <span class="fl">23.6</span>))</a>
+<a class="sourceLine" id="cb1181-10" title="10"></a>
+<a class="sourceLine" id="cb1181-11" title="11"><span class="co"># append using rbind()</span></a>
+<a class="sourceLine" id="cb1181-12" title="12">tb7 &lt;-<span class="st"> </span><span class="kw">rbind</span>(tb1, tb2)</a>
+<a class="sourceLine" id="cb1181-13" title="13">tb7</a></code></pre></div>
+<pre><code>## # A tibble: 4 x 4
+##   ID    Age     Pre  Post
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 101   27     56.3  74.5
+## 2 102   45     52.4  55.5
+## 3 201   35     35.7  25.6
+## 4 202   47     25.4  23.6</code></pre>
+<div class="sourceCode" id="cb1183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1183-1" title="1"><span class="co"># append using bind_rows()</span></a>
+<a class="sourceLine" id="cb1183-2" title="2">tb8 &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(tb1, tb2)</a></code></pre></div>
+<pre><code>## Error: Can&#39;t combine `..1$Age` &lt;character&gt; and `..2$Age` &lt;double&gt;.</code></pre>
+<div class="sourceCode" id="cb1185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1185-1" title="1">tb8</a></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): 객체 &#39;tb8&#39;를 찾을 수 없습니다</code></pre>
+<ul>
+<li><code>tb1</code>과 <code>tb2</code>의 컬럼이 대응은 되지만 데이터 형이 다른 경우
+<ul>
+<li><code>rbind()</code>의 경우, <code>tb7</code>의 <code>Age</code> 컬럼이 문자형으로 변환됨</li>
+<li><code>bind_rows()</code>의 경우, error 발생.</li>
+</ul></li>
+<li><code>tb1</code>과 <code>tb2</code>의 컬럼이 대응이 되지 않는 경우는 모두 error 발생.</li>
+</ul>
+</div>
+<div id="데이터-세트-결합의-예대응되지-않는-컬럼이-있는-경우" class="section level3">
+<h3><span class="header-section-number">6.1.3</span> 데이터 세트 결합의 예(대응되지 않는 컬럼이 있는 경우)</h3>
+<p>데이터 세트의 결합을 위해 2개의 데이터 세트 <code>d1</code>과 <code>d2</code>를 만들어 보자.</p>
+<p>먼저 <code>patient_pt1_dm.csv</code> 파일을 불러와 <code>d</code>에 저장하고, <code>mutate()</code> 함수를 이용하여 <code>agecat</code> 변수와 <code>highpain</code> 변수(컬럼) 2개를 추가하여 <code>d1</code>을 만든다.</p>
+<p><code>d2</code>는 <code>patient_pt1_dm.csv</code> 파일을 불러와 저장한다.</p>
+<p>이들 두 개의 데이터 세트들은 <code>d1</code>이 <code>mutate()</code> 함수에 의해 생성된 2 개의 컬럼 이외에는 다 같은 컬럼들을 가지고 있다.</p>
+<div class="sourceCode" id="cb1187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1187-1" title="1"><span class="co"># new data set that contains the same variables as d, except is missing 2 of them</span></a>
+<a class="sourceLine" id="cb1187-2" title="2">d &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data6/patient_pt1_dm.csv&quot;</span>)</a></code></pre></div>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   .default = col_double(),
+##   hospital = col_character(),
+##   docid = col_character(),
+##   dis_date = col_character(),
+##   sex = col_character(),
+##   familyhx = col_character(),
+##   smokinghx = col_character(),
+##   cancerstage = col_character(),
+##   wbc = col_character()
+## )
+## i Use `spec()` for the full column specifications.</code></pre>
+<div class="sourceCode" id="cb1189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1189-1" title="1">d1 &lt;-<span class="st"> </span><span class="kw">mutate</span>(d,</a>
+<a class="sourceLine" id="cb1189-2" title="2">            <span class="dt">agecat =</span> <span class="kw">cut</span>(age, <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">50</span>,<span class="dv">60</span>,<span class="dv">70</span>,<span class="dv">120</span>)),</a>
+<a class="sourceLine" id="cb1189-3" title="3">            <span class="dt">highpain =</span> pain <span class="op">&gt;</span><span class="st"> </span><span class="kw">mean</span>(pain))</a>
+<a class="sourceLine" id="cb1189-4" title="4"></a>
+<a class="sourceLine" id="cb1189-5" title="5">d2 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data6/patient_pt2_dm.csv&quot;</span>)</a></code></pre></div>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   .default = col_double(),
+##   hospital = col_character(),
+##   docid = col_character(),
+##   dis_date = col_character(),
+##   sex = col_character(),
+##   familyhx = col_character(),
+##   smokinghx = col_character(),
+##   cancerstage = col_character(),
+##   wbc = col_character()
+## )
+## i Use `spec()` for the full column specifications.</code></pre>
+<p>d1과 d2의 행과 열의 갯수 확인</p>
+<div class="sourceCode" id="cb1191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1191-1" title="1"><span class="co"># rows and columns of d2 and d1</span></a>
+<a class="sourceLine" id="cb1191-2" title="2"><span class="kw">dim</span>(d1)</a></code></pre></div>
+<pre><code>## [1] 120  26</code></pre>
+<div class="sourceCode" id="cb1193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1193-1" title="1"><span class="kw">dim</span>(d2)</a></code></pre></div>
+<pre><code>## [1] 111  24</code></pre>
+<p>이제 두 <code>rbind()</code> 함수와 <code>bind_rows()</code> 함수를 이용하여 두 데이터 세트를 결합해 보자.</p>
+<ul>
+<li><code>rbind()</code> 함수를 이용하여 결합하면 에러가 날 것이다.</li>
+<li><code>bind_rows()</code> 함수는 첫 번째 데이터 세트에만 두 번째 데이터 세트의 관측치에 해당하는 부분을 <code>NA</code>로 입력할 것이다.</li>
+</ul>
+<p>가장 좋은 방법은 두 번쨰 데이터 세트인 <code>d2</code>에 대해서도 같은 변수들을 추가한 다음 결합함수를 이용하는 것이다.</p>
+<p>그러나, <code>bind_rows()</code> 함수가 어떻게 작동하는가는 보여주기 위해, 우리는 현재의 상태로 데이터 세트들을 결합한다.</p>
+<p>원천 데이터 세트를 식별해 주는 변수를 생성하기 위해 <code>bind_rows()</code> 함수의 인수로 <code>.id =</code> 를 사용한다.</p>
+<div id="bind_rows-함수의-이용-예" class="section level4">
+<h4><span class="header-section-number">6.1.3.1</span> bind_rows() 함수의 이용 예</h4>
+<p>데이터 세트 <code>d1</code>과 <code>d2</code>를 <code>bind_rows()</code> 함수로 결합하여 <code>d3</code>를 만들어 보자.</p>
+<div class="sourceCode" id="cb1195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1195-1" title="1"><span class="co"># a new variable called source is added to the beginning of the dataset</span></a>
+<a class="sourceLine" id="cb1195-2" title="2">d3 &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(d1, d2, <span class="dt">.id=</span><span class="st">&quot;source&quot;</span>)</a>
+<a class="sourceLine" id="cb1195-3" title="3"><span class="kw">dim</span>(d3)</a></code></pre></div>
+<pre><code>## [1] 231  27</code></pre>
+<div class="sourceCode" id="cb1197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1197-1" title="1"><span class="co"># these are the rows where the datasets meet</span></a>
+<a class="sourceLine" id="cb1197-2" title="2"><span class="co"># hospital is found in both datasets, agecat and highpain are not</span></a>
+<a class="sourceLine" id="cb1197-3" title="3"><span class="kw">select</span>(d3, source, hospital, agecat, highpain)[<span class="dv">118</span><span class="op">:</span><span class="dv">123</span>,]</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 4
+##   source hospital agecat  highpain
+##   &lt;chr&gt;  &lt;chr&gt;    &lt;fct&gt;   &lt;lgl&gt;   
+## 1 1      UCSF     (50,60] TRUE    
+## 2 1      UCSF     (50,60] TRUE    
+## 3 1      UCSF     (50,60] TRUE    
+## # ... with 3 more rows</code></pre>
+<ul>
+<li><p><code>bind_rows()</code> 함수 내의 <code>.id = “source”</code>에 의해 <code>d3</code>에 <code>source</code> 컬럼이 추가되고, 그 값은 <code>d1</code>에서 결합된 행인 경우(118 ~ 120 행)는 <code>1</code>, <code>d2</code>에서 결합된 행이면(121~123 행) <code>2</code>의 값을 갖는다.</p></li>
+<li><p><code>d2</code>에서 결합된 행의 경우 <code>agecat</code> 컬럼과 <code>highpain</code> 컬럼의 값이 <code>NA</code>로 채워져 있음을 알 수 있다.</p></li>
+</ul>
+</div>
+<div id="rbind-함수의-이용-예" class="section level4">
+<h4><span class="header-section-number">6.1.3.2</span> rbind() 함수의 이용 예</h4>
+<div class="sourceCode" id="cb1199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1199-1" title="1"><span class="co"># this will work because we restrict d1 to only variables common to both</span></a>
+<a class="sourceLine" id="cb1199-2" title="2">drbind &lt;-<span class="st"> </span><span class="kw">rbind</span>(d1[,<span class="dv">1</span><span class="op">:</span><span class="dv">24</span>], d2)</a>
+<a class="sourceLine" id="cb1199-3" title="3">drbind</a></code></pre></div>
+<pre><code>## # A tibble: 231 x 24
+##   hospital hospid docid dis_date sex     age  test1 test2  pain tumorsize   co2
+##   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
+## 1 UCLA          1 1-1   6-Sep-09 male   65.0   3.70 8.09      4      68.0  1.53
+## 2 UCLA          1 1-1   7-Jan-11 fema~  53.9   2.63 0.803     2      64.7  1.68
+## 3 UCLA          1 1-1   4-Sep-10 male   41.4 -99    2.13      3      86.4  1.45
+## # ... with 228 more rows, and 13 more variables: wound &lt;dbl&gt;, mobility &lt;dbl&gt;,
+## #   ntumors &lt;dbl&gt;, remission &lt;dbl&gt;, lungcapacity &lt;dbl&gt;, married &lt;dbl&gt;,
+## #   familyhx &lt;chr&gt;, smokinghx &lt;chr&gt;, cancerstage &lt;chr&gt;, lengthofstay &lt;dbl&gt;,
+## #   wbc &lt;chr&gt;, rbc &lt;dbl&gt;, bmi &lt;dbl&gt;</code></pre>
+<ul>
+<li><code>rbind()</code> 함수를 이용하였으나 에러가 발생하지 않았다. 그 이유는 <code>d1</code>의 컬럼을 <code>d2</code>의 컬럼과 같게 만들기 위해 <code>d1[, 1:24]</code>로 제한했기 때문이다.</li>
+</ul>
+<div class="sourceCode" id="cb1201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1201-1" title="1"><span class="co"># But this will not work</span></a>
+<a class="sourceLine" id="cb1201-2" title="2">drbind1 &lt;-<span class="st"> </span><span class="kw">rbind</span>(d1, d2)</a></code></pre></div>
+<pre><code>## Error in rbind(deparse.level, ...): numbers of columns of arguments do not match</code></pre>
+<div class="sourceCode" id="cb1203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1203-1" title="1">drbind1</a></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): 객체 &#39;drbind1&#39;를 찾을 수 없습니다</code></pre>
+<ul>
+<li><code>d1</code>의 컬럼과 <code>d2</code>의 컬럼이 일치하지 않기 때문에 <code>rbind()</code> 함수는 에러를 발생시키고 작업을 중단함을 알 수 있다.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="데이터-세트의-병합merge" class="section level2">
+<h2><span class="header-section-number">6.2</span> 데이터 세트의 병합(Merge)</h2>
+<p><strong>결합(append)</strong>은 관측치의 <strong>행</strong>들을 묶어주는데 반해, <strong>병합(merge)</strong> 또는 <strong>조인(join)</strong>은 <strong>컬럼</strong>들을 묶어 준다.</p>
+<p><strong>병합될 데이터 세트들은 특정 키 변수(컬럼)럼)가 대응되어 있어야 한다</strong>.</p>
+<p>예를 들어, 아래의 그림에서 두 개의 데이터 세트들은 <code>docid</code> 컬럼으로 대응되고 있다.</p>
+<p>그러면 이 컬럼을 중심으로 두 개의 데이터 세트를 병합할 수 있다.</p>
+<p>그 결과로 생성된 데이터 세트는 두 데이터 세트들의 컬럼을 모두 병합하고 대응하는 변수들을 공유하는 관측치들을 병합한다.</p>
+<p><img src="images/ch06/Fri,%2026%20Jun%202020%20131247.png" alt="img" style="zoom:80%;" /></p>
+<p><code>dplyr</code>패키지의 <strong>“<code>join()</code>” 함수</strong>가 이러한 병합을 수행하며, 데이터 세트들 사이에 같은 이름을 갖는 변수(디폴트로는 <code>id</code> 변수)를 이용한다. 공통의 변수를 지정하기 위해서는 <code>by=</code> 인수를 사용한다.</p>
+<p>이러한 조인은 데이터 세트 <code>x</code>와 <code>y</code>로 부터의 모든 컬럼을 갖는 테이블을 리턴하지만, 대응되지 않는 행들을 처리하는데에는 여러 가지 방법이 있다:</p>
+<ul>
+<li><code>inner_join(x, y)</code>: <code>y</code>에 대응하는 값이 있다면 <code>x</code>의 행(즉 대응하는 행만)을 리턴한다.</li>
+<li><code>left_join(x, y)</code>: <code>x</code>의 모든 행은 리턴하지만 <code>y</code>와 대응하지 않는 행에 대해서는 NA를 리턴한다. <code>y</code>에 있는 대응하지 않는 행들은 리턴하지 않는다.</li>
+<li><code>full_join(x, y)</code>: <code>x</code>와 <code>y</code>에 있는 모든 행들을 리턴한다. 그러나 양측에 대응하지 않는 행들은 새 컬럼의 값이 모두 <code>NA</code>가 된다.</li>
+</ul>
+<p>이러한 조인들은 <code>base</code> 패키지의 <code>merge()</code> 함수로도 가능하지만, <code>join()</code> 함수보다 그 처리 속도가 매우 느리다.</p>
+<div id="join-함수를-이용한-병합-예" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> join 함수를 이용한 병합 예</h3>
+<p>병합의 예를 들기 위해 의사들에 관한 정보를 담고 있는 데이터 세트를 불러오기로 한다. 이 데이터 세트는 의사들의 근무기간, 학력 그리고 소송 횟수 등에 관한 정보를 담고 있다.</p>
+<div class="sourceCode" id="cb1205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1205-1" title="1">d_doc &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data6/doctor_dm.csv&quot;</span>)</a></code></pre></div>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   docid = col_character(),
+##   experience = col_double(),
+##   school = col_character(),
+##   lawsuits = col_double(),
+##   medicaid = col_double()
+## )</code></pre>
+<div id="예제-데이터-세트" class="section level4">
+<h4><span class="header-section-number">6.2.1.1</span> 예제 데이터 세트</h4>
+<p>병합이 어떻게 작동하는가를 이해하기 위해 데이터 세트로 작게 만들어서 작업을 하기로 한다.</p>
+<p>지금 불러온 <code>d_doc</code> 데이터 세트의 일부와 앞에서 생성한 <code>d3</code> 데이터 세트의 일부를 병합해 보기로 한다.</p>
+<p>먼저 <code>d_doc</code>의 경우는 <code>docid</code> 가 <code>1-21</code>과 <code>2-178</code>인 데이터를 서브세트로 선택한다.</p>
+<p>그리고 <code>d3</code>의 경우는 <code>d_doc</code>과 대응이 되는 <code>docid</code>가 <code>2-178</code>인 행과 대응이 되지 않는 <code>docid</code>가 <code>3-407</code>인 행을 서브세트로 다음과 같이 선택한다.</p>
+<div class="sourceCode" id="cb1207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1207-1" title="1"><span class="co"># select one non-matching and one matching doctor from each to demo joins</span></a>
+<a class="sourceLine" id="cb1207-2" title="2"><span class="co">#   just a few variables from d3</span></a>
+<a class="sourceLine" id="cb1207-3" title="3">d3<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="kw">select</span>(<span class="kw">filter</span>(d3, docid <span class="op">==</span><span class="st"> &quot;1-21&quot;</span> <span class="op">|</span><span class="st"> </span>docid <span class="op">==</span><span class="st"> &quot;2-178&quot;</span>),</a>
+<a class="sourceLine" id="cb1207-4" title="4">               docid, sex, age, test1, test2)</a>
+<a class="sourceLine" id="cb1207-5" title="5">d3<span class="fl">.1</span></a></code></pre></div>
+<pre><code>## # A tibble: 3 x 5
+##   docid sex     age test1  test2
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+## 1 1-21  male   48.0  3.39 -99   
+## 2 2-178 male   34.2  4.63   3.26
+## 3 2-178 male   48.9  4.15   3.04</code></pre>
+<div class="sourceCode" id="cb1209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1209-1" title="1">d_doc<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="kw">filter</span>(d_doc, docid <span class="op">==</span><span class="st"> &quot;3-407&quot;</span> <span class="op">|</span><span class="st"> </span>docid <span class="op">==</span><span class="st"> &quot;2-178&quot;</span>)</a>
+<a class="sourceLine" id="cb1209-2" title="2">d_doc<span class="fl">.1</span></a></code></pre></div>
+<pre><code>## # A tibble: 2 x 5
+##   docid experience school  lawsuits medicaid
+##   &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;
+## 1 2-178         15 average        4    0.817
+## 2 3-407         23 average        3    0.343</code></pre>
+<p>이 결과를 그림으로 편집해 보면 다음과 같다.</p>
+<p><img src="images/ch06/20200626_143355.png" style="zoom:80%;" /></p>
+<p>병합된 공통의 변수의 id인 <code>docid</code>가 두 데이터 세트의 컬럼에 있다. 따라서 병합 변수를 새로이 지정할 필요는 없다.</p>
+</div>
+<div id="병합의-예" class="section level4">
+<h4><span class="header-section-number">6.2.1.2</span> 병합의 예</h4>
+<p><code>inner_join()</code>, <code>left_join()</code> 그리고 <code>full_join()</code> 함수를 이용하는 경우 각각의 결과가 다르게 나타나는 것을 잘 주목해 보자.</p>
+<div id="inner_join" class="section level5">
+<h5><span class="header-section-number">6.2.1.2.1</span> <code>inner_join()</code></h5>
+<div class="sourceCode" id="cb1211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1211-1" title="1"><span class="co"># only matching rows returned</span></a>
+<a class="sourceLine" id="cb1211-2" title="2"><span class="co">#   2-178 from d_doc.1 matched twice to 2-178 in d3.1</span></a>
+<a class="sourceLine" id="cb1211-3" title="3"><span class="kw">inner_join</span>(d3<span class="fl">.1</span>, d_doc<span class="fl">.1</span>)</a></code></pre></div>
+<pre><code>## Joining, by = &quot;docid&quot;</code></pre>
+<pre><code>## # A tibble: 2 x 9
+##   docid sex     age test1 test2 experience school  lawsuits medicaid
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;
+## 1 2-178 male   34.2  4.63  3.26         15 average        4    0.817
+## 2 2-178 male   48.9  4.15  3.04         15 average        4    0.817</code></pre>
+</div>
+<div id="left_join" class="section level5">
+<h5><span class="header-section-number">6.2.1.2.2</span> <code>left_join()</code></h5>
+<div class="sourceCode" id="cb1214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1214-1" title="1"><span class="co"># all rows from d3.1 returned</span></a>
+<a class="sourceLine" id="cb1214-2" title="2"><span class="kw">left_join</span>(d3<span class="fl">.1</span>, d_doc<span class="fl">.1</span>)</a></code></pre></div>
+<pre><code>## Joining, by = &quot;docid&quot;</code></pre>
+<pre><code>## # A tibble: 3 x 9
+##   docid sex     age test1  test2 experience school  lawsuits medicaid
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;
+## 1 1-21  male   48.0  3.39 -99            NA &lt;NA&gt;          NA   NA    
+## 2 2-178 male   34.2  4.63   3.26         15 average        4    0.817
+## 3 2-178 male   48.9  4.15   3.04         15 average        4    0.817</code></pre>
+</div>
+<div id="full_join" class="section level5">
+<h5><span class="header-section-number">6.2.1.2.3</span> <code>full_join()</code></h5>
+<div class="sourceCode" id="cb1217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1217-1" title="1"><span class="co"># all rows from both returned</span></a>
+<a class="sourceLine" id="cb1217-2" title="2"><span class="kw">full_join</span>(d3<span class="fl">.1</span>, d_doc<span class="fl">.1</span>)</a></code></pre></div>
+<pre><code>## Joining, by = &quot;docid&quot;</code></pre>
+<pre><code>## # A tibble: 4 x 9
+##   docid sex     age test1  test2 experience school  lawsuits medicaid
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;
+## 1 1-21  male   48.0  3.39 -99            NA &lt;NA&gt;          NA   NA    
+## 2 2-178 male   34.2  4.63   3.26         15 average        4    0.817
+## 3 2-178 male   48.9  4.15   3.04         15 average        4    0.817
+## 4 3-407 &lt;NA&gt;   NA   NA     NA            23 average        3    0.343</code></pre>
+<ul>
+<li>일반적으로 병합된 데이터 세트의 <strong>행의 갯수</strong>는 inner_join() &lt;= left_join() &lt;= full_join() 순이 된다.</li>
+</ul>
+<p>이 밖에도 <code>right_join()</code>, <code>semi_join()</code>그리고 <code>anti_join()</code> 등의 함수가 있다.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="relational-data" class="section level2">
+<h2><span class="header-section-number">6.3</span> Relational Data</h2>
+<div id="들어가기" class="section level3">
+<h3><span class="header-section-number">6.3.1</span> 들어가기</h3>
+<p>데이터 분석에서 데이터 테이블이 단 하나만 관련된 경우는 거의 없다. 일반적으로 데이터 테이블이 많이 있고, 관심 있는 질문에 대답하기 위해 이들을 결합해야 한다. 여러 데이터 테이블을 총칭하여 <strong>관계형 데이터</strong> 라고 한다. 이렇게 부르는 이유는 중요한 것이 개별 데이터셋이 아니라 이들의 <strong>관계(relationship)</strong>이기 때문이다.</p>
+<p><strong>관계</strong>라는 것은 <strong>항상 두 개의 테이블 사이에서 정의</strong>된다. 이 간단한 개념으로부터 다른 모든 관계가 구성된다. 테이블 3개 이상 사이의 관계는 항상 각 쌍 사이의 관계들을 이용하여 나타낼 수 있다. 때로는 쌍을 이루는 두 요소가 같은 테이블이 될 수도 있다! 예를 들어 사람에 대한 데이터 테이블을 가지고 있고, 각 사람이 부모에 대한 참조 정보를 가지고 있다면 이런 경우가 생긴다.</p>
+<p>관계형 데이터로 작업하려면 <strong>두 개의 테이블에 작동하는 동사</strong>가 필요하다. 관계형 데이터에 동작하도록 설계된 세 가지 동사 계열이 있다.</p>
+<ul>
+<li><strong>변환 조인(Mutating Join)</strong> : 다른 데이터프레임에 있는 해당 관측값에서 가져와 <strong>새로운 변수로 생성하여 추가</strong></li>
+<li><strong>필터링 조인</strong> : 다른 테이블의 관측값와 일치하는지에 따라 <strong>관측값을 걸러냄</strong></li>
+<li><strong>집합 연산</strong> : 관측값을 <strong>집합 원소</strong>로 취급</li>
+</ul>
+<p>관계형 데이터가 있는 가장 일반적인 장소는 <strong>관계형 데이터베이스 관리 시스템(RDBMS)</strong>이다. 이 용어는 거의 모든 현대의 데이터베이스를 포괄한다. 여러분이 이전에 데이터베이스를 사용했다면 SQL을 사용했을 것이 거의 확실하다. 그렇다면 <strong><code>dplyr</code></strong> 에서의 표현이 조금 다르긴 하지만, 이 장에 나오는 개념이 익숙할 것이다. 일반적으로 <strong><code>dplyr</code></strong> 은 SQL보다 약간 사용하기 쉽다. <strong>dplyr</strong> 은 데이터 분석에 특화되었기 때문이다. 즉, 일반적인 데이터 분석 작업을 하기는 더 쉽게 만들었지만, 대신 데이터 분석에서 일반적으로 필요하지 않은 작업을 수행하기는 더 어렵게 되었다.</p>
+</div>
+<div id="준비하기-1" class="section level3">
+<h3><span class="header-section-number">6.3.2</span> 준비하기</h3>
+<p>우리는 <strong>dplyr</strong> 의 2-테이블 동사를 사용하여 <code>nycflights13</code> 패키지에 있는 관계형 데이터를 탐색할 것이다.</p>
+<div class="sourceCode" id="cb1220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1220-1" title="1"><span class="kw">library</span>(nycflights13)</a></code></pre></div>
+</div>
+<div id="nycflights13-패키지-내의-데이터-세트" class="section level3">
+<h3><span class="header-section-number">6.3.3</span> <code>nycflights13</code> 패키지 내의 데이터 세트</h3>
+<p>관계형 데이터에 대해 배우기 위해 <strong><code>nycflights13</code></strong> 패키지를 사용할 것이다. <strong><code>nycflights13</code></strong> 패키지에는 <code>flights</code> 테이블과 관련된 4개의 티블(tibble)이 있다.</p>
+<ul>
+<li><p><code>airlines</code> 를 사용하면 <strong>해당 약어 코드로 전체 항공사명</strong>을 찾아볼 수 있다.</p>
+<div class="sourceCode" id="cb1221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1221-1" title="1">airlines</a></code></pre></div>
+<pre><code>## # A tibble: 16 x 2
+##   carrier name                  
+##   &lt;chr&gt;   &lt;chr&gt;                 
+## 1 9E      Endeavor Air Inc.     
+## 2 AA      American Airlines Inc.
+## 3 AS      Alaska Airlines Inc.  
+## # ... with 13 more rows</code></pre></li>
+<li><p><code>airports</code> 에는 <strong>각 공항에 대한 정보</strong>가 <code>faa</code> <strong>공항 코드</strong>로 식별되어 있다.</p>
+<div class="sourceCode" id="cb1223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1223-1" title="1">airports</a></code></pre></div>
+<pre><code>## # A tibble: 1,458 x 8
+##   faa   name                          lat   lon   alt    tz dst   tzone         
+##   &lt;chr&gt; &lt;chr&gt;                       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;         
+## 1 04G   Lansdowne Airport            41.1 -80.6  1044    -5 A     America/New_Y~
+## 2 06A   Moton Field Municipal Airp~  32.5 -85.7   264    -6 A     America/Chica~
+## 3 06C   Schaumburg Regional          42.0 -88.1   801    -6 A     America/Chica~
+## # ... with 1,455 more rows</code></pre></li>
+<li><p><code>planes</code> 에는 <strong>각 여객기에 대한 정보</strong>가 <code>tailnum</code> 으로 <strong>식별</strong>되어 있다.</p>
+<div class="sourceCode" id="cb1225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1225-1" title="1">planes</a></code></pre></div>
+<pre><code>## # A tibble: 3,322 x 9
+##   tailnum  year type           manufacturer   model  engines seats speed engine 
+##   &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;  
+## 1 N10156   2004 Fixed wing mu~ EMBRAER        EMB-1~       2    55    NA Turbo-~
+## 2 N102UW   1998 Fixed wing mu~ AIRBUS INDUST~ A320-~       2   182    NA Turbo-~
+## 3 N103US   1999 Fixed wing mu~ AIRBUS INDUST~ A320-~       2   182    NA Turbo-~
+## # ... with 3,319 more rows</code></pre></li>
+<li><p><code>weather</code> 에는 각 <strong>NYC 공항의 매 시각 날씨 정보</strong>가 있다.</p>
+<div class="sourceCode" id="cb1227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1227-1" title="1">weather</a></code></pre></div>
+<pre><code>## # A tibble: 26,115 x 15
+##   origin  year month   day  hour  temp  dewp humid wind_dir wind_speed wind_gust
+##   &lt;chr&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;
+## 1 EWR     2013     1     1     1  39.0  26.1  59.4      270      10.4         NA
+## 2 EWR     2013     1     1     2  39.0  27.0  61.6      250       8.06        NA
+## 3 EWR     2013     1     1     3  39.0  28.0  64.4      240      11.5         NA
+## # ... with 26,112 more rows, and 4 more variables: precip &lt;dbl&gt;,
+## #   pressure &lt;dbl&gt;, visib &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre></li>
+</ul>
+<p>그림을 사용하여 <strong>테이블 간의 관계</strong>를 볼 수 있다.</p>
+<p><img src="images/ch06/relational-nycflights.png" alt="img" style="zoom:80%;" /></p>
+<p>이 다이어그램은 꽤 복잡해 보이지만, 실전에서 보게 될 것과 비교하면 간단한 것이다! 이와 같은 다이어그램을 이해하는 데 핵심은 <strong>각 관계가 항상 한 쌍의 테이블과 관련되어 있음</strong>을 기억하는 것이다. 여러분은 모든 것을 이해할 필요는 없다. 관심 있는 테이블 사이의 연쇄적인 관계를 이해하면 된다.</p>
+<p><code>nycflights13</code> 에서</p>
+<ul>
+<li><code>flights</code> 는 단 하나의 변수인 <code>tailnum</code> 을 통해 <code>planes</code> 에 연결된다.</li>
+<li><code>flights</code> 는 <code>carrier</code> 변수를 통해 <code>airlines</code> 에 연결된다.</li>
+<li><code>flights</code> 는 <code>origin</code> (출발지) 및 <code>dest</code> (목적지) 변수를 통해 두 가지 방법으로 <code>airports</code> 에 연결된다.</li>
+<li><code>flgiths</code> 는 <code>origin</code> (위치), <code>year, month, day, hour</code> (시간)를 통해 <code>weather</code> 에 연결된다.</li>
+<li><code>flights</code> : 항공편, <code>planes</code> : 여객기, <code>airlines</code> : 항공사, <code>airports</code> : 공항, <code>weather</code> : 날씨</li>
+</ul>
+</div>
+<div id="연습문제-8" class="section level3">
+<h3><span class="header-section-number">6.3.4</span> 연습문제</h3>
+<ol style="list-style-type: decimal">
+<li>각 여객기가 출발지에서 목적지까지 날아가는 경로를 대략 그려보고 싶다고 상상해보라. 어떤 변수가 필요한가? 어떤 테이블을 결합해야 하는가?</li>
+<li>우리는 앞에서 <code>weather</code> 와 <code>airports</code> 사이의 관계를 그리는 것을 잊어버렸다. 어떻게 관계되며, 다이어그램을 이용하여 어떻게 그려야 하는가?</li>
+<li><code>weather</code>는 출발지 (NYC) 공항에 대한 정보만 포함한다. 미국의 모든 공항에 대한 날씨 기록이 포함되어 있다면 <code>flights</code> 와 어떤 관계가 추가되는가?</li>
+<li>우리는 일 년 중 어떤 날이 ‘특별하다’는 것을 알고 있으며, 이 날에는 평소보다 적은 수의 사람들이 항공여행을 한다는 것을 알고 있다. 이 데이터를 데이터프레임으로 어떻게 표현하겠는가? 이 테이블의 기본키는 무엇이겠는가? 기존 테이블에 어떻게 연결되는가?</li>
+</ol>
+</div>
+<div id="키key" class="section level3">
+<h3><span class="header-section-number">6.3.5</span> 키(Key)</h3>
+<p><strong>각 테이블 쌍을 연결하는 데 사용되는 변수</strong>를 <strong>키</strong>라고 한다. <strong>키</strong>는 <em>관측값을 고유하게 식별하는 변수</em> (또는 변수 집합)이다. 간단한 경우 <em>단일 변수만으로 관측값을 식별</em>할 수 있다. 예를 들어, 각 여객기(`<code>planes</code>)는 <code>tailnum</code> 으로 고유하게 식별된다. 어떤 경우에는 여러 변수가 필요할 수 있다. 예를 들어 <code>weather</code> 의 관측값을 식별하려면 <code>year, month, day, hour, origin</code> 의 다섯 개의 변수가 필요하다. (위의 그림에서 5개의 데이터 세트에 대해 각각의 속성을 표시하고 있으며, 그 중 진한 색깔의 속성이 키이다.)</p>
+<p>키에는 <strong>두 가지 유형의 키</strong>가 있다.</p>
+<ul>
+<li><strong>기본키(주키, primary key)</strong> 는 자신의 테이블에서 관측값을 고유하게 식별한다. 예를 들어, <code>planes$tailnum</code> 은 <code>planes</code> 테이블의 각 여객기를 고유하게 식별하므로 <em>기본키</em>이다.</li>
+<li><strong>외래키(외부키, foreigh key)</strong> 는 <strong>다른 테이블의 관측값을 고유하게 식별</strong>한다. 예를 들어, <code>flight$tailnum</code> 은 <code>flights</code> 테이블에서 각 항공편(<code>flights</code>)을 고유한 여객기(<code>planes</code>)와 매칭시키기 때문에 <em>외래키</em>이다. (<code>flights</code> 테이블의 <code>tailnum</code> 컬럼은 상대 테이블인 <code>planes</code> 테이블의 <strong>기본키</strong>이다.)</li>
+</ul>
+<p>한 변수가 동시에 <strong>기본키</strong>이며 <strong>외래키</strong>일 수 있다(이런 경우의 키를 <strong>교차참조키</strong>라 한다). 예를 들어, 출발지(<code>origin</code>) 컬럼은 <code>weather</code> 테이블의 <strong>기본키의 일부</strong>이며, <code>flights</code> 테이블의 <strong>외래키</strong>이기도 하다.</p>
+<p><strong>테이블에서 기본키를 확인한 후에는 실제로 기본키가 각 관측값을 고유하게 식별하는지 확인하는 것이 좋다</strong>. 이를 수행하는 한 가지 방법은 <em>기본키를 <code>count()</code> 하고 <code>n</code> 이 1보다 큰 항목을 찾는 것</em>이다.</p>
+<div class="sourceCode" id="cb1229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1229-1" title="1">planes <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1229-2" title="2"><span class="st">  </span><span class="kw">count</span>(tailnum) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1229-3" title="3"><span class="st">  </span><span class="kw">filter</span>(n <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 0 x 2
+## # ... with 2 variables: tailnum &lt;chr&gt;, n &lt;int&gt;</code></pre>
+<ul>
+<li><code>planes</code> 테이블의 경우 <code>tailnum</code>이 기본키로서 <em>각 관측값을 고유하게(unique, 유일하게) 식별</em>하고 있다.</li>
+</ul>
+<div class="sourceCode" id="cb1231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1231-1" title="1">weather <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1231-2" title="2"><span class="st">  </span><span class="kw">count</span>(year, month, day, hour, origin) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1231-3" title="3"><span class="st">  </span><span class="kw">filter</span>(n <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 6
+##    year month   day  hour origin     n
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;int&gt;
+## 1  2013    11     3     1 EWR        2
+## 2  2013    11     3     1 JFK        2
+## 3  2013    11     3     1 LGA        2</code></pre>
+<ul>
+<li>반면에 <code>weather</code> 테이블의 경우, <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code>, <code>orgin</code> 등의 5개의 변수를 동시에 고려한 경우(이를 <strong>합성키</strong>라고 함) 중복값이 3개 나옴을 알 수 있다. 즉, 이 5개의 변수를 합성하여 기본키로 사용할 수 없음을 의미한다.</li>
+</ul>
+<p>때로 테이블에 <strong>명시적인 기본키가 없는 경우</strong>가 있다. 모든 행은 관측값이지만 어떤 변수를 조합해도 각 행을 신뢰성있게 구분하지 못하는 경우이다. 예를 들어, <em><code>flight</code> 테이블의 기본키는 무엇인가?</em> 여러분은 <code>date</code> 에 <code>flight</code> 혹은 <code>tailnum</code> 을 더한 것으로 생각하겠지만 이들 중 어느 것도 고유하지 않다.</p>
+<div class="sourceCode" id="cb1233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1233-1" title="1">flights <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1233-2" title="2"><span class="st">  </span><span class="kw">count</span>(year, month, day, flight) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1233-3" title="3"><span class="st">  </span><span class="kw">filter</span>(n <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 29,768 x 5
+##    year month   day flight     n
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;
+## 1  2013     1     1      1     2
+## 2  2013     1     1      3     2
+## 3  2013     1     1      4     2
+## # ... with 29,765 more rows</code></pre>
+<ul>
+<li><code>flights</code> 테이블의 경우, <code>year</code>, <code>month</code>, <code>day</code>, <code>flight</code> 등의 4개의 변수를 동시에 고려한 경우에도 많은 중복값들이 나옴을 알 수 있다. 즉, 이 4개의 변수를 합성하여 기본키로 사용할 수 없음을 의미한다.</li>
+</ul>
+<div class="sourceCode" id="cb1235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1235-1" title="1">flights <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1235-2" title="2"><span class="st">  </span><span class="kw">count</span>(year, month, day, tailnum) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1235-3" title="3"><span class="st">  </span><span class="kw">filter</span>(n <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 64,928 x 5
+##    year month   day tailnum     n
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;int&gt;
+## 1  2013     1     1 N0EGMQ      2
+## 2  2013     1     1 N11189      2
+## 3  2013     1     1 N11536      2
+## # ... with 64,925 more rows</code></pre>
+<ul>
+<li>이 데이터로 작업을 시작할 때 나는 각 항공편 번호(<code>flight</code> )가 하루에 한 번만 사용된다고 순진하게 추측했다. 그런 경우라면 특정 항공편(<code>flight</code>)의 문제에 대해 훨씬 쉽게 의사 소통할 수 있었을 것이었다. 불행히도 그것은 사실이 아니다!</li>
+</ul>
+<p><strong>테이블에 기본키가 없으면 <code>mutate()</code> 와 <code>row_number()</code> 를 이용하여 기본키를 추가해 보라.</strong> 이렇게 하면 필터링을 수행하고 난 후 원래 데이터와 다시 점검할 때 관측값을 쉽게 일치시킬 수 있다. 이를 <strong>대체키(surrogate key)</strong> 라고 한다.</p>
+<p><em>기본키</em>와 이와 대응되는 다른 테이블의 <em>외래키</em>는 <strong><em>관계(relationship)</em></strong> 를 형성한다.</p>
+<ul>
+<li><em>관계는 대개 <strong>일대다 관계(one-to-many)</strong></em>이다. 예를 들어, <strong>각 항공편에는 여객기가 하나 있지만, 각 여객기에는 여러 항공편이 있다</strong>.</li>
+<li>다른 데이터에서는 가끔 <strong><em>일대일 관계</em></strong>를 보게 된다. 이것을 일대다 관계의 특별한 경우라고 생각할 수 있다.</li>
+<li>다대일(many-to-one) 관계와 일대다 관계를 사용하여 <strong><em>다대다(many-to-many) 관계</em></strong>를 모델링할 수 있다. 예를 들어 이 데이터에는 항공사(<code>airline</code> )와 공항(<code>airport</code> ) 간 다대다 관계가 있다. 즉, 각 항공사는 많은 공항으로 운항하고, 각 공항에는 많은 항공사가 있다.</li>
+</ul>
+</div>
+<div id="연습문제-9" class="section level3">
+<h3><span class="header-section-number">6.3.6</span> 연습문제</h3>
+<ol style="list-style-type: decimal">
+<li><p><code>flights</code> 에 대체키를 추가하라.</p></li>
+<li><p>다음 데이터 세트의 (기본)키를 식별하라.</p>
+<ol style="list-style-type: decimal">
+<li><code>Lahman::Batting</code></li>
+<li><code>babynames::babynames</code></li>
+<li><code>nasaweather::atmos</code></li>
+<li><code>fueleconomy::vehicles</code></li>
+<li><code>ggplot2::diamonds</code></li>
+</ol>
+<p>(이를 위해 패키지를 설치하고 설명서를 읽어야 할 수도 있다.)</p></li>
+<li><p><code>Lahman</code> 패키지의 <code>Batting, Master, Salaries</code> 테이블 간의 연결을 나타내는 다이어그램을 그려라. <code>Master, Managers, AwardsManagers</code> 사이의 관계를 보여주는 또 다른 다이어그램을 그려라.</p>
+<p><code>Batting, Pitching, Fielding</code> 테이블 간의 관계를 어떻게 규정하겠는가?</p></li>
+</ol>
+</div>
+</div>
+<div id="변환-조인mutating-join" class="section level2">
+<h2><span class="header-section-number">6.4</span> 변환 조인(Mutating Join)</h2>
+<p>한 쌍의 테이블을 결합하기 위해 살펴 볼 첫 번째 도구는 <strong>변환 조인(Mutating Join)</strong> 이다. 변환조인을 사용하면 <em>두 테이블의 변수를 결합</em>할 수 있다. <strong>먼저 관측값을 키로 매칭시킨 다음, 한 테이블에서 다른 테이블로 변수들을 복사</strong>한다.</p>
+<p><code>mutate()</code> 와 마찬가지로 조인 함수는 오른쪽에 변수를 추가하므로 이미 많은 변수가 있는 경우 새 변수가 출력되지 않는다. 이 예제에서는 어떤 일이 일어나는지 더 쉽게 보기 위해 더 좁은 데이터셋을 작성한다.</p>
+<div class="sourceCode" id="cb1237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1237-1" title="1">flights2 &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1237-2" title="2"><span class="st">  </span><span class="kw">select</span>(year<span class="op">:</span>day, hour, origin, dest, tailnum, carrier)</a>
+<a class="sourceLine" id="cb1237-3" title="3">flights2</a></code></pre></div>
+<pre><code>## # A tibble: 336,776 x 8
+##    year month   day  hour origin dest  tailnum carrier
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  
+## 1  2013     1     1     5 EWR    IAH   N14228  UA     
+## 2  2013     1     1     5 LGA    IAH   N24211  UA     
+## 3  2013     1     1     5 JFK    MIA   N619AA  AA     
+## # ... with 336,773 more rows</code></pre>
+<p>(RStudio에서는 <code>View()</code> 를 사용하여 이 문제를 피할 수도 있음을 기억하라.)</p>
+<p><code>flight2</code> 데이터에 <strong>항공사 전체 이름을 추가</strong>하려고 한다고 가정하자. <code>left_join()</code> 으로 <code>airlines</code> 와 <code>flights2</code> 데이터프레임을 결합할 수 있다.</p>
+<div class="sourceCode" id="cb1239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1239-1" title="1">flights2 <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1239-2" title="2"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>origin, <span class="op">-</span>dest) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1239-3" title="3"><span class="st">  </span><span class="kw">left_join</span>(airlines, <span class="dt">by =</span> <span class="st">&quot;carrier&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 336,776 x 7
+##    year month   day  hour tailnum carrier name                  
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;                 
+## 1  2013     1     1     5 N14228  UA      United Air Lines Inc. 
+## 2  2013     1     1     5 N24211  UA      United Air Lines Inc. 
+## 3  2013     1     1     5 N619AA  AA      American Airlines Inc.
+## # ... with 336,773 more rows</code></pre>
+<p><code>flights2</code> 은 <code>airlines</code> 와 결합하여, <strong>새로운 변수 <code>name</code> 이 추가</strong>되었다. 이것이 내가 이 유형의 조인을 변환 조인이라고 부르는 이유이다. 이 경우 <code>mutate()</code> 와 R 의 <code>base</code> 서브세팅 작업을 사용하여 같은 위치에 도달할 수 있다.</p>
+<div class="sourceCode" id="cb1241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1241-1" title="1">flights2 <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1241-2" title="2"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>origin, <span class="op">-</span>dest) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1241-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">name =</span> airlines<span class="op">$</span>name[<span class="kw">match</span>(carrier, airlines<span class="op">$</span>carrier)])</a></code></pre></div>
+<pre><code>## # A tibble: 336,776 x 7
+##    year month   day  hour tailnum carrier name                  
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;                 
+## 1  2013     1     1     5 N14228  UA      United Air Lines Inc. 
+## 2  2013     1     1     5 N24211  UA      United Air Lines Inc. 
+## 3  2013     1     1     5 N619AA  AA      American Airlines Inc.
+## # ... with 336,773 more rows</code></pre>
+<ul>
+<li>그러나 이 방법은 여러 변수를 매치시켜야 할 경우 일반화하기 어렵고, 또 전체적인 의도를 파악하기 위해서는 코드를 자세히 읽어야 한다는 단점이 있다.</li>
+</ul>
+<p>다음 절에서는 변환 조인의 작동 방식에 대해 자세히 설명한다. 우선 <strong>조인을 어떻게 시각적으로 표현하는지</strong>부터 배운다. 그런 다음 이를 사용하여 4개의 뮤테이팅 조인 함수, 즉 하나의 <strong>내부 조인(inner join)</strong>과 3개의 <strong>외부 조인(outer join)</strong>을 설명한다. 실제 데이터로 작업할 때 키가 항상 관측값을 고유하게 식별하지는 않기 때문에 다음으로는 고유한 매치가 없을 때 발생하는 상황에 대해 이야기하겠다. 마지막으로 조인이 정해졌을 때 <strong>어떤 변수가 이 조인의 키</strong>인지 <strong><code>dplyr</code></strong> 에 알려주는 방법을 배운다.</p>
+<div id="조인-이해하기" class="section level3">
+<h3><span class="header-section-number">6.4.1</span> 조인 이해하기</h3>
+<p>조인이 어떻게 작동하는지 배우기 위해 시각적 표현을 사용한다.</p>
+<div id="예제-데이터의-생성" class="section level4">
+<h4><span class="header-section-number">6.4.1.1</span> 예제 데이터의 생성</h4>
+<p><img src="images/ch06/join-setup.png" alt="img" style="zoom:80%;" /></p>
+<div class="sourceCode" id="cb1243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1243-1" title="1">x &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb1243-2" title="2">  <span class="op">~</span>key, <span class="op">~</span>val_x,</a>
+<a class="sourceLine" id="cb1243-3" title="3">     <span class="dv">1</span>, <span class="st">&quot;x1&quot;</span>,</a>
+<a class="sourceLine" id="cb1243-4" title="4">     <span class="dv">2</span>, <span class="st">&quot;x2&quot;</span>,</a>
+<a class="sourceLine" id="cb1243-5" title="5">     <span class="dv">3</span>, <span class="st">&quot;x3&quot;</span></a>
+<a class="sourceLine" id="cb1243-6" title="6">)</a>
+<a class="sourceLine" id="cb1243-7" title="7">x</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 2
+##     key val_x
+##   &lt;dbl&gt; &lt;chr&gt;
+## 1     1 x1   
+## 2     2 x2   
+## 3     3 x3</code></pre>
+<div class="sourceCode" id="cb1245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1245-1" title="1">y &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb1245-2" title="2">  <span class="op">~</span>key, <span class="op">~</span>val_y,</a>
+<a class="sourceLine" id="cb1245-3" title="3">     <span class="dv">1</span>, <span class="st">&quot;y1&quot;</span>,</a>
+<a class="sourceLine" id="cb1245-4" title="4">     <span class="dv">2</span>, <span class="st">&quot;y2&quot;</span>,</a>
+<a class="sourceLine" id="cb1245-5" title="5">     <span class="dv">4</span>, <span class="st">&quot;y3&quot;</span></a>
+<a class="sourceLine" id="cb1245-6" title="6">)</a>
+<a class="sourceLine" id="cb1245-7" title="7">y</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 2
+##     key val_y
+##   &lt;dbl&gt; &lt;chr&gt;
+## 1     1 y1   
+## 2     2 y2   
+## 3     4 y3</code></pre>
+<p>색상이 있는 열은 <strong>’키’ 변수(컬럼)</strong>를 나타내며, 테이블 사이의 행을 일치(대응, matching)시키는 데 사용된다. 회색 열은 함께 따라가는 <strong>’값’ 열(컬럼)</strong>을 나타낸다. 이 예제에서는 단일 키 변수와 단일 값 변수가 있지만, 다중 키와 다중 값으로 자연스럽게 일반화된다.</p>
+<p><strong>조인은 테이블 <code>x</code> 의 각 행을, 테이블 <code>y</code> 의 행과 대조하면서 (0개, 1 개 또는 여러 행에) 연결하는 방법이다.</strong> 다음 다이어그램은 각각의 매칭 후보를 한 쌍의 선의 교차점으로 보여준다. (다음의 그림은 <code>x</code>와 <code>y</code>의 모든 연결 가능성을 보여 준다. <strong><em>Cartesian Product</em></strong>)</p>
+<p><img src="images/ch06/join-setup2.png" alt="img" style="zoom:80%;" /></p>
+<p>(주의 깊게 살펴보면 <code>x</code> 의 키 열과 값 열의 순서가 바뀌었음을 알 수 있다. 이는 <strong>조인이 <em>키를 기반으로 매칭</em>하며 <em>값은 단지 따라간다</em>는 것을 강조하기 위한 것</strong>이다.)</p>
+<p>실제 조인에서는 <strong>매치 항목이 점으로 표시</strong>된다. <strong>도트 수</strong> = <strong>매치 수</strong> = <strong>출력의 행</strong> 수이다.</p>
+<p><img src="images/ch06/join-inner.png" alt="img" style="zoom:80%;" /></p>
+</div>
+</div>
+<div id="내부-조인-inner-join" class="section level3">
+<h3><span class="header-section-number">6.4.2</span> 내부 조인 (inner join)</h3>
+<p>가장 간단한 조인 유형은 <strong>내부 조인</strong> 이다. 내부 조인은 <strong>테이블 <code>x</code>의 <code>키</code></strong>와 <strong>테이블 <code>y</code>의 <code>키</code></strong>가 <strong>같을 때 두 관측값을 매칭</strong>한다.</p>
+<p><img src="images/ch06/join-inner-1593441260589.png" alt="img" style="zoom:80%;" /></p>
+<p>(정확하게 말하면 <strong>같음 연산자</strong>(equality operator)를 사용하여, 키가 매치되기 때문에 <strong>내부</strong> <strong>동등 조인(equijoin)</strong> 이다. <em>대부분의 조인은 <strong>동등 조인</strong>이므로 우리는 일반적으로 이러한 상세한 내용을 생략</em>한다.)</p>
+<p><strong>내부 조인(inner join)의 출력</strong>은 키, <code>x</code> 값 및 <code>y</code> 값을 포함하는 <strong>새로운 데이터프레임</strong>이다. <code>by</code> 를 사용하여 <strong>어떤 변수가 키</strong>인지를 지정한다.</p>
+<div class="sourceCode" id="cb1247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1247-1" title="1">x <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1247-2" title="2"><span class="st">  </span><span class="kw">inner_join</span>(y, <span class="dt">by =</span> <span class="st">&quot;key&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 2 x 3
+##     key val_x val_y
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+## 1     1 x1    y1   
+## 2     2 x2    y2</code></pre>
+<ul>
+<li><strong>내부 조인의 가장 중요한 특성</strong>은 <em>매칭되지 않는 행은 결과에 포함되지 않는다</em>는 점이다.</li>
+<li>즉, <strong>내부 조인은 관측값을 잃어버리기 쉽기 때문에 일반적으로 분석에 사용하기에 적합하지 않다</strong>.</li>
+</ul>
+</div>
+<div id="외부-조인-outer-join" class="section level3">
+<h3><span class="header-section-number">6.4.3</span> 외부 조인 (outer join)</h3>
+<p><strong>내부 조인</strong>에서는 <strong>두 테이블 모두에 나타나는 관측값</strong>이 보존된다. <strong>외부 조인(outer join)</strong>에서는 <strong>적어도 하나의 테이블에 있는 관측값은 보존</strong>된다.</p>
+<p>외부 조인에는 <em>세 가지 유형</em>이 있다.</p>
+<ul>
+<li><strong>왼쪽 조인(left join)</strong> 은 <code>x</code> 의 모든 관측값을 보존한다.</li>
+<li><strong>오른쪽 조인(right join)</strong> 은 <code>y</code> 의 모든 관측값을 보존한다.</li>
+<li><strong>전체 조인(full join)</strong> 은 <code>x</code> 와 <code>y</code> 의 모든 관측값을 보존한다.</li>
+</ul>
+<p>이러한 조인은 각 테이블에 <strong>’가상’ 관측값</strong>을 추가하여 작동한다. 이 관측값에는 항상 매칭되는 키 (다른 키가 매칭되지 않는 경우)와 <strong><code>NA</code> 로 채워진 값</strong>이 있다.</p>
+<p>그래픽으로 보면 다음과 같다.</p>
+<p><img src="images/ch06/join-outer.png" alt="img" style="zoom:80%;" /></p>
+<div class="sourceCode" id="cb1249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1249-1" title="1"><span class="co"># left_join()</span></a>
+<a class="sourceLine" id="cb1249-2" title="2">x <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1249-3" title="3"><span class="st">  </span><span class="kw">left_join</span>(y, <span class="dt">by =</span> <span class="st">&quot;key&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 3
+##     key val_x val_y
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+## 1     1 x1    y1   
+## 2     2 x2    y2   
+## 3     3 x3    &lt;NA&gt;</code></pre>
+<div class="sourceCode" id="cb1251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1251-1" title="1"><span class="co"># right_join()</span></a>
+<a class="sourceLine" id="cb1251-2" title="2">x <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1251-3" title="3"><span class="st">  </span><span class="kw">right_join</span>(y, <span class="dt">by =</span> <span class="st">&quot;key&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 3
+##     key val_x val_y
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+## 1     1 x1    y1   
+## 2     2 x2    y2   
+## 3     4 &lt;NA&gt;  y3</code></pre>
+<div class="sourceCode" id="cb1253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1253-1" title="1"><span class="co"># full_join()</span></a>
+<a class="sourceLine" id="cb1253-2" title="2">x <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1253-3" title="3"><span class="st">  </span><span class="kw">full_join</span>(y, <span class="dt">by =</span> <span class="st">&quot;key&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 4 x 3
+##     key val_x val_y
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+## 1     1 x1    y1   
+## 2     2 x2    y2   
+## 3     3 x3    &lt;NA&gt; 
+## 4     4 &lt;NA&gt;  y3</code></pre>
+<p><strong>가장 일반적으로 사용되는 조인은 왼쪽 조인</strong>이다. 매칭되지 않는 경우에도 원본 관측값을 보존하므로 다른 테이블에서 추가 데이터를 조회할 때마다 이 작업을 사용한다. <strong>왼쪽 조인이, 작업 시 기본 조인</strong>이 되어야 한다. 다른 조인을 선호해야 하는 명백한 이유가 없다면 왼쪽 조인을 사용하라.</p>
+<p>서로 다른 유형의 조인을 묘사하는 또 다른 방법은 <strong>벤 다이어그램</strong>을 사용하는 것이다.</p>
+<p><img src="images/ch06/join-venn.png" alt="img" style="zoom: 60%;" /></p>
+<p>그러나 이 표현법은 완벽하지 않다. 조인 유형들이 각각 어떤 테이블의 관측값을 보존하는지 알려주긴 하지만, 커다란 제약사항이 있다. 벤 다이어그램은 키가 고유하게 관측값을 식별하지 못할 때 어떤 일이 발생하는지를 표현할 수 없다.</p>
+</div>
+<div id="중복키" class="section level3">
+<h3><span class="header-section-number">6.4.4</span> 중복키</h3>
+<p>지금까지 모든 테이블은 키가 고유하다고 가정했다. 하지만 항상 그런 것은 아니다. 이 절에서는 키가 고유하지 않은 경우 어떻게 되는지 설명한다. 두 가지 경우가 있다.</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>하나의 테이블에 중복값을 갖는 키</strong>가 있다. 중복키는 추가적인 정보를 넣을 때 유용한데 일반적으로 <strong>일대다 관계</strong>가 있기 때문이다.</p>
+<p><img src="images/ch06/join-one-to-many.png" alt="img" style="zoom:80%;" /></p>
+<p><strong>출력</strong>에서 약간 다른 위치에 키 열을 놓은 것을 확인하라. 이것은 <strong>키</strong>가 <strong><code>y</code> 의 기본키</strong>이고 <strong><code>x</code> 의 외래키</strong>임을 보여준다.</p>
+<div class="sourceCode" id="cb1255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1255-1" title="1">x &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb1255-2" title="2">  <span class="op">~</span>key, <span class="op">~</span>val_x,</a>
+<a class="sourceLine" id="cb1255-3" title="3">     <span class="dv">1</span>, <span class="st">&quot;x1&quot;</span>,</a>
+<a class="sourceLine" id="cb1255-4" title="4">     <span class="dv">2</span>, <span class="st">&quot;x2&quot;</span>,</a>
+<a class="sourceLine" id="cb1255-5" title="5">     <span class="dv">2</span>, <span class="st">&quot;x3&quot;</span>,</a>
+<a class="sourceLine" id="cb1255-6" title="6">     <span class="dv">1</span>, <span class="st">&quot;x4&quot;</span></a>
+<a class="sourceLine" id="cb1255-7" title="7">)</a>
+<a class="sourceLine" id="cb1255-8" title="8">y &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb1255-9" title="9">  <span class="op">~</span>key, <span class="op">~</span>val_y,</a>
+<a class="sourceLine" id="cb1255-10" title="10">     <span class="dv">1</span>, <span class="st">&quot;y1&quot;</span>,</a>
+<a class="sourceLine" id="cb1255-11" title="11">     <span class="dv">2</span>, <span class="st">&quot;y2&quot;</span></a>
+<a class="sourceLine" id="cb1255-12" title="12">)</a>
+<a class="sourceLine" id="cb1255-13" title="13"></a>
+<a class="sourceLine" id="cb1255-14" title="14"><span class="kw">left_join</span>(x, y, <span class="dt">by =</span> <span class="st">&quot;key&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 4 x 3
+##     key val_x val_y
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+## 1     1 x1    y1   
+## 2     2 x2    y2   
+## 3     2 x3    y2   
+## 4     1 x4    y1</code></pre></li>
+<li><p><strong>두 테이블 모두 중복 키</strong>가 있다. 키가 어느 테이블에서도 고유하게 관측값을 식별하지 않기 때문에 이것은 <strong><em>일반적으로 에러</em></strong>이다. <strong>중복 키를 결합하면 가능한 모든 조합인 <em>데카르트곱(Cartesian product)</em></strong>을 얻을 수 있다.</p></li>
+</ol>
+<p><img src="images/ch06/join-many-to-many.png" alt="img" style="zoom:80%;" /></p>
+<div class="sourceCode" id="cb1257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1257-1" title="1">x &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb1257-2" title="2">  <span class="op">~</span>key, <span class="op">~</span>val_x,</a>
+<a class="sourceLine" id="cb1257-3" title="3">     <span class="dv">1</span>, <span class="st">&quot;x1&quot;</span>,</a>
+<a class="sourceLine" id="cb1257-4" title="4">     <span class="dv">2</span>, <span class="st">&quot;x2&quot;</span>,</a>
+<a class="sourceLine" id="cb1257-5" title="5">     <span class="dv">2</span>, <span class="st">&quot;x3&quot;</span>,</a>
+<a class="sourceLine" id="cb1257-6" title="6">     <span class="dv">3</span>, <span class="st">&quot;x4&quot;</span></a>
+<a class="sourceLine" id="cb1257-7" title="7">)</a>
+<a class="sourceLine" id="cb1257-8" title="8">y &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb1257-9" title="9">  <span class="op">~</span>key, <span class="op">~</span>val_y,</a>
+<a class="sourceLine" id="cb1257-10" title="10">     <span class="dv">1</span>, <span class="st">&quot;y1&quot;</span>,</a>
+<a class="sourceLine" id="cb1257-11" title="11">     <span class="dv">2</span>, <span class="st">&quot;y2&quot;</span>,</a>
+<a class="sourceLine" id="cb1257-12" title="12">     <span class="dv">2</span>, <span class="st">&quot;y3&quot;</span>,</a>
+<a class="sourceLine" id="cb1257-13" title="13">     <span class="dv">3</span>, <span class="st">&quot;y4&quot;</span></a>
+<a class="sourceLine" id="cb1257-14" title="14">)</a>
+<a class="sourceLine" id="cb1257-15" title="15"><span class="kw">left_join</span>(x, y, <span class="dt">by =</span> <span class="st">&quot;key&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+##     key val_x val_y
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+## 1     1 x1    y1   
+## 2     2 x2    y2   
+## 3     2 x2    y3   
+## # ... with 3 more rows</code></pre>
+</div>
+<div id="키열-정의하기" class="section level3">
+<h3><span class="header-section-number">6.4.5</span> 키열 정의하기</h3>
+<p>지금까지 테이블 쌍은 항상 <strong>하나의 변수에 의해 조인</strong>되었으며 그 변수는 <strong>두 테이블에서 같은 이름</strong>을 가졌었다. 그 제약은 <code>by = "key"</code> 로 코드화되었다. <strong><code>by</code> 에 다른 값을 사용하여 다른 방법으로 테이블을 연결</strong>할 수 있다.</p>
+<ul>
+<li><p>기본값 <code>by = NULL</code> 을 사용하면 <strong>두 테이블에 있는 모든 변수를 사용</strong>하며 이는 <strong>자연 조인(natural join)</strong>이라 부른다. 예를 들어 <strong><code>flights</code> 및 <code>weather</code> 테이블은 공통 변수</strong>인 <code>year, month, day, hour, origin</code> 으로 매치된다.</p>
+<div class="sourceCode" id="cb1259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1259-1" title="1">flights2 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1259-2" title="2"><span class="st">  </span><span class="kw">left_join</span>(weather)</a></code></pre></div>
+<pre><code>## Joining, by = c(&quot;year&quot;, &quot;month&quot;, &quot;day&quot;, &quot;hour&quot;, &quot;origin&quot;)</code></pre>
+<pre><code>## # A tibble: 336,776 x 18
+##    year month   day  hour origin dest  tailnum carrier  temp  dewp humid
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  2013     1     1     5 EWR    IAH   N14228  UA       39.0  28.0  64.4
+## 2  2013     1     1     5 LGA    IAH   N24211  UA       39.9  25.0  54.8
+## 3  2013     1     1     5 JFK    MIA   N619AA  AA       39.0  27.0  61.6
+## # ... with 336,773 more rows, and 7 more variables: wind_dir &lt;dbl&gt;,
+## #   wind_speed &lt;dbl&gt;, wind_gust &lt;dbl&gt;, precip &lt;dbl&gt;, pressure &lt;dbl&gt;,
+## #   visib &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre></li>
+<li><p>문자형 벡터 <code>by = "x"</code> . 이것은 자연 결합과 같지만 <strong>일부 공통 변수만 사용</strong>한다. 예를 들어 <code>flights</code> 와 <code>planes</code> 에는 <code>year</code> 변수가 있지만 서로 다른 의미이므로 <code>tailnum</code> 으로만 조인하고 싶다.</p>
+<div class="sourceCode" id="cb1262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1262-1" title="1">flights2 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1262-2" title="2"><span class="st">  </span><span class="kw">left_join</span>(planes, <span class="dt">by =</span> <span class="st">&quot;tailnum&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 336,776 x 16
+##   year.x month   day  hour origin dest  tailnum carrier year.y type 
+##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;
+## 1   2013     1     1     5 EWR    IAH   N14228  UA        1999 Fixe~
+## 2   2013     1     1     5 LGA    IAH   N24211  UA        1998 Fixe~
+## 3   2013     1     1     5 JFK    MIA   N619AA  AA        1990 Fixe~
+## # ... with 336,773 more rows, and 6 more variables: manufacturer &lt;chr&gt;,
+## #   model &lt;chr&gt;, engines &lt;int&gt;, seats &lt;int&gt;, speed &lt;int&gt;, engine &lt;chr&gt;</code></pre>
+<p><strong><code>year</code> 변수</strong> (두 입력 데이터프레임 모두에 나타나지만 같지 않도록 제한시킴)는 접미사가 붙어서 출력에서 헷갈리지 않게 된 것을 확인하라.</p></li>
+<li><p>이름있는 문자 벡터, <code>by = c("a" = "b")</code> . 테이블 <code>x</code> 의 변수 <code>a</code> 와 테이블 <code>y</code> 의 변수 <code>b</code> 를 매칭시킨다. <code>x</code> 의 변수가 출력에 사용된다.</p>
+<p>예를 들어, 지도를 그리려면 <code>flights</code> 데이터를 각 공항의 위치(<code>lat</code> 과 <code>lon</code> , 위도와 경도)가 포함된 <code>airports</code> 데이터와 결합해야 한다. 각 항공편에는 출발 공항(<code>origin</code>)과 도착 공항(<code>dest</code>)이 있으므로 어떤 것에 조인할지 지정해야 한다.</p>
+<div class="sourceCode" id="cb1264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1264-1" title="1">flights2 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1264-2" title="2"><span class="st">  </span><span class="kw">left_join</span>(airports, <span class="kw">c</span>(<span class="st">&quot;dest&quot;</span> =<span class="st"> &quot;faa&quot;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 336,776 x 15
+##    year month   day  hour origin dest  tailnum carrier name    lat   lon   alt
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  2013     1     1     5 EWR    IAH   N14228  UA      Geor~  30.0 -95.3    97
+## 2  2013     1     1     5 LGA    IAH   N24211  UA      Geor~  30.0 -95.3    97
+## 3  2013     1     1     5 JFK    MIA   N619AA  AA      Miam~  25.8 -80.3     8
+## # ... with 336,773 more rows, and 3 more variables: tz &lt;dbl&gt;, dst &lt;chr&gt;,
+## #   tzone &lt;chr&gt;</code></pre>
+<div class="sourceCode" id="cb1266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1266-1" title="1">flights2 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1266-2" title="2"><span class="st">  </span><span class="kw">left_join</span>(airports, <span class="kw">c</span>(<span class="st">&quot;origin&quot;</span> =<span class="st"> &quot;faa&quot;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 336,776 x 15
+##    year month   day  hour origin dest  tailnum carrier name    lat   lon   alt
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  2013     1     1     5 EWR    IAH   N14228  UA      Newa~  40.7 -74.2    18
+## 2  2013     1     1     5 LGA    IAH   N24211  UA      La G~  40.8 -73.9    22
+## 3  2013     1     1     5 JFK    MIA   N619AA  AA      John~  40.6 -73.8    13
+## # ... with 336,773 more rows, and 3 more variables: tz &lt;dbl&gt;, dst &lt;chr&gt;,
+## #   tzone &lt;chr&gt;</code></pre></li>
+</ul>
+</div>
+<div id="연습문제-10" class="section level3">
+<h3><span class="header-section-number">6.4.6</span> 연습문제</h3>
+<ol style="list-style-type: decimal">
+<li><p>목적지별 평균 연착시간을 계산한 다음, <code>airports</code> 데이터프레임에 조인하여 연착의 공간 분포를 표시하라. 다음을 이용하여 미국 지도를 쉽게 그릴 수 있다.</p>
+<div class="sourceCode" id="cb1268"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1268-1" title="1">airports <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1268-2" title="2"><span class="st">  </span><span class="kw">semi_join</span>(flights, <span class="kw">c</span>(<span class="st">&quot;faa&quot;</span> =<span class="st"> &quot;dest&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1268-3" title="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(lon, lat)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb1268-4" title="4"><span class="st">    </span><span class="kw">borders</span>(<span class="st">&quot;state&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb1268-5" title="5"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb1268-6" title="6"><span class="st">    </span><span class="kw">coord_quickmap</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-419-1.png" width="672" /></p>
+<p>(<code>semi_join()</code> 이 무엇인지 몰라도 걱정하지 마라. 다음에 배울 것이다.) 점의 크기 또는 색깔로 각 공항의 평균 연착 시간을 표시할 수 있다.</p>
+<p><img src="images/ch06/ex4-6.png" style="zoom: 67%;" /></p></li>
+<li><p><code>flights</code> 에 출발지와 목적지의 위치 (즉, <code>lat</code> 과 <code>lon</code> )를 추가하라.</p></li>
+<li><p>여객기의 나이와 연착 시간 사이에 관계가 있는가?</p></li>
+<li><p>어떤 기상 조건이 연착 가능성을 더 높이는가?</p></li>
+<li><p>2013년 6 월 13 일에 무슨 일이 일어났는가? 연착의 공간 패턴을 표시한 다음 구글을 사용하여 날씨와 상호참조하라.</p></li>
+</ol>
+</div>
+<div id="기타-구현" class="section level3">
+<h3><span class="header-section-number">6.4.7</span> 기타 구현</h3>
+<ul>
+<li><code>base::merge()</code> 는 네 가지 유형의 변환 조인을 모두 수행할 수 있다.</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>dplyr</th>
+<th>merge</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>inner_join(x, y)</code></td>
+<td><code>merge(x, y)</code></td>
+</tr>
+<tr class="even">
+<td><code>left_join(x, y)</code></td>
+<td><code>merge(x, y, all.x = TRUE)</code></td>
+</tr>
+<tr class="odd">
+<td><code>right_join(x, y)</code></td>
+<td><code>merge(x, y, all.y = TRUE)</code>,</td>
+</tr>
+<tr class="even">
+<td><code>full_join(x, y)</code></td>
+<td><code>merge(x, y, all.x = TRUE, all.y = TRUE)</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>특정 <strong><code>dplyr</code></strong> 동사의 장점은 코드의 의도를 좀 더 명확하게 전달한다는 것이다. 즉, 조인 간의 차이는 실제로 중요하지만 <code>merge()</code> 인수에 숨어 있다. <strong><code>dplyr</code></strong> 의 조인은 <strong>상당히 빠르며 행 순서를 어지럽히지 않는다.</strong></p></li>
+<li><p><strong><code>dplyr</code> 의 규칙</strong>은 SQL에 기반을 두므로 서로 옮겨쓰는 것은 복잡하지 않다.</p></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>dplyr</th>
+<th>SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>inner_join(x, y, by = "z")</code></td>
+<td><code>SELECT * FROM x INNER JOIN y USING (z)</code></td>
+</tr>
+<tr class="even">
+<td><code>left_join(x, y, by = "z")</code></td>
+<td><code>SELECT * FROM x LEFT OUTER JOIN y USING (z)</code></td>
+</tr>
+<tr class="odd">
+<td><code>right_join(x, y, by = "z")</code></td>
+<td><code>SELECT * FROM x RIGHT OUTER JOIN y USING (z)</code></td>
+</tr>
+<tr class="even">
+<td><code>full_join(x, y, by = "z")</code></td>
+<td><code>SELECT * FROM x FULL OUTER JOIN y USING (z)</code></td>
+</tr>
+</tbody>
+</table>
+<p>’<code>INNER</code>’및 ’<code>OUTER</code>’는 선택적이며 종종 생략된다.</p>
+<ul>
+<li><code>inner_join(x, y, by = c("a" = "b"))</code> 과 같이 테이블 간에 다른 변수를 결합하는 것은, SQL에서 약간 다른 문법을 사용한다. <code>SELECT * FROM x INNER JOIN y ON x.a = y.b</code> . 이 구문에서 알 수 있듯이, SQL은 <strong><code>dplyr</code></strong> 보다 폭넓은 조인 유형을 지원하는데 등식이 아닌 다른 제약 조건을 사용하여 테이블을 연결할 수도 있다. (비동등 조인(non-<strong>equisjoins</strong>)라고도 함)</li>
+</ul>
+</div>
+</div>
+<div id="필터링-조인" class="section level2">
+<h2><span class="header-section-number">6.5</span> 필터링 조인</h2>
+<p><strong>필터링 조인(Filtering join)</strong>은 변환 조인과 같은 방식으로 관측값을 매칭하지만 <strong>변수가 아닌 관측값에 영향</strong>을 준다. 두 가지 유형이 있다.</p>
+<ul>
+<li><code>semi_join(x, y)</code> 는 <code>y</code> 와 매치되는 <code>x</code> 의 모든 관측값을 <strong>보존한다</strong> .</li>
+<li><code>anti_join(x, y)</code> 는 <code>y</code> 와 매치되는 <code>x</code> 의 모든 관측값을 <strong>삭제한다</strong> .</li>
+</ul>
+<p><strong>세미 조인(Semi-joins)</strong>은 <em>필터링된 요약 테이블을 다시 원래 행과 매치시키는 데 유용</em>하다. 예를 들어 가장 인기 있는 상위 10개 도착지(<code>dest</code>)를 구했다고 가정해보자.</p>
+<div class="sourceCode" id="cb1269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1269-1" title="1">top_dest &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1269-2" title="2"><span class="st">  </span><span class="kw">count</span>(dest, <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1269-3" title="3"><span class="st">  </span><span class="kw">head</span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb1269-4" title="4">top_dest</a></code></pre></div>
+<pre><code>## # A tibble: 10 x 2
+##   dest      n
+##   &lt;chr&gt; &lt;int&gt;
+## 1 ORD   17283
+## 2 ATL   17215
+## 3 LAX   16174
+## # ... with 7 more rows</code></pre>
+<p>이제 그 목적지 중 한 곳(<code>dest %in% top_dest$dest</code>)으로 운행한 항공편(<code>flihts</code>)을 찾고 싶다면 직접 필터를 만들 수 있다.</p>
+<div class="sourceCode" id="cb1271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1271-1" title="1">flights <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1271-2" title="2"><span class="st">  </span><span class="kw">filter</span>(dest <span class="op">%in%</span><span class="st"> </span>top_dest<span class="op">$</span>dest)</a></code></pre></div>
+<pre><code>## # A tibble: 141,145 x 19
+##    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
+## 1  2013     1     1      542            540         2      923            850
+## 2  2013     1     1      554            600        -6      812            837
+## 3  2013     1     1      554            558        -4      740            728
+## # ... with 141,142 more rows, and 11 more variables: arr_delay &lt;dbl&gt;,
+## #   carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;,
+## #   air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
+<p>그러나 이러한 접근 방식을 여러 변수로 확장하는 것은 어렵다. 예를 들어 평균 연착시간(average <code>arr_delay</code>)이 가장 길었던 날 10일을 골라냈다고 상상해보라. <code>year, month, day</code> 를 사용하여 다시 항공편(<code>flights</code>)과 일치시키는 필터 구문을 어떻게 작성할 수 있는가?</p>
+<p>한편 변환 조인과 같이 두 테이블을 연결하는 세미 조인을 사용할 수 있지만, 새 열을 추가하는 대신 <code>y</code> 에서 일치하는 <code>x</code> 의 행만 보존한다.</p>
+<div class="sourceCode" id="cb1273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1273-1" title="1">flights <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1273-2" title="2"><span class="st">  </span><span class="kw">semi_join</span>(top_dest)</a></code></pre></div>
+<pre><code>## Joining, by = &quot;dest&quot;</code></pre>
+<pre><code>## # A tibble: 141,145 x 19
+##    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
+## 1  2013     1     1      542            540         2      923            850
+## 2  2013     1     1      554            600        -6      812            837
+## 3  2013     1     1      554            558        -4      740            728
+## # ... with 141,142 more rows, and 11 more variables: arr_delay &lt;dbl&gt;,
+## #   carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;,
+## #   air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
+<p><strong>세미 조인(semi-join)</strong>은 그래픽으로 다음과 같이 표현된다.</p>
+<p><img src="images/ch06/join-semi.png" alt="img" style="zoom:80%;" /></p>
+<div class="sourceCode" id="cb1276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1276-1" title="1">x &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb1276-2" title="2">  <span class="op">~</span>key, <span class="op">~</span>val_x,</a>
+<a class="sourceLine" id="cb1276-3" title="3">  <span class="dv">1</span>, <span class="st">&quot;x1&quot;</span>,</a>
+<a class="sourceLine" id="cb1276-4" title="4">  <span class="dv">2</span>, <span class="st">&quot;x2&quot;</span>,</a>
+<a class="sourceLine" id="cb1276-5" title="5">  <span class="dv">3</span>, <span class="st">&quot;x3&quot;</span></a>
+<a class="sourceLine" id="cb1276-6" title="6">)</a>
+<a class="sourceLine" id="cb1276-7" title="7"></a>
+<a class="sourceLine" id="cb1276-8" title="8">y &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb1276-9" title="9">  <span class="op">~</span>key, <span class="op">~</span>val_y,</a>
+<a class="sourceLine" id="cb1276-10" title="10">  <span class="dv">1</span>, <span class="st">&quot;y1&quot;</span>,</a>
+<a class="sourceLine" id="cb1276-11" title="11">  <span class="dv">2</span>, <span class="st">&quot;y2&quot;</span>,</a>
+<a class="sourceLine" id="cb1276-12" title="12">  <span class="dv">4</span>, <span class="st">&quot;y3&quot;</span></a>
+<a class="sourceLine" id="cb1276-13" title="13">)</a>
+<a class="sourceLine" id="cb1276-14" title="14"></a>
+<a class="sourceLine" id="cb1276-15" title="15">x <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">semi_join</span>(y, <span class="dt">by=</span><span class="st">&quot;key&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 2 x 2
+##     key val_x
+##   &lt;dbl&gt; &lt;chr&gt;
+## 1     1 x1   
+## 2     2 x2</code></pre>
+<ul>
+<li>매칭되었는지 여부만이 중요하다. 즉, 어떤 관측값이 매칭되는지는 중요하지 않다. 이는 필터링 조인은 뮤테이팅 조인처럼 <strong>행을 복제하지는 않는다</strong>는 것을 의미한다.</li>
+</ul>
+<p><img src="images/ch06/join-semi-many.png" alt="img" style="zoom:80%;" /></p>
+<div class="sourceCode" id="cb1278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1278-1" title="1">x &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb1278-2" title="2">  <span class="op">~</span>key, <span class="op">~</span>val_x,</a>
+<a class="sourceLine" id="cb1278-3" title="3">  <span class="dv">1</span>, <span class="st">&quot;x1&quot;</span>,</a>
+<a class="sourceLine" id="cb1278-4" title="4">  <span class="dv">2</span>, <span class="st">&quot;x2&quot;</span>,</a>
+<a class="sourceLine" id="cb1278-5" title="5">  <span class="dv">2</span>, <span class="st">&quot;x3&quot;</span>,</a>
+<a class="sourceLine" id="cb1278-6" title="6">  <span class="dv">3</span>, <span class="st">&quot;x4&quot;</span></a>
+<a class="sourceLine" id="cb1278-7" title="7">)</a>
+<a class="sourceLine" id="cb1278-8" title="8">y &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb1278-9" title="9">  <span class="op">~</span>key, <span class="op">~</span>val_y,</a>
+<a class="sourceLine" id="cb1278-10" title="10">  <span class="dv">1</span>, <span class="st">&quot;y1&quot;</span>,</a>
+<a class="sourceLine" id="cb1278-11" title="11">  <span class="dv">2</span>, <span class="st">&quot;y2&quot;</span>,</a>
+<a class="sourceLine" id="cb1278-12" title="12">  <span class="dv">2</span>, <span class="st">&quot;y3&quot;</span>,</a>
+<a class="sourceLine" id="cb1278-13" title="13">  <span class="dv">3</span>, <span class="st">&quot;y4&quot;</span></a>
+<a class="sourceLine" id="cb1278-14" title="14">)</a>
+<a class="sourceLine" id="cb1278-15" title="15">x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">semi_join</span>(y, <span class="dt">by=</span><span class="st">&quot;key&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 4 x 2
+##     key val_x
+##   &lt;dbl&gt; &lt;chr&gt;
+## 1     1 x1   
+## 2     2 x2   
+## 3     2 x3   
+## 4     3 x4</code></pre>
+<p>세미 조인의 반대는 <strong>안티 조인(Anti-join)</strong>이다. 안티 조인은 <strong>매칭되지 않는 행을 보존</strong>한다.</p>
+<p><img src="images/ch06/join-anti.png" alt="img" style="zoom:80%;" /></p>
+<div class="sourceCode" id="cb1280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1280-1" title="1">x &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb1280-2" title="2">  <span class="op">~</span>key, <span class="op">~</span>val_x,</a>
+<a class="sourceLine" id="cb1280-3" title="3">  <span class="dv">1</span>, <span class="st">&quot;x1&quot;</span>,</a>
+<a class="sourceLine" id="cb1280-4" title="4">  <span class="dv">2</span>, <span class="st">&quot;x2&quot;</span>,</a>
+<a class="sourceLine" id="cb1280-5" title="5">  <span class="dv">3</span>, <span class="st">&quot;x3&quot;</span></a>
+<a class="sourceLine" id="cb1280-6" title="6">)</a>
+<a class="sourceLine" id="cb1280-7" title="7">x</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 2
+##     key val_x
+##   &lt;dbl&gt; &lt;chr&gt;
+## 1     1 x1   
+## 2     2 x2   
+## 3     3 x3</code></pre>
+<div class="sourceCode" id="cb1282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1282-1" title="1">y &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb1282-2" title="2">  <span class="op">~</span>key, <span class="op">~</span>val_y,</a>
+<a class="sourceLine" id="cb1282-3" title="3">  <span class="dv">1</span>, <span class="st">&quot;y1&quot;</span>,</a>
+<a class="sourceLine" id="cb1282-4" title="4">  <span class="dv">2</span>, <span class="st">&quot;y2&quot;</span>,</a>
+<a class="sourceLine" id="cb1282-5" title="5">  <span class="dv">4</span>, <span class="st">&quot;y3&quot;</span></a>
+<a class="sourceLine" id="cb1282-6" title="6">)</a>
+<a class="sourceLine" id="cb1282-7" title="7">y</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 2
+##     key val_y
+##   &lt;dbl&gt; &lt;chr&gt;
+## 1     1 y1   
+## 2     2 y2   
+## 3     4 y3</code></pre>
+<div class="sourceCode" id="cb1284"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1284-1" title="1">x <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">anti_join</span>(y, <span class="dt">by=</span><span class="st">&quot;key&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 2
+##     key val_x
+##   &lt;dbl&gt; &lt;chr&gt;
+## 1     3 x3</code></pre>
+<p><strong>안티 조인(Anti-join)</strong>은 <strong><em>조인 불일치를 진단하는 데 유용</em></strong>하다. 예를 들어 <code>flights</code>과 <code>planes</code> 를 연결하는 경우, <code>planes</code> 에 매치되지 않는 <code>flights</code> 이 많다는 것을 알고 싶을 수 있다.</p>
+<div class="sourceCode" id="cb1286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1286-1" title="1">flights <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1286-2" title="2"><span class="st">  </span><span class="kw">anti_join</span>(planes, <span class="dt">by =</span> <span class="st">&quot;tailnum&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1286-3" title="3"><span class="st">  </span><span class="kw">count</span>(tailnum, <span class="dt">sort =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 722 x 2
+##   tailnum     n
+##   &lt;chr&gt;   &lt;int&gt;
+## 1 &lt;NA&gt;     2512
+## 2 N725MQ    575
+## 3 N722MQ    513
+## # ... with 719 more rows</code></pre>
+<div id="연습문제-11" class="section level3">
+<h3><span class="header-section-number">6.5.1</span> 연습문제</h3>
+<ol style="list-style-type: decimal">
+<li>항공편에 <code>tailnum</code> 이 없는 것은 무엇을 의미하는가? <code>planes</code> 에 매치되는 관측값이 없는 <code>tailnum</code> 관측값의 공통점은 무엇인가? (힌트: 한 변수가 문제의 약 90%를 설명한다.)</li>
+<li><code>flights</code> 를 필터링하여 최소 100 편의 운행을 한 여객기의 항공편만 표시하라.</li>
+<li><code>fueleconomy::vehicles</code> 와 <code>fueleconomy::common</code> 을 결합하여 가장 많은 차량 모델의 레코드만 찾아라.</li>
+<li>최악의 연착 시간을 가진 (1년 중) 48시간을 찾아라. 날씨 데이터와 교차 참조하라. 어떤 패턴을 볼 수 있는가?</li>
+<li><code>anti_join(flights, airports, by = c("dest" = "faa"))</code> 을 보고 무엇을 알 수 있는가? <code>anti_join(airports, flights, by = c("faa" = "dest"))</code> 은 어떤가?</li>
+<li>각 항공기는 단일 항공사에 의해 운항되므로 항공기와 항공사 간에 암묵적인 관계가 있을 것으로 예상할 수 있다. 이전 절에서 배운 도구를 사용하여 이 가설을 확인하거나 기각하라.</li>
+</ol>
+</div>
+</div>
+<div id="조인-문제" class="section level2">
+<h2><span class="header-section-number">6.6</span> 조인 문제</h2>
+<p><em>이 장에서 작업하고 있는 데이터는 문제가 거의 발생하지 않도록 미리 정제되었다</em>. 여러분의 데이터는 그리 깨끗하지 않을 것이므로 조인을 원활하게 하기 위해서 주어진 <strong>데이터에 수행해야 하는 몇 가지 작업</strong>이 있다.</p>
+<ol style="list-style-type: decimal">
+<li><p>우선 각 <strong>테이블</strong>에서 <strong><em>기본키를 구성하는 변수들을 식별</em></strong>하라. 경험적이 아니라 데이터 이해를 바탕으로, <em>고유한 식별자가 되는 변수의 조합</em>을 찾아야 한다. 변수가 의미하는 바를 고려하지 않고 찾는다면 우연히도 현재의 데이터에서는 고유한 조합이지만 일반적으로는 그렇지 않을 수 있다.</p>
+<p>예를 들어, 고도(<code>alt</code>)와 경도(<code>lat</code>)는 각 공항(<code>airports</code>)을 고유하게 식별하지만 좋은 식별자는 아니다!</p>
+<pre><code>airports %&gt;% count(alt, lon) %&gt;% filter(n &gt; 1)
+#&gt; # A tibble: 0 x 3
+#&gt; # ... with 3 variables: alt &lt;int&gt;, lon &lt;dbl&gt;, n &lt;int&gt;</code></pre></li>
+<li><p><strong>기본 키의 변수들에 결측값이 없는지 확인</strong>하라. 값이 결측된 경우에는 관측값을 식별할 수 없다! (기본키는 기본적으로 <strong>NOT NULL</strong>, 즉, 결측치가 존재하면 안된다)</p></li>
+<li><p><strong>외래 키가 다른 테이블의 기본 키와 매칭되는지 확인</strong>하라. 가장 좋은 방법은 <strong><code>anti_join()</code> 을 사용</strong>하는 것이다. 데이터 입력 에러로 인해 키가 매칭되지 않는 경우는 흔하다. 이를 고치는 것은 큰 작업일 때가 많다.</p>
+<p><strong>키가 결측된 경우 매칭되지 않는 행을 삭제할 것인지를 신중하게 고려</strong>하면서 내부 조인과 외부 조인을 신중히 고려해야 한다.</p></li>
+</ol>
+<p>조인이 원활하게 진행되었는지 확인하기 위해 조인 전후의 행 수만 살피는 것은 충분하지 않다. 두 테이블 모두에 중복 키가 있는 내부 조인의 경우, 불행히도, 삭제된 행 수가 복제된 행 수와 정확히 같을 수 있다!</p>
+</div>
+<div id="집합-연산" class="section level2">
+<h2><span class="header-section-number">6.7</span> 집합 연산</h2>
+<p>2 테이블 동사의 마지막 유형은 <strong>집합 연산</strong>이다. 일반적으로 이 필터는 가장 드물게 사용하지만, 복잡한 필터를 단순한 필터들로 분해하려는 경우에 가끔 유용하다. 이 모든 연산은 <strong>행 전체에 동작</strong>하는데 <strong>모든 변수의 값을 비교</strong>한다. 이 집합 연산은 <strong><code>x</code> 와 <code>y</code> 입력이 같은 변수를 가지는 것을 간주</strong>하며 <strong>관측값을 집합으로 취급</strong>한다.</p>
+<ul>
+<li><code>intersect(x, y)</code>: <code>x, y</code> 모두에 있는 관측값만 반환</li>
+<li><code>union(x, y)</code> : <code>x</code> 와 <code>y</code> 의 고유한 관측값을 반환. (중복값은 제외)</li>
+<li><code>setdiff(x, y)</code> : <code>x</code> 에 있지만, <code>y</code> 에 없는 관측값을 반환</li>
+</ul>
+<p><img src="images/ch06/20200627_233702.png" style="zoom: 80%;" /></p>
+<p>아래의 간단한 데이터에 대해서,</p>
+<div class="sourceCode" id="cb1289"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1289-1" title="1">df1 &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb1289-2" title="2">  <span class="op">~</span>x, <span class="op">~</span>y,</a>
+<a class="sourceLine" id="cb1289-3" title="3">   <span class="dv">1</span>,  <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb1289-4" title="4">   <span class="dv">2</span>,  <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1289-5" title="5">)</a>
+<a class="sourceLine" id="cb1289-6" title="6">df2 &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb1289-7" title="7">  <span class="op">~</span>x, <span class="op">~</span>y,</a>
+<a class="sourceLine" id="cb1289-8" title="8">   <span class="dv">1</span>,  <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb1289-9" title="9">   <span class="dv">1</span>,  <span class="dv">2</span></a>
+<a class="sourceLine" id="cb1289-10" title="10">)</a></code></pre></div>
+<p>네 가지 연산은 다음과 같다.</p>
+<div class="sourceCode" id="cb1290"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1290-1" title="1"><span class="kw">intersect</span>(df1, df2)</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 2
+##       x     y
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1     1     1</code></pre>
+<div class="sourceCode" id="cb1292"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1292-1" title="1"><span class="co"># 열이 4개가 아니라 3개임을 주목</span></a>
+<a class="sourceLine" id="cb1292-2" title="2"><span class="kw">union</span>(df1, df2)</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 2
+##       x     y
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1     1     1
+## 2     2     1
+## 3     1     2</code></pre>
+<div class="sourceCode" id="cb1294"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1294-1" title="1"><span class="kw">setdiff</span>(df1, df2)</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 2
+##       x     y
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1     2     1</code></pre>
+<div class="sourceCode" id="cb1296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1296-1" title="1"><span class="kw">setdiff</span>(df2, df1)</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 2
+##       x     y
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1     1     2</code></pre>
+<ul>
+<li><code>union_all(x, y, ...)</code> : <code>x</code>와 <code>y</code> 에 있는 모든 행들을 결합. (결합된 데이터 세트의 중복 행을 제거하지 않음.)</li>
+<li><code>setequal(x, y, ...)</code> : <code>x</code>와 <code>y</code>의 행이 같은 지 비교.</li>
+</ul>
+<div class="sourceCode" id="cb1298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1298-1" title="1"><span class="kw">union_all</span>(df1, df2)</a></code></pre></div>
+<pre><code>## # A tibble: 4 x 2
+##       x     y
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1     1     1
+## 2     2     1
+## 3     1     1
+## 4     1     2</code></pre>
+<div class="sourceCode" id="cb1300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1300-1" title="1"><span class="kw">setequal</span>(df1, df2)</a></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div id="reference-4" class="section level3 unnumbered">
+<h3>Reference</h3>
+<ul>
+<li><a href="http://www.datasciencemadesimple.com/union-union_all-function-r-using-dplyr-union-data-frames/" class="uri">http://www.datasciencemadesimple.com/union-union_all-function-r-using-dplyr-union-data-frames/</a></li>
+</ul>
+</div>
+</div>
+<div id="join_exercises" class="section level2">
+<h2><span class="header-section-number">6.8</span> Join Exercises</h2>
+<p>이번 장에서는 <code>dplyr</code> 패키지를 이용한 데이터의 병합과 관련하여 사용할 수 있는 다음의 함수들에 대하여 살펴보기로 한다:</p>
+<ul>
+<li><a href="https://statisticsglobe.com/r-dplyr-join-inner-left-right-full-semi-anti/#inner_join">inner_join()</a></li>
+<li><a href="https://statisticsglobe.com/r-dplyr-join-inner-left-right-full-semi-anti/#left_join">left_join()</a></li>
+<li><a href="https://statisticsglobe.com/r-dplyr-join-inner-left-right-full-semi-anti/#right_join">right_join()</a></li>
+<li><a href="https://statisticsglobe.com/r-dplyr-join-inner-left-right-full-semi-anti/#full_join">full_join()</a></li>
+<li><a href="https://statisticsglobe.com/r-dplyr-join-inner-left-right-full-semi-anti/#semi_join">semi_join()</a></li>
+<li><a href="https://statisticsglobe.com/r-dplyr-join-inner-left-right-full-semi-anti/#anti_join">anti_join()</a></li>
+<li><strong>nest_join()</strong></li>
+</ul>
+<p>먼저 이 함수들의 기본 개념과 (간단한 예를 들어) 차이점들에 대하여 살펴볼 것이다.</p>
+<p>그런 다음 좀 더 복잡한 예제들을 살펴보기로 한다:</p>
+<ul>
+<li><a href="https://statisticsglobe.com/r-dplyr-join-inner-left-right-full-semi-anti/#multiple_data">복수 데이터 프레임의 조인</a></li>
+<li><a href="https://statisticsglobe.com/r-dplyr-join-inner-left-right-full-semi-anti/#multiple_columns">복수 개 컬럼에 의한 조인</a></li>
+<li><a href="https://statisticsglobe.com/r-dplyr-join-inner-left-right-full-semi-anti/#delete_id">데이터 조인과 ID 삭제</a></li>
+</ul>
+<div id="예제-데이터의-생성-1" class="section level3">
+<h3><span class="header-section-number">6.8.1</span> 예제 데이터의 생성</h3>
+<p>먼저 예제에 사용될 예제 데이터 프레임들을 생성해 보기로 한다.</p>
+<div class="sourceCode" id="cb1302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1302-1" title="1">data1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">ID =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,                      <span class="co"># Create first example data frame                    </span></a>
+<a class="sourceLine" id="cb1302-2" title="2">              <span class="dt">X1 =</span> <span class="kw">c</span>(<span class="st">&quot;a1&quot;</span>, <span class="st">&quot;a2&quot;</span>),                    </a>
+<a class="sourceLine" id="cb1302-3" title="3">              <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>) </a>
+<a class="sourceLine" id="cb1302-4" title="4">data1</a></code></pre></div>
+<pre><code>##   ID X1
+## 1  1 a1
+## 2  2 a2</code></pre>
+<div class="sourceCode" id="cb1304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1304-1" title="1">data2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">ID =</span> <span class="dv">2</span><span class="op">:</span><span class="dv">3</span>,                      <span class="co"># Create second example data frame</span></a>
+<a class="sourceLine" id="cb1304-2" title="2">              <span class="dt">X2 =</span> <span class="kw">c</span>(<span class="st">&quot;b1&quot;</span>, <span class="st">&quot;b2&quot;</span>),                    </a>
+<a class="sourceLine" id="cb1304-3" title="3">              <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb1304-4" title="4">data2</a></code></pre></div>
+<pre><code>##   ID X2
+## 1  2 b1
+## 2  3 b2</code></pre>
+<p>다음의 그림은 지금 생성한 두 개의 데이터 프레임과 <code>dplyr</code> 패키지의 다양한 조인 함수를 이용하여 이들 데이터 프레임을 병합하는 방법을 보여주고 있다.</p>
+<p><img src="images/ch06/dplyr-data-join-functions-overview_inner_join-left_join-right_join-full_join-semi_join-anti_join.png" alt="Join R Functions of dplyr Package Overview"  /></p>
+<ul>
+<li><p>그림의 제일 위에 <strong>예제 데이터 프레임의 구조</strong>를 보여주고 있다. 각 데이터 프레임은 두 개의 컬럼을 가지고 있다. <code>data1</code>은 <code>ID</code>와 <code>X1</code> 컬럼을, 그리고 <code>data2</code>는 <code>ID</code>와 <code>X2</code> 컬럼을 가지고 있다. <strong><code>ID</code> 컬럼</strong>은 두 데이터 프레임의 <strong>공통 컬럼</strong>이며, 또한 <strong>공통의 값인 <code>2</code></strong>를 가지고 있다.</p></li>
+<li><ol style="list-style-type: decimal">
+<li>~ (6) : 두 데이터 프레임을 조인하는 방법에 따라 <strong>결과로 생성되는 데이터 프레임</strong>을 보여주고 있다. 이들 각각에 대하여 예를 들어 살펴보기로 한다.</li>
+</ol></li>
+</ul>
+</div>
+<div id="예제-1-inner_join" class="section level3">
+<h3><span class="header-section-number">6.8.2</span> 예제 1: <code>inner_join()</code></h3>
+<p>먼저 dplyr 패키지를 설치하여 불러오기를 해야 한다:</p>
+<div class="sourceCode" id="cb1306"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1306-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)                          <span class="co"># Install dplyr package </span></a></code></pre></div>
+<pre><code>## Warning: package &#39;dplyr&#39; is in use and will not be installed</code></pre>
+<div class="sourceCode" id="cb1308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1308-1" title="1"><span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)                                   <span class="co"># Load dplyr package</span></a></code></pre></div>
+<p>이 예제에서는 예제 데이터 프레임의 <strong>inner_join()</strong> 함수에 대하여 살펴보기로 한다.</p>
+<div id="inner_join-함수의-기본-형식" class="section level4">
+<h4><span class="header-section-number">6.8.2.1</span> <code>inner_join()</code> 함수의 기본 형식</h4>
+<pre><code>inner_join(
+  x,
+  y,
+  by = NULL,
+  copy = FALSE,
+  suffix = c(&quot;.x&quot;, &quot;.y&quot;),
+  ...,
+  na_matches = c(&quot;na&quot;, &quot;never&quot;)
+) </code></pre>
+</div>
+<div id="inner_join-함수의-예" class="section level4">
+<h4><span class="header-section-number">6.8.2.2</span> <code>inner_join()</code> 함수의 예</h4>
+<p>inner_join 방식으로 데이터 프레임을 병합하기 위해서는, 병합할 두 개의 데이터 프레임의 이름들(<code>data1</code>과 <code>data2</code>)과 병합에 사용될 공통의 컬럼(여기서는 <code>ID</code> 컬럼)을 <code>inner_join()</code> 함수의 인수(<code>by = ”ID”</code>)로 지정해 주면 된다.</p>
+<div class="sourceCode" id="cb1310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1310-1" title="1"><span class="kw">inner_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)                <span class="co"># Apply inner_join dplyr function</span></a></code></pre></div>
+<pre><code>##   ID X1 X2
+## 1  2 a2 b1</code></pre>
+<p><img src="images/ch06/inner_join-dplyr-r-package-function.png" alt="R inner_join dplyr Package Function" style="zoom: 67%;" /></p>
+<ul>
+<li>이 그림은 inner_join의 결과를 보여준다. 이 그림에서 볼 수 있듯이, <code>inner_join()</code> 함수는 두 개의 데이터 프레임의 컬럼들을 병합하지만, 공통의 컬럼인 <code>ID</code>에 대해 같은 값을 갖는 행만<strong>(<code>ID = 2</code>)</strong>을 병합한다.</li>
+</ul>
+</div>
+</div>
+<div id="예제-2-left_join" class="section level3">
+<h3><span class="header-section-number">6.8.3</span> 예제 2: <code>left_join()</code></h3>
+<div id="left_join-함수의-기본-형식" class="section level4">
+<h4><span class="header-section-number">6.8.3.1</span> <code>left_join()</code> 함수의 기본 형식</h4>
+<pre><code>left_join(
+  x,
+  y,
+  by = NULL,
+  copy = FALSE,
+  suffix = c(&quot;.x&quot;, &quot;.y&quot;),
+  ...,
+  keep = FALSE
+)</code></pre>
+</div>
+<div id="left_join-함수의-예" class="section level4">
+<h4><span class="header-section-number">6.8.3.2</span> <code>left_join()</code> 함수의 예</h4>
+<div class="sourceCode" id="cb1313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1313-1" title="1"><span class="kw">left_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)                 <span class="co"># Apply left_join dplyr function</span></a></code></pre></div>
+<pre><code>##   ID X1   X2
+## 1  1 a1 &lt;NA&gt;
+## 2  2 a2   b1</code></pre>
+<p><img src="images/ch06/left_join-dplyr-r-package-function.png" alt="R left_join dplyr Package Function" style="zoom:67%;" /></p>
+<ul>
+<li>inner_join과의 차이는 left_join은 <code>left_join()</code> 함수에 <strong>첫 번째로 입력된(left)</strong> 데이터 프레임(<code>data1</code>)의 <strong>모든 행들</strong>을 포함하고 있다.<br />
+</li>
+<li>이때 결과로 생성되는 데이터 프레임의 <code>ID = 1</code>에 해당하는 행의 <code>X2</code> 컬럼에는 <code>NA</code>로 채워진다.</li>
+</ul>
+</div>
+</div>
+<div id="예제-3-right_join" class="section level3">
+<h3><span class="header-section-number">6.8.4</span> 예제 3: <code>right_join()</code></h3>
+<p><code>left_join()</code> 함수의 상대적 함수가 <code>right_join()</code> 함수이다.</p>
+<div id="right_join-함수의-기본-형식" class="section level4">
+<h4><span class="header-section-number">6.8.4.1</span> <code>right_join()</code> 함수의 기본 형식</h4>
+<p>이 함수의 기본 형식은 다음과 같다:</p>
+<pre><code>right_join(
+  x,
+  y,
+  by = NULL,
+  copy = FALSE,
+  suffix = c(&quot;.x&quot;, &quot;.y&quot;),
+  ...,
+  keep = FALSE
+)</code></pre>
+</div>
+<div id="right_join-함수의-예" class="section level4">
+<h4><span class="header-section-number">6.8.4.2</span> <code>right_join()</code> 함수의 예</h4>
+<div class="sourceCode" id="cb1316"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1316-1" title="1"><span class="kw">right_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)                <span class="co"># Apply right_join dplyr function</span></a></code></pre></div>
+<pre><code>##   ID   X1 X2
+## 1  2   a2 b1
+## 2  3 &lt;NA&gt; b2</code></pre>
+<p><img src="images/ch06/right_join-dplyr-r-package-function.png" alt="R right_join dplyr Package Function" style="zoom: 67%;" /></p>
+<ul>
+<li><p><code>right_join()</code> 함수에 <strong>두 번째로 입력된(right)</strong> 데이터 프레임(<code>data2</code>)의 <strong>모든 행들</strong>을 포함하고 있다.</p></li>
+<li><p>이때 결과로 생성되는 데이터 프레임의 <code>ID = 3</code> 에 해당하는 행의 <code>X1</code> 컬럼에는 <code>NA</code>로 채워진다.</p></li>
+</ul>
+</div>
+</div>
+<div id="예제-4-full_join" class="section level3">
+<h3><span class="header-section-number">6.8.5</span> 예제 4: <code>full_join()</code></h3>
+<div id="full_join-함수의-기본-형식" class="section level4">
+<h4><span class="header-section-number">6.8.5.1</span> <code>full_join()</code> 함수의 기본 형식</h4>
+<p><code>full_join()</code> 함수는 join() 함수 중에서 가장 많은 데이터를 유지한다.</p>
+<p>이 함수의 기본 형식은 다음과 같다:</p>
+<pre><code>full_join(
+  x,
+  y,
+  by = NULL,
+  copy = FALSE,
+  suffix = c(&quot;.x&quot;, &quot;.y&quot;),
+  ...,
+  keep = FALSE
+)</code></pre>
+</div>
+<div id="full_join-함수의-예" class="section level4">
+<h4><span class="header-section-number">6.8.5.2</span> <code>full_join()</code> 함수의 예</h4>
+<div class="sourceCode" id="cb1319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1319-1" title="1"><span class="kw">full_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)                 <span class="co"># Apply full_join dplyr function</span></a></code></pre></div>
+<pre><code>##   ID   X1   X2
+## 1  1   a1 &lt;NA&gt;
+## 2  2   a2   b1
+## 3  3 &lt;NA&gt;   b2</code></pre>
+<p><img src="images/ch06/full_join-dplyr-r-package-function.png" alt="R full_join dplyr Package Function" style="zoom:67%;" /></p>
+<ul>
+<li><code>full_join()</code> 함수는 <strong>두 데이터 프레임(<code>data1과</code>data2`)의 모든 행들</strong>을 포함하고 있다.<br />
+</li>
+<li>이때 결과로 생성되는 데이터 프레임의 <code>ID = 1</code> 에 해당하는 행의 <code>X2</code> 컬럼과 <code>ID=3</code>에 해당하는 행의 <code>X1</code>컬럼은 <code>NA</code>로 채워진다.</li>
+</ul>
+</div>
+</div>
+<div id="예제-5-semi_join" class="section level3">
+<h3><span class="header-section-number">6.8.6</span> 예제 5: <code>semi_join()</code></h3>
+<p>앞의 4개의 join 함수들(<code>inner_join()</code>, <code>left_join()</code>, <code>right_join()</code>, 그리고 <code>full_join()</code>)은 <strong>변환 조인(mutating joins)</strong>이라고도 불린다. 변환 조인은 두 데이터 소스의 변수(컬럼)들을 결합한다.</p>
+<p>다음의 두 개의 join 함수들(<code>semi_join()</code>과 <code>anti_join()</code>)은 <strong>필터링 조인(filtering joins)</strong>이라고 불린다. 필터링 조인은 왼쪽 데이터(<code>x</code>)의 모든 경우를 유지하며, 오른 쪽 데이터(<code>y</code>)를 필터로 사용한다.</p>
+<div id="semi_join-함수의-기본-형식" class="section level4">
+<h4><span class="header-section-number">6.8.6.1</span> <code>semi_join()</code> 함수의 기본 형식</h4>
+<p>이 함수의 기본 형식은 다음과 같다:</p>
+<pre><code>semi_join(x, y, by = NULL, copy = FALSE, ..., na_matches = c(&quot;na&quot;, &quot;never&quot;))</code></pre>
+</div>
+<div id="semi_join-함수의-예" class="section level4">
+<h4><span class="header-section-number">6.8.6.2</span> <code>semi_join()</code> 함수의 예</h4>
+<div class="sourceCode" id="cb1322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1322-1" title="1"><span class="kw">semi_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)                 <span class="co"># Apply semi_join dplyr function</span></a></code></pre></div>
+<pre><code>##   ID X1
+## 1  2 a2</code></pre>
+<p><img src="images/ch06/semi_join-dplyr-r-package-function.png" alt="R semi_join dplyr Package Function" style="zoom:67%;" /></p>
+<ul>
+<li><code>semi_join()</code> 함수는 <strong>왼쪽의 데이터 프레임(<code>data1</code>)</strong>에 대하여 <strong>오른 쪽 데이터 프레임(data2)에 있는 공통 컬럼인 ID 값과 비교</strong>하여 <strong>대응이 되는 행</strong>만을 유지한다.</li>
+<li>이 때, 결과로 생성되는 데이터 프레임의 구조는 왼쪽 데이터 프레임의 구조와 같다.</li>
+</ul>
+</div>
+</div>
+<div id="예제-6-anti_join" class="section level3">
+<h3><span class="header-section-number">6.8.7</span> 예제 6 : <code>anti_join()</code></h3>
+<div id="anti_join-함수의-기본-형식" class="section level4">
+<h4><span class="header-section-number">6.8.7.1</span> <code>anti_join()</code> 함수의 기본 형식</h4>
+<p>anti_join() 함수는 앞에서 살펴 본 semi_join() 함수의 결과의 반대이다.</p>
+<p>이 함수의 기본 형식은 다음과 같다:</p>
+<pre><code>semi_join(x, y, by = NULL, copy = FALSE, ..., na_matches = c(&quot;na&quot;, &quot;never&quot;))</code></pre>
+</div>
+<div id="anti_join-함수의-예" class="section level4">
+<h4><span class="header-section-number">6.8.7.2</span> <code>anti_join()</code> 함수의 예</h4>
+<div class="sourceCode" id="cb1325"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1325-1" title="1"><span class="kw">anti_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)                 <span class="co"># Apply anti_join dplyr function</span></a></code></pre></div>
+<pre><code>##   ID X1
+## 1  1 a1</code></pre>
+<p><img src="images/ch06/anti_join-dplyr-r-package-function.png" alt="R anti_join dplyr Package Function" style="zoom:67%;" /></p>
+<ul>
+<li><code>anti_join()</code> 함수는 <strong>왼쪽의 데이터 프레임(<code>data1</code>)</strong>에 대하여 <strong>오른 쪽 데이터 프레임(data2)에 있는 공통 컬럼인 ID 값과 비교</strong>하여 <strong><em>대응이 되지 않는 행</em></strong>만을 유지한다.</li>
+<li>이 때, 결과로 생성되는 데이터 프레임의 구조는 왼쪽 데이터 프레임의 구조와 같다.</li>
+</ul>
+<p>지금까지 dplyr 패키지의 6 개 join 함수들의 기본 개념에 대하여 살펴 보았다. 그러나, 실제에 있어서는 지금까지 살펴 본 예제보다는 훨씬 더 복잡하다. 다음에서 좀 더 복잡한 상황에서 join 함수를 어떻게 적용할 수 있는지 살펴보기로 한다.</p>
+</div>
+</div>
+<div id="예제-7-복수-개의-데이터-프레임-조인" class="section level3">
+<h3><span class="header-section-number">6.8.8</span> 예제 7: 복수 개의 데이터 프레임 조인</h3>
+<p>좀 더 복잡한 상황을 만들기 위해 세 번째 데이터 프레임 예제 데이터를 생성한다:</p>
+<div id="예제-데이터의-생성-2" class="section level4">
+<h4><span class="header-section-number">6.8.8.1</span> 예제 데이터의 생성</h4>
+<div class="sourceCode" id="cb1327"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1327-1" title="1">data3 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">ID =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>),                   <span class="co"># Create third example data frame </span></a>
+<a class="sourceLine" id="cb1327-2" title="2">              <span class="dt">X2 =</span> <span class="kw">c</span>(<span class="st">&quot;c1&quot;</span>, <span class="st">&quot;c2&quot;</span>),                    </a>
+<a class="sourceLine" id="cb1327-3" title="3">              <span class="dt">X3 =</span> <span class="kw">c</span>(<span class="st">&quot;d1&quot;</span>, <span class="st">&quot;d2&quot;</span>),                    </a>
+<a class="sourceLine" id="cb1327-4" title="4">              <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>) </a>
+<a class="sourceLine" id="cb1327-5" title="5">data3                                               <span class="co"># Print data to RStudio console </span></a></code></pre></div>
+<pre><code>##   ID X2 X3
+## 1  2 c1 d1
+## 2  4 c2 d2</code></pre>
+<p><img src="images/ch06/20200712_185552.png" style="zoom:80%;" /></p>
+<ul>
+<li>세 번째 데이터 프레임인 <code>data3</code>은 <code>ID</code>, <code>X2</code>, <code>X3</code> 등의 컬럼을 가지고 있다. 이 컬럼들 중 <code>X2</code> 컬럼은 <code>data2</code>에도 존재하고 있음을 주목하기 바란다.</li>
+</ul>
+<p>이번 예제에서는 복수 개의 데이터 프레임들을 하나의 데이터 세트로 병합하는 방법에 대하여 살펴보기로 한다. 여기서는 <code>full_join()</code> 함수를 사용하겠지만, 다른 종류의 join 함수들도 같은 방법으로 이용할 수 있다.</p>
+<div class="sourceCode" id="cb1329"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1329-1" title="1"><span class="kw">full_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>) <span class="op">%&gt;%</span><span class="st">              </span><span class="co"># Full outer join of multiple data frames</span></a>
+<a class="sourceLine" id="cb1329-2" title="2"><span class="kw">full_join</span>(., data3, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</a></code></pre></div>
+<pre><code>##   ID   X1 X2.x X2.y   X3
+## 1  1   a1 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
+## 2  2   a2   b1   c1   d1
+## 3  3 &lt;NA&gt;   b2 &lt;NA&gt; &lt;NA&gt;
+## 4  4 &lt;NA&gt; &lt;NA&gt;   c2   d2</code></pre>
+<p><img src="images/ch06/join_multiple_dataframes.png" style="zoom:80%;" /></p>
+<ul>
+<li><p><code>full_join(data1, data2, by = "ID")</code></p>
+<ul>
+<li><p>먼저 <code>data1</code>과 <code>data2</code>를 공통 컬럼인 <code>ID</code>를 기준으로 해서 <strong>full_join</strong>을 한다.</p>
+<p><img src="images/ch06/20200627_224715.png" style="zoom:67%;" /></p></li>
+</ul></li>
+<li><p>그런 다음, 그 결과로 생성된 객체(<code>.</code>)를 <code>data3</code>와 역시 공통 컬럼인 <code>ID</code>를 기준으로 full_join을 한다.</p>
+<p><img src="images/ch06/20200627_224850.png" style="zoom: 67%;" /></p>
+<ul>
+<li>왼쪽 테이블의 <code>X2</code>는 <code>X2.x</code>로, 오른쪽 테이블의 <code>X2</code>는 <code>X2.y</code>로 변환되어 있음을 알 수 있다.</li>
+<li>최종으로 생성된 데이터의 첫 3개 행은 왼쪽 테이블, 그리고 네 번째 행은 오른쪽 테이블에 의해 생성되었다.</li>
+<li>다만 <code>X2.y</code> 컬럼과 <code>X3</code> 컬럼 중 첫 번째와 세 번째 행의 데이터, 그리고 네 번째 행의 <code>X1</code>과 <code>X2.x</code> 컬럼의 값은 모두 <code>NA</code>로 채워져 있음을 알 수 있다.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="예제-8-복수-컬럼에-의한-조인" class="section level3">
+<h3><span class="header-section-number">6.8.9</span> 예제 8: 복수 컬럼에 의한 조인</h3>
+<p><strong>예제 7</strong>에서 본 것처럼, <code>data2</code>와 <code>data3</code>은 <code>ID</code>와 <code>X2</code> 컬럼을 같이 가지고 있다. 이 <strong>두 컬럼을 기준으로 두 개의 데이터 프레임을 조인</strong>하고자 한다면, <code>by =</code> 옵션에 동시에 그 변수들을 조인 변수로 지정하면 된다.</p>
+<div class="sourceCode" id="cb1331"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1331-1" title="1"><span class="kw">full_join</span>(data2, data3, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;ID&quot;</span>, <span class="st">&quot;X2&quot;</span>))         <span class="co"># Join by multiple columns </span></a></code></pre></div>
+<pre><code>##   ID X2   X3
+## 1  2 b1 &lt;NA&gt;
+## 2  3 b2 &lt;NA&gt;
+## 3  2 c1   d1
+## 4  4 c2   d2</code></pre>
+<p><img src="images/ch06/join_by_multiple_columns.png" style="zoom:67%;" /></p>
+<p><strong>주의</strong> : 최종적으로 생성된 데이터 세트에서 <code>ID</code>가 <code>2</code> 인 행의 경우, ‘<strong>1번 행</strong>’은 <code>data2</code>에는 <code>X3</code>가 없으므로 <code>NA</code>가 그리고 ‘<strong>4번 행</strong>’은 <code>data3</code>에는 <code>X3</code>가 <code>d1</code> 이므로 <code>d1</code> 값이 복사됨을 알 수 있다.</p>
+</div>
+<div id="예제-9-데이터-조인과-id-삭제" class="section level3">
+<h3><span class="header-section-number">6.8.10</span> 예제 9: 데이터 조인과 ID 삭제</h3>
+<p>마지막의 예로, 데이터 프레임을 조인하는데 사용된 공통의 컬럼인 ID가 더 이상 필요하지 않을 때가 있다. 이러한 ID 컬럼을 제거하기 위해서는 다음과 같은 코드를 사용하면 된다:</p>
+<div class="sourceCode" id="cb1333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1333-1" title="1"><span class="kw">inner_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>) <span class="op">%&gt;%</span><span class="st">              </span><span class="co"># Automatically delete ID  </span></a>
+<a class="sourceLine" id="cb1333-2" title="2"><span class="kw">select</span>(<span class="op">-</span><span class="st"> </span>ID) </a></code></pre></div>
+<pre><code>##   X1 X2
+## 1 a2 b1</code></pre>
+<p><img src="images/ch06/data_join_and_delete_ID.png" style="zoom: 67%;" /></p>
+</div>
+<div id="further-reading" class="section level3 unnumbered">
+<h3>Further Reading</h3>
+<ul>
+<li><a href="https://statisticsglobe.com/r-merging-data-frames-by-column-names-merge-function">The merge Function in R</a></li>
+<li><a href="https://statisticsglobe.com/cbind-r-command-example/">The cbind R Function</a></li>
+<li>[rbind &amp; rbind.fill <a href="https://statisticsglobe.com/rbind-in-r-example-vector-data-frame-fill-columns/">plyr] in R</a></li>
+<li><a href="https://statisticsglobe.com/r-functions-list/">List of Useful R Functions</a></li>
+<li><a href="https://statisticsglobe.com/r-programming-language/">The R Programming Language</a></li>
+<li><a href="https://statisticsglobe.com/r-dplyr-join-inner-left-right-full-semi-anti" class="uri">https://statisticsglobe.com/r-dplyr-join-inner-left-right-full-semi-anti</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="piping-operator.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tidy-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

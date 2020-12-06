@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10 Strings | Data Management with R</title>
+  <meta name="description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10 Strings | Data Management with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10 Strings | Data Management with R" />
+  
+  <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Dae Ho Kim" />
+
+
+<meta name="date" content="2020-10-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="dates-and-time.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.16/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
+<script src="libs/str_view-binding-1.4.0/str_view.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="1" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>1</b> Data Import and Export</a><ul>
+<li class="chapter" data-level="1.1" data-path="data-import.html"><a href="data-import.html#data-import"><i class="fa fa-check"></i><b>1.1</b> Data Import</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="data-import.html"><a href="data-import.html#준비하기"><i class="fa fa-check"></i><b>1.1.1</b> 준비하기</a></li>
+<li class="chapter" data-level="1.1.2" data-path="data-import.html"><a href="data-import.html#시작하기"><i class="fa fa-check"></i><b>1.1.2</b> 시작하기</a></li>
+<li class="chapter" data-level="1.1.3" data-path="data-import.html"><a href="data-import.html#벡터-파싱하기"><i class="fa fa-check"></i><b>1.1.3</b> 벡터 파싱하기</a></li>
+<li class="chapter" data-level="1.1.4" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>1.1.4</b> 연습문제</a></li>
+<li class="chapter" data-level="1.1.5" data-path="data-import.html"><a href="data-import.html#파일-파싱하기"><i class="fa fa-check"></i><b>1.1.5</b> 파일 파싱하기</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="data-import.html"><a href="data-import.html#data_export"><i class="fa fa-check"></i><b>1.2</b> Data Export</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="data-import.html"><a href="data-import.html#write_csv"><i class="fa fa-check"></i><b>1.2.1</b> <code>write_csv()</code></a></li>
+<li class="chapter" data-level="1.2.2" data-path="data-import.html"><a href="data-import.html#write_rds"><i class="fa fa-check"></i><b>1.2.2</b> <code>write_rds()</code></a></li>
+<li class="chapter" data-level="1.2.3" data-path="data-import.html"><a href="data-import.html#write_feather"><i class="fa fa-check"></i><b>1.2.3</b> <code>write_feather()</code></a></li>
+<li class="chapter" data-level="1.2.4" data-path="data-import.html"><a href="data-import.html#read_csv와-read_rds의-비교"><i class="fa fa-check"></i><b>1.2.4</b> <code>read_csv()</code>와 <code>read_rds()</code>의 비교</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="data-import.html"><a href="data-import.html#data_import_additional"><i class="fa fa-check"></i><b>1.3</b> Read Tabular Data의 보충설명</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="data-import.html"><a href="data-import.html#read_csv의-예"><i class="fa fa-check"></i><b>1.3.1</b> <code>read_csv()</code>의 예</a></li>
+<li class="chapter" data-level="1.3.2" data-path="data-import.html"><a href="data-import.html#read_csv2의-예"><i class="fa fa-check"></i><b>1.3.2</b> <code>read_csv2()</code>의 예</a></li>
+<li class="chapter" data-level="1.3.3" data-path="data-import.html"><a href="data-import.html#read_delim의-예"><i class="fa fa-check"></i><b>1.3.3</b> <code>read_delim()</code>의 예</a></li>
+<li class="chapter" data-level="1.3.4" data-path="data-import.html"><a href="data-import.html#read_fwf의-예"><i class="fa fa-check"></i><b>1.3.4</b> <code>read_fwf()</code>의 예</a></li>
+<li class="chapter" data-level="1.3.5" data-path="data-import.html"><a href="data-import.html#read_tsv의-예"><i class="fa fa-check"></i><b>1.3.5</b> read_tsv()의 예</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html"><i class="fa fa-check"></i><b>2</b> Dataframe, Tibble and Factor</a><ul>
+<li class="chapter" data-level="2.1" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#dataframe"><i class="fa fa-check"></i><b>2.1</b> Data Frame</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#데이터-프레임의-생성"><i class="fa fa-check"></i><b>2.1.1</b> 데이터 프레임의 생성</a></li>
+<li class="chapter" data-level="2.1.2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#데이터-프레임의-구조"><i class="fa fa-check"></i><b>2.1.2</b> 데이터 프레임의 구조</a></li>
+<li class="chapter" data-level="2.1.3" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#행열-추가하기"><i class="fa fa-check"></i><b>2.1.3</b> 행/열 추가하기</a></li>
+<li class="chapter" data-level="2.1.4" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#행과-열-접근하기"><i class="fa fa-check"></i><b>2.1.4</b> 행과 열 접근하기</a></li>
+<li class="chapter" data-level="2.1.5" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-2"><i class="fa fa-check"></i><b>2.1.5</b> 연습문제</a></li>
+<li class="chapter" data-level="2.1.6" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#행과-열의-이름-지정하기"><i class="fa fa-check"></i><b>2.1.6</b> 행과 열의 이름 지정하기</a></li>
+<li class="chapter" data-level="2.1.7" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#데이터-타입-변환"><i class="fa fa-check"></i><b>2.1.7</b> 데이터 타입 변환</a></li>
+<li class="chapter" data-level="2.1.8" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-3"><i class="fa fa-check"></i><b>2.1.8</b> 연습문제</a></li>
+<li class="chapter" data-level="2.1.9" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#실습-과제"><i class="fa fa-check"></i><b>2.1.9</b> 실습 과제</a></li>
+<li class="chapter" data-level="2.1.10" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#apply-함수-이해하기"><i class="fa fa-check"></i><b>2.1.10</b> <code>apply()</code> 함수 이해하기</a></li>
+<li class="chapter" data-level="2.1.11" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-4"><i class="fa fa-check"></i><b>2.1.11</b> 연습문제</a></li>
+<li class="chapter" data-level="2.1.12" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-5"><i class="fa fa-check"></i><b>2.1.12</b> 연습문제</a></li>
+<li class="chapter" data-level="2.1.13" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#apply-함수의-사촌들"><i class="fa fa-check"></i><b>2.1.13</b> <code>apply()</code> 함수의 사촌들</a></li>
+<li class="chapter" data-level="2.1.14" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-6"><i class="fa fa-check"></i><b>2.1.14</b> 연습문제</a></li>
+<li class="chapter" data-level="" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#참고-sampling"><i class="fa fa-check"></i>[참고 : Sampling]</a></li>
+<li class="chapter" data-level="" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#reference"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#tibble"><i class="fa fa-check"></i><b>2.2</b> tibble</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#티블-생성"><i class="fa fa-check"></i><b>2.2.1</b> 티블 생성</a></li>
+<li class="chapter" data-level="2.2.2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#강제변환coercion"><i class="fa fa-check"></i><b>2.2.2</b> 강제변환(Coercion)</a></li>
+<li class="chapter" data-level="2.2.3" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#티블과-데이터-프레임의-비교"><i class="fa fa-check"></i><b>2.2.3</b> 티블과 데이터 프레임의 비교</a></li>
+<li class="chapter" data-level="2.2.4" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#이전-코드와-상호작용"><i class="fa fa-check"></i><b>2.2.4</b> 이전 코드와 상호작용</a></li>
+<li class="chapter" data-level="2.2.5" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#외부-데이터-가져오기-importing"><i class="fa fa-check"></i><b>2.2.5</b> 외부 데이터 가져오기 (importing)</a></li>
+<li class="chapter" data-level="2.2.6" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-7"><i class="fa fa-check"></i><b>2.2.6</b> 연습문제</a></li>
+<li class="chapter" data-level="" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#references"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#factor"><i class="fa fa-check"></i><b>2.3</b> Factor</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#범주형-자료"><i class="fa fa-check"></i><b>2.3.1</b> 범주형 자료</a></li>
+<li class="chapter" data-level="2.3.2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#factor의-요소-및-특징"><i class="fa fa-check"></i><b>2.3.2</b> Factor의 요소 및 특징</a></li>
+<li class="chapter" data-level="2.3.3" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#factor-함수의-형식"><i class="fa fa-check"></i><b>2.3.3</b> <code>factor()</code> 함수의 형식</a></li>
+<li class="chapter" data-level="2.3.4" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#factor-생성"><i class="fa fa-check"></i><b>2.3.4</b> factor 생성</a></li>
+<li class="chapter" data-level="" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#reference-1"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-cleansing.html"><a href="data-cleansing.html"><i class="fa fa-check"></i><b>3</b> Data Cleansing</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_summary"><i class="fa fa-check"></i><b>3.1</b> Data Cleansing</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="data-cleansing.html"><a href="data-cleansing.html#변수-요약"><i class="fa fa-check"></i><b>3.1.1</b> 변수 요약</a></li>
+<li class="chapter" data-level="3.1.2" data-path="data-cleansing.html"><a href="data-cleansing.html#데이터-세트-4"><i class="fa fa-check"></i><b>3.1.2</b> 데이터 세트</a></li>
+<li class="chapter" data-level="3.1.3" data-path="data-cleansing.html"><a href="data-cleansing.html#데이터-세트의-통계적-요약-정보"><i class="fa fa-check"></i><b>3.1.3</b> 데이터 세트의 통계적 요약 정보</a></li>
+<li class="chapter" data-level="3.1.4" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_describe"><i class="fa fa-check"></i><b>3.1.4</b> <code>Hmisc</code> 패키지의 <code>describe()</code> 함수</a></li>
+<li class="chapter" data-level="3.1.5" data-path="data-cleansing.html"><a href="data-cleansing.html#의심스러운-값"><i class="fa fa-check"></i><b>3.1.5</b> 의심스러운 값</a></li>
+<li class="chapter" data-level="3.1.6" data-path="data-cleansing.html"><a href="data-cleansing.html#describe함수의-결과의-시각화"><i class="fa fa-check"></i><b>3.1.6</b> <code>describe()</code>함수의 결과의 시각화</a></li>
+<li class="chapter" data-level="3.1.7" data-path="data-cleansing.html"><a href="data-cleansing.html#의심스러운-값을-결측치로-바꾸기"><i class="fa fa-check"></i><b>3.1.7</b> 의심스러운 값을 결측치로 바꾸기</a></li>
+<li class="chapter" data-level="3.1.8" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_Complete_cases"><i class="fa fa-check"></i><b>3.1.8</b> <code>NA</code>가 없는 완전한 데이터</a></li>
+<li class="chapter" data-level="3.1.9" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_after_cleansing"><i class="fa fa-check"></i><b>3.1.9</b> 데이터 정제 후의 <code>describe()</code>함수 결과 그림</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_missing_value"><i class="fa fa-check"></i><b>3.2</b> 결측치(Missing Values) 처리</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data-cleansing.html"><a href="data-cleansing.html#결측값이-포함되어-있는지-확인하는-방법-is.na"><i class="fa fa-check"></i><b>3.2.1</b> 결측값이 포함되어 있는지 확인하는 방법: <code>is.na()</code></a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-cleansing.html"><a href="data-cleansing.html#결측치-갯수-sumis.na"><i class="fa fa-check"></i><b>3.2.2</b> 결측치 갯수: <code>sum(is.na())</code></a></li>
+<li class="chapter" data-level="3.2.3" data-path="data-cleansing.html"><a href="data-cleansing.html#결측치를-통계-분석시-제외시키기-na.rm-true"><i class="fa fa-check"></i><b>3.2.3</b> 결측치를 통계 분석시 제외시키기 : <code>na.rm = TRUE</code></a></li>
+<li class="chapter" data-level="3.2.4" data-path="data-cleansing.html"><a href="data-cleansing.html#결측치가-있는-행-제거-na.omit"><i class="fa fa-check"></i><b>3.2.4</b> 결측치가 있는 행 제거: <code>na.omit()</code></a></li>
+<li class="chapter" data-level="3.2.5" data-path="data-cleansing.html"><a href="data-cleansing.html#결측치를-다른-값으로-대체"><i class="fa fa-check"></i><b>3.2.5</b> 결측치를 다른 값으로 대체</a></li>
+<li class="chapter" data-level="" data-path="data-cleansing.html"><a href="data-cleansing.html#reference-2"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_outlier"><i class="fa fa-check"></i><b>3.3</b> 이상치(Outlier) 처리 {#outlier}</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="data-cleansing.html"><a href="data-cleansing.html#표준값-z를-이용한-이상치-확인-및-처리"><i class="fa fa-check"></i><b>3.3.1</b> 표준값 Z를 이용한 이상치 확인 및 처리</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data-cleansing.html"><a href="data-cleansing.html#수정된-표준값을-이용한-이상치-확인-및-처리"><i class="fa fa-check"></i><b>3.3.2</b> 수정된 표준값을 이용한 이상치 확인 및 처리</a></li>
+<li class="chapter" data-level="3.3.3" data-path="data-cleansing.html"><a href="data-cleansing.html#사분위수를-이용한-이상치-확인-및-처리"><i class="fa fa-check"></i><b>3.3.3</b> 사분위수를 이용한 이상치 확인 및 처리</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="preprocessing.html"><a href="preprocessing.html"><i class="fa fa-check"></i><b>4</b> Data Preprocessing</a><ul>
+<li class="chapter" data-level="4.1" data-path="preprocessing.html"><a href="preprocessing.html#들어가는-말"><i class="fa fa-check"></i><b>4.1</b> 들어가는 말</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="preprocessing.html"><a href="preprocessing.html#데이터-전처리란"><i class="fa fa-check"></i><b>4.1.1</b> 데이터 전처리란?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="preprocessing.html"><a href="preprocessing.html#왜-dplyr-패키지-인가"><i class="fa fa-check"></i><b>4.1.2</b> 왜 <code>dplyr</code> 패키지 인가?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="preprocessing.html"><a href="preprocessing.html#dplyr-패키지에-있는-함수들"><i class="fa fa-check"></i><b>4.2</b> <code>dplyr</code> 패키지에 있는 함수들</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="preprocessing.html"><a href="preprocessing.html#패키지-설치"><i class="fa fa-check"></i><b>4.2.1</b> 패키지 설치</a></li>
+<li class="chapter" data-level="4.2.2" data-path="preprocessing.html"><a href="preprocessing.html#예제-데이터-확인"><i class="fa fa-check"></i><b>4.2.2</b> 예제 데이터 확인</a></li>
+<li class="chapter" data-level="4.2.3" data-path="preprocessing.html"><a href="preprocessing.html#dplyr-패키지의-주요-함수-목록"><i class="fa fa-check"></i><b>4.2.3</b> <code>dplyr</code> 패키지의 주요 함수 목록</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="preprocessing.html"><a href="preprocessing.html#데이터-프레임의-컬럼-선택-select"><i class="fa fa-check"></i><b>4.3</b> 데이터 프레임의 컬럼 선택: <code>select()</code></a><ul>
+<li class="chapter" data-level="4.3.1" data-path="preprocessing.html"><a href="preprocessing.html#select-함수의-기본-형식"><i class="fa fa-check"></i><b>4.3.1</b> <code>select()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.3.2" data-path="preprocessing.html"><a href="preprocessing.html#a번째-부터-n번째의-연속적-컬럼-선택"><i class="fa fa-check"></i><b>4.3.2</b> a번째 부터 n번째의 연속적 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.3" data-path="preprocessing.html"><a href="preprocessing.html#a번째-부터-n번째의-연속적-컬럼을-제외한-선택"><i class="fa fa-check"></i><b>4.3.3</b> <code>a</code>번째 부터 <code>n</code>번째의 연속적 컬럼을 제외한 선택</a></li>
+<li class="chapter" data-level="4.3.4" data-path="preprocessing.html"><a href="preprocessing.html#컬럼-이름의-앞-부분을-지정하여-선택"><i class="fa fa-check"></i><b>4.3.4</b> 컬럼 이름의 ’앞 부분’을 지정하여 선택</a></li>
+<li class="chapter" data-level="4.3.5" data-path="preprocessing.html"><a href="preprocessing.html#컬럼-이름의-끝-부분을-지정하여-선택"><i class="fa fa-check"></i><b>4.3.5</b> 컬럼 이름의 ’끝 부분’을 지정하여 선택</a></li>
+<li class="chapter" data-level="4.3.6" data-path="preprocessing.html"><a href="preprocessing.html#컬럼-이름의-일부를-포함하는-컬럼-선택"><i class="fa fa-check"></i><b>4.3.6</b> 컬럼 이름의 일부를 포함하는 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.7" data-path="preprocessing.html"><a href="preprocessing.html#정규-표현식과-일치하는-문자열을-포함하는-컬럼-선택"><i class="fa fa-check"></i><b>4.3.7</b> 정규 표현식과 일치하는 문자열을 포함하는 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.8" data-path="preprocessing.html"><a href="preprocessing.html#원하는-컬럼-명의-그룹에-포함된-컬럼-선택"><i class="fa fa-check"></i><b>4.3.8</b> 원하는 컬럼 명의 그룹에 포함된 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.9" data-path="preprocessing.html"><a href="preprocessing.html#컬럼-이름의-접두사와-숫자-범위를-조합하여-컬럼-선택"><i class="fa fa-check"></i><b>4.3.9</b> 컬럼 이름의 접두사와 숫자 범위를 조합하여 컬럼 선택</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="preprocessing.html"><a href="preprocessing.html#filter-함수를-이용한-행의-선택"><i class="fa fa-check"></i><b>4.4</b> <code>filter()</code> 함수를 이용한 행의 선택</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="preprocessing.html"><a href="preprocessing.html#filter-함수의-기본-형식"><i class="fa fa-check"></i><b>4.4.1</b> <code>filter()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.4.2" data-path="preprocessing.html"><a href="preprocessing.html#단일-조건에-의한-행의-선택"><i class="fa fa-check"></i><b>4.4.2</b> 단일 조건에 의한 행의 선택</a></li>
+<li class="chapter" data-level="4.4.3" data-path="preprocessing.html"><a href="preprocessing.html#복수-조건을-and로-결합한-행의-선택"><i class="fa fa-check"></i><b>4.4.3</b> 복수 조건을 AND(<code>,</code>)로 결합한 행의 선택</a></li>
+<li class="chapter" data-level="4.4.4" data-path="preprocessing.html"><a href="preprocessing.html#복수-조건을-or로-결합한-행의-선택"><i class="fa fa-check"></i><b>4.4.4</b> 복수 조건을 OR(<code>|</code>)로 결합한 행의 선택</a></li>
+<li class="chapter" data-level="4.4.5" data-path="preprocessing.html"><a href="preprocessing.html#행의-위치를-지정해서-행의-데이터-부분집합-선택"><i class="fa fa-check"></i><b>4.4.5</b> 행의 위치를 지정해서 행의 데이터 부분집합 선택</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="preprocessing.html"><a href="preprocessing.html#arrange-함수를-이용한-행의-정렬"><i class="fa fa-check"></i><b>4.5</b> <code>arrange()</code> 함수를 이용한 행의 정렬</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="preprocessing.html"><a href="preprocessing.html#arrange-함수의-기본-형식"><i class="fa fa-check"></i><b>4.5.1</b> <code>arrange()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.5.2" data-path="preprocessing.html"><a href="preprocessing.html#복수-개의-정렬-기준으로-행을-정렬하기"><i class="fa fa-check"></i><b>4.5.2</b> 복수 개의 정렬 기준으로 행을 정렬하기</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="preprocessing.html"><a href="preprocessing.html#preprocessing_rename"><i class="fa fa-check"></i><b>4.6</b> <code>rename()</code> 함수를 이용한 데이터 프레임의 컬럼 이름 변경</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="preprocessing.html"><a href="preprocessing.html#rename-함수의-기본-형식"><i class="fa fa-check"></i><b>4.6.1</b> <code>rename()</code> 함수의 기본 형식</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="preprocessing.html"><a href="preprocessing.html#distinct-함수를-이용한-유일한-값-추출"><i class="fa fa-check"></i><b>4.7</b> <code>distinct()</code> 함수를 이용한 유일한 값 추출</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="preprocessing.html"><a href="preprocessing.html#distinct-함수의-기본-형식"><i class="fa fa-check"></i><b>4.7.1</b> <code>distinct()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.7.2" data-path="preprocessing.html"><a href="preprocessing.html#단일-기준에-의한-유일-값-추출"><i class="fa fa-check"></i><b>4.7.2</b> 단일 기준에 의한 유일 값 추출</a></li>
+<li class="chapter" data-level="4.7.3" data-path="preprocessing.html"><a href="preprocessing.html#복수-기준에-의한-유일-값-추출"><i class="fa fa-check"></i><b>4.7.3</b> 복수 기준에 의한 유일 값 추출</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="preprocessing.html"><a href="preprocessing.html#무작위-표본-추출"><i class="fa fa-check"></i><b>4.8</b> 무작위 표본 추출</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="preprocessing.html"><a href="preprocessing.html#정해진-갯수-만큼의-표본-무작위-추출"><i class="fa fa-check"></i><b>4.8.1</b> 정해진 갯수 만큼의 표본 무작위 추출</a></li>
+<li class="chapter" data-level="4.8.2" data-path="preprocessing.html"><a href="preprocessing.html#정해진-비율로-표본-무작위-추출"><i class="fa fa-check"></i><b>4.8.2</b> 정해진 비율로 표본 무작위 추출</a></li>
+<li class="chapter" data-level="4.8.3" data-path="preprocessing.html"><a href="preprocessing.html#정해진-갯수-만큼의-표본-복원-추출"><i class="fa fa-check"></i><b>4.8.3</b> 정해진 갯수 만큼의 표본 복원 추출</a></li>
+<li class="chapter" data-level="4.8.4" data-path="preprocessing.html"><a href="preprocessing.html#집단별-층화-표본-추출"><i class="fa fa-check"></i><b>4.8.4</b> 집단별 층화 표본 추출</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="preprocessing.html"><a href="preprocessing.html#mutate-함수를-이용한-새로운-컬럼-생성"><i class="fa fa-check"></i><b>4.9</b> <code>mutate()</code> 함수를 이용한 새로운 컬럼 생성</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="preprocessing.html"><a href="preprocessing.html#mutate-함수의-기본-형식"><i class="fa fa-check"></i><b>4.9.1</b> <code>mutate()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.9.2" data-path="preprocessing.html"><a href="preprocessing.html#새로운-컬럼-생성-예"><i class="fa fa-check"></i><b>4.9.2</b> 새로운 컬럼 생성 예</a></li>
+<li class="chapter" data-level="4.9.3" data-path="preprocessing.html"><a href="preprocessing.html#새로운-만든-컬럼변수를-이용하여-또-다른-컬럼-생성하기"><i class="fa fa-check"></i><b>4.9.3</b> 새로운 만든 컬럼(변수)를 이용하여 또 다른 컬럼 생성하기</a></li>
+<li class="chapter" data-level="4.9.4" data-path="preprocessing.html"><a href="preprocessing.html#컬럼의-값을-새로운-값으로-변경하기"><i class="fa fa-check"></i><b>4.9.4</b> 컬럼의 값을 새로운 값으로 변경하기</a></li>
+<li class="chapter" data-level="4.9.5" data-path="preprocessing.html"><a href="preprocessing.html#keep-인수의-사용-예"><i class="fa fa-check"></i><b>4.9.5</b> <code>.keep</code> 인수의 사용 예</a></li>
+<li class="chapter" data-level="4.9.6" data-path="preprocessing.html"><a href="preprocessing.html#after와-.before-인수의-사용-예"><i class="fa fa-check"></i><b>4.9.6</b> <code>.after</code>와 <code>.before</code> 인수의 사용 예</a></li>
+<li class="chapter" data-level="4.9.7" data-path="preprocessing.html"><a href="preprocessing.html#transmute-함수를-이용한-새로운-컬럼-생성"><i class="fa fa-check"></i><b>4.9.7</b> <code>transmute()</code> 함수를 이용한 새로운 컬럼 생성</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="preprocessing.html"><a href="preprocessing.html#preprocessing_summarise"><i class="fa fa-check"></i><b>4.10</b> <code>summarise()</code>함수를 이용한 요약 통계량 계산</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="preprocessing.html"><a href="preprocessing.html#summarise-함수의-기본-형식"><i class="fa fa-check"></i><b>4.10.1</b> <code>summarise()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.10.2" data-path="preprocessing.html"><a href="preprocessing.html#summarise-함수를-이용한-요약-통계-계산"><i class="fa fa-check"></i><b>4.10.2</b> <code>summarise()</code> 함수를 이용한 요약 통계 계산</a></li>
+<li class="chapter" data-level="4.10.3" data-path="preprocessing.html"><a href="preprocessing.html#summarise를-이용한-관측치의-갯수-및-색인-찾기"><i class="fa fa-check"></i><b>4.10.3</b> <code>summarise()</code>를 이용한 관측치의 갯수 및 색인 찾기</a></li>
+<li class="chapter" data-level="4.10.4" data-path="preprocessing.html"><a href="preprocessing.html#summarise-함수를-이용한-그룹별-요약-통계량-계산"><i class="fa fa-check"></i><b>4.10.4</b> <code>summarise()</code> 함수를 이용한 그룹별 요약 통계량 계산</a></li>
+<li class="chapter" data-level="4.10.5" data-path="preprocessing.html"><a href="preprocessing.html#복수-개의-변수에-동일한-summarise-함수-적용하기"><i class="fa fa-check"></i><b>4.10.5</b> 복수 개의 변수에 동일한 <code>summarise()</code> 함수 적용하기</a></li>
+<li class="chapter" data-level="" data-path="preprocessing.html"><a href="preprocessing.html#reference-3"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="piping-operator.html"><a href="piping-operator.html"><i class="fa fa-check"></i><b>5</b> Pipe Operator</a><ul>
+<li class="chapter" data-level="5.1" data-path="piping-operator.html"><a href="piping-operator.html#파이프-연산자"><i class="fa fa-check"></i><b>5.1</b> 파이프 연산자 : <code>%&gt;%</code></a><ul>
+<li class="chapter" data-level="5.1.1" data-path="piping-operator.html"><a href="piping-operator.html#파이프-연산자의-사용-예"><i class="fa fa-check"></i><b>5.1.1</b> 파이프 연산자의 사용 예</a></li>
+<li class="chapter" data-level="5.1.2" data-path="piping-operator.html"><a href="piping-operator.html#또-다른-예"><i class="fa fa-check"></i><b>5.1.2</b> 또 다른 예</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="piping-operator.html"><a href="piping-operator.html#piping_point_usage"><i class="fa fa-check"></i><b>5.2</b> 파이프된 명령어에 <code>‘.’</code> 사용하기</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="relational-data-top.html"><a href="relational-data-top.html"><i class="fa fa-check"></i><b>6</b> Relational Data</a><ul>
+<li class="chapter" data-level="6.1" data-path="relational-data-top.html"><a href="relational-data-top.html#결합append"><i class="fa fa-check"></i><b>6.1</b> 결합(Append)</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="relational-data-top.html"><a href="relational-data-top.html#데이터-프레임의-결합append"><i class="fa fa-check"></i><b>6.1.1</b> 데이터 프레임의 결합(append)</a></li>
+<li class="chapter" data-level="6.1.2" data-path="relational-data-top.html"><a href="relational-data-top.html#결합의-두-가지-방법-rbind-함수와-bind_rows함수"><i class="fa fa-check"></i><b>6.1.2</b> 결합의 두 가지 방법 : <code>rbind()</code> 함수와 <code>bind_rows()</code>함수</a></li>
+<li class="chapter" data-level="6.1.3" data-path="relational-data-top.html"><a href="relational-data-top.html#데이터-세트-결합의-예대응되지-않는-컬럼이-있는-경우"><i class="fa fa-check"></i><b>6.1.3</b> 데이터 세트 결합의 예(대응되지 않는 컬럼이 있는 경우)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="relational-data-top.html"><a href="relational-data-top.html#데이터-세트의-병합merge"><i class="fa fa-check"></i><b>6.2</b> 데이터 세트의 병합(Merge)</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="relational-data-top.html"><a href="relational-data-top.html#join-함수를-이용한-병합-예"><i class="fa fa-check"></i><b>6.2.1</b> join 함수를 이용한 병합 예</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="relational-data-top.html"><a href="relational-data-top.html#relational-data"><i class="fa fa-check"></i><b>6.3</b> Relational Data</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="relational-data-top.html"><a href="relational-data-top.html#들어가기"><i class="fa fa-check"></i><b>6.3.1</b> 들어가기</a></li>
+<li class="chapter" data-level="6.3.2" data-path="relational-data-top.html"><a href="relational-data-top.html#준비하기-1"><i class="fa fa-check"></i><b>6.3.2</b> 준비하기</a></li>
+<li class="chapter" data-level="6.3.3" data-path="relational-data-top.html"><a href="relational-data-top.html#nycflights13-패키지-내의-데이터-세트"><i class="fa fa-check"></i><b>6.3.3</b> <code>nycflights13</code> 패키지 내의 데이터 세트</a></li>
+<li class="chapter" data-level="6.3.4" data-path="relational-data-top.html"><a href="relational-data-top.html#연습문제-8"><i class="fa fa-check"></i><b>6.3.4</b> 연습문제</a></li>
+<li class="chapter" data-level="6.3.5" data-path="relational-data-top.html"><a href="relational-data-top.html#키key"><i class="fa fa-check"></i><b>6.3.5</b> 키(Key)</a></li>
+<li class="chapter" data-level="6.3.6" data-path="relational-data-top.html"><a href="relational-data-top.html#연습문제-9"><i class="fa fa-check"></i><b>6.3.6</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="relational-data-top.html"><a href="relational-data-top.html#변환-조인mutating-join"><i class="fa fa-check"></i><b>6.4</b> 변환 조인(Mutating Join)</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="relational-data-top.html"><a href="relational-data-top.html#조인-이해하기"><i class="fa fa-check"></i><b>6.4.1</b> 조인 이해하기</a></li>
+<li class="chapter" data-level="6.4.2" data-path="relational-data-top.html"><a href="relational-data-top.html#내부-조인-inner-join"><i class="fa fa-check"></i><b>6.4.2</b> 내부 조인 (inner join)</a></li>
+<li class="chapter" data-level="6.4.3" data-path="relational-data-top.html"><a href="relational-data-top.html#외부-조인-outer-join"><i class="fa fa-check"></i><b>6.4.3</b> 외부 조인 (outer join)</a></li>
+<li class="chapter" data-level="6.4.4" data-path="relational-data-top.html"><a href="relational-data-top.html#중복키"><i class="fa fa-check"></i><b>6.4.4</b> 중복키</a></li>
+<li class="chapter" data-level="6.4.5" data-path="relational-data-top.html"><a href="relational-data-top.html#키열-정의하기"><i class="fa fa-check"></i><b>6.4.5</b> 키열 정의하기</a></li>
+<li class="chapter" data-level="6.4.6" data-path="relational-data-top.html"><a href="relational-data-top.html#연습문제-10"><i class="fa fa-check"></i><b>6.4.6</b> 연습문제</a></li>
+<li class="chapter" data-level="6.4.7" data-path="relational-data-top.html"><a href="relational-data-top.html#기타-구현"><i class="fa fa-check"></i><b>6.4.7</b> 기타 구현</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="relational-data-top.html"><a href="relational-data-top.html#필터링-조인"><i class="fa fa-check"></i><b>6.5</b> 필터링 조인</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="relational-data-top.html"><a href="relational-data-top.html#연습문제-11"><i class="fa fa-check"></i><b>6.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="relational-data-top.html"><a href="relational-data-top.html#조인-문제"><i class="fa fa-check"></i><b>6.6</b> 조인 문제</a></li>
+<li class="chapter" data-level="6.7" data-path="relational-data-top.html"><a href="relational-data-top.html#집합-연산"><i class="fa fa-check"></i><b>6.7</b> 집합 연산</a><ul>
+<li class="chapter" data-level="" data-path="relational-data-top.html"><a href="relational-data-top.html#reference-4"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="relational-data-top.html"><a href="relational-data-top.html#join_exercises"><i class="fa fa-check"></i><b>6.8</b> Join Exercises</a><ul>
+<li class="chapter" data-level="6.8.1" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-데이터의-생성-1"><i class="fa fa-check"></i><b>6.8.1</b> 예제 데이터의 생성</a></li>
+<li class="chapter" data-level="6.8.2" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-1-inner_join"><i class="fa fa-check"></i><b>6.8.2</b> 예제 1: <code>inner_join()</code></a></li>
+<li class="chapter" data-level="6.8.3" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-2-left_join"><i class="fa fa-check"></i><b>6.8.3</b> 예제 2: <code>left_join()</code></a></li>
+<li class="chapter" data-level="6.8.4" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-3-right_join"><i class="fa fa-check"></i><b>6.8.4</b> 예제 3: <code>right_join()</code></a></li>
+<li class="chapter" data-level="6.8.5" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-4-full_join"><i class="fa fa-check"></i><b>6.8.5</b> 예제 4: <code>full_join()</code></a></li>
+<li class="chapter" data-level="6.8.6" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-5-semi_join"><i class="fa fa-check"></i><b>6.8.6</b> 예제 5: <code>semi_join()</code></a></li>
+<li class="chapter" data-level="6.8.7" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-6-anti_join"><i class="fa fa-check"></i><b>6.8.7</b> 예제 6 : <code>anti_join()</code></a></li>
+<li class="chapter" data-level="6.8.8" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-7-복수-개의-데이터-프레임-조인"><i class="fa fa-check"></i><b>6.8.8</b> 예제 7: 복수 개의 데이터 프레임 조인</a></li>
+<li class="chapter" data-level="6.8.9" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-8-복수-컬럼에-의한-조인"><i class="fa fa-check"></i><b>6.8.9</b> 예제 8: 복수 컬럼에 의한 조인</a></li>
+<li class="chapter" data-level="6.8.10" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-9-데이터-조인과-id-삭제"><i class="fa fa-check"></i><b>6.8.10</b> 예제 9: 데이터 조인과 ID 삭제</a></li>
+<li class="chapter" data-level="" data-path="relational-data-top.html"><a href="relational-data-top.html#further-reading"><i class="fa fa-check"></i>Further Reading</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>7</b> Tidy Data</a><ul>
+<li class="chapter" data-level="7.1" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_philosophy"><i class="fa fa-check"></i><b>7.1</b> 타이디 데이터 철학</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="tidy-data.html"><a href="tidy-data.html#분석의-단위"><i class="fa fa-check"></i><b>7.1.1</b> 분석의 단위</a></li>
+<li class="chapter" data-level="7.1.2" data-path="tidy-data.html"><a href="tidy-data.html#데이터-세트-5"><i class="fa fa-check"></i><b>7.1.2</b> 데이터 세트</a></li>
+<li class="chapter" data-level="7.1.3" data-path="tidy-data.html"><a href="tidy-data.html#docid-별-그루핑"><i class="fa fa-check"></i><b>7.1.3</b> <code>docid</code> 별 그루핑</a></li>
+<li class="chapter" data-level="7.1.4" data-path="tidy-data.html"><a href="tidy-data.html#요약-정보-확인"><i class="fa fa-check"></i><b>7.1.4</b> 요약 정보 확인</a></li>
+<li class="chapter" data-level="7.1.5" data-path="tidy-data.html"><a href="tidy-data.html#다중-레벨-데이터-확인"><i class="fa fa-check"></i><b>7.1.5</b> 다중 레벨 데이터 확인</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_untidy"><i class="fa fa-check"></i><b>7.2</b> Untidy data</a></li>
+<li class="chapter" data-level="7.3" data-path="tidy-data.html"><a href="tidy-data.html#컬럼-제목들이-변수-명이-아니고-값들인-경우"><i class="fa fa-check"></i><b>7.3</b> 컬럼 제목들이 변수 명이 아니고 값들인 경우</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="tidy-data.html"><a href="tidy-data.html#데이터-세트-6"><i class="fa fa-check"></i><b>7.3.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="7.3.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_functions"><i class="fa fa-check"></i><b>7.3.2</b> 사용할 수 있는 함수의 종류</a></li>
+<li class="chapter" data-level="7.3.3" data-path="tidy-data.html"><a href="tidy-data.html#pivot_longer-함수"><i class="fa fa-check"></i><b>7.3.3</b> <code>pivot_longer()</code> 함수</a></li>
+<li class="chapter" data-level="7.3.4" data-path="tidy-data.html"><a href="tidy-data.html#gather-함수"><i class="fa fa-check"></i><b>7.3.4</b> <code>gather()</code> 함수</a></li>
+<li class="chapter" data-level="7.3.5" data-path="tidy-data.html"><a href="tidy-data.html#melt-함수"><i class="fa fa-check"></i><b>7.3.5</b> <code>melt()</code> 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_one_column"><i class="fa fa-check"></i><b>7.4</b> 하나의 컬럼에 복수 개의 변수들이 있는 경우</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="tidy-data.html"><a href="tidy-data.html#데이터-세트-7"><i class="fa fa-check"></i><b>7.4.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="7.4.2" data-path="tidy-data.html"><a href="tidy-data.html#사용할-수-있는-함수의-종류"><i class="fa fa-check"></i><b>7.4.2</b> 사용할 수 있는 함수의 종류</a></li>
+<li class="chapter" data-level="7.4.3" data-path="tidy-data.html"><a href="tidy-data.html#pivot_wider-함수"><i class="fa fa-check"></i><b>7.4.3</b> <code>pivot_wider()</code> 함수</a></li>
+<li class="chapter" data-level="7.4.4" data-path="tidy-data.html"><a href="tidy-data.html#spread-함수"><i class="fa fa-check"></i><b>7.4.4</b> <code>spread()</code> 함수</a></li>
+<li class="chapter" data-level="7.4.5" data-path="tidy-data.html"><a href="tidy-data.html#dcast-함수"><i class="fa fa-check"></i><b>7.4.5</b> <code>dcast()</code> 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_one_cell"><i class="fa fa-check"></i><b>7.5</b> 하나의 셀에 저장된 여러 변수 또는 여러 셀에 흩어져 있는 한 변수</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="tidy-data.html"><a href="tidy-data.html#데이터-세트-8"><i class="fa fa-check"></i><b>7.5.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="" data-path="tidy-data.html"><a href="tidy-data.html#data-wrangling-with-dplyr-and-tidyr"><i class="fa fa-check"></i>Data Wrangling with dplyr and tidyr</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="tidy-data.html"><a href="tidy-data.html#separate-함수와-unite-함수"><i class="fa fa-check"></i><b>7.6</b> <code>separate()</code> 함수와 <code>unite()</code> 함수</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="tidy-data.html"><a href="tidy-data.html#separate-함수"><i class="fa fa-check"></i><b>7.6.1</b> <code>separate()</code> 함수</a></li>
+<li class="chapter" data-level="7.6.2" data-path="tidy-data.html"><a href="tidy-data.html#unite-함수"><i class="fa fa-check"></i><b>7.6.2</b> <code>unite()</code> 함수</a></li>
+<li class="chapter" data-level="7.6.3" data-path="tidy-data.html"><a href="tidy-data.html#separate-함수와-unite-함수의-예"><i class="fa fa-check"></i><b>7.6.3</b> <code>separate()</code> 함수와 <code>unite()</code> 함수의 예</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_reference_table"><i class="fa fa-check"></i><b>7.7</b> <code>tidyverse</code> 참조표</a></li>
+<li class="chapter" data-level="" data-path="tidy-data.html"><a href="tidy-data.html#references-1"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>8</b> Dates</a><ul>
+<li class="chapter" data-level="8.1" data-path="dates.html"><a href="dates.html#dates_in_R"><i class="fa fa-check"></i><b>8.1</b> R에서의 날짜 데이터</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="dates.html"><a href="dates.html#as.date-함수"><i class="fa fa-check"></i><b>8.1.1</b> <code>as.Date()</code> 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="dates.html"><a href="dates.html#dates_lubridate"><i class="fa fa-check"></i><b>8.2</b> <code>lubridate</code> 패키지</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="dates.html"><a href="dates.html#lubridate-패키지의-활용"><i class="fa fa-check"></i><b>8.2.1</b> <code>lubridate</code> 패키지의 활용</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="dates.html"><a href="dates.html#dates_variables"><i class="fa fa-check"></i><b>8.3</b> 날짜-시간 변수</a></li>
+<li class="chapter" data-level="8.4" data-path="dates.html"><a href="dates.html#dates_elements"><i class="fa fa-check"></i><b>8.4</b> <code>Date</code> 변수에서 정보 추출하기</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="dates.html"><a href="dates.html#관련-함수"><i class="fa fa-check"></i><b>8.4.1</b> 관련 함수</a></li>
+<li class="chapter" data-level="8.4.2" data-path="dates.html"><a href="dates.html#date-변수의-정보-추출-예"><i class="fa fa-check"></i><b>8.4.2</b> <code>Date</code> 변수의 정보 추출 예</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="dates.html"><a href="dates.html#dates_POSIXct"><i class="fa fa-check"></i><b>8.5</b> 날짜-시간(<code>POSIXct</code>) 변수에서 정보 추출하기</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="dates.html"><a href="dates.html#관련-함수-1"><i class="fa fa-check"></i><b>8.5.1</b> 관련 함수</a></li>
+<li class="chapter" data-level="8.5.2" data-path="dates.html"><a href="dates.html#posixct-변수에서-정보-추출-예"><i class="fa fa-check"></i><b>8.5.2</b> <code>POSIXct</code> 변수에서 정보 추출 예</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="dates.html"><a href="dates.html#dates_functions"><i class="fa fa-check"></i><b>8.6</b> 날짜-시간 산술연산을 위한 두 종류의 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="dates-and-time.html"><a href="dates-and-time.html"><i class="fa fa-check"></i><b>9</b> Dates and Times</a><ul>
+<li class="chapter" data-level="9.1" data-path="dates-and-time.html"><a href="dates-and-time.html#dates_time_intro"><i class="fa fa-check"></i><b>9.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="dates-and-time.html"><a href="dates-and-time.html#준비하기-2"><i class="fa fa-check"></i><b>9.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="dates-and-time.html"><a href="dates-and-time.html#dates_time_create"><i class="fa fa-check"></i><b>9.2</b> 날짜/시간 생성하기</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="dates-and-time.html"><a href="dates-and-time.html#문자열에서-생성"><i class="fa fa-check"></i><b>9.2.1</b> 문자열에서 생성</a></li>
+<li class="chapter" data-level="9.2.2" data-path="dates-and-time.html"><a href="dates-and-time.html#개별-구성요소로-생성"><i class="fa fa-check"></i><b>9.2.2</b> 개별 구성요소로 생성</a></li>
+<li class="chapter" data-level="9.2.3" data-path="dates-and-time.html"><a href="dates-and-time.html#기타-유형에서-생성"><i class="fa fa-check"></i><b>9.2.3</b> 기타 유형에서 생성</a></li>
+<li class="chapter" data-level="9.2.4" data-path="dates-and-time.html"><a href="dates-and-time.html#연습문제-12"><i class="fa fa-check"></i><b>9.2.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="dates-and-time.html"><a href="dates-and-time.html#dates_time_arguments"><i class="fa fa-check"></i><b>9.3</b> 데이트-타임형 구성요소</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="dates-and-time.html"><a href="dates-and-time.html#구성요소-가져오기"><i class="fa fa-check"></i><b>9.3.1</b> 구성요소 가져오기</a></li>
+<li class="chapter" data-level="9.3.2" data-path="dates-and-time.html"><a href="dates-and-time.html#반올림"><i class="fa fa-check"></i><b>9.3.2</b> 반올림</a></li>
+<li class="chapter" data-level="9.3.3" data-path="dates-and-time.html"><a href="dates-and-time.html#구성요소-설정"><i class="fa fa-check"></i><b>9.3.3</b> 구성요소 설정</a></li>
+<li class="chapter" data-level="9.3.4" data-path="dates-and-time.html"><a href="dates-and-time.html#연습문제-13"><i class="fa fa-check"></i><b>9.3.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="dates-and-time.html"><a href="dates-and-time.html#dates_time_time_span"><i class="fa fa-check"></i><b>9.4</b> 시간 범위</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="dates-and-time.html"><a href="dates-and-time.html#듀레이션형"><i class="fa fa-check"></i><b>9.4.1</b> 듀레이션형</a></li>
+<li class="chapter" data-level="9.4.2" data-path="dates-and-time.html"><a href="dates-and-time.html#피리어드형"><i class="fa fa-check"></i><b>9.4.2</b> 피리어드형</a></li>
+<li class="chapter" data-level="9.4.3" data-path="dates-and-time.html"><a href="dates-and-time.html#인터벌형"><i class="fa fa-check"></i><b>9.4.3</b> 인터벌형</a></li>
+<li class="chapter" data-level="9.4.4" data-path="dates-and-time.html"><a href="dates-and-time.html#요약"><i class="fa fa-check"></i><b>9.4.4</b> 요약</a></li>
+<li class="chapter" data-level="9.4.5" data-path="dates-and-time.html"><a href="dates-and-time.html#연습문제-14"><i class="fa fa-check"></i><b>9.4.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="dates-and-time.html"><a href="dates-and-time.html#dates_time_EST"><i class="fa fa-check"></i><b>9.5</b> 시간대</a></li>
+<li class="chapter" data-level="" data-path="dates-and-time.html"><a href="dates-and-time.html#references-2"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>10</b> Strings</a><ul>
+<li class="chapter" data-level="10.1" data-path="strings.html"><a href="strings.html#strings_intro"><i class="fa fa-check"></i><b>10.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="strings.html"><a href="strings.html#준비하기-3"><i class="fa fa-check"></i><b>10.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="strings.html"><a href="strings.html#strings_basic"><i class="fa fa-check"></i><b>10.2</b> 문자열 기초</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="strings.html"><a href="strings.html#문자열-길이"><i class="fa fa-check"></i><b>10.2.1</b> 문자열 길이</a></li>
+<li class="chapter" data-level="10.2.2" data-path="strings.html"><a href="strings.html#문자열-결합"><i class="fa fa-check"></i><b>10.2.2</b> 문자열 결합</a></li>
+<li class="chapter" data-level="10.2.3" data-path="strings.html"><a href="strings.html#문자열-서브셋하기"><i class="fa fa-check"></i><b>10.2.3</b> 문자열 서브셋하기</a></li>
+<li class="chapter" data-level="10.2.4" data-path="strings.html"><a href="strings.html#로케일"><i class="fa fa-check"></i><b>10.2.4</b> 로케일</a></li>
+<li class="chapter" data-level="10.2.5" data-path="strings.html"><a href="strings.html#연습문제-15"><i class="fa fa-check"></i><b>10.2.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="strings.html"><a href="strings.html#pattern_matching"><i class="fa fa-check"></i><b>10.3</b> 정규표현식을 이용한 패턴 매칭</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="strings.html"><a href="strings.html#기본-매칭"><i class="fa fa-check"></i><b>10.3.1</b> 기본 매칭</a></li>
+<li class="chapter" data-level="10.3.2" data-path="strings.html"><a href="strings.html#앵커"><i class="fa fa-check"></i><b>10.3.2</b> 앵커</a></li>
+<li class="chapter" data-level="10.3.3" data-path="strings.html"><a href="strings.html#문자-클래스와-대체구문"><i class="fa fa-check"></i><b>10.3.3</b> 문자 클래스와 대체구문</a></li>
+<li class="chapter" data-level="10.3.4" data-path="strings.html"><a href="strings.html#반복"><i class="fa fa-check"></i><b>10.3.4</b> 반복</a></li>
+<li class="chapter" data-level="10.3.5" data-path="strings.html"><a href="strings.html#그룹화와-역참조"><i class="fa fa-check"></i><b>10.3.5</b> 그룹화와 역참조</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="strings.html"><a href="strings.html#tools"><i class="fa fa-check"></i><b>10.4</b> 패턴 매칭</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="strings.html"><a href="strings.html#매칭-탐지"><i class="fa fa-check"></i><b>10.4.1</b> 매칭 탐지</a></li>
+<li class="chapter" data-level="10.4.2" data-path="strings.html"><a href="strings.html#매칭-추출"><i class="fa fa-check"></i><b>10.4.2</b> 매칭 추출</a></li>
+<li class="chapter" data-level="10.4.3" data-path="strings.html"><a href="strings.html#그룹화-매칭"><i class="fa fa-check"></i><b>10.4.3</b> 그룹화 매칭</a></li>
+<li class="chapter" data-level="10.4.4" data-path="strings.html"><a href="strings.html#매칭-치환"><i class="fa fa-check"></i><b>10.4.4</b> 매칭 치환</a></li>
+<li class="chapter" data-level="10.4.5" data-path="strings.html"><a href="strings.html#문자열-분할"><i class="fa fa-check"></i><b>10.4.5</b> 문자열 분할</a></li>
+<li class="chapter" data-level="10.4.6" data-path="strings.html"><a href="strings.html#매치-찾기"><i class="fa fa-check"></i><b>10.4.6</b> 매치 찾기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="strings.html"><a href="strings.html#other_patterns"><i class="fa fa-check"></i><b>10.5</b> 기타 패턴 유형</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="strings.html"><a href="strings.html#연습문제-26"><i class="fa fa-check"></i><b>10.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="strings.html"><a href="strings.html#reg_other_usage"><i class="fa fa-check"></i><b>10.6</b> 정규 표현식의 기타 용도</a></li>
+<li class="chapter" data-level="10.7" data-path="strings.html"><a href="strings.html#stringi"><i class="fa fa-check"></i><b>10.7</b> <code>stringi</code></a><ul>
+<li class="chapter" data-level="10.7.1" data-path="strings.html"><a href="strings.html#연습문제-27"><i class="fa fa-check"></i><b>10.7.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="strings.html"><a href="strings.html#reference-5"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Management with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="strings" class="section level1">
+<h1><span class="header-section-number">10</span> Strings</h1>
+<div id="strings_intro" class="section level2">
+<h2><span class="header-section-number">10.1</span> 들어가기</h2>
+<p>이 장에서는 R에서의 문자열 조작(string manipulation)을 소개한다. 문자열이 동작하는 방식과 문자열을 직접 생성하는 법의 기초를 배우겠지만, 이 장의 초점은 정규표현식(regular expressions), 줄여서 regexps 이다. 문자열은 일반적으로 비정형 및 반정형 데이터를 포함하는데, 정규표현식은 문자열의 패턴을 간결하게 기술하는 언어라는 점에서 유용하다. 정규표현식을 처음 보면 고양이가 키보드를 밟고 간 것처럼 보이겠지만, 이해도가 높아질수록 의미가 눈에 들어올 것이다.</p>
+<div id="준비하기-3" class="section level3">
+<h3><span class="header-section-number">10.1.1</span> 준비하기</h3>
+<p>이 장에서는 문자열 조작을 할 수 있는 <strong><code>stringr</code></strong> 패키지에 초점을 맞출 것이다. 보통은 항상 텍스트 데이터를 다루어야 하는 것은 아니기 때문에, <code>stringr</code> 은 핵심 <code>tidyverse</code>에 포함되어 있지 않다. 따라서 명시적으로 로드해야 한다.</p>
+<div class="sourceCode" id="cb1619"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1619-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb1619-2" title="2"><span class="kw">library</span>(stringr)</a></code></pre></div>
+</div>
+</div>
+<div id="strings_basic" class="section level2">
+<h2><span class="header-section-number">10.2</span> 문자열 기초</h2>
+<p>작은따옴표나 큰따옴표로 문자열을 생성할 수 있다. 다른 언어와는 달리 두 동작에 차이가 없다. 여러 개의 <code>"</code> 를 포함하는 문자열을 생성하려는 것이 아니라면 항상 <code>"</code> 를 사용할 것을 추천한다.</p>
+<div class="sourceCode" id="cb1620"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1620-1" title="1">string1 &lt;-<span class="st"> &quot;문자열입니다&quot;</span></a>
+<a class="sourceLine" id="cb1620-2" title="2">string2 &lt;-<span class="st"> &#39;문자열 내에 &quot;인용문&quot;이 포함된 경우, 나는 작은 따옴표를 사용한다&#39;</span></a></code></pre></div>
+<p>따옴표 닫는 것을 잊어 버린 경우, 연속문자(continuation character)인 <code>+</code> 가 나타난다.</p>
+<pre><code>&gt; &quot;닫는 따옴표가 없는 문자열이다
++    
++    
++ 도와줘요 갇혔어요</code></pre>
+<p>이 같은 일이 발생했다면 이스케이프키를 누르고 다시 시도하라!</p>
+<p>작은따옴표 문자나 큰따옴표 문자를 문자열에 포함하려면 ‘벗어나기 (escape)’ 위해 <code>\</code> (이스케이프 키)를 사용할 수 있다.</p>
+<div class="sourceCode" id="cb1622"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1622-1" title="1">double_quote &lt;-<span class="st"> &quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span> <span class="co"># or &#39;&quot;&#39;</span></a>
+<a class="sourceLine" id="cb1622-2" title="2">double_quote</a></code></pre></div>
+<pre><code>## [1] &quot;\&quot;&quot;</code></pre>
+<div class="sourceCode" id="cb1624"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1624-1" title="1">single_quote &lt;-<span class="st"> &#39;</span><span class="ch">\&#39;</span><span class="st">&#39;</span> <span class="co"># or &quot;&#39;&quot;</span></a>
+<a class="sourceLine" id="cb1624-2" title="2">single_quote</a></code></pre></div>
+<pre><code>## [1] &quot;&#39;&quot;</code></pre>
+<p>같은 원리로 역슬래시 문자를 포함하려면 <code>"\\"</code> 과 같이 두 번 입력해야 한다.</p>
+<p>문자열의 출력 표시는 문자열 자체와 같지 않다는 것에 주의하라. 출력에선 이스케이프가 보이기 때문이다. 문자열의 원시 형태를 보려면 <code>writeLines()</code> 를 사용하라.</p>
+<div class="sourceCode" id="cb1626"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1626-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb1626-2" title="2">x</a></code></pre></div>
+<pre><code>## [1] &quot;\&quot;&quot; &quot;\\&quot;</code></pre>
+<div class="sourceCode" id="cb1628"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1628-1" title="1"><span class="kw">writeLines</span>(x)</a></code></pre></div>
+<pre><code>## &quot;
+## \</code></pre>
+<p>이 외의 특수 문자들도 매우 많다. 줄바꿈, <code>"\n"</code> , 탭, <code>"\t"</code> 은 가장 일반적인 것들이다. <code>?'"'</code> , 혹은 <code>?"'"</code> 로 볼 수 있는 도움말을 통해 전체 목록을 볼 수 있다. 또한 <code>"\u00b5"</code> 과 같은 문자열을 간혹 볼 수도 있는데, 이는 비영어 문자를 모든 플랫폼에서 동작하도록 작성한 것이다.</p>
+<div class="sourceCode" id="cb1630"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1630-1" title="1">x &lt;-<span class="st"> &quot;\u00b5&quot;</span></a>
+<a class="sourceLine" id="cb1630-2" title="2">x</a></code></pre></div>
+<pre><code>## [1] &quot;μ&quot;</code></pre>
+<p>복수의 문자열은 종종 <code>c()</code> 로 만들 수 있는 문자형 벡터에 저장된다.</p>
+<div class="sourceCode" id="cb1632"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1632-1" title="1"><span class="kw">c</span>(<span class="st">&quot;one&quot;</span>, <span class="st">&quot;two&quot;</span>, <span class="st">&quot;three&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;one&quot;   &quot;two&quot;   &quot;three&quot;</code></pre>
+<div id="문자열-길이" class="section level3">
+<h3><span class="header-section-number">10.2.1</span> 문자열 길이</h3>
+<p>베이스 R에는 문자열에 동작하는 함수가 많이 있지만 일관성이 없고, 또 따라서 기억해내기 어렵기 때문에 여기에서는 사용하지 않을 것이다. 대신 우리는 <strong><code>stringr</code></strong> 의 함수를 사용할 것이다. 이 함수들의 이름은 좀 더 직관적이며 모두 <code>str_</code> 로 시작한다. 예를 들어 <code>str_length()</code> 는 문자열의 문자 개수를 알려준다.</p>
+<div class="sourceCode" id="cb1634"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1634-1" title="1"><span class="kw">str_length</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;R for data science&quot;</span>, <span class="ot">NA</span>))</a></code></pre></div>
+<pre><code>## [1]  1 18 NA</code></pre>
+<p>공통된 <code>str_</code> 접두사는 RStudio 이용자에게 특히 유용하다. <code>str_</code> 을 타이핑하면 자동완성을 불러와서 모든 <strong>stringr</strong> 함수를 볼 수 있기 때문이다.</p>
+<div class="figure">
+<img src="images/ch10/stringr-autocomplete.png" alt="img" />
+<p class="caption">img</p>
+</div>
+</div>
+<div id="문자열-결합" class="section level3">
+<h3><span class="header-section-number">10.2.2</span> 문자열 결합</h3>
+<p>문자열을 두 개 이상 결합하기 위해서는 <code>str_c()</code> 를 사용하라.</p>
+<div class="sourceCode" id="cb1636"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1636-1" title="1"><span class="kw">str_c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;xy&quot;</code></pre>
+<div class="sourceCode" id="cb1638"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1638-1" title="1"><span class="kw">str_c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;z&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;xyz&quot;</code></pre>
+<p>구분 방식을 컨트롤하기 위해 <code>sep =</code> 인수를 사용하라.</p>
+<div class="sourceCode" id="cb1640"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1640-1" title="1"><span class="kw">str_c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;, &quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;x, y&quot;</code></pre>
+<div class="sourceCode" id="cb1642"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1642-1" title="1"><span class="co">#&gt; [1] &quot;x, y&quot;</span></a></code></pre></div>
+<p>대부분의 R 함수들에서 그렇듯 결측값은 설정된 것이 이후로 계속 파급된다(contagious). 결측값을 <code>"NA"</code> 로 출력되길 원하면 <code>str_replace_na()</code> 를 사용하라.</p>
+<div class="sourceCode" id="cb1643"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1643-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;abc&quot;</span>, <span class="ot">NA</span>)</a>
+<a class="sourceLine" id="cb1643-2" title="2"><span class="kw">str_c</span>(<span class="st">&quot;|-&quot;</span>, x, <span class="st">&quot;-|&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;|-abc-|&quot; NA</code></pre>
+<div class="sourceCode" id="cb1645"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1645-1" title="1"><span class="kw">str_c</span>(<span class="st">&quot;|-&quot;</span>, <span class="kw">str_replace_na</span>(x), <span class="st">&quot;-|&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;|-abc-|&quot; &quot;|-NA-|&quot;</code></pre>
+<p>앞의 코드에서 본 것처럼 <code>str_c()</code> 는 벡터화되고 짧은 벡터가 긴 벡터와 길이가 같도록 자동으로 재사용한다.</p>
+<div class="sourceCode" id="cb1647"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1647-1" title="1"><span class="kw">str_c</span>(<span class="st">&quot;prefix-&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="st">&quot;-suffix&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;prefix-a-suffix&quot; &quot;prefix-b-suffix&quot; &quot;prefix-c-suffix&quot;</code></pre>
+<p>길이가 0인 객체는 조용히 삭제된다. 이 특성은 <code>if</code> 와 함께 쓰면 특히 유용하다.</p>
+<div class="sourceCode" id="cb1649"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1649-1" title="1">name &lt;-<span class="st"> &quot;Hadley&quot;</span></a>
+<a class="sourceLine" id="cb1649-2" title="2">time_of_day &lt;-<span class="st"> &quot;morning&quot;</span></a>
+<a class="sourceLine" id="cb1649-3" title="3">birthday &lt;-<span class="st"> </span><span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb1649-4" title="4"></a>
+<a class="sourceLine" id="cb1649-5" title="5"><span class="kw">str_c</span>(</a>
+<a class="sourceLine" id="cb1649-6" title="6">  <span class="st">&quot;Good &quot;</span>, time_of_day, <span class="st">&quot; &quot;</span>, name,</a>
+<a class="sourceLine" id="cb1649-7" title="7">  <span class="cf">if</span> (birthday) <span class="st">&quot; and HAPPY BIRTHDAY&quot;</span>,</a>
+<a class="sourceLine" id="cb1649-8" title="8">  <span class="st">&quot;.&quot;</span></a>
+<a class="sourceLine" id="cb1649-9" title="9">)</a></code></pre></div>
+<pre><code>## [1] &quot;Good morning Hadley.&quot;</code></pre>
+<p>문자열 벡터를 하나의 문자열로 합치려면 <code>collapse</code> 를 사용하라.</p>
+<div class="sourceCode" id="cb1651"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1651-1" title="1"><span class="kw">str_c</span>(<span class="kw">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;z&quot;</span>), <span class="dt">collapse =</span> <span class="st">&quot;, &quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;x, y, z&quot;</code></pre>
+</div>
+<div id="문자열-서브셋하기" class="section level3">
+<h3><span class="header-section-number">10.2.3</span> 문자열 서브셋하기</h3>
+<p>문자열의 일부는 <code>str_sub()</code> 를 사용하여 추출할 수 있다. 이 함수는 문자열과 더불어 부분문자열의 위치를 지정하는 <code>start</code> 와 <code>end</code> 인수를 취한다.</p>
+<div class="sourceCode" id="cb1653"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1653-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Apple&quot;</span>, <span class="st">&quot;Banana&quot;</span>, <span class="st">&quot;Pear&quot;</span>)</a>
+<a class="sourceLine" id="cb1653-2" title="2"><span class="kw">str_sub</span>(x, <span class="dv">1</span>, <span class="dv">3</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;App&quot; &quot;Ban&quot; &quot;Pea&quot;</code></pre>
+<div class="sourceCode" id="cb1655"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1655-1" title="1"><span class="co"># 음수는 끝에서부터 반대 방향으로 센다</span></a>
+<a class="sourceLine" id="cb1655-2" title="2"><span class="kw">str_sub</span>(x, <span class="dv">-3</span>, <span class="dv">-1</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;ple&quot; &quot;ana&quot; &quot;ear&quot;</code></pre>
+<p><code>str_sub()</code> 는 문자열이 너무 짧은 경우에도 오류가 발생하지 않고 가능한 만큼 반환한다는 것을 주목하라.</p>
+<div class="sourceCode" id="cb1657"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1657-1" title="1"><span class="kw">str_sub</span>(<span class="st">&quot;a&quot;</span>, <span class="dv">1</span>, <span class="dv">5</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;a&quot;</code></pre>
+<p><code>str_sub()</code> 의 할당 형식을 사용하여 문자열을 수정할 수도 있다.</p>
+<div class="sourceCode" id="cb1659"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1659-1" title="1"><span class="kw">str_sub</span>(x, <span class="dv">1</span>, <span class="dv">1</span>) &lt;-<span class="st"> </span><span class="kw">str_to_lower</span>(<span class="kw">str_sub</span>(x, <span class="dv">1</span>, <span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb1659-2" title="2">x</a></code></pre></div>
+<pre><code>## [1] &quot;apple&quot;  &quot;banana&quot; &quot;pear&quot;</code></pre>
+</div>
+<div id="로케일" class="section level3">
+<h3><span class="header-section-number">10.2.4</span> 로케일</h3>
+<p>앞서 <code>str_to_lower()</code> 를 사용하여 텍스트를 소문자로 변경했다. <code>str_to_upper()</code> 또는 <code>str_to_title()</code> 을 사용할 수도 있다. 그러나 각각의 언어는 대소문자 규칙이 다르므로 대소문자 변경은 생각보다 더 복잡하다. 로케일을 지정하여, 어떤 규칙 집합을 사용할지 정할 수 있다.</p>
+<div class="sourceCode" id="cb1661"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1661-1" title="1"><span class="co"># 터키어는 i가 점이 있는 것과 없는 것 두 개이다</span></a>
+<a class="sourceLine" id="cb1661-2" title="2"><span class="co"># 또한 대문자도 다르다</span></a>
+<a class="sourceLine" id="cb1661-3" title="3"></a>
+<a class="sourceLine" id="cb1661-4" title="4"><span class="kw">str_to_upper</span>(<span class="kw">c</span>(<span class="st">&quot;i&quot;</span>, <span class="st">&quot;ı&quot;</span>))</a></code></pre></div>
+<pre><code>## [1] &quot;I&quot; &quot;I&quot;</code></pre>
+<div class="sourceCode" id="cb1663"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1663-1" title="1"><span class="kw">str_to_upper</span>(<span class="kw">c</span>(<span class="st">&quot;i&quot;</span>, <span class="st">&quot;ı&quot;</span>), <span class="dt">locale =</span> <span class="st">&quot;tr&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;&lt;U+0130&gt;&quot; &quot;I&quot;</code></pre>
+<p>로케일은 두 글자 또는 세 글자 줄임말인 ISO 639 언어 코드로 지정된다. 설정하고자 하는 언어의 ISO639 코드를 모르는 경우, <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">위키피디아</a>에 잘 정리되어 있다. 로케일을 비워 둘 경우에는 운영체제에서 제공한 현재 로케일을 사용한다.</p>
+<p>로케일의 영향을 받는 또 다른 중요한 작업은 정렬이다. 베이스R의 <code>order()</code> 및 <code>sort()</code> 함수는 현재 로케일을 사용하여 정렬한다. 다른 컴퓨터에서도 변함없는 동작을 원한다면 로케일 추가인수를 취하는 <code>str_sort()</code> 와 <code>str_order()</code> 를 사용하면 된다.</p>
+<div class="sourceCode" id="cb1665"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1665-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;eggplant&quot;</span>, <span class="st">&quot;banana&quot;</span>)</a>
+<a class="sourceLine" id="cb1665-2" title="2"><span class="kw">str_sort</span>(x, <span class="dt">locale =</span> <span class="st">&quot;en&quot;</span>)  <span class="co"># English</span></a></code></pre></div>
+<pre><code>## [1] &quot;apple&quot;    &quot;banana&quot;   &quot;eggplant&quot;</code></pre>
+<div class="sourceCode" id="cb1667"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1667-1" title="1"><span class="kw">str_sort</span>(x, <span class="dt">locale =</span> <span class="st">&quot;haw&quot;</span>) <span class="co"># Hawaiian</span></a></code></pre></div>
+<pre><code>## [1] &quot;apple&quot;    &quot;eggplant&quot; &quot;banana&quot;</code></pre>
+</div>
+<div id="연습문제-15" class="section level3">
+<h3><span class="header-section-number">10.2.5</span> 연습문제</h3>
+<ol style="list-style-type: decimal">
+<li><strong>stringr</strong> 을 사용하지 않는 코드에서 <code>paste()</code> 와 <code>paste0()</code> 를 종종 볼 것이다. 두 함수의 차이점은 무엇인가? 이들에 상응하는 <strong>stringr</strong> 함수는 무엇인가? 이 함수들은 <code>NA</code> 를 다룰 때 어떻게 다른가?</li>
+<li><code>str_c()</code> 의 <code>sep</code> 인수와 <code>collapse</code> 인수의 차이를 자신의 말로 기술하라.</li>
+<li><code>str_length()</code> 과 <code>str_sub()</code> 을 이용하여 문자열 중앙 문자를 추출하라. 문자열에 짝수 개의 문자가 있다면 어떻게 하겠는가?</li>
+<li><code>str_wrap()</code> 의 기능은 무엇인가? 어떤 경우에 이 함수를 사용하겠는가?</li>
+<li><code>str_trim()</code> 의 기능은 무엇인가? <code>str_trim()</code> 의 반대는 무엇인가?</li>
+<li>예를 들어 벡터 <code>c( "a", "b", "c")</code> 를 문자열 <code>a, b, c</code> 로 변환하는 함수를 작성하라. 길이가 0, 1, 2인 벡터일 경우 어떻게 해야 하는지에 대해 신중하게 생각해보라.</li>
+</ol>
+</div>
+</div>
+<div id="pattern_matching" class="section level2">
+<h2><span class="header-section-number">10.3</span> 정규표현식을 이용한 패턴 매칭</h2>
+<p>정규표현식은 문자열의 패턴을 기술하는 매우 간결한 언어이다. 이해하는 데 다소 시간이 걸리지만 한번 이해하면 매우 유용함을 알 수 있을 것이다.</p>
+<p>정규표현식을 배우기 위해 우리는 <code>str_view()</code> 와 <code>str_view_all()</code> 를 사용할 것이다. 이 두 함수는 문자 벡터와 정규표현식을 취해, 이들이 어떻게 매칭되는지를 보여준다. 우리는 매우 단순한 정규표현식부터 시작해서 점진적으로 복잡한 형태를 볼 것이다. 패턴 매칭을 충분히 익힌 후에는 다양한 <strong>stringr</strong> 함수로 적용하는 법을 배울 것이다.</p>
+<div id="기본-매칭" class="section level3">
+<h3><span class="header-section-number">10.3.1</span> 기본 매칭</h3>
+<p>가장 간단한 패턴은 <strong>문자열 전체 (exact)</strong> 매칭이다.</p>
+<div class="sourceCode" id="cb1669"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1669-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;pear&quot;</span>)</a>
+<a class="sourceLine" id="cb1669-2" title="2"><span class="kw">str_view</span>(x, <span class="st">&quot;an&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-2f480491a51baa1c01b2" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2f480491a51baa1c01b2">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li>b<span class='match'>an<\/span>ana<\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_082009.png" /></p>
+<ul>
+<li>R Studio의 Viewer 패널에 결과가 표시된다.</li>
+<li><code>"an"</code> 패턴과 일치하는 문자열은 <code>"banana"</code></li>
+</ul>
+<p>다음으로 간단한 단계는 (줄바꿈을 제외한) <strong>임의의 문자</strong>와 매칭하는 <code>.</code> 이다.</p>
+<div class="sourceCode" id="cb1670"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1670-1" title="1"><span class="kw">str_view</span>(x, <span class="st">&quot;.a.&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-bcdbaabd6a817c1eba8b" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bcdbaabd6a817c1eba8b">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li><span class='match'>ban<\/span>ana<\/li>\n  <li>p<span class='match'>ear<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div class="figure">
+<img src="images/ch10/20200715_082706.png" alt="apple" />
+<p class="caption">apple</p>
+</div>
+<p>그런데 <code>"."</code> 이 임의의 문자와 매칭된다면, 문자 <code>"."</code> 는 어떻게 매칭하겠는가? ’이스케이프’를 사용하여 우리가 특별 동작을 사용하려는 것이 아니라, 정확하게 매칭하고 싶다는 것을 정규표현식에 표현해야 한다.</p>
+<p>정규표현식도 문자열과 마찬가지로 특별한 동작을 이스케이프하기 위해 역슬래시(<code>\</code> )를 사용한다. 따라서 <code>.</code> 를 매칭하기 위해서는 정규표현식 <code>\.</code> 을 써야한다. 그런데 이렇게 하면 문제가 생긴다. 정규표현식을 나타내기 위해 문자열을 사용했고 <code>\</code> 도 문자열에서 이스케이프 상징어로 사용하였다.</p>
+<p>따라서 정규표현식 <code>\.</code> 를 작성하기 위해서는 문자열 <code>"\\."</code> 이 필요하다.</p>
+<div class="sourceCode" id="cb1671"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1671-1" title="1"><span class="co"># To create the regular expression, we need \\</span></a>
+<a class="sourceLine" id="cb1671-2" title="2">dot &lt;-<span class="st"> &quot;</span><span class="ch">\\</span><span class="st">.&quot;</span></a>
+<a class="sourceLine" id="cb1671-3" title="3"></a>
+<a class="sourceLine" id="cb1671-4" title="4"><span class="co"># But the expression itself only contains one:</span></a>
+<a class="sourceLine" id="cb1671-5" title="5"><span class="kw">writeLines</span>(dot)</a></code></pre></div>
+<pre><code>## \.</code></pre>
+<div class="sourceCode" id="cb1673"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1673-1" title="1"><span class="co"># And this tells R to look for an explicit .</span></a>
+<a class="sourceLine" id="cb1673-2" title="2"><span class="kw">str_view</span>(<span class="kw">c</span>(<span class="st">&quot;abc&quot;</span>, <span class="st">&quot;a.c&quot;</span>, <span class="st">&quot;bef&quot;</span>), <span class="st">&quot;a</span><span class="ch">\\</span><span class="st">.c&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-667240b7f65f0e99799e" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-667240b7f65f0e99799e">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li><span class='match'>a.c<\/span><\/li>\n  <li>bef<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_083018.png" /></p>
+<p>정규표현식에서 <code>\</code> 를 이스케이프 문자로 사용한다면 문자 <code>\</code> 는 도대체 어떻게 매칭하겠는가? 정규표현식 <code>\\</code> 를 만들어 이스케이프해야 한다. 앞의 정규표현식을 만들려면 <code>\</code> 를 이스케이프하는 문자열이 필요하다. 즉, 문자 <code>\</code> 을 매칭하기 위해서 <code>"\\\\"</code> 라고 작성해야 한다. 즉, 하나를 매칭하기 위해 네 개의 역슬래시가 필요하다!</p>
+<div class="sourceCode" id="cb1674"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1674-1" title="1">x &lt;-<span class="st"> &quot;a</span><span class="ch">\\</span><span class="st">b&quot;</span></a>
+<a class="sourceLine" id="cb1674-2" title="2"><span class="kw">writeLines</span>(x)</a></code></pre></div>
+<pre><code>## a\b</code></pre>
+<div class="sourceCode" id="cb1676"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1676-1" title="1"><span class="kw">str_view</span>(x, <span class="st">&quot;</span><span class="ch">\\\\</span><span class="st">&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-7b747654ff0fee4d129e" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7b747654ff0fee4d129e">{"x":{"html":"<ul>\n  <li>a<span class='match'>\\<\/span>b<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_083209.png" /></p>
+<p>여기서 정규표현식은 <code>\.</code> 과 같이 쓰고 정규표현식을 나타내는 문자열은 <code>"\\."</code> 과 같이 쓸 것이다.</p>
+<div id="연습문제-16" class="section level4">
+<h4><span class="header-section-number">10.3.1.1</span> 연습문제</h4>
+<ol style="list-style-type: decimal">
+<li>다음의 각 문자열 <code>"\", "\\", "\\\"</code> 이 <code>\</code> 과 매칭되지 않는 이유를 설명하라.</li>
+<li>시퀀스 <code>"'\</code> 를 어떻게 매칭하겠는가?</li>
+<li>정규표현식 <code>\..\..\..</code> 은 어떤 패턴과 매칭되겠는가? 문자열로 어떻게 표현하겠는가?</li>
+</ol>
+</div>
+</div>
+<div id="앵커" class="section level3">
+<h3><span class="header-section-number">10.3.2</span> 앵커</h3>
+<p>기본적으로 정규표현식은 문자열의 일부를 매치한다. 정규표현식을 <strong>앵커로 고정(anchor)</strong> 하여 문자열의 시작 또는 끝과 매칭하면 유용한 경우가 많다. 다음을 사용할 수 있다.</p>
+<ul>
+<li><code>^</code> : 문자열의 시작과 매칭</li>
+<li><code>$</code> : 문자열의 끝과 매칭</li>
+</ul>
+<div class="sourceCode" id="cb1677"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1677-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;pear&quot;</span>)</a>
+<a class="sourceLine" id="cb1677-2" title="2"><span class="kw">str_view</span>(x, <span class="st">&quot;^a&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-2bf21f86743e703e1bce" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2bf21f86743e703e1bce">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span>pple<\/li>\n  <li>banana<\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_083501.png" /></p>
+<div class="sourceCode" id="cb1678"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1678-1" title="1"><span class="kw">str_view</span>(x, <span class="st">&quot;a$&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-739a38fdc9c44c1c62e5" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-739a38fdc9c44c1c62e5">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li>banan<span class='match'>a<\/span><\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_083620.png" /></p>
+<p>두 기호를 올바로 기억하기 위해, <a href="https://twitter.com/emisshula/status/323863393167613953">에반 미슐라</a>가 알려준 다음의 연상 구문을 시도해보자. 파워(<code>^</code> )로 시작하면, 돈(<code>$</code> )으로 끝나게 된다.</p>
+<p>정규표현식을 문자열 전체와 강제로 매칭하도록 하려면 <code>^</code> 와 <code>$</code> 로 고정하라.</p>
+<div class="sourceCode" id="cb1679"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1679-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple pie&quot;</span>, <span class="st">&quot;apple&quot;</span>, <span class="st">&quot;apple cake&quot;</span>)</a>
+<a class="sourceLine" id="cb1679-2" title="2"><span class="kw">str_view</span>(x, <span class="st">&quot;apple&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-6ff76552715c6c6a2c86" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6ff76552715c6c6a2c86">{"x":{"html":"<ul>\n  <li><span class='match'>apple<\/span> pie<\/li>\n  <li><span class='match'>apple<\/span><\/li>\n  <li><span class='match'>apple<\/span> cake<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_083706.png" /></p>
+<div class="sourceCode" id="cb1680"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1680-1" title="1"><span class="kw">str_view</span>(x, <span class="st">&quot;^apple$&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-136c68821bcfc180a6d3" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-136c68821bcfc180a6d3">{"x":{"html":"<ul>\n  <li>apple pie<\/li>\n  <li><span class='match'>apple<\/span><\/li>\n  <li>apple cake<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_083803.png" /></p>
+<p>단어 사이의 경계(boundary)를 매칭시키려면 <code>\b</code> 를 사용하면 된다. 나는 R에서 이 방법을 자주 사용하지는 않지만 RStudio에서 다른 함수의 구성요소인 함수의 이름을 찾고자 할 때 한 번씩 사용한다. 예를 들어 <code>\bsum\b</code> 를 사용하여 <code>summarize, summary, rowsum</code> 등이 매칭되는 것을 피할 수 있다.</p>
+<div id="연습문제-17" class="section level4">
+<h4><span class="header-section-number">10.3.2.1</span> 연습문제</h4>
+<ol style="list-style-type: decimal">
+<li><p>문자열 <code>"$^$"</code> 을 어떻게 매칭하겠는가?</p></li>
+<li><p><code>stringr::words</code> 의 일반적인 단어의 말뭉치(corpus)에서 다음에 해당하는 단어들을 찾는 정규표현식을 구하라.</p>
+<ol style="list-style-type: decimal">
+<li>“y”로 시작.</li>
+<li>“x”로 끝남.</li>
+<li>정확히 세 글자. (<code>str_length()</code> 를 사용하는 부정행위를 하지 말 것!)</li>
+<li>7개 이상의 글자.</li>
+</ol>
+<p>이 리스트는 길기 때문에 <code>str_view()</code> 의 <code>match</code> 인수를 이용하여 매칭되는 단어들만, 혹은 매칭되지 않는 단어들만 볼 수 있다.</p></li>
+</ol>
+</div>
+</div>
+<div id="문자-클래스와-대체구문" class="section level3">
+<h3><span class="header-section-number">10.3.3</span> 문자 클래스와 대체구문</h3>
+<p>하나 이상의 문자를 매칭하는 특별한 패턴들이 많이 있다. 우린 이미 하나를 보았는데, 줄바꿈을 제외하고 임의의 문자를 매칭하는 <code>.</code> 이다. 이 밖에도 네 개의 유용한 도구가 있다.</p>
+<ul>
+<li><code>\d</code> 는 임의의 숫자와 매치한다.</li>
+<li><code>\s</code> 는 임의의 여백 문자(whitespace, 예를 들어 공백, 탭, 줄바꿈)와 매치한다.</li>
+<li><code>[abc]</code> 는 a, b 또는 c와 매치한다.</li>
+<li><code>[^abc]</code> 는 a, b, 또는 c를 제외한 임의의 문자와 매치한다.</li>
+</ul>
+<p><code>\d</code> 나 <code>\s</code> 를 포함하는 정규표현식을 만들기 위해서는 해당 문자열에서 <code>\</code> 을 이스케이프 해야 하므로 <code>"\\d"</code> 나 <code>"\\s"</code> 로 입력해야 한다는 것을 기억하라.</p>
+<p>단일 문자를 포함하는 문자형 클래스는 정규표현식에서 메타문자 하나를 포함하고 싶을때 역슬래시 이스케이프의 대안이 될 수 있다. 많은 사람들에게 가독성이 좋아진다.</p>
+<div class="sourceCode" id="cb1681"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1681-1" title="1"><span class="co"># Look for a literal character that normally has special meaning in a regex</span></a>
+<a class="sourceLine" id="cb1681-2" title="2"><span class="kw">str_view</span>(<span class="kw">c</span>(<span class="st">&quot;abc&quot;</span>, <span class="st">&quot;a.c&quot;</span>, <span class="st">&quot;a*c&quot;</span>, <span class="st">&quot;a c&quot;</span>), <span class="st">&quot;a[.]c&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-33cbb4cda9894f89f68c" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-33cbb4cda9894f89f68c">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li><span class='match'>a.c<\/span><\/li>\n  <li>a*c<\/li>\n  <li>a c<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_091731.png" /></p>
+<div class="sourceCode" id="cb1682"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1682-1" title="1"><span class="kw">str_view</span>(<span class="kw">c</span>(<span class="st">&quot;abc&quot;</span>, <span class="st">&quot;a.c&quot;</span>, <span class="st">&quot;a*c&quot;</span>, <span class="st">&quot;a c&quot;</span>), <span class="st">&quot;.[*]c&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-2b34a50c7bc117eb613f" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2b34a50c7bc117eb613f">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li>a.c<\/li>\n  <li><span class='match'>a*c<\/span><\/li>\n  <li>a c<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_091840.png" /></p>
+<div class="sourceCode" id="cb1683"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1683-1" title="1"><span class="kw">str_view</span>(<span class="kw">c</span>(<span class="st">&quot;abc&quot;</span>, <span class="st">&quot;a.c&quot;</span>, <span class="st">&quot;a*c&quot;</span>, <span class="st">&quot;a c&quot;</span>), <span class="st">&quot;a[ ]&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-84afa0160189842eb919" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-84afa0160189842eb919">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li>a.c<\/li>\n  <li>a*c<\/li>\n  <li><span class='match'>a <\/span>c<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_091951.png" /></p>
+<p>이 방법은 대부분 (전부는 아님) 정규표현식 메타문자에 적용된다: <code>$</code> <code>.</code> <code>|</code> <code>?</code> <code>*</code> <code>+</code> <code>(</code> <code>)</code> <code>[</code> <code>{</code>. 안타깝게도 문자 클래스 내에서 조차 특수 의미가 있는 문자가 몇 있으며 백슬래시 이스케이프와 함께 해야 한다. <code>]</code> <code>\</code> <code>^</code> <code>-</code>.</p>
+<p>대체구문을 이용하여 하나 이상의 대체 패턴 사이에서 선택하도록 할 수 있다. 예를 들어 <code>abc|d..f</code> 는 <code>"abc"</code> 또는 <code>"deaf"</code> 중 하나와 매치한다. <code>|</code> 는 우선순위가 높다. 따라서 <code>abc|xyz</code> 는 <code>abc</code> 혹은 <code>xyz</code> 와 매칭하라는 의미이지 <code>abcyz</code> 나 <code>abxyz</code> 와 매칭하라는 의미가 아니다. 수식 표현에서와 같이 연산 우선순위가 조금이라도 헷갈린다면 의도한 바를 분명히 하기 위해 괄호를 사용하라.</p>
+<div class="sourceCode" id="cb1684"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1684-1" title="1"><span class="kw">str_view</span>(<span class="kw">c</span>(<span class="st">&quot;grey&quot;</span>, <span class="st">&quot;gray&quot;</span>), <span class="st">&quot;gr(e|a)y&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-ceed39831b804759ca96" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ceed39831b804759ca96">{"x":{"html":"<ul>\n  <li><span class='match'>grey<\/span><\/li>\n  <li><span class='match'>gray<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_092050.png" /></p>
+<div id="연습문제-18" class="section level4">
+<h4><span class="header-section-number">10.3.3.1</span> 연습문제</h4>
+<ol style="list-style-type: decimal">
+<li>다음에 해당하는 모든 단어를 찾는 정규표현식을 작성하라.
+<ol style="list-style-type: decimal">
+<li>모음으로 시작함</li>
+<li>자음만 포함함 (힌트: ‘비’-자음 매칭에 대해 생각해보라.)</li>
+<li><code>ed</code> 로 끝나지만 <code>eed</code> 로 끝나지는 않음</li>
+<li><code>ing</code> 혹은 <code>ize</code> 로 끝남</li>
+</ol></li>
+<li>다음의 규칙을 데이터기반으로 증명하라. ‘c 뒤를 제외하고는 i가 e 앞’ (영어 스펠링에서 ei와 ie가 헷갈릴 경우 이 두 글자 앞에 c 가 나온 경우를 제외하고는 ei가 맞다는 규칙)</li>
+<li>‘q’ 다음은 항상 ‘u’ 인가?</li>
+<li>미국 영어가 아닌 영국 영어로 쓰여진 단어를 매칭하는 정규표현식을 작성하라.</li>
+<li>여러분의 나라에서 일반적으로 쓰이는 전화번호를 매칭하는 정규표현식을 작성하라.</li>
+</ol>
+</div>
+</div>
+<div id="반복" class="section level3">
+<h3><span class="header-section-number">10.3.4</span> 반복</h3>
+<p>다음 단계는 패턴이 몇 회 매칭하는지를 조정하는 것이다.</p>
+<ul>
+<li><code>?</code> : 0 또는 1회</li>
+<li><code>+</code> : 1회 이상</li>
+<li><code>*</code> : 0회 이상</li>
+</ul>
+<div class="sourceCode" id="cb1685"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1685-1" title="1">x &lt;-<span class="st"> &quot;1888 is the longest year in Roman numerals: MDCCCLXXXVIII&quot;</span></a>
+<a class="sourceLine" id="cb1685-2" title="2"><span class="kw">str_view</span>(x, <span class="st">&quot;CC?&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-056663a362802b40000b" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-056663a362802b40000b">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_092409.png" /></p>
+<div class="sourceCode" id="cb1686"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1686-1" title="1"><span class="kw">str_view</span>(x, <span class="st">&quot;CC+&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-7aba8faff5ed234927eb" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7aba8faff5ed234927eb">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_092504.png" /></p>
+<div class="sourceCode" id="cb1687"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1687-1" title="1"><span class="kw">str_view</span>(x, <span class="st">&#39;C[LX]+&#39;</span>)</a></code></pre></div>
+<div id="htmlwidget-21adf7cf3e2106c879f4" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-21adf7cf3e2106c879f4">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MDCC<span class='match'>CLXXX<\/span>VIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_092603.png" /></p>
+<p>이 연산자의 우선순위는 낮음을 주목하라. 예를 들어 <code>colou?r</code> 를 사용하여 미국식이나 영국식 스펠링을 매치할 수 있다. 따라서 <code>bana(na)+</code> 에서와 같이 대부분의 경우 괄호가 필요하다.</p>
+<p>또한 매칭 횟수를 정확하게 지정할 수 있다.</p>
+<ul>
+<li><code>{n}</code> : 정확히 n회</li>
+<li><code>{n,}</code> : n회 이상</li>
+<li><code>{,m}</code> : 최대 m회</li>
+<li><code>{n,m}</code> : n과 m회 사이</li>
+</ul>
+<div class="sourceCode" id="cb1688"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1688-1" title="1"><span class="kw">str_view</span>(x, <span class="st">&quot;C{2}&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-47c1b1b5cc4ddf4262b5" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-47c1b1b5cc4ddf4262b5">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_092656.png" /></p>
+<div class="sourceCode" id="cb1689"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1689-1" title="1"><span class="kw">str_view</span>(x, <span class="st">&quot;C{2,}&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-c1a8f3b0ad8f4260705a" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c1a8f3b0ad8f4260705a">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_092733.png" /></p>
+<div class="sourceCode" id="cb1690"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1690-1" title="1"><span class="kw">str_view</span>(x, <span class="st">&quot;C{2,3}&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-a3c573a59076385688f4" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a3c573a59076385688f4">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_092811.png" /></p>
+<p>기본값으로 이러한 매칭은 ‘그리디(greedy)’ 매칭이다. 즉, 가능한 가장 긴 문자열과 매칭한다. 이를 ‘게으르게(lazy)’ 만들 수 있다. 뒤에 <code>?</code> 를 넣으면 가장 짧은 문자열과 매칭된다. 정규표현식의 고급 기능이지만 이런 것도 있다는 것을 알아놓으면 유용하다.</p>
+<div class="sourceCode" id="cb1691"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1691-1" title="1"><span class="kw">str_view</span>(x, <span class="st">&#39;C{2,3}?&#39;</span>)</a></code></pre></div>
+<div id="htmlwidget-51395a9acefa7b87a069" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-51395a9acefa7b87a069">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_092924.png" /></p>
+<div class="sourceCode" id="cb1692"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1692-1" title="1"><span class="kw">str_view</span>(x, <span class="st">&#39;C[LX]+?&#39;</span>)</a></code></pre></div>
+<div id="htmlwidget-2b47265533e63f18f850" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2b47265533e63f18f850">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MDCC<span class='match'>CL<\/span>XXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_093013.png" /></p>
+<div id="연습문제-19" class="section level4">
+<h4><span class="header-section-number">10.3.4.1</span> 연습문제</h4>
+<ol style="list-style-type: decimal">
+<li><code>?, +, *</code> 이 같음을 <code>{m,n}</code> 형식으로 설명하라.</li>
+<li>다음의 정규표현식이 어떤 것과 매칭하는지를 말로 설명하라. (사용하는 것이 정규표현식인지 아니면 그것을 정의하는 문자열인지 주의 깊게 읽고 확인하라.)
+<ol style="list-style-type: decimal">
+<li><code>^.*$</code></li>
+<li><code>"\\{.+\\}"</code></li>
+<li><code>\d{4}-\d{2}-\d{2}</code></li>
+<li><code>"\\\\{4}"</code></li>
+</ol></li>
+<li>다음의 모든 단어를 찾는 정규표현식을 작성하라.
+<ol style="list-style-type: decimal">
+<li>세 개의 자음으로 시작.</li>
+<li>세 개 이상의 모음이 연달아 있음.</li>
+<li>두 개 이상의 모음-자음 쌍이 연달아 있음.</li>
+</ol></li>
+<li>다음의 초보자 정규표현식 십자말풀이를 풀어보라. <a href="https://regexcrossword.com/challenges/beginner" class="uri">https://regexcrossword.com/challenges/beginner</a></li>
+</ol>
+</div>
+</div>
+<div id="그룹화와-역참조" class="section level3">
+<h3><span class="header-section-number">10.3.5</span> 그룹화와 역참조</h3>
+<p>앞서 괄호를 사용하여 복잡한 표현을 명확하게 하는 법을 배웠다. 괄호는 또한 (number 1, 2 등) 숫자달린 캡쳐 그룹을 생성한다. 캡쳐 그룹은 괄호 내에서 정규표현식의 일부와 매치되는 문자열 부분을 저장한다. <code>\1, \2</code> 등과 같이 역참조(backreference)로 캡쳐 그룹에 매칭된 텍스트를 참조할 수 있다. 예를 들어 다음의 정규표현식은 두 글자가 반복되는 과일 이름과 매칭한다.</p>
+<div class="sourceCode" id="cb1693"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1693-1" title="1">fruit &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;banana&quot;</span>, <span class="st">&quot;coconut&quot;</span>, <span class="st">&quot;cucumber&quot;</span>, <span class="st">&quot;jujube&quot;</span>, <span class="st">&quot;papaya&quot;</span>, <span class="st">&quot;salal berry&quot;</span>)</a>
+<a class="sourceLine" id="cb1693-2" title="2"><span class="kw">str_view</span>(fruit, <span class="st">&quot;(..)</span><span class="ch">\\</span><span class="st">1&quot;</span>, <span class="dt">match =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div id="htmlwidget-055ca83d78551816da64" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-055ca83d78551816da64">{"x":{"html":"<ul>\n  <li>b<span class='match'>anan<\/span>a<\/li>\n  <li><span class='match'>coco<\/span>nut<\/li>\n  <li><span class='match'>cucu<\/span>mber<\/li>\n  <li><span class='match'>juju<\/span>be<\/li>\n  <li><span class='match'>papa<\/span>ya<\/li>\n  <li>s<span class='match'>alal<\/span> berry<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_093420.png" /></p>
+<p>(<code>str_match()</code> 와 함께 쓰면 왜 유용한지 곧 알게 될 것이다.)</p>
+<div id="연습문제-20" class="section level4">
+<h4><span class="header-section-number">10.3.5.1</span> 연습문제</h4>
+<ol style="list-style-type: decimal">
+<li>다음의 표현식이 어떤 것과 매칭할지 말로 설명하라.
+<ol style="list-style-type: decimal">
+<li><code>(.)\1\1</code></li>
+<li><code>"(.)(.)\\2\\1"</code></li>
+<li><code>(..)\1</code></li>
+<li><code>"(.).\\1.\\1"</code></li>
+<li><code>"(.)(.)(.).*\\3\\2\\1"</code></li>
+</ol></li>
+<li>다음의 단어와 매칭하는 정규표현식을 작성하라.
+<ol style="list-style-type: decimal">
+<li>같은 문자로 시작하고 끝남.</li>
+<li>두 문자 반복이 있음(예를 들어 ’church’는 ’ch’를 두 번 반복).</li>
+<li>적어도 세 곳에서 반복되는 문자가 있음(예컨대, ’eleven’은 ’e’가 세 개).</li>
+</ol></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="tools" class="section level2">
+<h2><span class="header-section-number">10.4</span> 패턴 매칭</h2>
+<p>이제 정규표현식의 기초를 배웠으므로 실제 문제에 적용하는 법에 대해 알아보자. 이 절에서는 다음을 수행하는 다양한 <strong>stringr</strong> 함수들을 배울 것이다.</p>
+<ul>
+<li>어떤 문자열이 패턴과 매칭하는지 결정.</li>
+<li>매칭의 위치를 찾기.</li>
+<li>매칭의 내용을 추출.</li>
+<li>매칭된 것을 새 값으로 교체.</li>
+<li>매칭를 기반으로 문자열 분할.</li>
+</ul>
+<p>계속 진행하기 전에 주의할 점은, 정규표현식은 너무 강력해서 모든 문제를 정규표현식 하나로 접근하려고 하기 쉽다는 것이다. 제이미 자윈스키(Jamie Zawinski)의 말을 들어보자.</p>
+<blockquote>
+<p>문제에 직면했을 때 어떤 사람들은 ’풀 수 있어. 정규표현식을 사용하면 돼’라고 생각한다. 이제 그들에겐 풀어야 할 문제가 두 개이다.</p>
+</blockquote>
+<p>조심하라는 뜻으로 이메일 주소가 유효한지를 검사하는 다음의 정규표현식을 살펴보라.</p>
+<pre><code>(?:(?:\r\n)?[ \t])*(?:(?:(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t]
+)+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|&quot;(?:[^\&quot;\r\\]|\\.|(?:(?:\r\n)?[ \t]))*&quot;(?:(?:
+\r\n)?[ \t])*)(?:\.(?:(?:\r\n)?[ \t])*(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(
+?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|&quot;(?:[^\&quot;\r\\]|\\.|(?:(?:\r\n)?[ 
+\t]))*&quot;(?:(?:\r\n)?[ \t])*))*@(?:(?:\r\n)?[ \t])*(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\0
+31]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|\[([^\[\]\r\\]|\\.)*\
+](?:(?:\r\n)?[ \t])*)(?:\.(?:(?:\r\n)?[ \t])*(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+
+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|\[([^\[\]\r\\]|\\.)*\](?:
+(?:\r\n)?[ \t])*))*|(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z
+|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|&quot;(?:[^\&quot;\r\\]|\\.|(?:(?:\r\n)?[ \t]))*&quot;(?:(?:\r\n)
+?[ \t])*)*\&lt;(?:(?:\r\n)?[ \t])*(?:@(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\
+r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|\[([^\[\]\r\\]|\\.)*\](?:(?:\r\n)?[
+ \t])*)(?:\.(?:(?:\r\n)?[ \t])*(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)
+?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|\[([^\[\]\r\\]|\\.)*\](?:(?:\r\n)?[ \t]
+)*))*(?:,@(?:(?:\r\n)?[ \t])*(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[
+ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|\[([^\[\]\r\\]|\\.)*\](?:(?:\r\n)?[ \t])*
+)(?:\.(?:(?:\r\n)?[ \t])*(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t]
+)+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|\[([^\[\]\r\\]|\\.)*\](?:(?:\r\n)?[ \t])*))*)
+*:(?:(?:\r\n)?[ \t])*)?(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+
+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|&quot;(?:[^\&quot;\r\\]|\\.|(?:(?:\r\n)?[ \t]))*&quot;(?:(?:\r
+\n)?[ \t])*)(?:\.(?:(?:\r\n)?[ \t])*(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:
+\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|&quot;(?:[^\&quot;\r\\]|\\.|(?:(?:\r\n)?[ \t
+]))*&quot;(?:(?:\r\n)?[ \t])*))*@(?:(?:\r\n)?[ \t])*(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031
+]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|\[([^\[\]\r\\]|\\.)*\](
+?:(?:\r\n)?[ \t])*)(?:\.(?:(?:\r\n)?[ \t])*(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?
+:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|\[([^\[\]\r\\]|\\.)*\](?:(?
+:\r\n)?[ \t])*))*\&gt;(?:(?:\r\n)?[ \t])*)|(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?
+:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|&quot;(?:[^\&quot;\r\\]|\\.|(?:(?:\r\n)?
+[ \t]))*&quot;(?:(?:\r\n)?[ \t])*)*:(?:(?:\r\n)?[ \t])*(?:(?:(?:[^()&lt;&gt;@,;:\\&quot;.\[\] 
+\000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|&quot;(?:[^\&quot;\r\\]|
+\\.|(?:(?:\r\n)?[ \t]))*&quot;(?:(?:\r\n)?[ \t])*)(?:\.(?:(?:\r\n)?[ \t])*(?:[^()&lt;&gt;
+@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|&quot;
+(?:[^\&quot;\r\\]|\\.|(?:(?:\r\n)?[ \t]))*&quot;(?:(?:\r\n)?[ \t])*))*@(?:(?:\r\n)?[ \t]
+)*(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\
+&quot;.\[\]]))|\[([^\[\]\r\\]|\\.)*\](?:(?:\r\n)?[ \t])*)(?:\.(?:(?:\r\n)?[ \t])*(?
+:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[
+\]]))|\[([^\[\]\r\\]|\\.)*\](?:(?:\r\n)?[ \t])*))*|(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-
+\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|&quot;(?:[^\&quot;\r\\]|\\.|(
+?:(?:\r\n)?[ \t]))*&quot;(?:(?:\r\n)?[ \t])*)*\&lt;(?:(?:\r\n)?[ \t])*(?:@(?:[^()&lt;&gt;@,;
+:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|\[([
+^\[\]\r\\]|\\.)*\](?:(?:\r\n)?[ \t])*)(?:\.(?:(?:\r\n)?[ \t])*(?:[^()&lt;&gt;@,;:\\&quot;
+.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|\[([^\[\
+]\r\\]|\\.)*\](?:(?:\r\n)?[ \t])*))*(?:,@(?:(?:\r\n)?[ \t])*(?:[^()&lt;&gt;@,;:\\&quot;.\
+[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|\[([^\[\]\
+r\\]|\\.)*\](?:(?:\r\n)?[ \t])*)(?:\.(?:(?:\r\n)?[ \t])*(?:[^()&lt;&gt;@,;:\\&quot;.\[\] 
+\000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|\[([^\[\]\r\\]
+|\\.)*\](?:(?:\r\n)?[ \t])*))*)*:(?:(?:\r\n)?[ \t])*)?(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \0
+00-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|&quot;(?:[^\&quot;\r\\]|\\
+.|(?:(?:\r\n)?[ \t]))*&quot;(?:(?:\r\n)?[ \t])*)(?:\.(?:(?:\r\n)?[ \t])*(?:[^()&lt;&gt;@,
+;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|&quot;(?
+:[^\&quot;\r\\]|\\.|(?:(?:\r\n)?[ \t]))*&quot;(?:(?:\r\n)?[ \t])*))*@(?:(?:\r\n)?[ \t])*
+(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.
+\[\]]))|\[([^\[\]\r\\]|\\.)*\](?:(?:\r\n)?[ \t])*)(?:\.(?:(?:\r\n)?[ \t])*(?:[
+^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]
+]))|\[([^\[\]\r\\]|\\.)*\](?:(?:\r\n)?[ \t])*))*\&gt;(?:(?:\r\n)?[ \t])*)(?:,\s*(
+?:(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\
+&quot;.\[\]]))|&quot;(?:[^\&quot;\r\\]|\\.|(?:(?:\r\n)?[ \t]))*&quot;(?:(?:\r\n)?[ \t])*)(?:\.(?:(
+?:\r\n)?[ \t])*(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[
+\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|&quot;(?:[^\&quot;\r\\]|\\.|(?:(?:\r\n)?[ \t]))*&quot;(?:(?:\r\n)?[ \t
+])*))*@(?:(?:\r\n)?[ \t])*(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t
+])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|\[([^\[\]\r\\]|\\.)*\](?:(?:\r\n)?[ \t])*)(?
+:\.(?:(?:\r\n)?[ \t])*(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+|
+\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|\[([^\[\]\r\\]|\\.)*\](?:(?:\r\n)?[ \t])*))*|(?:
+[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\
+]]))|&quot;(?:[^\&quot;\r\\]|\\.|(?:(?:\r\n)?[ \t]))*&quot;(?:(?:\r\n)?[ \t])*)*\&lt;(?:(?:\r\n)
+?[ \t])*(?:@(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;
+()&lt;&gt;@,;:\\&quot;.\[\]]))|\[([^\[\]\r\\]|\\.)*\](?:(?:\r\n)?[ \t])*)(?:\.(?:(?:\r\n)
+?[ \t])*(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;
+@,;:\\&quot;.\[\]]))|\[([^\[\]\r\\]|\\.)*\](?:(?:\r\n)?[ \t])*))*(?:,@(?:(?:\r\n)?[
+ \t])*(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,
+;:\\&quot;.\[\]]))|\[([^\[\]\r\\]|\\.)*\](?:(?:\r\n)?[ \t])*)(?:\.(?:(?:\r\n)?[ \t]
+)*(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\
+&quot;.\[\]]))|\[([^\[\]\r\\]|\\.)*\](?:(?:\r\n)?[ \t])*))*)*:(?:(?:\r\n)?[ \t])*)?
+(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.
+\[\]]))|&quot;(?:[^\&quot;\r\\]|\\.|(?:(?:\r\n)?[ \t]))*&quot;(?:(?:\r\n)?[ \t])*)(?:\.(?:(?:
+\r\n)?[ \t])*(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z|(?=[\[
+&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|&quot;(?:[^\&quot;\r\\]|\\.|(?:(?:\r\n)?[ \t]))*&quot;(?:(?:\r\n)?[ \t])
+*))*@(?:(?:\r\n)?[ \t])*(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])
++|\Z|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|\[([^\[\]\r\\]|\\.)*\](?:(?:\r\n)?[ \t])*)(?:\
+.(?:(?:\r\n)?[ \t])*(?:[^()&lt;&gt;@,;:\\&quot;.\[\] \000-\031]+(?:(?:(?:\r\n)?[ \t])+|\Z
+|(?=[\[&quot;()&lt;&gt;@,;:\\&quot;.\[\]]))|\[([^\[\]\r\\]|\\.)*\](?:(?:\r\n)?[ \t])*))*\&gt;(?:(
+?:\r\n)?[ \t])*))*)?;\s*)</code></pre>
+<p>이는 (이메일 주소는 놀랍게도 실제로는 단순하지 않기 때문에) 다소 극단적인 예이지만, 실제 코드에서 사용된다. 자세한 내용은 <a href="http://stackoverflow.com/a/201378">스택오버플로 토론</a> 을 참조하라.</p>
+<p>우리는 프로그래밍 언어를 사용하고 있으며, 활용할 수 있는 다른 도구들이 있다는 것을 잊지 않아야 한다. 하나의 복잡한 정규표현식을 작성하는 것보다, 간단한 정규표현식을 여러 개 작성하는 것이 쉬운 경우가 많다. 문제를 해결해줄 단일 정규표현식이 떠오르지 않는다면, 잠시 뒤로 물러서서, 문제를 작은 조각들로 분해하여, 작은 문제들을 하나씩 해결하면서 다음 단계로 나아갈 수 있는지 생각해보라.</p>
+<div id="매칭-탐지" class="section level3">
+<h3><span class="header-section-number">10.4.1</span> 매칭 탐지</h3>
+<p>문자형 벡터가 패턴과 매칭하는지 확인하려면, <code>str_detect()</code> 를 사용하라. 이 함수는 입력과 같은 길이의 논리형 벡터를 반환한다.</p>
+<div class="sourceCode" id="cb1695"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1695-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;pear&quot;</span>)</a>
+<a class="sourceLine" id="cb1695-2" title="2"><span class="kw">str_detect</span>(x, <span class="st">&quot;e&quot;</span>)</a></code></pre></div>
+<pre><code>## [1]  TRUE FALSE  TRUE</code></pre>
+<p>논리형 벡터를 수치형 맥락에서 사용할 경우, <code>FALSE</code> 는 0 이 되고, <code>TRUE</code> 는 1 이 된다는 것을 명심하라. 따라서 긴 벡터에서의 매치 결과가 궁금할 때는, <code>sum()</code> 과 <code>mean()</code> 을 유용하게 사용할 수 있다.</p>
+<div class="sourceCode" id="cb1697"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1697-1" title="1"><span class="co"># How many common words start with t?</span></a>
+<a class="sourceLine" id="cb1697-2" title="2"><span class="kw">sum</span>(<span class="kw">str_detect</span>(words, <span class="st">&quot;^t&quot;</span>))</a></code></pre></div>
+<pre><code>## [1] 65</code></pre>
+<div class="sourceCode" id="cb1699"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1699-1" title="1"><span class="co"># What proportion of common words end with a vowel?</span></a>
+<a class="sourceLine" id="cb1699-2" title="2"><span class="kw">mean</span>(<span class="kw">str_detect</span>(words, <span class="st">&quot;[aeiou]$&quot;</span>))</a></code></pre></div>
+<pre><code>## [1] 0.2765306</code></pre>
+<p>복잡한 논리적 조건문이 있을 때(예를 들어 <code>d</code> 가 아니라면, <code>c</code>가 아닌 <code>a</code>나 <code>b</code>를 매치), 하나의 정규표현식을 작성하는 것보다, 여러 <code>str_detect()</code> 호출을 논리 연산자와 함께 묶는 것이 쉬울 때가 많다. 예를 들어 모음을 포함하지 않는 모든 단어를 찾는 두 가지 방법이 있다.</p>
+<div class="sourceCode" id="cb1701"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1701-1" title="1"><span class="co"># Find all words containing at least one vowel, and negate</span></a>
+<a class="sourceLine" id="cb1701-2" title="2">no_vowels_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="op">!</span><span class="kw">str_detect</span>(words, <span class="st">&quot;[aeiou]&quot;</span>)</a>
+<a class="sourceLine" id="cb1701-3" title="3"><span class="co"># Find all words consisting only of consonants (non-vowels)</span></a>
+<a class="sourceLine" id="cb1701-4" title="4">no_vowels_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">str_detect</span>(words, <span class="st">&quot;^[^aeiou]+$&quot;</span>)</a>
+<a class="sourceLine" id="cb1701-5" title="5"><span class="kw">identical</span>(no_vowels_<span class="dv">1</span>, no_vowels_<span class="dv">2</span>)</a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>결과는 같지만, 나는 첫 번째 방법이 이해하기가 훨씬 쉽다고 생각한다. 정규표현식이 지나치게 복잡해질 경우, 작은 조각들로 분해하여, 각 조각에 이름을 주고, 논리적 연산으로 결합해보자. <code>str_detect()</code> 는 일반적으로 패턴과 매칭하는 요소를 선택하는 데 사용한다. 논리형 서브셋하기, 또는 편리한 <code>str_subset()</code> 래퍼로 이 작업을 수행할 수 있다.</p>
+<div class="sourceCode" id="cb1703"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1703-1" title="1">words[<span class="kw">str_detect</span>(words, <span class="st">&quot;x$&quot;</span>)]</a></code></pre></div>
+<pre><code>## [1] &quot;box&quot; &quot;sex&quot; &quot;six&quot; &quot;tax&quot;</code></pre>
+<div class="sourceCode" id="cb1705"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1705-1" title="1"><span class="kw">str_subset</span>(words, <span class="st">&quot;x$&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;box&quot; &quot;sex&quot; &quot;six&quot; &quot;tax&quot;</code></pre>
+<p>그러나 가지고 있는 문자열은 일반적으로 데이터프레임의 열일 것이므로, 대신 <code>filter</code> 를 사용하는 것이 좋다.</p>
+<div class="sourceCode" id="cb1707"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1707-1" title="1">df &lt;-<span class="st"> </span><span class="kw">tibble</span>(</a>
+<a class="sourceLine" id="cb1707-2" title="2">  <span class="dt">word =</span> words, </a>
+<a class="sourceLine" id="cb1707-3" title="3">  <span class="dt">i =</span> <span class="kw">seq_along</span>(word)</a>
+<a class="sourceLine" id="cb1707-4" title="4">)</a>
+<a class="sourceLine" id="cb1707-5" title="5">df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1707-6" title="6"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(word, <span class="st">&quot;x$&quot;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 4 x 2
+##   word      i
+##   &lt;chr&gt; &lt;int&gt;
+## 1 box     108
+## 2 sex     747
+## 3 six     772
+## 4 tax     841</code></pre>
+<p><code>str_detect()</code> 의 변형은 <code>str_count()</code> 이다. 단순히 yes 또는 no 대신, 하나의 문자열에서 몇 번 매칭되는지를 알려준다.</p>
+<div class="sourceCode" id="cb1709"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1709-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;pear&quot;</span>)</a>
+<a class="sourceLine" id="cb1709-2" title="2"><span class="kw">str_count</span>(x, <span class="st">&quot;a&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] 1 3 1</code></pre>
+<div class="sourceCode" id="cb1711"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1711-1" title="1"><span class="co"># On average, how many vowels per word?</span></a>
+<a class="sourceLine" id="cb1711-2" title="2"><span class="kw">mean</span>(<span class="kw">str_count</span>(words, <span class="st">&quot;[aeiou]&quot;</span>))</a></code></pre></div>
+<pre><code>## [1] 1.991837</code></pre>
+<p><code>str_count()</code> 는 <code>mutate()</code> 와 함께 쓰는 것이 자연스럽다.</p>
+<div class="sourceCode" id="cb1713"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1713-1" title="1">df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1713-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb1713-3" title="3">    <span class="dt">vowels =</span> <span class="kw">str_count</span>(word, <span class="st">&quot;[aeiou]&quot;</span>),</a>
+<a class="sourceLine" id="cb1713-4" title="4">    <span class="dt">consonants =</span> <span class="kw">str_count</span>(word, <span class="st">&quot;[^aeiou]&quot;</span>)</a>
+<a class="sourceLine" id="cb1713-5" title="5">  )</a></code></pre></div>
+<pre><code>## # A tibble: 980 x 4
+##   word      i vowels consonants
+##   &lt;chr&gt; &lt;int&gt;  &lt;int&gt;      &lt;int&gt;
+## 1 a         1      1          0
+## 2 able      2      2          2
+## 3 about     3      3          2
+## # ... with 977 more rows</code></pre>
+<p>매칭들끼리 서로 겹치지 않는다는 것을 주의하라. 예를 들어 <code>"abababa"</code> 에서 <code>"aba"</code> 패턴이 몇 번 매칭하는가? 정규표현식에선 세 번이 아닌 두 번이라고 답한다.</p>
+<div class="sourceCode" id="cb1715"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1715-1" title="1"><span class="kw">str_count</span>(<span class="st">&quot;abababa&quot;</span>, <span class="st">&quot;aba&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb1717"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1717-1" title="1"><span class="kw">str_view_all</span>(<span class="st">&quot;abababa&quot;</span>, <span class="st">&quot;aba&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-4413c773f4bec56b6262" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4413c773f4bec56b6262">{"x":{"html":"<ul>\n  <li><span class='match'>aba<\/span>b<span class='match'>aba<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_094653.png" /></p>
+<p><code>str_view_all()</code> 의 용법에 주의하라. 곧 배우겠지만 많은 stringr 함수는 짝으로 제공된다. 즉, 단일 매칭에 동작하는 함수와, 모든 매칭에 동작하는 함수가 있다. 후자는 접미사 <code>_all</code> 이 붙는다.</p>
+<div id="연습문제-21" class="section level4">
+<h4><span class="header-section-number">10.4.1.1</span> 연습문제</h4>
+<ol style="list-style-type: decimal">
+<li>다음 문제들을 두 가지 방식으로 각각 풀어보라. 하나의 정규표현식을 사용해보고 또, 여러 <code>str_detect()</code> 호출을 결합해보라.
+<ol style="list-style-type: decimal">
+<li>x 로 시작 하거나 끝나는 모든 단어를 찾아라.</li>
+<li>모음으로 시작하고 자음으로 끝나는 모든 단어를 찾아라.</li>
+<li>각기 다른 모음을 하나 이상씩 포함하는 단어가 있는가?</li>
+</ol></li>
+<li>어떤 단어가 가장 많은 모음을 갖는가? 어떤 단어가 모음의 비율이 가장 높은가? (힌트: 분모는 무엇인가?)</li>
+</ol>
+</div>
+</div>
+<div id="매칭-추출" class="section level3">
+<h3><span class="header-section-number">10.4.2</span> 매칭 추출</h3>
+<p>매칭한 실제 텍스트를 추출하려면 <code>str_extract()</code> 를 사용하라. 이를 보기 위해 좀 더 복잡한 예제가 필요하다. 하버드 문장데이터(<strong><a href="http://bit.ly/Harvardsentences" class="uri">http://bit.ly/Harvardsentences</a></strong> )를 보려고 하는데, 이는 VOIP 시스템을 테스트하도록 설계되었지만, 정규표현식을 연습하는 데에도 유용하다. 이들은 <code>stringr::sentences</code> 에서 제공된다.</p>
+<div class="sourceCode" id="cb1718"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1718-1" title="1"><span class="kw">length</span>(sentences)</a></code></pre></div>
+<pre><code>## [1] 720</code></pre>
+<div class="sourceCode" id="cb1720"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1720-1" title="1"><span class="kw">head</span>(sentences)</a></code></pre></div>
+<pre><code>## [1] &quot;The birch canoe slid on the smooth planks.&quot; 
+## [2] &quot;Glue the sheet to the dark blue background.&quot;
+## [3] &quot;It&#39;s easy to tell the depth of a well.&quot;     
+## [4] &quot;These days a chicken leg is a rare dish.&quot;   
+## [5] &quot;Rice is often served in round bowls.&quot;       
+## [6] &quot;The juice of lemons makes fine punch.&quot;</code></pre>
+<p>색상을 포함하는 모든 문장을 찾고 싶다고 가정해보자. 먼저 색상 이름 벡터를 생성한 다음, 이를 하나의 정규표현식으로 변환한다.</p>
+<div class="sourceCode" id="cb1722"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1722-1" title="1">colours &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;purple&quot;</span>)</a>
+<a class="sourceLine" id="cb1722-2" title="2">colour_match &lt;-<span class="st"> </span><span class="kw">str_c</span>(colours, <span class="dt">collapse =</span> <span class="st">&quot;|&quot;</span>)</a>
+<a class="sourceLine" id="cb1722-3" title="3">colour_match</a></code></pre></div>
+<pre><code>## [1] &quot;red|orange|yellow|green|blue|purple&quot;</code></pre>
+<p>이제 색상을 포함하는 문장을 선택할 수 있고, 그런 다음 매칭된 색상이 무엇인지 추출할 수 있다.</p>
+<div class="sourceCode" id="cb1724"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1724-1" title="1">has_colour &lt;-<span class="st"> </span><span class="kw">str_subset</span>(sentences, colour_match)</a>
+<a class="sourceLine" id="cb1724-2" title="2">matches &lt;-<span class="st"> </span><span class="kw">str_extract</span>(has_colour, colour_match)</a>
+<a class="sourceLine" id="cb1724-3" title="3"><span class="kw">head</span>(matches)</a></code></pre></div>
+<pre><code>## [1] &quot;blue&quot; &quot;blue&quot; &quot;red&quot;  &quot;red&quot;  &quot;red&quot;  &quot;blue&quot;</code></pre>
+<p><code>str_extract()</code> 는 첫 번째 매칭만 추출한다는 것을 주의하라. 매칭이 두 개 이상인 모든 문장을 우선 선택해보면 이를 가장 쉽게 볼 수 있다.</p>
+<div class="sourceCode" id="cb1726"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1726-1" title="1">more &lt;-<span class="st"> </span>sentences[<span class="kw">str_count</span>(sentences, colour_match) <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb1726-2" title="2"><span class="kw">str_view_all</span>(more, colour_match)</a></code></pre></div>
+<div id="htmlwidget-7ddb9b50b8191a5aa781" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7ddb9b50b8191a5aa781">{"x":{"html":"<ul>\n  <li>It is hard to erase <span class='match'>blue<\/span> or <span class='match'>red<\/span> ink.<\/li>\n  <li>The <span class='match'>green<\/span> light in the brown box flicke<span class='match'>red<\/span>.<\/li>\n  <li>The sky in the west is tinged with <span class='match'>orange<\/span> <span class='match'>red<\/span>.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_095252.png" /></p>
+<div class="sourceCode" id="cb1727"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1727-1" title="1"><span class="kw">str_extract</span>(more, colour_match)</a></code></pre></div>
+<pre><code>## [1] &quot;blue&quot;   &quot;green&quot;  &quot;orange&quot;</code></pre>
+<p>이는 stringr 함수의 일반적인 패턴이다. 매칭 하나로 작업하면 훨씬 단순한 데이터 구조를 사용할 수 있기 때문이다. 매칭 모두를 얻으려면 <code>str_extract_all()</code> 를 사용하면 된다. 이는 리스트를 반환한다.</p>
+<div class="sourceCode" id="cb1729"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1729-1" title="1"><span class="kw">str_extract_all</span>(more, colour_match)</a></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;blue&quot; &quot;red&quot; 
+## 
+## [[2]]
+## [1] &quot;green&quot; &quot;red&quot;  
+## 
+## [[3]]
+## [1] &quot;orange&quot; &quot;red&quot;</code></pre>
+<p><a href="https://sulgik.github.io/r4ds/strings.html#lists">리스트</a> 와 <a href="https://sulgik.github.io/r4ds/strings.html#iteration">반복</a> 에서 리스트에 관해 자세한 내용을 배울 것이다.</p>
+<p><code>str_extract_all()</code> 에서 <code>simplify = TRUE</code> 를 하면 짧은 매칭이 가장 긴 것과 같은 길이로 확장된 행렬을 반환한다.</p>
+<div class="sourceCode" id="cb1731"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1731-1" title="1"><span class="kw">str_extract_all</span>(more, colour_match, <span class="dt">simplify =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>##      [,1]     [,2] 
+## [1,] &quot;blue&quot;   &quot;red&quot;
+## [2,] &quot;green&quot;  &quot;red&quot;
+## [3,] &quot;orange&quot; &quot;red&quot;</code></pre>
+<div class="sourceCode" id="cb1733"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1733-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;a b&quot;</span>, <span class="st">&quot;a b c&quot;</span>)</a>
+<a class="sourceLine" id="cb1733-2" title="2"><span class="kw">str_extract_all</span>(x, <span class="st">&quot;[a-z]&quot;</span>, <span class="dt">simplify =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,] &quot;a&quot;  &quot;&quot;   &quot;&quot;  
+## [2,] &quot;a&quot;  &quot;b&quot;  &quot;&quot;  
+## [3,] &quot;a&quot;  &quot;b&quot;  &quot;c&quot;</code></pre>
+<div id="연습문제-22" class="section level4">
+<h4><span class="header-section-number">10.4.2.1</span> 연습문제</h4>
+<ol style="list-style-type: decimal">
+<li>앞의 예에서 매칭된 정규표현식이 색상이 아닌 ’flickered’에 매칭한 것을 눈치챘을지 모르겠다. 이 문제를 해결하기 위해 정규식을 수정하라.</li>
+<li>하버드 문장 데이터에서 다음을 추출하라.
+<ol style="list-style-type: decimal">
+<li>각 문장의 첫 번째 단어.</li>
+<li><code>ing</code> 로 끝나는 모든 단어.</li>
+<li>모든 복수형.</li>
+</ol></li>
+</ol>
+</div>
+</div>
+<div id="그룹화-매칭" class="section level3">
+<h3><span class="header-section-number">10.4.3</span> 그룹화 매칭</h3>
+<p>이 장 앞부분에서 연산 우선순위를 명확히 할 목적과 역참조 목적으로 괄호 사용에 대해 이야기했었다. 이 외에도 복잡한 매치의 일부를 추출하기 위해서도 괄호를 사용할 수 있다. 예를 들어 문장에서 명사를 추출하고 싶다고 가정하자. 휴리스틱 방법으로 ‘a’ 또는 ‘the’ 다음에 오는 단어를 찾아 볼 것이다. 정규표현식에서 ’단어’를 정의하는 것은 약간 까다롭기 때문에, 여기서 다음의 간단한 근사법을 이용한다. 적어도 하나 이상의 문자(공백 제외) 시퀀스.</p>
+<div class="sourceCode" id="cb1735"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1735-1" title="1">noun &lt;-<span class="st"> &quot;(a|the) ([^ ]+)&quot;</span></a>
+<a class="sourceLine" id="cb1735-2" title="2"></a>
+<a class="sourceLine" id="cb1735-3" title="3">has_noun &lt;-<span class="st"> </span>sentences <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1735-4" title="4"><span class="st">  </span><span class="kw">str_subset</span>(noun) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1735-5" title="5"><span class="st">  </span><span class="kw">head</span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb1735-6" title="6">has_noun <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1735-7" title="7"><span class="st">  </span><span class="kw">str_extract</span>(noun)</a></code></pre></div>
+<pre><code>##  [1] &quot;the smooth&quot; &quot;the sheet&quot;  &quot;the depth&quot;  &quot;a chicken&quot;  &quot;the parked&quot;
+##  [6] &quot;the sun&quot;    &quot;the huge&quot;   &quot;the ball&quot;   &quot;the woman&quot;  &quot;a helps&quot;</code></pre>
+<p><code>str_extract()</code> 는 완전한 매치를 제공하는 반면, <code>str_match()</code> 는 각각 개별 요소를 제공한다. <code>str_match()</code> 는 문자형 벡터 대신 행렬을 반환하는데, 이 행렬에는 완전한 매치가 하나의 열로, 그 다음으로 각 그룹마다 열이 하나씩 따른다.</p>
+<div class="sourceCode" id="cb1737"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1737-1" title="1">has_noun <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1737-2" title="2"><span class="st">  </span><span class="kw">str_match</span>(noun)</a></code></pre></div>
+<pre><code>##       [,1]         [,2]  [,3]     
+##  [1,] &quot;the smooth&quot; &quot;the&quot; &quot;smooth&quot; 
+##  [2,] &quot;the sheet&quot;  &quot;the&quot; &quot;sheet&quot;  
+##  [3,] &quot;the depth&quot;  &quot;the&quot; &quot;depth&quot;  
+##  [4,] &quot;a chicken&quot;  &quot;a&quot;   &quot;chicken&quot;
+##  [5,] &quot;the parked&quot; &quot;the&quot; &quot;parked&quot; 
+##  [6,] &quot;the sun&quot;    &quot;the&quot; &quot;sun&quot;    
+##  [7,] &quot;the huge&quot;   &quot;the&quot; &quot;huge&quot;   
+##  [8,] &quot;the ball&quot;   &quot;the&quot; &quot;ball&quot;   
+##  [9,] &quot;the woman&quot;  &quot;the&quot; &quot;woman&quot;  
+## [10,] &quot;a helps&quot;    &quot;a&quot;   &quot;helps&quot;</code></pre>
+<p>(예상했지만, 명사 검출하는 이 휴리스틱 방법은 좋지 않다. smooth나 parked 같은 형용사도 검출하고 있다.)</p>
+<p>데이터가 티블인 경우, <code>tidyr::extract()</code> 를 사용하는 것이 더 쉽다. 이 함수는 <code>str_match()</code> 처럼 동작하지만, 매치를 명명할 것을 사용자에게 요청하고, 그 후 새로운 열로 배치한다.</p>
+<div class="sourceCode" id="cb1739"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1739-1" title="1"><span class="kw">tibble</span>(<span class="dt">sentence =</span> sentences) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1739-2" title="2"><span class="st">  </span>tidyr<span class="op">::</span><span class="kw">extract</span>(</a>
+<a class="sourceLine" id="cb1739-3" title="3">    sentence, <span class="kw">c</span>(<span class="st">&quot;article&quot;</span>, <span class="st">&quot;noun&quot;</span>), <span class="st">&quot;(a|the) ([^ ]+)&quot;</span>, </a>
+<a class="sourceLine" id="cb1739-4" title="4">    <span class="dt">remove =</span> <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb1739-5" title="5">  )</a></code></pre></div>
+<pre><code>## # A tibble: 720 x 3
+##   sentence                                    article noun  
+##   &lt;chr&gt;                                       &lt;chr&gt;   &lt;chr&gt; 
+## 1 The birch canoe slid on the smooth planks.  the     smooth
+## 2 Glue the sheet to the dark blue background. the     sheet 
+## 3 It&#39;s easy to tell the depth of a well.      the     depth 
+## # ... with 717 more rows</code></pre>
+<p><code>str_extract()</code> 처럼, 각 문자열의 모든 매치를 원한다면 <code>str_match_all()</code> 이 필요하다.</p>
+<div id="연습문제-23" class="section level4">
+<h4><span class="header-section-number">10.4.3.1</span> 연습문제</h4>
+<ol style="list-style-type: decimal">
+<li>‘one’, ‘two’, ‘three’ 등과 같은 ‘숫자’ 다음에 오는 모든 단어를 구하라. 숫자와 단어 모두를 추출하라.</li>
+<li>줄임말을 모두 찾아라. 아포스트로피 이전과 이후 조각을 분리하라.</li>
+</ol>
+</div>
+</div>
+<div id="매칭-치환" class="section level3">
+<h3><span class="header-section-number">10.4.4</span> 매칭 치환</h3>
+<p><code>str_replace()</code> 와 <code>str_replace_all()</code> 을 이용하여 매치를 새로운 문자열로 치환할 수 있다. 가장 간단한 용법은 패턴을 고정된 문자열로 치환하는 것이다.</p>
+<div class="sourceCode" id="cb1741"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1741-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;pear&quot;</span>, <span class="st">&quot;banana&quot;</span>)</a>
+<a class="sourceLine" id="cb1741-2" title="2"><span class="kw">str_replace</span>(x, <span class="st">&quot;[aeiou]&quot;</span>, <span class="st">&quot;-&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;-pple&quot;  &quot;p-ar&quot;   &quot;b-nana&quot;</code></pre>
+<div class="sourceCode" id="cb1743"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1743-1" title="1"><span class="kw">str_replace_all</span>(x, <span class="st">&quot;[aeiou]&quot;</span>, <span class="st">&quot;-&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;-ppl-&quot;  &quot;p--r&quot;   &quot;b-n-n-&quot;</code></pre>
+<p><code>str_replace_all()</code> 을 사용하면 명명된 벡터를 제공하여 다중 치환을 수행할 수 있다.</p>
+<div class="sourceCode" id="cb1745"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1745-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1 house&quot;</span>, <span class="st">&quot;2 cars&quot;</span>, <span class="st">&quot;3 people&quot;</span>)</a>
+<a class="sourceLine" id="cb1745-2" title="2"><span class="kw">str_replace_all</span>(x, <span class="kw">c</span>(<span class="st">&quot;1&quot;</span> =<span class="st"> &quot;one&quot;</span>, <span class="st">&quot;2&quot;</span> =<span class="st"> &quot;two&quot;</span>, <span class="st">&quot;3&quot;</span> =<span class="st"> &quot;three&quot;</span>))</a></code></pre></div>
+<pre><code>## [1] &quot;one house&quot;    &quot;two cars&quot;     &quot;three people&quot;</code></pre>
+<p>고정된 문자열로 치환하는 대신, 매치의 구성요소를 삽입하기 위해 역참조를 사용할 수 있다. 다음 코드는 두 번째와 세 번째 단어의 순서를 바꾼다.</p>
+<div class="sourceCode" id="cb1747"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1747-1" title="1">sentences <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1747-2" title="2"><span class="st">  </span><span class="kw">str_replace</span>(<span class="st">&quot;([^ ]+) ([^ ]+) ([^ ]+)&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">3 </span><span class="ch">\\</span><span class="st">2&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1747-3" title="3"><span class="st">  </span><span class="kw">head</span>(<span class="dv">5</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;The canoe birch slid on the smooth planks.&quot; 
+## [2] &quot;Glue sheet the to the dark blue background.&quot;
+## [3] &quot;It&#39;s to easy tell the depth of a well.&quot;     
+## [4] &quot;These a days chicken leg is a rare dish.&quot;   
+## [5] &quot;Rice often is served in round bowls.&quot;</code></pre>
+<div id="연습문제-24" class="section level4">
+<h4><span class="header-section-number">10.4.4.1</span> 연습문제</h4>
+<ol style="list-style-type: decimal">
+<li>문자열의 모든 슬래시를 역슬래시로 치환하라.</li>
+<li><code>replace_all()</code> 을 사용하여 <code>str_to_lower()</code> 의 간단한 버전을 구현하라.</li>
+<li>단어의 첫 번째와 마지막 문자를 바꿔라. 여전히 단어가 되는 문자열은 무엇인가?</li>
+</ol>
+</div>
+</div>
+<div id="문자열-분할" class="section level3">
+<h3><span class="header-section-number">10.4.5</span> 문자열 분할</h3>
+<p>문자열을 조각으로 분할하려면 <code>str_split()</code> 을 사용하면 된다. 예를 들어 문장을 단어로 분할할 수 있다.</p>
+<div class="sourceCode" id="cb1749"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1749-1" title="1">sentences <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1749-2" title="2"><span class="st">  </span><span class="kw">head</span>(<span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1749-3" title="3"><span class="st">  </span><span class="kw">str_split</span>(<span class="st">&quot; &quot;</span>)</a></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;The&quot;     &quot;birch&quot;   &quot;canoe&quot;   &quot;slid&quot;    &quot;on&quot;      &quot;the&quot;     &quot;smooth&quot; 
+## [8] &quot;planks.&quot;
+## 
+## [[2]]
+## [1] &quot;Glue&quot;        &quot;the&quot;         &quot;sheet&quot;       &quot;to&quot;          &quot;the&quot;        
+## [6] &quot;dark&quot;        &quot;blue&quot;        &quot;background.&quot;
+## 
+## [[3]]
+## [1] &quot;It&#39;s&quot;  &quot;easy&quot;  &quot;to&quot;    &quot;tell&quot;  &quot;the&quot;   &quot;depth&quot; &quot;of&quot;    &quot;a&quot;     &quot;well.&quot;
+## 
+## [[4]]
+## [1] &quot;These&quot;   &quot;days&quot;    &quot;a&quot;       &quot;chicken&quot; &quot;leg&quot;     &quot;is&quot;      &quot;a&quot;      
+## [8] &quot;rare&quot;    &quot;dish.&quot;  
+## 
+## [[5]]
+## [1] &quot;Rice&quot;   &quot;is&quot;     &quot;often&quot;  &quot;served&quot; &quot;in&quot;     &quot;round&quot;  &quot;bowls.&quot;</code></pre>
+<p>각 구성요소가 포함하는 조각의 개수가 다를 수 있으므로, 이 함수는 리스트를 반환한다. 길이가 1인 벡터로 작업하는 경우, 가장 쉬운 것은 리스트의 첫 번째 요소를 추출하는 것이다.</p>
+<div class="sourceCode" id="cb1751"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1751-1" title="1"><span class="st">&quot;a|b|c|d&quot;</span> <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1751-2" title="2"><span class="st">  </span><span class="kw">str_split</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">|&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1751-3" title="3"><span class="st">  </span>.[[<span class="dv">1</span>]]</a></code></pre></div>
+<pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot;</code></pre>
+<p>한편, 리스트를 반환하는 다른 <strong>stringr</strong> 함수처럼 <code>simplify = TRUE</code> 를 사용하여 행렬을 반환할 수도 있다.</p>
+<div class="sourceCode" id="cb1753"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1753-1" title="1">sentences <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1753-2" title="2"><span class="st">  </span><span class="kw">head</span>(<span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1753-3" title="3"><span class="st">  </span><span class="kw">str_split</span>(<span class="st">&quot; &quot;</span>, <span class="dt">simplify =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>##      [,1]    [,2]    [,3]    [,4]      [,5]  [,6]    [,7]     [,8]         
+## [1,] &quot;The&quot;   &quot;birch&quot; &quot;canoe&quot; &quot;slid&quot;    &quot;on&quot;  &quot;the&quot;   &quot;smooth&quot; &quot;planks.&quot;    
+## [2,] &quot;Glue&quot;  &quot;the&quot;   &quot;sheet&quot; &quot;to&quot;      &quot;the&quot; &quot;dark&quot;  &quot;blue&quot;   &quot;background.&quot;
+## [3,] &quot;It&#39;s&quot;  &quot;easy&quot;  &quot;to&quot;    &quot;tell&quot;    &quot;the&quot; &quot;depth&quot; &quot;of&quot;     &quot;a&quot;          
+## [4,] &quot;These&quot; &quot;days&quot;  &quot;a&quot;     &quot;chicken&quot; &quot;leg&quot; &quot;is&quot;    &quot;a&quot;      &quot;rare&quot;       
+## [5,] &quot;Rice&quot;  &quot;is&quot;    &quot;often&quot; &quot;served&quot;  &quot;in&quot;  &quot;round&quot; &quot;bowls.&quot; &quot;&quot;           
+##      [,9]   
+## [1,] &quot;&quot;     
+## [2,] &quot;&quot;     
+## [3,] &quot;well.&quot;
+## [4,] &quot;dish.&quot;
+## [5,] &quot;&quot;</code></pre>
+<div class="sourceCode" id="cb1755"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1755-1" title="1"><span class="co">#&gt;      [,1]    [,2]    [,3]    [,4]      [,5]  [,6]    [,7]    </span></a>
+<a class="sourceLine" id="cb1755-2" title="2"><span class="co">#&gt; [1,] &quot;The&quot;   &quot;birch&quot; &quot;canoe&quot; &quot;slid&quot;    &quot;on&quot;  &quot;the&quot;   &quot;smooth&quot;</span></a>
+<a class="sourceLine" id="cb1755-3" title="3"><span class="co">#&gt; [2,] &quot;Glue&quot;  &quot;the&quot;   &quot;sheet&quot; &quot;to&quot;      &quot;the&quot; &quot;dark&quot;  &quot;blue&quot;  </span></a>
+<a class="sourceLine" id="cb1755-4" title="4"><span class="co">#&gt; [3,] &quot;It&#39;s&quot;  &quot;easy&quot;  &quot;to&quot;    &quot;tell&quot;    &quot;the&quot; &quot;depth&quot; &quot;of&quot;    </span></a>
+<a class="sourceLine" id="cb1755-5" title="5"><span class="co">#&gt; [4,] &quot;These&quot; &quot;days&quot;  &quot;a&quot;     &quot;chicken&quot; &quot;leg&quot; &quot;is&quot;    &quot;a&quot;     </span></a>
+<a class="sourceLine" id="cb1755-6" title="6"><span class="co">#&gt; [5,] &quot;Rice&quot;  &quot;is&quot;    &quot;often&quot; &quot;served&quot;  &quot;in&quot;  &quot;round&quot; &quot;bowls.&quot;</span></a>
+<a class="sourceLine" id="cb1755-7" title="7"><span class="co">#&gt;      [,8]          [,9]   </span></a>
+<a class="sourceLine" id="cb1755-8" title="8"><span class="co">#&gt; [1,] &quot;planks.&quot;     &quot;&quot;     </span></a>
+<a class="sourceLine" id="cb1755-9" title="9"><span class="co">#&gt; [2,] &quot;background.&quot; &quot;&quot;     </span></a>
+<a class="sourceLine" id="cb1755-10" title="10"><span class="co">#&gt; [3,] &quot;a&quot;           &quot;well.&quot;</span></a>
+<a class="sourceLine" id="cb1755-11" title="11"><span class="co">#&gt; [4,] &quot;rare&quot;        &quot;dish.&quot;</span></a>
+<a class="sourceLine" id="cb1755-12" title="12"><span class="co">#&gt; [5,] &quot;&quot;            &quot;&quot;</span></a></code></pre></div>
+<p>조각을 최대 개수만큼 요청할 수도 있다.</p>
+<div class="sourceCode" id="cb1756"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1756-1" title="1">fields &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Name: Hadley&quot;</span>, <span class="st">&quot;Country: NZ&quot;</span>, <span class="st">&quot;Age: 35&quot;</span>)</a>
+<a class="sourceLine" id="cb1756-2" title="2">fields <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str_split</span>(<span class="st">&quot;: &quot;</span>, <span class="dt">n =</span> <span class="dv">2</span>, <span class="dt">simplify =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>##      [,1]      [,2]    
+## [1,] &quot;Name&quot;    &quot;Hadley&quot;
+## [2,] &quot;Country&quot; &quot;NZ&quot;    
+## [3,] &quot;Age&quot;     &quot;35&quot;</code></pre>
+<div class="sourceCode" id="cb1758"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1758-1" title="1"><span class="co">#&gt;      [,1]      [,2]    </span></a>
+<a class="sourceLine" id="cb1758-2" title="2"><span class="co">#&gt; [1,] &quot;Name&quot;    &quot;Hadley&quot;</span></a>
+<a class="sourceLine" id="cb1758-3" title="3"><span class="co">#&gt; [2,] &quot;Country&quot; &quot;NZ&quot;    </span></a>
+<a class="sourceLine" id="cb1758-4" title="4"><span class="co">#&gt; [3,] &quot;Age&quot;     &quot;35&quot;</span></a></code></pre></div>
+<p>또한, 패턴으로 문자열을 분할하는 대신 문자, 줄, 문장 및 단어 경계 (<code>boundary()</code> )로 분할할 수도 있다.</p>
+<div class="sourceCode" id="cb1759"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1759-1" title="1">x &lt;-<span class="st"> &quot;This is a sentence.  This is another sentence.&quot;</span></a>
+<a class="sourceLine" id="cb1759-2" title="2"><span class="kw">str_view_all</span>(x, <span class="kw">boundary</span>(<span class="st">&quot;word&quot;</span>))</a></code></pre></div>
+<div id="htmlwidget-be8109f149a85fcdef9e" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-be8109f149a85fcdef9e">{"x":{"html":"<ul>\n  <li><span class='match'>This<\/span> <span class='match'>is<\/span> <span class='match'>a<\/span> <span class='match'>sentence<\/span>.  <span class='match'>This<\/span> <span class='match'>is<\/span> <span class='match'>another<\/span> <span class='match'>sentence<\/span>.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_101257.png" /></p>
+<div class="sourceCode" id="cb1760"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1760-1" title="1"><span class="kw">str_split</span>(x, <span class="st">&quot; &quot;</span>)[[<span class="dv">1</span>]]</a></code></pre></div>
+<pre><code>## [1] &quot;This&quot;      &quot;is&quot;        &quot;a&quot;         &quot;sentence.&quot; &quot;&quot;          &quot;This&quot;     
+## [7] &quot;is&quot;        &quot;another&quot;   &quot;sentence.&quot;</code></pre>
+<div class="sourceCode" id="cb1762"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1762-1" title="1"><span class="co">#&gt; [1] &quot;This&quot;      &quot;is&quot;        &quot;a&quot;         &quot;sentence.&quot; &quot;&quot;          &quot;This&quot;     </span></a>
+<a class="sourceLine" id="cb1762-2" title="2"><span class="co">#&gt; [7] &quot;is&quot;        &quot;another&quot;   &quot;sentence.&quot;</span></a>
+<a class="sourceLine" id="cb1762-3" title="3"><span class="kw">str_split</span>(x, <span class="kw">boundary</span>(<span class="st">&quot;word&quot;</span>))[[<span class="dv">1</span>]]</a></code></pre></div>
+<pre><code>## [1] &quot;This&quot;     &quot;is&quot;       &quot;a&quot;        &quot;sentence&quot; &quot;This&quot;     &quot;is&quot;       &quot;another&quot; 
+## [8] &quot;sentence&quot;</code></pre>
+<div class="sourceCode" id="cb1764"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1764-1" title="1"><span class="co">#&gt; [1] &quot;This&quot;     &quot;is&quot;       &quot;a&quot;        &quot;sentence&quot; &quot;This&quot;     &quot;is&quot;      </span></a>
+<a class="sourceLine" id="cb1764-2" title="2"><span class="co">#&gt; [7] &quot;another&quot;  &quot;sentence&quot;</span></a></code></pre></div>
+<div id="연습문제-25" class="section level4">
+<h4><span class="header-section-number">10.4.5.1</span> 연습문제</h4>
+<ol style="list-style-type: decimal">
+<li><code>"apples, pears, and bananas"</code> 와 같은 문자열을 개별 구성요소로 분할하라.</li>
+<li>왜 <code>" "</code> 보다 <code>boundary("word")</code> 로 분할하는 것이 좋은가?</li>
+<li>빈 문자열 (<code>""</code> )로 분할하면 어떻게 되는가? 실험해 본 후, 설명서를 읽어라.</li>
+</ol>
+</div>
+</div>
+<div id="매치-찾기" class="section level3">
+<h3><span class="header-section-number">10.4.6</span> 매치 찾기</h3>
+<p><code>str_locate()</code> 와 <code>str_locate_all()</code> 을 사용하면 각 매치의 시작과 종료 위치를 알 수 있다. 이는 원하는 바를 완벽하게 수행하는 함수가 없을 때 특히 유용하다. <code>str_locate()</code> 를 사용하여 매칭 패턴을 찾을 수 있으며 <code>str_sub()</code> 를 사용하여, 매칭 패턴을 추출하거나 수정할 수 있다.</p>
+</div>
+</div>
+<div id="other_patterns" class="section level2">
+<h2><span class="header-section-number">10.5</span> 기타 패턴 유형</h2>
+<p>문자열로 된 패턴을 사용하면 자동으로 <code>regex()</code> 호출로 래핑된다.</p>
+<div class="sourceCode" id="cb1765"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1765-1" title="1">fruit &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;banana&quot;</span>, <span class="st">&quot;Banana&quot;</span>, <span class="st">&quot;BANANA&quot;</span>)</a>
+<a class="sourceLine" id="cb1765-2" title="2"><span class="co"># The regular call:</span></a>
+<a class="sourceLine" id="cb1765-3" title="3"><span class="kw">str_view</span>(fruit, <span class="st">&quot;nana&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-1f7362c896c2dc9e9a47" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1f7362c896c2dc9e9a47">{"x":{"html":"<ul>\n  <li>ba<span class='match'>nana<\/span><\/li>\n  <li>Ba<span class='match'>nana<\/span><\/li>\n  <li>BANANA<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb1766"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1766-1" title="1"><span class="co"># Is shorthand for</span></a>
+<a class="sourceLine" id="cb1766-2" title="2"><span class="kw">str_view</span>(fruit, <span class="kw">regex</span>(<span class="st">&quot;nana&quot;</span>))</a></code></pre></div>
+<div id="htmlwidget-e285fc4eb0d1cb270f8e" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e285fc4eb0d1cb270f8e">{"x":{"html":"<ul>\n  <li>ba<span class='match'>nana<\/span><\/li>\n  <li>Ba<span class='match'>nana<\/span><\/li>\n  <li>BANANA<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_101938.png" /></p>
+<p><code>regex()</code> 의 다른 인수를 사용하여 매치의 세부사항을 제어할 수 있다.</p>
+<ul>
+<li><p><code>ignore_case = TRUE</code> 를 하면 문자가 대문자나 소문자 형태 모두로 매칭된다. 이때 항상 현재의 로케일을 사용한다.</p>
+<div class="sourceCode" id="cb1767"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1767-1" title="1">bananas &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;banana&quot;</span>, <span class="st">&quot;Banana&quot;</span>, <span class="st">&quot;BANANA&quot;</span>)</a>
+<a class="sourceLine" id="cb1767-2" title="2"><span class="kw">str_view</span>(bananas, <span class="st">&quot;banana&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-071561391991767493ac" style="width:960px;height:100%;" class="str_view html-widget"></div>
+  <script type="application/json" data-for="htmlwidget-071561391991767493ac">{"x":{"html":"<ul>\n  <li><span class='match'>banana<\/span><\/li>\n  <li>Banana<\/li>\n  <li>BANANA<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_102015.png" /></p>
+<div class="sourceCode" id="cb1768"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1768-1" title="1"><span class="kw">str_view</span>(bananas, <span class="kw">regex</span>(<span class="st">&quot;banana&quot;</span>, <span class="dt">ignore_case =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<div id="htmlwidget-91c440060411d5e0306a" style="width:960px;height:100%;" class="str_view html-widget"></div>
+  <script type="application/json" data-for="htmlwidget-91c440060411d5e0306a">{"x":{"html":"<ul>\n  <li><span class='match'>banana<\/span><\/li>\n  <li><span class='match'>Banana<\/span><\/li>\n  <li><span class='match'>BANANA<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_102100.png" /></p></li>
+<li><p><code>multiline = TRUE</code> 를 하면 <code>^</code> 와 <code>$</code> 이 전체 문자열의 시작, 끝이 아니라, 각 라인의 시작과 끝이 매칭된다.</p>
+<div class="sourceCode" id="cb1769"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1769-1" title="1">x &lt;-<span class="st"> &quot;Line 1</span><span class="ch">\n</span><span class="st">Line 2</span><span class="ch">\n</span><span class="st">Line 3&quot;</span></a>
+<a class="sourceLine" id="cb1769-2" title="2"><span class="kw">str_extract_all</span>(x, <span class="st">&quot;^Line&quot;</span>)[[<span class="dv">1</span>]]</a></code></pre></div>
+<pre><code>## [1] &quot;Line&quot;</code></pre>
+<div class="sourceCode" id="cb1771"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1771-1" title="1"><span class="kw">str_extract_all</span>(x, <span class="kw">regex</span>(<span class="st">&quot;^Line&quot;</span>, <span class="dt">multiline =</span> <span class="ot">TRUE</span>))[[<span class="dv">1</span>]]</a></code></pre></div>
+<pre><code>## [1] &quot;Line&quot; &quot;Line&quot; &quot;Line&quot;</code></pre></li>
+<li><p><code>comments = TRUE</code> 를 하면 복잡한 정규표현식을 이해하기 쉽도록 설명과 공백을 사용할 수 있게 된다. <code>#</code> 뒤에 나오는 다른 문자들처럼 공백도 무시된다. 공백 문자를 매치하기 위해서는 <code>“\\”</code> 로 이스케이프 해야 한다.</p>
+<div class="sourceCode" id="cb1773"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1773-1" title="1">phone &lt;-<span class="st"> </span><span class="kw">regex</span>(<span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb1773-2" title="2"><span class="st">  </span><span class="ch">\\</span><span class="st">(?     # optional opening parens</span></a>
+<a class="sourceLine" id="cb1773-3" title="3"><span class="st">  (</span><span class="ch">\\</span><span class="st">d{3}) # area code</span></a>
+<a class="sourceLine" id="cb1773-4" title="4"><span class="st">  [) -]?   # optional closing parens, space, or dash</span></a>
+<a class="sourceLine" id="cb1773-5" title="5"><span class="st">  (</span><span class="ch">\\</span><span class="st">d{3}) # another three numbers</span></a>
+<a class="sourceLine" id="cb1773-6" title="6"><span class="st">  [ -]?    # optional space or dash</span></a>
+<a class="sourceLine" id="cb1773-7" title="7"><span class="st">  (</span><span class="ch">\\</span><span class="st">d{3}) # three more numbers</span></a>
+<a class="sourceLine" id="cb1773-8" title="8"><span class="st">  &quot;</span>, <span class="dt">comments =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb1773-9" title="9"></a>
+<a class="sourceLine" id="cb1773-10" title="10"><span class="kw">str_match</span>(<span class="st">&quot;514-791-8141&quot;</span>, phone)</a></code></pre></div>
+<pre><code>##      [,1]          [,2]  [,3]  [,4] 
+## [1,] &quot;514-791-814&quot; &quot;514&quot; &quot;791&quot; &quot;814&quot;</code></pre></li>
+<li><p><code>dotall = TRUE</code> 를 하면 <code>.</code> 이 <code>\n</code> 을 포함한 모든 것에 매칭된다.</p>
+<div class="sourceCode" id="cb1775"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1775-1" title="1"><span class="kw">str_detect</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">X</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="st">&quot;.X.&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb1777"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1777-1" title="1"><span class="kw">str_detect</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">X</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="kw">regex</span>(<span class="st">&quot;.X.&quot;</span>, <span class="dt">dotall =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre></li>
+</ul>
+<p><code>regex()</code> 대신 사용할 수 있는 세 가지 함수가 있다.</p>
+<ul>
+<li><p><code>fixed()</code> 는 지정된 일련의 바이트와 정확히 매치한다. 이 함수는 모든 특수 정규표현식을 무시하고 매우 낮은 수준에서 동작한다. 이를 사용하여 복잡한 이스케이프를 피할 수 있으며 정규표현식보다 훨씬 속도가 빠르다. 다음의 소규모 벤치마크는 단순한 예시에 대해 약 3배 빠르다는 것을 보여준다.</p>
+<div class="sourceCode" id="cb1779"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1779-1" title="1">microbenchmark<span class="op">::</span><span class="kw">microbenchmark</span>(</a>
+<a class="sourceLine" id="cb1779-2" title="2">  <span class="dt">fixed =</span> <span class="kw">str_detect</span>(sentences, <span class="kw">fixed</span>(<span class="st">&quot;the&quot;</span>)),</a>
+<a class="sourceLine" id="cb1779-3" title="3">  <span class="dt">regex =</span> <span class="kw">str_detect</span>(sentences, <span class="st">&quot;the&quot;</span>),</a>
+<a class="sourceLine" id="cb1779-4" title="4">  <span class="dt">times =</span> <span class="dv">20</span></a>
+<a class="sourceLine" id="cb1779-5" title="5">)</a></code></pre></div>
+<pre><code>## Unit: microseconds
+##   expr   min    lq    mean median     uq   max neval cld
+##  fixed 113.8 117.9 136.405 128.35 140.75 277.2    20  a 
+##  regex 296.5 318.4 340.480 330.00 347.90 467.3    20   b</code></pre>
+<p><code>fixed()</code> 를 비영어에 사용할 때는 조심하라. 같은 문자를 나타내는 방법이 여러 가지이기 때문에 문제가 되는 경우가 많다. 예를 들어 ’á’를 정의하는 방법에는 두 가지가 있다. 즉, 단일한 문자로 하거나, ’a’와 악센트로 하는 방법이다.</p>
+<div class="sourceCode" id="cb1781"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1781-1" title="1">a1 &lt;-<span class="st"> &quot;\u00e1&quot;</span></a>
+<a class="sourceLine" id="cb1781-2" title="2">a2 &lt;-<span class="st"> &quot;a\u0301&quot;</span></a>
+<a class="sourceLine" id="cb1781-3" title="3"><span class="kw">c</span>(a1, a2)</a></code></pre></div>
+<pre><code>## [1] &quot;a&quot; &quot;a&lt;U+0301&gt;&quot;</code></pre>
+<div class="sourceCode" id="cb1783"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1783-1" title="1">a1 <span class="op">==</span><span class="st"> </span>a2</a></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>동일하게 렌더링하지만 다르게 정의되었기 때문에 <code>fixed()</code> 가 매치를 찾지 못한다. 대신, 인간의 문자 비교 규칙을 존중하는 <code>coll()</code> (아래에 정의됨)을 사용할 수 있다.</p>
+<div class="sourceCode" id="cb1785"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1785-1" title="1"><span class="kw">str_detect</span>(a1, <span class="kw">fixed</span>(a2))</a></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb1787"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1787-1" title="1"><span class="kw">str_detect</span>(a1, <span class="kw">coll</span>(a2))</a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre></li>
+<li><p><code>coll()</code> 은 표준 정렬(collation) 규칙을 사용하여 문자열을 비교한다. 대소문자를 구분하지 않는(case-insensitive) 매치를 수행할 때 유용하다. <code>coll()</code> 은 문자 비교 규칙을 제어하는 로케일 파라미터를 취한다는 것을 주의해야 한다. 불행하게도 세계의 각 지역은 다른 규칙을 사용한다!</p>
+<div class="sourceCode" id="cb1789"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1789-1" title="1"><span class="co"># That means you also need to be aware of the difference</span></a>
+<a class="sourceLine" id="cb1789-2" title="2"><span class="co"># when doing case insensitive matches:</span></a>
+<a class="sourceLine" id="cb1789-3" title="3">i &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;I&quot;</span>, <span class="st">&quot;İ&quot;</span>, <span class="st">&quot;i&quot;</span>, <span class="st">&quot;ı&quot;</span>)</a>
+<a class="sourceLine" id="cb1789-4" title="4">i</a></code></pre></div>
+<pre><code>## [1] &quot;I&quot;        &quot;&lt;U+0130&gt;&quot; &quot;i&quot;        &quot;ı&quot;</code></pre>
+<div class="sourceCode" id="cb1791"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1791-1" title="1"><span class="kw">str_subset</span>(i, <span class="kw">coll</span>(<span class="st">&quot;i&quot;</span>, <span class="dt">ignore_case =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<pre><code>## [1] &quot;I&quot; &quot;i&quot;</code></pre>
+<div class="sourceCode" id="cb1793"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1793-1" title="1"><span class="kw">str_subset</span>(i, <span class="kw">coll</span>(<span class="st">&quot;i&quot;</span>, <span class="dt">ignore_case =</span> <span class="ot">TRUE</span>, <span class="dt">locale =</span> <span class="st">&quot;tr&quot;</span>))</a></code></pre></div>
+<pre><code>## [1] &quot;i&quot;</code></pre>
+<p><code>fixed()</code> 와 <code>regex()</code> 모두에 <code>ignore_case</code> 인수가 있지만, 로케일 선택을 허용하지는 않는다. 이들은 항상 기본 로케일을 사용한다. 다음 코드를 통해 이를 알아볼 수 있다. (<strong>stringi</strong> 에서 더 살펴보자)</p>
+<div class="sourceCode" id="cb1795"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1795-1" title="1">stringi<span class="op">::</span><span class="kw">stri_locale_info</span>()</a></code></pre></div>
+<pre><code>## $Language
+## [1] &quot;ko&quot;
+## 
+## $Country
+## [1] &quot;KR&quot;
+## 
+## $Variant
+## [1] &quot;&quot;
+## 
+## $Name
+## [1] &quot;ko_KR&quot;</code></pre>
+<p><code>coll()</code> 의 단점은 속도이다. 어느 문자가 같은지 인식하는 규칙이 복잡하기 때문에, <code>coll()</code> 은 <code>regex()</code> 와 <code>fixed()</code> 에 비해 상대적으로 느리다.</p></li>
+<li><p><code>str_split()</code> 에서 보았듯이 <code>boundary()</code> 를 사용하여 경계를 매치할 수 있다. 다른 함수들과도 사용할 수 있다.</p>
+<div class="sourceCode" id="cb1797"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1797-1" title="1">x &lt;-<span class="st"> &quot;This is a sentence.&quot;</span></a>
+<a class="sourceLine" id="cb1797-2" title="2"><span class="kw">str_view_all</span>(x, <span class="kw">boundary</span>(<span class="st">&quot;word&quot;</span>))</a></code></pre></div>
+<div id="htmlwidget-62a834cdce4652955cd4" style="width:960px;height:100%;" class="str_view html-widget"></div>
+  <script type="application/json" data-for="htmlwidget-62a834cdce4652955cd4">{"x":{"html":"<ul>\n  <li><span class='match'>This<\/span> <span class='match'>is<\/span> <span class='match'>a<\/span> <span class='match'>sentence<\/span>.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<p><img src="images/ch10/20200715_110217.png" /></p>
+<div class="sourceCode" id="cb1798"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1798-1" title="1"><span class="kw">str_extract_all</span>(x, <span class="kw">boundary</span>(<span class="st">&quot;word&quot;</span>))</a></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;This&quot;     &quot;is&quot;       &quot;a&quot;        &quot;sentence&quot;</code></pre></li>
+</ul>
+<div id="연습문제-26" class="section level3">
+<h3><span class="header-section-number">10.5.1</span> 연습문제</h3>
+<ol style="list-style-type: decimal">
+<li><code>regex()</code> vs <code>fixed()</code> 를 사용하여, 어떻게 <code>\</code> 를 포함하는 모든 문자열을 찾겠는가?</li>
+<li><code>sentences</code> 에서 가장 자주 나오는 단어 다섯 가지는 무엇인가?</li>
+</ol>
+</div>
+</div>
+<div id="reg_other_usage" class="section level2">
+<h2><span class="header-section-number">10.6</span> 정규 표현식의 기타 용도</h2>
+<p>베이스 R 의 다음의 두 함수도 정규표현식을 사용한다.</p>
+<ul>
+<li><p><code>apropos()</code> 는 전역 환경에서 사용할 수 있는 모든 객체를 검색한다. 함수의 이름을 기억할 수 없는 경우에 유용하다.</p>
+<div class="sourceCode" id="cb1800"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1800-1" title="1"><span class="kw">apropos</span>(<span class="st">&quot;replace&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;%+replace%&quot;             &quot;replace&quot;                &quot;replace.substring.wild&quot;
+## [4] &quot;replace_na&quot;             &quot;setReplaceMethod&quot;       &quot;str_replace&quot;           
+## [7] &quot;str_replace_all&quot;        &quot;str_replace_na&quot;         &quot;theme_replace&quot;</code></pre>
+<div class="sourceCode" id="cb1802"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1802-1" title="1"><span class="co">#&gt; [1] &quot;%+replace%&quot;       &quot;replace&quot;          &quot;replace_na&quot;      </span></a>
+<a class="sourceLine" id="cb1802-2" title="2"><span class="co">#&gt; [4] &quot;setReplaceMethod&quot; &quot;str_replace&quot;      &quot;str_replace_all&quot; </span></a>
+<a class="sourceLine" id="cb1802-3" title="3"><span class="co">#&gt; [7] &quot;str_replace_na&quot;   &quot;theme_replace&quot;</span></a></code></pre></div></li>
+<li><p><code>dir()</code> 은 디렉터리에 있는 모든 파일을 나열한다. <code>pattern</code> 인자는 정규표현식을 취해, 매치하는 파일 이름만 반환한다. 예를 들어 현재 디렉터리에 있는 모든 R 파일(R 마크다운 파일의 경우의 패턴은 <code>"\\.Rmd$"</code>)을 다음과 같이 찾을 수 있다.</p>
+<div class="sourceCode" id="cb1803"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1803-1" title="1"><span class="kw">head</span>(<span class="kw">dir</span>(<span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.R$&quot;</span>))</a></code></pre></div>
+<pre><code>## character(0)</code></pre>
+<p>(<code>*.Rmd</code> 같은 ’글로브(globs) 패턴’에 익숙한 경우, <code>glob2rx()</code> 를 사용하여 이를 정규표현식으로 변환할 수 있다.)</p></li>
+</ul>
+</div>
+<div id="stringi" class="section level2">
+<h2><span class="header-section-number">10.7</span> <code>stringi</code></h2>
+<p><code>stringr</code> 은 <strong><code>stringi</code></strong> 패키지 기반으로 만들어졌다. <strong><code>stringr</code></strong> 은 학습할 때 유용한데, 왜냐하면 이 패키지는 자주 사용하는 문자열 조작 함수들을 다루기 위해 엄선된 최소한의 함수들만 보여주기 때문이다. 반면, <strong><code>stringi</code></strong> 는 전체를 포괄하도록 설계되었고, 필요한 거의 모든 함수를 포함한다. <strong><code>stringi</code></strong> 에는 234 개의 함수가 있지만, <strong><code>stringr</code></strong> 에는 46개가 있다.</p>
+<p><code>stringr</code> 에서 잘 안될 경우, <strong><code>stringi</code></strong> 에서 한 번 찾아보는 것이 좋다. 두 패키지는 매우 유사하게 동작하므로, <strong><code>stringr</code></strong> 에서 배운 것을 자연스럽게 활용할 수 있을 것이다. 주요 차이점은 접두사이다(<code>str_</code> 과 <code>stri_</code> ).</p>
+<div id="연습문제-27" class="section level3">
+<h3><span class="header-section-number">10.7.1</span> 연습문제</h3>
+<ol style="list-style-type: decimal">
+<li>다음을 수행하는 <strong>stringi</strong> 함수를 찾아라.</li>
+<li>단어의 수를 계산.</li>
+<li>중복 문자열을 찾음.</li>
+<li>랜덤 텍스트를 생성.</li>
+<li><code>stri_sort()</code> 에서 정렬에 사용할 언어를 어떻게 제어하겠는가?</li>
+</ol>
+</div>
+</div>
+<div id="reference-5" class="section level2 unnumbered">
+<h2>Reference</h2>
+<p><a href="https://sulgik.github.io/r4ds/strings.html" class="uri">https://sulgik.github.io/r4ds/strings.html</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="dates-and-time.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

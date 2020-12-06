@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Data Cleansing | Data Management with R</title>
+  <meta name="description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Data Cleansing | Data Management with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Data Cleansing | Data Management with R" />
+  
+  <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Dae Ho Kim" />
+
+
+<meta name="date" content="2020-10-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="df-tibble-factor.html"/>
+<link rel="next" href="preprocessing.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.16/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
+<script src="libs/str_view-binding-1.4.0/str_view.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="1" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>1</b> Data Import and Export</a><ul>
+<li class="chapter" data-level="1.1" data-path="data-import.html"><a href="data-import.html#data-import"><i class="fa fa-check"></i><b>1.1</b> Data Import</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="data-import.html"><a href="data-import.html#준비하기"><i class="fa fa-check"></i><b>1.1.1</b> 준비하기</a></li>
+<li class="chapter" data-level="1.1.2" data-path="data-import.html"><a href="data-import.html#시작하기"><i class="fa fa-check"></i><b>1.1.2</b> 시작하기</a></li>
+<li class="chapter" data-level="1.1.3" data-path="data-import.html"><a href="data-import.html#벡터-파싱하기"><i class="fa fa-check"></i><b>1.1.3</b> 벡터 파싱하기</a></li>
+<li class="chapter" data-level="1.1.4" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>1.1.4</b> 연습문제</a></li>
+<li class="chapter" data-level="1.1.5" data-path="data-import.html"><a href="data-import.html#파일-파싱하기"><i class="fa fa-check"></i><b>1.1.5</b> 파일 파싱하기</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="data-import.html"><a href="data-import.html#data_export"><i class="fa fa-check"></i><b>1.2</b> Data Export</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="data-import.html"><a href="data-import.html#write_csv"><i class="fa fa-check"></i><b>1.2.1</b> <code>write_csv()</code></a></li>
+<li class="chapter" data-level="1.2.2" data-path="data-import.html"><a href="data-import.html#write_rds"><i class="fa fa-check"></i><b>1.2.2</b> <code>write_rds()</code></a></li>
+<li class="chapter" data-level="1.2.3" data-path="data-import.html"><a href="data-import.html#write_feather"><i class="fa fa-check"></i><b>1.2.3</b> <code>write_feather()</code></a></li>
+<li class="chapter" data-level="1.2.4" data-path="data-import.html"><a href="data-import.html#read_csv와-read_rds의-비교"><i class="fa fa-check"></i><b>1.2.4</b> <code>read_csv()</code>와 <code>read_rds()</code>의 비교</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="data-import.html"><a href="data-import.html#data_import_additional"><i class="fa fa-check"></i><b>1.3</b> Read Tabular Data의 보충설명</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="data-import.html"><a href="data-import.html#read_csv의-예"><i class="fa fa-check"></i><b>1.3.1</b> <code>read_csv()</code>의 예</a></li>
+<li class="chapter" data-level="1.3.2" data-path="data-import.html"><a href="data-import.html#read_csv2의-예"><i class="fa fa-check"></i><b>1.3.2</b> <code>read_csv2()</code>의 예</a></li>
+<li class="chapter" data-level="1.3.3" data-path="data-import.html"><a href="data-import.html#read_delim의-예"><i class="fa fa-check"></i><b>1.3.3</b> <code>read_delim()</code>의 예</a></li>
+<li class="chapter" data-level="1.3.4" data-path="data-import.html"><a href="data-import.html#read_fwf의-예"><i class="fa fa-check"></i><b>1.3.4</b> <code>read_fwf()</code>의 예</a></li>
+<li class="chapter" data-level="1.3.5" data-path="data-import.html"><a href="data-import.html#read_tsv의-예"><i class="fa fa-check"></i><b>1.3.5</b> read_tsv()의 예</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html"><i class="fa fa-check"></i><b>2</b> Dataframe, Tibble and Factor</a><ul>
+<li class="chapter" data-level="2.1" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#dataframe"><i class="fa fa-check"></i><b>2.1</b> Data Frame</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#데이터-프레임의-생성"><i class="fa fa-check"></i><b>2.1.1</b> 데이터 프레임의 생성</a></li>
+<li class="chapter" data-level="2.1.2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#데이터-프레임의-구조"><i class="fa fa-check"></i><b>2.1.2</b> 데이터 프레임의 구조</a></li>
+<li class="chapter" data-level="2.1.3" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#행열-추가하기"><i class="fa fa-check"></i><b>2.1.3</b> 행/열 추가하기</a></li>
+<li class="chapter" data-level="2.1.4" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#행과-열-접근하기"><i class="fa fa-check"></i><b>2.1.4</b> 행과 열 접근하기</a></li>
+<li class="chapter" data-level="2.1.5" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-2"><i class="fa fa-check"></i><b>2.1.5</b> 연습문제</a></li>
+<li class="chapter" data-level="2.1.6" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#행과-열의-이름-지정하기"><i class="fa fa-check"></i><b>2.1.6</b> 행과 열의 이름 지정하기</a></li>
+<li class="chapter" data-level="2.1.7" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#데이터-타입-변환"><i class="fa fa-check"></i><b>2.1.7</b> 데이터 타입 변환</a></li>
+<li class="chapter" data-level="2.1.8" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-3"><i class="fa fa-check"></i><b>2.1.8</b> 연습문제</a></li>
+<li class="chapter" data-level="2.1.9" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#실습-과제"><i class="fa fa-check"></i><b>2.1.9</b> 실습 과제</a></li>
+<li class="chapter" data-level="2.1.10" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#apply-함수-이해하기"><i class="fa fa-check"></i><b>2.1.10</b> <code>apply()</code> 함수 이해하기</a></li>
+<li class="chapter" data-level="2.1.11" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-4"><i class="fa fa-check"></i><b>2.1.11</b> 연습문제</a></li>
+<li class="chapter" data-level="2.1.12" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-5"><i class="fa fa-check"></i><b>2.1.12</b> 연습문제</a></li>
+<li class="chapter" data-level="2.1.13" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#apply-함수의-사촌들"><i class="fa fa-check"></i><b>2.1.13</b> <code>apply()</code> 함수의 사촌들</a></li>
+<li class="chapter" data-level="2.1.14" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-6"><i class="fa fa-check"></i><b>2.1.14</b> 연습문제</a></li>
+<li class="chapter" data-level="" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#참고-sampling"><i class="fa fa-check"></i>[참고 : Sampling]</a></li>
+<li class="chapter" data-level="" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#reference"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#tibble"><i class="fa fa-check"></i><b>2.2</b> tibble</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#티블-생성"><i class="fa fa-check"></i><b>2.2.1</b> 티블 생성</a></li>
+<li class="chapter" data-level="2.2.2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#강제변환coercion"><i class="fa fa-check"></i><b>2.2.2</b> 강제변환(Coercion)</a></li>
+<li class="chapter" data-level="2.2.3" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#티블과-데이터-프레임의-비교"><i class="fa fa-check"></i><b>2.2.3</b> 티블과 데이터 프레임의 비교</a></li>
+<li class="chapter" data-level="2.2.4" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#이전-코드와-상호작용"><i class="fa fa-check"></i><b>2.2.4</b> 이전 코드와 상호작용</a></li>
+<li class="chapter" data-level="2.2.5" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#외부-데이터-가져오기-importing"><i class="fa fa-check"></i><b>2.2.5</b> 외부 데이터 가져오기 (importing)</a></li>
+<li class="chapter" data-level="2.2.6" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-7"><i class="fa fa-check"></i><b>2.2.6</b> 연습문제</a></li>
+<li class="chapter" data-level="" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#references"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#factor"><i class="fa fa-check"></i><b>2.3</b> Factor</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#범주형-자료"><i class="fa fa-check"></i><b>2.3.1</b> 범주형 자료</a></li>
+<li class="chapter" data-level="2.3.2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#factor의-요소-및-특징"><i class="fa fa-check"></i><b>2.3.2</b> Factor의 요소 및 특징</a></li>
+<li class="chapter" data-level="2.3.3" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#factor-함수의-형식"><i class="fa fa-check"></i><b>2.3.3</b> <code>factor()</code> 함수의 형식</a></li>
+<li class="chapter" data-level="2.3.4" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#factor-생성"><i class="fa fa-check"></i><b>2.3.4</b> factor 생성</a></li>
+<li class="chapter" data-level="" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#reference-1"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-cleansing.html"><a href="data-cleansing.html"><i class="fa fa-check"></i><b>3</b> Data Cleansing</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_summary"><i class="fa fa-check"></i><b>3.1</b> Data Cleansing</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="data-cleansing.html"><a href="data-cleansing.html#변수-요약"><i class="fa fa-check"></i><b>3.1.1</b> 변수 요약</a></li>
+<li class="chapter" data-level="3.1.2" data-path="data-cleansing.html"><a href="data-cleansing.html#데이터-세트-4"><i class="fa fa-check"></i><b>3.1.2</b> 데이터 세트</a></li>
+<li class="chapter" data-level="3.1.3" data-path="data-cleansing.html"><a href="data-cleansing.html#데이터-세트의-통계적-요약-정보"><i class="fa fa-check"></i><b>3.1.3</b> 데이터 세트의 통계적 요약 정보</a></li>
+<li class="chapter" data-level="3.1.4" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_describe"><i class="fa fa-check"></i><b>3.1.4</b> <code>Hmisc</code> 패키지의 <code>describe()</code> 함수</a></li>
+<li class="chapter" data-level="3.1.5" data-path="data-cleansing.html"><a href="data-cleansing.html#의심스러운-값"><i class="fa fa-check"></i><b>3.1.5</b> 의심스러운 값</a></li>
+<li class="chapter" data-level="3.1.6" data-path="data-cleansing.html"><a href="data-cleansing.html#describe함수의-결과의-시각화"><i class="fa fa-check"></i><b>3.1.6</b> <code>describe()</code>함수의 결과의 시각화</a></li>
+<li class="chapter" data-level="3.1.7" data-path="data-cleansing.html"><a href="data-cleansing.html#의심스러운-값을-결측치로-바꾸기"><i class="fa fa-check"></i><b>3.1.7</b> 의심스러운 값을 결측치로 바꾸기</a></li>
+<li class="chapter" data-level="3.1.8" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_Complete_cases"><i class="fa fa-check"></i><b>3.1.8</b> <code>NA</code>가 없는 완전한 데이터</a></li>
+<li class="chapter" data-level="3.1.9" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_after_cleansing"><i class="fa fa-check"></i><b>3.1.9</b> 데이터 정제 후의 <code>describe()</code>함수 결과 그림</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_missing_value"><i class="fa fa-check"></i><b>3.2</b> 결측치(Missing Values) 처리</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data-cleansing.html"><a href="data-cleansing.html#결측값이-포함되어-있는지-확인하는-방법-is.na"><i class="fa fa-check"></i><b>3.2.1</b> 결측값이 포함되어 있는지 확인하는 방법: <code>is.na()</code></a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-cleansing.html"><a href="data-cleansing.html#결측치-갯수-sumis.na"><i class="fa fa-check"></i><b>3.2.2</b> 결측치 갯수: <code>sum(is.na())</code></a></li>
+<li class="chapter" data-level="3.2.3" data-path="data-cleansing.html"><a href="data-cleansing.html#결측치를-통계-분석시-제외시키기-na.rm-true"><i class="fa fa-check"></i><b>3.2.3</b> 결측치를 통계 분석시 제외시키기 : <code>na.rm = TRUE</code></a></li>
+<li class="chapter" data-level="3.2.4" data-path="data-cleansing.html"><a href="data-cleansing.html#결측치가-있는-행-제거-na.omit"><i class="fa fa-check"></i><b>3.2.4</b> 결측치가 있는 행 제거: <code>na.omit()</code></a></li>
+<li class="chapter" data-level="3.2.5" data-path="data-cleansing.html"><a href="data-cleansing.html#결측치를-다른-값으로-대체"><i class="fa fa-check"></i><b>3.2.5</b> 결측치를 다른 값으로 대체</a></li>
+<li class="chapter" data-level="" data-path="data-cleansing.html"><a href="data-cleansing.html#reference-2"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_outlier"><i class="fa fa-check"></i><b>3.3</b> 이상치(Outlier) 처리 {#outlier}</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="data-cleansing.html"><a href="data-cleansing.html#표준값-z를-이용한-이상치-확인-및-처리"><i class="fa fa-check"></i><b>3.3.1</b> 표준값 Z를 이용한 이상치 확인 및 처리</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data-cleansing.html"><a href="data-cleansing.html#수정된-표준값을-이용한-이상치-확인-및-처리"><i class="fa fa-check"></i><b>3.3.2</b> 수정된 표준값을 이용한 이상치 확인 및 처리</a></li>
+<li class="chapter" data-level="3.3.3" data-path="data-cleansing.html"><a href="data-cleansing.html#사분위수를-이용한-이상치-확인-및-처리"><i class="fa fa-check"></i><b>3.3.3</b> 사분위수를 이용한 이상치 확인 및 처리</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="preprocessing.html"><a href="preprocessing.html"><i class="fa fa-check"></i><b>4</b> Data Preprocessing</a><ul>
+<li class="chapter" data-level="4.1" data-path="preprocessing.html"><a href="preprocessing.html#들어가는-말"><i class="fa fa-check"></i><b>4.1</b> 들어가는 말</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="preprocessing.html"><a href="preprocessing.html#데이터-전처리란"><i class="fa fa-check"></i><b>4.1.1</b> 데이터 전처리란?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="preprocessing.html"><a href="preprocessing.html#왜-dplyr-패키지-인가"><i class="fa fa-check"></i><b>4.1.2</b> 왜 <code>dplyr</code> 패키지 인가?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="preprocessing.html"><a href="preprocessing.html#dplyr-패키지에-있는-함수들"><i class="fa fa-check"></i><b>4.2</b> <code>dplyr</code> 패키지에 있는 함수들</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="preprocessing.html"><a href="preprocessing.html#패키지-설치"><i class="fa fa-check"></i><b>4.2.1</b> 패키지 설치</a></li>
+<li class="chapter" data-level="4.2.2" data-path="preprocessing.html"><a href="preprocessing.html#예제-데이터-확인"><i class="fa fa-check"></i><b>4.2.2</b> 예제 데이터 확인</a></li>
+<li class="chapter" data-level="4.2.3" data-path="preprocessing.html"><a href="preprocessing.html#dplyr-패키지의-주요-함수-목록"><i class="fa fa-check"></i><b>4.2.3</b> <code>dplyr</code> 패키지의 주요 함수 목록</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="preprocessing.html"><a href="preprocessing.html#데이터-프레임의-컬럼-선택-select"><i class="fa fa-check"></i><b>4.3</b> 데이터 프레임의 컬럼 선택: <code>select()</code></a><ul>
+<li class="chapter" data-level="4.3.1" data-path="preprocessing.html"><a href="preprocessing.html#select-함수의-기본-형식"><i class="fa fa-check"></i><b>4.3.1</b> <code>select()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.3.2" data-path="preprocessing.html"><a href="preprocessing.html#a번째-부터-n번째의-연속적-컬럼-선택"><i class="fa fa-check"></i><b>4.3.2</b> a번째 부터 n번째의 연속적 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.3" data-path="preprocessing.html"><a href="preprocessing.html#a번째-부터-n번째의-연속적-컬럼을-제외한-선택"><i class="fa fa-check"></i><b>4.3.3</b> <code>a</code>번째 부터 <code>n</code>번째의 연속적 컬럼을 제외한 선택</a></li>
+<li class="chapter" data-level="4.3.4" data-path="preprocessing.html"><a href="preprocessing.html#컬럼-이름의-앞-부분을-지정하여-선택"><i class="fa fa-check"></i><b>4.3.4</b> 컬럼 이름의 ’앞 부분’을 지정하여 선택</a></li>
+<li class="chapter" data-level="4.3.5" data-path="preprocessing.html"><a href="preprocessing.html#컬럼-이름의-끝-부분을-지정하여-선택"><i class="fa fa-check"></i><b>4.3.5</b> 컬럼 이름의 ’끝 부분’을 지정하여 선택</a></li>
+<li class="chapter" data-level="4.3.6" data-path="preprocessing.html"><a href="preprocessing.html#컬럼-이름의-일부를-포함하는-컬럼-선택"><i class="fa fa-check"></i><b>4.3.6</b> 컬럼 이름의 일부를 포함하는 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.7" data-path="preprocessing.html"><a href="preprocessing.html#정규-표현식과-일치하는-문자열을-포함하는-컬럼-선택"><i class="fa fa-check"></i><b>4.3.7</b> 정규 표현식과 일치하는 문자열을 포함하는 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.8" data-path="preprocessing.html"><a href="preprocessing.html#원하는-컬럼-명의-그룹에-포함된-컬럼-선택"><i class="fa fa-check"></i><b>4.3.8</b> 원하는 컬럼 명의 그룹에 포함된 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.9" data-path="preprocessing.html"><a href="preprocessing.html#컬럼-이름의-접두사와-숫자-범위를-조합하여-컬럼-선택"><i class="fa fa-check"></i><b>4.3.9</b> 컬럼 이름의 접두사와 숫자 범위를 조합하여 컬럼 선택</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="preprocessing.html"><a href="preprocessing.html#filter-함수를-이용한-행의-선택"><i class="fa fa-check"></i><b>4.4</b> <code>filter()</code> 함수를 이용한 행의 선택</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="preprocessing.html"><a href="preprocessing.html#filter-함수의-기본-형식"><i class="fa fa-check"></i><b>4.4.1</b> <code>filter()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.4.2" data-path="preprocessing.html"><a href="preprocessing.html#단일-조건에-의한-행의-선택"><i class="fa fa-check"></i><b>4.4.2</b> 단일 조건에 의한 행의 선택</a></li>
+<li class="chapter" data-level="4.4.3" data-path="preprocessing.html"><a href="preprocessing.html#복수-조건을-and로-결합한-행의-선택"><i class="fa fa-check"></i><b>4.4.3</b> 복수 조건을 AND(<code>,</code>)로 결합한 행의 선택</a></li>
+<li class="chapter" data-level="4.4.4" data-path="preprocessing.html"><a href="preprocessing.html#복수-조건을-or로-결합한-행의-선택"><i class="fa fa-check"></i><b>4.4.4</b> 복수 조건을 OR(<code>|</code>)로 결합한 행의 선택</a></li>
+<li class="chapter" data-level="4.4.5" data-path="preprocessing.html"><a href="preprocessing.html#행의-위치를-지정해서-행의-데이터-부분집합-선택"><i class="fa fa-check"></i><b>4.4.5</b> 행의 위치를 지정해서 행의 데이터 부분집합 선택</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="preprocessing.html"><a href="preprocessing.html#arrange-함수를-이용한-행의-정렬"><i class="fa fa-check"></i><b>4.5</b> <code>arrange()</code> 함수를 이용한 행의 정렬</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="preprocessing.html"><a href="preprocessing.html#arrange-함수의-기본-형식"><i class="fa fa-check"></i><b>4.5.1</b> <code>arrange()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.5.2" data-path="preprocessing.html"><a href="preprocessing.html#복수-개의-정렬-기준으로-행을-정렬하기"><i class="fa fa-check"></i><b>4.5.2</b> 복수 개의 정렬 기준으로 행을 정렬하기</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="preprocessing.html"><a href="preprocessing.html#preprocessing_rename"><i class="fa fa-check"></i><b>4.6</b> <code>rename()</code> 함수를 이용한 데이터 프레임의 컬럼 이름 변경</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="preprocessing.html"><a href="preprocessing.html#rename-함수의-기본-형식"><i class="fa fa-check"></i><b>4.6.1</b> <code>rename()</code> 함수의 기본 형식</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="preprocessing.html"><a href="preprocessing.html#distinct-함수를-이용한-유일한-값-추출"><i class="fa fa-check"></i><b>4.7</b> <code>distinct()</code> 함수를 이용한 유일한 값 추출</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="preprocessing.html"><a href="preprocessing.html#distinct-함수의-기본-형식"><i class="fa fa-check"></i><b>4.7.1</b> <code>distinct()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.7.2" data-path="preprocessing.html"><a href="preprocessing.html#단일-기준에-의한-유일-값-추출"><i class="fa fa-check"></i><b>4.7.2</b> 단일 기준에 의한 유일 값 추출</a></li>
+<li class="chapter" data-level="4.7.3" data-path="preprocessing.html"><a href="preprocessing.html#복수-기준에-의한-유일-값-추출"><i class="fa fa-check"></i><b>4.7.3</b> 복수 기준에 의한 유일 값 추출</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="preprocessing.html"><a href="preprocessing.html#무작위-표본-추출"><i class="fa fa-check"></i><b>4.8</b> 무작위 표본 추출</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="preprocessing.html"><a href="preprocessing.html#정해진-갯수-만큼의-표본-무작위-추출"><i class="fa fa-check"></i><b>4.8.1</b> 정해진 갯수 만큼의 표본 무작위 추출</a></li>
+<li class="chapter" data-level="4.8.2" data-path="preprocessing.html"><a href="preprocessing.html#정해진-비율로-표본-무작위-추출"><i class="fa fa-check"></i><b>4.8.2</b> 정해진 비율로 표본 무작위 추출</a></li>
+<li class="chapter" data-level="4.8.3" data-path="preprocessing.html"><a href="preprocessing.html#정해진-갯수-만큼의-표본-복원-추출"><i class="fa fa-check"></i><b>4.8.3</b> 정해진 갯수 만큼의 표본 복원 추출</a></li>
+<li class="chapter" data-level="4.8.4" data-path="preprocessing.html"><a href="preprocessing.html#집단별-층화-표본-추출"><i class="fa fa-check"></i><b>4.8.4</b> 집단별 층화 표본 추출</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="preprocessing.html"><a href="preprocessing.html#mutate-함수를-이용한-새로운-컬럼-생성"><i class="fa fa-check"></i><b>4.9</b> <code>mutate()</code> 함수를 이용한 새로운 컬럼 생성</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="preprocessing.html"><a href="preprocessing.html#mutate-함수의-기본-형식"><i class="fa fa-check"></i><b>4.9.1</b> <code>mutate()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.9.2" data-path="preprocessing.html"><a href="preprocessing.html#새로운-컬럼-생성-예"><i class="fa fa-check"></i><b>4.9.2</b> 새로운 컬럼 생성 예</a></li>
+<li class="chapter" data-level="4.9.3" data-path="preprocessing.html"><a href="preprocessing.html#새로운-만든-컬럼변수를-이용하여-또-다른-컬럼-생성하기"><i class="fa fa-check"></i><b>4.9.3</b> 새로운 만든 컬럼(변수)를 이용하여 또 다른 컬럼 생성하기</a></li>
+<li class="chapter" data-level="4.9.4" data-path="preprocessing.html"><a href="preprocessing.html#컬럼의-값을-새로운-값으로-변경하기"><i class="fa fa-check"></i><b>4.9.4</b> 컬럼의 값을 새로운 값으로 변경하기</a></li>
+<li class="chapter" data-level="4.9.5" data-path="preprocessing.html"><a href="preprocessing.html#keep-인수의-사용-예"><i class="fa fa-check"></i><b>4.9.5</b> <code>.keep</code> 인수의 사용 예</a></li>
+<li class="chapter" data-level="4.9.6" data-path="preprocessing.html"><a href="preprocessing.html#after와-.before-인수의-사용-예"><i class="fa fa-check"></i><b>4.9.6</b> <code>.after</code>와 <code>.before</code> 인수의 사용 예</a></li>
+<li class="chapter" data-level="4.9.7" data-path="preprocessing.html"><a href="preprocessing.html#transmute-함수를-이용한-새로운-컬럼-생성"><i class="fa fa-check"></i><b>4.9.7</b> <code>transmute()</code> 함수를 이용한 새로운 컬럼 생성</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="preprocessing.html"><a href="preprocessing.html#preprocessing_summarise"><i class="fa fa-check"></i><b>4.10</b> <code>summarise()</code>함수를 이용한 요약 통계량 계산</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="preprocessing.html"><a href="preprocessing.html#summarise-함수의-기본-형식"><i class="fa fa-check"></i><b>4.10.1</b> <code>summarise()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.10.2" data-path="preprocessing.html"><a href="preprocessing.html#summarise-함수를-이용한-요약-통계-계산"><i class="fa fa-check"></i><b>4.10.2</b> <code>summarise()</code> 함수를 이용한 요약 통계 계산</a></li>
+<li class="chapter" data-level="4.10.3" data-path="preprocessing.html"><a href="preprocessing.html#summarise를-이용한-관측치의-갯수-및-색인-찾기"><i class="fa fa-check"></i><b>4.10.3</b> <code>summarise()</code>를 이용한 관측치의 갯수 및 색인 찾기</a></li>
+<li class="chapter" data-level="4.10.4" data-path="preprocessing.html"><a href="preprocessing.html#summarise-함수를-이용한-그룹별-요약-통계량-계산"><i class="fa fa-check"></i><b>4.10.4</b> <code>summarise()</code> 함수를 이용한 그룹별 요약 통계량 계산</a></li>
+<li class="chapter" data-level="4.10.5" data-path="preprocessing.html"><a href="preprocessing.html#복수-개의-변수에-동일한-summarise-함수-적용하기"><i class="fa fa-check"></i><b>4.10.5</b> 복수 개의 변수에 동일한 <code>summarise()</code> 함수 적용하기</a></li>
+<li class="chapter" data-level="" data-path="preprocessing.html"><a href="preprocessing.html#reference-3"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="piping-operator.html"><a href="piping-operator.html"><i class="fa fa-check"></i><b>5</b> Pipe Operator</a><ul>
+<li class="chapter" data-level="5.1" data-path="piping-operator.html"><a href="piping-operator.html#파이프-연산자"><i class="fa fa-check"></i><b>5.1</b> 파이프 연산자 : <code>%&gt;%</code></a><ul>
+<li class="chapter" data-level="5.1.1" data-path="piping-operator.html"><a href="piping-operator.html#파이프-연산자의-사용-예"><i class="fa fa-check"></i><b>5.1.1</b> 파이프 연산자의 사용 예</a></li>
+<li class="chapter" data-level="5.1.2" data-path="piping-operator.html"><a href="piping-operator.html#또-다른-예"><i class="fa fa-check"></i><b>5.1.2</b> 또 다른 예</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="piping-operator.html"><a href="piping-operator.html#piping_point_usage"><i class="fa fa-check"></i><b>5.2</b> 파이프된 명령어에 <code>‘.’</code> 사용하기</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="relational-data-top.html"><a href="relational-data-top.html"><i class="fa fa-check"></i><b>6</b> Relational Data</a><ul>
+<li class="chapter" data-level="6.1" data-path="relational-data-top.html"><a href="relational-data-top.html#결합append"><i class="fa fa-check"></i><b>6.1</b> 결합(Append)</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="relational-data-top.html"><a href="relational-data-top.html#데이터-프레임의-결합append"><i class="fa fa-check"></i><b>6.1.1</b> 데이터 프레임의 결합(append)</a></li>
+<li class="chapter" data-level="6.1.2" data-path="relational-data-top.html"><a href="relational-data-top.html#결합의-두-가지-방법-rbind-함수와-bind_rows함수"><i class="fa fa-check"></i><b>6.1.2</b> 결합의 두 가지 방법 : <code>rbind()</code> 함수와 <code>bind_rows()</code>함수</a></li>
+<li class="chapter" data-level="6.1.3" data-path="relational-data-top.html"><a href="relational-data-top.html#데이터-세트-결합의-예대응되지-않는-컬럼이-있는-경우"><i class="fa fa-check"></i><b>6.1.3</b> 데이터 세트 결합의 예(대응되지 않는 컬럼이 있는 경우)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="relational-data-top.html"><a href="relational-data-top.html#데이터-세트의-병합merge"><i class="fa fa-check"></i><b>6.2</b> 데이터 세트의 병합(Merge)</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="relational-data-top.html"><a href="relational-data-top.html#join-함수를-이용한-병합-예"><i class="fa fa-check"></i><b>6.2.1</b> join 함수를 이용한 병합 예</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="relational-data-top.html"><a href="relational-data-top.html#relational-data"><i class="fa fa-check"></i><b>6.3</b> Relational Data</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="relational-data-top.html"><a href="relational-data-top.html#들어가기"><i class="fa fa-check"></i><b>6.3.1</b> 들어가기</a></li>
+<li class="chapter" data-level="6.3.2" data-path="relational-data-top.html"><a href="relational-data-top.html#준비하기-1"><i class="fa fa-check"></i><b>6.3.2</b> 준비하기</a></li>
+<li class="chapter" data-level="6.3.3" data-path="relational-data-top.html"><a href="relational-data-top.html#nycflights13-패키지-내의-데이터-세트"><i class="fa fa-check"></i><b>6.3.3</b> <code>nycflights13</code> 패키지 내의 데이터 세트</a></li>
+<li class="chapter" data-level="6.3.4" data-path="relational-data-top.html"><a href="relational-data-top.html#연습문제-8"><i class="fa fa-check"></i><b>6.3.4</b> 연습문제</a></li>
+<li class="chapter" data-level="6.3.5" data-path="relational-data-top.html"><a href="relational-data-top.html#키key"><i class="fa fa-check"></i><b>6.3.5</b> 키(Key)</a></li>
+<li class="chapter" data-level="6.3.6" data-path="relational-data-top.html"><a href="relational-data-top.html#연습문제-9"><i class="fa fa-check"></i><b>6.3.6</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="relational-data-top.html"><a href="relational-data-top.html#변환-조인mutating-join"><i class="fa fa-check"></i><b>6.4</b> 변환 조인(Mutating Join)</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="relational-data-top.html"><a href="relational-data-top.html#조인-이해하기"><i class="fa fa-check"></i><b>6.4.1</b> 조인 이해하기</a></li>
+<li class="chapter" data-level="6.4.2" data-path="relational-data-top.html"><a href="relational-data-top.html#내부-조인-inner-join"><i class="fa fa-check"></i><b>6.4.2</b> 내부 조인 (inner join)</a></li>
+<li class="chapter" data-level="6.4.3" data-path="relational-data-top.html"><a href="relational-data-top.html#외부-조인-outer-join"><i class="fa fa-check"></i><b>6.4.3</b> 외부 조인 (outer join)</a></li>
+<li class="chapter" data-level="6.4.4" data-path="relational-data-top.html"><a href="relational-data-top.html#중복키"><i class="fa fa-check"></i><b>6.4.4</b> 중복키</a></li>
+<li class="chapter" data-level="6.4.5" data-path="relational-data-top.html"><a href="relational-data-top.html#키열-정의하기"><i class="fa fa-check"></i><b>6.4.5</b> 키열 정의하기</a></li>
+<li class="chapter" data-level="6.4.6" data-path="relational-data-top.html"><a href="relational-data-top.html#연습문제-10"><i class="fa fa-check"></i><b>6.4.6</b> 연습문제</a></li>
+<li class="chapter" data-level="6.4.7" data-path="relational-data-top.html"><a href="relational-data-top.html#기타-구현"><i class="fa fa-check"></i><b>6.4.7</b> 기타 구현</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="relational-data-top.html"><a href="relational-data-top.html#필터링-조인"><i class="fa fa-check"></i><b>6.5</b> 필터링 조인</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="relational-data-top.html"><a href="relational-data-top.html#연습문제-11"><i class="fa fa-check"></i><b>6.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="relational-data-top.html"><a href="relational-data-top.html#조인-문제"><i class="fa fa-check"></i><b>6.6</b> 조인 문제</a></li>
+<li class="chapter" data-level="6.7" data-path="relational-data-top.html"><a href="relational-data-top.html#집합-연산"><i class="fa fa-check"></i><b>6.7</b> 집합 연산</a><ul>
+<li class="chapter" data-level="" data-path="relational-data-top.html"><a href="relational-data-top.html#reference-4"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="relational-data-top.html"><a href="relational-data-top.html#join_exercises"><i class="fa fa-check"></i><b>6.8</b> Join Exercises</a><ul>
+<li class="chapter" data-level="6.8.1" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-데이터의-생성-1"><i class="fa fa-check"></i><b>6.8.1</b> 예제 데이터의 생성</a></li>
+<li class="chapter" data-level="6.8.2" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-1-inner_join"><i class="fa fa-check"></i><b>6.8.2</b> 예제 1: <code>inner_join()</code></a></li>
+<li class="chapter" data-level="6.8.3" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-2-left_join"><i class="fa fa-check"></i><b>6.8.3</b> 예제 2: <code>left_join()</code></a></li>
+<li class="chapter" data-level="6.8.4" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-3-right_join"><i class="fa fa-check"></i><b>6.8.4</b> 예제 3: <code>right_join()</code></a></li>
+<li class="chapter" data-level="6.8.5" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-4-full_join"><i class="fa fa-check"></i><b>6.8.5</b> 예제 4: <code>full_join()</code></a></li>
+<li class="chapter" data-level="6.8.6" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-5-semi_join"><i class="fa fa-check"></i><b>6.8.6</b> 예제 5: <code>semi_join()</code></a></li>
+<li class="chapter" data-level="6.8.7" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-6-anti_join"><i class="fa fa-check"></i><b>6.8.7</b> 예제 6 : <code>anti_join()</code></a></li>
+<li class="chapter" data-level="6.8.8" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-7-복수-개의-데이터-프레임-조인"><i class="fa fa-check"></i><b>6.8.8</b> 예제 7: 복수 개의 데이터 프레임 조인</a></li>
+<li class="chapter" data-level="6.8.9" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-8-복수-컬럼에-의한-조인"><i class="fa fa-check"></i><b>6.8.9</b> 예제 8: 복수 컬럼에 의한 조인</a></li>
+<li class="chapter" data-level="6.8.10" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-9-데이터-조인과-id-삭제"><i class="fa fa-check"></i><b>6.8.10</b> 예제 9: 데이터 조인과 ID 삭제</a></li>
+<li class="chapter" data-level="" data-path="relational-data-top.html"><a href="relational-data-top.html#further-reading"><i class="fa fa-check"></i>Further Reading</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>7</b> Tidy Data</a><ul>
+<li class="chapter" data-level="7.1" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_philosophy"><i class="fa fa-check"></i><b>7.1</b> 타이디 데이터 철학</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="tidy-data.html"><a href="tidy-data.html#분석의-단위"><i class="fa fa-check"></i><b>7.1.1</b> 분석의 단위</a></li>
+<li class="chapter" data-level="7.1.2" data-path="tidy-data.html"><a href="tidy-data.html#데이터-세트-5"><i class="fa fa-check"></i><b>7.1.2</b> 데이터 세트</a></li>
+<li class="chapter" data-level="7.1.3" data-path="tidy-data.html"><a href="tidy-data.html#docid-별-그루핑"><i class="fa fa-check"></i><b>7.1.3</b> <code>docid</code> 별 그루핑</a></li>
+<li class="chapter" data-level="7.1.4" data-path="tidy-data.html"><a href="tidy-data.html#요약-정보-확인"><i class="fa fa-check"></i><b>7.1.4</b> 요약 정보 확인</a></li>
+<li class="chapter" data-level="7.1.5" data-path="tidy-data.html"><a href="tidy-data.html#다중-레벨-데이터-확인"><i class="fa fa-check"></i><b>7.1.5</b> 다중 레벨 데이터 확인</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_untidy"><i class="fa fa-check"></i><b>7.2</b> Untidy data</a></li>
+<li class="chapter" data-level="7.3" data-path="tidy-data.html"><a href="tidy-data.html#컬럼-제목들이-변수-명이-아니고-값들인-경우"><i class="fa fa-check"></i><b>7.3</b> 컬럼 제목들이 변수 명이 아니고 값들인 경우</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="tidy-data.html"><a href="tidy-data.html#데이터-세트-6"><i class="fa fa-check"></i><b>7.3.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="7.3.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_functions"><i class="fa fa-check"></i><b>7.3.2</b> 사용할 수 있는 함수의 종류</a></li>
+<li class="chapter" data-level="7.3.3" data-path="tidy-data.html"><a href="tidy-data.html#pivot_longer-함수"><i class="fa fa-check"></i><b>7.3.3</b> <code>pivot_longer()</code> 함수</a></li>
+<li class="chapter" data-level="7.3.4" data-path="tidy-data.html"><a href="tidy-data.html#gather-함수"><i class="fa fa-check"></i><b>7.3.4</b> <code>gather()</code> 함수</a></li>
+<li class="chapter" data-level="7.3.5" data-path="tidy-data.html"><a href="tidy-data.html#melt-함수"><i class="fa fa-check"></i><b>7.3.5</b> <code>melt()</code> 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_one_column"><i class="fa fa-check"></i><b>7.4</b> 하나의 컬럼에 복수 개의 변수들이 있는 경우</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="tidy-data.html"><a href="tidy-data.html#데이터-세트-7"><i class="fa fa-check"></i><b>7.4.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="7.4.2" data-path="tidy-data.html"><a href="tidy-data.html#사용할-수-있는-함수의-종류"><i class="fa fa-check"></i><b>7.4.2</b> 사용할 수 있는 함수의 종류</a></li>
+<li class="chapter" data-level="7.4.3" data-path="tidy-data.html"><a href="tidy-data.html#pivot_wider-함수"><i class="fa fa-check"></i><b>7.4.3</b> <code>pivot_wider()</code> 함수</a></li>
+<li class="chapter" data-level="7.4.4" data-path="tidy-data.html"><a href="tidy-data.html#spread-함수"><i class="fa fa-check"></i><b>7.4.4</b> <code>spread()</code> 함수</a></li>
+<li class="chapter" data-level="7.4.5" data-path="tidy-data.html"><a href="tidy-data.html#dcast-함수"><i class="fa fa-check"></i><b>7.4.5</b> <code>dcast()</code> 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_one_cell"><i class="fa fa-check"></i><b>7.5</b> 하나의 셀에 저장된 여러 변수 또는 여러 셀에 흩어져 있는 한 변수</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="tidy-data.html"><a href="tidy-data.html#데이터-세트-8"><i class="fa fa-check"></i><b>7.5.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="" data-path="tidy-data.html"><a href="tidy-data.html#data-wrangling-with-dplyr-and-tidyr"><i class="fa fa-check"></i>Data Wrangling with dplyr and tidyr</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="tidy-data.html"><a href="tidy-data.html#separate-함수와-unite-함수"><i class="fa fa-check"></i><b>7.6</b> <code>separate()</code> 함수와 <code>unite()</code> 함수</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="tidy-data.html"><a href="tidy-data.html#separate-함수"><i class="fa fa-check"></i><b>7.6.1</b> <code>separate()</code> 함수</a></li>
+<li class="chapter" data-level="7.6.2" data-path="tidy-data.html"><a href="tidy-data.html#unite-함수"><i class="fa fa-check"></i><b>7.6.2</b> <code>unite()</code> 함수</a></li>
+<li class="chapter" data-level="7.6.3" data-path="tidy-data.html"><a href="tidy-data.html#separate-함수와-unite-함수의-예"><i class="fa fa-check"></i><b>7.6.3</b> <code>separate()</code> 함수와 <code>unite()</code> 함수의 예</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_reference_table"><i class="fa fa-check"></i><b>7.7</b> <code>tidyverse</code> 참조표</a></li>
+<li class="chapter" data-level="" data-path="tidy-data.html"><a href="tidy-data.html#references-1"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>8</b> Dates</a><ul>
+<li class="chapter" data-level="8.1" data-path="dates.html"><a href="dates.html#dates_in_R"><i class="fa fa-check"></i><b>8.1</b> R에서의 날짜 데이터</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="dates.html"><a href="dates.html#as.date-함수"><i class="fa fa-check"></i><b>8.1.1</b> <code>as.Date()</code> 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="dates.html"><a href="dates.html#dates_lubridate"><i class="fa fa-check"></i><b>8.2</b> <code>lubridate</code> 패키지</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="dates.html"><a href="dates.html#lubridate-패키지의-활용"><i class="fa fa-check"></i><b>8.2.1</b> <code>lubridate</code> 패키지의 활용</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="dates.html"><a href="dates.html#dates_variables"><i class="fa fa-check"></i><b>8.3</b> 날짜-시간 변수</a></li>
+<li class="chapter" data-level="8.4" data-path="dates.html"><a href="dates.html#dates_elements"><i class="fa fa-check"></i><b>8.4</b> <code>Date</code> 변수에서 정보 추출하기</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="dates.html"><a href="dates.html#관련-함수"><i class="fa fa-check"></i><b>8.4.1</b> 관련 함수</a></li>
+<li class="chapter" data-level="8.4.2" data-path="dates.html"><a href="dates.html#date-변수의-정보-추출-예"><i class="fa fa-check"></i><b>8.4.2</b> <code>Date</code> 변수의 정보 추출 예</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="dates.html"><a href="dates.html#dates_POSIXct"><i class="fa fa-check"></i><b>8.5</b> 날짜-시간(<code>POSIXct</code>) 변수에서 정보 추출하기</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="dates.html"><a href="dates.html#관련-함수-1"><i class="fa fa-check"></i><b>8.5.1</b> 관련 함수</a></li>
+<li class="chapter" data-level="8.5.2" data-path="dates.html"><a href="dates.html#posixct-변수에서-정보-추출-예"><i class="fa fa-check"></i><b>8.5.2</b> <code>POSIXct</code> 변수에서 정보 추출 예</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="dates.html"><a href="dates.html#dates_functions"><i class="fa fa-check"></i><b>8.6</b> 날짜-시간 산술연산을 위한 두 종류의 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="dates-and-time.html"><a href="dates-and-time.html"><i class="fa fa-check"></i><b>9</b> Dates and Times</a><ul>
+<li class="chapter" data-level="9.1" data-path="dates-and-time.html"><a href="dates-and-time.html#dates_time_intro"><i class="fa fa-check"></i><b>9.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="dates-and-time.html"><a href="dates-and-time.html#준비하기-2"><i class="fa fa-check"></i><b>9.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="dates-and-time.html"><a href="dates-and-time.html#dates_time_create"><i class="fa fa-check"></i><b>9.2</b> 날짜/시간 생성하기</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="dates-and-time.html"><a href="dates-and-time.html#문자열에서-생성"><i class="fa fa-check"></i><b>9.2.1</b> 문자열에서 생성</a></li>
+<li class="chapter" data-level="9.2.2" data-path="dates-and-time.html"><a href="dates-and-time.html#개별-구성요소로-생성"><i class="fa fa-check"></i><b>9.2.2</b> 개별 구성요소로 생성</a></li>
+<li class="chapter" data-level="9.2.3" data-path="dates-and-time.html"><a href="dates-and-time.html#기타-유형에서-생성"><i class="fa fa-check"></i><b>9.2.3</b> 기타 유형에서 생성</a></li>
+<li class="chapter" data-level="9.2.4" data-path="dates-and-time.html"><a href="dates-and-time.html#연습문제-12"><i class="fa fa-check"></i><b>9.2.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="dates-and-time.html"><a href="dates-and-time.html#dates_time_arguments"><i class="fa fa-check"></i><b>9.3</b> 데이트-타임형 구성요소</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="dates-and-time.html"><a href="dates-and-time.html#구성요소-가져오기"><i class="fa fa-check"></i><b>9.3.1</b> 구성요소 가져오기</a></li>
+<li class="chapter" data-level="9.3.2" data-path="dates-and-time.html"><a href="dates-and-time.html#반올림"><i class="fa fa-check"></i><b>9.3.2</b> 반올림</a></li>
+<li class="chapter" data-level="9.3.3" data-path="dates-and-time.html"><a href="dates-and-time.html#구성요소-설정"><i class="fa fa-check"></i><b>9.3.3</b> 구성요소 설정</a></li>
+<li class="chapter" data-level="9.3.4" data-path="dates-and-time.html"><a href="dates-and-time.html#연습문제-13"><i class="fa fa-check"></i><b>9.3.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="dates-and-time.html"><a href="dates-and-time.html#dates_time_time_span"><i class="fa fa-check"></i><b>9.4</b> 시간 범위</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="dates-and-time.html"><a href="dates-and-time.html#듀레이션형"><i class="fa fa-check"></i><b>9.4.1</b> 듀레이션형</a></li>
+<li class="chapter" data-level="9.4.2" data-path="dates-and-time.html"><a href="dates-and-time.html#피리어드형"><i class="fa fa-check"></i><b>9.4.2</b> 피리어드형</a></li>
+<li class="chapter" data-level="9.4.3" data-path="dates-and-time.html"><a href="dates-and-time.html#인터벌형"><i class="fa fa-check"></i><b>9.4.3</b> 인터벌형</a></li>
+<li class="chapter" data-level="9.4.4" data-path="dates-and-time.html"><a href="dates-and-time.html#요약"><i class="fa fa-check"></i><b>9.4.4</b> 요약</a></li>
+<li class="chapter" data-level="9.4.5" data-path="dates-and-time.html"><a href="dates-and-time.html#연습문제-14"><i class="fa fa-check"></i><b>9.4.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="dates-and-time.html"><a href="dates-and-time.html#dates_time_EST"><i class="fa fa-check"></i><b>9.5</b> 시간대</a></li>
+<li class="chapter" data-level="" data-path="dates-and-time.html"><a href="dates-and-time.html#references-2"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>10</b> Strings</a><ul>
+<li class="chapter" data-level="10.1" data-path="strings.html"><a href="strings.html#strings_intro"><i class="fa fa-check"></i><b>10.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="strings.html"><a href="strings.html#준비하기-3"><i class="fa fa-check"></i><b>10.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="strings.html"><a href="strings.html#strings_basic"><i class="fa fa-check"></i><b>10.2</b> 문자열 기초</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="strings.html"><a href="strings.html#문자열-길이"><i class="fa fa-check"></i><b>10.2.1</b> 문자열 길이</a></li>
+<li class="chapter" data-level="10.2.2" data-path="strings.html"><a href="strings.html#문자열-결합"><i class="fa fa-check"></i><b>10.2.2</b> 문자열 결합</a></li>
+<li class="chapter" data-level="10.2.3" data-path="strings.html"><a href="strings.html#문자열-서브셋하기"><i class="fa fa-check"></i><b>10.2.3</b> 문자열 서브셋하기</a></li>
+<li class="chapter" data-level="10.2.4" data-path="strings.html"><a href="strings.html#로케일"><i class="fa fa-check"></i><b>10.2.4</b> 로케일</a></li>
+<li class="chapter" data-level="10.2.5" data-path="strings.html"><a href="strings.html#연습문제-15"><i class="fa fa-check"></i><b>10.2.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="strings.html"><a href="strings.html#pattern_matching"><i class="fa fa-check"></i><b>10.3</b> 정규표현식을 이용한 패턴 매칭</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="strings.html"><a href="strings.html#기본-매칭"><i class="fa fa-check"></i><b>10.3.1</b> 기본 매칭</a></li>
+<li class="chapter" data-level="10.3.2" data-path="strings.html"><a href="strings.html#앵커"><i class="fa fa-check"></i><b>10.3.2</b> 앵커</a></li>
+<li class="chapter" data-level="10.3.3" data-path="strings.html"><a href="strings.html#문자-클래스와-대체구문"><i class="fa fa-check"></i><b>10.3.3</b> 문자 클래스와 대체구문</a></li>
+<li class="chapter" data-level="10.3.4" data-path="strings.html"><a href="strings.html#반복"><i class="fa fa-check"></i><b>10.3.4</b> 반복</a></li>
+<li class="chapter" data-level="10.3.5" data-path="strings.html"><a href="strings.html#그룹화와-역참조"><i class="fa fa-check"></i><b>10.3.5</b> 그룹화와 역참조</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="strings.html"><a href="strings.html#tools"><i class="fa fa-check"></i><b>10.4</b> 패턴 매칭</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="strings.html"><a href="strings.html#매칭-탐지"><i class="fa fa-check"></i><b>10.4.1</b> 매칭 탐지</a></li>
+<li class="chapter" data-level="10.4.2" data-path="strings.html"><a href="strings.html#매칭-추출"><i class="fa fa-check"></i><b>10.4.2</b> 매칭 추출</a></li>
+<li class="chapter" data-level="10.4.3" data-path="strings.html"><a href="strings.html#그룹화-매칭"><i class="fa fa-check"></i><b>10.4.3</b> 그룹화 매칭</a></li>
+<li class="chapter" data-level="10.4.4" data-path="strings.html"><a href="strings.html#매칭-치환"><i class="fa fa-check"></i><b>10.4.4</b> 매칭 치환</a></li>
+<li class="chapter" data-level="10.4.5" data-path="strings.html"><a href="strings.html#문자열-분할"><i class="fa fa-check"></i><b>10.4.5</b> 문자열 분할</a></li>
+<li class="chapter" data-level="10.4.6" data-path="strings.html"><a href="strings.html#매치-찾기"><i class="fa fa-check"></i><b>10.4.6</b> 매치 찾기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="strings.html"><a href="strings.html#other_patterns"><i class="fa fa-check"></i><b>10.5</b> 기타 패턴 유형</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="strings.html"><a href="strings.html#연습문제-26"><i class="fa fa-check"></i><b>10.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="strings.html"><a href="strings.html#reg_other_usage"><i class="fa fa-check"></i><b>10.6</b> 정규 표현식의 기타 용도</a></li>
+<li class="chapter" data-level="10.7" data-path="strings.html"><a href="strings.html#stringi"><i class="fa fa-check"></i><b>10.7</b> <code>stringi</code></a><ul>
+<li class="chapter" data-level="10.7.1" data-path="strings.html"><a href="strings.html#연습문제-27"><i class="fa fa-check"></i><b>10.7.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="strings.html"><a href="strings.html#reference-5"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Management with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data_cleansing" class="section level1">
+<h1><span class="header-section-number">3</span> Data Cleansing</h1>
+<div id="data_cleansing_summary" class="section level2">
+<h2><span class="header-section-number">3.1</span> Data Cleansing</h2>
+<div id="변수-요약" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> 변수 요약</h3>
+<div class="sourceCode" id="cb750"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb750-1" title="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<ul>
+<li>각 변수들의 분포에 대한 간결한 요약정보에 익숙해야 한다. 그 이유는 다음과 같다:
+<ul>
+<li>표본의 특성 파악</li>
+<li>의심이 가는 값들의 확인</li>
+</ul></li>
+</ul>
+<p><code>base</code> 패키지의 <code>summary()</code> 함수는
+- <em>수치 변수</em>에 대한 <strong>요약 통계량</strong>, <em>factor 변수</em>에 대한 <strong>빈도</strong> 등을 제공한다.
+- <em>문자 벡터</em>들은 요약되지 않은채 남겨진다.</p>
+</div>
+<div id="데이터-세트-4" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> 데이터 세트</h3>
+<div class="sourceCode" id="cb751"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb751-1" title="1">d &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data3/patient_pt1_dm.csv&quot;</span>); d</a></code></pre></div>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   .default = col_double(),
+##   hospital = col_character(),
+##   docid = col_character(),
+##   dis_date = col_character(),
+##   sex = col_character(),
+##   familyhx = col_character(),
+##   smokinghx = col_character(),
+##   cancerstage = col_character(),
+##   wbc = col_character()
+## )
+## i Use `spec()` for the full column specifications.</code></pre>
+<pre><code>## # A tibble: 120 x 24
+##   hospital hospid docid dis_date sex     age  test1 test2  pain tumorsize   co2
+##   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
+## 1 UCLA          1 1-1   6-Sep-09 male   65.0   3.70 8.09      4      68.0  1.53
+## 2 UCLA          1 1-1   7-Jan-11 fema~  53.9   2.63 0.803     2      64.7  1.68
+## 3 UCLA          1 1-1   4-Sep-10 male   41.4 -99    2.13      3      86.4  1.45
+## # ... with 117 more rows, and 13 more variables: wound &lt;dbl&gt;, mobility &lt;dbl&gt;,
+## #   ntumors &lt;dbl&gt;, remission &lt;dbl&gt;, lungcapacity &lt;dbl&gt;, married &lt;dbl&gt;,
+## #   familyhx &lt;chr&gt;, smokinghx &lt;chr&gt;, cancerstage &lt;chr&gt;, lengthofstay &lt;dbl&gt;,
+## #   wbc &lt;chr&gt;, rbc &lt;dbl&gt;, bmi &lt;dbl&gt;</code></pre>
+</div>
+<div id="데이터-세트의-통계적-요약-정보" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> 데이터 세트의 통계적 요약 정보</h3>
+<div class="sourceCode" id="cb754"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb754-1" title="1"><span class="kw">summary</span>(d)</a></code></pre></div>
+<pre><code>##    hospital             hospid         docid             dis_date        
+##  Length:120         Min.   :1.000   Length:120         Length:120        
+##  Class :character   1st Qu.:1.000   Class :character   Class :character  
+##  Mode  :character   Median :1.000   Mode  :character   Mode  :character  
+##                     Mean   :1.483                                        
+##                     3rd Qu.:2.000                                        
+##                     Max.   :2.000                                        
+##      sex                 age             test1             test2        
+##  Length:120         Min.   : 34.19   Min.   :-99.000   Min.   :-99.000  
+##  Class :character   1st Qu.: 47.75   1st Qu.:  1.560   1st Qu.:  2.249  
+##  Mode  :character   Median : 51.83   Median :  3.107   Median :  4.162  
+##                     Mean   : 53.59   Mean   : -1.989   Mean   : -1.226  
+##                     3rd Qu.: 55.01   3rd Qu.:  5.707   3rd Qu.:  6.166  
+##                     Max.   :357.89   Max.   : 12.416   Max.   : 17.228  
+##       pain         tumorsize           co2               wound      
+##  Min.   :1.000   Min.   : 49.10   Min.   :-98.0000   Min.   :2.000  
+##  1st Qu.:4.000   1st Qu.: 62.18   1st Qu.:  1.4954   1st Qu.:5.000  
+##  Median :5.000   Median : 68.23   Median :  1.5859   Median :6.000  
+##  Mean   :5.325   Mean   : 70.08   Mean   : -0.8901   Mean   :5.592  
+##  3rd Qu.:6.000   3rd Qu.: 77.48   3rd Qu.:  1.6860   3rd Qu.:7.000  
+##  Max.   :9.000   Max.   :109.01   Max.   :  1.9424   Max.   :9.000  
+##     mobility        ntumors       remission     lungcapacity     
+##  Min.   :2.000   Min.   :0.00   Min.   :0.00   Min.   :-99.0000  
+##  1st Qu.:5.000   1st Qu.:1.00   1st Qu.:0.00   1st Qu.:  0.5141  
+##  Median :6.000   Median :2.00   Median :0.00   Median :  0.7457  
+##  Mean   :6.033   Mean   :3.15   Mean   :0.35   Mean   :-18.3280  
+##  3rd Qu.:7.000   3rd Qu.:5.00   3rd Qu.:1.00   3rd Qu.:  0.8721  
+##  Max.   :9.000   Max.   :9.00   Max.   :1.00   Max.   :  0.9982  
+##     married         familyhx          smokinghx         cancerstage       
+##  Min.   :0.0000   Length:120         Length:120         Length:120        
+##  1st Qu.:0.0000   Class :character   Class :character   Class :character  
+##  Median :1.0000   Mode  :character   Mode  :character   Mode  :character  
+##  Mean   :0.6333                                                           
+##  3rd Qu.:1.0000                                                           
+##  Max.   :1.0000                                                           
+##   lengthofstay       wbc                 rbc             bmi       
+##  Min.   :3.000   Length:120         Min.   :4.360   Min.   :18.45  
+##  1st Qu.:4.000   Class :character   1st Qu.:4.825   1st Qu.:24.51  
+##  Median :5.000   Mode  :character   Median :4.978   Median :27.82  
+##  Mean   :5.308                      Mean   :4.970   Mean   :29.38  
+##  3rd Qu.:6.000                      3rd Qu.:5.150   3rd Qu.:34.31  
+##  Max.   :8.000                      Max.   :5.535   Max.   :58.00</code></pre>
+</div>
+<div id="data_cleansing_describe" class="section level3">
+<h3><span class="header-section-number">3.1.4</span> <code>Hmisc</code> 패키지의 <code>describe()</code> 함수</h3>
+<ul>
+<li><p><code>Hmisc</code> 패키지의 <code>describe()</code> 함수는 데이터 프레임에 있는 모든 변수에 대한 다른 요약 통계량을 제공한다.</p></li>
+<li><p>제공되는 정보는 변수의 <strong>데이터 형(data type)</strong>과 <strong>유일 값(distinct values)</strong>의 수에 따라 다르다.</p></li>
+<li><p>중요 특징:</p>
+<ul>
+<li>20개 보다 적은 수의 유일값을 갖는 변수들의 도수분포표</li>
+<li>연속 변수에 대한 보다 자세한 백분위수(quantiles)</li>
+<li>이진 변수에 대한 갯수와 비율</li>
+<li>모든 변수의 결측치(<code>NA</code>) 갯수</li>
+</ul></li>
+<li><p><code>describe()</code>함수의 결과는 변수들이 타당한 값과 분포를 갖는지를 빠르게 결정하는데 사용될 수 있다.</p></li>
+</ul>
+<div id="hmisc-패키지-설치" class="section level4">
+<h4><span class="header-section-number">3.1.4.1</span> <code>Hmisc</code> 패키지 설치</h4>
+<div class="sourceCode" id="cb756"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb756-1" title="1"><span class="co"># install.packages(&quot;Hmisc&quot;)</span></a>
+<a class="sourceLine" id="cb756-2" title="2"><span class="kw">library</span>(Hmisc)</a></code></pre></div>
+<pre><code>## Warning: package &#39;Hmisc&#39; was built under R version 4.0.2</code></pre>
+<pre><code>## Loading required package: lattice</code></pre>
+<pre><code>## Loading required package: survival</code></pre>
+<pre><code>## Warning: package &#39;survival&#39; was built under R version 4.0.2</code></pre>
+<pre><code>## Loading required package: Formula</code></pre>
+<pre><code>## 
+## Attaching package: &#39;Hmisc&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     src, summarize</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     format.pval, units</code></pre>
+</div>
+<div id="describe-함수" class="section level4">
+<h4><span class="header-section-number">3.1.4.2</span> <code>describe()</code> 함수</h4>
+<p>데이터 세트에 대한 상세한 요약 정보를 보여 준다.</p>
+<div class="sourceCode" id="cb765"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb765-1" title="1"><span class="kw">describe</span>(d)</a></code></pre></div>
+<pre><code>## d 
+## 
+##  24  Variables      120  Observations
+## --------------------------------------------------------------------------------
+## hospital 
+##        n  missing distinct 
+##      120        0        2 
+##                       
+## Value       UCLA  UCSF
+## Frequency     62    58
+## Proportion 0.517 0.483
+## --------------------------------------------------------------------------------
+## hospid 
+##        n  missing distinct     Info     Mean      Gmd 
+##      120        0        2    0.749    1.483   0.5036 
+##                       
+## Value          1     2
+## Frequency     62    58
+## Proportion 0.517 0.483
+## --------------------------------------------------------------------------------
+## docid 
+##        n  missing distinct 
+##      120        0       22 
+## 
+## lowest : 1-1   1-100 1-11  1-21  1-22 , highest: 2-177 2-178 2-188 2-201 2-216
+## --------------------------------------------------------------------------------
+## dis_date 
+##        n  missing distinct 
+##      120        0      104 
+## 
+## lowest : 1-Jul-09  10-Jun-09 10-Jun-10 11-Apr-10 11-Dec-09
+## highest: 9-Apr-10  9-Feb-09  9-Feb-10  9-Jun-10  9-May-10 
+## --------------------------------------------------------------------------------
+## sex 
+##        n  missing distinct 
+##      120        0        3 
+##                                
+## Value        12.2 female   male
+## Frequency       1     74     45
+## Proportion  0.008  0.617  0.375
+## --------------------------------------------------------------------------------
+## age 
+##        n  missing distinct     Info     Mean      Gmd      .05      .10 
+##      120        0      117        1    53.59    11.92    40.86    41.52 
+##      .25      .50      .75      .90      .95 
+##    47.75    51.83    55.01    58.61    59.65 
+## 
+## lowest :  34.19229  35.31930  37.25225  39.61641  40.03724
+## highest:  63.93238  64.16432  64.96824  65.80417 357.89001
+##                                                           
+## Value         35    40    45    50    55    60    65   360
+## Frequency      3    10    16    38    35    13     4     1
+## Proportion 0.025 0.083 0.133 0.317 0.292 0.108 0.033 0.008
+## 
+## For the frequency table, variable is rounded to the nearest 5
+## --------------------------------------------------------------------------------
+## test1 
+##        n  missing distinct     Info     Mean      Gmd      .05      .10 
+##      120        0      111        1   -1.989    14.11 -99.0000   0.5809 
+##      .25      .50      .75      .90      .95 
+##   1.5597   3.1065   5.7067   7.9931   9.5583 
+## 
+## lowest : -99.0000000   0.1048958   0.1927608   0.4293420   0.5155185
+## highest:   9.7981329  10.2903990  10.4685400  11.0714440  12.4163920
+##                                                                             
+## Value        -99     0     1     2     3     4     5     6     7     8     9
+## Frequency      7     3    20    17    21    12     8    11     6     7     1
+## Proportion 0.058 0.025 0.167 0.142 0.175 0.100 0.067 0.092 0.050 0.058 0.008
+##                             
+## Value         10    11    12
+## Frequency      5     1     1
+## Proportion 0.042 0.008 0.008
+## 
+## For the frequency table, variable is rounded to the nearest 1
+## --------------------------------------------------------------------------------
+## test2 
+##        n  missing distinct     Info     Mean      Gmd      .05      .10 
+##      120        0      111        1   -1.226    14.59 -99.0000   0.7881 
+##      .25      .50      .75      .90      .95 
+##   2.2494   4.1620   6.1657   8.9973  10.9861 
+## 
+## lowest : -99.0000000   0.5807591   0.6179262   0.6571499   0.7485080
+## highest:  11.4315750  12.4493730  14.2252270  14.5365420  17.2275810
+##                                                                             
+## Value        -99     1     2     3     4     5     6     7     8     9    10
+## Frequency      7    15    12    19    16    15     9     6     6     6     1
+## Proportion 0.058 0.125 0.100 0.158 0.133 0.125 0.075 0.050 0.050 0.050 0.008
+##                                         
+## Value         11    12    14    15    17
+## Frequency      4     1     1     1     1
+## Proportion 0.033 0.008 0.008 0.008 0.008
+## 
+## For the frequency table, variable is rounded to the nearest 1
+## --------------------------------------------------------------------------------
+## pain 
+##        n  missing distinct     Info     Mean      Gmd 
+##      120        0        9    0.961    5.325    1.742 
+## 
+## lowest : 1 2 3 4 5, highest: 5 6 7 8 9
+##                                                                 
+## Value          1     2     3     4     5     6     7     8     9
+## Frequency      1     2    11    21    33    25    18     5     4
+## Proportion 0.008 0.017 0.092 0.175 0.275 0.208 0.150 0.042 0.033
+## --------------------------------------------------------------------------------
+## tumorsize 
+##        n  missing distinct     Info     Mean      Gmd      .05      .10 
+##      120        0      117        1    70.08    12.92    53.48    55.97 
+##      .25      .50      .75      .90      .95 
+##    62.18    68.23    77.48    84.06    92.54 
+## 
+## lowest :  49.09861  50.28009  50.50217  51.65727  53.19937
+## highest:  98.05510  98.32850  98.70570 102.69671 109.00956
+## --------------------------------------------------------------------------------
+## co2 
+##        n  missing distinct     Info     Mean      Gmd      .05      .10 
+##      120        0      115        1  -0.8901     5.03    1.390    1.440 
+##      .25      .50      .75      .90      .95 
+##    1.495    1.586    1.686    1.756    1.793 
+## 
+## lowest : -98.000000   1.327440   1.362927   1.372113   1.391310
+## highest:   1.810847   1.820266   1.905606   1.920025   1.942401
+##                             
+## Value        -98     1     2
+## Frequency      3    29    88
+## Proportion 0.025 0.242 0.733
+## 
+## For the frequency table, variable is rounded to the nearest 1
+## --------------------------------------------------------------------------------
+## wound 
+##        n  missing distinct     Info     Mean      Gmd 
+##      120        0        8    0.958    5.592    1.767 
+## 
+## lowest : 2 3 4 5 6, highest: 5 6 7 8 9
+##                                                           
+## Value          2     3     4     5     6     7     8     9
+## Frequency      5    10    12    23    36    22    10     2
+## Proportion 0.042 0.083 0.100 0.192 0.300 0.183 0.083 0.017
+## --------------------------------------------------------------------------------
+## mobility 
+##        n  missing distinct     Info     Mean      Gmd 
+##      120        0        8    0.969    6.033    2.264 
+## 
+## lowest : 2 3 4 5 6, highest: 5 6 7 8 9
+##                                                           
+## Value          2     3     4     5     6     7     8     9
+## Frequency      6     4    19    19    28    15     5    24
+## Proportion 0.050 0.033 0.158 0.158 0.233 0.125 0.042 0.200
+## --------------------------------------------------------------------------------
+## ntumors 
+##        n  missing distinct     Info     Mean      Gmd      .05      .10 
+##      120        0       10    0.981     3.15    3.101        0        0 
+##      .25      .50      .75      .90      .95 
+##        1        2        5        8        9 
+## 
+## lowest : 0 1 2 3 4, highest: 5 6 7 8 9
+##                                                                       
+## Value          0     1     2     3     4     5     6     7     8     9
+## Frequency     23    21    19     9    12    11     7     5     5     8
+## Proportion 0.192 0.175 0.158 0.075 0.100 0.092 0.058 0.042 0.042 0.067
+## --------------------------------------------------------------------------------
+## remission 
+##        n  missing distinct     Info      Sum     Mean      Gmd 
+##      120        0        2    0.683       42     0.35   0.4588 
+## 
+## --------------------------------------------------------------------------------
+## lungcapacity 
+##        n  missing distinct     Info     Mean      Gmd      .05      .10 
+##      120        0       96    0.995   -18.33    31.26 -99.0000 -99.0000 
+##      .25      .50      .75      .90      .95 
+##   0.5142   0.7457   0.8721   0.9573   0.9790 
+## 
+## lowest : -99.0000000 -98.0000000   0.2949074   0.3264440   0.3450253
+## highest:   0.9856416   0.9864109   0.9924814   0.9940955   0.9982018
+##                                                     
+## Value      -99.0 -98.0   0.2   0.4   0.6   0.8   1.0
+## Frequency     20     3     1     6    21    46    23
+## Proportion 0.167 0.025 0.008 0.050 0.175 0.383 0.192
+## 
+## For the frequency table, variable is rounded to the nearest 0.2
+## --------------------------------------------------------------------------------
+## married 
+##        n  missing distinct     Info      Sum     Mean      Gmd 
+##      120        0        2    0.697       76   0.6333   0.4683 
+## 
+## --------------------------------------------------------------------------------
+## familyhx 
+##        n  missing distinct 
+##      120        0        3 
+##                             
+## Value        -99    no   yes
+## Frequency      6    97    17
+## Proportion 0.050 0.808 0.142
+## --------------------------------------------------------------------------------
+## smokinghx 
+##        n  missing distinct 
+##      120        0        4 
+##                                           
+## Value          -99 current  former   never
+## Frequency        6      26      22      66
+## Proportion   0.050   0.217   0.183   0.550
+## --------------------------------------------------------------------------------
+## cancerstage 
+##        n  missing distinct 
+##      120        0        4 
+##                                   
+## Value          I    II   III    IV
+## Frequency     40    54    17     9
+## Proportion 0.333 0.450 0.142 0.075
+## --------------------------------------------------------------------------------
+## lengthofstay 
+##        n  missing distinct     Info     Mean      Gmd 
+##      120        0        6    0.933    5.308    1.271 
+## 
+## lowest : 3 4 5 6 7, highest: 4 5 6 7 8
+##                                               
+## Value          3     4     5     6     7     8
+## Frequency      5    29    29    40    15     2
+## Proportion 0.042 0.242 0.242 0.333 0.125 0.017
+## --------------------------------------------------------------------------------
+## wbc 
+##        n  missing distinct 
+##      120        0      116 
+## 
+## lowest : 3671.880371  4176.054199  4201.741211  4238.355957  4331.902344 
+## highest: 7999.091309  8340.71582   8415.605469  8567.246094  not assessed
+## --------------------------------------------------------------------------------
+## rbc 
+##        n  missing distinct     Info     Mean      Gmd      .05      .10 
+##      120        0      117        1     4.97   0.2885    4.526    4.606 
+##      .25      .50      .75      .90      .95 
+##    4.825    4.978    5.150    5.285    5.353 
+## 
+## lowest : 4.359662 4.436482 4.456108 4.465468 4.470100
+## highest: 5.441604 5.442614 5.459067 5.502604 5.535052
+## --------------------------------------------------------------------------------
+## bmi 
+##        n  missing distinct     Info     Mean      Gmd      .05      .10 
+##      120        0      117        1    29.38    7.278    20.71    22.07 
+##      .25      .50      .75      .90      .95 
+##    24.51    27.82    34.31    37.75    40.71 
+## 
+## lowest : 18.44992 18.68505 20.07485 20.17994 20.49195
+## highest: 42.84858 44.04223 46.50746 52.30723 58.00000
+## --------------------------------------------------------------------------------</code></pre>
+</div>
+</div>
+<div id="의심스러운-값" class="section level3">
+<h3><span class="header-section-number">3.1.5</span> 의심스러운 값</h3>
+<p>여기에 우리가 정확하다고 확신할 수 없는 몇 몇 변수의 값들이 있다:</p>
+<div class="sourceCode" id="cb767"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb767-1" title="1"><span class="kw">describe</span>(d[,<span class="kw">c</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;sex&quot;</span>, <span class="st">&quot;test1&quot;</span>)])</a></code></pre></div>
+<pre><code>## d[, c(&quot;age&quot;, &quot;sex&quot;, &quot;test1&quot;)] 
+## 
+##  3  Variables      120  Observations
+## --------------------------------------------------------------------------------
+## age 
+##        n  missing distinct     Info     Mean      Gmd      .05      .10 
+##      120        0      117        1    53.59    11.92    40.86    41.52 
+##      .25      .50      .75      .90      .95 
+##    47.75    51.83    55.01    58.61    59.65 
+## 
+## lowest :  34.19229  35.31930  37.25225  39.61641  40.03724
+## highest:  63.93238  64.16432  64.96824  65.80417 357.89001
+##                                                           
+## Value         35    40    45    50    55    60    65   360
+## Frequency      3    10    16    38    35    13     4     1
+## Proportion 0.025 0.083 0.133 0.317 0.292 0.108 0.033 0.008
+## 
+## For the frequency table, variable is rounded to the nearest 5
+## --------------------------------------------------------------------------------
+## sex 
+##        n  missing distinct 
+##      120        0        3 
+##                                
+## Value        12.2 female   male
+## Frequency       1     74     45
+## Proportion  0.008  0.617  0.375
+## --------------------------------------------------------------------------------
+## test1 
+##        n  missing distinct     Info     Mean      Gmd      .05      .10 
+##      120        0      111        1   -1.989    14.11 -99.0000   0.5809 
+##      .25      .50      .75      .90      .95 
+##   1.5597   3.1065   5.7067   7.9931   9.5583 
+## 
+## lowest : -99.0000000   0.1048958   0.1927608   0.4293420   0.5155185
+## highest:   9.7981329  10.2903990  10.4685400  11.0714440  12.4163920
+##                                                                             
+## Value        -99     0     1     2     3     4     5     6     7     8     9
+## Frequency      7     3    20    17    21    12     8    11     6     7     1
+## Proportion 0.058 0.025 0.167 0.142 0.175 0.100 0.067 0.092 0.050 0.058 0.008
+##                             
+## Value         10    11    12
+## Frequency      5     1     1
+## Proportion 0.042 0.008 0.008
+## 
+## For the frequency table, variable is rounded to the nearest 1
+## --------------------------------------------------------------------------------</code></pre>
+<ul>
+<li><code>age</code> : <code>360</code></li>
+<li><code>sex</code> : <code>12.2</code></li>
+<li><code>test1</code> : <code>-99</code></li>
+</ul>
+</div>
+<div id="describe함수의-결과의-시각화" class="section level3">
+<h3><span class="header-section-number">3.1.6</span> <code>describe()</code>함수의 결과의 시각화</h3>
+<ul>
+<li><p><code>describe()</code>함수의 결과들은 <code>plot()</code>함수로 다음과 같이 시각화할 수 있다:</p>
+<ul>
+<li><strong>명목 변수</strong>의 도수에 대한 점 그림(dot plot)</li>
+<li><strong>연속 변수</strong>의 분포에 대한 스파이크 히스토그램(spike histograms)</li>
+</ul></li>
+<li><p>이러한 그림들은 변수의 <em>분포에 대한 검토</em>와 <em>의심이 가는 데이터를 발견</em>하는데 이용된다.</p>
+<ul>
+<li><p><strong>점 그림</strong>에서 명목 변수에 대한 <em>의심이 가는 데이터</em>의 라벨(아래의 그림에서 <code>sex</code>, <code>familyhx</code> 와 <code>smokinghx</code> 변수들)들을 찾아보자.</p></li>
+<li><p><strong>히스토그램</strong>에서는 각 히스토그램은 자체 척도를 가지고 있으며, 묶음 형태(bunched-up)의 히스토그램은 종종 극단치가 존재함을 알려준다(<code>age</code>, <code>test1</code>, <code>test2</code>, <code>co2</code> 와 <code>lungcapacity</code> 등의 변수들).</p></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb769"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb769-1" title="1"><span class="kw">win.graph</span>(<span class="dv">12</span>,<span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb769-2" title="2"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb769-3" title="3"><span class="kw">plot</span>(<span class="kw">describe</span>(d))</a></code></pre></div>
+<pre><code>## $Categorical</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-241-1.png" width="672" /></p>
+<pre><code>## 
+## $Continuous</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-241-2.png" width="672" /></p>
+</div>
+<div id="의심스러운-값을-결측치로-바꾸기" class="section level3">
+<h3><span class="header-section-number">3.1.7</span> 의심스러운 값을 결측치로 바꾸기</h3>
+<ul>
+<li><p>예제 데이터 세트의 요약정보의 결과와 <code>describe()</code> 함수 결과의 그래프는 여러 개의 의심스러운 값들이 있음을 알려주고 있다:</p>
+<ul>
+<li><code>age</code>변수는 데이터 입력 에러로 보이는 357.89001 값이 있다.</li>
+<li><code>sex</code> 변수는 데이터 입력 에러로 보이는 “12.2”값이 있다.</li>
+<li><code>test1</code>, <code>test2</code>, <code>lungcapacity</code>, <code>smokinghx</code>, 그리고 <code>familyhx</code> 변수 등은 결측치 코드인 <code>-99</code>를 가지고 있다.</li>
+<li><code>co2</code> 와 <code>lungcapacity</code>변수는 또 다른 결측치 코드인 <code>-98</code> 값을 가지고 있다.</li>
+<li><code>wbc</code> 변수는 수치 변수인 것 같은데, R이 문자로 읽어들이게 하는 “<code>not assessed</code>” 값을 가지고 있다.</li>
+</ul></li>
+<li><p>우리는 의심스러운 값들에 대하여 그 대체 값들을 알 수 없기때문에 R에서 결측치를 나타내는 <code>NA</code>로 변경할 것이다.</p></li>
+</ul>
+<p><strong>주의</strong> : 자주 데이터 세트들은 결측치의 유형에 따라 결측치 값들을 구분하고 있다. 예를 들어, -<code>99</code>는 “결측치“, <code>-98</code>은 “답변 거부“” 등으로 처리하는 것을 들 수 있다. 분석의 목적을 위해서는 이 두 경우 모두 <code>NA</code>로 처리하면 된다. 그렇지만 결측치 값들을 구분하고자 하는 경우에는 <code>memisc</code> 패키지의 <code>as.itemI)</code> 함수를 참고하기 바란다.</p>
+<ul>
+<li>데이터 입력 에러에 대하여 <code>NA</code> 값으로 대체하기 위해 <strong>논리적 서브세팅(logical subsetting)</strong>을 이용할 수 있다:</li>
+</ul>
+<div class="sourceCode" id="cb772"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb772-1" title="1"><span class="co"># change all impossible age values to NA </span></a>
+<a class="sourceLine" id="cb772-2" title="2"><span class="co"># assume all adults in this dataset</span></a>
+<a class="sourceLine" id="cb772-3" title="3">d<span class="op">$</span>age[d<span class="op">$</span>age<span class="op">&lt;</span><span class="dv">18</span> <span class="op">|</span><span class="st"> </span>d<span class="op">$</span>age<span class="op">&gt;</span><span class="dv">120</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb772-4" title="4"></a>
+<a class="sourceLine" id="cb772-5" title="5"><span class="co"># remember to use quotes for character variables</span></a>
+<a class="sourceLine" id="cb772-6" title="6">d<span class="op">$</span>sex[d<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;12.2&quot;</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></a></code></pre></div>
+<p>이제 모든 <code>-99</code>, <code>-98</code> 그리고 <code>not assessed</code> 값들을 모두 <code>NA</code>로 바꿔보자.</p>
+<div class="sourceCode" id="cb773"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb773-1" title="1">d[d<span class="op">==-</span><span class="dv">99</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb773-2" title="2">d[d<span class="op">==-</span><span class="dv">98</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb773-3" title="3">d[d<span class="op">==</span><span class="st">&quot;not assessed&quot;</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb773-4" title="4">d</a></code></pre></div>
+<pre><code>## # A tibble: 120 x 24
+##   hospital hospid docid dis_date sex     age test1 test2  pain tumorsize   co2
+##   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
+## 1 UCLA          1 1-1   6-Sep-09 male   65.0  3.70 8.09      4      68.0  1.53
+## 2 UCLA          1 1-1   7-Jan-11 fema~  53.9  2.63 0.803     2      64.7  1.68
+## 3 UCLA          1 1-1   4-Sep-10 male   41.4 NA    2.13      3      86.4  1.45
+## # ... with 117 more rows, and 13 more variables: wound &lt;dbl&gt;, mobility &lt;dbl&gt;,
+## #   ntumors &lt;dbl&gt;, remission &lt;dbl&gt;, lungcapacity &lt;dbl&gt;, married &lt;dbl&gt;,
+## #   familyhx &lt;chr&gt;, smokinghx &lt;chr&gt;, cancerstage &lt;chr&gt;, lengthofstay &lt;dbl&gt;,
+## #   wbc &lt;chr&gt;, rbc &lt;dbl&gt;, bmi &lt;dbl&gt;</code></pre>
+<p>예를 들어, 다음의 구문은 <code>df</code> 데이터 세트에 있는 모든<code>a</code> 값을 <code>b</code>값으로 바꾸는 것을 보여준다:</p>
+<div class="sourceCode" id="cb775"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb775-1" title="1">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a=</span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;f&quot;</span>), <span class="dt">b=</span><span class="kw">c</span>(<span class="st">&quot;d&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>))</a>
+<a class="sourceLine" id="cb775-2" title="2">df[df<span class="op">==</span><span class="st">&quot;a&quot;</span>] &lt;-<span class="st"> &quot;b&quot;</span></a>
+<a class="sourceLine" id="cb775-3" title="3">df</a></code></pre></div>
+<pre><code>##   a b
+## 1 b d
+## 2 c b
+## 3 f c</code></pre>
+</div>
+<div id="data_cleansing_Complete_cases" class="section level3">
+<h3><span class="header-section-number">3.1.8</span> <code>NA</code>가 없는 완전한 데이터</h3>
+<p><code>complete.cases(x)</code> 함수는 <code>x</code>의 행 각각에 누락된 데이터가 없는(NA가 존재하지 않는 데이터, <strong>complete cases</strong>)지를 확인해주는 논리값(TRUE/FALSE) 벡터를 반환한다. 해당 행 전체에 누락된 데이터가 없다면 <code>TRUE</code>값을 반환하고, 누락된 데이터가 존재한다면 <code>FALSE</code>를 반환해준다.</p>
+<p>이 논리 벡터의 합은 complete cases의 갯수를 나타낸다.</p>
+<div id="결측치가-없는-데이터" class="section level4">
+<h4><span class="header-section-number">3.1.8.1</span> 결측치가 없는 데이터</h4>
+<div class="sourceCode" id="cb777"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb777-1" title="1"><span class="kw">complete.cases</span>(d)</a></code></pre></div>
+<pre><code>##   [1]  TRUE  TRUE FALSE  TRUE FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE
+##  [13]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE
+##  [25]  TRUE  TRUE FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE
+##  [37]  TRUE FALSE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE
+##  [49] FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE
+##  [61]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE FALSE
+##  [73]  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE
+##  [85]  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE
+##  [97]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE  TRUE
+## [109] FALSE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+</div>
+<div id="결측치가-아닌-데이터의-갯수" class="section level4">
+<h4><span class="header-section-number">3.1.8.2</span> 결측치가 아닌 데이터의 갯수</h4>
+<div class="sourceCode" id="cb779"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb779-1" title="1"><span class="kw">sum</span>(<span class="kw">complete.cases</span>(d))</a></code></pre></div>
+<pre><code>## [1] 82</code></pre>
+</div>
+<div id="결측치가-없는-데이터-세트-생성" class="section level4">
+<h4><span class="header-section-number">3.1.8.3</span> 결측치가 없는 데이터 세트 생성</h4>
+<div class="sourceCode" id="cb781"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb781-1" title="1">d_comp &lt;-<span class="st"> </span>d[<span class="kw">complete.cases</span>(d),]</a></code></pre></div>
+</div>
+</div>
+<div id="data_cleansing_after_cleansing" class="section level3">
+<h3><span class="header-section-number">3.1.9</span> 데이터 정제 후의 <code>describe()</code>함수 결과 그림</h3>
+<p><code>describe()</code> 함수 결과의 그림은 이제 더 나아 보인다. 점 그림에 의심이 가는 데이터 라벨이 없고 또 히스토그램은 아주 잘 분산되어 있다.</p>
+<p>색은 그런 변수들의 결측치 수를 보여준다.</p>
+<div id="categorical" class="section level4">
+<h4><span class="header-section-number">3.1.9.1</span> <code>$Categorical</code></h4>
+<p>범주형 변수(factor)에 대한 시각화</p>
+<div class="sourceCode" id="cb782"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb782-1" title="1"><span class="kw">plot</span>(<span class="kw">describe</span>(d), <span class="dt">which=</span><span class="st">&quot;categorical&quot;</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-248-1.png" width="672" /></p>
+</div>
+<div id="continuous" class="section level4">
+<h4><span class="header-section-number">3.1.9.2</span> <code>$Continuous</code></h4>
+<p>수치형 변수(numeric)에 대한 시각화</p>
+<div class="sourceCode" id="cb783"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb783-1" title="1"><span class="kw">plot</span>(<span class="kw">describe</span>(d_comp), <span class="dt">which=</span><span class="st">&quot;continuous&quot;</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-249-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="data_cleansing_missing_value" class="section level2">
+<h2><span class="header-section-number">3.2</span> 결측치(Missing Values) 처리</h2>
+<div id="결측값이-포함되어-있는지-확인하는-방법-is.na" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> 결측값이 포함되어 있는지 확인하는 방법: <code>is.na()</code></h3>
+<div id="데이터-세트-1-1" class="section level4">
+<h4><span class="header-section-number">3.2.1.1</span> 데이터 세트 1</h4>
+<div class="sourceCode" id="cb784"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb784-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="ot">NA</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="ot">NA</span>) </a></code></pre></div>
+</div>
+<div id="is.na-함수-사용" class="section level4">
+<h4><span class="header-section-number">3.2.1.2</span> <code>is.na()</code> 함수 사용</h4>
+<div class="sourceCode" id="cb785"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb785-1" title="1"><span class="kw">is.na</span>(x)</a></code></pre></div>
+<pre><code>##  [1] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE</code></pre>
+<ul>
+<li>벡터 <code>x</code>의 각 요소에 대해 <code>NA</code> 여부를 확인. 논리형 벡터 반환.</li>
+</ul>
+</div>
+<div id="데이터-세트-2-1" class="section level4">
+<h4><span class="header-section-number">3.2.1.3</span> 데이터 세트 2</h4>
+<div class="sourceCode" id="cb787"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb787-1" title="1"><span class="kw">library</span>(MASS)</a></code></pre></div>
+<pre><code>## Warning: package &#39;MASS&#39; was built under R version 4.0.2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;MASS&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     select</code></pre>
+<div class="sourceCode" id="cb791"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb791-1" title="1"><span class="kw">str</span>(Cars93)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    93 obs. of  27 variables:
+##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
+##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
+##  $ Type              : Factor w/ 6 levels &quot;Compact&quot;,&quot;Large&quot;,..: 4 3 1 3 3 3 2 2 3 2 ...
+##  $ Min.Price         : num  12.9 29.2 25.9 30.8 23.7 14.2 19.9 22.6 26.3 33 ...
+##  $ Price             : num  15.9 33.9 29.1 37.7 30 15.7 20.8 23.7 26.3 34.7 ...
+##  $ Max.Price         : num  18.8 38.7 32.3 44.6 36.2 17.3 21.7 24.9 26.3 36.3 ...
+##  $ MPG.city          : int  25 18 20 19 22 22 19 16 19 16 ...
+##  $ MPG.highway       : int  31 25 26 26 30 31 28 25 27 25 ...
+##  $ AirBags           : Factor w/ 3 levels &quot;Driver &amp; Passenger&quot;,..: 3 1 2 1 2 2 2 2 2 2 ...
+##  $ DriveTrain        : Factor w/ 3 levels &quot;4WD&quot;,&quot;Front&quot;,..: 2 2 2 2 3 2 2 3 2 2 ...
+##  $ Cylinders         : Factor w/ 6 levels &quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,..: 2 4 4 4 2 2 4 4 4 5 ...
+##  $ EngineSize        : num  1.8 3.2 2.8 2.8 3.5 2.2 3.8 5.7 3.8 4.9 ...
+##  $ Horsepower        : int  140 200 172 172 208 110 170 180 170 200 ...
+##  $ RPM               : int  6300 5500 5500 5500 5700 5200 4800 4000 4800 4100 ...
+##  $ Rev.per.mile      : int  2890 2335 2280 2535 2545 2565 1570 1320 1690 1510 ...
+##  $ Man.trans.avail   : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 1 1 1 1 1 ...
+##  $ Fuel.tank.capacity: num  13.2 18 16.9 21.1 21.1 16.4 18 23 18.8 18 ...
+##  $ Passengers        : int  5 5 5 6 4 6 6 6 5 6 ...
+##  $ Length            : int  177 195 180 193 186 189 200 216 198 206 ...
+##  $ Wheelbase         : int  102 115 102 106 109 105 111 116 108 114 ...
+##  $ Width             : int  68 71 67 70 69 69 74 78 73 73 ...
+##  $ Turn.circle       : int  37 38 37 37 39 41 42 45 41 43 ...
+##  $ Rear.seat.room    : num  26.5 30 28 31 27 28 30.5 30.5 26.5 35 ...
+##  $ Luggage.room      : int  11 15 14 17 13 16 17 21 14 18 ...
+##  $ Weight            : int  2705 3560 3375 3405 3640 2880 3470 4105 3495 3620 ...
+##  $ Origin            : Factor w/ 2 levels &quot;USA&quot;,&quot;non-USA&quot;: 2 2 2 2 2 1 1 1 1 1 ...
+##  $ Make              : Factor w/ 93 levels &quot;Acura Integra&quot;,..: 1 2 4 3 5 6 7 9 8 10 ...</code></pre>
+<ul>
+<li><code>MASS</code> 패키지에 있는 <code>Cars93</code> 데이터 세트</li>
+<li>27개의 컬럼과 93개의 행으로 구성되어 있다.</li>
+</ul>
+<p><code>is.na()</code> 함수는 데이터 구조의 <strong>각 요소별로 NA 여부를 확인</strong>한다.</p>
+<p>위의 벡터처럼 구성요소 갯수가 몇 개 안될 경우 <code>is.na()</code> 한 후에 <code>TRUE</code>, <code>FALSE</code> 논리형 값을 눈으로 보고 확인할 수 있다.</p>
+</div>
+<div id="is.na-함수-사용-1" class="section level4">
+<h4><span class="header-section-number">3.2.1.4</span> <code>is.na()</code> 함수 사용</h4>
+<p>하지만 <strong><code>Cars93</code></strong> 데이터 세트처럼 변수(열) 갯수도 많고, 관측치(행) 갯수도 많은 경우 (대부분의 실무에서 쓰는 데이터 세트는 이처럼 변수도 많고 관측치도 많다.)</p>
+<p><code>is.na()</code> 함수만 가지고서는 아무래도 결측치 현황을 파악하는데 무리가 있다.</p>
+<div class="sourceCode" id="cb793"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb793-1" title="1"><span class="kw">head</span>(<span class="kw">is.na</span>(Cars93))</a></code></pre></div>
+<pre><code>##   Manufacturer Model  Type Min.Price Price Max.Price MPG.city MPG.highway
+## 1        FALSE FALSE FALSE     FALSE FALSE     FALSE    FALSE       FALSE
+## 2        FALSE FALSE FALSE     FALSE FALSE     FALSE    FALSE       FALSE
+## 3        FALSE FALSE FALSE     FALSE FALSE     FALSE    FALSE       FALSE
+## 4        FALSE FALSE FALSE     FALSE FALSE     FALSE    FALSE       FALSE
+## 5        FALSE FALSE FALSE     FALSE FALSE     FALSE    FALSE       FALSE
+## 6        FALSE FALSE FALSE     FALSE FALSE     FALSE    FALSE       FALSE
+##   AirBags DriveTrain Cylinders EngineSize Horsepower   RPM Rev.per.mile
+## 1   FALSE      FALSE     FALSE      FALSE      FALSE FALSE        FALSE
+## 2   FALSE      FALSE     FALSE      FALSE      FALSE FALSE        FALSE
+## 3   FALSE      FALSE     FALSE      FALSE      FALSE FALSE        FALSE
+## 4   FALSE      FALSE     FALSE      FALSE      FALSE FALSE        FALSE
+## 5   FALSE      FALSE     FALSE      FALSE      FALSE FALSE        FALSE
+## 6   FALSE      FALSE     FALSE      FALSE      FALSE FALSE        FALSE
+##   Man.trans.avail Fuel.tank.capacity Passengers Length Wheelbase Width
+## 1           FALSE              FALSE      FALSE  FALSE     FALSE FALSE
+## 2           FALSE              FALSE      FALSE  FALSE     FALSE FALSE
+## 3           FALSE              FALSE      FALSE  FALSE     FALSE FALSE
+## 4           FALSE              FALSE      FALSE  FALSE     FALSE FALSE
+## 5           FALSE              FALSE      FALSE  FALSE     FALSE FALSE
+## 6           FALSE              FALSE      FALSE  FALSE     FALSE FALSE
+##   Turn.circle Rear.seat.room Luggage.room Weight Origin  Make
+## 1       FALSE          FALSE        FALSE  FALSE  FALSE FALSE
+## 2       FALSE          FALSE        FALSE  FALSE  FALSE FALSE
+## 3       FALSE          FALSE        FALSE  FALSE  FALSE FALSE
+## 4       FALSE          FALSE        FALSE  FALSE  FALSE FALSE
+## 5       FALSE          FALSE        FALSE  FALSE  FALSE FALSE
+## 6       FALSE          FALSE        FALSE  FALSE  FALSE FALSE</code></pre>
+</div>
+</div>
+<div id="결측치-갯수-sumis.na" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> 결측치 갯수: <code>sum(is.na())</code></h3>
+<div id="벡터의-경우" class="section level4">
+<h4><span class="header-section-number">3.2.2.1</span> 벡터의 경우</h4>
+<div class="sourceCode" id="cb795"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb795-1" title="1"><span class="kw">sum</span>(<span class="kw">is.na</span>(x))</a></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+</div>
+<div id="데이터-프레임의-경우-cars93-데이터-프레임." class="section level4">
+<h4><span class="header-section-number">3.2.2.2</span> 데이터 프레임의 경우 : <code>Cars93</code> 데이터 프레임.</h4>
+<div class="sourceCode" id="cb797"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb797-1" title="1"><span class="kw">sum</span>(<span class="kw">is.na</span>(Cars93))</a></code></pre></div>
+<pre><code>## [1] 13</code></pre>
+</div>
+<div id="cars93-의-각-변수컬럼별로-결측값-개수" class="section level4">
+<h4><span class="header-section-number">3.2.2.3</span> <code>Cars93</code> 의 각 변수(컬럼)별로 결측값 개수</h4>
+<p>총 27개의 변수 중에서 <code>Manufacturer</code>, <code>Price</code>, <code>Rear.seat.room</code>, <code>Luggage.room</code> 등의 4개만 예시로 살펴본다.</p>
+<div class="sourceCode" id="cb799"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb799-1" title="1"><span class="kw">sum</span>(<span class="kw">is.na</span>(Cars93<span class="op">$</span>Manufacturer)) </a></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb801"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb801-1" title="1"><span class="kw">sum</span>(<span class="kw">is.na</span>(Cars93<span class="op">$</span>Price))</a></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb803"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb803-1" title="1"><span class="kw">sum</span>(<span class="kw">is.na</span>(Cars93<span class="op">$</span>Rear.seat.room))</a></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb805"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb805-1" title="1"><span class="kw">sum</span>(<span class="kw">is.na</span>(Cars93<span class="op">$</span>Luggage.room))</a></code></pre></div>
+<pre><code>## [1] 11</code></pre>
+<ul>
+<li>각 컬럼 별로 <code>NA</code> 요소 갯수가 반환된다.</li>
+</ul>
+<p><code>sum(is.na())</code> 함수를 이용하면 변수가 많거나 관측값이 많은 경우도 결측값 현황을 금방 파악할 수 있다.</p>
+<p>R은 <code>TRUE</code> 를 ‘<code>1</code>’로, <code>FALSE</code> 를’<code>0</code>‘으로 인식하기 때문에 <code>sum(is.na())</code>를 하게 되면 <code>TRUE</code> 값을’<code>1</code>’로 인식해서 합계를 구한다.</p>
+</div>
+<div id="colsums-함수-사용" class="section level4">
+<h4><span class="header-section-number">3.2.2.4</span> <code>colSums()</code> 함수 사용</h4>
+<p><strong><code>colSums()</code> 함수</strong>를 사용하면 데이터 프레임 내 다수 변수들에 대해서 한번에 각 개별 변수별 결측값의 개수 합계를 구할 수 있다.</p>
+<p>바로 위에서 개별 함수별로 일일이 <code>sum(is.na(Cars93$Manufacturer))</code>…이런 식으로 변수의 개수만큼 쓰는 것을 <code>colSums()</code> 함수로는 한줄이면 해결할 수 있으니 훨씬 편하다.</p>
+<div class="sourceCode" id="cb807"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb807-1" title="1"><span class="kw">colSums</span>(<span class="kw">is.na</span>(Cars93)) </a></code></pre></div>
+<pre><code>##       Manufacturer              Model               Type          Min.Price 
+##                  0                  0                  0                  0 
+##              Price          Max.Price           MPG.city        MPG.highway 
+##                  0                  0                  0                  0 
+##            AirBags         DriveTrain          Cylinders         EngineSize 
+##                  0                  0                  0                  0 
+##         Horsepower                RPM       Rev.per.mile    Man.trans.avail 
+##                  0                  0                  0                  0 
+## Fuel.tank.capacity         Passengers             Length          Wheelbase 
+##                  0                  0                  0                  0 
+##              Width        Turn.circle     Rear.seat.room       Luggage.room 
+##                  0                  0                  2                 11 
+##             Weight             Origin               Make 
+##                  0                  0                  0</code></pre>
+<ul>
+<li><code>colSums(is.na(Cars93))</code> : 함수로 간단하게 각 컬럼별 요소에 있는 NA의 갯수를 계산하였다.</li>
+</ul>
+</div>
+</div>
+<div id="결측치를-통계-분석시-제외시키기-na.rm-true" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> 결측치를 통계 분석시 제외시키기 : <code>na.rm = TRUE</code></h3>
+<p>다음과 같은 함수는 데이터 세트에 NA가 포함되어 있으면 그 결과도 NA가 된다.</p>
+<div class="sourceCode" id="cb809"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb809-1" title="1"><span class="kw">sum</span>(x)</a></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb811"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb811-1" title="1"><span class="kw">mean</span>(x)</a></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<ul>
+<li>벡터 <code>x</code>에 결측치(<code>NA</code>)가 포함되어 있으면 그 결과는 <code>NA</code>로 반환됨.</li>
+</ul>
+<p>이런 경우에 <code>na.rm = TRUE</code>를 함수의 인수로 사용한다.</p>
+<div class="sourceCode" id="cb813"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb813-1" title="1"><span class="kw">sum</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## [1] 40</code></pre>
+<div class="sourceCode" id="cb815"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb815-1" title="1"><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<ul>
+<li>데이터 세트에서 <code>NA</code>를 제외하고 그 결과를 반환한다.</li>
+</ul>
+<p><strong>결측값이 들어있는 벡터</strong>에 대해서 <code>sum()</code>, <code>mean()</code>, <code>sd()</code>, <code>min()</code>, <code>max()</code>, <code>range()</code> 등의 통계 함수를 적용하면 <code>NA</code>만 나오게 된다.</p>
+<p>결측값을 제외하고 통계 함수 계산을 하는 옵션은 <strong><code>na.rm = TRUE</code></strong> 가 된다.</p>
+<p><strong>NA를 고려하지 않은 통계 처리의 경우</strong></p>
+<div class="sourceCode" id="cb817"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb817-1" title="1"><span class="kw">sum</span>(Cars93<span class="op">$</span>Luggage.room)</a></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb819"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb819-1" title="1"><span class="kw">mean</span>(Cars93<span class="op">$</span>Luggage.room)</a></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<ul>
+<li>모두 NA 결과</li>
+</ul>
+<p><strong>NA를 제외한 통계처리의 경우</strong></p>
+<div class="sourceCode" id="cb821"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb821-1" title="1"><span class="kw">sum</span>(Cars93<span class="op">$</span>Luggage.room, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## [1] 1139</code></pre>
+<div class="sourceCode" id="cb823"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb823-1" title="1"><span class="kw">mean</span>(Cars93<span class="op">$</span>Luggage.room, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## [1] 13.89024</code></pre>
+<ul>
+<li>NA를 제외한 통계 처리 결과</li>
+</ul>
+<p>위 예제는 결측값이 포함된 데이터 프레임의 특정 변수에 대해 indexing을 해서 통계 함수를 적용해본 경우이다.</p>
+<p>역시 <code>na.rm = TRUE</code> 옵션을 설정해 주어야 통계 계산이 제대로 됨을 알 수 있다.</p>
+<p><code>na.rm = FALSE</code> 가 디폴트이므로 <code>na.rm = TRUE</code>를 설정하지 않는 경우 결측값이 포함되어 있으면 <code>NA</code>가 결과로 나타나게 된다.</p>
+</div>
+<div id="결측치가-있는-행-제거-na.omit" class="section level3">
+<h3><span class="header-section-number">3.2.4</span> 결측치가 있는 행 제거: <code>na.omit()</code></h3>
+<p><code>na.rm = TRUE</code> 옵션은 원래의 데이터 세트는 그대로 둔 채, 통계량 계산할 때만 <code>NA</code>를 포함하지 않게 된다.</p>
+<p>따라서 다수의 통계 함수 혹은 다수의 변수에 통계 함수를 사용해야 하는 경우 매번 <code>na.rm = TRUE</code> 옵션을 설정해주는게 번거로울 수 있다.</p>
+<p>따라서 차라리 원래 데이터 세트에서 결측값을 제거하면 된다.</p>
+<p>결측값이 들어있는 행을 제거해 주는 함수가 <code>na.omit()</code> 함수이다.</p>
+<p>좀 더 예리하게 특정 행과 열을 지정해서 그곳에 결측값이 있는 경우만 메스로 정밀 수술하는 함수가 <code>complete.cases()</code> 함수이다.</p>
+<div id="na.omit-함수의-사용-예" class="section level4">
+<h4><span class="header-section-number">3.2.4.1</span> <code>na.omit()</code> 함수의 사용 예</h4>
+<div class="sourceCode" id="cb825"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb825-1" title="1">Cars93_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">na.omit</span>(Cars93) </a>
+<a class="sourceLine" id="cb825-2" title="2"><span class="kw">str</span>(Cars93_<span class="dv">1</span>)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    82 obs. of  27 variables:
+##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
+##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
+##  $ Type              : Factor w/ 6 levels &quot;Compact&quot;,&quot;Large&quot;,..: 4 3 1 3 3 3 2 2 3 2 ...
+##  $ Min.Price         : num  12.9 29.2 25.9 30.8 23.7 14.2 19.9 22.6 26.3 33 ...
+##  $ Price             : num  15.9 33.9 29.1 37.7 30 15.7 20.8 23.7 26.3 34.7 ...
+##  $ Max.Price         : num  18.8 38.7 32.3 44.6 36.2 17.3 21.7 24.9 26.3 36.3 ...
+##  $ MPG.city          : int  25 18 20 19 22 22 19 16 19 16 ...
+##  $ MPG.highway       : int  31 25 26 26 30 31 28 25 27 25 ...
+##  $ AirBags           : Factor w/ 3 levels &quot;Driver &amp; Passenger&quot;,..: 3 1 2 1 2 2 2 2 2 2 ...
+##  $ DriveTrain        : Factor w/ 3 levels &quot;4WD&quot;,&quot;Front&quot;,..: 2 2 2 2 3 2 2 3 2 2 ...
+##  $ Cylinders         : Factor w/ 6 levels &quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,..: 2 4 4 4 2 2 4 4 4 5 ...
+##  $ EngineSize        : num  1.8 3.2 2.8 2.8 3.5 2.2 3.8 5.7 3.8 4.9 ...
+##  $ Horsepower        : int  140 200 172 172 208 110 170 180 170 200 ...
+##  $ RPM               : int  6300 5500 5500 5500 5700 5200 4800 4000 4800 4100 ...
+##  $ Rev.per.mile      : int  2890 2335 2280 2535 2545 2565 1570 1320 1690 1510 ...
+##  $ Man.trans.avail   : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 1 1 1 1 1 ...
+##  $ Fuel.tank.capacity: num  13.2 18 16.9 21.1 21.1 16.4 18 23 18.8 18 ...
+##  $ Passengers        : int  5 5 5 6 4 6 6 6 5 6 ...
+##  $ Length            : int  177 195 180 193 186 189 200 216 198 206 ...
+##  $ Wheelbase         : int  102 115 102 106 109 105 111 116 108 114 ...
+##  $ Width             : int  68 71 67 70 69 69 74 78 73 73 ...
+##  $ Turn.circle       : int  37 38 37 37 39 41 42 45 41 43 ...
+##  $ Rear.seat.room    : num  26.5 30 28 31 27 28 30.5 30.5 26.5 35 ...
+##  $ Luggage.room      : int  11 15 14 17 13 16 17 21 14 18 ...
+##  $ Weight            : int  2705 3560 3375 3405 3640 2880 3470 4105 3495 3620 ...
+##  $ Origin            : Factor w/ 2 levels &quot;USA&quot;,&quot;non-USA&quot;: 2 2 2 2 2 1 1 1 1 1 ...
+##  $ Make              : Factor w/ 93 levels &quot;Acura Integra&quot;,..: 1 2 4 3 5 6 7 9 8 10 ...
+##  - attr(*, &quot;na.action&quot;)= &#39;omit&#39; Named int [1:11] 16 17 19 26 36 56 57 66 70 87 ...
+##   ..- attr(*, &quot;names&quot;)= chr [1:11] &quot;16&quot; &quot;17&quot; &quot;19&quot; &quot;26&quot; ...</code></pre>
+<ul>
+<li><code>Cars93_1 &lt;- na.omit(Cars93)</code> : <code>NA</code>를 가진 행을 제외한 새로운 데이터 세트 Cars93_1을 생성한다.</li>
+<li><code>str(Cars93_1)</code> : 원래의 데이터 세트 <code>Cars93</code>에 있던 <code>93</code>개의 행이 <code>82</code>개로 줄어 들었다. 즉, 11개의 행을 삭제했다.</li>
+</ul>
+<p>위의 예처럼 결측값이 들어있는 행을 통째로 삭제할 때는 만약의 사태를 대비해서 <strong>원본 <code>Cars93</code>은 그대로 유지하고, 행을 삭제한 데이터 셋을 별도의 이름 <code>Cars93_1</code>로 저장해서 분석을 진행</strong>하는 것을 추천한다.</p>
+</div>
+<div id="특정-열에-결측값-존재-시-행-제거하기-complete.cases-함수" class="section level4">
+<h4><span class="header-section-number">3.2.4.2</span> 특정 열에 결측값 존재 시 행 제거하기 : <code>complete.cases()</code> 함수</h4>
+<div class="sourceCode" id="cb827"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb827-1" title="1"><span class="kw">sum</span>(<span class="kw">is.na</span>(Cars93))</a></code></pre></div>
+<pre><code>## [1] 13</code></pre>
+<ul>
+<li>Cars93 데이터 세트에 있는 <code>NA</code> 요소의 갯수를 출력한다.</li>
+</ul>
+<div id="cars93-데이터-프레임의-rear.seat.room-컬럼의-결측치-행을-데이터-세트에서-제거하기" class="section level5">
+<h5><span class="header-section-number">3.2.4.2.1</span> <code>Cars93</code> 데이터 프레임의 <code>Rear.seat.room</code> 컬럼의 결측치 행을 데이터 세트에서 제거하기</h5>
+<p>Cars93[ , “Rear.seat.room”] 또는 Cars93$Rear.seat.room 변수를 이용할 수 있다.</p>
+<div class="sourceCode" id="cb829"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb829-1" title="1">Cars93_<span class="dv">2</span> &lt;-<span class="st"> </span>Cars93[ <span class="kw">complete.cases</span>(Cars93[ , <span class="kw">c</span>(<span class="st">&quot;Rear.seat.room&quot;</span>)]), ]</a>
+<a class="sourceLine" id="cb829-2" title="2"><span class="kw">sum</span>(<span class="kw">is.na</span>(Cars93_<span class="dv">2</span>)) </a></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<p>위의 구문은 다음과 같은 논리로 문제를 해결한다.
+1. <code>x &lt;- Cars93$Rear.seat.room</code> : 해당 컬럼을 변수 <code>x</code>로 대체
+2. <code>y &lt;- complete.cases(x)</code> : x 벡터의 요소에 대해 NA 존재 여부 확인 -&gt; logical 벡터가 나온다.
+3. <code>Cars93_2 &lt;- Cars93[y, ]</code> : <code>y</code>가 <code>TRUE</code> 행만을 Cars93_2로 추출한다.</p>
+<div class="sourceCode" id="cb831"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb831-1" title="1">   x &lt;-<span class="st"> </span>Cars93<span class="op">$</span>Rear.seat.room; <span class="kw">head</span>(x)</a></code></pre></div>
+<pre><code>## [1] 26.5 30.0 28.0 31.0 27.0 28.0</code></pre>
+<div class="sourceCode" id="cb833"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb833-1" title="1">   y &lt;-<span class="st"> </span><span class="kw">complete.cases</span>(x); <span class="kw">sum</span>(<span class="op">!</span>y)</a></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb835"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb835-1" title="1">   z &lt;-<span class="st"> </span><span class="kw">is.na</span>(x); <span class="kw">sum</span>(z)</a></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb837"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb837-1" title="1">   Cars93_<span class="dv">2</span> &lt;-<span class="st"> </span>Cars93[y, ]; <span class="kw">str</span>(Cars93_<span class="dv">2</span>); <span class="kw">sum</span>(<span class="kw">is.na</span>(Cars93_<span class="dv">2</span>)) </a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    91 obs. of  27 variables:
+##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
+##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
+##  $ Type              : Factor w/ 6 levels &quot;Compact&quot;,&quot;Large&quot;,..: 4 3 1 3 3 3 2 2 3 2 ...
+##  $ Min.Price         : num  12.9 29.2 25.9 30.8 23.7 14.2 19.9 22.6 26.3 33 ...
+##  $ Price             : num  15.9 33.9 29.1 37.7 30 15.7 20.8 23.7 26.3 34.7 ...
+##  $ Max.Price         : num  18.8 38.7 32.3 44.6 36.2 17.3 21.7 24.9 26.3 36.3 ...
+##  $ MPG.city          : int  25 18 20 19 22 22 19 16 19 16 ...
+##  $ MPG.highway       : int  31 25 26 26 30 31 28 25 27 25 ...
+##  $ AirBags           : Factor w/ 3 levels &quot;Driver &amp; Passenger&quot;,..: 3 1 2 1 2 2 2 2 2 2 ...
+##  $ DriveTrain        : Factor w/ 3 levels &quot;4WD&quot;,&quot;Front&quot;,..: 2 2 2 2 3 2 2 3 2 2 ...
+##  $ Cylinders         : Factor w/ 6 levels &quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,..: 2 4 4 4 2 2 4 4 4 5 ...
+##  $ EngineSize        : num  1.8 3.2 2.8 2.8 3.5 2.2 3.8 5.7 3.8 4.9 ...
+##  $ Horsepower        : int  140 200 172 172 208 110 170 180 170 200 ...
+##  $ RPM               : int  6300 5500 5500 5500 5700 5200 4800 4000 4800 4100 ...
+##  $ Rev.per.mile      : int  2890 2335 2280 2535 2545 2565 1570 1320 1690 1510 ...
+##  $ Man.trans.avail   : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 1 1 1 1 1 ...
+##  $ Fuel.tank.capacity: num  13.2 18 16.9 21.1 21.1 16.4 18 23 18.8 18 ...
+##  $ Passengers        : int  5 5 5 6 4 6 6 6 5 6 ...
+##  $ Length            : int  177 195 180 193 186 189 200 216 198 206 ...
+##  $ Wheelbase         : int  102 115 102 106 109 105 111 116 108 114 ...
+##  $ Width             : int  68 71 67 70 69 69 74 78 73 73 ...
+##  $ Turn.circle       : int  37 38 37 37 39 41 42 45 41 43 ...
+##  $ Rear.seat.room    : num  26.5 30 28 31 27 28 30.5 30.5 26.5 35 ...
+##  $ Luggage.room      : int  11 15 14 17 13 16 17 21 14 18 ...
+##  $ Weight            : int  2705 3560 3375 3405 3640 2880 3470 4105 3495 3620 ...
+##  $ Origin            : Factor w/ 2 levels &quot;USA&quot;,&quot;non-USA&quot;: 2 2 2 2 2 1 1 1 1 1 ...
+##  $ Make              : Factor w/ 93 levels &quot;Acura Integra&quot;,..: 1 2 4 3 5 6 7 9 8 10 ...</code></pre>
+<pre><code>## [1] 9</code></pre>
+<ul>
+<li><code>compleste.cases(x)</code> : 요소가 <code>NA</code>가 아니면 <code>TRUE</code>, <code>NA</code>면 <code>FALSE</code> 반환. - 따라서, <code>NA</code>인 요소의 갯수를 구하기 위해 <code>sum(!y)</code>를 사용. : <code>x</code> 컬럼의 <code>NA</code> 갯수는 <code>2</code>개.</li>
+<li><code>is.na(x)</code> : <code>complete.cases()</code> 함수와 비교하기 위함. <code>is.na()</code> 함수는 요소가 <code>NA</code>이면 <code>TRUE</code>, <code>NA</code>가 아니면 <code>FALSE</code> 반환.</li>
+<li>따라서 <code>sum(z)</code>로 <code>NA</code>인 요소의 갯수를 구한다. : <code>x</code> 컬럼의 <code>NA</code> 갯수는 <code>2</code>개.</li>
+<li><code>Cars93[y, ]</code> : <code>Cars93</code> 데이터 세트 중에서 벡터 <code>y</code>가 <code>TRUE</code>인 행인 모든 열(<code>[y, ]</code>)을 추출한다.</li>
+<li><code>sum(is.na(Cars93_2))</code> : Cars93_2 데이터 세트에 NA 요소가 아직도 9개 남아 있음을 확인할 수 있다.</li>
+</ul>
+</div>
+<div id="cars93-데이터-프레임의-2324번째-칼럼-내-결측값이-있는-행-전체-삭제" class="section level5">
+<h5><span class="header-section-number">3.2.4.2.2</span> <code>Cars93</code> 데이터 프레임의 <code>23~24</code>번째 칼럼 내 결측값이 있는 행 전체 삭제</h5>
+<p>이의 해결은 다음과 같은 논리 절차과정을 거치게 된다.</p>
+<ol style="list-style-type: decimal">
+<li>Cars93의 23, 24번쨰 컬럼은 다음과 같이 표현된다. : <code>Cars93[ , 23:24]</code></li>
+<li>이를 <code>x</code> 변수에 대입한다. : <code>x &lt;- Cars93[, 23:24]</code></li>
+<li>이 x 변수에 대해 결측치가 없는 행을 확인하고 이를 <code>y</code> 변수에 대입한다. : <code>y &lt;- complete_cases(x)</code></li>
+<li>Cars93에서 결측치가 없는 행들을 Cars93_3에 대입한다. : <code>Cars93_3 &lt;-  Cars93[y, ]</code></li>
+<li>Cars93_3의 결측치 요소 갯수를 확인한다. : <code>sum(is.na(Cars93_3))</code></li>
+</ol>
+<p>이 절차를 스크립트로 작성하면 다음과 같다.</p>
+<div class="sourceCode" id="cb840"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb840-1" title="1">x &lt;-<span class="st"> </span>Cars93[, <span class="dv">23</span><span class="op">:</span><span class="dv">24</span>]</a>
+<a class="sourceLine" id="cb840-2" title="2">y &lt;-<span class="st"> </span><span class="kw">complete.cases</span>(x)</a>
+<a class="sourceLine" id="cb840-3" title="3">Cars93_<span class="dv">3</span> &lt;-<span class="st"> </span>Cars93[y, ]</a>
+<a class="sourceLine" id="cb840-4" title="4"><span class="kw">sum</span>(<span class="kw">is.na</span>(Cars93_<span class="dv">3</span>))</a></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<ul>
+<li><code>Cars93_3</code> 데이터 세트에는 <code>NA</code> 요소가 하나도 없다.</li>
+</ul>
+<p>이러한 논리를 한 줄에 표현한 것이 다음의 스크립트이다.</p>
+<div class="sourceCode" id="cb842"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb842-1" title="1">Cars93_<span class="dv">3</span> &lt;-<span class="st"> </span>Cars93[ <span class="kw">complete.cases</span>(Cars93[ , <span class="kw">c</span>(<span class="dv">23</span><span class="op">:</span><span class="dv">24</span>)]), ]</a>
+<a class="sourceLine" id="cb842-2" title="2"><span class="kw">sum</span>(<span class="kw">is.na</span>(Cars93_<span class="dv">3</span>))  </a></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<p>행의 갯수 즉, 관측치의 갯수를 확인해 보자.</p>
+<div class="sourceCode" id="cb844"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb844-1" title="1"><span class="kw">dim</span>(Cars93_<span class="dv">3</span>)</a></code></pre></div>
+<pre><code>## [1] 82 27</code></pre>
+<div class="sourceCode" id="cb846"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb846-1" title="1"><span class="kw">str</span>(Cars93_<span class="dv">3</span>)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    82 obs. of  27 variables:
+##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
+##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
+##  $ Type              : Factor w/ 6 levels &quot;Compact&quot;,&quot;Large&quot;,..: 4 3 1 3 3 3 2 2 3 2 ...
+##  $ Min.Price         : num  12.9 29.2 25.9 30.8 23.7 14.2 19.9 22.6 26.3 33 ...
+##  $ Price             : num  15.9 33.9 29.1 37.7 30 15.7 20.8 23.7 26.3 34.7 ...
+##  $ Max.Price         : num  18.8 38.7 32.3 44.6 36.2 17.3 21.7 24.9 26.3 36.3 ...
+##  $ MPG.city          : int  25 18 20 19 22 22 19 16 19 16 ...
+##  $ MPG.highway       : int  31 25 26 26 30 31 28 25 27 25 ...
+##  $ AirBags           : Factor w/ 3 levels &quot;Driver &amp; Passenger&quot;,..: 3 1 2 1 2 2 2 2 2 2 ...
+##  $ DriveTrain        : Factor w/ 3 levels &quot;4WD&quot;,&quot;Front&quot;,..: 2 2 2 2 3 2 2 3 2 2 ...
+##  $ Cylinders         : Factor w/ 6 levels &quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,..: 2 4 4 4 2 2 4 4 4 5 ...
+##  $ EngineSize        : num  1.8 3.2 2.8 2.8 3.5 2.2 3.8 5.7 3.8 4.9 ...
+##  $ Horsepower        : int  140 200 172 172 208 110 170 180 170 200 ...
+##  $ RPM               : int  6300 5500 5500 5500 5700 5200 4800 4000 4800 4100 ...
+##  $ Rev.per.mile      : int  2890 2335 2280 2535 2545 2565 1570 1320 1690 1510 ...
+##  $ Man.trans.avail   : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 1 1 1 1 1 ...
+##  $ Fuel.tank.capacity: num  13.2 18 16.9 21.1 21.1 16.4 18 23 18.8 18 ...
+##  $ Passengers        : int  5 5 5 6 4 6 6 6 5 6 ...
+##  $ Length            : int  177 195 180 193 186 189 200 216 198 206 ...
+##  $ Wheelbase         : int  102 115 102 106 109 105 111 116 108 114 ...
+##  $ Width             : int  68 71 67 70 69 69 74 78 73 73 ...
+##  $ Turn.circle       : int  37 38 37 37 39 41 42 45 41 43 ...
+##  $ Rear.seat.room    : num  26.5 30 28 31 27 28 30.5 30.5 26.5 35 ...
+##  $ Luggage.room      : int  11 15 14 17 13 16 17 21 14 18 ...
+##  $ Weight            : int  2705 3560 3375 3405 3640 2880 3470 4105 3495 3620 ...
+##  $ Origin            : Factor w/ 2 levels &quot;USA&quot;,&quot;non-USA&quot;: 2 2 2 2 2 1 1 1 1 1 ...
+##  $ Make              : Factor w/ 93 levels &quot;Acura Integra&quot;,..: 1 2 4 3 5 6 7 9 8 10 ...</code></pre>
+<ul>
+<li>관측값이 82개로서 전체 93개 중에서 11개가 줄어들었음을 알 수 있다.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="결측치를-다른-값으로-대체" class="section level3">
+<h3><span class="header-section-number">3.2.5</span> 결측치를 다른 값으로 대체</h3>
+<div id="기본-형식" class="section level4">
+<h4><span class="header-section-number">3.2.5.1</span> 기본 형식</h4>
+<p>결측치를 다른 값으로 대체하는 기본적인 형식은 다음과 같다.</p>
+<pre><code>dataset$var[is.na(dataset$var)] &lt;- new_value</code></pre>
+<p>이 구문의 논리적 흐름은 다음과 같다.
+1. <code>dataset$var</code> : <code>dataset</code> 데이터 세트의 <code>var</code> 컬럼 (<code>x</code>)
+2. <code>is.na(x)</code> : <code>x</code>에 NA가 있는가 (<code>y</code>)
+3. <code>dataset$var[y] &lt;- new_value</code> : <code>dataset</code>의 <code>var</code> 컬럼 중 <code>y</code>가 <code>TRUE</code>인 경우 <code>new_valu</code>e를 대입.</p>
+</div>
+<div id="결측치-대체-예" class="section level4">
+<h4><span class="header-section-number">3.2.5.2</span> 결측치 대체 예</h4>
+<p><code>Cars93</code> 데이터 세트에서 <code>Luggage.room</code> 컬럼에 있는 결측치를 모두 <code>0</code>으로 변경해 본다.</p>
+<div id="결측치-요소-확인" class="section level5">
+<h5><span class="header-section-number">3.2.5.2.1</span> 결측치 요소 확인</h5>
+<p><code>Cars93$Luggage.room</code> 변수에 대해 결측치 요소 확인</p>
+<div class="sourceCode" id="cb849"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb849-1" title="1">Cars93<span class="op">$</span>Luggage.room</a></code></pre></div>
+<pre><code>##  [1] 11 15 14 17 13 16 17 21 14 18 14 13 14 13 16 NA NA 20 NA 15 14 17 11 13 14
+## [26] NA 16 11 11 15 12 12 13 12 18 NA 18 21 10 11  8 12 14 11 12  9 14 15 14  9
+## [51] 19 22 16 13 14 NA NA 12 15  6 15 11 14 12 14 NA 14 14 16 NA 17  8 17 13 13
+## [76] 16 18 14 12 10 15 14 10 11 13 15 NA 10 NA 14 15 14 15</code></pre>
+<div class="sourceCode" id="cb851"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb851-1" title="1"><span class="kw">sum</span>(<span class="kw">is.na</span>(Cars93<span class="op">$</span>Luggage.room))</a></code></pre></div>
+<pre><code>## [1] 11</code></pre>
+</div>
+<div id="결측치를-0으로-대체하기" class="section level5">
+<h5><span class="header-section-number">3.2.5.2.2</span> 결측치를 <code>0</code>으로 대체하기</h5>
+<p>원래의 데이터 세트 Cars93을 Cars93_4로 복사한 다음, Cars93_4$Luggage.room의 결측치를 0으로 대체한다.</p>
+<p>이 구문의 논리적 흐름은 다음과 같다.
+1. <code>Cars93_4 &lt;- Cars93</code> : <code>Cars93</code>을 <code>Cars93_4</code>에 복사한다.
+2. <code>Cars93_4$Luggage.room</code> : <code>Cars93_4</code> 데이터 세트의 <code>var</code> 컬럼 (<code>x</code>)
+3. <code>is.na(x)</code> : <code>x</code>에 NA가 있는가 (<code>y</code>)
+4. <code>Cars93_4$var[y] &lt;- 0</code> : <code>Cars93_4</code>의 <code>Luggage.room</code> 컬럼 중 <code>y</code>가 <code>TRUE</code>인 경우 <code>new_value</code>0`를 대입.</p>
+<p>이를 스크립트로 표현하면 다음과 같다.</p>
+<div class="sourceCode" id="cb853"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb853-1" title="1">Cars93_<span class="dv">4</span> &lt;-<span class="st"> </span>Cars93</a>
+<a class="sourceLine" id="cb853-2" title="2">x &lt;-<span class="st"> </span>Cars93_<span class="dv">4</span><span class="op">$</span>Luggage.room; x   <span class="co"># 수정 전 Luggage.room 컬럼</span></a></code></pre></div>
+<pre><code>##  [1] 11 15 14 17 13 16 17 21 14 18 14 13 14 13 16 NA NA 20 NA 15 14 17 11 13 14
+## [26] NA 16 11 11 15 12 12 13 12 18 NA 18 21 10 11  8 12 14 11 12  9 14 15 14  9
+## [51] 19 22 16 13 14 NA NA 12 15  6 15 11 14 12 14 NA 14 14 16 NA 17  8 17 13 13
+## [76] 16 18 14 12 10 15 14 10 11 13 15 NA 10 NA 14 15 14 15</code></pre>
+<div class="sourceCode" id="cb855"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb855-1" title="1">y &lt;-<span class="st"> </span><span class="kw">is.na</span>(Cars93_<span class="dv">4</span><span class="op">$</span>Luggage.room)</a>
+<a class="sourceLine" id="cb855-2" title="2">Cars93_<span class="dv">4</span><span class="op">$</span>Luggage.room[y] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb855-3" title="3">Cars93_<span class="dv">4</span><span class="op">$</span>Luggage.room           <span class="co"># 수정 후 Luggage.room 컬럼</span></a></code></pre></div>
+<pre><code>##  [1] 11 15 14 17 13 16 17 21 14 18 14 13 14 13 16  0  0 20  0 15 14 17 11 13 14
+## [26]  0 16 11 11 15 12 12 13 12 18  0 18 21 10 11  8 12 14 11 12  9 14 15 14  9
+## [51] 19 22 16 13 14  0  0 12 15  6 15 11 14 12 14  0 14 14 16  0 17  8 17 13 13
+## [76] 16 18 14 12 10 15 14 10 11 13 15  0 10  0 14 15 14 15</code></pre>
+<ul>
+<li>NA값들이 모두 0으로 대체되었음을 알 수 있다.</li>
+</ul>
+<p>위의 스크립트를 간단하게 표현하면 다음과 같다. 여기서는 Cars93을 Cars93_5로 복사하여 처리한다.</p>
+<div class="sourceCode" id="cb857"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb857-1" title="1"><span class="co"># Luggage.room 변수 내 결측값을 &#39;0&#39;으로 대체</span></a>
+<a class="sourceLine" id="cb857-2" title="2">Cars93_<span class="dv">5</span> &lt;-<span class="st"> </span>Cars93</a>
+<a class="sourceLine" id="cb857-3" title="3">Cars93_<span class="dv">5</span><span class="op">$</span>Luggage.room     <span class="co"># 수정 전 Luggage.room 컬럼</span></a></code></pre></div>
+<pre><code>##  [1] 11 15 14 17 13 16 17 21 14 18 14 13 14 13 16 NA NA 20 NA 15 14 17 11 13 14
+## [26] NA 16 11 11 15 12 12 13 12 18 NA 18 21 10 11  8 12 14 11 12  9 14 15 14  9
+## [51] 19 22 16 13 14 NA NA 12 15  6 15 11 14 12 14 NA 14 14 16 NA 17  8 17 13 13
+## [76] 16 18 14 12 10 15 14 10 11 13 15 NA 10 NA 14 15 14 15</code></pre>
+<div class="sourceCode" id="cb859"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb859-1" title="1">Cars93_<span class="dv">5</span><span class="op">$</span>Luggage.room[<span class="kw">is.na</span>(Cars93_<span class="dv">5</span><span class="op">$</span>Luggage.room)] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb859-2" title="2">Cars93_<span class="dv">5</span><span class="op">$</span>Luggage.room     <span class="co"># 수정 후 Luggage.room 컬럼</span></a></code></pre></div>
+<pre><code>##  [1] 11 15 14 17 13 16 17 21 14 18 14 13 14 13 16  0  0 20  0 15 14 17 11 13 14
+## [26]  0 16 11 11 15 12 12 13 12 18  0 18 21 10 11  8 12 14 11 12  9 14 15 14  9
+## [51] 19 22 16 13 14  0  0 12 15  6 15 11 14 12 14  0 14 14 16  0 17  8 17 13 13
+## [76] 16 18 14 12 10 15 14 10 11 13 15  0 10  0 14 15 14 15</code></pre>
+<p><code>Cars93_5$Luggage.room[is.na(Cars93_5$Luggage.room)] &lt;- 0</code> 과 같은 스크립트에 익숙해질 필요가 있는 것이다.</p>
+</div>
+<div id="결측치를-컬럼의-평균값으로-대체하기" class="section level5">
+<h5><span class="header-section-number">3.2.5.2.3</span> 결측치를 컬럼의 <code>평균값</code>으로 대체하기</h5>
+<p><code>sum(is.na(Cars93$Luggage.room))</code> 함수를 사용해 <code>Cars93</code>의 <code>Luggage.room</code> 변수에 보면 11개의 결측값이 있음을 알 수 있다.</p>
+<p><code>Luggage.room</code> 변수 내 결측값을 <strong>indexing 기법</strong>을 활용해서 ’<code>0</code>’로 대체하는 방법을 살펴보았다.</p>
+<p>물론 ’<code>0</code>’이 아니라 다른 값으로도 대체가 가능하다.</p>
+<p>아래의 예제에서는 결측값을 미포함(`<code>na.rm = TRUE</code>)했을 때의 <code>Luggage.room</code>의 평균값으로 결측값을 대체하여 보자,</p>
+<div class="sourceCode" id="cb861"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb861-1" title="1">Cars93_<span class="dv">6</span> &lt;-<span class="st"> </span>Cars93</a>
+<a class="sourceLine" id="cb861-2" title="2">Cars93_<span class="dv">6</span><span class="op">$</span>Luggage.room          <span class="co"># 수정 전 Luggage.room </span></a></code></pre></div>
+<pre><code>##  [1] 11 15 14 17 13 16 17 21 14 18 14 13 14 13 16 NA NA 20 NA 15 14 17 11 13 14
+## [26] NA 16 11 11 15 12 12 13 12 18 NA 18 21 10 11  8 12 14 11 12  9 14 15 14  9
+## [51] 19 22 16 13 14 NA NA 12 15  6 15 11 14 12 14 NA 14 14 16 NA 17  8 17 13 13
+## [76] 16 18 14 12 10 15 14 10 11 13 15 NA 10 NA 14 15 14 15</code></pre>
+<div class="sourceCode" id="cb863"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb863-1" title="1">Cars93_<span class="dv">6</span><span class="op">$</span>Luggage.room[<span class="kw">is.na</span>(Cars93_<span class="dv">6</span><span class="op">$</span>Luggage.room)] &lt;-<span class="st"> </span><span class="kw">mean</span>(Cars93_<span class="dv">6</span><span class="op">$</span>Luggage.room, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb863-2" title="2"><span class="kw">sum</span>(<span class="kw">is.na</span>(Cars93_<span class="dv">6</span><span class="op">$</span>Luggage.room))</a></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb865"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb865-1" title="1"><span class="kw">round</span>(Cars93_<span class="dv">6</span><span class="op">$</span>Luggage.room)   <span class="co"># 수정 후 Luggage.room </span></a></code></pre></div>
+<pre><code>##  [1] 11 15 14 17 13 16 17 21 14 18 14 13 14 13 16 14 14 20 14 15 14 17 11 13 14
+## [26] 14 16 11 11 15 12 12 13 12 18 14 18 21 10 11  8 12 14 11 12  9 14 15 14  9
+## [51] 19 22 16 13 14 14 14 12 15  6 15 11 14 12 14 14 14 14 16 14 17  8 17 13 13
+## [76] 16 18 14 12 10 15 14 10 11 13 15 14 10 14 14 15 14 15</code></pre>
+<ul>
+<li><code>0</code> 값 대신에 <code>Luggage.room</code> 컬럼의 평균인 <code>mean(Cars93_6$Luggage.room, na.rm = TRUE)</code>로 대체하고 있음을 알 수 있다.</li>
+</ul>
+</div>
+<div id="일괄-대체" class="section level5">
+<h5><span class="header-section-number">3.2.5.2.4</span> 일괄 대체</h5>
+<p>데이터프레임의 모든 행의 결측값을 특정 값(가령, ‘<code>0</code>’)으로 일괄 대체 : <code>dataset[is.na(dataset)] &lt;- 0</code></p>
+<div class="sourceCode" id="cb867"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb867-1" title="1">Cars93_<span class="dv">7</span> &lt;-<span class="st"> </span>Cars93</a>
+<a class="sourceLine" id="cb867-2" title="2"><span class="co"># counting the number of missing values in Cars93 dataset</span></a>
+<a class="sourceLine" id="cb867-3" title="3"><span class="kw">sum</span>(<span class="kw">is.na</span>(Cars93_<span class="dv">7</span>)) <span class="co"># 13</span></a></code></pre></div>
+<pre><code>## [1] 13</code></pre>
+<div class="sourceCode" id="cb869"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb869-1" title="1"><span class="co"># converting the missing value in Cars93 dataframe to &#39;0&#39;</span></a>
+<a class="sourceLine" id="cb869-2" title="2">Cars93_<span class="dv">7</span>[<span class="kw">is.na</span>(Cars93_<span class="dv">7</span>)] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb869-3" title="3"> </a>
+<a class="sourceLine" id="cb869-4" title="4"><span class="co"># counting the number of missing values in Cars93 dataset</span></a>
+<a class="sourceLine" id="cb869-5" title="5"><span class="kw">sum</span>(<span class="kw">is.na</span>(Cars93_<span class="dv">7</span>)) <span class="co"># 0</span></a></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+</div>
+<div id="데이터프레임의-각-변수의-결측값을-각-변수-별-평균값으로-일괄-대체" class="section level5">
+<h5><span class="header-section-number">3.2.5.2.5</span> 데이터프레임의 각 변수의 결측값을 각 변수 별 평균값으로 일괄 대체</h5>
+<p>위의 3)번에서 결측값을 그 열의 평균으로 대체하는 방법을 알아보았다.</p>
+<p>만약 결측값을 포함한 열이 매우 많다면 일일이 변수이름을 지정해가면서 나열해서 입력하는 것은 번거로운 일이다.</p>
+<p>이럴 때 <code>sapply()</code> 함수를 사용하면 일괄로 결측값을 포함한 변수에 대해서는 해당 변수의 평균으로 대체하라고 프로그래밍할 수 있다.</p>
+<p><code>sapply()</code>를 적용하면 matrix를 반환하므로 dataframe으로 만들기 위해서 앞에 <code>data.frame()</code> 을 추가로 붙여주었다.</p>
+<pre><code>sapply(dataset, function(x) ifelse(is.na(x), mean(x, na.rm=TRUE), x))</code></pre>
+<p>이러한 문제의 해결을 위한 스크립트는 다음과 같다.</p>
+<div class="sourceCode" id="cb872"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb872-1" title="1"><span class="co"># converting the missing value in Cars93 dataframe to each column&#39;s mean value</span></a>
+<a class="sourceLine" id="cb872-2" title="2">Cars93_<span class="dv">8</span> &lt;-<span class="st"> </span>Cars93[<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>,<span class="kw">c</span>(<span class="st">&quot;Rear.seat.room&quot;</span>, <span class="st">&quot;Luggage.room&quot;</span>)]</a>
+<a class="sourceLine" id="cb872-3" title="3"><span class="kw">colSums</span>(<span class="kw">is.na</span>(Cars93_<span class="dv">8</span>))</a></code></pre></div>
+<pre><code>## Rear.seat.room   Luggage.room 
+##              1              3</code></pre>
+<div class="sourceCode" id="cb874"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb874-1" title="1"><span class="kw">head</span>(Cars93_<span class="dv">8</span>)</a></code></pre></div>
+<pre><code>##   Rear.seat.room Luggage.room
+## 1           26.5           11
+## 2           30.0           15
+## 3           28.0           14
+## 4           31.0           17
+## 5           27.0           13
+## 6           28.0           16</code></pre>
+<div class="sourceCode" id="cb876"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb876-1" title="1"><span class="kw">sapply</span>(Cars93_<span class="dv">8</span>, <span class="cf">function</span>(x) <span class="kw">mean</span>(x, <span class="dt">na.rm=</span>T))</a></code></pre></div>
+<pre><code>## Rear.seat.room   Luggage.room 
+##       29.10526       15.35294</code></pre>
+<div class="sourceCode" id="cb878"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb878-1" title="1">Cars93_<span class="dv">8</span> &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">sapply</span>(Cars93_<span class="dv">8</span>, </a>
+<a class="sourceLine" id="cb878-2" title="2">                              <span class="cf">function</span>(x) <span class="kw">ifelse</span>(<span class="kw">is.na</span>(x), </a>
+<a class="sourceLine" id="cb878-3" title="3">                                                 <span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb878-4" title="4">                                                 x)</a>
+<a class="sourceLine" id="cb878-5" title="5">                              )</a>
+<a class="sourceLine" id="cb878-6" title="6">                       )</a>
+<a class="sourceLine" id="cb878-7" title="7"><span class="kw">head</span>(Cars93_<span class="dv">8</span>)</a></code></pre></div>
+<pre><code>##   Rear.seat.room Luggage.room
+## 1           26.5           11
+## 2           30.0           15
+## 3           28.0           14
+## 4           31.0           17
+## 5           27.0           13
+## 6           28.0           16</code></pre>
+</div>
+<div id="그룹별-평균값으로-결측값-대체하기" class="section level5">
+<h5><span class="header-section-number">3.2.5.2.6</span> 그룹별 평균값으로 결측값 대체하기</h5>
+<p><code>base</code> 패키지를 사용할 수도 있다.</p>
+<p>그런데 여기서는 <code>dplyr</code> 패키지의 <code>group_by()</code> 와 <code>ifelse()</code> 조건문을 사용한 <code>mutate()</code> 함수로 그룹 별 평균값으로 결측값 채우는 방법에 대하여 알아보자.</p>
+<div id="데이터-세트-생성" class="section level6">
+<h6><span class="header-section-number">3.2.5.2.6.1</span> 데이터 세트 생성</h6>
+<div class="sourceCode" id="cb880"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb880-1" title="1"><span class="co"># make a sample DataFrame</span></a>
+<a class="sourceLine" id="cb880-2" title="2">grp &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&#39;a&#39;</span>, <span class="dv">5</span>), <span class="kw">rep</span>(<span class="st">&#39;b&#39;</span>, <span class="dv">5</span>))</a>
+<a class="sourceLine" id="cb880-3" title="3">val &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="ot">NaN</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="ot">NaN</span>, <span class="dv">10</span>, <span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb880-4" title="4">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(grp, val)</a>
+<a class="sourceLine" id="cb880-5" title="5">df</a></code></pre></div>
+<pre><code>##    grp val
+## 1    a   1
+## 2    a   2
+## 3    a   3
+## 4    a NaN
+## 5    a   6
+## 6    b   2
+## 7    b   4
+## 8    b NaN
+## 9    b  10
+## 10   b   8</code></pre>
+</div>
+<div id="그룹별-평균-구하기" class="section level6">
+<h6><span class="header-section-number">3.2.5.2.6.2</span> 그룹별 평균 구하기</h6>
+<p>결측값을 제외하고, 그룹 ‘a’와 그룹 ’b’ 별 평균을 계산해보자.</p>
+<div class="sourceCode" id="cb882"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb882-1" title="1"><span class="co"># mean value by group &#39;a&#39; and &#39;b&#39;</span></a>
+<a class="sourceLine" id="cb882-2" title="2"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb882-3" title="3">df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(grp) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">grp_mean =</span> <span class="kw">mean</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## # A tibble: 2 x 2
+##   grp   grp_mean
+##   &lt;chr&gt;    &lt;dbl&gt;
+## 1 a            3
+## 2 b            6</code></pre>
+<p>그룹 ‘<code>a</code>’의 평균은 3, 그룹’<code>b</code>’의 평균은 6이다.</p>
+</div>
+<div id="결측치를-그룹별-평균으로-대체하기" class="section level6">
+<h6><span class="header-section-number">3.2.5.2.6.3</span> 결측치를 그룹별 평균으로 대체하기</h6>
+<p>그러면 4번째 행에 있는 그룹 ‘<code>a</code>’의’<code>val</code>’ 칼럼 결측값을 그룹 ‘<code>a</code>’의 평균 3으로 대체(replace) 또는 채워넣기(fill in)를 하면 다음과 같다.
+그리고 8번째 행에 있는 그룹’<code>b</code>‘의’<code>val</code>’ 칼럼 결측값을 그룹 ’<code>b</code>’의 평균 6으로 대체하면 다음과 같다.</p>
+<div class="sourceCode" id="cb885"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb885-1" title="1">df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb885-2" title="2"><span class="st">   </span><span class="kw">group_by</span>(grp) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb885-3" title="3"><span class="st">   </span><span class="kw">mutate</span>(<span class="dt">val =</span> <span class="kw">ifelse</span>(<span class="kw">is.na</span>(val), <span class="kw">mean</span>(val, <span class="dt">na.rm=</span><span class="ot">TRUE</span>), val))</a></code></pre></div>
+<pre><code>## # A tibble: 10 x 2
+## # Groups:   grp [2]
+##   grp     val
+##   &lt;chr&gt; &lt;dbl&gt;
+## 1 a         1
+## 2 a         2
+## 3 a         3
+## # ... with 7 more rows</code></pre>
+<hr />
+<p>위에서 <code>NA</code>(Not Available)에 대해서 소개를 했는데요, 참고로 벡터에서 <code>NaN</code> (Not a Number), 무한값 <code>Inf</code> (Infinity), 유한값 <code>finite</code> 확인하는 방법도 마저 소개하겠습니다.</p>
+<p>유의할 것은, <code>is.na()</code>에서 <code>NA</code> 뿐만 아니라 <code>NaN</code> 도 <code>TRUE</code> 를 반환합니다.</p>
+<div class="sourceCode" id="cb887"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb887-1" title="1">my_data &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">10</span>, <span class="ot">NA</span>, <span class="ot">NaN</span>, <span class="ot">Inf</span>)</a>
+<a class="sourceLine" id="cb887-2" title="2">my_data</a></code></pre></div>
+<pre><code>## [1]  -1   0  10  NA NaN Inf</code></pre>
+<div class="sourceCode" id="cb889"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb889-1" title="1"><span class="kw">is.finite</span>(my_data)</a></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb891"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb891-1" title="1"><span class="kw">is.na</span>(my_data)</a></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE  TRUE  TRUE FALSE</code></pre>
+<div class="sourceCode" id="cb893"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb893-1" title="1"><span class="kw">is.nan</span>(my_data)</a></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE FALSE  TRUE FALSE</code></pre>
+<div class="sourceCode" id="cb895"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb895-1" title="1"><span class="kw">is.infinite</span>(my_data)</a></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE  TRUE</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="reference-2" class="section level3 unnumbered">
+<h3>Reference</h3>
+<ul>
+<li><a href="https://rfriend.tistory.com/34" class="uri">https://rfriend.tistory.com/34</a> [R, Python 분석과 프로그래밍의 친구 (by R Friend)]</li>
+</ul>
+</div>
+</div>
+<div id="data_cleansing_outlier" class="section level2">
+<h2><span class="header-section-number">3.3</span> 이상치(Outlier) 처리 {#outlier}</h2>
+<div id="표준값-z를-이용한-이상치-확인-및-처리" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> 표준값 Z를 이용한 이상치 확인 및 처리</h3>
+<ul>
+<li><code>outliers</code> 패키지를 이용해서 Z값(Z-score) 이상값을 결측치로 대체하는 방법이 있다.</li>
+<li>Z-값은 통계학에서 매우 기본이 되는 값으로,z = (x-μ)/σ로 구해지는 값이다.</li>
+<li>이를 통해 서로 단위나 크기가 다른 값을 모두 표준화시킬 수 있다. 따라서 <strong>표준점수</strong>, <strong>표준값</strong>이라고도 합니다. </li>
+</ul>
+<p><img src="images/z-score.gif" style="zoom: 100%;"></p>
+<pre><code>- 표준점수 0.0(=편차치 50) 이상은 전체의 50％이다.
+- **표준점수의 절대값**이 1.0(=편차치 60) 이상은 전체의 31.74％이다.
+- **표준점수의 절대값**이  2.0(=편차치 70) 이상은 전체의 4.56％이다.
+- **표준점수의 절대값**이  3.0(=편차치 80) 이상은 전체의 0.28％이다.
+- **표준점수의 절대값**이  4.0(=편차치 90) 이상은 전체의 0.006％이다.
+- **표준점수의 절대값**이  5.0(=편차치 100) 이상은 전체의 0.00004％이다. </code></pre>
+<p>Z의 절대값이 <code>3.0</code> 이상의 값을 갖는 것은 전체 관측치의 0.28% 정도로 매우 드물기 때문에 이 정도 범위에서 벗어나는 값은 <strong>이상치</strong>라는 의심을 지닐 수 있다.</p>
+<p>물론 더 엄격한 기준을 제시할 수 있는데, 미 국립표준 기술 연구소 (NIST, National Institute of Standards and Technology)의 경우 <code>4.0</code>을 제시하고 있으며 연구자에 따라서는 <code>3.5</code>를 사용할 수 있다.</p>
+<div id="outliers-패키지-설치" class="section level4">
+<h4><span class="header-section-number">3.3.1.1</span> <code>outliers</code> 패키지 설치</h4>
+<div class="sourceCode" id="cb898"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb898-1" title="1"><span class="co"># install.packages(&quot;outliers&quot;)</span></a>
+<a class="sourceLine" id="cb898-2" title="2"><span class="kw">library</span>(outliers)</a></code></pre></div>
+</div>
+<div id="정규분포-데이터-세트-생성" class="section level4">
+<h4><span class="header-section-number">3.3.1.2</span> 정규분포 데이터 세트 생성</h4>
+<p>평균 100, 표준편차 3의 정규분포를 하는 샘플 300개를 <code>rnorm()</code> 함수를 이용하여 데이터 세트 <code>x1</code>을 생성한다.</p>
+<div class="sourceCode" id="cb899"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb899-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
+<a class="sourceLine" id="cb899-2" title="2">x1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">300</span>, <span class="dv">100</span>, <span class="dv">3</span>)   <span class="co"># 평균 100, 표준편차 3인, 표본 300개 생성</span></a></code></pre></div>
+<p>이렇게 생성된 샘플의 분포도를 그려본다.</p>
+<div class="sourceCode" id="cb900"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb900-1" title="1"><span class="kw">plot</span>(x1)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-281-1.png" width="672" /></p>
+</div>
+<div id="이상치의-존재유무-확인" class="section level4">
+<h4><span class="header-section-number">3.3.1.3</span> 이상치의 존재유무 확인</h4>
+<p>정규분포를 따르더라도 확률적으로 Z의 절대값이 3을 넘을 수 있다. 즉, Z값이 3보다 크거나 Z값이 -3보다 작을 수 있다.</p>
+<p>다만 이 코드에서는 쉽게 확인할 수 없으므로 <strong><code>outliers</code></strong> 패키지의 <strong><code>scores()</code></strong> 함수를 이용해서 찾아본다. (도움말은 <code>? scores()</code> 참조)</p>
+<p>Z값을 나타내는 <code>Z</code>라는 새로운 데이터를 생성하고, 이 Z 값의 분포도를 plot() 함수를 이용하여 그리고, Z의 절대값이 3이 되는 수평선을 그려본다.</p>
+<div class="sourceCode" id="cb901"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb901-1" title="1">Z &lt;-<span class="st"> </span><span class="kw">scores</span>(x1, <span class="dt">type=</span><span class="st">&quot;z&quot;</span>)</a>
+<a class="sourceLine" id="cb901-2" title="2"><span class="kw">plot</span>(Z, <span class="dt">col =</span> <span class="kw">ifelse</span>(<span class="kw">abs</span>(Z)<span class="op">&gt;</span><span class="dv">3</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>))</a>
+<a class="sourceLine" id="cb901-3" title="3"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">3</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</a>
+<a class="sourceLine" id="cb901-4" title="4"><span class="kw">abline</span>(<span class="dt">h =</span><span class="op">-</span><span class="dv">3</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-282-1.png" width="672" />
+- <code>scores(x1, type="z")</code> : 데이타 x1에 대한 표준값(z)을 반환
+- <code>plot(Z, col = ifelse(abs(Z)&gt;3, "red", "blue"))</code> : Z의 절대값이 3보다 크면 점의 색깔을 빨간색으로, 그렇지 않으면 파란색으로 표시한다.
+- <code>abline(h = 3, col="blue")</code> : Z 값이 3인 수평선을 그린다.
+- 이 분포도에서 2개의 outlier가 존재함을 확인할 수 있다.</p>
+<p>이 Z의 절대값 중 3을 넘는 값의 존재함을 확인하였으나 이상치의 정확한 색인 번호는 <code>which()</code> 함수를 이용하여 확인할 수 있다.</p>
+<div class="sourceCode" id="cb902"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb902-1" title="1"><span class="kw">which</span>(Z <span class="op">%in%</span><span class="st"> </span>Z[<span class="kw">abs</span>(Z) <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>])</a></code></pre></div>
+<pre><code>## [1] 178 237</code></pre>
+<ul>
+<li><code>%in%</code> : 벡터 내 특정 값 포함 여부 확인 연산자. 색인 번호 반환.</li>
+<li>178번과 237본 두 개의 데이터가 이상치.</li>
+</ul>
+</div>
+<div id="이상치를-결측치로-대체" class="section level4">
+<h4><span class="header-section-number">3.3.1.4</span> 이상치를 결측치로 대체</h4>
+<p>두 개의 이상치가 존재함을 확인하였으므로, 이제 이 이상치를 결측치 <strong><code>NA</code></strong>로 변경한다.</p>
+<div class="sourceCode" id="cb904"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb904-1" title="1">x1[<span class="kw">which</span>(Z <span class="op">%in%</span><span class="st"> </span>Z[<span class="kw">abs</span>(Z) <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>])] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb904-2" title="2">x1[<span class="kw">c</span>(<span class="dv">178</span>, <span class="dv">237</span>)]</a></code></pre></div>
+<pre><code>## [1] NA NA</code></pre>
+<ul>
+<li>178번째 값과 237번째 값이 <code>NA</code>로 변경되어 있음.</li>
+</ul>
+<p>또 다른 방법은 <code>replace()</code> 함수를 이용하여 이상치(<code>Z&gt;3</code>) 조건을 만족하는 x1의 값을 결측치 <code>NA</code>로 변경할 수 있다.</p>
+<div class="sourceCode" id="cb906"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb906-1" title="1">x1 &lt;-<span class="st"> </span><span class="kw">replace</span>(x1, <span class="kw">abs</span>(Z) <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>, <span class="ot">NA</span>)</a>
+<a class="sourceLine" id="cb906-2" title="2">x1[<span class="dv">178</span>]</a></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<p>이렇게 표준에서 크게 벗어난 값을 보다 논리적으로 해결할 수 있게 되었다.</p>
+</div>
+<div id="이상치-제거-시의-주의점" class="section level4">
+<h4><span class="header-section-number">3.3.1.5</span> 이상치 제거 시의 주의점</h4>
+<p>원래 데이터에 너무 많은 이상치가 존재하는 경우에는 이상치 제거에 신중해야 한다.</p>
+</div>
+</div>
+<div id="수정된-표준값을-이용한-이상치-확인-및-처리" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> 수정된 표준값을 이용한 이상치 확인 및 처리</h3>
+<p>표준값을 이용하는 방법은 가장 일반적이고 간단한 접근이다</p>
+<p>그러나, 관측값(즉 표본)의 숫자가 적은 경우 정상적인 데이터가 이상치로 처리되는 경우가 있을 수 있다.</p>
+<p>극단적인 예를 든다면, 20명의 소득을 조사했는데, 그 가운데 특별히 빌 게이츠가 끼어 있는 경우이다. 이 경우 <strong>소득의 평균값</strong>이 수백만 달러로 올라가게 되고, 그러면 5만 달러, 10만 달러의 연봉을 받는 사람까지 이상치로 처리될 수 있는 것이다.</p>
+<p>이렇게 평균을 내면 본래 이상치가 아닌 것도 이상치로 만들 수 있다.</p>
+<p>이를 회피하는 가장 좋은 방법은 평균 대신 <strong>중앙값(median)</strong>을 이용하는 것이다.</p>
+<p>집단에서 중간 위치에 있는 값(<strong>중앙값</strong>)을 기준으로 잡으면, 평균의 함정에서 벗어날 수 있다.</p>
+<div id="데이터-세트의-생성" class="section level4">
+<h4><span class="header-section-number">3.3.2.1</span> 데이터 세트의 생성</h4>
+<p>이번에는 평균이 100이고 표준편차가 3으로 정규분포하는 샘플을 3,000개 생성한다.</p>
+<div class="sourceCode" id="cb908"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb908-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
+<a class="sourceLine" id="cb908-2" title="2">x2 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">3000</span>,<span class="dv">100</span>,<span class="dv">3</span>)</a></code></pre></div>
+</div>
+<div id="수정된-표준값-계산" class="section level4">
+<h4><span class="header-section-number">3.3.2.2</span> 수정된 표준값 계산</h4>
+<p>표준값의 계산에 있어서 평균값이 아닌 중앙값을 사용하는 방법에 대하여 알아본다.</p>
+<p><code>outliers</code> 패키지의 <code>score()</code> 함수에서 <code>type=</code> 인수로 <code>mad</code>를 지정하고 변수명은 Zm으로 한다.</p>
+<p>여기서 <code>mad</code>는 <strong>median absolute deviation(MAD)</strong>로 <strong>중앙값의 절대 편차값</strong>을 의미한다.</p>
+<p>이렇게 구해진 값은 <strong>수정된 표준값(modified Z score)</strong>라고 한다.</p>
+<div class="sourceCode" id="cb909"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb909-1" title="1">Zm &lt;-<span class="st"> </span><span class="kw">scores</span>(x2, <span class="dt">type=</span><span class="st">&quot;mad&quot;</span>)</a></code></pre></div>
+<ul>
+<li><code>scores(x2, type="mad")</code> : 데이터 x2에 대한 수정된 표준값 반환</li>
+</ul>
+<p>plot() 함수를 이용하여 수정된 표준값의 분포도를 그려본다.</p>
+<div class="sourceCode" id="cb910"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb910-1" title="1"><span class="kw">plot</span>(Zm, <span class="dt">col =</span> <span class="kw">ifelse</span>(<span class="kw">abs</span>(Zm)<span class="op">&gt;</span><span class="dv">3</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>))</a>
+<a class="sourceLine" id="cb910-2" title="2"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">3</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</a>
+<a class="sourceLine" id="cb910-3" title="3"><span class="kw">abline</span>(<span class="dt">h =</span><span class="op">-</span><span class="dv">3</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-288-1.png" width="672" /></p>
+<ul>
+<li>8개의 이상치가 있음을 확인할 수 있다.</li>
+</ul>
+</div>
+<div id="이상치의-위치-확인" class="section level4">
+<h4><span class="header-section-number">3.3.2.3</span> 이상치의 위치 확인</h4>
+<p>이제 <strong>수정된 표준값의 절대값</strong>이 3보다 큰 값들의 색인번호를 <code>which()</code> 함수를 이용하여 이상치의 위치를 확인한다.</p>
+<div class="sourceCode" id="cb911"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb911-1" title="1"><span class="kw">which</span>(<span class="kw">abs</span>(Zm) <span class="op">&gt;</span><span class="dv">3</span>)</a></code></pre></div>
+<pre><code>## [1]  178  237  392  486 1660 1815 2111 2414</code></pre>
+<ul>
+<li>총 8개의 이상치가 있다.</li>
+</ul>
+</div>
+<div id="이상치를-결측치로-대체하기" class="section level4">
+<h4><span class="header-section-number">3.3.2.4</span> 이상치를 결측치로 대체하기</h4>
+<p>샘플 데이터 x2의 이상치를 which() 함수를 이용하여 결측치로 대체한다</p>
+<div class="sourceCode" id="cb913"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb913-1" title="1">x2[<span class="kw">which</span>(<span class="kw">abs</span>(Zm) <span class="op">&gt;</span><span class="dv">3</span>)] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb913-2" title="2">x2[<span class="kw">which</span>(<span class="kw">abs</span>(Zm) <span class="op">&gt;</span><span class="dv">3</span>)]</a></code></pre></div>
+<pre><code>## [1] NA NA NA NA NA NA NA NA</code></pre>
+</div>
+<div id="데이터-프레임으로-데이터-확인하기" class="section level4">
+<h4><span class="header-section-number">3.3.2.5</span> 데이터 프레임으로 데이터 확인하기</h4>
+<p>샘플 데이터 <code>x2</code>와 수정된 표준값 <code>Zm</code>을 데이터 프레임 <code>df</code>로 만들어 본다.</p>
+<div class="sourceCode" id="cb915"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb915-1" title="1">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(x2, Zm)</a>
+<a class="sourceLine" id="cb915-2" title="2"><span class="kw">head</span>(df)</a></code></pre></div>
+<pre><code>##          x2         Zm
+## 1  96.37880 -1.2328145
+## 2 100.83229  0.2683791
+## 3 103.25332  1.0844689
+## 4  92.96291 -2.3842547
+## 5 101.28737  0.4217810
+## 6 101.51817  0.4995776</code></pre>
+<p><code>subset()</code> 함수를 이용해 수정된 표준값 <code>Zm</code>의 절대값이 3이상인 값들을 구해 이상치 값들의 집합인 데이터 프레임 <code>df1</code>을 만들어 보자.</p>
+<div class="sourceCode" id="cb917"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb917-1" title="1">df1 &lt;-<span class="st"> </span><span class="kw">subset</span>(df, <span class="kw">abs</span>(Zm) <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb917-2" title="2">df1</a></code></pre></div>
+<pre><code>##      x2        Zm
+## 178  NA  3.065834
+## 237  NA -3.281692
+## 392  NA -3.446436
+## 486  NA  3.219680
+## 1660 NA -3.168874
+## 1815 NA  3.191402
+## 2111 NA -3.141637
+## 2414 NA  3.044304</code></pre>
+<ul>
+<li>8개의 이상치 데이터와 수정된 표준값을 확인할 수 있다.</li>
+</ul>
+</div>
+</div>
+<div id="사분위수를-이용한-이상치-확인-및-처리" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> 사분위수를 이용한 이상치 확인 및 처리</h3>
+<p><strong>사분 범위(IQR: Interquartile range)</strong>에서 크게 벗어난 값을 이상치로 설정하는 방법에 대해서 살펴본다.</p>
+<div id="사분-범위를-이용한-이상치-계산식" class="section level4">
+<h4><span class="header-section-number">3.3.3.1</span> 사분 범위를 이용한 이상치 계산식</h4>
+<p>사분 범위에서의 이상치는 다음과 같이 계산된다.</p>
+<pre><code>`Q3 + 1.5 * IQR`과 `Q1 - 1.5 * IQR`
+여기서, Q1 : 1 사분위수
+        Q3 : 3 사분위수
+        IQR : 사분 범위</code></pre>
+</div>
+<div id="사분범위-방법과-표준값-방법의-비교" class="section level4">
+<h4><span class="header-section-number">3.3.3.2</span> 사분범위 방법과 표준값 방법의 비교</h4>
+<p>사실 정규 분포를 따르더라도 <strong>표본 수가 많아지면</strong>, (Q3 + 1.5 * IQR)와 (Q1 - 1.5 * IQR)를 벗어나는 값도 같이 많아지기 때문에 그만큼 이상치로 보는 숫자가 점점 많아진다는 점도 고려해야 한다.</p>
+<p>사분범위를 이용한 방법과 앞서 Z값 3을 기준으로 삼는 방법 간의 차이점을 우선 비교해 보면 다음의 그림과 같다.</p>
+<p><img src="images/iqr.png" style="zoom: 90%;"></p>
+<p>(출처 : <a href="https://upload.wikimedia.org/wikipedia/commons/1/1a/Boxplot_vs_PDF.svg">위키피디어</a>)</p>
+<ul>
+<li>IQR은 4사 분위수(Q3, 75번째 백분위수)에서 2사분위수(Q1, 25번째 백분위수)을 뺀 값이다. 즉, IQR = Q3 - Q1이다.</li>
+<li>Q1은 표준값 -.6745 그리고 Q3는 표준값 .6745에 해당된다.</li>
+<li><code>Q1 - 1.5 * IQR</code>은 표준값 -2.698, 그리고 <code>Q3 + 1.5 * IQR</code>은 표준값 2.698에 해당된다.</li>
+</ul>
+</div>
+<div id="데이터-세트의-생성-1" class="section level4">
+<h4><span class="header-section-number">3.3.3.3</span> 데이터 세트의 생성</h4>
+<p>여기서도 편의상 평균 100, 표준편차 3을 갖는 샘플 3천개인 데이터 세트 x3를 생성한다.</p>
+<div class="sourceCode" id="cb920"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb920-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
+<a class="sourceLine" id="cb920-2" title="2">x3 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">3000</span>, <span class="dv">100</span>, <span class="dv">3</span>)</a></code></pre></div>
+<p>이 샘플 데이터의 분포도를 그려보자.</p>
+<div class="sourceCode" id="cb921"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb921-1" title="1"><span class="kw">plot</span>(x3)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-294-1.png" width="672" /></p>
+</div>
+<div id="사분범위를-이용한-이상치의-상한과-하한-계산" class="section level4">
+<h4><span class="header-section-number">3.3.3.4</span> 사분범위를 이용한 이상치의 상한과 하한 계산</h4>
+<p>데이터 세트 x3에 대한 사분범위를 이용한 이상치의 계산은 다음과 같은 <code>outlier()</code> 함수를 생성하여 계산한다.</p>
+<div class="sourceCode" id="cb922"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb922-1" title="1">outlier &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</a>
+<a class="sourceLine" id="cb922-2" title="2">         low_Outlier &lt;-<span class="st"> </span><span class="kw">quantile</span>(x)[<span class="dv">2</span>] <span class="op">-</span><span class="st"> </span><span class="fl">1.5</span> <span class="op">*</span><span class="st"> </span><span class="kw">IQR</span>(x)</a>
+<a class="sourceLine" id="cb922-3" title="3">         up_Outlier &lt;-<span class="st"> </span><span class="kw">quantile</span>(x)[<span class="dv">4</span>] <span class="op">+</span><span class="st"> </span><span class="fl">1.5</span> <span class="op">*</span><span class="st"> </span><span class="kw">IQR</span>(x)</a>
+<a class="sourceLine" id="cb922-4" title="4">         <span class="kw">return</span>(<span class="kw">c</span>(low_Outlier, up_Outlier))</a>
+<a class="sourceLine" id="cb922-5" title="5">}</a>
+<a class="sourceLine" id="cb922-6" title="6"></a>
+<a class="sourceLine" id="cb922-7" title="7"><span class="kw">outlier</span>(x3)</a></code></pre></div>
+<pre><code>##      25%      75% 
+##  91.9957 108.0194</code></pre>
+</div>
+<div id="이상치-존재-유무-확인하기" class="section level4">
+<h4><span class="header-section-number">3.3.3.5</span> 이상치 존재 유무 확인하기</h4>
+<p>데이터 세트의 사분범위 이상치의 하한과 상한을 <code>outlier()</code> 함수로 계산하였으므로, 이제 이 범위를 벗어나는 데이터를 찾아본다.</p>
+<div class="sourceCode" id="cb924"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb924-1" title="1">lim &lt;-<span class="st"> </span><span class="kw">outlier</span>(x3)   </a>
+<a class="sourceLine" id="cb924-2" title="2"><span class="kw">which</span>(x3 <span class="op">&gt;</span><span class="st"> </span>lim[<span class="dv">2</span>] <span class="op">|</span><span class="st"> </span>x3 <span class="op">&lt;</span><span class="st"> </span>lim[<span class="dv">1</span>]) </a></code></pre></div>
+<pre><code>##  [1]  178  181  192  227  237  392  486  487  517  558  771  788  901  949  967
+## [16] 1121 1317 1359 1517 1660 1815 2024 2111 2264 2355 2414 2844</code></pre>
+<ul>
+<li><code>lim &lt;- outlier(x3)</code> : <code>x3</code>의 사분범위 이상치의 범위값을 <code>lim</code> 변수에 대입한다. lim[1]이 하한, lim[2]가 상한</li>
+<li>which(x3 &gt; lim[2] | x3 &lt; lim[1] ) : 하한보다 작거나, 상한보다 큰 값의 위치를 확인</li>
+<li>총 27개의 이상치가 확인됨</li>
+</ul>
+</div>
+<div id="이상치를-결측치로-대체하기-1" class="section level4">
+<h4><span class="header-section-number">3.3.3.6</span> 이상치를 결측치로 대체하기</h4>
+<p>이상치에 대해 which() 함수를 이용하여 결측치로 대체한다.</p>
+<div class="sourceCode" id="cb926"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb926-1" title="1">x3[<span class="kw">which</span>(x3 <span class="op">&gt;</span><span class="st"> </span>lim[<span class="dv">2</span>] <span class="op">|</span><span class="st"> </span>x3 <span class="op">&lt;</span><span class="st"> </span>lim[<span class="dv">1</span>])]  &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb926-2" title="2"><span class="kw">sum</span>(<span class="kw">is.na</span>(x3))</a></code></pre></div>
+<pre><code>## [1] 27</code></pre>
+<ul>
+<li><code>sum(is.na(x3))</code> : 전체 데이터 중 <code>NA</code> 값의 갯수.</li>
+</ul>
+<p>27개의 결측값은 앞서 예제에서보다 훨씬 많다.</p>
+<p>대략적으로 전체의 1%가 조금 안되는 값이 이상치로 분류되어 제거된 것이다.</p>
+<p>사실 모든 값들이 정규 분포를 따르고 제거할 필요가 없는 값이라는 점을 생각하면 좀 과도하게 제거된 것일 수도 있다.</p>
+<p>하지만 표본의 100개 이하로 좀 작다면 무리 없이 적용할 수 있을 것이다.</p>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="df-tibble-factor.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="preprocessing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
