@@ -24,7 +24,7 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2020-12-06" />
+<meta name="date" content="2020-12-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -341,11 +341,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="후보자-이름-컬럼을-factor-형으로-변환" class="section level2" number="3.5">
 <h2><span class="header-section-number">3.5</span> 후보자 이름 컬럼을 factor 형으로 변환</h2>
 <p><code>vote</code>의 <code>name</code> 컬럼을 <code>factor</code> 형으로 변환한다. 그 순서는 후보자 번호 순으로 한다.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="dataset-visualization.html#cb57-1" aria-hidden="true" tabindex="-1"></a>vote<span class="sc">$</span>name <span class="ot">&lt;-</span> <span class="fu">factor</span>(vote<span class="sc">$</span>name, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Moon_J&quot;</span>, <span class="st">&quot;Hong_J&quot;</span>, <span class="st">&quot;Ahn_Ch&quot;</span>, <span class="st">&quot;You_S&quot;</span>, <span class="st">&quot;Shim_S&quot;</span>, <span class="st">&quot;etc&quot;</span>))</span>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="dataset-visualization.html#cb57-1" aria-hidden="true" tabindex="-1"></a>vote<span class="sc">$</span>name <span class="ot">&lt;-</span> <span class="fu">factor</span>(vote<span class="sc">$</span>name, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Moon_J&quot;</span>, <span class="st">&quot;Hong_J&quot;</span>, <span class="st">&quot;Ahn_Ch&quot;</span>, <span class="st">&quot;You_S&quot;</span>, <span class="st">&quot;Shim_S&quot;</span>, <span class="st">&quot;etc&quot;</span>, <span class="st">&quot;총 투표자&quot;</span>))</span>
 <span id="cb57-2"><a href="dataset-visualization.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(vote)</span></code></pre></div>
 <pre><code>## tibble [5,591,866 x 11] (S3: tbl_df/tbl/data.frame)
 ##  $ CTPRVN_NM : chr [1:5591866] &quot;서울특별시&quot; &quot;서울특별시&quot; &quot;서울특별시&quot; &quot;서울특별시&quot; ...
-##  $ name      : Factor w/ 6 levels &quot;Moon_J&quot;,&quot;Hong_J&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ name      : Factor w/ 7 levels &quot;Moon_J&quot;,&quot;Hong_J&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ n_vote    : num [1:5591866] 2781345 2781345 2781345 2781345 2781345 ...
 ##  $ long      : num [1:5591866] 127 127 127 127 127 ...
 ##  $ lat       : num [1:5591866] 37.6 37.6 37.6 37.6 37.6 ...
