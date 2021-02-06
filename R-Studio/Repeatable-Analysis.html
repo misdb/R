@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 반복 가능한 분석 | R STudio 활용</title>
+  <meta name="description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 반복 가능한 분석 | R STudio 활용" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 반복 가능한 분석 | R STudio 활용" />
+  
+  <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Dae Ho Kim" />
+
+
+<meta name="date" content="2021-01-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="RStudio-Projects.html"/>
+<link rel="next" href="Essential-R-Packages.html"/>
+<script src="libs/header-attrs-2.6.4/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>RStudio 활용</a></li>
+<li class="chapter" data-level="1" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html"><i class="fa fa-check"></i><b>1</b> RStudio 설치</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html#r-설치"><i class="fa fa-check"></i><b>1.1</b> R 설치</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html#mac에서-r-설치하기"><i class="fa fa-check"></i><b>1.1.1</b> Mac에서 R 설치하기</a></li>
+<li class="chapter" data-level="1.1.2" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html#windows에-r-설치"><i class="fa fa-check"></i><b>1.1.2</b> Windows에 R 설치</a></li>
+<li class="chapter" data-level="1.1.3" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html#리눅스-r-설치"><i class="fa fa-check"></i><b>1.1.3</b> 리눅스 R 설치</a></li>
+<li class="chapter" data-level="1.1.4" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html#git-설치"><i class="fa fa-check"></i><b>1.1.4</b> Git 설치</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html#rstudio-설치"><i class="fa fa-check"></i><b>1.2</b> RStudio 설치</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html#rstudio-확인"><i class="fa fa-check"></i><b>1.2.1</b> RStudio 확인</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="Hello-World.html"><a href="Hello-World.html"><i class="fa fa-check"></i><b>2</b> Hello World</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="Hello-World.html"><a href="Hello-World.html#대화형-r-콘솔"><i class="fa fa-check"></i><b>2.1</b> 대화형 R 콘솔</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="Hello-World.html"><a href="Hello-World.html#벡터"><i class="fa fa-check"></i><b>2.1.1</b> 벡터</a></li>
+<li class="chapter" data-level="2.1.2" data-path="Hello-World.html"><a href="Hello-World.html#hello-world"><i class="fa fa-check"></i><b>2.1.2</b> Hello World</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="Hello-World.html"><a href="Hello-World.html#터미널terminal"><i class="fa fa-check"></i><b>2.2</b> 터미널(Terminal)</a></li>
+<li class="chapter" data-level="2.3" data-path="Hello-World.html"><a href="Hello-World.html#환경environment"><i class="fa fa-check"></i><b>2.3</b> 환경(Environment)</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="Hello-World.html"><a href="Hello-World.html#데이터-불러오기"><i class="fa fa-check"></i><b>2.3.1</b> 데이터 불러오기</a></li>
+<li class="chapter" data-level="2.3.2" data-path="Hello-World.html"><a href="Hello-World.html#데이터-세트"><i class="fa fa-check"></i><b>2.3.2</b> 데이터 세트</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="Hello-World.html"><a href="Hello-World.html#히스토리history"><i class="fa fa-check"></i><b>2.4</b> 히스토리(History)</a></li>
+<li class="chapter" data-level="2.5" data-path="Hello-World.html"><a href="Hello-World.html#연결-탭connections"><i class="fa fa-check"></i><b>2.5</b> 연결 탭(Connections)</a></li>
+<li class="chapter" data-level="2.6" data-path="Hello-World.html"><a href="Hello-World.html#결론"><i class="fa fa-check"></i><b>2.6</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="RStudio-Views.html"><a href="RStudio-Views.html"><i class="fa fa-check"></i><b>3</b> RStudio Views</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="RStudio-Views.html"><a href="RStudio-Views.html#파일-플롯-패키지-도움말-및-뷰어-창"><i class="fa fa-check"></i><b>3.1</b> 파일, 플롯, 패키지, 도움말 및 뷰어 창</a></li>
+<li class="chapter" data-level="3.2" data-path="RStudio-Views.html"><a href="RStudio-Views.html#파일"><i class="fa fa-check"></i><b>3.2</b> 파일</a></li>
+<li class="chapter" data-level="3.3" data-path="RStudio-Views.html"><a href="RStudio-Views.html#플롯"><i class="fa fa-check"></i><b>3.3</b> 플롯</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="RStudio-Views.html"><a href="RStudio-Views.html#데이터-결합-소개"><i class="fa fa-check"></i><b>3.3.1</b> 데이터 결합 소개</a></li>
+<li class="chapter" data-level="3.3.2" data-path="RStudio-Views.html"><a href="RStudio-Views.html#플롯-1"><i class="fa fa-check"></i><b>3.3.2</b> 플롯</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="RStudio-Views.html"><a href="RStudio-Views.html#패키지"><i class="fa fa-check"></i><b>3.4</b> 패키지</a></li>
+<li class="chapter" data-level="3.5" data-path="RStudio-Views.html"><a href="RStudio-Views.html#도움말"><i class="fa fa-check"></i><b>3.5</b> 도움말</a></li>
+<li class="chapter" data-level="3.6" data-path="RStudio-Views.html"><a href="RStudio-Views.html#뷰어"><i class="fa fa-check"></i><b>3.6</b> 뷰어</a></li>
+<li class="chapter" data-level="3.7" data-path="RStudio-Views.html"><a href="RStudio-Views.html#결론-1"><i class="fa fa-check"></i><b>3.7</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="RStudio-Projects.html"><a href="RStudio-Projects.html"><i class="fa fa-check"></i><b>4</b> RStudio 프로젝트</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="RStudio-Projects.html"><a href="RStudio-Projects.html#새-rstudio-프로젝트-만들기"><i class="fa fa-check"></i><b>4.1</b> 새 RStudio 프로젝트 만들기</a></li>
+<li class="chapter" data-level="4.2" data-path="RStudio-Projects.html"><a href="RStudio-Projects.html#프로젝트-유형"><i class="fa fa-check"></i><b>4.2</b> 프로젝트 유형</a></li>
+<li class="chapter" data-level="4.3" data-path="RStudio-Projects.html"><a href="RStudio-Projects.html#rstudio-프로젝트-둘러보기"><i class="fa fa-check"></i><b>4.3</b> RStudio 프로젝트 둘러보기</a></li>
+<li class="chapter" data-level="4.4" data-path="RStudio-Projects.html"><a href="RStudio-Projects.html#결론-2"><i class="fa fa-check"></i><b>4.4</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html"><i class="fa fa-check"></i><b>5</b> 반복 가능한 분석</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html#데이터-세트-구성"><i class="fa fa-check"></i><b>5.1</b> 데이터 세트 구성</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html#기대-수명-데이터-다운로드"><i class="fa fa-check"></i><b>5.1.1</b> 기대 수명 데이터 다운로드</a></li>
+<li class="chapter" data-level="5.1.2" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html#r-프로젝트에-데이터-세트-추가"><i class="fa fa-check"></i><b>5.1.2</b> R 프로젝트에 데이터 세트 추가</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html#r-코드-파일"><i class="fa fa-check"></i><b>5.2</b> R 코드 파일</a></li>
+<li class="chapter" data-level="5.3" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html#데이터-탐색"><i class="fa fa-check"></i><b>5.3</b> 데이터 탐색</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html#데이터-프레임-요약"><i class="fa fa-check"></i><b>5.3.1</b> 데이터 프레임 요약</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html#결론-3"><i class="fa fa-check"></i><b>5.4</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html"><i class="fa fa-check"></i><b>6</b> 필수적인 R 패키지 : tidyverse</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html#r-패키지"><i class="fa fa-check"></i><b>6.1</b> R 패키지</a></li>
+<li class="chapter" data-level="6.2" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html#tidyverse"><i class="fa fa-check"></i><b>6.2</b> <code>tidyverse</code></a></li>
+<li class="chapter" data-level="6.3" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html#tibble"><i class="fa fa-check"></i><b>6.3</b> <code>tibble</code></a></li>
+<li class="chapter" data-level="6.4" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html#dplyr"><i class="fa fa-check"></i><b>6.4</b> <code>dplyr</code></a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html#sql-유사-조인"><i class="fa fa-check"></i><b>6.4.1</b> SQL 유사 조인</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html#stringr"><i class="fa fa-check"></i><b>6.5</b> <code>stringr</code></a></li>
+<li class="chapter" data-level="6.6" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html#결론-4"><i class="fa fa-check"></i><b>6.6</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="Data-Visualization.html"><a href="Data-Visualization.html"><i class="fa fa-check"></i><b>7</b> 데이터 시각화</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="Data-Visualization.html"><a href="Data-Visualization.html#ggplot2"><i class="fa fa-check"></i><b>7.1</b> <code>ggplot2</code></a></li>
+<li class="chapter" data-level="7.2" data-path="Data-Visualization.html"><a href="Data-Visualization.html#htmlwidgets"><i class="fa fa-check"></i><b>7.2</b> <code>htmlwidgets</code></a></li>
+<li class="chapter" data-level="7.3" data-path="Data-Visualization.html"><a href="Data-Visualization.html#r2d3"><i class="fa fa-check"></i><b>7.3</b> <code>r2d3</code></a></li>
+<li class="chapter" data-level="7.4" data-path="Data-Visualization.html"><a href="Data-Visualization.html#결론-5"><i class="fa fa-check"></i><b>7.4</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="R-Markdown.html"><a href="R-Markdown.html"><i class="fa fa-check"></i><b>8</b> R 마크다운</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="R-Markdown.html"><a href="R-Markdown.html#r-markdown-문서"><i class="fa fa-check"></i><b>8.1</b> R Markdown 문서</a></li>
+<li class="chapter" data-level="8.2" data-path="R-Markdown.html"><a href="R-Markdown.html#r-markdown-예"><i class="fa fa-check"></i><b>8.2</b> R Markdown 예</a></li>
+<li class="chapter" data-level="8.3" data-path="R-Markdown.html"><a href="R-Markdown.html#r-markdown-재현성"><i class="fa fa-check"></i><b>8.3</b> R Markdown 재현성</a></li>
+<li class="chapter" data-level="8.4" data-path="R-Markdown.html"><a href="R-Markdown.html#결론-6"><i class="fa fa-check"></i><b>8.4</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html"><i class="fa fa-check"></i><b>9</b> Shiny R 대시보드</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html#새로운-shiny-앱"><i class="fa fa-check"></i><b>9.1</b> 새로운 Shiny 앱</a></li>
+<li class="chapter" data-level="9.2" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html#shiny-이해"><i class="fa fa-check"></i><b>9.2</b> Shiny 이해</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html#사용자-인터페이스"><i class="fa fa-check"></i><b>9.2.1</b> 사용자 인터페이스</a></li>
+<li class="chapter" data-level="9.2.2" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html#서버"><i class="fa fa-check"></i><b>9.2.2</b> 서버</a></li>
+<li class="chapter" data-level="9.2.3" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html#앱"><i class="fa fa-check"></i><b>9.2.3</b> 앱</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html#shiny-앱-사용자-지정"><i class="fa fa-check"></i><b>9.3</b> Shiny 앱 사용자 지정</a></li>
+<li class="chapter" data-level="9.4" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html#결론-7"><i class="fa fa-check"></i><b>9.4</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html"><i class="fa fa-check"></i><b>10</b> R 패키지 만들기</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#사용자-지정-r-패키지-사용-사례"><i class="fa fa-check"></i><b>10.1</b> 사용자 지정 R 패키지 사용 사례</a></li>
+<li class="chapter" data-level="10.2" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#새-사용자-지정-r-패키지-만들기"><i class="fa fa-check"></i><b>10.2</b> 새 사용자 지정 R 패키지 만들기</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#hello.r"><i class="fa fa-check"></i><b>10.2.1</b> <code>hello.R</code></a></li>
+<li class="chapter" data-level="10.2.2" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#설명서"><i class="fa fa-check"></i><b>10.2.2</b> 설명서</a></li>
+<li class="chapter" data-level="10.2.3" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#hello.rd"><i class="fa fa-check"></i><b>10.2.3</b> <code>hello.Rd</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#r-패키지-구축"><i class="fa fa-check"></i><b>10.3</b> R 패키지 구축</a></li>
+<li class="chapter" data-level="10.4" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#r-패키지-문서화"><i class="fa fa-check"></i><b>10.4</b> R 패키지 문서화</a></li>
+<li class="chapter" data-level="10.5" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#r-패키지에-데이터-세트-추가"><i class="fa fa-check"></i><b>10.5</b> R 패키지에 데이터 세트 추가</a></li>
+<li class="chapter" data-level="10.6" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#코드-완성"><i class="fa fa-check"></i><b>10.6</b> 코드 완성</a></li>
+<li class="chapter" data-level="10.7" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#결론-8"><i class="fa fa-check"></i><b>10.7</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="Code-Tools.html"><a href="Code-Tools.html"><i class="fa fa-check"></i><b>11</b> 코드 도구</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="Code-Tools.html"><a href="Code-Tools.html#소스-제어-통합"><i class="fa fa-check"></i><b>11.1</b> 소스 제어 통합</a></li>
+<li class="chapter" data-level="11.2" data-path="Code-Tools.html"><a href="Code-Tools.html#git-설정"><i class="fa fa-check"></i><b>11.2</b> Git 설정</a></li>
+<li class="chapter" data-level="11.3" data-path="Code-Tools.html"><a href="Code-Tools.html#git-저장소에-프로젝트-추가"><i class="fa fa-check"></i><b>11.3</b> Git 저장소에 프로젝트 추가</a></li>
+<li class="chapter" data-level="11.4" data-path="Code-Tools.html"><a href="Code-Tools.html#git-뷰어"><i class="fa fa-check"></i><b>11.4</b> Git 뷰어</a></li>
+<li class="chapter" data-level="11.5" data-path="Code-Tools.html"><a href="Code-Tools.html#git-diff-뷰어"><i class="fa fa-check"></i><b>11.5</b> Git Diff 뷰어</a></li>
+<li class="chapter" data-level="11.6" data-path="Code-Tools.html"><a href="Code-Tools.html#변경-사항-커밋하기"><i class="fa fa-check"></i><b>11.6</b> 변경 사항 커밋하기</a></li>
+<li class="chapter" data-level="11.7" data-path="Code-Tools.html"><a href="Code-Tools.html#git-브랜치"><i class="fa fa-check"></i><b>11.7</b> Git 브랜치</a></li>
+<li class="chapter" data-level="11.8" data-path="Code-Tools.html"><a href="Code-Tools.html#디버거"><i class="fa fa-check"></i><b>11.8</b> 디버거</a></li>
+<li class="chapter" data-level="11.9" data-path="Code-Tools.html"><a href="Code-Tools.html#더-많은-코드-도구"><i class="fa fa-check"></i><b>11.9</b> 더 많은 코드 도구</a></li>
+<li class="chapter" data-level="11.10" data-path="Code-Tools.html"><a href="Code-Tools.html#결론-9"><i class="fa fa-check"></i><b>11.10</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="R-Programming.html"><a href="R-Programming.html"><i class="fa fa-check"></i><b>12</b> R 프로그래밍</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="R-Programming.html"><a href="R-Programming.html#개체"><i class="fa fa-check"></i><b>12.1</b> 개체</a></li>
+<li class="chapter" data-level="12.2" data-path="R-Programming.html"><a href="R-Programming.html#필수-클래스-유형"><i class="fa fa-check"></i><b>12.2</b> 필수 클래스 유형</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="R-Programming.html"><a href="R-Programming.html#문자-및-숫자"><i class="fa fa-check"></i><b>12.2.1</b> 문자 및 숫자</a></li>
+<li class="chapter" data-level="12.2.2" data-path="R-Programming.html"><a href="R-Programming.html#벡터-1"><i class="fa fa-check"></i><b>12.2.2</b> 벡터</a></li>
+<li class="chapter" data-level="12.2.3" data-path="R-Programming.html"><a href="R-Programming.html#행렬matrix"><i class="fa fa-check"></i><b>12.2.3</b> 행렬(Matrix)</a></li>
+<li class="chapter" data-level="12.2.4" data-path="R-Programming.html"><a href="R-Programming.html#리스트"><i class="fa fa-check"></i><b>12.2.4</b> 리스트</a></li>
+<li class="chapter" data-level="12.2.5" data-path="R-Programming.html"><a href="R-Programming.html#factor"><i class="fa fa-check"></i><b>12.2.5</b> factor</a></li>
+<li class="chapter" data-level="12.2.6" data-path="R-Programming.html"><a href="R-Programming.html#데이터-프레임"><i class="fa fa-check"></i><b>12.2.6</b> 데이터 프레임</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="R-Programming.html"><a href="R-Programming.html#흐름-제어"><i class="fa fa-check"></i><b>12.3</b> 흐름 제어</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="R-Programming.html"><a href="R-Programming.html#if-then-문"><i class="fa fa-check"></i><b>12.3.1</b> <code>If-then</code> 문</a></li>
+<li class="chapter" data-level="12.3.2" data-path="R-Programming.html"><a href="R-Programming.html#반복문"><i class="fa fa-check"></i><b>12.3.2</b> 반복문</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="R-Programming.html"><a href="R-Programming.html#apply-함수"><i class="fa fa-check"></i><b>12.4</b> <code>apply()</code> 함수</a></li>
+<li class="chapter" data-level="12.5" data-path="R-Programming.html"><a href="R-Programming.html#함수"><i class="fa fa-check"></i><b>12.5</b> 함수</a></li>
+<li class="chapter" data-level="12.6" data-path="R-Programming.html"><a href="R-Programming.html#json-데이터-가져오기"><i class="fa fa-check"></i><b>12.6</b> JSON 데이터 가져오기</a></li>
+<li class="chapter" data-level="12.7" data-path="R-Programming.html"><a href="R-Programming.html#결론-10"><i class="fa fa-check"></i><b>12.7</b> 결론</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R STudio 활용</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Repeatable_Analysis" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> 반복 가능한 분석</h1>
+<p>RStudio 프로젝트를 사용하여 반복 가능한 분석을 만드는 방법을 살펴 보기로 한다. 이 예에서는 “life_expectancy”라는 이름이 붙은 이전 장에서 만든 프로젝트로 작업할 것이다. 데이터 세트는 National Center for Health Statistics에서 가져온 것이며 미국에서 1900년 이후의 기대 수명을 설명한다.</p>
+<p>지금까지 따라서 했다면 이미 RStudio에이 프로젝트가 설정되어 있을 것이다. 그렇지 않은 경우 이전 장의 단계에 따라 “life_expectancy”라는 이름이 붙은 새 RStudio 프로젝트를 만든다.</p>
+<div id="데이터-세트-구성" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> 데이터 세트 구성</h2>
+<p>우리가 하고 싶은 한 가지는 데이터를 프로젝트로 읽어 오는 것이다. 프로젝트의 구조를 유지하기 위해, 데이터를 저장할 폴더를 만드는 것이 좋다. 파일 뷰어를 사용하여 그림 <a href="Repeatable-Analysis.html#fig:mkNewF">5.1</a>과 같이 새 폴더를 만든다.</p>
+<div class="figure"><span id="fig:mkNewF"></span>
+<img src="images/05-001.png" alt="새 폴더 만들기" width="100%" />
+<p class="caption">
+그림 5.1: 새 폴더 만들기
+</p>
+</div>
+<p>파일로 이동 한 다음 “데이터”라는 단어를 “새 폴더”로 입력 한 다음 “확인”을 클릭한다. 이제 이 프로젝트와 관련된 새 폴더가 생긴다.</p>
+<div id="기대-수명-데이터-다운로드" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> 기대 수명 데이터 다운로드</h3>
+<p>다음으로이 링크를 따라 데이터 세트가있는 페이지로 이동합니다.</p>
+<p><a href="https://catalog.data.gov/dataset/nchs-death-rates-and-life-expectancy-at-birth-6db3e" class="uri">https://catalog.data.gov/dataset/nchs-death-rates-and-life-expectancy-at-birth-6db3e</a></p>
+<p>이 페이지에는 데이터에 대한 자세한 설명이 포함되어 있다. 방금 만든 “data” 폴더에 csv 파일을 다운로드하려고 한다. 그림 <a href="Repeatable-Analysis.html#fig:csvDL">5.2</a>에 표시된 페이지 영역까지 아래로 스크롤한다.</p>
+<div class="figure"><span id="fig:csvDL"></span>
+<img src="images/05-002.png" alt="기대 수명 csv 다운로드 링크" width="100%" />
+<p class="caption">
+그림 5.2: 기대 수명 csv 다운로드 링크
+</p>
+</div>
+<p>“Download” 버튼을 클릭한다. csv 파일이 다운로드 폴더에 나타난다. csv 파일을 “다운로드” 폴더에서 프로젝트에서 만든 “data” 폴더로 이동시킨다.</p>
+</div>
+<div id="r-프로젝트에-데이터-세트-추가" class="section level3" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> R 프로젝트에 데이터 세트 추가</h3>
+<p>data 폴더에 원시 csv 파일이 저장되어 있지만 분석에 사용하려면 데이터가 데이터 프레임 형식이어야 한다. 이 형식의 데이터를 읽는 가장 쉬운 방법은 그림 <a href="Repeatable-Analysis.html#fig:ImpDS">5.3</a>과 같이 환경보기에있는 “Import Dataset” 기능을 사용하는 것이다.</p>
+<div class="figure"><span id="fig:ImpDS"></span>
+<img src="images/05-003.png" alt="데이터 세트 가져오기" width="100%" />
+<p class="caption">
+그림 5.3: 데이터 세트 가져오기
+</p>
+</div>
+<p>“Environment” 보기로 이동하여 “Import Dataset”을 클릭한 다음 “From Text (readr)…”를 선택한다. 그러면 그림 <a href="Repeatable-Analysis.html#fig:diWig">5.4</a>와 유사한 화면이 나타난다.</p>
+<div class="figure"><span id="fig:diWig"></span>
+<img src="images/05-004.png" alt="데이터 가져오기 위젯" width="100%" />
+<p class="caption">
+그림 5.4: 데이터 가져오기 위젯
+</p>
+</div>
+<p>“Browse” 버튼을 사용하여 csv 파일로 이동한다. 이것은 화면의 오른쪽 상단에 있는 그림 5-4에서 강조 표시된다. 데이터 프레임의 기본 이름은 파일과 동일하지만 매우 길게 나타날 것이므로 왼쪽 하단 영역의 “Name” 옆에 강조 표시된 영역에 표시된대로 이 위젯 화면에서 바로 변경할 수 있다. 우리는 단순히 데이터 프레임을 “expectancy”라고 명명했다.</p>
+<p>이 프로세스를 완료하면 그림 <a href="Repeatable-Analysis.html#fig:prjDF">5.5</a>와 같이 R Studio 프로젝트에 데이터 프레임이 나타난다.</p>
+<div class="figure"><span id="fig:prjDF"></span>
+<img src="images/05-005.png" alt="프로젝트의 데이터 프레임" width="100%" />
+<p class="caption">
+그림 5.5: 프로젝트의 데이터 프레임
+</p>
+</div>
+<p>그림 <a href="Repeatable-Analysis.html#fig:prjDF">5.5</a>에서 왼쪽 상단에 데이터 프레임의 샘플을 볼 수 있다. 데이터를 읽는 데 사용 된 코드는 콘솔의 왼쪽 하단에 표시되며 이 코드는 히스토리 보기에서도 유지된다. 마지막으로 오른쪽 상단의 “Environment” 창에 “expectancy”라는 이름의 개체가 표시된다. 어떤 시점에서 창을 닫으면 이 개체를 클릭하여 데이터를 다시 표시할 수 있다.</p>
+<p>이것은 프로젝트 설정의 첫 번째 단계이다. RStudio를 닫은 경우 프로젝트 상태를 저장해야 한다. 그렇지 않으면 데이터 프레임 작업을 위해 지금까지의 과정을 다시 반복해야 한다.</p>
+</div>
+</div>
+<div id="r-코드-파일" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> R 코드 파일</h2>
+<p>처음에는 제공된 위젯과 대화형 콘솔 화면을 사용하는 것이 쉬울 수 있지만 분석을 다시 실행하거나 동료에게 분석을 실행하도록 요청하려면 지금까지의 단계를 다시 추적하기가 어렵다. 분석을 실제로 재현할 수 없다.</p>
+<p>작업을 재현할 수 있도록 프로젝트에 R 스크립트 파일을 추가할 수 있다. 이제 할 일은 R 스크립트 파일을 추가 한 다음 자동으로 생성된 코드를 이 파일에 추가하여 그림에서 재사용 할 수 있도록 하는 것입니다.</p>
+<p>RStudio 메뉴 모음으로 이동하여 “파일” ➤ “새 파일” ➤ “R 스크립트”를 선택한다.
+그림 <a href="Repeatable-Analysis.html#fig:scEdit">5.6</a>에 표시된 새 탭이 “Untitled1”이라는 레이블이 붙은 데이터 프레임 옆에 나타난다.</p>
+<div class="figure"><span id="fig:scEdit"></span>
+<img src="images/05-006.png" alt="스크립트 편집기" width="100%" />
+<p class="caption">
+그림 5.6: 스크립트 편집기
+</p>
+</div>
+<p>이 스크립트 편집기는 상단의 시각적 바로 가기 막대와 함께 매우 유용한 내부 기능을 제공한다. 먼저 플로피 디스크 아이콘을 클릭하여 기억에 남는 이름으로 이 파일을 프로젝트에 저장한다. 플로피 디스크 아이콘을 클릭하고 나타나는 대화 상자에서 파일의 이름을 “<code>process_data.R</code>”로 입력한다. 이제 파일이 파일 탐색기에 나타나고 이름을 클릭하여 언제든지 파일을 열 수 있다.</p>
+<p>여기에서 코드 도구에 대해 이야기 할 때 다른 기능을 살펴 보겠지만 지금은 여기에 작업을 저장하고 위의 “실행”과 “소스” 버튼을 사용하여 코드를 실행할 수도 있다. 지금은 csv 파일에서 읽은 자동 생성된 코드를 검색한 다음 이 데이터 프레임에서 약간의 관리 작업을 수행하려고 한다.</p>
+<p>오른쪽에 있는 “History” 탭을 열면 그림 <a href="Repeatable-Analysis.html#fig:cdSrcHist">5.7</a>과 같이 csv 파일을 읽는 데 사용 된 코드 줄이 표시된다. 실행했던 명령어들을 클릭하여 코드의 처음 두 줄을 강조 표시 즉 선택한다.</p>
+<div class="figure"><span id="fig:cdSrcHist"></span>
+<img src="images/05-007.png" alt="히스토리 탭에서 코드 검색" width="100%" />
+<p class="caption">
+그림 5.7: 히스토리 탭에서 코드 검색
+</p>
+</div>
+<p>“To Source” 버튼을 클릭하여 이 코드를 R 스크립트 파일로 이동시킨다. 그런 다음 플로피 디스크 아이콘을 클릭하여 그림 <a href="Repeatable-Analysis.html#fig:SrcCDr">5.8</a>과 같이 파일을 저장한다.</p>
+<div class="figure"><span id="fig:SrcCDr"></span>
+<img src="images/05-008.png" alt="검색된 코드가 있는 R 스크립트 파일" width="100%" />
+<p class="caption">
+그림 5.8: 검색된 코드가 있는 R 스크립트 파일
+</p>
+</div>
+<p>이제 상단의 “Source” 버튼을 클릭하여 필요할 때마다 이 단계를 다시 실행할 수도 있다. 또한 이 프로젝트를 동료에게 보낼 수 있으며 그는 동일한 방식으로 작업을 재현할 수 있으므로 분석이 재현 가능한 상태로 유지된다.</p>
+<p>계속 진행하기 전에 코드에 주석을 추가하고 나중에 작업하기 쉽도록 데이터 프레임을 정리해야 한다. 아래 코드는 이를 수행하는 방법의 한 예이다:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="Repeatable-Analysis.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import NCHS Dataset</span></span>
+<span id="cb9-2"><a href="Repeatable-Analysis.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># File download from:</span></span>
+<span id="cb9-3"><a href="Repeatable-Analysis.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># https://catalog.data.gov</span></span>
+<span id="cb9-4"><a href="Repeatable-Analysis.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Contains life expectancy data from 1900 in the US</span></span>
+<span id="cb9-5"><a href="Repeatable-Analysis.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb9-6"><a href="Repeatable-Analysis.html#cb9-6" aria-hidden="true" tabindex="-1"></a>expectancy <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/NCHS_-_Age-adjusted_death_rates_and_life-expectancy_at_birth___All_Races__Both_Sexes___United_States__1900-2013.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   Year = col_double(),
+##   Race = col_character(),
+##   Sex = col_character(),
+##   `Average Life Expectancy (Years)` = col_double(),
+##   `Age-adjusted Death Rate` = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="Repeatable-Analysis.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean up dataframe</span></span>
+<span id="cb11-2"><a href="Repeatable-Analysis.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Use shorter column names</span></span>
+<span id="cb11-3"><a href="Repeatable-Analysis.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(expectancy)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;year&quot;</span></span>
+<span id="cb11-4"><a href="Repeatable-Analysis.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(expectancy)[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="st">&quot;race&quot;</span></span>
+<span id="cb11-5"><a href="Repeatable-Analysis.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(expectancy)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">&quot;sex&quot;</span></span>
+<span id="cb11-6"><a href="Repeatable-Analysis.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(expectancy)[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="st">&quot;life_expectancy&quot;</span></span>
+<span id="cb11-7"><a href="Repeatable-Analysis.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(expectancy)[<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="st">&quot;death_rate&quot;</span></span></code></pre></div>
+<p><code>#</code> 기호 다음은 주석 내용이고, R 코드의 마지막 5 줄은 열 이름을 작업하기 더 쉬운 짧은 이름으로 바꾸는 스크립트이다. 이 파일에 코드를 저장하려면 플로피 디스크 아이콘을 클릭하면 된다.</p>
+</div>
+<div id="데이터-탐색" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> 데이터 탐색</h2>
+<p>새 프로젝트를 시작할 때 할 수 있는 작업 중 하나는 탐색적 데이터 분석(Exploratory Data Analysis)을 수행하는 것이다. 데이터 세트를 미리 시각적으로 검사 할 수 있지만 더 완전한 그림을 작성하는 것이 좋을 것이니다. 또한 더 중요한 데이터 포인트를 시각화하기를 원할 수도 있다.</p>
+<div id="데이터-프레임-요약" class="section level3" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> 데이터 프레임 요약</h3>
+<p>RStudio 메뉴 표시 줄로 이동하여 “파일” ➤ “새 파일” ➤ “R 스크립트”를 선택하여 새로운 R 스크립트 파일을 생성해 보자. 앞에서와 마찬가지로 새 파일이 나타난다. 플로피 디스크 아이콘을 클릭하여이 파일을 “data_exploration.R”의 파일 이름으로 저장한다.</p>
+<p>이제 우리는 <code>expectancy</code> 데이터 프레임의 요약을 확인하고자 한다. 그래서 우리는 <code>summary()</code> 함수의 인수로 데이터 프레임을 사용할 수 있다.</p>
+<pre><code>summary(expectancy)</code></pre>
+<p>이 함수를 R 스크립트 파일에 바로 입력한 다음 “실행” 버튼을 클릭하여이 코드를 실행한다. 그러면 그림 <a href="Repeatable-Analysis.html#fig:summDF">5.9</a>와 같이 각 변수 (또는 데이터 프레임의 열)를 설명하는 출력이 표시된다.</p>
+<div class="figure"><span id="fig:summDF"></span>
+<img src="images/05-009.png" alt="코드 편집 옵션" width="100%" />
+<p class="caption">
+그림 5.9: 코드 편집 옵션
+</p>
+</div>
+<p>그림 5-9의 정보는이 데이터 세트에 대한 많은 것을 보여주고 있다. 각 열에 어떤 유형의 데이터가 포함되어 있는지 알 수 있으며, 숫자 데이터에 대한 정보가 있다. 예를 들어, 우리는 데이터 세트가 1900년에서 부터 2015 년까지를 포함하고, 어떤 연도의 기대수명은 29.10 년이고 다른 연도의 기대수명은 81.4 년이라는 것을 알 수 있다. 또한 인종과 성별의 두 가지 문자열 유형이 있음을 알 수 있지만 이에 대한 정보는 거의 없다. 이는 카테고리형 변수들로서, 이 데이터 세트가 어떻게 구성되어 있는지 보여주고 있다.</p>
+<p>인종 및 성별의 범주를 보기 위해 R의 <code>unique()</code> 함수를 사용하고 다음과 같은 인수로 데이터 열을 전달할 수 있다.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="Repeatable-Analysis.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(expectancy<span class="sc">$</span>race) </span></code></pre></div>
+<pre><code>## [1] &quot;All Races&quot; &quot;Black&quot;     &quot;White&quot;</code></pre>
+<p>“실행” 버튼을 클릭하면, 그 결과는 다음과 같이 나타날 것이다:</p>
+<pre><code>## [1] &quot;All Races&quot; &quot;Black&quot; &quot;White&quot;</code></pre>
+<p>성별의 범주에 대해 동일한 작업을 수행하면 “Both Sexes,” “Female” 그리고 “Male”의 세 가지 범주도 사용할 수 있음을 알 수 있다.</p>
+<p>이 모든 것을 통해 데이터가 <code>year</code>(연도), <code>race</code>(인종) 그리고 <code>sex</code>(성별)의 세 가지 범주로 구성된다는 것을 알 수 있다. 또한 매년 가능한 모든 인종 및 성별 조합에 대한 행이 있을 것이다. 데이터 프레임 보기를 사용하여 이를 확인할 수 있다.</p>
+<p><code>expectancy</code> 데이터 프레임을 다시 보려면 프로젝트의 첫 번째 탭으로 이동한다. 데이터의 하위 집합을 보려면 필터(<code>Filter</code>) 버튼을 클릭한다. <code>year</code>(연도) 열의 슬라이더를 사용하여 그림 <a href="Repeatable-Analysis.html#fig:filtDF">5.10</a>에 표시된대로 <code>1900</code> 년으로 식별되는 행만 볼 수 있다.</p>
+<div class="figure"><span id="fig:filtDF"></span>
+<img src="images/05-010.png" alt="필터링된 데이터 프레임" width="100%" />
+<p class="caption">
+그림 5.10: 필터링된 데이터 프레임
+</p>
+</div>
+<p>우리는 데이터 프레임이 어떻게 구성되어 있는지 알고 있으므로 이 데이터 프레임을 처리하는 방법에 주의해야 한다. 예를 들어, 중복되는 범주가 포함되어 있으므로 연도별로 데이터 포인트를 단순히 집계하지 않고, 조사 질문을 개발할 때 이러한 범주를 필터링하고자 한다.</p>
+<p>또한 우리가 보고 있는 숫자 변수에 대한 통찰력을 얻기 위해 기초적인 시각화를 수행할 수도 있다. 예를 들어 1900 년 이후로 기대 수명이 늘어 났을 것이라고 추측할 수 있다. 이 가설을 테스트하기 위해 <code>race</code>(인종)와 <code>sex</code>(성별) 범주 값이 “All Races”와 “Both Sexes”인 데이터 프레임의 행만 볼 수 있다.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="Repeatable-Analysis.html#cb16-1" aria-hidden="true" tabindex="-1"></a>trend <span class="ot">&lt;-</span> expectancy</span>
+<span id="cb16-2"><a href="Repeatable-Analysis.html#cb16-2" aria-hidden="true" tabindex="-1"></a>trend <span class="ot">&lt;-</span> trend[trend<span class="sc">$</span>race <span class="sc">==</span> <span class="st">&quot;All Races&quot;</span>, ]</span>
+<span id="cb16-3"><a href="Repeatable-Analysis.html#cb16-3" aria-hidden="true" tabindex="-1"></a>trend <span class="ot">&lt;-</span> trend[trend<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;Both Sexes&quot;</span>, ]</span></code></pre></div>
+<p>먼저 <code>trend</code>라는 새 데이터 프레임에 <code>expectancy</code> 데이터 프레임을 할당한다. 그런 다음 데이터의 두 하위 집합을 가져온다. 두 번째 줄은 <code>race</code>(인종)이 “All Races”인 모든 행을 반환하고, 세 번째 줄은 <code>sex</code>(성별)이 “Both Sexes”인 모든 행을 반환한다. 다음으로, 특별히 살펴보게 될 변수에 대해 나머지 예상되는 값들은 모두 제거 할 수 있다.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="Repeatable-Analysis.html#cb17-1" aria-hidden="true" tabindex="-1"></a>trend<span class="sc">$</span>race <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb17-2"><a href="Repeatable-Analysis.html#cb17-2" aria-hidden="true" tabindex="-1"></a>trend<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb17-3"><a href="Repeatable-Analysis.html#cb17-3" aria-hidden="true" tabindex="-1"></a>trend<span class="sc">$</span>death_rate <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
+<p>R에서 개체를 NULL로 설정하면 환경에서 개체가 제거된다. 이제 <code>base</code> R 플롯 함수를 사용하여 연도별 기대 수명을 플롯할 수 있다.</p>
+<pre><code>plot(trend)</code></pre>
+<p>그러면 두 개의 변수가 자동으로 플롯되고 플롯 뷰어에는 그림 <a href="Repeatable-Analysis.html#fig:ExLifeYear">5.11</a>과 같이 플롯이 표시된다.</p>
+<div class="figure"><span id="fig:ExLifeYear"></span>
+<img src="images/05-011.png" alt="연도 별 기대 수명" width="100%" />
+<p class="caption">
+그림 5.11: 연도 별 기대 수명
+</p>
+</div>
+<p>보다시피 이 플롯은 기대 수명이 수년에 걸쳐 증가할 것이라는 처음의 추측을 뒷받침하고 있다. 이 플롯은 또한 초기 관측치가 후기 관측치만큼 일관성이 없음을 보여준다.</p>
+</div>
+</div>
+<div id="결론-3" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> 결론</h2>
+<p>이 장에서는 RStudio 프로젝트를 사용하여 작업을 구성하고 재현 가능하게 만드는 방법에 대한 예를 제공하였다. RStudio 프로젝트를 사용하면 분석을 구체화할 때 단계를 쉽게 추적하고 이전 작업을 기반으로 구축할 수 있다. 또한 RStudio 프로젝트를 사용하면 동료와의 공동 작업을 훨씬 쉽게 할 수 있게 해 준다.</p>
+<p>이와 같은 프로젝트에서 작업 한 후 RStudio를 닫을 때 즉 IDE를 종료할 때 메시지가 나타나면 “Save” 버튼을 클릭해야 한다. 이렇게 하면 작업과 기록이 저장되고 프로젝트에서 중단한 부분을 쉽게 선택할 수 있게 해 준다.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="RStudio-Projects.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Essential-R-Packages.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 Shiny R 대시보드 | R STudio 활용</title>
+  <meta name="description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 Shiny R 대시보드 | R STudio 활용" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 Shiny R 대시보드 | R STudio 활용" />
+  
+  <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Dae Ho Kim" />
+
+
+<meta name="date" content="2021-01-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="R-Markdown.html"/>
+<link rel="next" href="Custom-R-Package.html"/>
+<script src="libs/header-attrs-2.6.4/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>RStudio 활용</a></li>
+<li class="chapter" data-level="1" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html"><i class="fa fa-check"></i><b>1</b> RStudio 설치</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html#r-설치"><i class="fa fa-check"></i><b>1.1</b> R 설치</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html#mac에서-r-설치하기"><i class="fa fa-check"></i><b>1.1.1</b> Mac에서 R 설치하기</a></li>
+<li class="chapter" data-level="1.1.2" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html#windows에-r-설치"><i class="fa fa-check"></i><b>1.1.2</b> Windows에 R 설치</a></li>
+<li class="chapter" data-level="1.1.3" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html#리눅스-r-설치"><i class="fa fa-check"></i><b>1.1.3</b> 리눅스 R 설치</a></li>
+<li class="chapter" data-level="1.1.4" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html#git-설치"><i class="fa fa-check"></i><b>1.1.4</b> Git 설치</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html#rstudio-설치"><i class="fa fa-check"></i><b>1.2</b> RStudio 설치</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html#rstudio-확인"><i class="fa fa-check"></i><b>1.2.1</b> RStudio 확인</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="Hello-World.html"><a href="Hello-World.html"><i class="fa fa-check"></i><b>2</b> Hello World</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="Hello-World.html"><a href="Hello-World.html#대화형-r-콘솔"><i class="fa fa-check"></i><b>2.1</b> 대화형 R 콘솔</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="Hello-World.html"><a href="Hello-World.html#벡터"><i class="fa fa-check"></i><b>2.1.1</b> 벡터</a></li>
+<li class="chapter" data-level="2.1.2" data-path="Hello-World.html"><a href="Hello-World.html#hello-world"><i class="fa fa-check"></i><b>2.1.2</b> Hello World</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="Hello-World.html"><a href="Hello-World.html#터미널terminal"><i class="fa fa-check"></i><b>2.2</b> 터미널(Terminal)</a></li>
+<li class="chapter" data-level="2.3" data-path="Hello-World.html"><a href="Hello-World.html#환경environment"><i class="fa fa-check"></i><b>2.3</b> 환경(Environment)</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="Hello-World.html"><a href="Hello-World.html#데이터-불러오기"><i class="fa fa-check"></i><b>2.3.1</b> 데이터 불러오기</a></li>
+<li class="chapter" data-level="2.3.2" data-path="Hello-World.html"><a href="Hello-World.html#데이터-세트"><i class="fa fa-check"></i><b>2.3.2</b> 데이터 세트</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="Hello-World.html"><a href="Hello-World.html#히스토리history"><i class="fa fa-check"></i><b>2.4</b> 히스토리(History)</a></li>
+<li class="chapter" data-level="2.5" data-path="Hello-World.html"><a href="Hello-World.html#연결-탭connections"><i class="fa fa-check"></i><b>2.5</b> 연결 탭(Connections)</a></li>
+<li class="chapter" data-level="2.6" data-path="Hello-World.html"><a href="Hello-World.html#결론"><i class="fa fa-check"></i><b>2.6</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="RStudio-Views.html"><a href="RStudio-Views.html"><i class="fa fa-check"></i><b>3</b> RStudio Views</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="RStudio-Views.html"><a href="RStudio-Views.html#파일-플롯-패키지-도움말-및-뷰어-창"><i class="fa fa-check"></i><b>3.1</b> 파일, 플롯, 패키지, 도움말 및 뷰어 창</a></li>
+<li class="chapter" data-level="3.2" data-path="RStudio-Views.html"><a href="RStudio-Views.html#파일"><i class="fa fa-check"></i><b>3.2</b> 파일</a></li>
+<li class="chapter" data-level="3.3" data-path="RStudio-Views.html"><a href="RStudio-Views.html#플롯"><i class="fa fa-check"></i><b>3.3</b> 플롯</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="RStudio-Views.html"><a href="RStudio-Views.html#데이터-결합-소개"><i class="fa fa-check"></i><b>3.3.1</b> 데이터 결합 소개</a></li>
+<li class="chapter" data-level="3.3.2" data-path="RStudio-Views.html"><a href="RStudio-Views.html#플롯-1"><i class="fa fa-check"></i><b>3.3.2</b> 플롯</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="RStudio-Views.html"><a href="RStudio-Views.html#패키지"><i class="fa fa-check"></i><b>3.4</b> 패키지</a></li>
+<li class="chapter" data-level="3.5" data-path="RStudio-Views.html"><a href="RStudio-Views.html#도움말"><i class="fa fa-check"></i><b>3.5</b> 도움말</a></li>
+<li class="chapter" data-level="3.6" data-path="RStudio-Views.html"><a href="RStudio-Views.html#뷰어"><i class="fa fa-check"></i><b>3.6</b> 뷰어</a></li>
+<li class="chapter" data-level="3.7" data-path="RStudio-Views.html"><a href="RStudio-Views.html#결론-1"><i class="fa fa-check"></i><b>3.7</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="RStudio-Projects.html"><a href="RStudio-Projects.html"><i class="fa fa-check"></i><b>4</b> RStudio 프로젝트</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="RStudio-Projects.html"><a href="RStudio-Projects.html#새-rstudio-프로젝트-만들기"><i class="fa fa-check"></i><b>4.1</b> 새 RStudio 프로젝트 만들기</a></li>
+<li class="chapter" data-level="4.2" data-path="RStudio-Projects.html"><a href="RStudio-Projects.html#프로젝트-유형"><i class="fa fa-check"></i><b>4.2</b> 프로젝트 유형</a></li>
+<li class="chapter" data-level="4.3" data-path="RStudio-Projects.html"><a href="RStudio-Projects.html#rstudio-프로젝트-둘러보기"><i class="fa fa-check"></i><b>4.3</b> RStudio 프로젝트 둘러보기</a></li>
+<li class="chapter" data-level="4.4" data-path="RStudio-Projects.html"><a href="RStudio-Projects.html#결론-2"><i class="fa fa-check"></i><b>4.4</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html"><i class="fa fa-check"></i><b>5</b> 반복 가능한 분석</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html#데이터-세트-구성"><i class="fa fa-check"></i><b>5.1</b> 데이터 세트 구성</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html#기대-수명-데이터-다운로드"><i class="fa fa-check"></i><b>5.1.1</b> 기대 수명 데이터 다운로드</a></li>
+<li class="chapter" data-level="5.1.2" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html#r-프로젝트에-데이터-세트-추가"><i class="fa fa-check"></i><b>5.1.2</b> R 프로젝트에 데이터 세트 추가</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html#r-코드-파일"><i class="fa fa-check"></i><b>5.2</b> R 코드 파일</a></li>
+<li class="chapter" data-level="5.3" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html#데이터-탐색"><i class="fa fa-check"></i><b>5.3</b> 데이터 탐색</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html#데이터-프레임-요약"><i class="fa fa-check"></i><b>5.3.1</b> 데이터 프레임 요약</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html#결론-3"><i class="fa fa-check"></i><b>5.4</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html"><i class="fa fa-check"></i><b>6</b> 필수적인 R 패키지 : tidyverse</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html#r-패키지"><i class="fa fa-check"></i><b>6.1</b> R 패키지</a></li>
+<li class="chapter" data-level="6.2" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html#tidyverse"><i class="fa fa-check"></i><b>6.2</b> <code>tidyverse</code></a></li>
+<li class="chapter" data-level="6.3" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html#tibble"><i class="fa fa-check"></i><b>6.3</b> <code>tibble</code></a></li>
+<li class="chapter" data-level="6.4" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html#dplyr"><i class="fa fa-check"></i><b>6.4</b> <code>dplyr</code></a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html#sql-유사-조인"><i class="fa fa-check"></i><b>6.4.1</b> SQL 유사 조인</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html#stringr"><i class="fa fa-check"></i><b>6.5</b> <code>stringr</code></a></li>
+<li class="chapter" data-level="6.6" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html#결론-4"><i class="fa fa-check"></i><b>6.6</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="Data-Visualization.html"><a href="Data-Visualization.html"><i class="fa fa-check"></i><b>7</b> 데이터 시각화</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="Data-Visualization.html"><a href="Data-Visualization.html#ggplot2"><i class="fa fa-check"></i><b>7.1</b> <code>ggplot2</code></a></li>
+<li class="chapter" data-level="7.2" data-path="Data-Visualization.html"><a href="Data-Visualization.html#htmlwidgets"><i class="fa fa-check"></i><b>7.2</b> <code>htmlwidgets</code></a></li>
+<li class="chapter" data-level="7.3" data-path="Data-Visualization.html"><a href="Data-Visualization.html#r2d3"><i class="fa fa-check"></i><b>7.3</b> <code>r2d3</code></a></li>
+<li class="chapter" data-level="7.4" data-path="Data-Visualization.html"><a href="Data-Visualization.html#결론-5"><i class="fa fa-check"></i><b>7.4</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="R-Markdown.html"><a href="R-Markdown.html"><i class="fa fa-check"></i><b>8</b> R 마크다운</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="R-Markdown.html"><a href="R-Markdown.html#r-markdown-문서"><i class="fa fa-check"></i><b>8.1</b> R Markdown 문서</a></li>
+<li class="chapter" data-level="8.2" data-path="R-Markdown.html"><a href="R-Markdown.html#r-markdown-예"><i class="fa fa-check"></i><b>8.2</b> R Markdown 예</a></li>
+<li class="chapter" data-level="8.3" data-path="R-Markdown.html"><a href="R-Markdown.html#r-markdown-재현성"><i class="fa fa-check"></i><b>8.3</b> R Markdown 재현성</a></li>
+<li class="chapter" data-level="8.4" data-path="R-Markdown.html"><a href="R-Markdown.html#결론-6"><i class="fa fa-check"></i><b>8.4</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html"><i class="fa fa-check"></i><b>9</b> Shiny R 대시보드</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html#새로운-shiny-앱"><i class="fa fa-check"></i><b>9.1</b> 새로운 Shiny 앱</a></li>
+<li class="chapter" data-level="9.2" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html#shiny-이해"><i class="fa fa-check"></i><b>9.2</b> Shiny 이해</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html#사용자-인터페이스"><i class="fa fa-check"></i><b>9.2.1</b> 사용자 인터페이스</a></li>
+<li class="chapter" data-level="9.2.2" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html#서버"><i class="fa fa-check"></i><b>9.2.2</b> 서버</a></li>
+<li class="chapter" data-level="9.2.3" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html#앱"><i class="fa fa-check"></i><b>9.2.3</b> 앱</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html#shiny-앱-사용자-지정"><i class="fa fa-check"></i><b>9.3</b> Shiny 앱 사용자 지정</a></li>
+<li class="chapter" data-level="9.4" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html#결론-7"><i class="fa fa-check"></i><b>9.4</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html"><i class="fa fa-check"></i><b>10</b> R 패키지 만들기</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#사용자-지정-r-패키지-사용-사례"><i class="fa fa-check"></i><b>10.1</b> 사용자 지정 R 패키지 사용 사례</a></li>
+<li class="chapter" data-level="10.2" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#새-사용자-지정-r-패키지-만들기"><i class="fa fa-check"></i><b>10.2</b> 새 사용자 지정 R 패키지 만들기</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#hello.r"><i class="fa fa-check"></i><b>10.2.1</b> <code>hello.R</code></a></li>
+<li class="chapter" data-level="10.2.2" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#설명서"><i class="fa fa-check"></i><b>10.2.2</b> 설명서</a></li>
+<li class="chapter" data-level="10.2.3" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#hello.rd"><i class="fa fa-check"></i><b>10.2.3</b> <code>hello.Rd</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#r-패키지-구축"><i class="fa fa-check"></i><b>10.3</b> R 패키지 구축</a></li>
+<li class="chapter" data-level="10.4" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#r-패키지-문서화"><i class="fa fa-check"></i><b>10.4</b> R 패키지 문서화</a></li>
+<li class="chapter" data-level="10.5" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#r-패키지에-데이터-세트-추가"><i class="fa fa-check"></i><b>10.5</b> R 패키지에 데이터 세트 추가</a></li>
+<li class="chapter" data-level="10.6" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#코드-완성"><i class="fa fa-check"></i><b>10.6</b> 코드 완성</a></li>
+<li class="chapter" data-level="10.7" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#결론-8"><i class="fa fa-check"></i><b>10.7</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="Code-Tools.html"><a href="Code-Tools.html"><i class="fa fa-check"></i><b>11</b> 코드 도구</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="Code-Tools.html"><a href="Code-Tools.html#소스-제어-통합"><i class="fa fa-check"></i><b>11.1</b> 소스 제어 통합</a></li>
+<li class="chapter" data-level="11.2" data-path="Code-Tools.html"><a href="Code-Tools.html#git-설정"><i class="fa fa-check"></i><b>11.2</b> Git 설정</a></li>
+<li class="chapter" data-level="11.3" data-path="Code-Tools.html"><a href="Code-Tools.html#git-저장소에-프로젝트-추가"><i class="fa fa-check"></i><b>11.3</b> Git 저장소에 프로젝트 추가</a></li>
+<li class="chapter" data-level="11.4" data-path="Code-Tools.html"><a href="Code-Tools.html#git-뷰어"><i class="fa fa-check"></i><b>11.4</b> Git 뷰어</a></li>
+<li class="chapter" data-level="11.5" data-path="Code-Tools.html"><a href="Code-Tools.html#git-diff-뷰어"><i class="fa fa-check"></i><b>11.5</b> Git Diff 뷰어</a></li>
+<li class="chapter" data-level="11.6" data-path="Code-Tools.html"><a href="Code-Tools.html#변경-사항-커밋하기"><i class="fa fa-check"></i><b>11.6</b> 변경 사항 커밋하기</a></li>
+<li class="chapter" data-level="11.7" data-path="Code-Tools.html"><a href="Code-Tools.html#git-브랜치"><i class="fa fa-check"></i><b>11.7</b> Git 브랜치</a></li>
+<li class="chapter" data-level="11.8" data-path="Code-Tools.html"><a href="Code-Tools.html#디버거"><i class="fa fa-check"></i><b>11.8</b> 디버거</a></li>
+<li class="chapter" data-level="11.9" data-path="Code-Tools.html"><a href="Code-Tools.html#더-많은-코드-도구"><i class="fa fa-check"></i><b>11.9</b> 더 많은 코드 도구</a></li>
+<li class="chapter" data-level="11.10" data-path="Code-Tools.html"><a href="Code-Tools.html#결론-9"><i class="fa fa-check"></i><b>11.10</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="R-Programming.html"><a href="R-Programming.html"><i class="fa fa-check"></i><b>12</b> R 프로그래밍</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="R-Programming.html"><a href="R-Programming.html#개체"><i class="fa fa-check"></i><b>12.1</b> 개체</a></li>
+<li class="chapter" data-level="12.2" data-path="R-Programming.html"><a href="R-Programming.html#필수-클래스-유형"><i class="fa fa-check"></i><b>12.2</b> 필수 클래스 유형</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="R-Programming.html"><a href="R-Programming.html#문자-및-숫자"><i class="fa fa-check"></i><b>12.2.1</b> 문자 및 숫자</a></li>
+<li class="chapter" data-level="12.2.2" data-path="R-Programming.html"><a href="R-Programming.html#벡터-1"><i class="fa fa-check"></i><b>12.2.2</b> 벡터</a></li>
+<li class="chapter" data-level="12.2.3" data-path="R-Programming.html"><a href="R-Programming.html#행렬matrix"><i class="fa fa-check"></i><b>12.2.3</b> 행렬(Matrix)</a></li>
+<li class="chapter" data-level="12.2.4" data-path="R-Programming.html"><a href="R-Programming.html#리스트"><i class="fa fa-check"></i><b>12.2.4</b> 리스트</a></li>
+<li class="chapter" data-level="12.2.5" data-path="R-Programming.html"><a href="R-Programming.html#factor"><i class="fa fa-check"></i><b>12.2.5</b> factor</a></li>
+<li class="chapter" data-level="12.2.6" data-path="R-Programming.html"><a href="R-Programming.html#데이터-프레임"><i class="fa fa-check"></i><b>12.2.6</b> 데이터 프레임</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="R-Programming.html"><a href="R-Programming.html#흐름-제어"><i class="fa fa-check"></i><b>12.3</b> 흐름 제어</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="R-Programming.html"><a href="R-Programming.html#if-then-문"><i class="fa fa-check"></i><b>12.3.1</b> <code>If-then</code> 문</a></li>
+<li class="chapter" data-level="12.3.2" data-path="R-Programming.html"><a href="R-Programming.html#반복문"><i class="fa fa-check"></i><b>12.3.2</b> 반복문</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="R-Programming.html"><a href="R-Programming.html#apply-함수"><i class="fa fa-check"></i><b>12.4</b> <code>apply()</code> 함수</a></li>
+<li class="chapter" data-level="12.5" data-path="R-Programming.html"><a href="R-Programming.html#함수"><i class="fa fa-check"></i><b>12.5</b> 함수</a></li>
+<li class="chapter" data-level="12.6" data-path="R-Programming.html"><a href="R-Programming.html#json-데이터-가져오기"><i class="fa fa-check"></i><b>12.6</b> JSON 데이터 가져오기</a></li>
+<li class="chapter" data-level="12.7" data-path="R-Programming.html"><a href="R-Programming.html#결론-10"><i class="fa fa-check"></i><b>12.7</b> 결론</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R STudio 활용</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Shiny_R_Dashboard" class="section level1" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Shiny R 대시보드</h1>
+<p>R Markdown 및 htmlwidgets는 팝 오버를 통해 풍부하고 대화형 경험을 할 수 있는 기능을 제공한다. 그러나 일부 사용 사례에는 이러한 유형의 정적 도구가 제공할 수있는 것보다 더 많은 것이 필요하다. 예를 들어 사용자가 분석에 사용할 매개 변수를 제공하거나 백엔드 데이터베이스에 연결하거나 사용자가 분석을 탐색할 때 새 R 스크립트를 실행하도록 요청해야 할 수 있다.</p>
+<p>RStudio에서 Shiny를 사용하여 R 시스템과 완전히 통합된 풍부한 기능을 가진 이러한 유형의 데이터 대시보드를 만들 수 있다. Shiny는 R에서 대화형 웹 앱을 만드는 데 사용되는 패키지이다. 이러한 앱은 RStudio 프로젝트에서 사용하거나 R Markdown 보고서에 추가하거나 웹 앱으로 온라인에 게시할 수 있다. Shiny는 이러한 앱을 개발하는 데 사용하기 쉬운 프레임워크를 제공하며, 자체 CSS 및 JavaScript 코드로 Shiny를 더욱 확장할 수 있다.</p>
+<div id="새로운-shiny-앱" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> 새로운 Shiny 앱</h2>
+<p>RStudio 프로젝트에 Shiny 앱을 추가하는 것은 매우 쉽다. RStudio 메뉴 모음으로 이동 한 다음 “File,” “New File,” “Shiny Web App…” 순으로 선택하면 된다. 그러면 그림 <a href="Shiny-R-Dashboard.html#fig:NewShApp">9.1</a>과 같은 대화 상자가 나타난다.</p>
+<div class="figure"><span id="fig:NewShApp"></span>
+<img src="images/09-001.png" alt="새 Shiny 앱" width="100%" />
+<p class="caption">
+그림 9.1: 새 Shiny 앱
+</p>
+</div>
+<p>앱의 이름을 지정하고 하나 또는 두 개의 파일에 코드를 넣을 것인지 선택할 수 있다. 웹 앱을 빌드하려면 “만들기” 버튼을 클릭한다.</p>
+<p>RStudio는 대화 상자에서 제공 한 이름으로 프로젝트에 새 폴더를 만든다. “Single File”을 선택하면 “app.R”이라는 새 파일이 나타나고 그림 <a href="Shiny-R-Dashboard.html#fig:appRcon">9.2</a>와 같이 편집기 보기에서 자동으로 열린다.</p>
+<div class="figure"><span id="fig:appRcon"></span>
+<img src="images/09-002.png" alt="app.R 콘텐츠" width="100%" />
+<p class="caption">
+그림 9.2: app.R 콘텐츠
+</p>
+</div>
+<p>표시되는 코드는 RStudio가 시작점으로 생성하는 템플릿이다. 이것은 예제로 내장된 R의 데이터세트를 사용하는 작동하는 Shiny 앱이다. 웹앱을 실행하려면 그림 9-2와 같은“Run App” 버튼을 클릭한다. 그림 <a href="Shiny-R-Dashboard.html#fig:LocShApp">9.3</a>과 같이 R에서 관리하는 로컬 웹 서버에서 앱이 실행되기 시작한다.</p>
+<div class="figure"><span id="fig:LocShApp"></span>
+<img src="images/09-003.png" alt="로컬에서 실행되는 Shiny 앱" width="100%" />
+<p class="caption">
+그림 9.3: 로컬에서 실행되는 Shiny 앱
+</p>
+</div>
+<p>이 히스토그램은 매우 상호작용적이며, 왼쪽의 슬라이더 컨트롤을 조정하면 오른쪽의 히스토그램을 다시 생성하기 위해 R 코드가 실행된다. 이것은 단순히 정적 보고서에 미리 적용된 팝 오버(popover)를 포함하는 것 이상의 단계이다. 그림 9-3의 맨 위에 http 주소와 “Open in Browser(브라우저에서 열기)” 버튼이 표시된다. 이 앱은 웹 서버에서 실행되므로 ‘Open in Browser(브라우저에서 열기)’ 버튼을 클릭하거나 브라우저의 주소 표시 줄에 http 주소를 입력하여 일반 브라우저를 사용하여 앱을 볼 수 있다.</p>
+<p>오른쪽에 “Publish(게시)” 버튼이 있음을 알 수 있다. Shiny 앱은 누구나 사용할 수 있도록 웹 사이트에 게시된다. 이러한 앱은 RStudio가 제공하는 서비스를 통해 공개되거나 비즈니스에서 개인 서버를 관리 할 수 ​​있다. 앱을 게시할 무료 계정을 얻으려면 <a href="https://www.shinyapps.io">Shiny 웹 사이트</a>로 접속하여 가입하면 된다.</p>
+</div>
+<div id="shiny-이해" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Shiny 이해</h2>
+<p>Shiny는 R 스크립트를 사용하고 웹에서 매우 쉽게 액세스할 수있는 대시보드를 만드는 데 사용할 수 있다. 그러나 대부분의 R 패키지와 마찬가지로 시스템에 훨씬 더 깊이 들어가 진정한 맞춤형 경험을 구축할 수 있다. 여기서는 Shiny의 좋은 시작점을 제공하기 위해 기본 사항에 대해 논의할 것이다.하지만이 패키지를 실제로 마스터하려면 <a href="https://shiny.rstudio.com/에서" class="uri">https://shiny.rstudio.com/에서</a> 자습서와 Shiny로 가능한 것을 보여주는 문서 등을 참고하기 바란다.</p>
+<p>Shiny 코드는 <strong>사용자 인터페이스</strong>와 <strong>서버</strong>라는 두 가지 책임 영역으로 구분된다. 이를 “프런트 엔드”와 “백 엔드”라고도 한다. 아이디어는 슬라이더 및 버튼과 같은 시각적 사용자 인터페이스 요소는 앱의 프런트 엔드 부분에 위치시키고, 숫자 크런칭 및 데이터 분석은 앱의 백 엔드 부분에 위치시키는 것이다.</p>
+<p>생성한 코드에는 사용자 인터페이스와 서버가 모두 포함된 파일이 하나뿐이다. 또한 선택한 옵션이나 앱을 처음 코딩한 사람에 따라 이 두 구성 요소가 별도의 파일로 분리되어 표시된다.</p>
+<div id="사용자-인터페이스" class="section level3" number="9.2.1">
+<h3><span class="header-section-number">9.2.1</span> 사용자 인터페이스</h3>
+<p>사용자 인터페이스는 생성된 “app.R”파일에 코딩된 <code>ui</code> 개체에 포함되어 있다. <code>ui</code> 개체를 만드는 코드는 <code>app.R</code> 파일의 위쪽에 있다.</p>
+<pre><code>ui &lt;- fluidPage(
+    
+    # Application title
+    titlePanel(&quot;Old Faithful Geyser Data&quot;),
+
+    # Sidebar with a slider input for number of bins
+    sidebarLayout(sidebarPanel(
+        sliderInput(&quot;bins&quot;, &quot;Number of bins:&quot;,
+                    min = 1,
+                    max = 50,
+                    value = 30)
+    ),
+
+    # Show a plot of the generated distribution
+    mainPanel(
+            plotOutput(&quot;distPlot&quot;)
+            )
+    )
+)</code></pre>
+<p>이 전체 코드 블록은 쉼표로 구분된 두 개의 매개 변수 <code>titlePanel</code>과
+<code>sidebarLayout</code>로 호출되는 하나의 함수 <code>fluidPage</code> 이다 . 이 함수의 결과는 <code>ui</code> 개체에 할당된다. 이 <code>ui</code> 개체는 이 파일의 끝 부분에서 Shiny 앱을 시작하는 함수에 대한 매개 변수로 사용된다.</p>
+<p>잠시 속도를 늦추고 위의 코드를 실제로 살펴보자. 이것은 아마도 코드 작성하는 방법과는 다를 것이다. 함수 이름에 사용된 단어는 무슨 일이 일어나고 있는지를 나타낸다. 잠깐 생각해 보면, 더 복잡한 것이 뒤 따르는 제목을 포함하는 페이지를 보게 될 것이라고 기대할 수 있다(지금은 무시한다). 그림 9-3에서 처음 보았던 “Old Faithful Geyser Data”라는 제목이 어디에서 오는지 명확하게 볼 수 있다.</p>
+<p>Shiny 프런트 엔드를 구축하기 위한 필수 프로세스는 다음과 같다. 앱에 무언가를 추가하려면 쉼표로 구분된 목록에 새 함수 호출을 포함한다. 예를 들어, <code>Old Faithful</code>이 무엇인지 설명하기 위해 HTML 단락을 추가하려면 <code>titlePanel</code> 바로 뒤에있는 공간에 <code>p</code> 함수를 추가 할 수 있다.</p>
+<pre><code># Define UI for application that draws a histogram
+
+ui &lt;- fluidPage(
+
+    # Application title
+    titlePanel(&quot;Old Faithful Geyser Data&quot;),
+    p(&quot;Old Faithful is a cone geyser located in Yellowstone National Park in Wyoming, 
+       United States. It was named in 1870 during the Washburn-Langford-Doane Expedition. 
+       Wikipedia 2019.&quot;),</code></pre>
+<p>결과는 그림 <a href="Shiny-R-Dashboard.html#fig:prShApp">9.4</a>에서 볼 수있는 웹 앱이 된다. 본질적으로 동일한 앱이지만 이제 일부 텍스트 컨텍스트가 포함된다.</p>
+<div class="figure"><span id="fig:prShApp"></span>
+<img src="images/09-004.png" alt="Shiny 앱에 단락 추가" width="100%" />
+<p class="caption">
+그림 9.4: Shiny 앱에 단락 추가
+</p>
+</div>
+<p>앱을 구축할 때 페이지에 조각을 계속 추가한다. 일부 함수는 <code>p</code> 함수와 같은 간단한 HTML 구성 요소이고 일부는 Shiny에만 해당된다. 종종 앱의 레이아웃을 정의하기 위해 다른 개체 내에 중첩된 개체를 찾는다.
+쉼표로 구분된 목록에 매개 변수로 나타나는 두 개의 다른 개체로 구성된 전체 <code>fluidPage</code>의 개체인 <code>sidebarLayout</code>에서 이를 확인할 수 있다.</p>
+<pre><code># Sidebar with a slider input for number of
+
+bins
+sidebarLayout(
+sidebarPanel(
+sliderInput(&quot;bins&quot;
+,
+&quot;Number of bins:&quot;
+,
+min = 1,
+max = 50,
+value = 30)
+),
+# Show a plot of the generated distribution
+mainPanel(
+plotOutput(&quot;distPlot&quot;)
+)
+)</code></pre>
+<p>위의 두 구성 요소는 <code>sidebarPanel</code>과 <code>mainPanel</code> 이다.</p>
+<p><code>sidebarPanel</code>에는 사용자가 시각화를 제어하는 ​​데 사용할 슬라이더를 정의하는 또 다른 중첩 개체 <code>sliderInput</code>이 포함되어 있다. 첫 번째 매개 변수 값 <code>bin</code>을 <code>inputID</code>라고하며 웹 앱의 서버 백엔드에서 구성 요소를 식별하는 데 사용된다.</p>
+<p><code>mainPanel</code>에는 그래픽을 표시하는 개체인 <code>plotOutput</code>이 포함된다.
+<code>plotOutput</code>에서 매개 변수는 <code>inputID</code>로 사용되므로 서버 구성 요소가이 개체를 식별할 수 있으므로 강조 표시된다.</p>
+<p>결론적으로, <code>ui</code> 객체는 이제 제목을 표시하는 개체를 포함한다.
+제목, 단락, 슬라이더 컨트롤, 플롯 그리고 레이아웃 등을 적용하기 위한 기타의 개체들 등을 표시하는 개체들을 포함한다. 개체들 중 슬라이더와 플롯 등의 두 개체는 서버가 슬라이더에서 값을 검색하고 그래픽을 표시할 위치를 알 수 있도록 <code>inputID</code> 매개 변수도 포함하고 있다.</p>
+</div>
+<div id="서버" class="section level3" number="9.2.2">
+<h3><span class="header-section-number">9.2.2</span> 서버</h3>
+<p>서버 구성 요소는 백 엔드의 무거운 작업을 처리한다. 이 예에서 서버는 분석을 수행하고 플롯을 생성하는 R 코드를 실행하기 위해 사용자 인터페이스에서 사용자가 정의한 매개 변수를 수집한다. <code>inputID</code>는 입력과 출력 구성 요소를 모두 식별하는 데 사용된다. 다음은 입력과 출력이 강조 표시된 서버 코드이다.</p>
+<pre><code># Define server logic required to draw a histogram
+
+server &lt;- function(input, output) {
+    output$distPlot &lt;- renderPlot({
+
+        # generate bins based on input$bins from ui.R
+        x &lt;- faithful[, 2]
+        bins &lt;- seq(min(x), max(x),
+                length.out = input$bins + 1)
+
+        # draw the histogram with the specified
+        # number of bins 
+        hist(x, breaks = bins, 
+                col = &#39;darkgray&#39;,
+                border = &#39;white&#39;)
+    })
+}</code></pre>
+<p>위의 코드에서 서버 객체에 익명 함수를 할당하고 있다. 이러한 기능은 위의 사용자 인터페이스에서 수행한 것과 약간 다르다. 사용자 인터페이스에서는 단순히 함수 호출의 결과를 <code>ui</code> 개체에 할당하고 여기서는 익명 함수 형태의 명령 집합을 서버 개체에 할당한다. 이러한 지침은 사용자 인터페이스의 활동에 응답하는 데 사용된다.</p>
+<p>굵게 표시된 코드는 서버가 사용자 인터페이스에 연결하는 후크이다. 모든 것은 익명 함수의 입력과 출력 매개 변수에서 참조된다. 입력에는 사용자 인터페이스의 모든 입력 구성 요소에 대한 참조가 포함되고, 출력에는 사용자 인터페이스의 모든 출력 구성 요소에 대한 참조가 포함된다.</p>
+<p>달러 기호(<code>$</code>)가 따라오는 <code>input</code> 개체와 input 개체의 입력 요소인 $bins의 <code>inputID</code>를 사용하여 입력 구성 요소를 참조한다. “<code>bins</code>”는 슬라이더 개체에 지정된 식별자였다는 것은 기억하는가? <code>input$bins</code>는 사용자가 선택한 현재 값을 반환한다.</p>
+<p>여기서 <code>output</code> 개체는 위의 <code>renderPlot</code> 함수에 의해 생성된 모든 코드를 가져온다. 함수의 매개 변수 <code>output$distPlot</code>을 사용하여 유사한 방식으로 이 출력 구성 요소를 참조하는 것을 볼 수 있다. 사용자 입력이 어떻게 수집되고, renderPlot 함수에 포함된 코드 줄에 플롯이 어떻게 푯되는지 알 수 있다.</p>
+</div>
+<div id="앱" class="section level3" number="9.2.3">
+<h3><span class="header-section-number">9.2.3</span> 앱</h3>
+<p>Shiny가 웹 앱을 만들기 전에 해야 할 일이 하나 더 있다. <code>ui</code>와 서버 구성 요소를 연결한 다음 이 코드로 <code>shinyApp(ui = ui, server = server)</code>를 실행해야 한다.</p>
+<p>이것은 상용구 코드로 포함되어 있으며 사용자 인터페이스 및 서버 개체의 이름을 변경하지 않는 한 이 코드를 전혀 건드리지 않아도 된다. 하지만 이 코드의 위치와 이 코드가 앱 인스턴스를 시작한다는 사실을 아는 것은 중요하다.</p>
+</div>
+</div>
+<div id="shiny-앱-사용자-지정" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> Shiny 앱 사용자 지정</h2>
+<p>이 상용구 코드를 분석에 적합한 것으로 변경해 보자. 지금은 사용자 인터페이스를 약간 조정하고 데이터 세트를 구축하는 대신 데이터를 표시해 보기로 한다.</p>
+<p>가장 먼저해야 할 일은 데이터 세트를 Shiny 폴더에 복사하여 향후 모든 자산과 함께 배포할 수 있도록 하는 것이다. R 명령 줄에서 다음 코드를 사용하여 데이터 세트를 Shiny 앱 폴더에 <code>rdata</code> 파일로 저장한다.</p>
+<pre><code>save(expectancy, file = &quot;life_expectancy_web_app/expectancy.rdata&quot;)</code></pre>
+<p>이제 앱이 시작될 때 이것을 Shiny 세션에 로드할 수 있다. <code>Shiny app.R</code>파일 상단에 코드를 넣어 데이터 세트를 불러온다.</p>
+<pre><code>load(&quot;expectancy.rdata&quot;)
+
+expectancy &lt;- expectancy %&gt;%
+                filter(!is.na(life_expectancy))</code></pre>
+<p>이렇게 하면 데이터 세트가 로드된 다음 히스토그램을 방해하는 결측치(missing values)가 제거된다. 이제 우리는 서버 구성 요소에서 한 줄의 코드를 변경하여 데이터 세트를 검토할 수 있다.</p>
+<pre><code>server &lt;- function(input, output) {
+                output$distPlot &lt;- renderPlot({
+
+                # generate bins based on
+
+                # input$bins from ui.R
+
+                x &lt;- expectancy$life_expectancy
+                bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)
+
+                # draw the histogram with the
+
+                # specified number of bins
+                hist(x, breaks = bins,
+                     col = &#39;darkgray&#39;,
+                     border = &#39;white&#39;)
+        })
+}</code></pre>
+<p>이를 테스트하기 전에 제목 설명을 변경하고 플롯에 자체 색상을 추가해 보겠다. 이러한 변경을 수행할 위치를 짐작할 수 있다. 아래 코드에서 모든 변경 사항은 굵게 강조 표시된다.</p>
+<pre><code>library(shiny)
+library(tidyverse)
+load(&quot;expectancy.rdata&quot;)
+
+expectancy &lt;- expectancy %&gt;%
+        filter(!is.na(life_expectancy))
+
+# Define UI for application that draws a histogram
+ui &lt;- fluidPage(
+        # Application title
+        titlePanel(&quot;Life Expectancy Data&quot;),
+        p(&quot;Life expectancy data was downloaded from
+           data.gov. This dataset contains death rates
+           and life-expectancy statistics
+           from 1900 to 2015. Exploratory analysis was
+           conducted on this dataset. In the
+           visualization below, you can see all life
+           expectancy rates in the dataset and adjust
+           the number of bins used to present the
+           frequency.
+        &quot;),
+
+        # Sidebar with a slider input for number of bins
+        sidebarLayout(
+                sidebarPanel(
+                        sliderInput(&quot;bins&quot;, &quot;Number of bins:&quot;,
+                                    min = 1,
+                                    max = 50,
+                                    value = 30)
+                        ),
+        # Show a plot of the generated distribution
+        mainPanel(
+                plotOutput(&quot;distPlot&quot;)
+        )
+    )
+)
+
+# Define server logic required to draw
+# a histogram
+server &lt;- function(input, output) {
+                output$distPlot &lt;- renderPlot({
+                # generate bins based on
+                # input$bins from ui.R
+                life_expectancy &lt;- expectancy$life_expectancy
+                bins &lt;- seq(min(life_expectancy),
+                            max(life_expectancy),
+                            length.out = input$bins + 1)
+
+                # draw the histogram with the
+                # specified number of bins
+                hist(life_expectancy,
+                     breaks = bins,
+                     col = &#39;lightblue&#39;,
+                     border = &#39;white&#39;)
+                })
+}
+
+# Run the application
+shinyApp(ui = ui, server = server)</code></pre>
+<p>이제 이 코드를 실행하면 앱이 그림 <a href="Shiny-R-Dashboard.html#fig:lifShApp">9.5</a>에 표시된 것과 비슷해진다.</p>
+<div class="figure"><span id="fig:lifShApp"></span>
+<img src="images/09-005.png" alt="기대 수명 Shiny 앱" width="100%" />
+<p class="caption">
+그림 9.5: 기대 수명 Shiny 앱
+</p>
+</div>
+<p>이제 컨텍스트가 관련성이 있으며 히스토그램에서 막대의 색상도 조정했다. 다음 URL로 이동하면 작성자의 <a href="https://mattjcamp.shinyapps.io/life_expectancy_web_app">shiny.io 페이지</a>에 게시된 버전을 볼 수 있다.</p>
+</div>
+<div id="결론-7" class="section level2" number="9.4">
+<h2><span class="header-section-number">9.4</span> 결론</h2>
+<p>이 장에서 우리는 Shiny를 소개했고 이 도구로 우리가 달성할 수있는 것에 대하여 대략적으로 살펴 보았다. Shiny는 웹 개발에 대한 특정 배경 없이도 데이터가 풍부한 앱을 웹에 직접 배포할 수있는 경로를 만든다.</p>
+<p>즉, Shiny는 매우 풍부한 패키지이며 JavaScript를 사용하지 않아도 데이터 웹 앱 작업에 많은 시간을 할애할 수 있다. 시간을 내어 기본 사항을 배우고 <a href="https://shiny.rstudio.com의" class="uri">https://shiny.rstudio.com의</a> 예제 코드로 이 장의 패턴을 따라 해 보기 바란다. 익숙한 데이터로 작업할 수있는 흥미로운 예를 찾고 코드를 조정하여 자신 만의 시각화를 만들어 보기 바란다. 이 작업을 수행하고 패턴을 배우면 이제 통계 프로그래밍과 데이터 분석을 위해 Shiny 앱을 배포하는 것이 두 번째 특징이 될 것이다.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="R-Markdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Custom-R-Package.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
