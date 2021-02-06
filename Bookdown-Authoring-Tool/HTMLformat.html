@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.1 HTML | bookdown 사용</title>
   <meta name="description" content="The output format for book is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.1 HTML | bookdown 사용" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2021-01-13" />
+<meta name="date" content="2021-02-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="Output-Format.html"/>
 <link rel="next" href="LatexPdfFormat.html"/>
-<script src="libs/header-attrs-2.6.4/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,8 +51,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
 <script src="libs/datatables-binding-0.17/datatables.js"></script>
@@ -127,29 +125,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
-
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -166,7 +141,7 @@ div.csl-indent {
 <li><a href="./">bookdown (한글 번역본)</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>서문</a></li>
 <li class="chapter" data-level="1" data-path="Introduction.html"><a href="Introduction.html"><i class="fa fa-check"></i><b>1</b> 서론</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="Motivation.html"><a href="Motivation.html"><i class="fa fa-check"></i><b>1.1</b> 동기</a></li>
@@ -196,7 +171,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.6" data-path="CressRef.html"><a href="CressRef.html"><i class="fa fa-check"></i><b>2.6</b> 교차 참조</a></li>
 <li class="chapter" data-level="2.7" data-path="CustomBlock.html"><a href="CustomBlock.html"><i class="fa fa-check"></i><b>2.7</b> 맞춤 블록</a></li>
 <li class="chapter" data-level="2.8" data-path="Citation.html"><a href="Citation.html"><i class="fa fa-check"></i><b>2.8</b> 인용</a></li>
-<li class="chapter" data-level="2.9" data-path="Index.html"><a href="Index.html"><i class="fa fa-check"></i><b>2.9</b> 색인</a></li>
+<li class="chapter" data-level="2.9" data-path="Idex.html"><a href="Idex.html"><i class="fa fa-check"></i><b>2.9</b> 색인</a></li>
 <li class="chapter" data-level="2.10" data-path="HTMLWidget.html"><a href="HTMLWidget.html"><i class="fa fa-check"></i><b>2.10</b> HTML 위젯</a></li>
 <li class="chapter" data-level="2.11" data-path="WebShiny.html"><a href="WebShiny.html"><i class="fa fa-check"></i><b>2.11</b> 웹 페이지와 Shiny 앱</a></li>
 </ul></li>
@@ -534,7 +509,7 @@ output:
 </div>
 <div id="TufteStyle" class="section level3" number="3.1.3">
 <h3><span class="header-section-number">3.1.3</span> Tufte 스타일</h3>
-<p>Bootstrap 스타일과 마찬가지로 Tufte 스타일은 출력 형식 <strong><code>tufte_html_book()</code></strong>으로 제공되며, 이는 기본 형식으로 <code>tufte::tufte_html()</code>을 사용하는 <code>html_chapters()</code>의 특수한 경우이기도 합니다. Tufte 스타일에 익숙하지 않은 경우 <strong>tufte</strong> 패키지 <span class="citation">(<a href="#ref-Tufte" role="doc-biblioref">Xie and Allaire 2020</a>)</span>를 참조하세요. 기본적으로 왼쪽에 메인 열이 있고 오른쪽에 여백 열이 있는 레이아웃입니다. 본문은 주 열에 있고 여백 열은 각주, 여백 메모, 참조 그리고 여백 그림 등을 배치하는 데 사용됩니다.</p>
+<p>Bootstrap 스타일과 마찬가지로 Tufte 스타일은 출력 형식 <strong><code>tufte_html_book()</code></strong>으로 제공되며, 이는 기본 형식으로 <code>tufte::tufte_html()</code>을 사용하는 <code>html_chapters()</code>의 특수한 경우이기도 합니다. Tufte 스타일에 익숙하지 않은 경우 <strong>tufte</strong> 패키지 <span class="citation">(<a href="references.html#ref-Tufte" role="doc-biblioref">Xie and Allaire 2020</a>)</span>를 참조하세요. 기본적으로 왼쪽에 메인 열이 있고 오른쪽에 여백 열이 있는 레이아웃입니다. 본문은 주 열에 있고 여백 열은 각주, 여백 메모, 참조 그리고 여백 그림 등을 배치하는 데 사용됩니다.</p>
 <p><code>tufte_html_book()</code>의 모든 인수는 <code>html_book()</code>과 정확히 동일한 의미를 갖습니다. 예를 들어 <code>css</code> 옵션을 통해 CSS를 맞춤 설정할 수도 있습니다. 그러나 여백 메모, 여백 그림 및 전체 너비 그림과 같이 Tufte 스타일에 특정한 몇 가지 요소가 있습니다. 이러한 요소를 생성하려면 특수 구문이 필요합니다. <strong>tufte</strong> 패키지의 설명서를 참조하십시오. 각주 및 참조는 자동으로 여백에 배치되기 때문 이에 대해 특별한 작업을 수행할 필요가 없습니다(일반적인 Markdown 구문 <code>^[footnote]</code>와 <code>[@citation]</code> 사용). <code>tufte_html_book</code> 형식의 간단한 YAML 예는 다음과 같습니다 :</p>
 <pre><code>---
 output:
@@ -542,12 +517,6 @@ output:
     toc: yes
     css: toc.css
 ---</code></pre>
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-Tufte" class="csl-entry">
-Xie, Yihui, and JJ Allaire. 2020. <em>Tufte: Tufte’s Styles for <span>R</span> Markdown Documents</em>. <a href="https://github.com/rstudio/tufte">https://github.com/rstudio/tufte</a>.
 </div>
 </div>
 <div class="footnotes">

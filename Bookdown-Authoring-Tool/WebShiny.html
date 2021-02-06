@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.11 웹 페이지와 Shiny 앱 | bookdown 사용</title>
   <meta name="description" content="The output format for book is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.11 웹 페이지와 Shiny 앱 | bookdown 사용" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2021-01-13" />
+<meta name="date" content="2021-02-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="HTMLWidget.html"/>
 <link rel="next" href="Output-Format.html"/>
-<script src="libs/header-attrs-2.6.4/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,8 +51,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
 <script src="libs/datatables-binding-0.17/datatables.js"></script>
@@ -127,29 +125,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
-
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -166,7 +141,7 @@ div.csl-indent {
 <li><a href="./">bookdown (한글 번역본)</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>서문</a></li>
 <li class="chapter" data-level="1" data-path="Introduction.html"><a href="Introduction.html"><i class="fa fa-check"></i><b>1</b> 서론</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="Motivation.html"><a href="Motivation.html"><i class="fa fa-check"></i><b>1.1</b> 동기</a></li>
@@ -196,7 +171,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.6" data-path="CressRef.html"><a href="CressRef.html"><i class="fa fa-check"></i><b>2.6</b> 교차 참조</a></li>
 <li class="chapter" data-level="2.7" data-path="CustomBlock.html"><a href="CustomBlock.html"><i class="fa fa-check"></i><b>2.7</b> 맞춤 블록</a></li>
 <li class="chapter" data-level="2.8" data-path="Citation.html"><a href="Citation.html"><i class="fa fa-check"></i><b>2.8</b> 인용</a></li>
-<li class="chapter" data-level="2.9" data-path="Index.html"><a href="Index.html"><i class="fa fa-check"></i><b>2.9</b> 색인</a></li>
+<li class="chapter" data-level="2.9" data-path="Idex.html"><a href="Idex.html"><i class="fa fa-check"></i><b>2.9</b> 색인</a></li>
 <li class="chapter" data-level="2.10" data-path="HTMLWidget.html"><a href="HTMLWidget.html"><i class="fa fa-check"></i><b>2.10</b> HTML 위젯</a></li>
 <li class="chapter" data-level="2.11" data-path="WebShiny.html"><a href="WebShiny.html"><i class="fa fa-check"></i><b>2.11</b> 웹 페이지와 Shiny 앱</a></li>
 </ul></li>
@@ -286,17 +261,11 @@ Figure 2.6: miniUI 패키지로 생성된 Shiny 앱; <a href="https://yihui.shin
 </p>
 </div>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="WebShiny.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># knitr::include_app(&quot;https://yihui.shinyapps.io/miniUI/&quot;)</span></span></code></pre></div>
-<p>다시 말하지만 이 책의 HTML 버전을 읽는 경우 라이브 앱이 표시되고 다른 유형의 형식을 읽는 경우 정적 스크린 샷이 표시됩니다. 위의 Shiny 앱은 <strong>miniUI</strong> 패키지 <span class="citation">(<a href="#ref-MiniUI" role="doc-biblioref">Cheng 2018</a>)</span>를 사용하여 생성되었는데, 작은 화면의 Shiny 앱에 특히 좋은 레이아웃 기능을 제공합니다. 일반적인 Shiny 레이아웃 기능을 사용하는 경우 페이지 크기가 너무 커서 iframe에 맞지 않기 때문에 iframe에 가로/세로 스크롤바가 표시될 수 있습니다. iframe의 기본 너비가 너무 작으면 <code>out.width</code> 청크 옵션을 사용하여 변경할 수 있습니다. iframe의 높이는 <code>include_url()</code> / <code>include_app()</code>의 <code>height</code> 인수를 사용합니다.</p>
+<p>다시 말하지만 이 책의 HTML 버전을 읽는 경우 라이브 앱이 표시되고 다른 유형의 형식을 읽는 경우 정적 스크린 샷이 표시됩니다. 위의 Shiny 앱은 <strong>miniUI</strong> 패키지 <span class="citation">(<a href="references.html#ref-MiniUI" role="doc-biblioref">Cheng 2018</a>)</span>를 사용하여 생성되었는데, 작은 화면의 Shiny 앱에 특히 좋은 레이아웃 기능을 제공합니다. 일반적인 Shiny 레이아웃 기능을 사용하는 경우 페이지 크기가 너무 커서 iframe에 맞지 않기 때문에 iframe에 가로/세로 스크롤바가 표시될 수 있습니다. iframe의 기본 너비가 너무 작으면 <code>out.width</code> 청크 옵션을 사용하여 변경할 수 있습니다. iframe의 높이는 <code>include_url()</code> / <code>include_app()</code>의 <code>height</code> 인수를 사용합니다.</p>
 <p>Shiny 앱은 일반적인 URL보다 로드하는 데 더 오래 걸릴 수 있습니다. 예를 들어, 10과 같이 <code>delay</code> 옵션에 대해 보수적인 값을 사용할 수 있습니다. 말할 필요도 없이 <code>include_url()</code>과 <code>include_app()</code>에는 이전에 청크를 캐시하지 않은 경우 작동하는 인터넷 연결을 요구합니다(그러나 웹 iframe 내웁의 웹 페이지는 인터넷 연결 없이는 여전히 작동하지 않습니다).</p>
 
 </div>
 <!-- </div> -->
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-MiniUI" class="csl-entry">
-Cheng, Joe. 2018. <em>MiniUI: Shiny Ui Widgets for Small Screens</em>. <a href="https://cran.r-project.org/package=miniUI">https://cran.r-project.org/package=miniUI</a>.
-</div>
-</div>
 <div class="footnotes">
 <hr />
 <ol start="9">

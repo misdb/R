@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.10 HTML 위젯 | bookdown 사용</title>
   <meta name="description" content="The output format for book is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.10 HTML 위젯 | bookdown 사용" />
   <meta property="og:type" content="book" />
@@ -24,16 +24,16 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2021-01-13" />
+<meta name="date" content="2021-02-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="Index.html"/>
+<link rel="prev" href="Idex.html"/>
 <link rel="next" href="WebShiny.html"/>
-<script src="libs/header-attrs-2.6.4/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,8 +51,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
 <script src="libs/datatables-binding-0.17/datatables.js"></script>
@@ -127,29 +125,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
-
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -166,7 +141,7 @@ div.csl-indent {
 <li><a href="./">bookdown (한글 번역본)</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>서문</a></li>
 <li class="chapter" data-level="1" data-path="Introduction.html"><a href="Introduction.html"><i class="fa fa-check"></i><b>1</b> 서론</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="Motivation.html"><a href="Motivation.html"><i class="fa fa-check"></i><b>1.1</b> 동기</a></li>
@@ -196,7 +171,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.6" data-path="CressRef.html"><a href="CressRef.html"><i class="fa fa-check"></i><b>2.6</b> 교차 참조</a></li>
 <li class="chapter" data-level="2.7" data-path="CustomBlock.html"><a href="CustomBlock.html"><i class="fa fa-check"></i><b>2.7</b> 맞춤 블록</a></li>
 <li class="chapter" data-level="2.8" data-path="Citation.html"><a href="Citation.html"><i class="fa fa-check"></i><b>2.8</b> 인용</a></li>
-<li class="chapter" data-level="2.9" data-path="Index.html"><a href="Index.html"><i class="fa fa-check"></i><b>2.9</b> 색인</a></li>
+<li class="chapter" data-level="2.9" data-path="Idex.html"><a href="Idex.html"><i class="fa fa-check"></i><b>2.9</b> 색인</a></li>
 <li class="chapter" data-level="2.10" data-path="HTMLWidget.html"><a href="HTMLWidget.html"><i class="fa fa-check"></i><b>2.10</b> HTML 위젯</a></li>
 <li class="chapter" data-level="2.11" data-path="WebShiny.html"><a href="WebShiny.html"><i class="fa fa-check"></i><b>2.11</b> 웹 페이지와 Shiny 앱</a></li>
 </ul></li>
@@ -275,12 +250,12 @@ div.csl-indent {
 <div id="HTMLWidget" class="section level2" number="2.10">
 <h2><span class="header-section-number">2.10</span> HTML 위젯</h2>
 <p>R의 가장 큰 장점 중 하나는 데이터 시각화이지만 훨씬 풍부한 데이터 시각화를 위한 JavaScript 라이브러리가 많이 있습니다. 이러한 라이브러리는 웹 브라우저에서 쉽게 렌더링할 수있는 대화형 애플리케이션을 구축하는 데 사용할 수 있으므로 사용자는 시각화를 보기 위해 추가 소프트웨어 패키지를 설치할 필요가 없습니다.</p>
-<p>이러한 JavaScript 라이브러리를 R로 가져 오는 한 가지 방법은 <a href="http://htmlwidgets.org/"><strong>htmlwidgets</strong></a> 패키지 <span class="citation">(<a href="#ref-Htmlwidgets2020" role="doc-biblioref">Vaidyanathan et al. 2020</a>)</span>를 통하는 것입니다..</p>
-<p>HTML 위젯은 독립형 웹 페이지 (예 : R 플롯)로 렌더링하거나 R Markdown 문서와 Shiny 애플리케이션에 포함할 수 있습니다. 원래 HTML 출력 전용으로 설계되었으며 JavaScript의 가용성이 필요하므로 LaTeX / PDF와 같은 비 HTML 출력 형식에서는 작동하지 않습니다. <strong>knitr</strong> v1.13 이전에서는 HTML 위젯을 HTML이 아닌 출력 형식으로 렌더링할 때 오류가 발생합니다. <strong>knitr</strong> v1.13부터 HTML 위젯은 <strong>webshot</strong> 패키지 <span class="citation">(<a href="#ref-Webshot" role="doc-biblioref">Chang 2019</a>)</span>를 통해 찍은 스크린 샷으로 자동 렌더링됩니다. 물론 <strong>webshot</strong> 패키지를 설치해야 합니다. 또한 PhantomJS (<a href="http://phantomjs.org/">http://phantomjs.org</a>)를 설치해야 합니다. 이는 <strong>webshot</strong>이 스크린 샷을 캡처하는 데 사용하는 것입니다. <strong>webshot</strong>과 PhantomJS는 모두 R에서 자동으로 설치할 수 있습니다.</p>
+<p>이러한 JavaScript 라이브러리를 R로 가져 오는 한 가지 방법은 <a href="http://htmlwidgets.org/"><strong>htmlwidgets</strong></a> 패키지 <span class="citation">(<a href="references.html#ref-Htmlwidgets2020" role="doc-biblioref">Vaidyanathan et al. 2020</a>)</span>를 통하는 것입니다..</p>
+<p>HTML 위젯은 독립형 웹 페이지 (예 : R 플롯)로 렌더링하거나 R Markdown 문서와 Shiny 애플리케이션에 포함할 수 있습니다. 원래 HTML 출력 전용으로 설계되었으며 JavaScript의 가용성이 필요하므로 LaTeX / PDF와 같은 비 HTML 출력 형식에서는 작동하지 않습니다. <strong>knitr</strong> v1.13 이전에서는 HTML 위젯을 HTML이 아닌 출력 형식으로 렌더링할 때 오류가 발생합니다. <strong>knitr</strong> v1.13부터 HTML 위젯은 <strong>webshot</strong> 패키지 <span class="citation">(<a href="references.html#ref-Webshot" role="doc-biblioref">Chang 2019</a>)</span>를 통해 찍은 스크린 샷으로 자동 렌더링됩니다. 물론 <strong>webshot</strong> 패키지를 설치해야 합니다. 또한 PhantomJS (<a href="http://phantomjs.org/">http://phantomjs.org</a>)를 설치해야 합니다. 이는 <strong>webshot</strong>이 스크린 샷을 캡처하는 데 사용하는 것입니다. <strong>webshot</strong>과 PhantomJS는 모두 R에서 자동으로 설치할 수 있습니다.</p>
 <pre><code>install.packages(&quot;webshot&quot;)
 webshot::install_phantomjs()</code></pre>
 <p><code>install_phantomjs()</code> 함수는 Windows, OS X 및 Linux에서 작동합니다. 시스템 환경 변수 <code>PATH</code>를 수정하는 데 익숙하다면 PhantomJS를 직접 다운로드하여 설치할 수도 있습니다.</p>
-<p><strong>knitr</strong>가 코드 청크에서 HTML 위젯 개체를 감지하면 현재 출력 형식이 HTML 일 때 위젯을 정상적으로 렌더링하거나 위젯을 HTML 페이지로 저장하고 출력 형식이 HTML이 아닌 경우 <strong>webshot</strong>을 호출하여 HTML 페이지 화면을 캡처합니다. 다음은 <strong>DT</strong> 패키지 <span class="citation">(<a href="#ref-DT" role="doc-biblioref">Xie, Cheng, and Tan 2020</a>)</span>에서 생성된 테이블의 예입니다 :</p>
+<p><strong>knitr</strong>가 코드 청크에서 HTML 위젯 개체를 감지하면 현재 출력 형식이 HTML 일 때 위젯을 정상적으로 렌더링하거나 위젯을 HTML 페이지로 저장하고 출력 형식이 HTML이 아닌 경우 <strong>webshot</strong>을 호출하여 HTML 페이지 화면을 캡처합니다. 다음은 <strong>DT</strong> 패키지 <span class="citation">(<a href="references.html#ref-DT" role="doc-biblioref">Xie, Cheng, and Tan 2020</a>)</span>에서 생성된 테이블의 예입니다 :</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="HTMLWidget.html#cb72-1" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(iris)</span></code></pre></div>
 <div class="figure"><span id="fig:ref-R-DT"></span>
 <div id="htmlwidget-ddcc83def9dfd986dbf2" style="width:100%;height:auto;" class="datatables html-widget"></div>
@@ -296,24 +271,12 @@ Figure 2.5: DT 패키지를 통한 테이블 위젯
 <p>넷째, 스크린 샷 캡처가 느리거나 코드 청크가 실행될 때마다 캡처하고 싶지 않은 경우 청크 옵션 <code>cache = TRUE</code> 를 사용하여 청크를 캐시할 수 있습니다. 캐싱은 HTML 및 비 HTML 출력 형식 모두에서 작동합니다.</p>
 <p>스크린 샷은 <code>fig.width</code>, <code>fig.height</code>, <code>out.width</code>, <code>fig.cap</code> 등을 포함하여 그림과 관련된 많은 청크 옵션이 스크린 샷에도 적용된다는 점에서 일반 R 플롯처럼 작동합니다. 따라서 출력 문서에서 스크린 샷의 크기를 지정하고 그림 캡션도 할당할 수 있습니다. 자동 스크린 샷의 이미지 형식은 청크 옵션 <code>dev</code>를 통해 지정할 수 있으며 가능한 값은 <code>pdf</code>, <code>png</code> 그리고 <code>jpeg</code> 등입니다. PDF 출력의 기본값은 <code>pdf</code>이고 다른 유형의 출력은 <code>png</code>입니다. <code>pdf</code>는 <code>png</code> 만큼 충실하게 작동하지 않을 수 있습니다. 때로는 HTML 페이지에 PDF 스크린 샷으로 렌더링하지 못하는 특정 요소가 있으므로 PDF 출력에도<code>dev = 'png'</code>를 사용할 수 있습니다. HTML 위젯의 특정 사례에 따라 다르며 어떤 형식이 더 바람직한 지 결정하기 전에 <code>pdf</code>와 <code>png</code> (또는<code>jpeg</code>)를 모두 사용해 볼 수 있습니다.</p>
 </div>
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-Webshot" class="csl-entry">
-Chang, Winston. 2019. <em>Webshot: Take Screenshots of Web Pages</em>. <a href="https://github.com/wch/webshot/">https://github.com/wch/webshot/</a>.
-</div>
-<div id="ref-Htmlwidgets2020" class="csl-entry">
-Vaidyanathan, Ramnath, Yihui Xie, JJ Allaire, Joe Cheng, Carson Sievert, and Kenton Russell. 2020. <em>Htmlwidgets: HTML Widgets for <span>R</span></em>. <a href="https://github.com/ramnathv/htmlwidgets">https://github.com/ramnathv/htmlwidgets</a>.
-</div>
-<div id="ref-DT" class="csl-entry">
-Xie, Yihui, Joe Cheng, and Xianying Tan. 2020. <em>DT: A Wrapper of the Javascript Library Datatables</em>. <a href="https://github.com/rstudio/DT">https://github.com/rstudio/DT</a>.
-</div>
-</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="Index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Idex.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="WebShiny.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
