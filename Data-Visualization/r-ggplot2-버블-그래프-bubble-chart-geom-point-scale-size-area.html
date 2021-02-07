@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10.2 R ggplot2 버블 그래프 (Bubble Chart) : geom_point(), scale_size_area() | Data Visualization with R</title>
+  <meta name="description" content="The output format for book is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10.2 R ggplot2 버블 그래프 (Bubble Chart) : geom_point(), scale_size_area() | Data Visualization with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The output format for book is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10.2 R ggplot2 버블 그래프 (Bubble Chart) : geom_point(), scale_size_area() | Data Visualization with R" />
+  
+  <meta name="twitter:description" content="The output format for book is bookdown::gitbook." />
+  
+
+<meta name="author" content="Dae Ho Kim" />
+
+
+<meta name="date" content="2021-02-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="r-ggplot2-산포도scatter-plot-geom-point.html"/>
+<link rel="next" href="산포도-꾸미지.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.17/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="/">Home</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>서문</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="데이터-시각화.html"><a href="데이터-시각화.html"><i class="fa fa-check"></i><b>0.1</b> 데이터 시각화</a>
+<ul>
+<li class="chapter" data-level="0.1.1" data-path="데이터-시각화.html"><a href="데이터-시각화.html#강의-소개"><i class="fa fa-check"></i><b>0.1.1</b> 강의 소개</a></li>
+<li class="chapter" data-level="0.1.2" data-path="데이터-시각화.html"><a href="데이터-시각화.html#강의-일정"><i class="fa fa-check"></i><b>0.1.2</b> 강의 일정</a></li>
+<li class="chapter" data-level="0.1.3" data-path="데이터-시각화.html"><a href="데이터-시각화.html#강의평가-방법"><i class="fa fa-check"></i><b>0.1.3</b> 강의평가 방법</a></li>
+<li class="chapter" data-level="0.1.4" data-path="데이터-시각화.html"><a href="데이터-시각화.html#강의-비중"><i class="fa fa-check"></i><b>0.1.4</b> 강의 비중</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-1-서론.html"><a href="part-1-서론.html"><i class="fa fa-check"></i>Part 1 : 서론</a></li>
+<li class="chapter" data-level="1" data-path="r-왜-그래프시각화인가-why-graphsvisualization.html"><a href="r-왜-그래프시각화인가-why-graphsvisualization.html"><i class="fa fa-check"></i><b>1</b> R 왜 그래프/시각화인가? (Why Graphs/Visualization?)</a></li>
+<li class="chapter" data-level="2" data-path="r-그래프-패키지-소개-graphics-lattice-ggplot2.html"><a href="r-그래프-패키지-소개-graphics-lattice-ggplot2.html"><i class="fa fa-check"></i><b>2</b> R 그래프 패키지 소개 (Graphics, Lattice, ggplot2)</a>
+<ul>
+<li class="chapter" data-level="" data-path="r-그래프-패키지-소개-graphics-lattice-ggplot2.html"><a href="r-그래프-패키지-소개-graphics-lattice-ggplot2.html#참고자료"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+<li><a href="part-2-base-graphics-plotting-system.html#part-2-base-graphics-plotting-system">Part 2 :<code>Base Graphics</code> plotting system</a></li>
+<li class="chapter" data-level="3" data-path="높은-수준의-그래프-함수.html"><a href="높은-수준의-그래프-함수.html"><i class="fa fa-check"></i><b>3</b> 높은 수준의 그래프 함수</a>
+<ul>
+<li class="chapter" data-level="" data-path="데이터-세트.html"><a href="데이터-세트.html"><i class="fa fa-check"></i>데이터 세트</a></li>
+<li class="chapter" data-level="3.1" data-path="일변량-연속형-데이터-그래프.html"><a href="일변량-연속형-데이터-그래프.html"><i class="fa fa-check"></i><b>3.1</b> 일변량 연속형 데이터 그래프</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="일변량-연속형-데이터-그래프.html"><a href="일변량-연속형-데이터-그래프.html#히스토그램histogram-hist"><i class="fa fa-check"></i><b>3.1.1</b> 히스토그램(Histogram) : <code>hist()</code></a></li>
+<li class="chapter" data-level="3.1.2" data-path="일변량-연속형-데이터-그래프.html"><a href="일변량-연속형-데이터-그래프.html#박스-플롯box-and-whisker-plot-boxplot"><i class="fa fa-check"></i><b>3.1.2</b> 박스 플롯(box-and-whisker plot) : <code>boxplot()</code></a></li>
+<li class="chapter" data-level="3.1.3" data-path="일변량-연속형-데이터-그래프.html"><a href="일변량-연속형-데이터-그래프.html#줄기-잎-그래프stem-and-leaf-plot-stem"><i class="fa fa-check"></i><b>3.1.3</b> 줄기 잎 그래프(stem and leaf plot) : <code>stem()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="일변량-범주형-자료-그래프.html"><a href="일변량-범주형-자료-그래프.html"><i class="fa fa-check"></i><b>3.2</b> 일변량 범주형 자료 그래프</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="일변량-범주형-자료-그래프.html"><a href="일변량-범주형-자료-그래프.html#막대-그래프bar-plot-barplot"><i class="fa fa-check"></i><b>3.2.1</b> 막대 그래프(bar plot) : <code>barplot()</code></a></li>
+<li class="chapter" data-level="3.2.2" data-path="일변량-범주형-자료-그래프.html"><a href="일변량-범주형-자료-그래프.html#클리브랜드-점-그래프cleveland-dot-plot-dotchart"><i class="fa fa-check"></i><b>3.2.2</b> 클리브랜드 점 그래프(Cleveland dot plot) : <code>dotchart()</code></a></li>
+<li class="chapter" data-level="3.2.3" data-path="일변량-범주형-자료-그래프.html"><a href="일변량-범주형-자료-그래프.html#파이-차트pie-chart-pie"><i class="fa fa-check"></i><b>3.2.3</b> 파이 차트(pie chart) : <code>pie()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="이변량-연속형변수-그래프.html"><a href="이변량-연속형변수-그래프.html"><i class="fa fa-check"></i><b>3.3</b> 이변량 연속형변수 그래프</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="이변량-연속형변수-그래프.html"><a href="이변량-연속형변수-그래프.html#산포도-scatter-plot"><i class="fa fa-check"></i><b>3.3.1</b> 산포도 (scatter plot)</a></li>
+<li class="chapter" data-level="3.3.2" data-path="이변량-연속형변수-그래프.html"><a href="이변량-연속형변수-그래프.html#산포도-행렬-plotdataframe-pairs-scatterplotmatrixdataframe"><i class="fa fa-check"></i><b>3.3.2</b> 산포도 행렬 : <code>plot(dataframe)</code>, <code>pairs()</code>, <code>scatterplotMatrix(dataframe)</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="이변량-범주형-변수-그래프.html"><a href="이변량-범주형-변수-그래프.html"><i class="fa fa-check"></i><b>3.4</b> 이변량 범주형 변수 그래프</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="이변량-범주형-변수-그래프.html"><a href="이변량-범주형-변수-그래프.html#모자이크-그래프-그리기-mosaicplot"><i class="fa fa-check"></i><b>3.4.1</b> 모자이크 그래프 그리기 : <code>mosaicplot()</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="r-그래프-모수-graphical-parameters.html"><a href="r-그래프-모수-graphical-parameters.html"><i class="fa fa-check"></i><b>4</b> R 그래프 모수 (Graphical Parameters)</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="그래프-모수-설정하는-2가지-방법.html"><a href="그래프-모수-설정하는-2가지-방법.html"><i class="fa fa-check"></i><b>4.1</b> 그래프 모수 설정하는 2가지 방법</a></li>
+<li class="chapter" data-level="4.2" data-path="par-함수에-의한-글로벌-환경-설정.html"><a href="par-함수에-의한-글로벌-환경-설정.html"><i class="fa fa-check"></i><b>4.2</b> <code>par()</code> 함수에 의한 글로벌 환경 설정</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="par-함수에-의한-글로벌-환경-설정.html"><a href="par-함수에-의한-글로벌-환경-설정.html#데이터-세트-1"><i class="fa fa-check"></i><b>4.2.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="4.2.2" data-path="par-함수에-의한-글로벌-환경-설정.html"><a href="par-함수에-의한-글로벌-환경-설정.html#par-함수-도움말-보기"><i class="fa fa-check"></i><b>4.2.2</b> <code>par()</code> 함수 도움말 보기</a></li>
+<li class="chapter" data-level="4.2.3" data-path="par-함수에-의한-글로벌-환경-설정.html"><a href="par-함수에-의한-글로벌-환경-설정.html#글로벌-환경의-설정"><i class="fa fa-check"></i><b>4.2.3</b> 글로벌 환경의 설정</a></li>
+<li class="chapter" data-level="4.2.4" data-path="par-함수에-의한-글로벌-환경-설정.html"><a href="par-함수에-의한-글로벌-환경-설정.html#글로벌-환경의-해제"><i class="fa fa-check"></i><b>4.2.4</b> 글로벌 환경의 해제</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html"><a href="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html"><i class="fa fa-check"></i><b>4.3</b> 개별 그래프마다 그래프 모수를 설정하는 방법 (로컬 환경 설정)</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html"><a href="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html#로컬-환경-설정-예"><i class="fa fa-check"></i><b>4.3.1</b> 로컬 환경 설정 예</a></li>
+<li class="chapter" data-level="4.3.2" data-path="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html"><a href="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html#기호-모양-pch-크기-cex-선-유형-lty-선-두께-lwd"><i class="fa fa-check"></i><b>4.3.2</b> 기호 모양 pch, 크기 cex, 선 유형 lty, 선 두께 lwd</a></li>
+<li class="chapter" data-level="4.3.3" data-path="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html"><a href="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html#현재-그래프-모수-확인-checking-current-graphical-parameter-settings-par"><i class="fa fa-check"></i><b>4.3.3</b> 현재 그래프 모수 확인 (checking current graphical parameter settings) : <code>par()</code></a></li>
+<li class="chapter" data-level="4.3.4" data-path="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html"><a href="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html#색깔-colors-col-col.axis-col.lab-col.main-col.sub-fg-bg"><i class="fa fa-check"></i><b>4.3.4</b> 색깔 (colors), <code>col</code>, <code>col.axis</code>, <code>col.lab</code>, <code>col.main</code>, <code>col.sub</code>, <code>fg</code>, <code>bg</code></a></li>
+<li class="chapter" data-level="4.3.5" data-path="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html"><a href="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html#기호-선-문자-등의-디폴트-색-지정-default-plotting-color-col"><i class="fa fa-check"></i><b>4.3.5</b> 기호, 선, 문자 등의 디폴트 색 지정 (default plotting color) : <code>col</code></a></li>
+<li class="chapter" data-level="4.3.6" data-path="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html"><a href="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html#축-색-지정-color-for-axis-annotation-col.axis"><i class="fa fa-check"></i><b>4.3.6</b> 축 색 지정 (color for axis annotation) : <code>col.axis</code></a></li>
+<li class="chapter" data-level="4.3.7" data-path="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html"><a href="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html#x축과-y축-label-지정-color-for-x-and-y-labels-col.lab"><i class="fa fa-check"></i><b>4.3.7</b> x축과 y축 Label 지정 (color for x and y labels) : <code>col.lab</code></a></li>
+<li class="chapter" data-level="4.3.8" data-path="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html"><a href="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html#제목-색-지정-color-for-main-title-col.main"><i class="fa fa-check"></i><b>4.3.8</b> 제목 색 지정 (color for main title) : <code>col.main</code></a></li>
+<li class="chapter" data-level="4.3.9" data-path="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html"><a href="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html#부제목-색-지정-color-for-sub-title-col.sub"><i class="fa fa-check"></i><b>4.3.9</b> 부제목 색 지정 (color for sub title) : <code>col.sub</code></a></li>
+<li class="chapter" data-level="4.3.10" data-path="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html"><a href="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html#그래프-전경-색-지정-color-for-foreground-fg"><i class="fa fa-check"></i><b>4.3.10</b> 그래프 전경 색 지정 (color for foreground) : <code>fg</code></a></li>
+<li class="chapter" data-level="4.3.11" data-path="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html"><a href="개별-그래프마다-그래프-모수를-설정하는-방법-로컬-환경-설정.html#그래프-배경-색-지정-color-for-background-bg"><i class="fa fa-check"></i><b>4.3.11</b> 그래프 배경 색 지정 (color for background) : <code>bg</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="그래프-영역-mar-oma-mfrow-mfcol-layout.html"><a href="그래프-영역-mar-oma-mfrow-mfcol-layout.html"><i class="fa fa-check"></i><b>5</b> 그래프 영역 (<code>mar</code>, <code>oma</code>, , <code>mfrow</code>, <code>mfcol</code>, <code>layout</code>)</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="그래프-영역-plot-area-내부-마진-영역-inner-margin-area.html"><a href="그래프-영역-plot-area-내부-마진-영역-inner-margin-area.html"><i class="fa fa-check"></i><b>5.1</b> 그래프 영역 (plot area), 내부 마진 영역 (inner margin area)</a></li>
+<li class="chapter" data-level="5.2" data-path="외부-마진-영역-outer-margin-area.html"><a href="외부-마진-영역-outer-margin-area.html"><i class="fa fa-check"></i><b>5.2</b> 외부 마진 영역 (outer margin area)</a></li>
+<li class="chapter" data-level="5.3" data-path="영역-분할결합-방법-1-parmfrow-parmfcol.html"><a href="영역-분할결합-방법-1-parmfrow-parmfcol.html"><i class="fa fa-check"></i><b>5.3</b> 영역 분할/결합 방법 1 : <code>par(mfrow = )</code>, <code>par(mfcol = )</code></a></li>
+<li class="chapter" data-level="5.4" data-path="영역-분할결합-방법-2-layout.html"><a href="영역-분할결합-방법-2-layout.html"><i class="fa fa-check"></i><b>5.4</b> 영역 분할/결합 방법 2 : <code>layout()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="낮은-수준의-그래프-함수.html"><a href="낮은-수준의-그래프-함수.html"><i class="fa fa-check"></i><b>6</b> 낮은 수준의 그래프 함수</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="제목-및-xy축-라벨-추가-title.html"><a href="제목-및-xy축-라벨-추가-title.html"><i class="fa fa-check"></i><b>6.1</b> 제목 및 XY축 라벨 추가 :<code>title()</code></a></li>
+<li class="chapter" data-level="6.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html"><i class="fa fa-check"></i><b>6.2</b> XY축 형태 변환 : <code>axis(side, ...)</code></a></li>
+<li class="chapter" data-level="6.3" data-path="직선-연결-추가-linesx-y-ablinea-b-ablinehy-ablinevx.html"><a href="직선-연결-추가-linesx-y-ablinea-b-ablinehy-ablinevx.html"><i class="fa fa-check"></i><b>6.3</b> 직선 연결, 추가 : <code>lines(x, y)</code>, <code>abline(a, b)</code>, <code>abline(h=y)</code>, <code>abline(v=x)</code></a></li>
+<li class="chapter" data-level="6.4" data-path="점-추가-pointsx-y.html"><a href="점-추가-pointsx-y.html"><i class="fa fa-check"></i><b>6.4</b> 점 추가 : <code>points(x, y)</code></a></li>
+<li class="chapter" data-level="6.5" data-path="문자-추가-textx-y-labels-mtext.html"><a href="문자-추가-textx-y-labels-mtext.html"><i class="fa fa-check"></i><b>6.5</b> 문자 추가 : <code>text(x, y, labels, ...)</code>, <code>mtext()</code></a></li>
+<li class="chapter" data-level="6.6" data-path="범례-추가-legendx-y-legend-.html"><a href="범례-추가-legendx-y-legend-.html"><i class="fa fa-check"></i><b>6.6</b> 범례 추가 : <code>legend(x, y, legend, ...)</code></a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="범례-추가-legendx-y-legend-.html"><a href="범례-추가-legendx-y-legend-.html#x-y-좌표를-직접-입력하여-범례-위치-설정"><i class="fa fa-check"></i><b>6.6.1</b> x, y 좌표를 직접 입력하여 범례 위치 설정</a></li>
+<li class="chapter" data-level="6.6.2" data-path="범례-추가-legendx-y-legend-.html"><a href="범례-추가-legendx-y-legend-.html#위치-키워드로-범례-위치-설정"><i class="fa fa-check"></i><b>6.6.2</b> 위치 키워드로 범례 위치 설정</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="다각형-추가-polygonx-y.html"><a href="다각형-추가-polygonx-y.html"><i class="fa fa-check"></i><b>6.7</b> 다각형 추가 : polygon(x, y, …)</a>
+<ul>
+<li class="chapter" data-level="" data-path="다각형-추가-polygonx-y.html"><a href="다각형-추가-polygonx-y.html#참고자료-1"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li><a href="part-3-ggplot2-그래픽.html#part-3-ggplot2-그래픽">Part 3 : <code>ggplot2</code> 그래픽</a></li>
+<li class="chapter" data-level="7" data-path="일변량-변수-연속형-데이터.html"><a href="일변량-변수-연속형-데이터.html"><i class="fa fa-check"></i><b>7</b> 일변량 변수 - 연속형 데이터</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="r-ggplot2-히스토그램-goem-histogram-커널-밀도-곡선-kernel-density-curve.html"><a href="r-ggplot2-히스토그램-goem-histogram-커널-밀도-곡선-kernel-density-curve.html"><i class="fa fa-check"></i><b>7.1</b> R ggplot2 히스토그램 (<code>goem_histogram()</code>), 커널 밀도 곡선 (Kernel Density Curve)</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="r-ggplot2-히스토그램-goem-histogram-커널-밀도-곡선-kernel-density-curve.html"><a href="r-ggplot2-히스토그램-goem-histogram-커널-밀도-곡선-kernel-density-curve.html#히스토그램"><i class="fa fa-check"></i><b>7.1.1</b> 히스토그램</a></li>
+<li class="chapter" data-level="7.1.2" data-path="r-ggplot2-히스토그램-goem-histogram-커널-밀도-곡선-kernel-density-curve.html"><a href="r-ggplot2-히스토그램-goem-histogram-커널-밀도-곡선-kernel-density-curve.html#커널-밀도-곡선"><i class="fa fa-check"></i><b>7.1.2</b> 커널 밀도 곡선</a></li>
+<li class="chapter" data-level="7.1.3" data-path="r-ggplot2-히스토그램-goem-histogram-커널-밀도-곡선-kernel-density-curve.html"><a href="r-ggplot2-히스토그램-goem-histogram-커널-밀도-곡선-kernel-density-curve.html#히스토그램과-커널-밀도-곡선-겹쳐-그리기"><i class="fa fa-check"></i><b>7.1.3</b> 히스토그램과 커널 밀도 곡선 겹쳐 그리기</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="r-ggplot2-박스-그래프-geom-boxplot-바이올린-그래프geom-violin.html"><a href="r-ggplot2-박스-그래프-geom-boxplot-바이올린-그래프geom-violin.html"><i class="fa fa-check"></i><b>7.2</b> R ggplot2 박스 그래프 (<code>geom_boxplot()</code>), 바이올린 그래프(<code>geom_violin()</code>)</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="r-ggplot2-박스-그래프-geom-boxplot-바이올린-그래프geom-violin.html"><a href="r-ggplot2-박스-그래프-geom-boxplot-바이올린-그래프geom-violin.html#박스-그래프"><i class="fa fa-check"></i><b>7.2.1</b> 박스 그래프</a></li>
+<li class="chapter" data-level="7.2.2" data-path="r-ggplot2-박스-그래프-geom-boxplot-바이올린-그래프geom-violin.html"><a href="r-ggplot2-박스-그래프-geom-boxplot-바이올린-그래프geom-violin.html#바이올린-그래프"><i class="fa fa-check"></i><b>7.2.2</b> 바이올린 그래프</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="r-ggplot2-범주형-축-그룹요인-순서-바꾸기-scale-x-discretelimits-.html"><a href="r-ggplot2-범주형-축-그룹요인-순서-바꾸기-scale-x-discretelimits-.html"><i class="fa fa-check"></i><b>7.3</b> R ggplot2 범주형 축 그룹(요인) 순서 바꾸기 : <code>scale_x_discrete(limits=...)</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="일변량-변수-범주형-데이터.html"><a href="일변량-변수-범주형-데이터.html"><i class="fa fa-check"></i><b>8</b> 일변량 변수 - 범주형 데이터</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="r-ggplot2-막대그림geom-bar.html"><a href="r-ggplot2-막대그림geom-bar.html"><i class="fa fa-check"></i><b>8.1</b> R ggplot2 막대그림(geom_bar())</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="r-ggplot2-막대그림geom-bar.html"><a href="r-ggplot2-막대그림geom-bar.html#막대그림"><i class="fa fa-check"></i><b>8.1.1</b> 막대그림</a></li>
+<li class="chapter" data-level="8.1.2" data-path="r-ggplot2-막대그림geom-bar.html"><a href="r-ggplot2-막대그림geom-bar.html#누적-막대-그래프-stacked-bar-chart"><i class="fa fa-check"></i><b>8.1.2</b> 누적 막대 그래프 (stacked bar chart)</a></li>
+<li class="chapter" data-level="8.1.3" data-path="r-ggplot2-막대그림geom-bar.html"><a href="r-ggplot2-막대그림geom-bar.html#r-ggplot2-막대그래프bar-chart-양수-음수-색상-다르게-하기-geom_bar"><i class="fa fa-check"></i><b>8.1.3</b> R ggplot2 막대그래프(Bar Chart) : 양수, 음수 색상 다르게 하기 (<code>geom_bar()</code>)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="r-ggplot2-원그림geom-bar-coord-polar.html"><a href="r-ggplot2-원그림geom-bar-coord-polar.html"><i class="fa fa-check"></i><b>8.2</b> R ggplot2 원그림(<code>geom_bar() + coord_polar()</code>)</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="다변량-범주형-데이터.html"><a href="다변량-범주형-데이터.html"><i class="fa fa-check"></i><b>9</b> 다변량 - 범주형 데이터</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="r-모자이크-그림-vcd패키지-mosaic-함수.html"><a href="r-모자이크-그림-vcd패키지-mosaic-함수.html"><i class="fa fa-check"></i><b>9.1</b> R 모자이크 그림: vcd패키지 mosaic() 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="다변량-변수-연속형-데이터.html"><a href="다변량-변수-연속형-데이터.html"><i class="fa fa-check"></i><b>10</b> 다변량 변수 - 연속형 데이터</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="r-ggplot2-산포도scatter-plot-geom-point.html"><a href="r-ggplot2-산포도scatter-plot-geom-point.html"><i class="fa fa-check"></i><b>10.1</b> R ggplot2 산포도(Scatter Plot) (<code>geom_point()</code>)</a></li>
+<li class="chapter" data-level="10.2" data-path="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html"><i class="fa fa-check"></i><b>10.2</b> R ggplot2 버블 그래프 (Bubble Chart) : <code>geom_point()</code>, <code>scale_size_area()</code></a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#r-ggplot2-집단간-비교를-위한-면-분할facet-trellis-facet_grid-facet_wrap"><i class="fa fa-check"></i><b>10.2.1</b> <span>R ggplot2 집단간 비교를 위한 면 분할(facet, Trellis) : <code>facet_grid()</code>, <code>facet_wrap()</code></span></a></li>
+<li class="chapter" data-level="10.2.2" data-path="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#r-ggplot2-x축-y축-설정-coord_fixed-scale_x_continuous-scale_y_continuous"><i class="fa fa-check"></i><b>10.2.2</b> R ggplot2 x축, y축 설정 : coord_fixed(), scale_x_continuous(), scale_y_continuous()</a></li>
+<li class="chapter" data-level="10.2.3" data-path="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#r-ggplot2-그래프-색깔-설정-colour-setting"><i class="fa fa-check"></i><b>10.2.3</b> R ggplot2 그래프 색깔 설정 (colour setting)</a></li>
+<li class="chapter" data-level="10.2.4" data-path="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#r-ggplot2-텍스트text-선line-화살표arrow-음영사각형shadowed-box-제목title-주석달기-annotate"><i class="fa fa-check"></i><b>10.2.4</b> R <code>ggplot2</code> 텍스트(text), 선(line), 화살표(arrow), 음영사각형(shadowed box), 제목(title) 주석달기 : <code>annotate()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="산포도-꾸미지.html"><a href="산포도-꾸미지.html"><i class="fa fa-check"></i><b>10.3</b> 산포도 꾸미지</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="산포도-꾸미지.html"><a href="산포도-꾸미지.html#텍스트text-추가-annotatetext"><i class="fa fa-check"></i><b>10.3.1</b> 텍스트(text) 추가 : <code>annotate("text")</code></a></li>
+<li class="chapter" data-level="10.3.2" data-path="산포도-꾸미지.html"><a href="산포도-꾸미지.html#선line-추가-geom_vline-geom_hline-geom_abline"><i class="fa fa-check"></i><b>10.3.2</b> 선(line) 추가 : <code>geom_vline()</code>, <code>geom_hline()</code>, <code>geom_abline()</code></a></li>
+<li class="chapter" data-level="10.3.3" data-path="산포도-꾸미지.html"><a href="산포도-꾸미지.html#화살표arrow-추가-annotatesegment"><i class="fa fa-check"></i><b>10.3.3</b> 화살표(arrow) 추가 : <code>annotate("segment")</code></a></li>
+<li class="chapter" data-level="10.3.4" data-path="산포도-꾸미지.html"><a href="산포도-꾸미지.html#음영-사각형shadowed-box-추가-annotaterect"><i class="fa fa-check"></i><b>10.3.4</b> 음영 사각형(shadowed box) 추가 : <code>annotate("rect")</code></a></li>
+<li class="chapter" data-level="10.3.5" data-path="산포도-꾸미지.html"><a href="산포도-꾸미지.html#제목title-추가-ggtitle"><i class="fa fa-check"></i><b>10.3.5</b> 제목(title) 추가 : <code>ggtitle()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="r-ggpolt2-선그래프-시계열그래프-line-graph-geom-line.html"><a href="r-ggpolt2-선그래프-시계열그래프-line-graph-geom-line.html"><i class="fa fa-check"></i><b>10.4</b> R ggpolt2 선그래프, 시계열그래프 (Line Graph) (<code>geom_line()</code>)</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="r-ggpolt2-선그래프-시계열그래프-line-graph-geom-line.html"><a href="r-ggpolt2-선그래프-시계열그래프-line-graph-geom-line.html#데이터-세트-3"><i class="fa fa-check"></i><b>10.4.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="10.4.2" data-path="r-ggpolt2-선그래프-시계열그래프-line-graph-geom-line.html"><a href="r-ggpolt2-선그래프-시계열그래프-line-graph-geom-line.html#시계열-변수-생성하기"><i class="fa fa-check"></i><b>10.4.2</b> 시계열 변수 생성하기</a></li>
+<li class="chapter" data-level="10.4.3" data-path="r-ggpolt2-선그래프-시계열그래프-line-graph-geom-line.html"><a href="r-ggpolt2-선그래프-시계열그래프-line-graph-geom-line.html#group-지정"><i class="fa fa-check"></i><b>10.4.3</b> <code>group</code> 지정</a></li>
+<li class="chapter" data-level="10.4.4" data-path="r-ggpolt2-선그래프-시계열그래프-line-graph-geom-line.html"><a href="r-ggpolt2-선그래프-시계열그래프-line-graph-geom-line.html#ylim-정하기"><i class="fa fa-check"></i><b>10.4.4</b> ylim() 정하기</a></li>
+<li class="chapter" data-level="10.4.5" data-path="r-ggpolt2-선그래프-시계열그래프-line-graph-geom-line.html"><a href="r-ggpolt2-선그래프-시계열그래프-line-graph-geom-line.html#선-모형-바꾸기"><i class="fa fa-check"></i><b>10.4.5</b> 선 모형 바꾸기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="r-ggplot2-이차원-밀도-그래프2d-density-plot-stat-density2d.html"><a href="r-ggplot2-이차원-밀도-그래프2d-density-plot-stat-density2d.html"><i class="fa fa-check"></i><b>10.5</b> R ggplot2 이차원 밀도 그래프(2D Density Plot) (<code>stat_density2d()</code>)</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="r-ggplot2-이차원-밀도-그래프2d-density-plot-stat-density2d.html"><a href="r-ggplot2-이차원-밀도-그래프2d-density-plot-stat-density2d.html#데이터-세트-4"><i class="fa fa-check"></i><b>10.5.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="10.5.2" data-path="r-ggplot2-이차원-밀도-그래프2d-density-plot-stat-density2d.html"><a href="r-ggplot2-이차원-밀도-그래프2d-density-plot-stat-density2d.html#aes에-범주형-변수-지정하기"><i class="fa fa-check"></i><b>10.5.2</b> <code>aes()</code>에 범주형 변수 지정하기</a></li>
+<li class="chapter" data-level="10.5.3" data-path="r-ggplot2-이차원-밀도-그래프2d-density-plot-stat-density2d.html"><a href="r-ggplot2-이차원-밀도-그래프2d-density-plot-stat-density2d.html#커널-밀도-추정치-계산"><i class="fa fa-check"></i><b>10.5.3</b> 커널 밀도 추정치 계산</a></li>
+<li class="chapter" data-level="10.5.4" data-path="r-ggplot2-이차원-밀도-그래프2d-density-plot-stat-density2d.html"><a href="r-ggplot2-이차원-밀도-그래프2d-density-plot-stat-density2d.html#라벨-추가"><i class="fa fa-check"></i><b>10.5.4</b> 라벨 추가</a></li>
+<li class="chapter" data-level="10.5.5" data-path="r-ggplot2-이차원-밀도-그래프2d-density-plot-stat-density2d.html"><a href="r-ggplot2-이차원-밀도-그래프2d-density-plot-stat-density2d.html#등고선-효과-추가하기"><i class="fa fa-check"></i><b>10.5.5</b> 등고선 효과 추가하기</a></li>
+<li class="chapter" data-level="10.5.6" data-path="r-ggplot2-이차원-밀도-그래프2d-density-plot-stat-density2d.html"><a href="r-ggplot2-이차원-밀도-그래프2d-density-plot-stat-density2d.html#면-분할하기-1"><i class="fa fa-check"></i><b>10.5.6</b> 면 분할하기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="r-ggplot2-클리브랜드-점-그래프cleveland-dot-plot-geom-point.html"><a href="r-ggplot2-클리브랜드-점-그래프cleveland-dot-plot-geom-point.html"><i class="fa fa-check"></i><b>10.6</b> R <code>ggplot2</code> 클리브랜드 점 그래프(Cleveland dot plot) (<code>geom_point()</code>)</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="r-ggplot2-클리브랜드-점-그래프cleveland-dot-plot-geom-point.html"><a href="r-ggplot2-클리브랜드-점-그래프cleveland-dot-plot-geom-point.html#데이터-세트-5"><i class="fa fa-check"></i><b>10.6.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="10.6.2" data-path="r-ggplot2-클리브랜드-점-그래프cleveland-dot-plot-geom-point.html"><a href="r-ggplot2-클리브랜드-점-그래프cleveland-dot-plot-geom-point.html#클리브랜드-점-그래프-그리기"><i class="fa fa-check"></i><b>10.6.2</b> 클리브랜드 점 그래프 그리기</a></li>
+<li class="chapter" data-level="10.6.3" data-path="r-ggplot2-클리브랜드-점-그래프cleveland-dot-plot-geom-point.html"><a href="r-ggplot2-클리브랜드-점-그래프cleveland-dot-plot-geom-point.html#면-분할하기-2"><i class="fa fa-check"></i><b>10.6.3</b> 면 분할하기</a></li>
+<li class="chapter" data-level="10.6.4" data-path="r-ggplot2-클리브랜드-점-그래프cleveland-dot-plot-geom-point.html"><a href="r-ggplot2-클리브랜드-점-그래프cleveland-dot-plot-geom-point.html#변수의-추가와-모양-변경하기"><i class="fa fa-check"></i><b>10.6.4</b> 변수의 추가와 모양 변경하기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="r-ggplot2-누적-영역-그래프-stacked-area-plot-geom-area.html"><a href="r-ggplot2-누적-영역-그래프-stacked-area-plot-geom-area.html"><i class="fa fa-check"></i><b>10.7</b> R ggplot2 누적 영역 그래프 (Stacked Area Plot) (<code>geom_area()</code>)</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="r-ggplot2-누적-영역-그래프-stacked-area-plot-geom-area.html"><a href="r-ggplot2-누적-영역-그래프-stacked-area-plot-geom-area.html#데이터-전처리"><i class="fa fa-check"></i><b>10.7.1</b> 데이터 전처리</a></li>
+<li class="chapter" data-level="10.7.2" data-path="r-ggplot2-누적-영역-그래프-stacked-area-plot-geom-area.html"><a href="r-ggplot2-누적-영역-그래프-stacked-area-plot-geom-area.html#누적영역-그래프-그리기"><i class="fa fa-check"></i><b>10.7.2</b> 누적영역 그래프 그리기</a></li>
+<li class="chapter" data-level="10.7.3" data-path="r-ggplot2-누적-영역-그래프-stacked-area-plot-geom-area.html"><a href="r-ggplot2-누적-영역-그래프-stacked-area-plot-geom-area.html#누적영역-순서-바꾸기"><i class="fa fa-check"></i><b>10.7.3</b> 누적영역 순서 바꾸기</a></li>
+<li class="chapter" data-level="10.7.4" data-path="r-ggplot2-누적-영역-그래프-stacked-area-plot-geom-area.html"><a href="r-ggplot2-누적-영역-그래프-stacked-area-plot-geom-area.html#비율-기준의-누적영역-그래프"><i class="fa fa-check"></i><b>10.7.4</b> 비율 기준의 누적영역 그래프</a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="r-corrplot-상관계수-행렬-그래프.html"><a href="r-corrplot-상관계수-행렬-그래프.html"><i class="fa fa-check"></i><b>10.8</b> R corrplot 상관계수 행렬 그래프</a>
+<ul>
+<li class="chapter" data-level="10.8.1" data-path="r-corrplot-상관계수-행렬-그래프.html"><a href="r-corrplot-상관계수-행렬-그래프.html#데이터-세트-6"><i class="fa fa-check"></i><b>10.8.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="10.8.2" data-path="r-corrplot-상관계수-행렬-그래프.html"><a href="r-corrplot-상관계수-행렬-그래프.html#상관계수-행렬-데이터-세트-구하기"><i class="fa fa-check"></i><b>10.8.2</b> 상관계수 행렬 데이터 세트 구하기</a></li>
+<li class="chapter" data-level="10.8.3" data-path="r-corrplot-상관계수-행렬-그래프.html"><a href="r-corrplot-상관계수-행렬-그래프.html#상관계수-행렬-그리기"><i class="fa fa-check"></i><b>10.8.3</b> 상관계수 행렬 그리기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.9" data-path="r-graphics-패키지-pairs-함수를-사용한-산포도-행렬-그리기.html"><a href="r-graphics-패키지-pairs-함수를-사용한-산포도-행렬-그리기.html"><i class="fa fa-check"></i><b>10.9</b> R Graphics 패키지 <code>pairs()</code> 함수를 사용한 산포도 행렬 그리기</a>
+<ul>
+<li class="chapter" data-level="10.9.1" data-path="r-graphics-패키지-pairs-함수를-사용한-산포도-행렬-그리기.html"><a href="r-graphics-패키지-pairs-함수를-사용한-산포도-행렬-그리기.html#데이터-세트-7"><i class="fa fa-check"></i><b>10.9.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="10.9.2" data-path="r-graphics-패키지-pairs-함수를-사용한-산포도-행렬-그리기.html"><a href="r-graphics-패키지-pairs-함수를-사용한-산포도-행렬-그리기.html#사용자-정의-함수-만들기"><i class="fa fa-check"></i><b>10.9.2</b> 사용자 정의 함수 만들기</a></li>
+<li class="chapter" data-level="10.9.3" data-path="r-graphics-패키지-pairs-함수를-사용한-산포도-행렬-그리기.html"><a href="r-graphics-패키지-pairs-함수를-사용한-산포도-행렬-그리기.html#산포도-행렬-그리기"><i class="fa fa-check"></i><b>10.9.3</b> 산포도 행렬 그리기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.10" data-path="r-ggplot2-히트맵heat-map-그리기-geom-tile-geom-raster.html"><a href="r-ggplot2-히트맵heat-map-그리기-geom-tile-geom-raster.html"><i class="fa fa-check"></i><b>10.10</b> R ggplot2 히트맵(Heat map) 그리기 : <code>geom_tile()</code>, <code>geom_raster()</code></a>
+<ul>
+<li class="chapter" data-level="10.10.1" data-path="r-ggplot2-히트맵heat-map-그리기-geom-tile-geom-raster.html"><a href="r-ggplot2-히트맵heat-map-그리기-geom-tile-geom-raster.html#히드맵의-예"><i class="fa fa-check"></i><b>10.10.1</b> 히드맵의 예</a></li>
+<li class="chapter" data-level="10.10.2" data-path="r-ggplot2-히트맵heat-map-그리기-geom-tile-geom-raster.html"><a href="r-ggplot2-히트맵heat-map-그리기-geom-tile-geom-raster.html#데이터-세트-8"><i class="fa fa-check"></i><b>10.10.2</b> 데이터 세트</a></li>
+<li class="chapter" data-level="10.10.3" data-path="r-ggplot2-히트맵heat-map-그리기-geom-tile-geom-raster.html"><a href="r-ggplot2-히트맵heat-map-그리기-geom-tile-geom-raster.html#히트맵-그리기"><i class="fa fa-check"></i><b>10.10.3</b> 히트맵 그리기</a></li>
+<li class="chapter" data-level="" data-path="r-ggplot2-히트맵heat-map-그리기-geom-tile-geom-raster.html"><a href="r-ggplot2-히트맵heat-map-그리기-geom-tile-geom-raster.html#참고자료-2"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-4.html"><a href="part-4.html"><i class="fa fa-check"></i>Part 4</a></li>
+<li class="chapter" data-level="11" data-path="개-이상-변수의-다변량-그래프.html"><a href="개-이상-변수의-다변량-그래프.html"><i class="fa fa-check"></i><b>11</b> 3개 이상 변수의 다변량 그래프</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="레이더-차트radar-chart-or-거미줄-그림spider-plot.html"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html"><i class="fa fa-check"></i><b>11.1</b> 레이더 차트(radar chart), or 거미줄 그림(spider plot)</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="레이더-차트radar-chart-or-거미줄-그림spider-plot.html"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#데이터-세트-9"><i class="fa fa-check"></i><b>11.1.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="11.1.2" data-path="레이더-차트radar-chart-or-거미줄-그림spider-plot.html"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#데이터-전처리-1"><i class="fa fa-check"></i><b>11.1.2</b> 데이터 전처리</a></li>
+<li class="chapter" data-level="11.1.3" data-path="레이더-차트radar-chart-or-거미줄-그림spider-plot.html"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#레이더-차트-그리기"><i class="fa fa-check"></i><b>11.1.3</b> 레이더 차트 그리기</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="별-그래프-star-graph-segment-diagrams.html"><a href="별-그래프-star-graph-segment-diagrams.html"><i class="fa fa-check"></i><b>11.2</b> 별 그래프 (star graph, segment diagrams)</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="별-그래프-star-graph-segment-diagrams.html"><a href="별-그래프-star-graph-segment-diagrams.html#데이터-세트-10"><i class="fa fa-check"></i><b>11.2.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="11.2.2" data-path="별-그래프-star-graph-segment-diagrams.html"><a href="별-그래프-star-graph-segment-diagrams.html#데이터-처리"><i class="fa fa-check"></i><b>11.2.2</b> 데이터 처리</a></li>
+<li class="chapter" data-level="11.2.3" data-path="별-그래프-star-graph-segment-diagrams.html"><a href="별-그래프-star-graph-segment-diagrams.html#별-그래프-그리기"><i class="fa fa-check"></i><b>11.2.3</b> 별 그래프 그리기</a></li>
+<li class="chapter" data-level="11.2.4" data-path="별-그래프-star-graph-segment-diagrams.html"><a href="별-그래프-star-graph-segment-diagrams.html#나이팅게일-차트"><i class="fa fa-check"></i><b>11.2.4</b> 나이팅게일 차트</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="평행-좌표-그림-parallel-coordinate-plot-parcoord.html"><a href="평행-좌표-그림-parallel-coordinate-plot-parcoord.html"><i class="fa fa-check"></i><b>11.3</b> 평행 좌표 그림 (parallel coordinate plot) : <code>parcoord()</code></a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="평행-좌표-그림-parallel-coordinate-plot-parcoord.html"><a href="평행-좌표-그림-parallel-coordinate-plot-parcoord.html#데이터-세트-11"><i class="fa fa-check"></i><b>11.3.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="11.3.2" data-path="평행-좌표-그림-parallel-coordinate-plot-parcoord.html"><a href="평행-좌표-그림-parallel-coordinate-plot-parcoord.html#데이터-전처리-3"><i class="fa fa-check"></i><b>11.3.2</b> 데이터 전처리</a></li>
+<li class="chapter" data-level="11.3.3" data-path="평행-좌표-그림-parallel-coordinate-plot-parcoord.html"><a href="평행-좌표-그림-parallel-coordinate-plot-parcoord.html#평행-좌표-그림-그리기"><i class="fa fa-check"></i><b>11.3.3</b> 평행 좌표 그림 그리기</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html"><a href="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html"><i class="fa fa-check"></i><b>11.4</b> 3차원 산포도 (3 dimensional scatter plot) : <code>scatterplot3d()</code></a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html"><a href="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html#데이터-세트-12"><i class="fa fa-check"></i><b>11.4.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="11.4.2" data-path="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html"><a href="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html#차원-산포도"><i class="fa fa-check"></i><b>11.4.2</b> 3차원 산포도</a></li>
+<li class="chapter" data-level="11.4.3" data-path="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html"><a href="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html#영화-minority-report"><i class="fa fa-check"></i><b>11.4.3</b> 영화 Minority Report</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html"><i class="fa fa-check"></i><b>11.5</b> 체르노프 얼굴그림 (Chernoff faces) : <code>aplpack</code> package, <code>faces()</code> 함수</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#데이터-세트-13"><i class="fa fa-check"></i><b>11.5.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="11.5.2" data-path="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#체로노프-얼굴그림-그리기"><i class="fa fa-check"></i><b>11.5.2</b> 체로노프 얼굴그림 그리기</a></li>
+<li class="chapter" data-level="11.5.3" data-path="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#산포도에-체르노프-얼굴그림-겹쳐-그르기"><i class="fa fa-check"></i><b>11.5.3</b> 산포도에 체르노프 얼굴그림 겹쳐 그르기</a></li>
+<li class="chapter" data-level="11.5.4" data-path="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#pairs-함수를-사용한-산포도-행렬-그리기"><i class="fa fa-check"></i><b>11.5.4</b> <code>pairs()</code> 함수를 사용한 산포도 행렬 그리기</a></li>
+<li class="chapter" data-level="11.5.5" data-path="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#r-모자이크-그림-vcd패키지-mosaic-함수-1"><i class="fa fa-check"></i><b>11.5.5</b> R 모자이크 그림: <code>vcd</code>패키지 <code>mosaic()</code> 함수</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="r-ggplot2-연속확률분포-곡선-stat-function.html"><a href="r-ggplot2-연속확률분포-곡선-stat-function.html"><i class="fa fa-check"></i><b>12</b> R ggplot2 연속확률분포 곡선, <code>stat_function()</code></a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="연속확률분포-함수.html"><a href="연속확률분포-함수.html"><i class="fa fa-check"></i><b>12.1</b> 연속확률분포 함수</a></li>
+<li class="chapter" data-level="" data-path="패키지-불러오기-2.html"><a href="패키지-불러오기-2.html"><i class="fa fa-check"></i>패키지 불러오기</a></li>
+<li class="chapter" data-level="12.2" data-path="정규분포-함수.html"><a href="정규분포-함수.html"><i class="fa fa-check"></i><b>12.2</b> 정규분포 함수</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="정규분포-함수.html"><a href="정규분포-함수.html#정규분포-확률밀도곡선-stat_functionfun-dnorm"><i class="fa fa-check"></i><b>12.2.1</b> 정규분포 확률밀도곡선 : <code>stat_function(fun = dnorm)</code></a></li>
+<li class="chapter" data-level="12.2.2" data-path="정규분포-함수.html"><a href="정규분포-함수.html#정규분포의-특정-구간에만-색깔-넣기"><i class="fa fa-check"></i><b>12.2.2</b> 정규분포의 특정 구간에만 색깔 넣기</a></li>
+<li class="chapter" data-level="12.2.3" data-path="정규분포-함수.html"><a href="정규분포-함수.html#누적정규분포-cummulative-normal-distribution-stat_functionfun-pnorm"><i class="fa fa-check"></i><b>12.2.3</b> 누적정규분포 (Cummulative Normal Distribution) : stat_function(fun = pnorm)</a></li>
+<li class="chapter" data-level="12.2.4" data-path="정규분포-함수.html"><a href="정규분포-함수.html#정규분포-평균과-분산-지정"><i class="fa fa-check"></i><b>12.2.4</b> 정규분포 : 평균과 분산 지정</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="t-분포-t-distribution-stat-functionfun-dt.html"><a href="t-분포-t-distribution-stat-functionfun-dt.html"><i class="fa fa-check"></i><b>12.3</b> t-분포 (t-Distribution) : <code>stat_function(fun = dt)</code></a></li>
+<li class="chapter" data-level="12.4" data-path="카이제곱분포-확률밀도곡선-stat-functionfun-dchisq.html"><a href="카이제곱분포-확률밀도곡선-stat-functionfun-dchisq.html"><i class="fa fa-check"></i><b>12.4</b> 카이제곱분포 확률밀도곡선 : <code>stat_function(fun = dchisq)</code></a></li>
+<li class="chapter" data-level="12.5" data-path="지수분포-exponential-distribution-stat-functionfun-dexp.html"><a href="지수분포-exponential-distribution-stat-functionfun-dexp.html"><i class="fa fa-check"></i><b>12.5</b> 지수분포 (Exponential Distribution) : <code>stat_function(fun = dexp)</code></a></li>
+<li class="chapter" data-level="12.6" data-path="f-분포-f-distribution-stat-functionfun-df.html"><a href="f-분포-f-distribution-stat-functionfun-df.html"><i class="fa fa-check"></i><b>12.6</b> F 분포 (F Distribution) : <code>stat_function(fun = df)</code></a></li>
+<li class="chapter" data-level="12.7" data-path="감마-분포-gamma-distribution-stat-functionfun-dgamma.html"><a href="감마-분포-gamma-distribution-stat-functionfun-dgamma.html"><i class="fa fa-check"></i><b>12.7</b> 감마 분포 (Gamma Distribution) : <code>stat_function(fun = dgamma)</code></a></li>
+<li class="chapter" data-level="12.8" data-path="일양-분포-uniform-distribution-stat-functionfun-dunif.html"><a href="일양-분포-uniform-distribution-stat-functionfun-dunif.html"><i class="fa fa-check"></i><b>12.8</b> 일양 분포 (Uniform Distribution) :<code>stat_function(fun = dunif)</code></a></li>
+<li class="chapter" data-level="12.9" data-path="상용로그-분포-common-logarithm-distribution-stat-functionfun-log10.html"><a href="상용로그-분포-common-logarithm-distribution-stat-functionfun-log10.html"><i class="fa fa-check"></i><b>12.9</b> 상용로그 분포 (Common Logarithm Distribution) : <code>stat_function(fun = log10)</code></a></li>
+<li class="chapter" data-level="12.10" data-path="사인-함수-곡선sine-function-curve-코사인-함수-곡선cosine-function-curve-stat-functionfun-sin-stat-fuctionfun-cos.html"><a href="사인-함수-곡선sine-function-curve-코사인-함수-곡선cosine-function-curve-stat-functionfun-sin-stat-fuctionfun-cos.html"><i class="fa fa-check"></i><b>12.10</b> 사인 함수 곡선(Sine Function Curve), 코사인 함수 곡선(Cosine Function Curve) : <code>stat_function(fun = sin), stat_fuction(fun = cos)</code></a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="r-동적-그래프-interactive-plotting-in-r-with-manipulate-package-in-rstudio.html"><a href="r-동적-그래프-interactive-plotting-in-r-with-manipulate-package-in-rstudio.html"><i class="fa fa-check"></i><b>13</b> R 동적 그래프 (Interactive Plotting in R) : with <code>manipulate</code> package in Rstudio</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="데이터-세트-14.html"><a href="데이터-세트-14.html"><i class="fa fa-check"></i><b>13.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="13.2" data-path="패키지-불러오기-3.html"><a href="패키지-불러오기-3.html"><i class="fa fa-check"></i><b>13.2</b> 패키지 불러오기</a></li>
+<li class="chapter" data-level="13.3" data-path="slider-control.html"><a href="slider-control.html"><i class="fa fa-check"></i><b>13.3</b> Slider Control</a></li>
+<li class="chapter" data-level="13.4" data-path="picker-control.html"><a href="picker-control.html"><i class="fa fa-check"></i><b>13.4</b> Picker Control</a></li>
+<li class="chapter" data-level="13.5" data-path="checkbox-control.html"><a href="checkbox-control.html"><i class="fa fa-check"></i><b>13.5</b> Checkbox Control</a></li>
+<li class="chapter" data-level="13.6" data-path="combining-controls.html"><a href="combining-controls.html"><i class="fa fa-check"></i><b>13.6</b> Combining Controls</a>
+<ul>
+<li class="chapter" data-level="" data-path="combining-controls.html"><a href="combining-controls.html#참고자료-3"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-5-지리공간-데이터-시각화.html"><a href="part-5-지리공간-데이터-시각화.html"><i class="fa fa-check"></i>Part 5 : 지리공간 데이터 시각화</a></li>
+<li class="chapter" data-level="14" data-path="r에서의-지리공간-데이터-조작.html"><a href="r에서의-지리공간-데이터-조작.html"><i class="fa fa-check"></i><b>14</b> R에서의 지리공간 데이터 조작</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="sf-개체-생성.html"><a href="sf-개체-생성.html"><i class="fa fa-check"></i><b>14.1</b> <code>sf</code> 개체 생성</a></li>
+<li class="chapter" data-level="" data-path="패키지-불러오기-4.html"><a href="패키지-불러오기-4.html"><i class="fa fa-check"></i>패키지 불러오기</a></li>
+<li class="chapter" data-level="14.2" data-path="shp-파일-불러오기.html"><a href="shp-파일-불러오기.html"><i class="fa fa-check"></i><b>14.2</b> shp 파일 불러오기</a></li>
+<li class="chapter" data-level="14.3" data-path="gadmtools-패키지의-지리공간-데이터-다운로드.html"><a href="gadmtools-패키지의-지리공간-데이터-다운로드.html"><i class="fa fa-check"></i><b>14.3</b> GADMTools 패키지의 지리공간 데이터 다운로드</a>
+<ul>
+<li class="chapter" data-level="" data-path="gadmtools-패키지의-지리공간-데이터-다운로드.html"><a href="gadmtools-패키지의-지리공간-데이터-다운로드.html#패키지-불러오기-5"><i class="fa fa-check"></i>패키지 불러오기</a></li>
+<li class="chapter" data-level="14.3.1" data-path="gadmtools-패키지의-지리공간-데이터-다운로드.html"><a href="gadmtools-패키지의-지리공간-데이터-다운로드.html#지리공간-데이터-불러오기"><i class="fa fa-check"></i><b>14.3.1</b> 지리공간 데이터 불러오기</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="sp-개체-정보의-확인.html"><a href="sp-개체-정보의-확인.html"><i class="fa fa-check"></i><b>14.4</b> <code>sp</code> 개체 정보의 확인</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="sp-개체-정보의-확인.html"><a href="sp-개체-정보의-확인.html#sf를-spatialpolygonsdataframe-sp-클래스로-변환하기"><i class="fa fa-check"></i><b>14.4.1</b> <code>sf</code>를 <code>spatialPolygonsDataFrame</code> (<code>sp</code> 클래스)로 변환하기</a></li>
+<li class="chapter" data-level="14.4.2" data-path="sp-개체-정보의-확인.html"><a href="sp-개체-정보의-확인.html#개체-데이터-확인하기"><i class="fa fa-check"></i><b>14.4.2</b> 개체 데이터 확인하기</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="sp-개체를-다시-sf-개체로-변환하기.html"><a href="sp-개체를-다시-sf-개체로-변환하기.html"><i class="fa fa-check"></i><b>14.5</b> <code>sp</code> 개체를 다시 <code>sf</code> 개체로 변환하기</a></li>
+<li class="chapter" data-level="14.6" data-path="sf-개체-조작.html"><a href="sf-개체-조작.html"><i class="fa fa-check"></i><b>14.6</b> <code>sf</code> 개체 조작</a></li>
+<li class="chapter" data-level="14.7" data-path="속성-데이터-준비.html"><a href="속성-데이터-준비.html"><i class="fa fa-check"></i><b>14.7</b> 속성 데이터 준비</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="속성-데이터-준비.html"><a href="속성-데이터-준비.html#속성-데이터-세트-불러오기"><i class="fa fa-check"></i><b>14.7.1</b> 속성 데이터 세트 불러오기</a></li>
+</ul></li>
+<li class="chapter" data-level="14.8" data-path="면적-계산.html"><a href="면적-계산.html"><i class="fa fa-check"></i><b>14.8</b> 면적 계산</a>
+<ul>
+<li class="chapter" data-level="" data-path="면적-계산.html"><a href="면적-계산.html#units-패키지-불러오기"><i class="fa fa-check"></i>units 패키지 불러오기</a></li>
+</ul></li>
+<li class="chapter" data-level="14.9" data-path="geometry-단순화.html"><a href="geometry-단순화.html"><i class="fa fa-check"></i><b>14.9</b> geometry 단순화</a>
+<ul>
+<li class="chapter" data-level="14.9.1" data-path="geometry-단순화.html"><a href="geometry-단순화.html#개체의-용량-비교하기"><i class="fa fa-check"></i><b>14.9.1</b> 개체의 용량 비교하기</a></li>
+</ul></li>
+<li class="chapter" data-level="14.10" data-path="마지막-생각들.html"><a href="마지막-생각들.html"><i class="fa fa-check"></i><b>14.10</b> 마지막 생각들</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="정적-지도-생성.html"><a href="정적-지도-생성.html"><i class="fa fa-check"></i><b>15</b> 정적 지도 생성</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="지리공간-데이터의-시각화를-위한-자원들.html"><a href="지리공간-데이터의-시각화를-위한-자원들.html"><i class="fa fa-check"></i><b>15.1</b> 지리공간 데이터의 시각화를 위한 자원들</a></li>
+<li class="chapter" data-level="15.2" data-path="올바른-시각화-선택.html"><a href="올바른-시각화-선택.html"><i class="fa fa-check"></i><b>15.2</b> 올바른 시각화 선택</a></li>
+<li class="chapter" data-level="15.3" data-path="정적-지도.html"><a href="정적-지도.html"><i class="fa fa-check"></i><b>15.3</b> 정적 지도</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="정적-지도.html"><a href="정적-지도.html#기본-플로팅"><i class="fa fa-check"></i><b>15.3.1</b> 기본 플로팅</a></li>
+<li class="chapter" data-level="15.3.2" data-path="정적-지도.html"><a href="정적-지도.html#우리나라의-1인당-gdp와-인구수"><i class="fa fa-check"></i><b>15.3.2</b> 우리나라의 1인당 GDP와 인구수</a></li>
+<li class="chapter" data-level="15.3.3" data-path="정적-지도.html"><a href="정적-지도.html#테마형-지도-tmap"><i class="fa fa-check"></i><b>15.3.3</b> 테마형 지도 (<code>tmap</code>)</a></li>
+<li class="chapter" data-level="15.3.4" data-path="정적-지도.html"><a href="정적-지도.html#삽입-지도inset-maps"><i class="fa fa-check"></i><b>15.3.4</b> 삽입 지도(Inset Maps)</a></li>
+<li class="chapter" data-level="15.3.5" data-path="정적-지도.html"><a href="정적-지도.html#faceted-지도"><i class="fa fa-check"></i><b>15.3.5</b> Faceted 지도</a></li>
+<li class="chapter" data-level="15.3.6" data-path="정적-지도.html"><a href="정적-지도.html#비례-기호-지도proportional-symbols-maps"><i class="fa fa-check"></i><b>15.3.6</b> 비례 기호 지도(Proportional Symbols Maps)</a></li>
+<li class="chapter" data-level="15.3.7" data-path="정적-지도.html"><a href="정적-지도.html#ggplot2의-geom_sf"><i class="fa fa-check"></i><b>15.3.7</b> <code>ggplot2</code>의 <code>geom_sf</code></a></li>
+<li class="chapter" data-level="15.3.8" data-path="정적-지도.html"><a href="정적-지도.html#점-밀도-지도dot-density-maps"><i class="fa fa-check"></i><b>15.3.8</b> 점 밀도 지도(Dot Density Maps)</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="부분-공간-정적-표현.html"><a href="부분-공간-정적-표현.html"><i class="fa fa-check"></i><b>15.4</b> 부분 공간 정적 표현</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="부분-공간-정적-표현.html"><a href="부분-공간-정적-표현.html#카토그램cartograms"><i class="fa fa-check"></i><b>15.4.1</b> 카토그램(Cartograms)</a></li>
+<li class="chapter" data-level="15.4.2" data-path="부분-공간-정적-표현.html"><a href="부분-공간-정적-표현.html#hexbin지도"><i class="fa fa-check"></i><b>15.4.2</b> Hexbin지도</a></li>
+<li class="chapter" data-level="15.4.3" data-path="부분-공간-정적-표현.html"><a href="부분-공간-정적-표현.html#geofaceted-plots"><i class="fa fa-check"></i><b>15.4.3</b> Geofaceted Plots</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="마지막-생각들-1.html"><a href="마지막-생각들-1.html"><i class="fa fa-check"></i><b>15.5</b> 마지막 생각들</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="공간-데이터-서브세팅.html"><a href="공간-데이터-서브세팅.html"><i class="fa fa-check"></i><b>16</b> 공간 데이터 서브세팅</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="공간-데이터-분할spatial-subsetting이란.html"><a href="공간-데이터-분할spatial-subsetting이란.html"><i class="fa fa-check"></i><b>16.1</b> 공간 데이터 분할(Spatial Subsetting)이란?</a></li>
+<li class="chapter" data-level="16.2" data-path="위상-관계.html"><a href="위상-관계.html"><i class="fa fa-check"></i><b>16.2</b> 위상 관계</a></li>
+<li class="chapter" data-level="16.3" data-path="데이터-준비.html"><a href="데이터-준비.html"><i class="fa fa-check"></i><b>16.3</b> 데이터 준비</a>
+<ul>
+<li class="chapter" data-level="" data-path="데이터-준비.html"><a href="데이터-준비.html#패키지-불러오기-7"><i class="fa fa-check"></i>패키지 불러오기</a></li>
+<li class="chapter" data-level="16.3.1" data-path="데이터-준비.html"><a href="데이터-준비.html#옵션-설정-및-api-키-인증"><i class="fa fa-check"></i><b>16.3.1</b> 옵션 설정 및 API 키 인증</a></li>
+<li class="chapter" data-level="16.3.2" data-path="데이터-준비.html"><a href="데이터-준비.html#공간-데이터-불러오기"><i class="fa fa-check"></i><b>16.3.2</b> 공간 데이터 불러오기</a></li>
+</ul></li>
+<li class="chapter" data-level="16.4" data-path="공간-서브세팅-구문.html"><a href="공간-서브세팅-구문.html"><i class="fa fa-check"></i><b>16.4</b> 공간 서브세팅 구문</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Visualization with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="r-ggplot2-버블-그래프-bubble-chart-geom_point-scale_size_area" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> R ggplot2 버블 그래프 (Bubble Chart) : <code>geom_point()</code>, <code>scale_size_area()</code></h2>
+<p>이전 포스팅에서 <a href="http://rfriend.tistory.com/72"><strong>x축과 y축의 값에 따라</strong></a><a href="http://rfriend.tistory.com/72"><strong>산포도</strong> 그리는 방법</a>을 알아보았다면, 이번 포스팅에서는 여기에 더해서 <strong>z라는 제 3의 변수에 비례해서 점의 크기를 변화시켜서 그린 그래프가 버블 그래프 (Bubble Chart)</strong> 입니다. 산포도가 2차원의 그래프(단, 색깔이나 모양 조건을 추가하면 3차원 정보 제공 가능)라면, <strong>버블 그래프 (Bubble Chart)는 3차원의 그래프가 되어 지면에 보다 많은 정보량을 제공할 수 있는 장점</strong>이 있습니다.</p>
+<p><code>ggplot2</code>에서는 산포도, 점 그래프를 그리는 <code>**geom_point()</code> 함수<strong>와 함께 </strong><code>scale_size_area()</code> 함수**를 같이 사용하면 버블 그래프 (Bubble Chart)를 그릴 수가 있습니다.</p>
+<p><code>MASS</code> 패키지의 <code>Cars93</code> 데이터 프레임 내에 <code>차 모델명(Model)</code>, <code>차종(Type)</code>, <code>무게(Weight)</code>, <code>고속도로연비(MPG.highway)</code>, <code>가격(Price)</code>의 5개 변수를 사용하여 <strong>버블 그래프</strong>를 그려보겠습니다. 데이터가 너무 많으면 버블 그래프를 그릴 때 겹쳐 보여서 보기 싫으므로 <code>차종(Type)</code>에서 “<code>compact</code>”와 “<code>large</code>”의 두 종만 선별해서 예를 들어보겠습니다.</p>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb306-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb306-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    93 obs. of  27 variables:
+##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
+##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
+##  $ Type              : Factor w/ 6 levels &quot;Compact&quot;,&quot;Large&quot;,..: 4 3 1 3 3 3 2 2 3 2 ...
+##  $ Min.Price         : num  12.9 29.2 25.9 30.8 23.7 14.2 19.9 22.6 26.3 33 ...
+##  $ Price             : num  15.9 33.9 29.1 37.7 30 15.7 20.8 23.7 26.3 34.7 ...
+##  $ Max.Price         : num  18.8 38.7 32.3 44.6 36.2 17.3 21.7 24.9 26.3 36.3 ...
+##  $ MPG.city          : int  25 18 20 19 22 22 19 16 19 16 ...
+##  $ MPG.highway       : int  31 25 26 26 30 31 28 25 27 25 ...
+##  $ AirBags           : Factor w/ 3 levels &quot;Driver &amp; Passenger&quot;,..: 3 1 2 1 2 2 2 2 2 2 ...
+##  $ DriveTrain        : Factor w/ 3 levels &quot;4WD&quot;,&quot;Front&quot;,..: 2 2 2 2 3 2 2 3 2 2 ...
+##  $ Cylinders         : Factor w/ 6 levels &quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,..: 2 4 4 4 2 2 4 4 4 5 ...
+##  $ EngineSize        : num  1.8 3.2 2.8 2.8 3.5 2.2 3.8 5.7 3.8 4.9 ...
+##  $ Horsepower        : int  140 200 172 172 208 110 170 180 170 200 ...
+##  $ RPM               : int  6300 5500 5500 5500 5700 5200 4800 4000 4800 4100 ...
+##  $ Rev.per.mile      : int  2890 2335 2280 2535 2545 2565 1570 1320 1690 1510 ...
+##  $ Man.trans.avail   : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 1 1 1 1 1 ...
+##  $ Fuel.tank.capacity: num  13.2 18 16.9 21.1 21.1 16.4 18 23 18.8 18 ...
+##  $ Passengers        : int  5 5 5 6 4 6 6 6 5 6 ...
+##  $ Length            : int  177 195 180 193 186 189 200 216 198 206 ...
+##  $ Wheelbase         : int  102 115 102 106 109 105 111 116 108 114 ...
+##  $ Width             : int  68 71 67 70 69 69 74 78 73 73 ...
+##  $ Turn.circle       : int  37 38 37 37 39 41 42 45 41 43 ...
+##  $ Rear.seat.room    : num  26.5 30 28 31 27 28 30.5 30.5 26.5 35 ...
+##  $ Luggage.room      : int  11 15 14 17 13 16 17 21 14 18 ...
+##  $ Weight            : int  2705 3560 3375 3405 3640 2880 3470 4105 3495 3620 ...
+##  $ Origin            : Factor w/ 2 levels &quot;USA&quot;,&quot;non-USA&quot;: 2 2 2 2 2 1 1 1 1 1 ...
+##  $ Make              : Factor w/ 93 levels &quot;Acura Integra&quot;,..: 1 2 4 3 5 6 7 9 8 10 ...</code></pre>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(Cars93<span class="sc">$</span>Type)</span></code></pre></div>
+<pre><code>## [1] &quot;Compact&quot; &quot;Large&quot;   &quot;Midsize&quot; &quot;Small&quot;   &quot;Sporty&quot;  &quot;Van&quot;</code></pre>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Cars93<span class="sc">$</span>Type)</span></code></pre></div>
+<pre><code>## 
+## Compact   Large Midsize   Small  Sporty     Van 
+##      16      11      22      21      14       9</code></pre>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dataset selection</span></span>
+<span id="cb312-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb312-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb312-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb312-3" aria-hidden="true" tabindex="-1"></a>Cars93_sample <span class="ot">&lt;-</span> <span class="fu">subset</span>(Cars93, </span>
+<span id="cb312-4"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb312-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">select =</span> <span class="fu">c</span>(<span class="st">&quot;Model&quot;</span>, <span class="st">&quot;Type&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Price&quot;</span>), </span>
+<span id="cb312-5"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb312-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">subset =</span> (Type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Large&quot;</span>)))</span>
+<span id="cb312-6"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb312-6" aria-hidden="true" tabindex="-1"></a>Cars93_sample</span></code></pre></div>
+<pre><code>##             Model    Type Weight MPG.highway Price
+## 3              90 Compact   3375          26    29
+## 7         LeSabre   Large   3470          28    21
+## 8      Roadmaster   Large   4105          25    24
+## 10        DeVille   Large   3620          25    35
+## 12       Cavalier Compact   2490          36    13
+## 13        Corsica Compact   2785          34    11
+## 18        Caprice   Large   3910          26    19
+## 20       Concorde   Large   3515          28    18
+## 21        LeBaron Compact   3085          28    16
+## 22       Imperial   Large   3570          26    30
+## 25         Spirit Compact   2970          27    13
+## 30         Vision   Large   3490          28    19
+## 33          Tempo Compact   2690          27    11
+## 38 Crown_Victoria   Large   3950          26    21
+## 43         Accord Compact   3040          31    18
+## 52       Town_Car   Large   4055          26    36
+## 55            626 Compact   2970          34    16
+## 58           190E Compact   2920          29    32
+## 65         Altima Compact   3050          30    16
+## 68        Achieva Compact   2910          31    14
+## 71   Eighty-Eight   Large   3470          28    21
+## 74        Sunbird Compact   2575          31    11
+## 77     Bonneville   Large   3495          28    24
+## 78            900 Compact   2775          26    29
+## 82         Legacy Compact   3085          30    20
+## 90         Passat Compact   2985          30    20
+## 92            240 Compact   2985          28    23</code></pre>
+<p><code>ggplot2</code>의 <code>geom_point()</code>와 <code>scale_size_area()</code> 함수를 사용하여 버블 그래프 (bubble chart)를 그려보겠습니다. <code>ggplot2</code>는 별도의 설치와 호출이 필요한 패키지이므로 아래와 같이 <code>install.packages()</code>와 <code>library()</code>로 설치 및 호출을 먼저 해야 합니다.</p>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;ggplot2&quot;)</span></span>
+<span id="cb314-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb314-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span></code></pre></div>
+<p><code>x</code>축에는 <code>무게(Weight)</code>를, <code>y</code>축에는 <code>고속도로연비(MPG.highway)</code>를, <strong>원의 크기</strong>는 <code>가격(Price)</code>를 설정하였습니다. 그리고 겹치는 부분이 있어서 <code>alpha=0.5</code> 로 해서 반투명하게 하였습니다. <code>scale_size_area</code> 에서 원의 크기의 최대값(max)을 15개 한정을 지었으며, <code>geom_text()</code> 함수를 활용해 <code>vjust=1</code>로 해서 <code>x</code>축 값에 <code>align</code>되고 <code>y</code>값은 <code>MPG.highway</code>값에 살짝 조정을 가해서 label로는 <code>모델명(Model)</code> 변수값을 가져다가 라벨링을 하였습니다.</p>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb315-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bubble chart with scale_size_area and label</span></span>
+<span id="cb315-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb315-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93_sample, <span class="fu">aes</span>(<span class="at">x=</span>Weight, <span class="at">y=</span>MPG.highway)) <span class="sc">+</span> </span>
+<span id="cb315-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb315-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size=</span>Price), <span class="at">shape=</span><span class="dv">21</span>, <span class="at">colour=</span><span class="st">&quot;grey90&quot;</span>, <span class="at">fill=</span><span class="st">&quot;yellow&quot;</span>, , <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb315-4"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb315-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_size_area</span>(<span class="at">max_size =</span> <span class="dv">15</span>) <span class="sc">+</span> <span class="co"># 범례 없애려면 guide=FALSE</span></span>
+<span id="cb315-5"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb315-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">y=</span><span class="fu">as.numeric</span>(MPG.highway)<span class="sc">-</span><span class="fu">sqrt</span>(Price)<span class="sc">/</span><span class="dv">10</span>, <span class="at">label=</span>Model), </span>
+<span id="cb315-6"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb315-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">vjust=</span><span class="dv">1</span>, <span class="at">colour=</span><span class="st">&quot;grey40&quot;</span>, <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb315-7"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb315-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Bubble chart with scale_size_area and label&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
+<p>많은 도움이 되었기를 바랍니다.</p>
+<div id="r-ggplot2-집단간-비교를-위한-면-분할facet-trellis-facet_grid-facet_wrap" class="section level3" number="10.2.1">
+<h3><span class="header-section-number">10.2.1</span> <a href="https://rfriend.tistory.com/85">R ggplot2 집단간 비교를 위한 면 분할(facet, Trellis) : <code>facet_grid()</code>, <code>facet_wrap()</code></a></h3>
+<p>그룹(집단, 요인) 간의 데이터 분포 형태, 변화 추이 등을 비교 분석하기에 유용한 방법으로 비교하려는 축을 기준으로 <strong>면을 분할</strong>하여 그래프를 <strong>그룹 간 비교</strong>하는 방법이 있습니다.</p>
+<p><code>Lattice</code> 패키지에서는 <code>Trellis</code> 를 사용하는데요, <code>ggplot2</code> 패키지에서는 <strong><code>facet_grid()</code> 함수</strong>와 <code>**facet_wrap()</code> 함수**를 사용하여 면 분할을 구현할 수 있습니다.</p>
+<p>Base Graphics 패키지에서는 <code>par()</code> 함수를 사용해서 면 분할을 지정해줄 수 있습니다만, x축과 y축의 scale이 들쭉날쭉해서 직접적으로 서로 비교하기가 곤란하거나, y축의 min, max 값이 그룹 간 숫자를 모두 감안해서 자동 설정되는 것이 아니다보니 분석가가 미리 y축 값의 범위를 계산해보고, 혹은 그려보고 나서 y축 값을 세팅해줘야 하므로 <code>lattice</code>나 <code>ggplot2</code> 대비 불편합니다. 따라서 집단간 비교를 위한 면 분할이 필요한 경우 <code>ggplot2</code>나 <code>lattice</code> 패키지를 권합니다.</p>
+<p><code>MASS</code> 패키지 내 <code>무게(Weight)</code>, <code>고속도로연비(MPG.highway)</code>, <code>차종(Type, 범주형)</code>, <code>생산국가(Origin, 범주형)</code> 의 4개 변수를 사용해서, x축에 <code>무게(Weight)</code>, y축에 <code>고속도로연비(MPG.highway)</code>, 그리고 면 분할의 기준으로 범주형 변수인 <code>차종(Type)</code>과 <code>생산국가(Origin)</code> 변수를 사용하겠습니다.</p>
+<p><code>facet_grid()</code>를 먼저 예제를 보이고, 그 후에 <code>facet_wrap()</code>의 예제를 들겠습니다. 두 함수가 비슷하면서도 조금 다릅니다. 분석가가 필요로 하는 아웃풋 이미지에 맞게 골라서 사용하면 되겠습니다.</p>
+<div id="facet_grid" class="section level4" number="10.2.1.1">
+<h4><span class="header-section-number">10.2.1.1</span> facet_grid()</h4>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="co"># facet_grid()</span></span>
+<span id="cb316-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb316-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Weight, <span class="at">y=</span>MPG.highway)) <span class="sc">+</span></span>
+<span id="cb316-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb316-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">21</span>, <span class="at">colour=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb316-4"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb316-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_grid</span>(Type <span class="sc">~</span> .)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-104-1.png" width="672" /></p>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb317-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Weight, <span class="at">y=</span>MPG.highway)) <span class="sc">+</span></span>
+<span id="cb317-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb317-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">21</span>, <span class="at">colour=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb317-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb317-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_grid</span>(. <span class="sc">~</span> Type)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Weight, <span class="at">y=</span>MPG.highway)) <span class="sc">+</span></span>
+<span id="cb318-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb318-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">21</span>, <span class="at">colour=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb318-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb318-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_grid</span>(Origin <span class="sc">~</span> Type)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
+</div>
+<div id="facet_wrap" class="section level4" number="10.2.1.2">
+<h4><span class="header-section-number">10.2.1.2</span> facet_wrap()</h4>
+<p><code>facet_wrap()</code> 함수는 <code>ncol</code> 또는 <code>nrow</code> 로 행 또는 열의 개수를 분석가가 지정할 수 있어서 좋은 점이 있습니다.</p>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb319-1" aria-hidden="true" tabindex="-1"></a><span class="co"># facet_wrap()</span></span>
+<span id="cb319-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb319-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Weight, <span class="at">y=</span>MPG.highway)) <span class="sc">+</span></span>
+<span id="cb319-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb319-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">21</span>, <span class="at">colour=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb319-4"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb319-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_wrap</span>( <span class="sc">~</span> Type, <span class="at">ncol=</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Weight, <span class="at">y=</span>MPG.highway)) <span class="sc">+</span></span>
+<span id="cb320-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb320-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">21</span>, <span class="at">colour=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb320-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb320-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_wrap</span>(Origin <span class="sc">~</span> Type, <span class="at">ncol=</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Weight, <span class="at">y=</span>MPG.highway)) <span class="sc">+</span></span>
+<span id="cb321-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb321-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">21</span>, <span class="at">colour=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb321-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb321-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_wrap</span>(Origin <span class="sc">~</span> Type, <span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
+</div>
+<div id="r-ggplot2-분할-면에-각각-주석-넣기-geom_text" class="section level4" number="10.2.1.3">
+<h4><span class="header-section-number">10.2.1.3</span> R ggplot2 분할 면에 각각 주석 넣기 : <code>geom_text()</code></h4>
+<p>이전 포스팅에서 하나의 그래프에 텍스트, 선, 화살표, 음영있는 사각형 등으로 부연 설명을 추가하기 위해 <code>annotate()</code> 함수로 주석을 추가하는 방법을 소개하였습니다.</p>
+<p>이번에는 <strong><code>facet_grid()</code> 로 특정 범주형 변수에 의해 요인(factor)별로 면 분할된 그래프에 각각 주석을 넣는 넣기 위해 <code>geom_text()</code> 함수를 사용하는 방법</strong>에 대해 알아보겠습니다.</p>
+<p>예제로 사용할 데이터는 <code>iris</code> 데이터프레임 내 <code>Petal.Width</code>, <code>Petal.Length</code>, <code>Species</code> 의 3개 변수를 사용하겠습니다.</p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(iris)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
+##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<p><code>ggplot2</code>는 별도의 설치 및 호출이 필요한 패키지이므로 아래의 절차를 먼저 따르기 바랍니다.</p>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;ggplot2&quot;)</span></span>
+<span id="cb324-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb324-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<p>먼저, 지난번 포스팅에서 소개드렸던, 하나의 화면에 품종별로 색깔을 구분해서 그리고, <code>annotate()</code> 함수를 사용해서 텍스트 주석(text annotation) 하는 방법을 아래에 복습해 보겠습니다.</p>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 하나의 화면에 품종별로 색깔 구분해서 그리기 : aes(fill=categorical var)</span></span>
+<span id="cb325-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb325-2" aria-hidden="true" tabindex="-1"></a>a1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x=</span>Petal.Width, <span class="at">y=</span>Petal.Length, <span class="at">fill=</span>Species)) <span class="sc">+</span> </span>
+<span id="cb325-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb325-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">colour=</span><span class="st">&quot;grey&quot;</span>, <span class="at">shape=</span><span class="dv">21</span>, <span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb325-4"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb325-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">&quot;Reds&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb325-5"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb325-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="fl">0.25</span>, <span class="at">y=</span><span class="fl">2.4</span>, <span class="at">label=</span><span class="st">&quot;Setosa&quot;</span>, <span class="at">size=</span><span class="dv">7</span>) <span class="sc">+</span> <span class="co"># text annotation</span></span>
+<span id="cb325-6"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb325-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="fl">1.3</span>, <span class="at">y=</span><span class="fl">3.3</span>, <span class="at">label=</span><span class="st">&quot;Versicolor&quot;</span>, <span class="at">size=</span><span class="dv">7</span>) <span class="sc">+</span> </span>
+<span id="cb325-7"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb325-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="fl">1.7</span>, <span class="at">y=</span><span class="fl">6.8</span>, <span class="at">label=</span><span class="st">&quot;Virginica&quot;</span>, <span class="at">size=</span><span class="dv">7</span>)</span>
+<span id="cb325-8"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb325-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb325-9"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb325-9" aria-hidden="true" tabindex="-1"></a>a1</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
+<p>이걸 <code>품종(Species)</code>을 기준으로 <strong>면 분할</strong> (<code>facet_grid(.~Species)</code>) 하면 아래와 같습니다. 이번 포스팅에서는 아래 처럼 면 분할 된 상태의 <strong>그래프에 주석 추가하는 방법</strong>입니다.</p>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 품종별로 면 분할하여 색깔 구분없이 그리기 : facet_grid(.~categorical var)</span></span>
+<span id="cb326-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb326-2" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x=</span>Petal.Width, <span class="at">y=</span>Petal.Length)) <span class="sc">+</span> </span>
+<span id="cb326-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb326-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">colour=</span><span class="st">&quot;blue&quot;</span>, <span class="at">shape=</span><span class="dv">19</span>, <span class="at">size=</span><span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb326-4"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb326-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_grid</span>(.<span class="sc">~</span>Species)</span>
+<span id="cb326-5"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb326-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb326-6"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb326-6" aria-hidden="true" tabindex="-1"></a>g1</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-113-1.png" width="672" /></p>
+<p>범주형 변수의 요인(factor)별로 면 분할된 상태의 그래프에 텍스트 주석을 넣으려고 아래와 같이 하면 라벨 길이가 다르다면서 에러가 납니다.</p>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 텍스트 라벨 넣으려면 에러 발생 </span></span>
+<span id="cb327-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb327-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Error: Incompatible lengths for set aesthetics: label</span></span>
+<span id="cb327-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb327-3" aria-hidden="true" tabindex="-1"></a>g1 <span class="sc">+</span> </span>
+<span id="cb327-4"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb327-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">1</span>, <span class="at">y=</span><span class="dv">7</span>, <span class="at">label=</span><span class="fu">c</span>(<span class="st">&quot;Setosa&quot;</span>, <span class="st">&quot;Versicolor&quot;</span>, <span class="st">&quot;Virginica&quot;</span>))</span></code></pre></div>
+<pre><code>## Error: Aesthetics must be either length 1 or the same as the data (9): label</code></pre>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-114-1.png" width="672" /></p>
+<p>범주형 변수의 요인(factor)별로 면 분할된 상태의 그래프에 텍스트 주석을 넣으려고 하려면 <code>annotate()</code> 함수로는 안되구요, 라벨을 넣으려는 내용을 데이터프레임으로 미리 만들어놓고 <code>geom_text()</code>로 라벨을 집어넣어야 합니다. 아래 예제는 <code>Species</code> 이름을 각 각 텍스트로 넣어보는 예입니다.</p>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 분할 면마다 각각 텍스트 주석 넣기 : geom_text()</span></span>
+<span id="cb329-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb329-2" aria-hidden="true" tabindex="-1"></a><span class="co"># dataframe of label</span></span>
+<span id="cb329-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb329-3" aria-hidden="true" tabindex="-1"></a>iris_species_labels <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Species =</span> <span class="fu">c</span>(<span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;versicolor&quot;</span>, <span class="st">&quot;virginica&quot;</span>), </span>
+<span id="cb329-4"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb329-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">label =</span> <span class="fu">c</span>(<span class="st">&quot;Species=Setosa&quot;</span>, <span class="st">&quot;Species=Versicolor&quot;</span>, <span class="st">&quot;Species=Virginica&quot;</span>))</span>
+<span id="cb329-5"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb329-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb329-6"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb329-6" aria-hidden="true" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> g1 <span class="sc">+</span> <span class="fu">geom_text</span>(<span class="at">x=</span><span class="dv">1</span>, <span class="at">y=</span><span class="fl">6.5</span>, </span>
+<span id="cb329-7"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb329-7" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">aes</span>(<span class="at">label=</span>label), <span class="at">data=</span>iris_species_labels)</span>
+<span id="cb329-8"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb329-8" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb329-9"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb329-9" aria-hidden="true" tabindex="-1"></a>g2</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
+<p>다음으로 각 <code>품종(Species)</code>별로 x축 <code>Petal.Width</code>와 y축 <code>Petal.Length</code> 평균을 구해서 <strong>중심 좌표 (centroid)</strong>를 텍스트로 주석을 추가해보겠습니다.</p>
+<p>먼저, <code>sqldf</code> 패키지를 새로 설치해서 x축 <code>Petal.Width</code>와 y축 <code>Petal.Length</code> 평균을 구해보겠습니다.</p>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;sqldf&quot;) </span></span>
+<span id="cb330-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb330-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sqldf) </span>
+<span id="cb330-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb330-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb330-4"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb330-4" aria-hidden="true" tabindex="-1"></a>mean_iris <span class="ot">&lt;-</span> <span class="fu">sqldf</span>(<span class="st">&#39;select &quot;Species&quot;, </span></span>
+<span id="cb330-5"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb330-5" aria-hidden="true" tabindex="-1"></a><span class="st">                    avg(&quot;Petal.Width&quot;) as &quot;mean_Petal.Width&quot;, </span></span>
+<span id="cb330-6"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb330-6" aria-hidden="true" tabindex="-1"></a><span class="st">                    avg(&quot;Petal.Length&quot;) as &quot;mean_Petal.Length&quot;</span></span>
+<span id="cb330-7"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb330-7" aria-hidden="true" tabindex="-1"></a><span class="st">                    from iris  group by Species  order by Species&#39;</span>) </span>
+<span id="cb330-8"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb330-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb330-9"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb330-9" aria-hidden="true" tabindex="-1"></a>mean_iris</span></code></pre></div>
+<pre><code>##      Species mean_Petal.Width mean_Petal.Length
+## 1     setosa             0.25               1.5
+## 2 versicolor             1.33               4.3
+## 3  virginica             2.03               5.6</code></pre>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb332-1" aria-hidden="true" tabindex="-1"></a>label_mean_iris <span class="ot">&lt;-</span> <span class="fu">transform</span>(mean_iris, </span>
+<span id="cb332-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb332-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">centroid=</span><span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot;centroid(&quot;</span>), </span>
+<span id="cb332-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb332-3" aria-hidden="true" tabindex="-1"></a>                                            <span class="fu">round</span>(mean_Petal.Width, <span class="dv">2</span>), </span>
+<span id="cb332-4"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb332-4" aria-hidden="true" tabindex="-1"></a>                                            <span class="fu">c</span>(<span class="st">&quot;, &quot;</span>), </span>
+<span id="cb332-5"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb332-5" aria-hidden="true" tabindex="-1"></a>                                            <span class="fu">round</span>(mean_Petal.Length, <span class="dv">2</span>), </span>
+<span id="cb332-6"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb332-6" aria-hidden="true" tabindex="-1"></a>                                            <span class="fu">c</span>(<span class="st">&quot;)&quot;</span>), </span>
+<span id="cb332-7"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb332-7" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">sep=</span><span class="st">&quot;&quot;</span>))</span>
+<span id="cb332-8"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb332-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb332-9"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb332-9" aria-hidden="true" tabindex="-1"></a>label_mean_iris</span></code></pre></div>
+<pre><code>##      Species mean_Petal.Width mean_Petal.Length             centroid
+## 1     setosa             0.25               1.5 centroid(0.25, 1.46)
+## 2 versicolor             1.33               4.3 centroid(1.33, 4.26)
+## 3  virginica             2.03               5.6 centroid(2.03, 5.55)</code></pre>
+<p>다음으로 <code>centroid</code> 정보를 그래프에 분할된 면에 따라 각각 추가해보겠습니다.</p>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x, y 평균 좌표 추가 : geom_text()</span></span>
+<span id="cb334-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb334-2" aria-hidden="true" tabindex="-1"></a>g3 <span class="ot">&lt;-</span> g2 <span class="sc">+</span></span>
+<span id="cb334-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb334-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_text</span>(<span class="at">x=</span><span class="dv">1</span>, <span class="at">y=</span><span class="dv">6</span>, <span class="fu">aes</span>(<span class="at">label=</span>centroid), <span class="at">data=</span>label_mean_iris)</span>
+<span id="cb334-4"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb334-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb334-5"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb334-5" aria-hidden="true" tabindex="-1"></a>g3</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-117-1.png" width="672" /></p>
+</div>
+</div>
+<div id="r-ggplot2-x축-y축-설정-coord_fixed-scale_x_continuous-scale_y_continuous" class="section level3" number="10.2.2">
+<h3><span class="header-section-number">10.2.2</span> R ggplot2 x축, y축 설정 : coord_fixed(), scale_x_continuous(), scale_y_continuous()</h3>
+<p><code>ggplot2</code> 그래프를 그렸을 때 x축이나 y축의 디폴트 값을 사용해도 무리가 없는 경우가 많기는 합니다만, 분석가가 x축이나 y축을 좀더 사용하는 목적에 맞게 설정을 조정하고 싶을 때가 있습니다.</p>
+<p>이때 사용할 수 있는 <code>ggplot2</code>의 함수 3가지를 알아보도록 하겠습니다.</p>
+<p><strong>(1) 1:1 의 비율로 x축과 y축 설정</strong> <strong>: coord_fixed()</strong></p>
+<p><strong>(2) 일정한 간격으로 x축, y축 설정</strong> <strong>: scale_x_continuous(breaks=seq())</strong></p>
+<p><strong>(3) 분석가 마음대로 x축, y축 설정</strong> <strong>: scale_x_continuous(breaks=c())</strong></p>
+<p>예제로 사용할 데이터는 <code>MASS</code> 패키지에 내장되어 있는 <code>Cars93</code> 데이터 프레임의 <code>도시연비(MPG.city)</code>, <code>고속도로연비(MPG.highway)</code>가 되겠습니다. scale이 연비로서 서로 같은 변수를 선택하였으며, 산포도를 그려보면서 x축, y축 설정을 바꿔보도록 하겠습니다.</p>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
+<span id="cb335-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb335-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    93 obs. of  27 variables:
+##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
+##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
+##  $ Type              : Factor w/ 6 levels &quot;Compact&quot;,&quot;Large&quot;,..: 4 3 1 3 3 3 2 2 3 2 ...
+##  $ Min.Price         : num  12.9 29.2 25.9 30.8 23.7 14.2 19.9 22.6 26.3 33 ...
+##  $ Price             : num  15.9 33.9 29.1 37.7 30 15.7 20.8 23.7 26.3 34.7 ...
+##  $ Max.Price         : num  18.8 38.7 32.3 44.6 36.2 17.3 21.7 24.9 26.3 36.3 ...
+##  $ MPG.city          : int  25 18 20 19 22 22 19 16 19 16 ...
+##  $ MPG.highway       : int  31 25 26 26 30 31 28 25 27 25 ...
+##  $ AirBags           : Factor w/ 3 levels &quot;Driver &amp; Passenger&quot;,..: 3 1 2 1 2 2 2 2 2 2 ...
+##  $ DriveTrain        : Factor w/ 3 levels &quot;4WD&quot;,&quot;Front&quot;,..: 2 2 2 2 3 2 2 3 2 2 ...
+##  $ Cylinders         : Factor w/ 6 levels &quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,..: 2 4 4 4 2 2 4 4 4 5 ...
+##  $ EngineSize        : num  1.8 3.2 2.8 2.8 3.5 2.2 3.8 5.7 3.8 4.9 ...
+##  $ Horsepower        : int  140 200 172 172 208 110 170 180 170 200 ...
+##  $ RPM               : int  6300 5500 5500 5500 5700 5200 4800 4000 4800 4100 ...
+##  $ Rev.per.mile      : int  2890 2335 2280 2535 2545 2565 1570 1320 1690 1510 ...
+##  $ Man.trans.avail   : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 1 1 1 1 1 ...
+##  $ Fuel.tank.capacity: num  13.2 18 16.9 21.1 21.1 16.4 18 23 18.8 18 ...
+##  $ Passengers        : int  5 5 5 6 4 6 6 6 5 6 ...
+##  $ Length            : int  177 195 180 193 186 189 200 216 198 206 ...
+##  $ Wheelbase         : int  102 115 102 106 109 105 111 116 108 114 ...
+##  $ Width             : int  68 71 67 70 69 69 74 78 73 73 ...
+##  $ Turn.circle       : int  37 38 37 37 39 41 42 45 41 43 ...
+##  $ Rear.seat.room    : num  26.5 30 28 31 27 28 30.5 30.5 26.5 35 ...
+##  $ Luggage.room      : int  11 15 14 17 13 16 17 21 14 18 ...
+##  $ Weight            : int  2705 3560 3375 3405 3640 2880 3470 4105 3495 3620 ...
+##  $ Origin            : Factor w/ 2 levels &quot;USA&quot;,&quot;non-USA&quot;: 2 2 2 2 2 1 1 1 1 1 ...
+##  $ Make              : Factor w/ 93 levels &quot;Acura Integra&quot;,..: 1 2 4 3 5 6 7 9 8 10 ...</code></pre>
+<p>ggplot2는 신규 설치 및 호출이 필요한 패키지이므로 아래와 같은 사전 절차가 필요합니다.</p>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot2 설치 및 호출</span></span>
+<span id="cb337-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb337-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;ggplot2&quot;)</span></span>
+<span id="cb337-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb337-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span></code></pre></div>
+<p>순서대로 하나씩 살펴보겠습니다. 함수 옵션을 바꿔줌에 따라서 x축, y축 결과가 어떻게 바뀌는지 살펴보시고, 필요로 하는 함수 옵션을 선택해서 사용하시면 되겠습니다.</p>
+<div id="default-setting" class="section level4" number="10.2.2.1">
+<h4><span class="header-section-number">10.2.2.1</span> Default setting</h4>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="co"># default setting of x and y axis</span></span>
+<span id="cb338-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb338-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>MPG.city, <span class="at">y=</span>MPG.highway)) <span class="sc">+</span></span>
+<span id="cb338-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb338-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">21</span>, <span class="at">colour=</span><span class="st">&quot;black&quot;</span>, <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb338-4"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb338-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;default setting of x and y axis&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-120-1.png" width="672" /></p>
+</div>
+<div id="의-비율로-x축과-y축-설정-coord_fixed" class="section level4" number="10.2.2.2">
+<h4><span class="header-section-number">10.2.2.2</span> 1:1 의 비율로 x축과 y축 설정 : <code>coord_fixed()</code></h4>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1:1 proportion of x and y axis : coord_fixed()</span></span>
+<span id="cb339-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb339-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>MPG.city, <span class="at">y=</span>MPG.highway)) <span class="sc">+</span></span>
+<span id="cb339-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb339-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">21</span>, <span class="at">colour=</span><span class="st">&quot;black&quot;</span>, <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb339-4"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb339-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
+<span id="cb339-5"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb339-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;1:1 proportion of x and y axis : coord_fixed()&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
+</div>
+<div id="일정한-간격으로-x축과-y축-설정-scale_x_continuousbreaksseq" class="section level4" number="10.2.2.3">
+<h4><span class="header-section-number">10.2.2.3</span> 일정한 간격으로 x축과 y축 설정 : <code>scale_x_continuous(breaks=seq())</code></h4>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="co"># manual setting with fixed interval of x and y axis : scale_x_continuous(breaks=seq())</span></span>
+<span id="cb340-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb340-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>MPG.city, <span class="at">y=</span>MPG.highway)) <span class="sc">+</span></span>
+<span id="cb340-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb340-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">21</span>, <span class="at">colour=</span><span class="st">&quot;black&quot;</span>, <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb340-4"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb340-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
+<span id="cb340-5"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb340-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">80</span>, <span class="dv">5</span>)) <span class="sc">+</span> </span>
+<span id="cb340-6"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb340-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_y_continuous</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">80</span>, <span class="dv">5</span>)) <span class="sc">+</span> </span>
+<span id="cb340-7"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb340-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;manual setting with fixed interval of x and y axis : scale_x_continuous(breaks=seq())&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-122-1.png" width="672" /></p>
+</div>
+<div id="분석가-마음대로-x축과-y축-설정-scale_x_continuousbreaksc" class="section level4" number="10.2.2.4">
+<h4><span class="header-section-number">10.2.2.4</span> 분석가 마음대로 x축과 y축 설정 : <code>scale_x_continuous(breaks=c())</code></h4>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="co"># manual setting of x and y axis : scale_x_continuous(breaks=c())</span></span>
+<span id="cb341-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb341-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>MPG.city, <span class="at">y=</span>MPG.highway)) <span class="sc">+</span></span>
+<span id="cb341-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb341-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">21</span>, <span class="at">colour=</span><span class="st">&quot;black&quot;</span>, <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb341-4"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb341-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
+<span id="cb341-5"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb341-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">40</span>)) <span class="sc">+</span> </span>
+<span id="cb341-6"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb341-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_y_continuous</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>)) <span class="sc">+</span> </span>
+<span id="cb341-7"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb341-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;manual setting of x and y axis : scale_x_continuous(breaks=c())&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-123-1.png" width="672" /></p>
+<p>함수 옵션을 바꿔줌에 따라서 x축, y축 결과가 어떻게 바뀌는지 살펴보시고, 필요로 하는 함수 옵션을 선택해서 사용하시면 되겠습니다.</p>
+</div>
+</div>
+<div id="r-ggplot2-그래프-색깔-설정-colour-setting" class="section level3" number="10.2.3">
+<h3><span class="header-section-number">10.2.3</span> R ggplot2 그래프 색깔 설정 (colour setting)</h3>
+<p>이번 포스팅에서는 R <code>ggplot2</code>에서 그래프 색깔 설정 (colour setting), 조절하는 방법에 대해서 알아보겠습니다. 이전의 각 그래프 종류별로 소개한 내용에도 색깔 지정에 대한 내용이 조금씩 포함되어 있기는 합니다만, 이번 포스팅에서는 색깔 설정에 대한 경우의 수를 종합적으로 포괄해서 정리를 해보았습니다.</p>
+<p>그래프에서 색깔을 특정 변수의 변화와 align하게 되면 x축과 y축의 2차원에 색깔이라는 차원을 추가함으로써 3차원의 정보를 제공할 수 있습니다. 회사 업무 보고서에 엑셀로 그린 그래프를 많이 사용하고는 하는데요, x축과 y축의 2차원을 넘어서는, 특정 조건에 따라서 색깔이나 모양을 달리해야 하는 경우라면 엑셀로 그래프를 그리는 것이 거의 불가능하게 됩니다. 이때 R이 데이터 전처리/변환부터 해서 인쇄용으로 바로 사용해도 좋을 만큼의 고품질의 그래프를 그리는데 아주 특출난 역할을 할 수 있습니다. R 그래프에서 색깔을 자유자재로 사용할 수 있다면 미적으로도 보기에 좋겠지요?!</p>
+<p>이번 예제에서 사용할 데이터는 <code>MASS</code> 패키지에 내장되어 있는 <code>Cars93</code> 데이터 프레임의 <code>차 무게(Weight)</code>와 <code>고속도로연비(MPG.highway)</code>, <code>차 가격(Price)</code>, <code>실린더 개수(Cylinders)</code>의 4개 변수를 사용하겠습니다.</p>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
+<span id="cb342-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb342-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    93 obs. of  27 variables:
+##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
+##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
+##  $ Type              : Factor w/ 6 levels &quot;Compact&quot;,&quot;Large&quot;,..: 4 3 1 3 3 3 2 2 3 2 ...
+##  $ Min.Price         : num  12.9 29.2 25.9 30.8 23.7 14.2 19.9 22.6 26.3 33 ...
+##  $ Price             : num  15.9 33.9 29.1 37.7 30 15.7 20.8 23.7 26.3 34.7 ...
+##  $ Max.Price         : num  18.8 38.7 32.3 44.6 36.2 17.3 21.7 24.9 26.3 36.3 ...
+##  $ MPG.city          : int  25 18 20 19 22 22 19 16 19 16 ...
+##  $ MPG.highway       : int  31 25 26 26 30 31 28 25 27 25 ...
+##  $ AirBags           : Factor w/ 3 levels &quot;Driver &amp; Passenger&quot;,..: 3 1 2 1 2 2 2 2 2 2 ...
+##  $ DriveTrain        : Factor w/ 3 levels &quot;4WD&quot;,&quot;Front&quot;,..: 2 2 2 2 3 2 2 3 2 2 ...
+##  $ Cylinders         : Factor w/ 6 levels &quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,..: 2 4 4 4 2 2 4 4 4 5 ...
+##  $ EngineSize        : num  1.8 3.2 2.8 2.8 3.5 2.2 3.8 5.7 3.8 4.9 ...
+##  $ Horsepower        : int  140 200 172 172 208 110 170 180 170 200 ...
+##  $ RPM               : int  6300 5500 5500 5500 5700 5200 4800 4000 4800 4100 ...
+##  $ Rev.per.mile      : int  2890 2335 2280 2535 2545 2565 1570 1320 1690 1510 ...
+##  $ Man.trans.avail   : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 1 1 1 1 1 ...
+##  $ Fuel.tank.capacity: num  13.2 18 16.9 21.1 21.1 16.4 18 23 18.8 18 ...
+##  $ Passengers        : int  5 5 5 6 4 6 6 6 5 6 ...
+##  $ Length            : int  177 195 180 193 186 189 200 216 198 206 ...
+##  $ Wheelbase         : int  102 115 102 106 109 105 111 116 108 114 ...
+##  $ Width             : int  68 71 67 70 69 69 74 78 73 73 ...
+##  $ Turn.circle       : int  37 38 37 37 39 41 42 45 41 43 ...
+##  $ Rear.seat.room    : num  26.5 30 28 31 27 28 30.5 30.5 26.5 35 ...
+##  $ Luggage.room      : int  11 15 14 17 13 16 17 21 14 18 ...
+##  $ Weight            : int  2705 3560 3375 3405 3640 2880 3470 4105 3495 3620 ...
+##  $ Origin            : Factor w/ 2 levels &quot;USA&quot;,&quot;non-USA&quot;: 2 2 2 2 2 1 1 1 1 1 ...
+##  $ Make              : Factor w/ 93 levels &quot;Acura Integra&quot;,..: 1 2 4 3 5 6 7 9 8 10 ...</code></pre>
+<p><code>ggplot2</code> 패키지는 별도의 설치 및 호출이 필요하므로 아래의 절차를 먼저 시행합니다.</p>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;ggplot2&quot;) # 설치</span></span>
+<span id="cb344-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb344-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)  </span></code></pre></div>
+<p>색상 변화를 잘 살펴볼 수 있도록 속이 빈 동그라미 모양인 <code>shape=21</code> 번의 도형을 사용해서 <code>size=6</code> 으로 큼지막하게 키워서 예를 들어보겠습니다.</p>
+<div id="색깔-설정을-별도로-하지-않은-경우-디폴트-테두리-검정색-default-colour" class="section level4" number="10.2.3.1">
+<h4><span class="header-section-number">10.2.3.1</span> 색깔 설정을 별도로 하지 않은 경우 디폴트 테두리 검정색 (default colour)</h4>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="co"># default colour</span></span>
+<span id="cb345-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb345-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Weight, <span class="at">y=</span>MPG.highway)) <span class="sc">+</span></span>
+<span id="cb345-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb345-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">21</span>, <span class="at">size=</span><span class="dv">6</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-126-1.png" width="672" /></p>
+</div>
+<div id="테두리-선-색깔-지정-colour-line-colour-setting" class="section level4" number="10.2.3.2">
+<h4><span class="header-section-number">10.2.3.2</span> 테두리 선 색깔 지정 (<code>colour</code> : line colour setting)</h4>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 테두리 선 색깔 지정 (colour : line colour setting)</span></span>
+<span id="cb346-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb346-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Weight, <span class="at">y=</span>MPG.highway)) <span class="sc">+</span></span>
+<span id="cb346-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb346-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">21</span>, <span class="at">size=</span><span class="dv">6</span>, <span class="at">colour=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-127-1.png" width="672" /></p>
+</div>
+<div id="도형의-속-채우기-색깔-지정-fill-innner-colour-fill-up" class="section level4" number="10.2.3.3">
+<h4><span class="header-section-number">10.2.3.3</span> 도형의 속 채우기 색깔 지정 (<code>fill</code> : innner colour fill-up)</h4>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 도형의 속 채우기 색깔 (fill : inner colour fill-up)</span></span>
+<span id="cb347-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb347-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Weight, <span class="at">y=</span>MPG.highway)) <span class="sc">+</span></span>
+<span id="cb347-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb347-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">21</span>, <span class="at">size=</span><span class="dv">6</span>, <span class="at">fill=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-128-1.png" width="672" /></p>
+</div>
+<div id="연속형-변수의-숫자에-따른-색깔-조절-aesfillcontinuous-variable" class="section level4" number="10.2.3.4">
+<h4><span class="header-section-number">10.2.3.4</span> 연속형 변수의 숫자에 따른 색깔 조절 : <code>aes(fill=continuous variable)</code></h4>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 연속형 변수의 숫자에 따른 색깔 조절</span></span>
+<span id="cb348-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb348-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (fill : colour change aligned with continuous numeric variable)</span></span>
+<span id="cb348-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb348-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Weight, <span class="at">y=</span>MPG.highway, <span class="at">fill=</span>Price)) <span class="sc">+</span></span>
+<span id="cb348-4"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb348-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">colour=</span><span class="st">&quot;grey&quot;</span>, <span class="at">shape=</span><span class="dv">21</span>, <span class="at">size=</span><span class="dv">6</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-129-1.png" width="672" /></p>
+</div>
+<div id="범주형-변수의-범주요인factor에-따른-색깔-조절-aesfillcategorical-variable" class="section level4" number="10.2.3.5">
+<h4><span class="header-section-number">10.2.3.5</span> 범주형 변수의 범주/요인(factor)에 따른 색깔 조절 : <code>aes(fill=categorical variable)</code></h4>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb349-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 범주형 변수의 범주/요인(factor) 따른 색깔 조절 </span></span>
+<span id="cb349-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb349-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (fill : colour change aligned with categorical variable)</span></span>
+<span id="cb349-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb349-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Weight, <span class="at">y=</span>MPG.highway, <span class="at">fill=</span>Cylinders)) <span class="sc">+</span></span>
+<span id="cb349-4"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb349-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">colour=</span><span class="st">&quot;grey&quot;</span>, <span class="at">shape=</span><span class="dv">21</span>, <span class="at">size=</span><span class="dv">6</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-130-1.png" width="672" /></p>
+</div>
+<div id="palette-oranges-색-설정-pallet-colour-setting-scale_fill_brewer" class="section level4" number="10.2.3.6">
+<h4><span class="header-section-number">10.2.3.6</span> <code>Palette = Oranges</code> 색 설정 (pallet colour setting) : <strong><code>scale_fill_brewer()</code></strong></h4>
+<p><strong>palette 설정</strong>은 <em>범주형 데이터 (categorical data)에만 해당</em>됩니다.</p>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Palette = Oranges 색 설정 (palette colour setting) : scale_fill_brewer()</span></span>
+<span id="cb350-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb350-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Weight, <span class="at">y=</span>MPG.highway, <span class="at">fill=</span>Cylinders)) <span class="sc">+</span></span>
+<span id="cb350-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb350-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">colour=</span><span class="st">&quot;grey&quot;</span>, <span class="at">shape=</span><span class="dv">21</span>, <span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb350-4"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb350-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">&quot;Oranges&quot;</span>)               <span class="co"># Oranges</span></span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
+</div>
+<div id="palette-reds-색-설정-pallet-colour-setting-scale_fill_brewer" class="section level4" number="10.2.3.7">
+<h4><span class="header-section-number">10.2.3.7</span> <code>Palette = Reds</code> 색 설정 (pallet colour setting) : <strong><code>scale_fill_brewer()</code></strong></h4>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Palette = Reds 색 설정 (palette colour setting) : scale_fill_brewer()</span></span>
+<span id="cb351-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb351-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Weight, <span class="at">y=</span>MPG.highway, <span class="at">fill=</span>Cylinders)) <span class="sc">+</span></span>
+<span id="cb351-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb351-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">colour=</span><span class="st">&quot;grey&quot;</span>, <span class="at">shape=</span><span class="dv">21</span>, <span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb351-4"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb351-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">&quot;Reds&quot;</span>)                  <span class="co"># Reds</span></span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
+</div>
+<div id="palette-blues-색-설정-pallet-colour-setting-scale_fill_brewer" class="section level4" number="10.2.3.8">
+<h4><span class="header-section-number">10.2.3.8</span> <code>Palette = Blues</code> 색 설정 (pallet colour setting) : <strong><code>scale_fill_brewer()</code></strong></h4>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Palette = Blues 색 설정 (palette colour setting) : scale_fill_brewer()</span></span>
+<span id="cb352-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb352-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Weight, <span class="at">y=</span>MPG.highway, <span class="at">fill=</span>Cylinders)) <span class="sc">+</span></span>
+<span id="cb352-3"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb352-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">colour=</span><span class="st">&quot;grey&quot;</span>, <span class="at">shape=</span><span class="dv">21</span>, <span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb352-4"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb352-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">&quot;Blues&quot;</span>)                 <span class="co"># Blues</span></span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-133-1.png" width="672" /></p>
+</div>
+</div>
+<div id="r-ggplot2-텍스트text-선line-화살표arrow-음영사각형shadowed-box-제목title-주석달기-annotate" class="section level3" number="10.2.4">
+<h3><span class="header-section-number">10.2.4</span> R <code>ggplot2</code> 텍스트(text), 선(line), 화살표(arrow), 음영사각형(shadowed box), 제목(title) 주석달기 : <code>annotate()</code></h3>
+<p>R로 그래프를 그렸다면, 보는 이의 가독성, 해석의 용이성을 높여주기 위해서 그래프 위에 <strong>텍스트, 가로선/세로선/대각선, 화살표, 음영 사각형, 제목 등과 같이 추가로 정보를 제공하거나 강조를 하고 싶은 부분에 주석을 달고 싶을 때</strong>가 있습니다.</p>
+<ul>
+<li>텍스트 : <code>annotate("text")</code></li>
+<li>가로선/세로선/대각선 : <code>geom_vline()</code>, <code>geom_hline()</code>, <code>geom_abline()</code></li>
+<li>화살표 : <code>annotate("segment", arrow=arrow())</code> , with <code>grid</code> package</li>
+<li>음영 사각형 : <code>annotate("rect")</code></li>
+<li>제목 : <code>ggtitle()</code></li>
+</ul>
+<p>매번의 R 그래프/시각화 포스팅마다 주석 다는 방법을 간간이 곁들여서 소개해드리기는 했는데요, 이번 포스팅에서는 주석 다는 방법에 대해서 포괄적이고 종합적으로 정리를 해서 바로 찾아보기 편하도록 정리를 해보았습니다.</p>
+<p>예제로 사용할 데이터는 <code>Base</code> Package에 내장되어 있는 <code>iris</code> 데이터 프레임의 <code>Petal.Width</code>, <code>Petal.Length</code>, <code>Species</code>의 세개 변수를 사용하겠습니다. (<code>iris</code> 데이터셋은 데이터 마이닝 실습에 아주 많이 사용되는 데이터셋으로서, <code>iris</code> 꽃 품종 중 <code>setosa</code> 50개, <code>versicolor</code> 50개, <code>virginica</code>50개를 꽃잎의 넓이와 길이를 측정해놓은 데이터셋입니다)</p>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb353-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(iris)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
+##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<p><code>ggplot2</code>는 별도의 설치 및 호출이 필요한 패키지이므로 아래의 절차를 먼저 실행하시기 바랍니다.</p>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;ggplot2&quot;)</span></span>
+<span id="cb355-2"><a href="r-ggplot2-버블-그래프-bubble-chart-geom-point-scale-size-area.html#cb355-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="r-ggplot2-산포도scatter-plot-geom-point.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="산포도-꾸미지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>
