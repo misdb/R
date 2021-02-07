@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>2.1 대화형 R 콘솔 | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="2.1 대화형 R 콘솔 | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="2.1 대화형 R 콘솔 | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="Hello-World.html"/>
+<link rel="next" href="터미널terminal.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="대화형-r-콘솔" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> 대화형 R 콘솔</h2>
+<p>RStudio를 처음 열면 화면 왼쪽 전체를 차지하는 창이 표시된다. 이것은 콘솔 화면이며 사용자 화면은 그림 <a href="대화형-r-콘솔.html#fig:cons">2.1</a>에 표시된 것과 유사해야 한다.</p>
+<div class="figure"><span id="fig:cons"></span>
+<img src="images/02-001.png" alt="콘솔 화면" width="100%" />
+<p class="caption">
+그림 2.1: 콘솔 화면
+</p>
+</div>
+<p>사용 중인 R 버전에 대한 정보가 표시되어야 한다. 맨 아래에는 커서 <code>&gt;</code>가 있다. 커서 오른쪽에 있는 공간은 R 명령을 콘솔에 직접 입력할 수있는 곳이다.</p>
+<p><code>1 + 1</code>을 입력 한 다음 Enter 키를 누른다. 아래 줄에 <code>[1] 2</code>가 표시되어야 한다. <code>2</code>는 질문 <code>1 + 1</code>에 대한 답이고, 괄호 <code>[1]</code>의 <code>1</code>은 답 <code>2</code>에 해당하는 벡터의 위치(색인)이다.</p>
+<div id="벡터" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> 벡터</h3>
+<p>R의 중심 개념은 벡터 데이터 구조라는 것이다. 벡터는 동일한 데이터 유형의 객체 목록이다. R의 많은 연산은 질문이 <code>1 + 1</code>과 같이 하나의 값만 반환하는 경우에도 답변을 벡터로 반환한다. <code>[1] 2</code>는 첫 번째 위치에 값이 <code>2</code> 인 하나의 숫자 데이터 유형으로 구성된 벡터이다.</p>
+</div>
+<div id="hello-world" class="section level3" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Hello World</h3>
+<p>이제 전통적인 <code>Hello World</code> 예제를 통해 콘솔에서 다른 유형의 벡터를 살펴 보기로 한다. 콘솔 화면에 표시된대로 정확히 다음 문자들을 입력한다.</p>
+<p>“Hello World”</p>
+<p>여기서, 인용 부호를 포함하는 것을 잊지 말아야 한다. 이제 Enter 키를 누르면, 또 다른 벡터가 나타나지만 이번에는 <code>[1] "Hello World"</code>로 표시됩니다. 이전과 마찬가지로 이 벡터는 첫 번째 위치에 하나의 항목이 있지만 이번에는 객체가 유명한 문장을 보여주는 문자열이다.</p>
+<p>하나 이상의 항목 길이를 가진 벡터를 만드는 데 사용할 수 있는 함수를 사용하여, <code>Hello World</code>를 다른 방식으로 시도해 보자. 문자 <code>c</code>를 사용하고, 쉼표(<code>,</code>)로 구분 된 개체 목록을 포함하는 벡터를 만들 수 있다. 벡터의 모든 개체는 <strong>동일한 유형</strong>이어야 한다(숫자와 문자가 섞이지 않음). 개체가 다른 유형인 경우 R은 제공하는 데이터를 수용할 수 있는 가장 일반적인 유형으로 강제 변환(coercing)한다. 콘솔 창에 <code>c( "Hello", "World")</code>를 입력한 다음 Enter 키를 누른다. 이번에는 <code>[1] "Hello" "World"</code>가 콘솔에 출력되는 것을 볼 수 있다.</p>
+<p>이것은 우리가 전에 본 것과 매우 유사하게 보이지만 약간 다른 점이 있다. 이 벡터에는 두 개의 항목이 있지만 콘솔은 행에 <code>[1]</code> 만 표시하고 있다. 그러나 각각 고유한 따옴표 집합이 있으므로 위에 두 개의 개체가 있음을 알 수 있다. R은 각 출력 행의 항목 번호 만 표시하여 출력 화면의 공간을 절약한다. 이것이 어떻게 작동하는지 보기 위해 더 큰 벡터를 살펴 보기로 한다.</p>
+<p>콘솔에 <code>1:100</code>을 입력하고 Enter를 누른다. 그림 <a href="대화형-r-콘솔.html#fig:seq1">2.2</a>에 표시된 이미지와 같은 것을 볼 수 있다.</p>
+<pre><code>1:100</code></pre>
+<div class="figure"><span id="fig:seq1"></span>
+<img src="images/02-002.png" alt="100개 요소를 갖는 벡터의 출력" width="100%" />
+<p class="caption">
+그림 2.2: 100개 요소를 갖는 벡터의 출력
+</p>
+</div>
+<p><code>:</code>는 범위를 정의하는 데 사용할 수있는 바로 기호이다. <code>1:100</code>을 입력하면 1에서 100 사이의 모든 숫자가 제공된다. 결과는 벡터이며 각 행이 첫 번째 열에 있는 데이터 값의 항목 위치를 어떻게 보고하는지 명확하게 확인할 수 있다.</p>
+<p>RStudio IDE 둘러보기로 다시 돌아 가보자. 도구의 사용 방법을 더 깊게 배우면서 R 프로그래밍과 벡터에 대해 더 많이 알게 될 것이다.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="Hello-World.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="터미널terminal.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

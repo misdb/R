@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>8.2 R Markdown 예 | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="8.2 R Markdown 예 | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="8.2 R Markdown 예 | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="r-markdown-문서.html"/>
+<link rel="next" href="r-markdown-재현성.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="r-markdown-예" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> R Markdown 예</h2>
+<p>지금까지 수행한 작업 중 일부를 보고서에 추가하여 R Markdown을 살펴보기로 한다. 그 과정에서 R 스크립트 파일을 소싱하고 보고서에 그래픽을 삽입할 것이다. “life_expectancy.Rmd”라는 이름으로 만든 새 R Markdown 문서를 저장하여 시작하자.</p>
+<p>템플릿에 제공된 상용구 소개를 우리의 작업에 대해 설명하는 것으로 대체하는 것으로 시작한다.</p>
+<pre><code>## 서론
+
+[Life expectancy data]
+data.gov의 [다운로드](https://catalog.data.gov/dataset/nchs-death-rates-and-life-expectancy-at-birth-6db3e)사이트에서 데이터가 다운로드 되었다.</code></pre>
+<p>이 데이터 세트에는 1900 년부터 2015 년까지의 사망률과 기대 수명 통계가 포함되어 있다.이 데이터 세트에 대해 탐색적 분석을 수행하였는데, 이제 R Markdown의 출력 파일에 출력되는지 살펴 보겠다. R Markdown 문서 상단에 있는 메뉴 모음을 선택한 다음 “<code>Knit</code>”드롭 다운을 클릭한 다음 그림 <a href="r-markdown-예.html#fig:knitHTML">8.4</a>에 표시된대로 “<code>Knit for HTML</code>”을 선택합니다.</p>
+<div class="figure"><span id="fig:knitHTML"></span>
+<img src="images/08-004.png" alt="HTML 출력 파일 만들기" width="100%" />
+<p class="caption">
+그림 8.4: HTML 출력 파일 만들기
+</p>
+</div>
+<p>이렇게 하면 R 및 Markdown 코드를 사용하고 R 패키지 <code>knitr</code>를 사용하여 그림 <a href="r-markdown-예.html#fig:RmdHTMLout">8.5</a>와 같이 HTML 보고서를 만든다.</p>
+<div class="figure"><span id="fig:RmdHTMLout"></span>
+<img src="images/08-005.png" alt="R Markdown HTML 출력" width="100%" />
+<p class="caption">
+그림 8.5: R Markdown HTML 출력
+</p>
+</div>
+<p>이제 멋진 형식의 보고서를 시작했다. 물론, 우리는 여전히 <code>cars</code> 데이터 세트의 필터를 보여주고 있지만, 다음 단계에서 살펴보기로 한다.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="r-markdown-문서.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-markdown-재현성.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

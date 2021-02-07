@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>10.4 R 패키지 문서화 | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="10.4 R 패키지 문서화 | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="10.4 R 패키지 문서화 | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="r-패키지-구축.html"/>
+<link rel="next" href="r-패키지에-데이터-세트-추가.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="r-패키지-문서화" class="section level2" number="10.4">
+<h2><span class="header-section-number">10.4</span> R 패키지 문서화</h2>
+<p><code>roxygen2</code> 패키지를 사용하여 R 패키지에 주석을 포함할 수 있다. 먼저 다음 명령을 사용하여 패키지를 설치해야 한다. <code>install.packages("roxygen2")</code>. 그러면 필요한 지원 패키지와 함께 <code>roxygen2</code> 라이브러리가 설치된다.</p>
+<p>다음 단계는 구축 도구를 구성하는 것이다. 메뉴의 “Build”로 이동한 다음 “Configure Build Tools…”를 선택한다. 그러면 그림 <a href="r-패키지-문서화.html#fig:BldTlCom">10.3</a>과 같은 대화 상자가 나타난다.</p>
+<div class="figure"><span id="fig:BldTlCom"></span>
+<img src="images/10-003.png" alt="빌드 도구 구성" width="100%" />
+<p class="caption">
+그림 10.3: 빌드 도구 구성
+</p>
+</div>
+<p>“Generate documentation with Roxygen(Roxygen으로 문서 생성)” 확인란을 클릭한다. 그런 다음 “Configure(구성)…” 버튼을 클릭하면 그림 <a href="r-패키지-문서화.html#fig:RoxBulOpt">10.4</a>와 같은 대화 상자가 나타난다.</p>
+<div class="figure"><span id="fig:RoxBulOpt"></span>
+<img src="images/10-004.png" alt="Roxygen 빌드 옵션" width="100%" />
+<p class="caption">
+그림 10.4: Roxygen 빌드 옵션
+</p>
+</div>
+<p>“Install and Restart(설치 및 다시 시작)” 확인란을 확인하라. 이제 R 패키지를 구축할 때 제공하는 필드를 기반으로 문서가 자동으로 생성된다. 백틱 # ’을 포함하는 특수 주석이 있는 문서를 포함한다. 각 필드 이름은 <code>@</code>로 시작한다. 몇 가지 일반적인 필드 유형에는 <code>@name</code>, <code>@title</code> 그리고 <code>@description</code>이 있다. 예를 들어 다음은 <code>hello</code> 함수 문서에 포함할 수있는 내용이다.</p>
+<pre><code># Hello, world!
+#
+# This is an example function named &#39;hello&#39;
+# which prints Hey there!.
+#
+#&#39; @name hello
+#&#39; @aliases hello
+#&#39; @title Hello World
+#&#39; @usage hello()
+#&#39; @description Prints &#39;Hey there!&#39;
+#&#39; @examples hello()
+hello &lt;- function() {
+            print(&quot;Hey there!&quot;)
+}</code></pre>
+<p>이제 R 패키지를 구축할 때 도움말 문서에 그림 <a href="r-패키지-문서화.html#fig:UsrHelpDoc">10.5</a>에 표시된 대로 위에 포함된 내용이 반영된다.</p>
+<div class="figure"><span id="fig:UsrHelpDoc"></span>
+<img src="images/10-005.png" alt="사용자 지정 도움말 문서" width="100%" />
+<p class="caption">
+그림 10.5: 사용자 지정 도움말 문서
+</p>
+</div>
+<p>도움말 파일에서 <code>hello world</code> 메시지가 함수에서 변경되었음을 반영하도록 설명 필드를 변경했다.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="r-패키지-구축.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-패키지에-데이터-세트-추가.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

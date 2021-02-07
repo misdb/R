@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>3.3 플롯 | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="3.3 플롯 | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="3.3 플롯 | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="파일.html"/>
+<link rel="next" href="패키지.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="플롯" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> 플롯</h2>
+<p>Plots 탭을 사용하여 R 분석 중에 생성한 플롯을 볼 수 있다. 이 탭을 클릭하면 그림 <a href="플롯.html#fig:PlotFns">3.2</a>와 같은 몇 가지 기능 버튼이 있는 빈 화면이 표시된다.</p>
+<div class="figure"><span id="fig:PlotFns"></span>
+<img src="images/03-002.png" alt="파일 탭" width="100%" />
+<p class="caption">
+그림 3.2: 파일 탭
+</p>
+</div>
+<p>플롯을 보고, 플롯을 파일로 내보내고, 생성한 플롯 세트를 탐색 할 수도 있다. 이 위젯은 데이터를 살펴보고 조사할 때 체계적으로 유지되도록 도와준다. 이 기능을 더 자세히 살펴보기 위해서는 콘솔 화면으로 이동하여 데이터 정리를 수행하고 플롯을 생성해야 한다.</p>
+<div id="데이터-결합-소개" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> 데이터 결합 소개</h3>
+<p>이전 장에서 가져온 데이터를 사용할 수 있다. 해당 데이터의 이름은 dormitory 이다. 이 데이터를 사용하여 플롯을 만들기 전에 몇 가지 “데이터 정리”를 수행해야 한다. 데이터 병합(data munging)은 분석에 적합하도록 데이터를 재구성하는 프로세스이다.</p>
+<blockquote>
+<p>NOTE 위에서 “데이터 세트”와 “데이터 프레임”이라는 용어를 같은 의미로 사용한다. 그러나 R에서 작업하는 개체의 기술적 이름은 “데이터 프레임”(일반적으로는 <em>표</em>, 엑셀에서는 <em>워크시트</em>에 해당함)이다. “데이터 세트”라는 용어는 모든 분석 환경의 모든 데이터 세트에 적용되는 일반적인 용어이다.</p>
+</blockquote>
+<p>이 그림의 경우 <code>dormitory</code> 데이터 프레임에서 <code>학교명</code>, <code>재학생수</code> 그리고 <code>수용인원</code> 등의 세 열을 보고 싶다. 이 세 항목이 관계가 있는 것 같으므로 플롯을 사용하면 이 데이터가 우리에게 알려주는 내용을 이해하는 데 도움이 될 수 있는 단서 역할을 하는 패턴을 볼 수 있는지 확인하는 것이 좋다.</p>
+<p>내가 하고 싶은 첫 번째 일은 내가 관심있는 열의 데이터 유형을 확인하는 것입니다. R의 <code>class()</code> 함수를 사용하여 이를 수행 할 수 있다.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="플롯.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dormitory<span class="sc">$</span>학교명)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>함수의 이름인 class가 괄호 안에 검사할 개체를 포함한다. 이미 데이터 프레임 이름 (<code>dormitory</code>)을 보았지만 이제 달러 기호 ’<code>$</code>’와 변수 <code>학교명</code> 이름도 있다. R의 달러 기호는 데이터 프레임에서 열을 참조하는 데 사용된다. 이러한 방식으로 <code>dormitory</code> 데이터 프레임의 각 열을 참조 할 수 있다. 위에서 우리는 <code>학교명</code> 열의 데이터 유형을 검사하기 위해 <code>class()</code> 함수를 사용했다. 그 결과로 “character”를 반환했다.</p>
+<p>플롯의 경우 데이터가 숫자여야 한다. 이를 위해 두 번째 열인 <code>재학생 수</code>를 확인해 본다. 그런데 이 떄 열의 이름이 <code>재학생 수</code>로 공란이 포함되어 있다. 이때에는 <strong><code>\</code>``</strong> 안에 컬럼 이름을 넣어 주면 된다.</p>
+<pre><code>class(dormitory$`재학생 수`)</code></pre>
+<p>이번에는 그림 <a href="플롯.html#fig:dType">3.3</a>과 같이 콘솔에 “numeric”를 반환하고 있다.</p>
+<div class="figure"><span id="fig:dType"></span>
+<img src="images/03-003.png" alt="데이터 유형의 확인" width="100%" />
+<p class="caption">
+그림 3.3: 데이터 유형의 확인
+</p>
+</div>
+</div>
+<div id="플롯-1" class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> 플롯</h3>
+<p>이제 우리는 플롯을 만들 준비가 되었다. 콘솔 창에 다음 코드를 입력한다.</p>
+<pre><code>plot(dormitory$`재학생 수`)</code></pre>
+<p>이제 플롯 탭에 그림 <a href="플롯.html#fig:rPlot">3.4</a>와 같은 플롯이 나타난다.</p>
+<div class="figure"><span id="fig:rPlot"></span>
+<img src="images/03-004.png" alt="R의 플롯" width="100%" />
+<p class="caption">
+그림 3.4: R의 플롯
+</p>
+</div>
+<p>그림 3-4는 Y 축에 각 대학별 <code>재학생 수</code>를 그리고 X축에는 데이터의 번호를 표시한다.
+이것은 매우 기본적인 플롯이지만 이러한 데이터 요소 간의 관계를 암시하기에 충분하다. 어느 시점에서 기본 R을 확장하고 더 나은 시각화를 만드는 패키지에 대해 학습하게 되겠지만, 기본적으로 모두 Plots 탭에서 동일한 방식으로 작동한다.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="파일.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

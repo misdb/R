@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>4.2 프로젝트 유형 | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="4.2 프로젝트 유형 | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="4.2 프로젝트 유형 | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="새-rstudio-프로젝트-만들기.html"/>
+<link rel="next" href="rstudio-프로젝트-둘러보기.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="프로젝트-유형" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> 프로젝트 유형</h2>
+<p>이 예에서는 “New Directory(새 디렉토리)”를 클릭하여 새 프로젝트를 만들었다. 나타나는 화면은 그림 <a href="프로젝트-유형.html#fig:ProjTyp">4.3</a>과 같이 RStudio 프로젝트 유형 목록을 보여준다.</p>
+<div class="figure"><span id="fig:ProjTyp"></span>
+<img src="images/04-003.png" alt="프로젝트 유형" width="100%" />
+<p class="caption">
+그림 4.3: 프로젝트 유형
+</p>
+</div>
+<p>처음 세 가지 프로젝트 유형은 가장 자주 사용하는 유형이다. 처음 세 개 이후의 프로젝트에는 모두 특수 사용 사례에 사용되는 특수 코드가 포함된다. 설명의 “Rcpp”에 있는 프로젝트는 모두 C ++ 코드 라이브러리와 통합하는 데 사용된다. “devtools”가 있는 프로젝트는 devtools 라이브러리로 R 패키지를 만드는 데 사용되며, sparklyr 프로젝트는 Spark와 함께 작동하는 패키지를 만든다.</p>
+<p>“Package(패키지)” 프로젝트는 재사용 가능한 R 개체 세트를 생성하도록 설정된다. 이것은 우리가 이 장에서하는 것보다 조금 더 발전된 것이며 나중에 다시 살펴 볼 것이다. 프로젝트 전체에서 사용할 수 있다고 생각되는 코드가 있는 경우 RStudio 프로젝트 패키지를 만들 수 있다.</p>
+<p>이 예에서는 그림 <a href="프로젝트-유형.html#fig:LifExPrj">4.4</a>와 같이 “New Project(새 프로젝트)”를 선택하여 분석에 가장 적합한 프로젝트를 만들기로 한다.</p>
+<div class="figure"><span id="fig:LifExPrj"></span>
+<img src="images/04-004.png" alt="기대 수명 프로젝트" width="100%" />
+<p class="caption">
+그림 4.4: 기대 수명 프로젝트
+</p>
+</div>
+<p>기숙사의 평균 수용인원을 보여주는 data.go.kr 사이트에서 데이터 탐색을 수행할 예정이기 때문에 프로젝트 이름을 “life_expectancy”로 지정했다. 지금은 프로젝트를 저장할 디렉토리 (Mac에서는 폴더라고 함)를 선택한 다음 “Create Project(프로젝트 만들기)” 버튼을 클릭하여 이 RStudio 프로젝트를 만든다.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="새-rstudio-프로젝트-만들기.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rstudio-프로젝트-둘러보기.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

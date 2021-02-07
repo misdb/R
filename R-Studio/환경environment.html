@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>2.3 환경(Environment) | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="2.3 환경(Environment) | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="2.3 환경(Environment) | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="터미널terminal.html"/>
+<link rel="next" href="히스토리history.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,93 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="환경environment" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> 환경(Environment)</h2>
+<p>RStudio 환경 탭은 콘솔 화면 오른쪽에 있는 편리한 기능이다. 환경(Environment), 히스토리(History), 연결(Connections) 그리고 튜토리얼(Tutorials) 등의 네 가지 탭이 있다. 환경 탭은 그림 <a href="환경environment.html#fig:env1">2.5</a>에 나와 있다.</p>
+<div class="figure"><span id="fig:env1"></span>
+<img src="images/02-005.png" alt="환경 탭" width="100%" />
+<p class="caption">
+그림 2.5: 환경 탭
+</p>
+</div>
+<p>R에서 환경은 작업 공간이다. 환경에 개체와 데이터를 저장할 수 있다. 예제에서는 단순히 글로벌 환경을 사용하지만 R의 환경은 풍부한 주제가 될 수 있으며 고급 R 프로그래밍 기술에 사용된다는 점을 알고 있어야 한다. 예를 들어, 각 R 함수 (재사용 가능한 코드 단위)는 자체 환경을 갖게 되고 프로그래머는 다양한 목적을 위해 자체 환경을 할당할 수 있다. 그러나 대부분의 사람들은 이런 방식으로 환경의 미묘함에 대해 그렇게 걱정할 필요가 없다.</p>
+<p>지금은 아직 개체를 만들지 않았거나 데이터를 로드하지 않았기 때문에 환경이 완전히 비어 있어야 한다. 변수를 만들어 변경해 보자. 콘솔을 클릭하고 “Hello World” 문자열을 <code>greeting</code>이라는 개체에 할당하여 개체를 만든다.</p>
+<p><code>greeting &lt;- "Hello World"</code></p>
+<p>환경 창에서 무슨 일이 일어 났는지 보기 전에 이 새로운 구문에 대해 먼저 살펴 보기로 한다. 위의 구문을 바로 시작하여 분해해 보자.</p>
+<p>“Hello World”는 처음에 입력 한 것과 동일한 문자열이다. 문자열은 따옴표로 묶인 문자 집합이다. 숫자와 마찬가지로 문자열은 일종의 데이터이다. 문자열 왼쪽에 있는 <code>&lt;-</code> 기호 집합을 <strong>할당 연산자</strong>라고 한다. 할당 연산자의 임무는 <strong>개체</strong>에 <strong>데이터 값</strong>을 할당하는 것이다.</p>
+<p>여기에 있는 개체는 할당 연산자의 왼쪽에 있으며 <code>greeting</code>이라는 이름이 지정되어 있다. 위의 코드를 입력하고 Enter 키를 눌러 <code>greeting</code> 개체에 “Hello World”값을 할당하면 이 개체에 관한 정보가 Global Environment에 들어 간다. 이제 그림 <a href="환경environment.html#fig:envobj">2.6</a>과 같이 화면의 오른쪽 영역에서 글로벌 환경에서 이러한 내용을 확인할 수 있다.</p>
+<div class="figure"><span id="fig:envobj"></span>
+<img src="images/02-006.png" alt="환경 탭에서 개체 보기" width="100%" />
+<p class="caption">
+그림 2.6: 환경 탭에서 개체 보기
+</p>
+</div>
+<p>데이터 분석을 수행할 때 작업의 현재 상태를 확인할 수 있게 해 주므로 매우 편리한 기능이라 할 수 있다.결과를 한 눈에 볼 수 있으며, 예상하는 변수가 올바른지 확인할 수도 있다. 이 기능만으로도 RStudio는 데이터 프로그래밍 키트에서는 필수 도구가 되는 것이다. 그러나 더 많은 것이 있다.</p>
+<p>환경 위젯에는 작업을 저장하고 다른 환경을 여는 기능도 있다. 따라서 하루 종일 데이터 문제와 씨름하고, 모든 데이터와 변수를 저장하려면 플로피 디스크(저장) 아이콘을 사용하면 됩니다. 환경을 열려면 폴더 아이콘을 사용한 다음 저장한 환경 파일로 이동하면 된다.</p>
+<div id="데이터-불러오기" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> 데이터 불러오기</h3>
+<p>많은 사람들에게 도움이 될 또 다른 특징은 SAS 및 Excel과 같은 다른 데이터 분석 도구에서 데이터를 가져올 수 있는 능력이다. <code>Import Dataset</code> 버튼을 클릭하면 그림 <a href="환경environment.html#fig:dsim">2.7</a>과 같이 다양한 옵션이 표시된다.</p>
+<div class="figure"><span id="fig:dsim"></span>
+<img src="images/02-007.png" alt="데이터 세트 가져 오기" width="100%" />
+<p class="caption">
+그림 2.7: 데이터 세트 가져 오기
+</p>
+</div>
+<p>이 옵션을 클릭하면 이러한 소스에서 RStudio로 데이터를 쉽게 가져 오는데 사용할 수 있는 가져 오기 마법사(import wizard)가 시작된다.</p>
+<p>이는 다음과 같은 R 코드의 작업과 동일하다.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="환경environment.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb3-2"><a href="환경environment.html#cb3-2" aria-hidden="true" tabindex="-1"></a>dormitory <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/dormitory.xls&quot;</span>)</span>
+<span id="cb3-3"><a href="환경environment.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(dormitory)</span></code></pre></div>
+<p>마지막으로이 화면에는 환경에서 모든 것을 지울 수있는 친숙한 빗자루 아이콘이 있습니다.</p>
+</div>
+<div id="데이터-세트" class="section level3" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> 데이터 세트</h3>
+<p>가져오기 기능을 설명하기 위해 data.go.kr의 대학재정알리미 사이트(<a href="http://uniarlimi.kasfo.or.kr/totalAnno/dormitory)에서" class="uri">http://uniarlimi.kasfo.or.kr/totalAnno/dormitory)에서</a> 전국 대학의 기숙사 현황 데이터 세트를 다운로드했다.대학재정 알리미 웹 사이트는 그림 <a href="환경environment.html#fig:dsdn">2.8</a>에 나와 있다.</p>
+<div class="figure"><span id="fig:dsdn"></span>
+<img src="images/02-008.png" alt="대학재정알리미 사이트의 기숙사 현황 데이터 다운로드 사이트" width="100%" />
+<p class="caption">
+그림 2.8: 대학재정알리미 사이트의 기숙사 현황 데이터 다운로드 사이트
+</p>
+</div>
+<p>이 데이터는 Excel에 저장되며 데이터 세트 가져 오기 도구를 사용하여 데이터 세트를 R로 가져와서 검사할 수 있다. 이 예제를 따르려면 위의 URL을 방문하여 웹 페이지에서 xlsx 파일을 다운로드한다.</p>
+<p>data 폴더에서 <code>dormitory.xlsx</code>라는 파일을 찾는다. 이것은 우리가 살펴볼 Excel 형식의 데이터 세트이다. 이제 RStudio에서 “Import Dataset” 버튼을 클릭하고 “From Excel…”을 선택한다. “찾아보기” 버튼을 클릭한다. 이 화면의 예는 그림 <a href="환경environment.html#fig:xlim">2.9</a>를 참조하기 바란다.</p>
+<div class="figure"><span id="fig:xlim"></span>
+<img src="images/02-009-1.png" alt="Excel 데이터 가져 오기" width="100%" />
+<p class="caption">
+그림 2.9: Excel 데이터 가져 오기
+</p>
+</div>
+<p>다음으로 <code>dormitory.xlsx</code>라는 Excel 파일이 있는 위치로 이동한다. 화면은 데이터의 처음 몇 행과 그림 <a href="환경environment.html#fig:prevda">2.10</a>과 같이 인터페이스를 사용하지 않고 나중에 이 데이터 세트를 다시 가져오는 데 사용할 수 있는 복사 할 수있는 코드로 채워진다.</p>
+<div class="figure"><span id="fig:prevda"></span>
+<img src="images/02-010.png" alt="데이터 가져 오기 미리보기" width="100%" />
+<p class="caption">
+그림 2.10: 데이터 가져 오기 미리보기
+</p>
+</div>
+<p>“Import”를 클릭하면 Import Dataset이 사라지고 메인 RStudio IDE 화면으로 돌아간다.. 그러나 그림 <a href="환경environment.html#fig:dsr">2.11</a>에서 볼 수 있듯이 많은 것이 변경 될 것이다.</p>
+<div class="figure"><span id="fig:dsr"></span>
+<img src="images/02-011.png" alt="R에서 열린 데이터 세트" width="100%" />
+<p class="caption">
+그림 2.11: R에서 열린 데이터 세트
+</p>
+</div>
+<p>데이터가 우리 화면에 나타난 것을 볼 수 있다. 이 새 화면의 컨트롤을 사용하여 데이터를 필터링하고 데이터 세트를 검색할 수 있다. 데이터 세트는 또한 우리의 Global Environment에도 나타났으며, 자동으로 dormitory로 이름이 지정되었다. 이것은 R 코드에서이 데이터 세트를 참조하는 데 사용할 이름이다. 예를 들어 콘솔에서 R의 <code>head()</code> 함수를 사용하여 데이터의 처음 6개의 행을 볼 수 있다.</p>
+<p>그림 <a href="환경environment.html#fig:fnhead">2.12</a>에 표시된 출력은 이 데이터 세트에 대한 더 많은 정보를 제공한다. 데이터와 R에 대해 더 많이 배우면 데이터 세트 이름을 분석에 대한 입력으로 사용할 수 있다.</p>
+<div class="figure"><span id="fig:fnhead"></span>
+<img src="images/02-012.png" alt="head() 함수" width="100%" />
+<p class="caption">
+그림 2.12: head() 함수
+</p>
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="터미널terminal.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="히스토리history.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>11.7 Git 브랜치 | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="11.7 Git 브랜치 | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="11.7 Git 브랜치 | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="변경-사항-커밋하기.html"/>
+<link rel="next" href="디버거.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="git-브랜치" class="section level2" number="11.7">
+<h2><span class="header-section-number">11.7</span> Git 브랜치</h2>
+<p>Git은 브랜치(branch)를 지원한다. 원래 코드에 영향을 주지 않고 새 기능을 테스트할 수 있도록 프로젝트 복사본을 변경하려는 경우 브랜치를 만들 수 있다. 브랜치에서 작업한 다음 나중에 새 기능을 유지하기로 결정한 경우 브랜치를 원래 프로젝트에 “병합(merge)”할 수 있다.</p>
+<p>새 브랜치의 이름은 원하는대로 지정할 수 있으며 작업 중인 기능이나 버그의 이름을 사용할 수 있다. 원래 소스 브랜치의 이름은 <strong>“master(마스터)”</strong>이다. 일반적으로 따르는 git 워크 플로는 마스터 브랜치에서 새 브랜치를 만들고, 새 브랜치에서 작업하며 새 브랜치가 요구 사항을 충족하면 마스터 브랜치로 다시 병합하는 것이다. RStudio에는 새 브랜치 생성 및 브랜치 간 전환 지원이 포함되어 있다. 그림 <a href="git-브랜치.html#fig:AddBran">11.9</a>에서 강조 표시된 버튼을 사용하여 새 브랜치를 추가하고 브랜치를 바꿀 수 있다.</p>
+<div class="figure"><span id="fig:AddBran"></span>
+<img src="images/11-009.png" alt="git 브랜치 관리 : 브랜치 추가" width="100%" />
+<p class="caption">
+그림 11.9: git 브랜치 관리 : 브랜치 추가
+</p>
+</div>
+<p>첫 번째 버튼은 브랜치를 만드는 데 사용되고, 두 번째는 브랜치를 전환하는 데 사용된다. 브랜치를 전환하면 프로젝트의 모든 코드가 브랜치의 코드로 대체된다.</p>
+<p>“Diff” 버튼을 클릭한 다음 “History”버튼을 클릭하여, “History”버튼 옆의 공간에서 <strong>“(all branch)”</strong>를 선택하여 저장소의 모든 브랜치에 대한 그림을 얻을 수 있다. 그림 <a href="git-브랜치.html#fig:GitBranch">11.10</a>에는 마스터 브랜치와 “new_features” 브랜치가 있는 프로젝트의 예가 나와 있다.</p>
+<div class="figure"><span id="fig:GitBranch"></span>
+<img src="images/11-010.png" alt="Git 브랜치" width="100%" />
+<p class="caption">
+그림 11.10: Git 브랜치
+</p>
+</div>
+<p>이 도구를 사용하여 브랜치의 차이점을 탐색하고, 시각화하고, 프로젝트의 변경 내역을 볼 수 있다.</p>
+<p>RStudio는 모든 git 기능을 지원하지는 않는다. 브랜치를 삭제하거나 브랜치를 병합하려면 Terminal 탭을 사용하여 적절한 명령을 찾아서 실행해야 한다.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="변경-사항-커밋하기.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="디버거.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>8.3 R Markdown 재현성 | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="8.3 R Markdown 재현성 | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="8.3 R Markdown 재현성 | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="r-markdown-예.html"/>
+<link rel="next" href="결론-6.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="r-markdown-재현성" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> R Markdown 재현성</h2>
+<p>우리의 분석이 재현 가능하다고 말할 때, 우리는 보고서를 다시 실행해도 과거와 똑같은 결과를 얻을 수 있어야 함을 의미한다. 우리의 분석은 명령 줄에 입력 한 임의의 명령에 의존해서는 안된다. 분석이 재현 가능한지 확인하기 위해 <code>source()</code> 명령을 실행하고 <code>expectancy</code> 데이터 세트를 가져 오는 데 사용한 파일을 불러온다. r 코드 블록을 이것으로 바꾸고 데이터 세트의 요약을 포함한다.</p>
+<p><img src="images/08-005-1.png" /></p>
+<p>위의 코드 블록에서 몇 가지 작업을 수행했다. 레이블을 “<code>get_data</code>”로 변경하고 소스를 사용하여 “<code>process_data.R</code>”에 저장된 모든 코드를 실행하고 <code>expectancy</code> 데이터 세트의 요약을 표시한다. Markdown 파일을 <code>knit</code> 하면 <code>cars</code> 데이터 세트 대신 <code>expectancy</code> 데이터 세트의 요약이 나타난다.</p>
+<p>더 중요한 것은 R Markdown 문서의 다른 코드가 이전에 했던 것과 같은 방식으로 <code>expectancy</code> 데이터 세트에서 참조할 수 있다는 것이다. 이전에 따랐던 모든 데이터 처리 규칙은 새 출력 문서를 만들 때마다 실행된다.</p>
+<p>데이터 시각화 장에서 했던 것처럼 사용자에게 데이터 세트를 간략하게 보여줄 수 있다. 마지막 부분에서 코드를 복사하여 다음과 같이 코드 블록으로 감쌀 수 있다.</p>
+<pre><code>## `expectancy` 데이터 세트 샘플
+
+`expectancy` 데이터 세트의 일부 내용을 확인하기 위한 위젯을 아래와 같이 확인할 수 있다.
+
+여기에서의 분석에서 나중에 검토될 데이터 세트를 보여주고 있다.
+
+​```{r}
+library(DT)
+datatable(expectancy,
+options = list(pageLength = 5))
+​```</code></pre>
+<p>여기서 우리는 그림 <a href="r-markdown-재현성.html#fig:RmdHTabke">8.6</a>에서 볼 수 있는 디스플레이를 생성하기 위해 r 코드 블록과 함께 Markdown 주석을 혼합한다.</p>
+<div class="figure"><span id="fig:RmdHTabke"></span>
+<img src="images/08-006.png" alt="R Markdown 문서의 HTML 데이터 테이블 위젯" width="100%" />
+<p class="caption">
+그림 8.6: R Markdown 문서의 HTML 데이터 테이블 위젯
+</p>
+</div>
+<p>마지막으로, 수년에 걸친 기대 수명 플롯을 추가해 보자. 이번에는 사용자로부터 r 코드 블록을 숨기고 싶을 수 있으므로 이러한 두 가지 지시문 <code>echo = FALSE</code>와 <code>message = FALSE</code>를 포함한다.</p>
+<pre><code>## 기대 수명 플롯
+
+아래의 플롯은 모든 성별에 대한 연도별 기대 수명을 보여주고 있다.
+
+​```{r}
+library(plotly)
+i_plot &lt;- expectancy %&gt;%
+          filter(race == &quot;All Races&quot;) %&gt;%
+          ggplot(aes(year, life_expectancy)) +
+          geom_line(aes(color = sex))
+ggplotly(i_plot)
+​```</code></pre>
+<p>보다시피, 1900년부터 2015년까지 모든 사람의 기대 수명이 증가하였다. 여성은 남성보다 기대 수명이 더 길고 두 그룹의 차이를 유지하면서 동일한 상승 추세를 보이고 있다.</p>
+<p>첫 번째 지시문은 코드가 표시되지 않도록 하고 두 번째 지시문은 문서에서 라이브러리를 로드하기 때문에 나타날 수있는 모든 메시지를 방지한다. 결과는 그림 <a href="r-markdown-재현성.html#fig:RmdPlotly">8.7</a>에 나와 있다.</p>
+<div class="figure"><span id="fig:RmdPlotly"></span>
+<img src="images/08-007.png" alt="R Markdown 문서의 Plotly 위젯" width="100%" />
+<p class="caption">
+그림 8.7: R Markdown 문서의 Plotly 위젯
+</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="r-markdown-예.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="결론-6.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

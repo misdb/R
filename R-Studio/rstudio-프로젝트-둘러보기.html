@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>4.3 RStudio 프로젝트 둘러보기 | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="4.3 RStudio 프로젝트 둘러보기 | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="4.3 RStudio 프로젝트 둘러보기 | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="프로젝트-유형.html"/>
+<link rel="next" href="결론-2.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="rstudio-프로젝트-둘러보기" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> RStudio 프로젝트 둘러보기</h2>
+<p>이제 프로젝트를 위한 새로운 공간이 생겼다. 이 새로운 RStudio 프로젝트는 그림 <a href="rstudio-프로젝트-둘러보기.html#fig:NewProj">4.5</a>에 표시된 대화 상자에 입력한 폴더에 저장된다. RStudio 프로젝트에는 자체 환경이 있으므로 프로젝트를 전환하는 경우 작업이 저장되고 구성된다. 이는 코드 파일 및 분석에 필요한 기타의 모든 경우에 해당된다. 우리를 위해 무엇이 설정되었는지 살펴 보기로 한다. 그림 4-5에서 RStudio 프로젝트가 이전 장에서 이미 본 것과 비슷하다는 것을 알 수 있다.</p>
+<div class="figure"><span id="fig:NewProj"></span>
+<img src="images/04-005.png" alt="새 프로젝트 화면" width="100%" />
+<p class="caption">
+그림 4.5: 새 프로젝트 화면
+</p>
+</div>
+<p>그러나 그림 <a href="rstudio-프로젝트-둘러보기.html#fig:GoProj">4.6</a>에서는 일반 시작 화면에서 두 가지 변경 사항을 볼 수 있다. 프로젝트 이름과 “Rproj” 파일 확장자가 있는 새 파일이 오른쪽 하단 화면에 나타난다. 이 파일에는 프로젝트에 대한 모든 설정이 포함되어 있다. 파일 탐색기를 자세히 살펴보면 이 파일이 프로젝트와 이름이 같은 하위 디렉터리 아래에서 선택한 디렉터리에 있음을 알 수 있다.</p>
+<p>화면의 오른쪽 상단 영역에서 프로젝트 이름을 클릭하면 그림 4-6과 같이 유용한 바로 가기 목록을 찾을 수 있다.</p>
+<div class="figure"><span id="fig:GoProj"></span>
+<img src="images/04-006.png" alt="프로젝트 바로 가기" width="100%" />
+<p class="caption">
+그림 4.6: 프로젝트 바로 가기
+</p>
+</div>
+<p>프로젝트를 열고 닫고, 최근에 열린 프로젝트로 빠르게 이동하고,이 프로젝트에 대해 특별히 RStudio 옵션을 설정할 수 있다.</p>
+<p>프로젝트 옵션은 프로젝트 용으로 생성된 폴더에 “Rproj” 확장자가 있는 파일에 저장된다. 파일을 클릭하여 프로젝트 옵션을 열거나 그림 4-6에 표시된 바로 가기 목록에서 옵션을 선택할 수 있다. 이렇게 하면 이 프로젝트에 대해 설정할 수있는 옵션이 나열된 그림 <a href="rstudio-프로젝트-둘러보기.html#fig:ProjOpt">4.7</a>과 같은 화면이 표시된다.</p>
+<div class="figure"><span id="fig:ProjOpt"></span>
+<img src="images/04-007.png" alt="프로젝트 옵션" width="100%" />
+<p class="caption">
+그림 4.7: 프로젝트 옵션
+</p>
+</div>
+<p>이러한 프로젝트 옵션은 RStudio에 설정된 전역 옵션에서 상속되며, 대부분의 경우 이러한 옵션을 그대로 둘 수 있다. 처음 두 화면은 즉각적으로 가장 유용한 화면이다. “General” 탭은 분석 상태를 저장할 때 옵션을 제공한다. 기본값은 데이터 환경과 R 기록을 모두 저장하는 것이다. 프로젝트에서 대규모 데이터 세트를 로드해야하는 경우 프로젝트를 여는 데 시간이 더 오래 걸리므로 이러한 옵션을 낮추는 것이 좋다. 일반적으로 기본값을 유지하는 것이 가장 좋다.</p>
+<p>다음 탭은 “Code Editing(코드 편집)”이며 그림 <a href="rstudio-프로젝트-둘러보기.html#fig:cdEdOpt">4.8</a>에서 볼 수 있다. 이를 통해 코드 편집기 작동 방식을 제어 할 수 있다.</p>
+<div class="figure"><span id="fig:cdEdOpt"></span>
+<img src="images/04-008.png" alt="코드 편집 옵션" width="100%" />
+<p class="caption">
+그림 4.8: 코드 편집 옵션
+</p>
+</div>
+<p>그림 4-8 코드 편집 옵션</p>
+<p>일반적으로 이러한 기본 설정을 유지하는 것이 좋다. 첫 번째 옵션 인 “Index source files”가 선택되어 있는지 확인하기 바란다. 그러면 나중에 설명 할 일부 코드 도구가 올바르게 작동할 수 있다.</p>
+<p>나머지 4 개의 옵션 탭에는이 책의 뒷부분에서 다시 살펴볼 기능에 대한 설정이 포함되어 있다. 이러한 옵션은 일반적으로 워크 플로에 통합할 준비가 되지 않은보고서 작성, 패키지 구축 그리고 기타 특수 기능에 사용된다.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="프로젝트-유형.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="결론-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>7.3 r2d3 | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="7.3 r2d3 | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="7.3 r2d3 | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="htmlwidgets.html"/>
+<link rel="next" href="결론-5.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="r2d3" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> <code>r2d3</code></h2>
+<p>이 장의 처음 두 섹션에서 설명하는 패키지는 모두 대부분의 데이터 유형을 시각화하는 풍부한 개체를 제공한다. 그러나 결국 우리의 그래픽은 다른 사람들이 디자인하고 모든 R 개발자가 사용할 수 있는 그래픽처럼 보일 것이다.</p>
+<p>시각화의 모든 측면을 절대적으로 제어하려는 몇 가지 사용 사례가 있다. 우리에게 도움이 되는 위젯이 없거나 고도로 맞춤화된 무언가가 필요하다. 여기서 <code>D3</code>가 우리를 도울 수 있고 <code>r2d3</code>는 <code>D3</code>를 RStudio 프로젝트에 통합하는 데 사용할 수있는 패키지이다.</p>
+<p><code>htmlwidgets</code>와 마찬가지로 <code>D3</code>는 웹 기반 Javascript 솔루션이다. 그러나 <code>D3</code>를 사용하는 것은 <code>htmlwidget</code>으로 하는 것보다 더 복잡하다. <code>D3</code>는 본질적으로 프로그래밍 언어이다.</p>
+<p><code>D3</code>의 핵심 아이디어는 그래픽 프리미티브 (선 및 원과 같은 것)로 데이터 세트를 결합할 수 있다는 것이다. 이러한 그래픽은 데이터 세트의 값에 따라 늘어나거나 줄어 들게 된다. <code>D3</code> 그래픽은 모양을 제어할 수 있기 때문에 매우 복잡해질 수 있다. <code>D3</code>의 학습은 범위를 벗어나지만 시작하기 위한 간단한 방법은 살펴보기로 한다.</p>
+<blockquote>
+<p><strong>NOTE</strong> 여기에서 설명하는 기능을 사용하려면 다운로드한 RStudio의 현재 버전에서 사용할 수있는 RStudio 1.2가 필요하다. 그러나 이 장에서 사용된 버전은 RStudio의 미리보기 버전이므로 스크린 샷이 다소 다르게 보일 수 있다.</p>
+</blockquote>
+<p>D3를 사용하려면 RStudio 메뉴로 이동 한 다음 “파일,” “새 파일,” “D3 스크립트”를 차례로 선택합니다. D3 코드가있는 파일이 나타납니다.</p>
+<pre><code>// !preview r2d3 data=c(0.3, 0.6, 0.8, 0.95, 0.40)
+//
+// r2d3: https://rstudio.github.io/r2d3 
+var barHeight = Math.ceil(height / data.length);
+svg.selectAll(&#39;rect&#39;)
+.data(data)
+.enter().append(&#39;rect&#39;)
+.attr(&#39;width&#39;, function(d) { return d * width; })
+.attr(&#39;height&#39;, barHeight)
+.attr(&#39;y&#39;, function(d, i) { return i * barHeight; })
+.attr(&#39;fill&#39;, &#39;steelblue&#39;);</code></pre>
+<p>이 파일의 코드는 Javascript이며 이 코드를 수정하여 시각화를 조정할 수 있다. 이 파일을 저장하고 “미리보기” 버튼을 클릭하여 <code>D3</code> 시각화가 어떻게 보이는지 확인한다. 앞서 강조한 사전 패키징된 솔루션과 비교하면 별로 좋아 보이지 않지만, <code>D3</code>는 실제로 그릴 수있는 캔버스를 더 많이 제공하므로 괜찮다.</p>
+<p>미리보기는 단순히 파일의 주석에 있는 코드를 사용하지만 R 스크립트 파일에서 자체 데이터를 제공하는 경우 <code>r2d3</code> 라이브러리를 사용하여 수행할 수 있다.</p>
+<pre><code>library(r2d3)
+r2d3(data = c(.1,.2,.3,.4,.3,.2,.1),
+script = &quot;d3_plot.js&quot;)</code></pre>
+<p>이 코드는 그림 <a href="r2d3.html#fig:d3Plot">7.7</a>의 플롯을 생성한다.</p>
+<div class="figure"><span id="fig:d3Plot"></span>
+<img src="images/07-007.png" alt="기본 D3 플롯" width="100%" />
+<p class="caption">
+그림 7.7: 기본 D3 플롯
+</p>
+</div>
+<p>분명히 이것은 매우 기본적인 시각화이다. <a href="https://rstudio.github.io/r2d3/articles/gallery.html"><code>r2d3</code> 웹 사이트</a>에서 <code>D3</code>로 할 수있는 멋진 시각화 전체 세트를 확인할 수 있다. 이러한 예제에는 사용자 고유의 <code>D3</code> 사용자 지정 시각화를 위한 시작점으로 사용할 수 있도록 해주는 필요한 코드도 포함하고 있다.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="htmlwidgets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="결론-5.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

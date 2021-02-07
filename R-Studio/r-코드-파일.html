@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>5.2 R 코드 파일 | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="5.2 R 코드 파일 | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="5.2 R 코드 파일 | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="데이터-세트-구성.html"/>
+<link rel="next" href="데이터-탐색.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="r-코드-파일" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> R 코드 파일</h2>
+<p>처음에는 제공된 위젯과 대화형 콘솔 화면을 사용하는 것이 쉬울 수 있지만 분석을 다시 실행하거나 동료에게 분석을 실행하도록 요청하려면 지금까지의 단계를 다시 추적하기가 어렵다. 분석을 실제로 재현할 수 없다.</p>
+<p>작업을 재현할 수 있도록 프로젝트에 R 스크립트 파일을 추가할 수 있다. 이제 할 일은 R 스크립트 파일을 추가 한 다음 자동으로 생성된 코드를 이 파일에 추가하여 그림에서 재사용 할 수 있도록 하는 것입니다.</p>
+<p>RStudio 메뉴 모음으로 이동하여 “파일” ➤ “새 파일” ➤ “R 스크립트”를 선택한다.
+그림 <a href="r-코드-파일.html#fig:scEdit">5.6</a>에 표시된 새 탭이 “Untitled1”이라는 레이블이 붙은 데이터 프레임 옆에 나타난다.</p>
+<div class="figure"><span id="fig:scEdit"></span>
+<img src="images/05-006.png" alt="스크립트 편집기" width="100%" />
+<p class="caption">
+그림 5.6: 스크립트 편집기
+</p>
+</div>
+<p>이 스크립트 편집기는 상단의 시각적 바로 가기 막대와 함께 매우 유용한 내부 기능을 제공한다. 먼저 플로피 디스크 아이콘을 클릭하여 기억에 남는 이름으로 이 파일을 프로젝트에 저장한다. 플로피 디스크 아이콘을 클릭하고 나타나는 대화 상자에서 파일의 이름을 “<code>process_data.R</code>”로 입력한다. 이제 파일이 파일 탐색기에 나타나고 이름을 클릭하여 언제든지 파일을 열 수 있다.</p>
+<p>여기에서 코드 도구에 대해 이야기 할 때 다른 기능을 살펴 보겠지만 지금은 여기에 작업을 저장하고 위의 “실행”과 “소스” 버튼을 사용하여 코드를 실행할 수도 있다. 지금은 csv 파일에서 읽은 자동 생성된 코드를 검색한 다음 이 데이터 프레임에서 약간의 관리 작업을 수행하려고 한다.</p>
+<p>오른쪽에 있는 “History” 탭을 열면 그림 <a href="r-코드-파일.html#fig:cdSrcHist">5.7</a>과 같이 csv 파일을 읽는 데 사용 된 코드 줄이 표시된다. 실행했던 명령어들을 클릭하여 코드의 처음 두 줄을 강조 표시 즉 선택한다.</p>
+<div class="figure"><span id="fig:cdSrcHist"></span>
+<img src="images/05-007.png" alt="히스토리 탭에서 코드 검색" width="100%" />
+<p class="caption">
+그림 5.7: 히스토리 탭에서 코드 검색
+</p>
+</div>
+<p>“To Source” 버튼을 클릭하여 이 코드를 R 스크립트 파일로 이동시킨다. 그런 다음 플로피 디스크 아이콘을 클릭하여 그림 <a href="r-코드-파일.html#fig:SrcCDr">5.8</a>과 같이 파일을 저장한다.</p>
+<div class="figure"><span id="fig:SrcCDr"></span>
+<img src="images/05-008.png" alt="검색된 코드가 있는 R 스크립트 파일" width="100%" />
+<p class="caption">
+그림 5.8: 검색된 코드가 있는 R 스크립트 파일
+</p>
+</div>
+<p>이제 상단의 “Source” 버튼을 클릭하여 필요할 때마다 이 단계를 다시 실행할 수도 있다. 또한 이 프로젝트를 동료에게 보낼 수 있으며 그는 동일한 방식으로 작업을 재현할 수 있으므로 분석이 재현 가능한 상태로 유지된다.</p>
+<p>계속 진행하기 전에 코드에 주석을 추가하고 나중에 작업하기 쉽도록 데이터 프레임을 정리해야 한다. 아래 코드는 이를 수행하는 방법의 한 예이다:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="r-코드-파일.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import NCHS Dataset</span></span>
+<span id="cb9-2"><a href="r-코드-파일.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># File download from:</span></span>
+<span id="cb9-3"><a href="r-코드-파일.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># https://catalog.data.gov</span></span>
+<span id="cb9-4"><a href="r-코드-파일.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Contains life expectancy data from 1900 in the US</span></span>
+<span id="cb9-5"><a href="r-코드-파일.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb9-6"><a href="r-코드-파일.html#cb9-6" aria-hidden="true" tabindex="-1"></a>expectancy <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/NCHS_-_Age-adjusted_death_rates_and_life-expectancy_at_birth___All_Races__Both_Sexes___United_States__1900-2013.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   Year = col_double(),
+##   Race = col_character(),
+##   Sex = col_character(),
+##   `Average Life Expectancy (Years)` = col_double(),
+##   `Age-adjusted Death Rate` = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="r-코드-파일.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean up dataframe</span></span>
+<span id="cb11-2"><a href="r-코드-파일.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Use shorter column names</span></span>
+<span id="cb11-3"><a href="r-코드-파일.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(expectancy)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;year&quot;</span></span>
+<span id="cb11-4"><a href="r-코드-파일.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(expectancy)[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="st">&quot;race&quot;</span></span>
+<span id="cb11-5"><a href="r-코드-파일.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(expectancy)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">&quot;sex&quot;</span></span>
+<span id="cb11-6"><a href="r-코드-파일.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(expectancy)[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="st">&quot;life_expectancy&quot;</span></span>
+<span id="cb11-7"><a href="r-코드-파일.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(expectancy)[<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="st">&quot;death_rate&quot;</span></span></code></pre></div>
+<p><code>#</code> 기호 다음은 주석 내용이고, R 코드의 마지막 5 줄은 열 이름을 작업하기 더 쉬운 짧은 이름으로 바꾸는 스크립트이다. 이 파일에 코드를 저장하려면 플로피 디스크 아이콘을 클릭하면 된다.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="데이터-세트-구성.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="데이터-탐색.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

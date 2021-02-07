@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>5.1 데이터 세트 구성 | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="5.1 데이터 세트 구성 | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="5.1 데이터 세트 구성 | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="Repeatable-Analysis.html"/>
+<link rel="next" href="r-코드-파일.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="데이터-세트-구성" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> 데이터 세트 구성</h2>
+<p>우리가 하고 싶은 한 가지는 데이터를 프로젝트로 읽어 오는 것이다. 프로젝트의 구조를 유지하기 위해, 데이터를 저장할 폴더를 만드는 것이 좋다. 파일 뷰어를 사용하여 그림 <a href="데이터-세트-구성.html#fig:mkNewF">5.1</a>과 같이 새 폴더를 만든다.</p>
+<div class="figure"><span id="fig:mkNewF"></span>
+<img src="images/05-001.png" alt="새 폴더 만들기" width="100%" />
+<p class="caption">
+그림 5.1: 새 폴더 만들기
+</p>
+</div>
+<p>파일로 이동 한 다음 “데이터”라는 단어를 “새 폴더”로 입력 한 다음 “확인”을 클릭한다. 이제 이 프로젝트와 관련된 새 폴더가 생긴다.</p>
+<div id="기대-수명-데이터-다운로드" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> 기대 수명 데이터 다운로드</h3>
+<p>다음으로이 링크를 따라 데이터 세트가있는 페이지로 이동합니다.</p>
+<p><a href="https://catalog.data.gov/dataset/nchs-death-rates-and-life-expectancy-at-birth-6db3e" class="uri">https://catalog.data.gov/dataset/nchs-death-rates-and-life-expectancy-at-birth-6db3e</a></p>
+<p>이 페이지에는 데이터에 대한 자세한 설명이 포함되어 있다. 방금 만든 “data” 폴더에 csv 파일을 다운로드하려고 한다. 그림 <a href="데이터-세트-구성.html#fig:csvDL">5.2</a>에 표시된 페이지 영역까지 아래로 스크롤한다.</p>
+<div class="figure"><span id="fig:csvDL"></span>
+<img src="images/05-002.png" alt="기대 수명 csv 다운로드 링크" width="100%" />
+<p class="caption">
+그림 5.2: 기대 수명 csv 다운로드 링크
+</p>
+</div>
+<p>“Download” 버튼을 클릭한다. csv 파일이 다운로드 폴더에 나타난다. csv 파일을 “다운로드” 폴더에서 프로젝트에서 만든 “data” 폴더로 이동시킨다.</p>
+</div>
+<div id="r-프로젝트에-데이터-세트-추가" class="section level3" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> R 프로젝트에 데이터 세트 추가</h3>
+<p>data 폴더에 원시 csv 파일이 저장되어 있지만 분석에 사용하려면 데이터가 데이터 프레임 형식이어야 한다. 이 형식의 데이터를 읽는 가장 쉬운 방법은 그림 <a href="데이터-세트-구성.html#fig:ImpDS">5.3</a>과 같이 환경보기에있는 “Import Dataset” 기능을 사용하는 것이다.</p>
+<div class="figure"><span id="fig:ImpDS"></span>
+<img src="images/05-003.png" alt="데이터 세트 가져오기" width="100%" />
+<p class="caption">
+그림 5.3: 데이터 세트 가져오기
+</p>
+</div>
+<p>“Environment” 보기로 이동하여 “Import Dataset”을 클릭한 다음 “From Text (readr)…”를 선택한다. 그러면 그림 <a href="데이터-세트-구성.html#fig:diWig">5.4</a>와 유사한 화면이 나타난다.</p>
+<div class="figure"><span id="fig:diWig"></span>
+<img src="images/05-004.png" alt="데이터 가져오기 위젯" width="100%" />
+<p class="caption">
+그림 5.4: 데이터 가져오기 위젯
+</p>
+</div>
+<p>“Browse” 버튼을 사용하여 csv 파일로 이동한다. 이것은 화면의 오른쪽 상단에 있는 그림 5-4에서 강조 표시된다. 데이터 프레임의 기본 이름은 파일과 동일하지만 매우 길게 나타날 것이므로 왼쪽 하단 영역의 “Name” 옆에 강조 표시된 영역에 표시된대로 이 위젯 화면에서 바로 변경할 수 있다. 우리는 단순히 데이터 프레임을 “expectancy”라고 명명했다.</p>
+<p>이 프로세스를 완료하면 그림 <a href="데이터-세트-구성.html#fig:prjDF">5.5</a>와 같이 R Studio 프로젝트에 데이터 프레임이 나타난다.</p>
+<div class="figure"><span id="fig:prjDF"></span>
+<img src="images/05-005.png" alt="프로젝트의 데이터 프레임" width="100%" />
+<p class="caption">
+그림 5.5: 프로젝트의 데이터 프레임
+</p>
+</div>
+<p>그림 <a href="데이터-세트-구성.html#fig:prjDF">5.5</a>에서 왼쪽 상단에 데이터 프레임의 샘플을 볼 수 있다. 데이터를 읽는 데 사용 된 코드는 콘솔의 왼쪽 하단에 표시되며 이 코드는 히스토리 보기에서도 유지된다. 마지막으로 오른쪽 상단의 “Environment” 창에 “expectancy”라는 이름의 개체가 표시된다. 어떤 시점에서 창을 닫으면 이 개체를 클릭하여 데이터를 다시 표시할 수 있다.</p>
+<p>이것은 프로젝트 설정의 첫 번째 단계이다. RStudio를 닫은 경우 프로젝트 상태를 저장해야 한다. 그렇지 않으면 데이터 프레임 작업을 위해 지금까지의 과정을 다시 반복해야 한다.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="Repeatable-Analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-코드-파일.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

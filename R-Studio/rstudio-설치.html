@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>1.2 RStudio 설치 | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="1.2 RStudio 설치 | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="1.2 RStudio 설치 | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="r-설치.html"/>
+<link rel="next" href="Hello-World.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="rstudio-설치" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> RStudio 설치</h2>
+<p>이제 git과 R이 설치되었으므로 RStudio 자체를 설치할 준비가 되었다.</p>
+<p>RStudio 다운로드 페이지로 이동한다 : <a href="http://www.rstudio.com/products/rstudio/download/" class="uri">http://www.rstudio.com/products/rstudio/download/</a>. 사용 가능한 모든 RStudio 옵션을 보여주는 화면이 표시된다. RStudio의 데스크톱 및 서버 버전 별로 사용할 수 있는 오픈 소스 및 상용 라이선스가 있다. 우리는 RStudio의 오픈 소스 (무료) 데스크톱 버전에 관심이 있다. 다른 버전은 상용 라이센스와 높은 수준의 기술 지원이 필요한 기업을 대상으로합니다.</p>
+<div class="figure"><span id="fig:RStudioD"></span>
+<img src="images/01-010.png" alt="RStudio 다운로드 페이지" width="100%" />
+<p class="caption">
+그림 1.5: RStudio 다운로드 페이지
+</p>
 </div>
+<p>그림 <a href="rstudio-설치.html#fig:RStudioD">1.5</a>과 같이, 다운로드라고 표시된 녹색 알약을 클릭하면 화면이 Windows 및 Mac 용 설치 프로그램 목록으로 스크롤 된다. 운영 체제에 맞는 설치 프로그램을 클릭하고 다운로드가 완료될 때까지 기다린다. 설치 프로그램은 다운로드 폴더에 저장된다. 파일 이름은 RStudio-1.1.463이고, 확장자는 Mac의 경우 dmg , Windows의 경우 exe 로 지정된다.</p>
+<p>설치 프로그램을 두 번 클릭하고 지시를 따른다. Mac에서는 RStudio 아이콘과 애플리케이션 디렉토리 바로 가기가 있는 화면이 나타난다. RStudio 아이콘을 Applications 폴더 바로 가기로 드래그하기만 하면 된다.</p>
+<p>Windows에서는 프롬프트에 따라 기본 위치를 선택하기만하면 된다. 설치가 완료되면 마침 버튼을 클릭하여 설치를 종료한다.</p>
+<div id="rstudio-확인" class="section level3" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> RStudio 확인</h3>
+<p>계속 진행하기 전에 RStudio가 설치되어 작동하는지 확인한다. 시스템에서 RStudio 앱 아이콘을 검색하고 두 번 클릭하여 앱을 연다. 아이콘을 찾는 데 문제가 있는 경우 Mac 화면의 경우는 오른쪽 상단 영역을, Windows의 경우는 화면의 왼쪽 하단 영역에있는 검색 아이콘으로 이동한다. “RStudio”를 입력하면 RStudio 앱에 대한 바로 가기가 나타난다. 이 아이콘을 두 번 클릭한다. Mac을 사용하는 경우 그림 1-11과 같이 보안 팝업이 나타난다.</p>
+<p>그림 1-11 RStudio 보안 팝업</p>
+<p>열기를 클릭하여 RStudio로 이동한다. 이제 데스크톱에 RStudio 앱이 표시되어, 다음의 그림 <a href="rstudio-설치.html#fig:IDEscreen">1.6</a>과 같이 보일 것이다.</p>
+<div class="figure"><span id="fig:IDEscreen"></span>
+<img src="images/01-012.png" alt="RStudio IDE 초기 화면" width="100%" />
+<p class="caption">
+그림 1.6: RStudio IDE 초기 화면
+</p>
+</div>
+<p>이제 RStudio IDE가 설치되어 사용할 준비가 되었다!</p>
+
+</div>
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="r-설치.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Hello-World.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

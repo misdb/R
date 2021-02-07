@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>8.1 R Markdown 문서 | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="8.1 R Markdown 문서 | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="8.1 R Markdown 문서 | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="R-Markdown.html"/>
+<link rel="next" href="r-markdown-예.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="r-markdown-문서" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> R Markdown 문서</h2>
+<p>R Markdown은 RStudio에서 완벽하게 지원된다. Markdown에서 메모를 작성할 수 있을 뿐 만 아니라 포함된 코드를 블록 단위로 실행하여 R Markdown 문서에 실시간으로 바로 표시할 수도 있다. 새 R Markdown 문서를 만들려면 RStudio 메뉴 모음으로 이동하여 그림 <a href="r-markdown-문서.html#fig:mkNewRmd">8.1</a>과 같이 “File,” “New File” 그리고 “R Markdown”을 클릭한다.</p>
+<div class="figure"><span id="fig:mkNewRmd"></span>
+<img src="images/08-001.png" alt="새 R 마크다운 문서 추가" width="100%" />
+<p class="caption">
+그림 8.1: 새 R 마크다운 문서 추가
+</p>
+</div>
+<p>그림 <a href="r-markdown-문서.html#fig:RmdOpt">8.2</a>에 표시된 대화 상자에 생성되는 문서의 유형을 결정하는 옵션이 표시된다.</p>
+<div class="figure"><span id="fig:RmdOpt"></span>
+<img src="images/08-002.png" alt="R 마크다운 옵션" width="100%" />
+<p class="caption">
+그림 8.2: R 마크다운 옵션
+</p>
+</div>
+<p>여기에서 HTML 또는 PDF 문서를 원하는지 지정한다. 실험할 수 있는 덜 사용되는 다른 형식 유형도 있지만 일반적으로 사람들은 PDF 또는 HTML 보고서를 사용한다. RStudio는 그림 <a href="r-markdown-문서.html#fig:Rmd">8.3</a>과 유사한 템플릿 텍스트로 R Markdown 문서를 자동으로 생성한다.</p>
+<div class="figure"><span id="fig:Rmd"></span>
+<img src="images/08-003.png" alt="R 마크다운 문서" width="100%" />
+<p class="caption">
+그림 8.3: R 마크다운 문서
+</p>
+</div>
+<p>위의 R Markdown 문서에는 4 개의 개별 섹션이 있다. 처음 여섯 줄은 일명 YAML(Yet Another Markup Language)이라고 한다.</p>
+<pre><code>---
+title: &quot;Life Expectancy&quot;
+author: &quot;Dae Ho Kim&quot;
+date: &quot;2021 1 3&quot;
+output: html_document
+---</code></pre>
+<p>이 YAML markup은 출력 형식의 유형 및 작성자 이름, 기본적으로 대화 상자에 입력한 내용을 지정한다.</p>
+<p>회색으로 강조 표시된 다음 세 줄은 R Markdown 출력을 렌더링하는 데 사용되는 패키지 인 <code>knitr</code>에 필요한 옵션을 설정하는 데 사용된다.</p>
+<pre><code>​```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+​```</code></pre>
+<p>세 개의 백틱(```)과 중괄호({})가 있는 첫 번째 줄은 주의를 기울여야 한다. 이것은 문서에 R 코드를 포함할 수 있도록 Markdown 코드를 이스케이프하는 데 사용하는 표기법이다.</p>
+<p>형식은 대략 세 개의 백틱, 여는 중괄호, 문자 <code>r</code> 다음에 몇 가지 옵션 그리고 끝 중괄호이다.</p>
+<p>위 코드에서 <code>setup</code>은 단순히 레이블이고 <code>include = FALSE</code>는 코드가 실행되지만 R Markdown 출력에 표시되지 않음을 의미한다.</p>
+<p>다음 몇 줄의 코드는 기본적인 Markdown이다.</p>
+<pre><code>## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and
+MS Word documents. For more details on using R Markdown see &lt;http://rmarkdown.rstudio.com&gt;.</code></pre>
+<p>여기에서 데이터 분석에 대한 결과, 절차 그리고 설명을 작성한다. 시작 부분에 있는 두 개의 숫자 기호는 “제목 2”를 의미하며 형식화는 출력 문서에 이를 반영한다. 모든 일반 Markdown 기능을 사용할 수도 있다. Markdown의 작성자는 <a href="https://daringfireball.net/projects/markdown에" class="uri">https://daringfireball.net/projects/markdown에</a> 사용할 수 있는 서식 지정 기능을 문서화하고 있다.</p>
+<p>나머지 코드는 또 다른 R 청크(chunk)이다. 이번에는 코드가 플롯을 생성하고 R Markdown 출력에 포함된다.</p>
+<pre><code>​```{r cars}
+summary(cars)
+​```</code></pre>
+<p>내장된 <code>cars</code> 데이터 세트의 요약이 출력된다. 다음에 다룰 예제에서 이것이 어떻게 보이는지 예제를 통해 살펴 볼 것이다.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="R-Markdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-markdown-예.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

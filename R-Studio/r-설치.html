@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>1.1 R 설치 | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="1.1 R 설치 | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="1.1 R 설치 | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="Installing-RStudio.html"/>
+<link rel="next" href="rstudio-설치.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="r-설치" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> R 설치</h2>
+<p>R은 통계 프로그래밍 및 그래픽에 사용되는 무료 오픈 소스 소프트웨어이다. Comprehensive R Network인 CRAN에서 최신 버전의 R을 얻을 수 있다. 이것은 R 및 R 패키지의 복사본이 있는 미러링된 서버의 네트워크이다. R 패키지는 커뮤니티의 R 사용자가 제공한 핵심 R 프로그래밍 언어에 대한 확장이다.</p>
+<p>R을 설치하려면 <a href="https://cran.r-project.org/mirrors.html">CRAN Mirror</a>에 접속한다. 그러면 그림 <a href="r-설치.html#fig:cran">1.1</a>에 나와 있는 것과 같은 목록이 표시된다.</p>
+<div class="figure"><span id="fig:cran"></span>
+<img src="images/01-001.png" alt="CRAN 미러" width="100%" />
+<p class="caption">
+그림 1.1: CRAN 미러
+</p>
+</div>
+<p>서버 목록을 아래로 스크롤하여 지리적으로 가장 가까운 서버를 찾은 다음 링크를 클릭한다. 절대적으로 가장 가까운 서버를 얻는 것에 대해 너무 걱정하지 않아도 된다. 해당 국가에서 아무거나 선택하는 것이 좋다. 끊어진 링크를 찾으면 다시 다른 서버를 시도하면 된다. 그림 <a href="r-설치.html#fig:cranR">1.2</a>에서 볼 수 있듯이 Windows 및 Mac 용 R 버전을 나열하는 새 화면이 표시된다.</p>
+<div class="figure"><span id="fig:cranR"></span>
+<img src="images/01-002.png" alt="CRAN에서 R 설치하기" width="100%" />
+<p class="caption">
+그림 1.2: CRAN에서 R 설치하기
+</p>
+</div>
+<p>운영 체제 링크를 클릭한다. 각 운영 체제마다 R을 설정하는 지침이 다르다.</p>
+<div id="mac에서-r-설치하기" class="section level3" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Mac에서 R 설치하기</h3>
+<p>Mac에 R을 설치하는 경우 다양한 R 릴리스에 대한 많은 세부 정보가 표시된다. 대부분의 사람들은 그림 <a href="r-설치.html#fig:MacR">1.3</a>에 표시된 것처럼 최신 릴리스라는 제목 아래의 페이지 중간 영역으로 이동 한 다음 <code>.pkg</code> 파일 확장자로 끝나는 파일을 클릭한다. 파일의 정확한 이름은 설치 프로그램의 최신 릴리스에 따라 다르다.</p>
+<div class="figure"><span id="fig:MacR"></span>
+<img src="images/01-003.png" alt="Mac R 설치 프로그램" width="100%" />
+<p class="caption">
+그림 1.3: Mac R 설치 프로그램
+</p>
+</div>
+<p>최신 버전의 R을 설치하려면 <code>pkg</code> 링크를 클릭한다. 이전 버전의 R이 특별히 필요한 경우 아래로 스크롤하여 이전 버전의 R 설치 옵션을 볼 수 있다. pkg 파일은 다운로드에 나타난다. 다운로드 폴더로 이동하여 <code>pkg</code> 파일을 클릭하여 R을 설치한다. 그러면 그림 1-4와 같은 화면이 나타난다.</p>
+<p>그림 1-4 Mac에 R 설치</p>
+<p>그림 1-4와 같은 일련의 화면이 표시된다. 각 화면에 대해 계속을 클릭한다. 어느 시점에서 소프트웨어 라이센스에 동의하라는 대화 상자가 나타난다. 계속하려면 동의를 클릭한다. 다음으로 그림 1-5와 같이 특정 디스크에 설치할 수 있는 옵션이 표시된다.</p>
+<p>그림 1-5 R 위치 선택</p>
+<p>대부분의 사람들은 단순히 모든 사용자를 위한 설치 옵션을 선택한다. 첫 번째 옵션을 선택하고 계속 버튼을 클릭한다. 다음 화면에서 설치 버튼을 클릭한다. R 설치 프로그램이 Mac을 변경하므로 Mac 암호를 입력하라는 메시지가 표시된다. 계속하려면 비밀번호를 입력한다. 이제 R이 설치되고 모든 작업이 완료되면 그림 1-6과 같은 화면이 표시된다.</p>
+<p>그림 1-6 성공적인 R 설치</p>
+<p>닫기 버튼을 클릭하면 R이 Mac에 설치된다. 응용 프로그램 폴더에서 R을 찾을 수 있다. 응용 프로그램 폴더에서 R.app 프로그램을 두 번 클릭하여 R이 설치되어 있고 작동하는지 확인한다. 기본 R 콘솔 화면이 나타난다. 이미 약간의 R을 알고있는 경우 여기에서 시스템을 가지고 작업을 하거나, 프로그램을 종료할 수 있다. RStudio가 설치되면 R을 사용할 수 있다.</p>
+</div>
+<div id="windows에-r-설치" class="section level3" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> Windows에 R 설치</h3>
+<p>R for Windows 링크를 클릭하면 지침 페이지가 표시된다. 그림 <a href="r-설치.html#fig:winR">1.4</a>과 같이 “처음으로 R 설치”를 클릭한다.</p>
+<div class="figure"><span id="fig:winR"></span>
+<img src="images/01-007.png" alt="Windows에 R 설치" width="100%" />
+<p class="caption">
+그림 1.4: Windows에 R 설치
+</p>
+</div>
+<p>다음 페이지에 R 설치 프로그램을 다운로드 할 수 있는 링크가 있다. Windows 설치 프로그램을 받으려면 클릭한다. “Windows 용 R 다운로드”라는 이름이 지정된다. R 설치 프로그램을 다운로드하려면 이를 클릭한다. 잠시 후 다운로드 폴더에서 R 설치 실행 파일을 찾을 수 있다. 설치 프로그램 파일을 두 번 클릭하고 프롬프트를 클릭한다. 기본값을 선택한 다음 설치 프로그램이 완료되도록 한다.</p>
+</div>
+<div id="리눅스-r-설치" class="section level3" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> 리눅스 R 설치</h3>
+<p>Linux의 각 버전에는 R을 설치하기 위해 따라야 하는 설정 지침이 다르다. 일반적으로 명령 줄에서 R을 설치하려면 패키지 관리자를 사용한다.</p>
+<p>다음과 같이 할 수 있다.</p>
+<pre><code>sudo apt-get update
+sudo apt-get install r-base r-base-dev</code></pre>
+<p>그러나 각 Linux 버전은 여기에서 약간 다를 수 있으므로 CRAN 웹 사이트를 다시 확인하여 Linux 버전에 대해 수행해야 할 작업에 대한 자세한 내용을 확인해야 한다. <a href="https://cran.r-project.org에서" class="uri">https://cran.r-project.org에서</a> “Download R for Linux”링크를 클릭한 다음 Linux 버전을 선택하여 추가 지침을 확인한다.</p>
+</div>
+<div id="git-설치" class="section level3" number="1.1.4">
+<h3><span class="header-section-number">1.1.4</span> Git 설치</h3>
+<p>Git은 다양한 버전의 코드 파일을 관리하는 데 사용되는 인기있는 버전 제어 시스템이다. RStudio는 git을 워크 플로에 통합하고 작업을 시각화하는 데 도움을 준다.</p>
+<div id="mac에-git-설치" class="section level4" number="1.1.4.1">
+<h4><span class="header-section-number">1.1.4.1</span> Mac에 Git 설치</h4>
+<p>Mac에 git을 설치하려면 다음 URL로 이동한다 : <a href="https://git-scm.com/download/mac" class="uri">https://git-scm.com/download/mac</a> 다운로드가 즉시 시작되지 않으면 “여기를 클릭하여 수동으로 다운로드” 텍스트를 클릭하여 git 설치 프로그램을 다운로드한다. 다운로드 폴더에 나타나는 파일을 두 번 클릭하고, pkg 파일을 클릭하여 설치 프로세스를 시작한다. 그림 1-8에 표시된 대화 상자와 같은 보안 알림을 받을 수 있다.</p>
+<p>그림 1-8 Mac의 보안 경고</p>
+<p>Mac의 보안 및 개인 정보 설정의 일반 탭으로 이동 한 다음 다운로드 한 파일 옆에 있는 “무시하고 열기”를 선택하여 이 보안 기능을 무시할 수 있다. 예는 그림 1-9를 참조하기 바란다.</p>
+<p>그림 1-9 Mac에 git 설치를 위한 보안 설정 재정의</p>
+<p>이제 설치가 완료되었다는 알림을 받을 때까지 설치 화면을 클릭하기 만하면 된다. Mac의 터미널 앱을 사용하여 터미널 창에 git –version을 입력하여 git이 설치되었는지 확인할 수 있다.</p>
+</div>
+<div id="windows에-git-설치" class="section level4" number="1.1.4.2">
+<h4><span class="header-section-number">1.1.4.2</span> Windows에 Git 설치</h4>
+<p>Windows에 git을 설치하려면 다음 URL로 이동한다 https : //git-scm.com/download/win . 다운로드가 즉시 시작되지 않으면 “여기를 클릭하여 수동으로 다운로드” 텍스트를 클릭하여 git 설치 프로그램을 다운로드한다.</p>
+<p>다운로드 디렉토리에 나타나는 파일을 두 번 클릭한다. 나타나는 각 화면에 대해 다음을 클릭하고 기본 설정을 선택하기만 하면 된다. 설치가 완료되면 마침을 클릭한다.</p>
+<p>Windows 명령 프롬프트로 이동하여 “git –version”을 입력하여 git이 설치되었는지 확인한다. 최신 버전의 git을 보여주는 응답이 표시되어야한다.</p>
+</div>
+<div id="linux에-git-설치" class="section level4" number="1.1.4.3">
+<h4><span class="header-section-number">1.1.4.3</span> Linux에 Git 설치</h4>
+<p>Linux를 사용하고 git이 아직 설치되지 않은 경우 패키지 관리자를 사용하여 명령 줄에서 git을 설치할 수 있다.</p>
+<p>sudo apt install git-all</p>
+<p>여기서는 apt를 사용했지만 배포를 위해 패키지 관리자를 사용해야 한다.</p>
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="Installing-RStudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rstudio-설치.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

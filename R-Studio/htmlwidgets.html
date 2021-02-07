@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>7.2 htmlwidgets | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="7.2 htmlwidgets | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="7.2 htmlwidgets | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="ggplot2.html"/>
+<link rel="next" href="r2d3.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="htmlwidgets" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> <code>htmlwidgets</code></h2>
+<p><code>ggplot2</code>는 플로팅하는데 필요한 대부분의 기능을 제공하지만, 분석과 상호 작용하거나 매우 전문화된 그래픽을 추가하고 싶을 때가 있다. <code>htmlwidget</code>은 다음과 같은 용도로 사용할 수있는 패키지 모음으로, R 분석에 다음 수준의 시각화를 추가하는데 사용될 수 있다.</p>
+<p>htmlwidgets는 원래 웹 사이트 용으로 개발된 오픈 소스 자바 스크립트 위젯을 통합할 수있는 기능을 제공한다. 사용 가능한 전체 위젯 목록을 보려면 <a href="http://htmlwidgets.org">웹 사이트</a>를 참고하기 바란다. 이러한 위젯 중 상당수는 시각화하려는 문제 유형에 매우 구체적이다. 지도, 시계열, 네트워크 그래프 및 일부 D3 그래픽에 대한 위젯을 찾을 수 있다.</p>
+<p>하나의 <code>htmlwidget</code>, <code>plotly</code>를 사용하여 마지막 섹션에서 만든 플롯을 웹 지원 대화형 위젯으로 바꿀 수 있다. <code>plotly</code>는 <code>gglot2</code>와 함께 작동하고 실제로 <code>ggplo2</code>를 다음 수준으로 가져 가기 때문에 흥미롭다. 다음은 <code>plotly</code>를 사용하여 <code>ggplot2</code> 플롯에 상호 작용을 추가하는데 필요한 것들이다.</p>
+<pre><code>library(plotly)
+i_plot &lt;- expectancy %&gt;%
+             filter(race == &quot;All Races&quot;) %&gt;%
+             ggplot(aes(year, life_expectancy)) +
+                    geom_line(aes(color = sex))
+ggplotly(i_plot)</code></pre>
+<p>이 코드는 <code>ggplot2</code>에서했던 것과 매우 유사하다. 그러나 이번에는 결과를 개체에 할당하고 해당 개체를 매개 변수로 <code>ggplotly</code>에 사용하여 그림 <a href="htmlwidgets.html#fig:popPlotly">7.5</a>에서 볼 수있는 대화형 플롯을 만든다.</p>
+<div class="figure"><span id="fig:popPlotly"></span>
+<img src="images/07-005.png" alt="팝업이 있는 Plotly HTML 위젯" width="100%" />
+<p class="caption">
+그림 7.5: 팝업이 있는 Plotly HTML 위젯
+</p>
+</div>
+<p>이제 이 플롯에는 세부 정보 팝업과 상단에 탐색 그림이 있는 도구 모음이 포함된다. 이후 장에서 일관된 보고서와 대시 보드를 작성하는 방법을 학슬할 때 이와 같은 위젯을 포함하여 사용자를 위한 풍부한 대화형 환경을 만들 수 있다.</p>
+<p>계속 진행하기 전에 <code>DT</code> 패키지의 <code>Datatables</code> 구성 요소를 살펴보자. <code>Datatables</code>는 데이터 세트에 대한 검색 가능한 HTML 프레젠테이션을 생성하는 매우 유용한 대화형 HTML 위젯이다. 예를 들어 데이터 세트의 검색 가능한 버전을 사용자에게 직접 제공하려면 다음과 같이 하면된다.</p>
+<pre><code>library(DT)
+datatable(expectancy, options = list(pageLength = 10))</code></pre>
+<p>그러면 데이터로 채워진 검색 가능한 대화형 테이블로 그림 <a href="htmlwidgets.html#fig:DTwig">7.6</a>과 같은 위젯이 생성된다.</p>
+<div class="figure"><span id="fig:DTwig"></span>
+<img src="images/07-006.png" alt="데이터 테이블 위젯" width="100%" />
+<p class="caption">
+그림 7.6: 데이터 테이블 위젯
+</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ggplot2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r2d3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

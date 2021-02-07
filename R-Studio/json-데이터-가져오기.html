@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>12.6 JSON 데이터 가져오기 | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="12.6 JSON 데이터 가져오기 | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="12.6 JSON 데이터 가져오기 | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="함수.html"/>
+<link rel="next" href="결론-10.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="json-데이터-가져오기" class="section level2" number="12.6">
+<h2><span class="header-section-number">12.6</span> JSON 데이터 가져오기</h2>
+<p>JSON (JavaScript Object Notation)은 일부 프로그래머가 csv 또는 기타 2 차원 데이터 형식에 비해 익숙하지 않을 수있는 데이터 형식이다. JSON 데이터 형식은 구조화된 형식을 유지하면서 텍스트 형식으로 쉽게 전송할 수 있도록 설계되었다.</p>
+<p>다음은 JSON 데이터의 예이다.</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="json-데이터-가져오기.html#cb118-1" aria-hidden="true" tabindex="-1"></a>life_json <span class="ot">&lt;-</span> <span class="st">&#39;[{&quot;year&quot;:2015, &quot;race&quot;:&quot;All Races&quot;, &quot;sex&quot;:&quot;Both Sexes&quot;, &quot;death&quot;:733.1},</span></span>
+<span id="cb118-2"><a href="json-데이터-가져오기.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="st">               {&quot;year&quot;:2014, &quot;race&quot;:&quot;All Races&quot;, &quot;sex&quot;:&quot;Both Sexes&quot;, &quot;life&quot;:78.9, &quot;death&quot;:724.6},</span></span>
+<span id="cb118-3"><a href="json-데이터-가져오기.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="st">               {&quot;year&quot;:2013, &quot;race&quot;:&quot;All Races&quot;, &quot;sex&quot;:&quot;Both Sexes&quot;, &quot;life&quot;:78.8, &quot;death&quot;:731.9},</span></span>
+<span id="cb118-4"><a href="json-데이터-가져오기.html#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="st">               {&quot;year&quot;:2012, &quot;race&quot;:&quot;All Races&quot;, &quot;sex&quot;:&quot;Both Sexes&quot;, &quot;life&quot;:78.8, &quot;death&quot;:732.8},</span></span>
+<span id="cb118-5"><a href="json-데이터-가져오기.html#cb118-5" aria-hidden="true" tabindex="-1"></a><span class="st">               {&quot;year&quot;:2011, &quot;race&quot;:&quot;All Races&quot;, &quot;sex&quot;:&quot;Both Sexes&quot;, &quot;life&quot;:78.7, &quot;death&quot;:741.3},</span></span>
+<span id="cb118-6"><a href="json-데이터-가져오기.html#cb118-6" aria-hidden="true" tabindex="-1"></a><span class="st">               {&quot;year&quot;:2010, &quot;race&quot;:&quot;All Races&quot;, &quot;sex&quot;:&quot;Both Sexes&quot;, &quot;life&quot;:78.7, &quot;death&quot;:747}]&#39;</span></span></code></pre></div>
+<p>이것은 우리가 이 과정 전체에서 작업한 기대 수명 데이터의 일부이다. 이 데이터에 대해 어느 정도 이해할 수는 있지만 친숙한 형식과는 거리가 멀다.</p>
+<p>이와 같은 데이터로 작업하려면 <code>jsonlite</code> 패키지를 사용할 수 있다. 다음 코드로이 패키지를 설치한다.</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="json-데이터-가져오기.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;jsonlite&quot;)</span></span></code></pre></div>
+<p>이제 위의 JSON 데이터가 <code>life_json</code>이라는 개체에 저장되어 있다고 가정하면 데이터를 다음과 같은 간단한 코드 줄과 함께 사용할 수있는 깔끔한 형식으로 변환할 수 있다.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="json-데이터-가져오기.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb120-2"><a href="json-데이터-가져오기.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;jsonlite&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     flatten</code></pre>
+<pre><code>life &lt;- fromJSON(life_json)
+life</code></pre>
+<p>위의 라이브러리 참조를 포함했다. 이 데이터 프레임을 가져 오기 위해 명령 줄에 개체 이름 <code>life</code>를 입력하여 결과를 검사할 수 있다.</p>
+<pre><code>##   year race      sex        death life
+## 1 2015 All Races Both Sexes 733.1   NA
+## 2 2014 All Races Both Sexes 724.6 78.9
+## 3 2013 All Races Both Sexes 731.9 78.8
+## 4 2012 All Races Both Sexes 732.8 78.8
+## 5 2011 All Races Both Sexes 741.3 78.7
+## 6 2010 All Races Both Sexes 747.0 78.7</code></pre>
+<p><code>jsonlite</code> 패키지의 <code>fromJSON</code> 함수는 파일을 데이터 프레임으로 자동 변환한다. 이 함수는 자동으로 할 수있는 가장 높은 수준의 개체를 반환한다. 우리의 데이터는 우리가 받은 데이터 프레임에 깔끔하게 들어 맞는다. 그러나 기본 데이터 프레임이 이 구조에 맞지 않으면 JSON 파일의 구조를 반영하는 리스트 개체가 될 수 있다.</p>
+<p>참고로, 우리가 사용하고 있는 <code>expectancy</code> 데이터 프레임을 json 파일로 변경할 수도 있다. 이를 위해 <code>toJSON()</code> 함수를 다음과 같이 이용하면 된다. <code>expectancy</code> 데이터 세트의 처음 5개 행만 json 파일로 변경해 본다.</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="json-데이터-가져오기.html#cb125-1" aria-hidden="true" tabindex="-1"></a>json_life <span class="ot">&lt;-</span> <span class="fu">toJSON</span>(expectancy[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, ])</span>
+<span id="cb125-2"><a href="json-데이터-가져오기.html#cb125-2" aria-hidden="true" tabindex="-1"></a>json_life</span></code></pre></div>
+<pre><code>## [{&quot;Year&quot;:1900,&quot;Race&quot;:&quot;All Races&quot;,&quot;Sex&quot;:&quot;Both Sexes&quot;,&quot;Average Life Expectancy (Years)&quot;:47.3,&quot;Age-adjusted Death Rate&quot;:2518},{&quot;Year&quot;:1901,&quot;Race&quot;:&quot;All Races&quot;,&quot;Sex&quot;:&quot;Both Sexes&quot;,&quot;Average Life Expectancy (Years)&quot;:49.1,&quot;Age-adjusted Death Rate&quot;:2473.1},{&quot;Year&quot;:1902,&quot;Race&quot;:&quot;All Races&quot;,&quot;Sex&quot;:&quot;Both Sexes&quot;,&quot;Average Life Expectancy (Years)&quot;:51.5,&quot;Age-adjusted Death Rate&quot;:2301.3},{&quot;Year&quot;:1903,&quot;Race&quot;:&quot;All Races&quot;,&quot;Sex&quot;:&quot;Both Sexes&quot;,&quot;Average Life Expectancy (Years)&quot;:50.5,&quot;Age-adjusted Death Rate&quot;:2379},{&quot;Year&quot;:1904,&quot;Race&quot;:&quot;All Races&quot;,&quot;Sex&quot;:&quot;Both Sexes&quot;,&quot;Average Life Expectancy (Years)&quot;:47.6,&quot;Age-adjusted Death Rate&quot;:2502.5}]</code></pre>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="함수.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="결론-10.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>5.3 데이터 탐색 | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="5.3 데이터 탐색 | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="5.3 데이터 탐색 | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="r-코드-파일.html"/>
+<link rel="next" href="결론-3.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="데이터-탐색" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> 데이터 탐색</h2>
+<p>새 프로젝트를 시작할 때 할 수 있는 작업 중 하나는 탐색적 데이터 분석(Exploratory Data Analysis)을 수행하는 것이다. 데이터 세트를 미리 시각적으로 검사 할 수 있지만 더 완전한 그림을 작성하는 것이 좋을 것이니다. 또한 더 중요한 데이터 포인트를 시각화하기를 원할 수도 있다.</p>
+<div id="데이터-프레임-요약" class="section level3" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> 데이터 프레임 요약</h3>
+<p>RStudio 메뉴 표시 줄로 이동하여 “파일” ➤ “새 파일” ➤ “R 스크립트”를 선택하여 새로운 R 스크립트 파일을 생성해 보자. 앞에서와 마찬가지로 새 파일이 나타난다. 플로피 디스크 아이콘을 클릭하여이 파일을 “data_exploration.R”의 파일 이름으로 저장한다.</p>
+<p>이제 우리는 <code>expectancy</code> 데이터 프레임의 요약을 확인하고자 한다. 그래서 우리는 <code>summary()</code> 함수의 인수로 데이터 프레임을 사용할 수 있다.</p>
+<pre><code>summary(expectancy)</code></pre>
+<p>이 함수를 R 스크립트 파일에 바로 입력한 다음 “실행” 버튼을 클릭하여이 코드를 실행한다. 그러면 그림 <a href="데이터-탐색.html#fig:summDF">5.9</a>와 같이 각 변수 (또는 데이터 프레임의 열)를 설명하는 출력이 표시된다.</p>
+<div class="figure"><span id="fig:summDF"></span>
+<img src="images/05-009.png" alt="코드 편집 옵션" width="100%" />
+<p class="caption">
+그림 5.9: 코드 편집 옵션
+</p>
+</div>
+<p>그림 5-9의 정보는이 데이터 세트에 대한 많은 것을 보여주고 있다. 각 열에 어떤 유형의 데이터가 포함되어 있는지 알 수 있으며, 숫자 데이터에 대한 정보가 있다. 예를 들어, 우리는 데이터 세트가 1900년에서 부터 2015 년까지를 포함하고, 어떤 연도의 기대수명은 29.10 년이고 다른 연도의 기대수명은 81.4 년이라는 것을 알 수 있다. 또한 인종과 성별의 두 가지 문자열 유형이 있음을 알 수 있지만 이에 대한 정보는 거의 없다. 이는 카테고리형 변수들로서, 이 데이터 세트가 어떻게 구성되어 있는지 보여주고 있다.</p>
+<p>인종 및 성별의 범주를 보기 위해 R의 <code>unique()</code> 함수를 사용하고 다음과 같은 인수로 데이터 열을 전달할 수 있다.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="데이터-탐색.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(expectancy<span class="sc">$</span>race) </span></code></pre></div>
+<pre><code>## [1] &quot;All Races&quot; &quot;Black&quot;     &quot;White&quot;</code></pre>
+<p>“실행” 버튼을 클릭하면, 그 결과는 다음과 같이 나타날 것이다:</p>
+<pre><code>## [1] &quot;All Races&quot; &quot;Black&quot; &quot;White&quot;</code></pre>
+<p>성별의 범주에 대해 동일한 작업을 수행하면 “Both Sexes,” “Female” 그리고 “Male”의 세 가지 범주도 사용할 수 있음을 알 수 있다.</p>
+<p>이 모든 것을 통해 데이터가 <code>year</code>(연도), <code>race</code>(인종) 그리고 <code>sex</code>(성별)의 세 가지 범주로 구성된다는 것을 알 수 있다. 또한 매년 가능한 모든 인종 및 성별 조합에 대한 행이 있을 것이다. 데이터 프레임 보기를 사용하여 이를 확인할 수 있다.</p>
+<p><code>expectancy</code> 데이터 프레임을 다시 보려면 프로젝트의 첫 번째 탭으로 이동한다. 데이터의 하위 집합을 보려면 필터(<code>Filter</code>) 버튼을 클릭한다. <code>year</code>(연도) 열의 슬라이더를 사용하여 그림 <a href="데이터-탐색.html#fig:filtDF">5.10</a>에 표시된대로 <code>1900</code> 년으로 식별되는 행만 볼 수 있다.</p>
+<div class="figure"><span id="fig:filtDF"></span>
+<img src="images/05-010.png" alt="필터링된 데이터 프레임" width="100%" />
+<p class="caption">
+그림 5.10: 필터링된 데이터 프레임
+</p>
+</div>
+<p>우리는 데이터 프레임이 어떻게 구성되어 있는지 알고 있으므로 이 데이터 프레임을 처리하는 방법에 주의해야 한다. 예를 들어, 중복되는 범주가 포함되어 있으므로 연도별로 데이터 포인트를 단순히 집계하지 않고, 조사 질문을 개발할 때 이러한 범주를 필터링하고자 한다.</p>
+<p>또한 우리가 보고 있는 숫자 변수에 대한 통찰력을 얻기 위해 기초적인 시각화를 수행할 수도 있다. 예를 들어 1900 년 이후로 기대 수명이 늘어 났을 것이라고 추측할 수 있다. 이 가설을 테스트하기 위해 <code>race</code>(인종)와 <code>sex</code>(성별) 범주 값이 “All Races”와 “Both Sexes”인 데이터 프레임의 행만 볼 수 있다.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="데이터-탐색.html#cb16-1" aria-hidden="true" tabindex="-1"></a>trend <span class="ot">&lt;-</span> expectancy</span>
+<span id="cb16-2"><a href="데이터-탐색.html#cb16-2" aria-hidden="true" tabindex="-1"></a>trend <span class="ot">&lt;-</span> trend[trend<span class="sc">$</span>race <span class="sc">==</span> <span class="st">&quot;All Races&quot;</span>, ]</span>
+<span id="cb16-3"><a href="데이터-탐색.html#cb16-3" aria-hidden="true" tabindex="-1"></a>trend <span class="ot">&lt;-</span> trend[trend<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;Both Sexes&quot;</span>, ]</span></code></pre></div>
+<p>먼저 <code>trend</code>라는 새 데이터 프레임에 <code>expectancy</code> 데이터 프레임을 할당한다. 그런 다음 데이터의 두 하위 집합을 가져온다. 두 번째 줄은 <code>race</code>(인종)이 “All Races”인 모든 행을 반환하고, 세 번째 줄은 <code>sex</code>(성별)이 “Both Sexes”인 모든 행을 반환한다. 다음으로, 특별히 살펴보게 될 변수에 대해 나머지 예상되는 값들은 모두 제거 할 수 있다.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="데이터-탐색.html#cb17-1" aria-hidden="true" tabindex="-1"></a>trend<span class="sc">$</span>race <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb17-2"><a href="데이터-탐색.html#cb17-2" aria-hidden="true" tabindex="-1"></a>trend<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb17-3"><a href="데이터-탐색.html#cb17-3" aria-hidden="true" tabindex="-1"></a>trend<span class="sc">$</span>death_rate <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
+<p>R에서 개체를 NULL로 설정하면 환경에서 개체가 제거된다. 이제 <code>base</code> R 플롯 함수를 사용하여 연도별 기대 수명을 플롯할 수 있다.</p>
+<pre><code>plot(trend)</code></pre>
+<p>그러면 두 개의 변수가 자동으로 플롯되고 플롯 뷰어에는 그림 <a href="데이터-탐색.html#fig:ExLifeYear">5.11</a>과 같이 플롯이 표시된다.</p>
+<div class="figure"><span id="fig:ExLifeYear"></span>
+<img src="images/05-011.png" alt="연도 별 기대 수명" width="100%" />
+<p class="caption">
+그림 5.11: 연도 별 기대 수명
+</p>
+</div>
+<p>보다시피 이 플롯은 기대 수명이 수년에 걸쳐 증가할 것이라는 처음의 추측을 뒷받침하고 있다. 이 플롯은 또한 초기 관측치가 후기 관측치만큼 일관성이 없음을 보여준다.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="r-코드-파일.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="결론-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

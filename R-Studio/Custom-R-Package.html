@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 R 패키지 만들기 | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 R 패키지 만들기 | R STudio 활용" />
   <meta property="og:type" content="book" />
@@ -24,16 +24,16 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2021-01-07" />
+<meta name="date" content="2021-02-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="Shiny-R-Dashboard.html"/>
-<link rel="next" href="Code-Tools.html"/>
-<script src="libs/header-attrs-2.6.4/header-attrs.js"></script>
+<link rel="prev" href="결론-7.html"/>
+<link rel="next" href="사용자-지정-r-패키지-사용-사례.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,8 +51,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -119,7 +117,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -132,161 +130,167 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
+<li><a href="/">Home</a></li>
+
+<li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>RStudio 활용</a></li>
 <li class="chapter" data-level="1" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html"><i class="fa fa-check"></i><b>1</b> RStudio 설치</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html#r-설치"><i class="fa fa-check"></i><b>1.1</b> R 설치</a>
+<li class="chapter" data-level="1.1" data-path="r-설치.html"><a href="r-설치.html"><i class="fa fa-check"></i><b>1.1</b> R 설치</a>
 <ul>
-<li class="chapter" data-level="1.1.1" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html#mac에서-r-설치하기"><i class="fa fa-check"></i><b>1.1.1</b> Mac에서 R 설치하기</a></li>
-<li class="chapter" data-level="1.1.2" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html#windows에-r-설치"><i class="fa fa-check"></i><b>1.1.2</b> Windows에 R 설치</a></li>
-<li class="chapter" data-level="1.1.3" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html#리눅스-r-설치"><i class="fa fa-check"></i><b>1.1.3</b> 리눅스 R 설치</a></li>
-<li class="chapter" data-level="1.1.4" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html#git-설치"><i class="fa fa-check"></i><b>1.1.4</b> Git 설치</a></li>
+<li class="chapter" data-level="1.1.1" data-path="r-설치.html"><a href="r-설치.html#mac에서-r-설치하기"><i class="fa fa-check"></i><b>1.1.1</b> Mac에서 R 설치하기</a></li>
+<li class="chapter" data-level="1.1.2" data-path="r-설치.html"><a href="r-설치.html#windows에-r-설치"><i class="fa fa-check"></i><b>1.1.2</b> Windows에 R 설치</a></li>
+<li class="chapter" data-level="1.1.3" data-path="r-설치.html"><a href="r-설치.html#리눅스-r-설치"><i class="fa fa-check"></i><b>1.1.3</b> 리눅스 R 설치</a></li>
+<li class="chapter" data-level="1.1.4" data-path="r-설치.html"><a href="r-설치.html#git-설치"><i class="fa fa-check"></i><b>1.1.4</b> Git 설치</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html#rstudio-설치"><i class="fa fa-check"></i><b>1.2</b> RStudio 설치</a>
+<li class="chapter" data-level="1.2" data-path="rstudio-설치.html"><a href="rstudio-설치.html"><i class="fa fa-check"></i><b>1.2</b> RStudio 설치</a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="Installing-RStudio.html"><a href="Installing-RStudio.html#rstudio-확인"><i class="fa fa-check"></i><b>1.2.1</b> RStudio 확인</a></li>
+<li class="chapter" data-level="1.2.1" data-path="rstudio-설치.html"><a href="rstudio-설치.html#rstudio-확인"><i class="fa fa-check"></i><b>1.2.1</b> RStudio 확인</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="Hello-World.html"><a href="Hello-World.html"><i class="fa fa-check"></i><b>2</b> Hello World</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="Hello-World.html"><a href="Hello-World.html#대화형-r-콘솔"><i class="fa fa-check"></i><b>2.1</b> 대화형 R 콘솔</a>
+<li class="chapter" data-level="2.1" data-path="대화형-r-콘솔.html"><a href="대화형-r-콘솔.html"><i class="fa fa-check"></i><b>2.1</b> 대화형 R 콘솔</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="Hello-World.html"><a href="Hello-World.html#벡터"><i class="fa fa-check"></i><b>2.1.1</b> 벡터</a></li>
-<li class="chapter" data-level="2.1.2" data-path="Hello-World.html"><a href="Hello-World.html#hello-world"><i class="fa fa-check"></i><b>2.1.2</b> Hello World</a></li>
+<li class="chapter" data-level="2.1.1" data-path="대화형-r-콘솔.html"><a href="대화형-r-콘솔.html#벡터"><i class="fa fa-check"></i><b>2.1.1</b> 벡터</a></li>
+<li class="chapter" data-level="2.1.2" data-path="대화형-r-콘솔.html"><a href="대화형-r-콘솔.html#hello-world"><i class="fa fa-check"></i><b>2.1.2</b> Hello World</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="Hello-World.html"><a href="Hello-World.html#터미널terminal"><i class="fa fa-check"></i><b>2.2</b> 터미널(Terminal)</a></li>
-<li class="chapter" data-level="2.3" data-path="Hello-World.html"><a href="Hello-World.html#환경environment"><i class="fa fa-check"></i><b>2.3</b> 환경(Environment)</a>
+<li class="chapter" data-level="2.2" data-path="터미널terminal.html"><a href="터미널terminal.html"><i class="fa fa-check"></i><b>2.2</b> 터미널(Terminal)</a></li>
+<li class="chapter" data-level="2.3" data-path="환경environment.html"><a href="환경environment.html"><i class="fa fa-check"></i><b>2.3</b> 환경(Environment)</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="Hello-World.html"><a href="Hello-World.html#데이터-불러오기"><i class="fa fa-check"></i><b>2.3.1</b> 데이터 불러오기</a></li>
-<li class="chapter" data-level="2.3.2" data-path="Hello-World.html"><a href="Hello-World.html#데이터-세트"><i class="fa fa-check"></i><b>2.3.2</b> 데이터 세트</a></li>
+<li class="chapter" data-level="2.3.1" data-path="환경environment.html"><a href="환경environment.html#데이터-불러오기"><i class="fa fa-check"></i><b>2.3.1</b> 데이터 불러오기</a></li>
+<li class="chapter" data-level="2.3.2" data-path="환경environment.html"><a href="환경environment.html#데이터-세트"><i class="fa fa-check"></i><b>2.3.2</b> 데이터 세트</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="Hello-World.html"><a href="Hello-World.html#히스토리history"><i class="fa fa-check"></i><b>2.4</b> 히스토리(History)</a></li>
-<li class="chapter" data-level="2.5" data-path="Hello-World.html"><a href="Hello-World.html#연결-탭connections"><i class="fa fa-check"></i><b>2.5</b> 연결 탭(Connections)</a></li>
-<li class="chapter" data-level="2.6" data-path="Hello-World.html"><a href="Hello-World.html#결론"><i class="fa fa-check"></i><b>2.6</b> 결론</a></li>
+<li class="chapter" data-level="2.4" data-path="히스토리history.html"><a href="히스토리history.html"><i class="fa fa-check"></i><b>2.4</b> 히스토리(History)</a></li>
+<li class="chapter" data-level="2.5" data-path="연결-탭connections.html"><a href="연결-탭connections.html"><i class="fa fa-check"></i><b>2.5</b> 연결 탭(Connections)</a></li>
+<li class="chapter" data-level="2.6" data-path="결론.html"><a href="결론.html"><i class="fa fa-check"></i><b>2.6</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="RStudio-Views.html"><a href="RStudio-Views.html"><i class="fa fa-check"></i><b>3</b> RStudio Views</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="RStudio-Views.html"><a href="RStudio-Views.html#파일-플롯-패키지-도움말-및-뷰어-창"><i class="fa fa-check"></i><b>3.1</b> 파일, 플롯, 패키지, 도움말 및 뷰어 창</a></li>
-<li class="chapter" data-level="3.2" data-path="RStudio-Views.html"><a href="RStudio-Views.html#파일"><i class="fa fa-check"></i><b>3.2</b> 파일</a></li>
-<li class="chapter" data-level="3.3" data-path="RStudio-Views.html"><a href="RStudio-Views.html#플롯"><i class="fa fa-check"></i><b>3.3</b> 플롯</a>
+<li class="chapter" data-level="3.1" data-path="파일-플롯-패키지-도움말-및-뷰어-창.html"><a href="파일-플롯-패키지-도움말-및-뷰어-창.html"><i class="fa fa-check"></i><b>3.1</b> 파일, 플롯, 패키지, 도움말 및 뷰어 창</a></li>
+<li class="chapter" data-level="3.2" data-path="파일.html"><a href="파일.html"><i class="fa fa-check"></i><b>3.2</b> 파일</a></li>
+<li class="chapter" data-level="3.3" data-path="플롯.html"><a href="플롯.html"><i class="fa fa-check"></i><b>3.3</b> 플롯</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="RStudio-Views.html"><a href="RStudio-Views.html#데이터-결합-소개"><i class="fa fa-check"></i><b>3.3.1</b> 데이터 결합 소개</a></li>
-<li class="chapter" data-level="3.3.2" data-path="RStudio-Views.html"><a href="RStudio-Views.html#플롯-1"><i class="fa fa-check"></i><b>3.3.2</b> 플롯</a></li>
+<li class="chapter" data-level="3.3.1" data-path="플롯.html"><a href="플롯.html#데이터-결합-소개"><i class="fa fa-check"></i><b>3.3.1</b> 데이터 결합 소개</a></li>
+<li class="chapter" data-level="3.3.2" data-path="플롯.html"><a href="플롯.html#플롯-1"><i class="fa fa-check"></i><b>3.3.2</b> 플롯</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="RStudio-Views.html"><a href="RStudio-Views.html#패키지"><i class="fa fa-check"></i><b>3.4</b> 패키지</a></li>
-<li class="chapter" data-level="3.5" data-path="RStudio-Views.html"><a href="RStudio-Views.html#도움말"><i class="fa fa-check"></i><b>3.5</b> 도움말</a></li>
-<li class="chapter" data-level="3.6" data-path="RStudio-Views.html"><a href="RStudio-Views.html#뷰어"><i class="fa fa-check"></i><b>3.6</b> 뷰어</a></li>
-<li class="chapter" data-level="3.7" data-path="RStudio-Views.html"><a href="RStudio-Views.html#결론-1"><i class="fa fa-check"></i><b>3.7</b> 결론</a></li>
+<li class="chapter" data-level="3.4" data-path="패키지.html"><a href="패키지.html"><i class="fa fa-check"></i><b>3.4</b> 패키지</a></li>
+<li class="chapter" data-level="3.5" data-path="도움말.html"><a href="도움말.html"><i class="fa fa-check"></i><b>3.5</b> 도움말</a></li>
+<li class="chapter" data-level="3.6" data-path="뷰어.html"><a href="뷰어.html"><i class="fa fa-check"></i><b>3.6</b> 뷰어</a></li>
+<li class="chapter" data-level="3.7" data-path="결론-1.html"><a href="결론-1.html"><i class="fa fa-check"></i><b>3.7</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="RStudio-Projects.html"><a href="RStudio-Projects.html"><i class="fa fa-check"></i><b>4</b> RStudio 프로젝트</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="RStudio-Projects.html"><a href="RStudio-Projects.html#새-rstudio-프로젝트-만들기"><i class="fa fa-check"></i><b>4.1</b> 새 RStudio 프로젝트 만들기</a></li>
-<li class="chapter" data-level="4.2" data-path="RStudio-Projects.html"><a href="RStudio-Projects.html#프로젝트-유형"><i class="fa fa-check"></i><b>4.2</b> 프로젝트 유형</a></li>
-<li class="chapter" data-level="4.3" data-path="RStudio-Projects.html"><a href="RStudio-Projects.html#rstudio-프로젝트-둘러보기"><i class="fa fa-check"></i><b>4.3</b> RStudio 프로젝트 둘러보기</a></li>
-<li class="chapter" data-level="4.4" data-path="RStudio-Projects.html"><a href="RStudio-Projects.html#결론-2"><i class="fa fa-check"></i><b>4.4</b> 결론</a></li>
+<li class="chapter" data-level="4.1" data-path="새-rstudio-프로젝트-만들기.html"><a href="새-rstudio-프로젝트-만들기.html"><i class="fa fa-check"></i><b>4.1</b> 새 RStudio 프로젝트 만들기</a></li>
+<li class="chapter" data-level="4.2" data-path="프로젝트-유형.html"><a href="프로젝트-유형.html"><i class="fa fa-check"></i><b>4.2</b> 프로젝트 유형</a></li>
+<li class="chapter" data-level="4.3" data-path="rstudio-프로젝트-둘러보기.html"><a href="rstudio-프로젝트-둘러보기.html"><i class="fa fa-check"></i><b>4.3</b> RStudio 프로젝트 둘러보기</a></li>
+<li class="chapter" data-level="4.4" data-path="결론-2.html"><a href="결론-2.html"><i class="fa fa-check"></i><b>4.4</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html"><i class="fa fa-check"></i><b>5</b> 반복 가능한 분석</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html#데이터-세트-구성"><i class="fa fa-check"></i><b>5.1</b> 데이터 세트 구성</a>
+<li class="chapter" data-level="5.1" data-path="데이터-세트-구성.html"><a href="데이터-세트-구성.html"><i class="fa fa-check"></i><b>5.1</b> 데이터 세트 구성</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html#기대-수명-데이터-다운로드"><i class="fa fa-check"></i><b>5.1.1</b> 기대 수명 데이터 다운로드</a></li>
-<li class="chapter" data-level="5.1.2" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html#r-프로젝트에-데이터-세트-추가"><i class="fa fa-check"></i><b>5.1.2</b> R 프로젝트에 데이터 세트 추가</a></li>
+<li class="chapter" data-level="5.1.1" data-path="데이터-세트-구성.html"><a href="데이터-세트-구성.html#기대-수명-데이터-다운로드"><i class="fa fa-check"></i><b>5.1.1</b> 기대 수명 데이터 다운로드</a></li>
+<li class="chapter" data-level="5.1.2" data-path="데이터-세트-구성.html"><a href="데이터-세트-구성.html#r-프로젝트에-데이터-세트-추가"><i class="fa fa-check"></i><b>5.1.2</b> R 프로젝트에 데이터 세트 추가</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html#r-코드-파일"><i class="fa fa-check"></i><b>5.2</b> R 코드 파일</a></li>
-<li class="chapter" data-level="5.3" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html#데이터-탐색"><i class="fa fa-check"></i><b>5.3</b> 데이터 탐색</a>
+<li class="chapter" data-level="5.2" data-path="r-코드-파일.html"><a href="r-코드-파일.html"><i class="fa fa-check"></i><b>5.2</b> R 코드 파일</a></li>
+<li class="chapter" data-level="5.3" data-path="데이터-탐색.html"><a href="데이터-탐색.html"><i class="fa fa-check"></i><b>5.3</b> 데이터 탐색</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html#데이터-프레임-요약"><i class="fa fa-check"></i><b>5.3.1</b> 데이터 프레임 요약</a></li>
+<li class="chapter" data-level="5.3.1" data-path="데이터-탐색.html"><a href="데이터-탐색.html#데이터-프레임-요약"><i class="fa fa-check"></i><b>5.3.1</b> 데이터 프레임 요약</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="Repeatable-Analysis.html"><a href="Repeatable-Analysis.html#결론-3"><i class="fa fa-check"></i><b>5.4</b> 결론</a></li>
+<li class="chapter" data-level="5.4" data-path="결론-3.html"><a href="결론-3.html"><i class="fa fa-check"></i><b>5.4</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html"><i class="fa fa-check"></i><b>6</b> 필수적인 R 패키지 : tidyverse</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html#r-패키지"><i class="fa fa-check"></i><b>6.1</b> R 패키지</a></li>
-<li class="chapter" data-level="6.2" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html#tidyverse"><i class="fa fa-check"></i><b>6.2</b> <code>tidyverse</code></a></li>
-<li class="chapter" data-level="6.3" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html#tibble"><i class="fa fa-check"></i><b>6.3</b> <code>tibble</code></a></li>
-<li class="chapter" data-level="6.4" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html#dplyr"><i class="fa fa-check"></i><b>6.4</b> <code>dplyr</code></a>
+<li class="chapter" data-level="6.1" data-path="r-패키지.html"><a href="r-패키지.html"><i class="fa fa-check"></i><b>6.1</b> R 패키지</a></li>
+<li class="chapter" data-level="6.2" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>6.2</b> <code>tidyverse</code></a></li>
+<li class="chapter" data-level="6.3" data-path="tibble.html"><a href="tibble.html"><i class="fa fa-check"></i><b>6.3</b> <code>tibble</code></a></li>
+<li class="chapter" data-level="6.4" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>6.4</b> <code>dplyr</code></a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html#sql-유사-조인"><i class="fa fa-check"></i><b>6.4.1</b> SQL 유사 조인</a></li>
+<li class="chapter" data-level="6.4.1" data-path="dplyr.html"><a href="dplyr.html#sql-유사-조인"><i class="fa fa-check"></i><b>6.4.1</b> SQL 유사 조인</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html#stringr"><i class="fa fa-check"></i><b>6.5</b> <code>stringr</code></a></li>
-<li class="chapter" data-level="6.6" data-path="Essential-R-Packages.html"><a href="Essential-R-Packages.html#결론-4"><i class="fa fa-check"></i><b>6.6</b> 결론</a></li>
+<li class="chapter" data-level="6.5" data-path="stringr.html"><a href="stringr.html"><i class="fa fa-check"></i><b>6.5</b> <code>stringr</code></a></li>
+<li class="chapter" data-level="6.6" data-path="결론-4.html"><a href="결론-4.html"><i class="fa fa-check"></i><b>6.6</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="Data-Visualization.html"><a href="Data-Visualization.html"><i class="fa fa-check"></i><b>7</b> 데이터 시각화</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="Data-Visualization.html"><a href="Data-Visualization.html#ggplot2"><i class="fa fa-check"></i><b>7.1</b> <code>ggplot2</code></a></li>
-<li class="chapter" data-level="7.2" data-path="Data-Visualization.html"><a href="Data-Visualization.html#htmlwidgets"><i class="fa fa-check"></i><b>7.2</b> <code>htmlwidgets</code></a></li>
-<li class="chapter" data-level="7.3" data-path="Data-Visualization.html"><a href="Data-Visualization.html#r2d3"><i class="fa fa-check"></i><b>7.3</b> <code>r2d3</code></a></li>
-<li class="chapter" data-level="7.4" data-path="Data-Visualization.html"><a href="Data-Visualization.html#결론-5"><i class="fa fa-check"></i><b>7.4</b> 결론</a></li>
+<li class="chapter" data-level="7.1" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>7.1</b> <code>ggplot2</code></a></li>
+<li class="chapter" data-level="7.2" data-path="htmlwidgets.html"><a href="htmlwidgets.html"><i class="fa fa-check"></i><b>7.2</b> <code>htmlwidgets</code></a></li>
+<li class="chapter" data-level="7.3" data-path="r2d3.html"><a href="r2d3.html"><i class="fa fa-check"></i><b>7.3</b> <code>r2d3</code></a></li>
+<li class="chapter" data-level="7.4" data-path="결론-5.html"><a href="결론-5.html"><i class="fa fa-check"></i><b>7.4</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="R-Markdown.html"><a href="R-Markdown.html"><i class="fa fa-check"></i><b>8</b> R 마크다운</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="R-Markdown.html"><a href="R-Markdown.html#r-markdown-문서"><i class="fa fa-check"></i><b>8.1</b> R Markdown 문서</a></li>
-<li class="chapter" data-level="8.2" data-path="R-Markdown.html"><a href="R-Markdown.html#r-markdown-예"><i class="fa fa-check"></i><b>8.2</b> R Markdown 예</a></li>
-<li class="chapter" data-level="8.3" data-path="R-Markdown.html"><a href="R-Markdown.html#r-markdown-재현성"><i class="fa fa-check"></i><b>8.3</b> R Markdown 재현성</a></li>
-<li class="chapter" data-level="8.4" data-path="R-Markdown.html"><a href="R-Markdown.html#결론-6"><i class="fa fa-check"></i><b>8.4</b> 결론</a></li>
+<li class="chapter" data-level="8.1" data-path="r-markdown-문서.html"><a href="r-markdown-문서.html"><i class="fa fa-check"></i><b>8.1</b> R Markdown 문서</a></li>
+<li class="chapter" data-level="8.2" data-path="r-markdown-예.html"><a href="r-markdown-예.html"><i class="fa fa-check"></i><b>8.2</b> R Markdown 예</a></li>
+<li class="chapter" data-level="8.3" data-path="r-markdown-재현성.html"><a href="r-markdown-재현성.html"><i class="fa fa-check"></i><b>8.3</b> R Markdown 재현성</a></li>
+<li class="chapter" data-level="8.4" data-path="결론-6.html"><a href="결론-6.html"><i class="fa fa-check"></i><b>8.4</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html"><i class="fa fa-check"></i><b>9</b> Shiny R 대시보드</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html#새로운-shiny-앱"><i class="fa fa-check"></i><b>9.1</b> 새로운 Shiny 앱</a></li>
-<li class="chapter" data-level="9.2" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html#shiny-이해"><i class="fa fa-check"></i><b>9.2</b> Shiny 이해</a>
+<li class="chapter" data-level="9.1" data-path="새로운-shiny-앱.html"><a href="새로운-shiny-앱.html"><i class="fa fa-check"></i><b>9.1</b> 새로운 Shiny 앱</a></li>
+<li class="chapter" data-level="9.2" data-path="shiny-이해.html"><a href="shiny-이해.html"><i class="fa fa-check"></i><b>9.2</b> Shiny 이해</a>
 <ul>
-<li class="chapter" data-level="9.2.1" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html#사용자-인터페이스"><i class="fa fa-check"></i><b>9.2.1</b> 사용자 인터페이스</a></li>
-<li class="chapter" data-level="9.2.2" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html#서버"><i class="fa fa-check"></i><b>9.2.2</b> 서버</a></li>
-<li class="chapter" data-level="9.2.3" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html#앱"><i class="fa fa-check"></i><b>9.2.3</b> 앱</a></li>
+<li class="chapter" data-level="9.2.1" data-path="shiny-이해.html"><a href="shiny-이해.html#사용자-인터페이스"><i class="fa fa-check"></i><b>9.2.1</b> 사용자 인터페이스</a></li>
+<li class="chapter" data-level="9.2.2" data-path="shiny-이해.html"><a href="shiny-이해.html#서버"><i class="fa fa-check"></i><b>9.2.2</b> 서버</a></li>
+<li class="chapter" data-level="9.2.3" data-path="shiny-이해.html"><a href="shiny-이해.html#앱"><i class="fa fa-check"></i><b>9.2.3</b> 앱</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html#shiny-앱-사용자-지정"><i class="fa fa-check"></i><b>9.3</b> Shiny 앱 사용자 지정</a></li>
-<li class="chapter" data-level="9.4" data-path="Shiny-R-Dashboard.html"><a href="Shiny-R-Dashboard.html#결론-7"><i class="fa fa-check"></i><b>9.4</b> 결론</a></li>
+<li class="chapter" data-level="9.3" data-path="shiny-앱-사용자-지정.html"><a href="shiny-앱-사용자-지정.html"><i class="fa fa-check"></i><b>9.3</b> Shiny 앱 사용자 지정</a></li>
+<li class="chapter" data-level="9.4" data-path="결론-7.html"><a href="결론-7.html"><i class="fa fa-check"></i><b>9.4</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html"><i class="fa fa-check"></i><b>10</b> R 패키지 만들기</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#사용자-지정-r-패키지-사용-사례"><i class="fa fa-check"></i><b>10.1</b> 사용자 지정 R 패키지 사용 사례</a></li>
-<li class="chapter" data-level="10.2" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#새-사용자-지정-r-패키지-만들기"><i class="fa fa-check"></i><b>10.2</b> 새 사용자 지정 R 패키지 만들기</a>
+<li class="chapter" data-level="10.1" data-path="사용자-지정-r-패키지-사용-사례.html"><a href="사용자-지정-r-패키지-사용-사례.html"><i class="fa fa-check"></i><b>10.1</b> 사용자 지정 R 패키지 사용 사례</a></li>
+<li class="chapter" data-level="10.2" data-path="새-사용자-지정-r-패키지-만들기.html"><a href="새-사용자-지정-r-패키지-만들기.html"><i class="fa fa-check"></i><b>10.2</b> 새 사용자 지정 R 패키지 만들기</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#hello.r"><i class="fa fa-check"></i><b>10.2.1</b> <code>hello.R</code></a></li>
-<li class="chapter" data-level="10.2.2" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#설명서"><i class="fa fa-check"></i><b>10.2.2</b> 설명서</a></li>
-<li class="chapter" data-level="10.2.3" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#hello.rd"><i class="fa fa-check"></i><b>10.2.3</b> <code>hello.Rd</code></a></li>
+<li class="chapter" data-level="10.2.1" data-path="새-사용자-지정-r-패키지-만들기.html"><a href="새-사용자-지정-r-패키지-만들기.html#hello.r"><i class="fa fa-check"></i><b>10.2.1</b> <code>hello.R</code></a></li>
+<li class="chapter" data-level="10.2.2" data-path="새-사용자-지정-r-패키지-만들기.html"><a href="새-사용자-지정-r-패키지-만들기.html#설명서"><i class="fa fa-check"></i><b>10.2.2</b> 설명서</a></li>
+<li class="chapter" data-level="10.2.3" data-path="새-사용자-지정-r-패키지-만들기.html"><a href="새-사용자-지정-r-패키지-만들기.html#hello.rd"><i class="fa fa-check"></i><b>10.2.3</b> <code>hello.Rd</code></a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#r-패키지-구축"><i class="fa fa-check"></i><b>10.3</b> R 패키지 구축</a></li>
-<li class="chapter" data-level="10.4" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#r-패키지-문서화"><i class="fa fa-check"></i><b>10.4</b> R 패키지 문서화</a></li>
-<li class="chapter" data-level="10.5" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#r-패키지에-데이터-세트-추가"><i class="fa fa-check"></i><b>10.5</b> R 패키지에 데이터 세트 추가</a></li>
-<li class="chapter" data-level="10.6" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#코드-완성"><i class="fa fa-check"></i><b>10.6</b> 코드 완성</a></li>
-<li class="chapter" data-level="10.7" data-path="Custom-R-Package.html"><a href="Custom-R-Package.html#결론-8"><i class="fa fa-check"></i><b>10.7</b> 결론</a></li>
+<li class="chapter" data-level="10.3" data-path="r-패키지-구축.html"><a href="r-패키지-구축.html"><i class="fa fa-check"></i><b>10.3</b> R 패키지 구축</a></li>
+<li class="chapter" data-level="10.4" data-path="r-패키지-문서화.html"><a href="r-패키지-문서화.html"><i class="fa fa-check"></i><b>10.4</b> R 패키지 문서화</a></li>
+<li class="chapter" data-level="10.5" data-path="r-패키지에-데이터-세트-추가.html"><a href="r-패키지에-데이터-세트-추가.html"><i class="fa fa-check"></i><b>10.5</b> R 패키지에 데이터 세트 추가</a></li>
+<li class="chapter" data-level="10.6" data-path="코드-완성.html"><a href="코드-완성.html"><i class="fa fa-check"></i><b>10.6</b> 코드 완성</a></li>
+<li class="chapter" data-level="10.7" data-path="결론-8.html"><a href="결론-8.html"><i class="fa fa-check"></i><b>10.7</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="Code-Tools.html"><a href="Code-Tools.html"><i class="fa fa-check"></i><b>11</b> 코드 도구</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="Code-Tools.html"><a href="Code-Tools.html#소스-제어-통합"><i class="fa fa-check"></i><b>11.1</b> 소스 제어 통합</a></li>
-<li class="chapter" data-level="11.2" data-path="Code-Tools.html"><a href="Code-Tools.html#git-설정"><i class="fa fa-check"></i><b>11.2</b> Git 설정</a></li>
-<li class="chapter" data-level="11.3" data-path="Code-Tools.html"><a href="Code-Tools.html#git-저장소에-프로젝트-추가"><i class="fa fa-check"></i><b>11.3</b> Git 저장소에 프로젝트 추가</a></li>
-<li class="chapter" data-level="11.4" data-path="Code-Tools.html"><a href="Code-Tools.html#git-뷰어"><i class="fa fa-check"></i><b>11.4</b> Git 뷰어</a></li>
-<li class="chapter" data-level="11.5" data-path="Code-Tools.html"><a href="Code-Tools.html#git-diff-뷰어"><i class="fa fa-check"></i><b>11.5</b> Git Diff 뷰어</a></li>
-<li class="chapter" data-level="11.6" data-path="Code-Tools.html"><a href="Code-Tools.html#변경-사항-커밋하기"><i class="fa fa-check"></i><b>11.6</b> 변경 사항 커밋하기</a></li>
-<li class="chapter" data-level="11.7" data-path="Code-Tools.html"><a href="Code-Tools.html#git-브랜치"><i class="fa fa-check"></i><b>11.7</b> Git 브랜치</a></li>
-<li class="chapter" data-level="11.8" data-path="Code-Tools.html"><a href="Code-Tools.html#디버거"><i class="fa fa-check"></i><b>11.8</b> 디버거</a></li>
-<li class="chapter" data-level="11.9" data-path="Code-Tools.html"><a href="Code-Tools.html#더-많은-코드-도구"><i class="fa fa-check"></i><b>11.9</b> 더 많은 코드 도구</a></li>
-<li class="chapter" data-level="11.10" data-path="Code-Tools.html"><a href="Code-Tools.html#결론-9"><i class="fa fa-check"></i><b>11.10</b> 결론</a></li>
+<li class="chapter" data-level="11.1" data-path="소스-제어-통합.html"><a href="소스-제어-통합.html"><i class="fa fa-check"></i><b>11.1</b> 소스 제어 통합</a></li>
+<li class="chapter" data-level="11.2" data-path="git-설정.html"><a href="git-설정.html"><i class="fa fa-check"></i><b>11.2</b> Git 설정</a></li>
+<li class="chapter" data-level="11.3" data-path="git-저장소에-프로젝트-추가.html"><a href="git-저장소에-프로젝트-추가.html"><i class="fa fa-check"></i><b>11.3</b> Git 저장소에 프로젝트 추가</a></li>
+<li class="chapter" data-level="11.4" data-path="git-뷰어.html"><a href="git-뷰어.html"><i class="fa fa-check"></i><b>11.4</b> Git 뷰어</a></li>
+<li class="chapter" data-level="11.5" data-path="git-diff-뷰어.html"><a href="git-diff-뷰어.html"><i class="fa fa-check"></i><b>11.5</b> Git Diff 뷰어</a></li>
+<li class="chapter" data-level="11.6" data-path="변경-사항-커밋하기.html"><a href="변경-사항-커밋하기.html"><i class="fa fa-check"></i><b>11.6</b> 변경 사항 커밋하기</a></li>
+<li class="chapter" data-level="11.7" data-path="git-브랜치.html"><a href="git-브랜치.html"><i class="fa fa-check"></i><b>11.7</b> Git 브랜치</a></li>
+<li class="chapter" data-level="11.8" data-path="디버거.html"><a href="디버거.html"><i class="fa fa-check"></i><b>11.8</b> 디버거</a></li>
+<li class="chapter" data-level="11.9" data-path="더-많은-코드-도구.html"><a href="더-많은-코드-도구.html"><i class="fa fa-check"></i><b>11.9</b> 더 많은 코드 도구</a></li>
+<li class="chapter" data-level="11.10" data-path="결론-9.html"><a href="결론-9.html"><i class="fa fa-check"></i><b>11.10</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="R-Programming.html"><a href="R-Programming.html"><i class="fa fa-check"></i><b>12</b> R 프로그래밍</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="R-Programming.html"><a href="R-Programming.html#개체"><i class="fa fa-check"></i><b>12.1</b> 개체</a></li>
-<li class="chapter" data-level="12.2" data-path="R-Programming.html"><a href="R-Programming.html#필수-클래스-유형"><i class="fa fa-check"></i><b>12.2</b> 필수 클래스 유형</a>
+<li class="chapter" data-level="12.1" data-path="개체.html"><a href="개체.html"><i class="fa fa-check"></i><b>12.1</b> 개체</a></li>
+<li class="chapter" data-level="12.2" data-path="필수-클래스-유형.html"><a href="필수-클래스-유형.html"><i class="fa fa-check"></i><b>12.2</b> 필수 클래스 유형</a>
 <ul>
-<li class="chapter" data-level="12.2.1" data-path="R-Programming.html"><a href="R-Programming.html#문자-및-숫자"><i class="fa fa-check"></i><b>12.2.1</b> 문자 및 숫자</a></li>
-<li class="chapter" data-level="12.2.2" data-path="R-Programming.html"><a href="R-Programming.html#벡터-1"><i class="fa fa-check"></i><b>12.2.2</b> 벡터</a></li>
-<li class="chapter" data-level="12.2.3" data-path="R-Programming.html"><a href="R-Programming.html#행렬matrix"><i class="fa fa-check"></i><b>12.2.3</b> 행렬(Matrix)</a></li>
-<li class="chapter" data-level="12.2.4" data-path="R-Programming.html"><a href="R-Programming.html#리스트"><i class="fa fa-check"></i><b>12.2.4</b> 리스트</a></li>
-<li class="chapter" data-level="12.2.5" data-path="R-Programming.html"><a href="R-Programming.html#factor"><i class="fa fa-check"></i><b>12.2.5</b> factor</a></li>
-<li class="chapter" data-level="12.2.6" data-path="R-Programming.html"><a href="R-Programming.html#데이터-프레임"><i class="fa fa-check"></i><b>12.2.6</b> 데이터 프레임</a></li>
+<li class="chapter" data-level="12.2.1" data-path="필수-클래스-유형.html"><a href="필수-클래스-유형.html#문자-및-숫자"><i class="fa fa-check"></i><b>12.2.1</b> 문자 및 숫자</a></li>
+<li class="chapter" data-level="12.2.2" data-path="필수-클래스-유형.html"><a href="필수-클래스-유형.html#벡터-1"><i class="fa fa-check"></i><b>12.2.2</b> 벡터</a></li>
+<li class="chapter" data-level="12.2.3" data-path="필수-클래스-유형.html"><a href="필수-클래스-유형.html#행렬matrix"><i class="fa fa-check"></i><b>12.2.3</b> 행렬(Matrix)</a></li>
+<li class="chapter" data-level="12.2.4" data-path="필수-클래스-유형.html"><a href="필수-클래스-유형.html#리스트"><i class="fa fa-check"></i><b>12.2.4</b> 리스트</a></li>
+<li class="chapter" data-level="12.2.5" data-path="필수-클래스-유형.html"><a href="필수-클래스-유형.html#factor"><i class="fa fa-check"></i><b>12.2.5</b> factor</a></li>
+<li class="chapter" data-level="12.2.6" data-path="필수-클래스-유형.html"><a href="필수-클래스-유형.html#데이터-프레임"><i class="fa fa-check"></i><b>12.2.6</b> 데이터 프레임</a></li>
 </ul></li>
-<li class="chapter" data-level="12.3" data-path="R-Programming.html"><a href="R-Programming.html#흐름-제어"><i class="fa fa-check"></i><b>12.3</b> 흐름 제어</a>
+<li class="chapter" data-level="12.3" data-path="흐름-제어.html"><a href="흐름-제어.html"><i class="fa fa-check"></i><b>12.3</b> 흐름 제어</a>
 <ul>
-<li class="chapter" data-level="12.3.1" data-path="R-Programming.html"><a href="R-Programming.html#if-then-문"><i class="fa fa-check"></i><b>12.3.1</b> <code>If-then</code> 문</a></li>
-<li class="chapter" data-level="12.3.2" data-path="R-Programming.html"><a href="R-Programming.html#반복문"><i class="fa fa-check"></i><b>12.3.2</b> 반복문</a></li>
+<li class="chapter" data-level="12.3.1" data-path="흐름-제어.html"><a href="흐름-제어.html#if-then-문"><i class="fa fa-check"></i><b>12.3.1</b> <code>If-then</code> 문</a></li>
+<li class="chapter" data-level="12.3.2" data-path="흐름-제어.html"><a href="흐름-제어.html#반복문"><i class="fa fa-check"></i><b>12.3.2</b> 반복문</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="R-Programming.html"><a href="R-Programming.html#apply-함수"><i class="fa fa-check"></i><b>12.4</b> <code>apply()</code> 함수</a></li>
-<li class="chapter" data-level="12.5" data-path="R-Programming.html"><a href="R-Programming.html#함수"><i class="fa fa-check"></i><b>12.5</b> 함수</a></li>
-<li class="chapter" data-level="12.6" data-path="R-Programming.html"><a href="R-Programming.html#json-데이터-가져오기"><i class="fa fa-check"></i><b>12.6</b> JSON 데이터 가져오기</a></li>
-<li class="chapter" data-level="12.7" data-path="R-Programming.html"><a href="R-Programming.html#결론-10"><i class="fa fa-check"></i><b>12.7</b> 결론</a></li>
+<li class="chapter" data-level="12.4" data-path="apply-함수.html"><a href="apply-함수.html"><i class="fa fa-check"></i><b>12.4</b> <code>apply()</code> 함수</a></li>
+<li class="chapter" data-level="12.5" data-path="함수.html"><a href="함수.html"><i class="fa fa-check"></i><b>12.5</b> 함수</a></li>
+<li class="chapter" data-level="12.6" data-path="json-데이터-가져오기.html"><a href="json-데이터-가져오기.html"><i class="fa fa-check"></i><b>12.6</b> JSON 데이터 가져오기</a></li>
+<li class="chapter" data-level="12.7" data-path="결론-10.html"><a href="결론-10.html"><i class="fa fa-check"></i><b>12.7</b> 결론</a></li>
 </ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
       </nav>
@@ -308,179 +312,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 10</span> R 패키지 만들기</h1>
 <p>핵심 R 언어에 중요한 기능을 추가하는 광범위한 제3자 패키지 라이브러리로 인해 데이터 분야에서 인기를 얻었다. 우리는 <code>tidyverse</code> 패키지를 사용하여 R 사용 경험을 어떻게 변화시킬 수 있는지 이미 알아 보았다. 많은 데이터 문제가 이미 해결되었으며 R 프로그래머는 이러한 솔루션을 누구나 사용할 수 있도록 한다. 실제로 많은 데이터 프로젝트는 당면한 문제를 해결하는 이미 존재하는 R 패키지를 검색하는 것으로 시작된다.</p>
 <p>이 장에서는 자체 팀을 위해 또는 광범위한 세계에 배포하기 위해 자체 R 패키지를 만드는 방법에 대해 설명한다.</p>
-<div id="사용자-지정-r-패키지-사용-사례" class="section level2" number="10.1">
-<h2><span class="header-section-number">10.1</span> 사용자 지정 R 패키지 사용 사례</h2>
-<p>왜 우리 자신의 패키지를 만들어야 하는가? 패키지를 만드는 분명한 이유는 우리의 작업을 세상과 공유하기 위해서이다. R에서 해결되고 일반적으로 유용한 방식으로 코딩할 수있는 문제는 패키지에 적합한 후보이니다.</p>
-<p>자신의 팀이나 자신의 프로젝트에만 실제로 적용되는 패키지를 만들 수도 있다. 그 이유는 패키지 형식으로 코딩하면 코드 재사용과 프로세스 효율성이 향상되기 때문이다. 특히 유사한 상황이 발생하는 경우 패키지를 사용하여 동료를 위해 데이터와 코드를 함께 묶을 수 있다. 마지막으로 R 패키지는 작업에서 복잡한 자료를 전달하는 방법을 제공하는 내장 문서 도구와 함께 제공된다.</p>
-<p>모든 코드가 패키지에 속하는 것은 아니므로 애드혹 분석을 패키지로 전환할 때 약간의 판단을 내려야 한다. 일반적으로 R 패키지 형식일 때는 코드를 반복하고 테스트하는 것이 더 어렵기 때문에 일반적으로 유지 관리 모드가 될 때까지 기다렸다가 함수 집합을 패키지로 패키지화하는 것이 가장 좋다.</p>
-<p>이 장에서는 이전 몇 장에서 수행한 작업을 기반으로 패키지를 만들어 본다. 이 작업을 위해 RStudio를 사용하여 새로운 프로젝트를 만든 다음 패키지의 기능을 선택적으로 가져오기로 한다.</p>
-</div>
-<div id="새-사용자-지정-r-패키지-만들기" class="section level2" number="10.2">
-<h2><span class="header-section-number">10.2</span> 새 사용자 지정 R 패키지 만들기</h2>
-<p>RStudio에는 패키지 생성에 대한 지원이 내장되어 있다. RStudio 메뉴 모음으로 이동한 다음 “File,” “New Project,” “New Directory,” “R Package”를 차례로 선택한다. 그러면 그림 <a href="Custom-R-Package.html#fig:PkgWind">10.1</a>과 같은 대화 상자가 나타난다.</p>
-<div class="figure"><span id="fig:PkgWind"></span>
-<img src="images/10-001.png" alt="R 패키지 생성 대화 상자" width="100%" />
-<p class="caption">
-그림 10.1: R 패키지 생성 대화 상자
-</p>
-</div>
-<p>패키지 이름을 추가하고 패키지를 생성할 디렉토리를 지정할 수 있다. “Create Project(프로젝트 생성)” 버튼을 클릭하여 R 패키지 프로젝트를 생성한다.</p>
-<p>가이드로 따를 수있는 템플릿 파일 세트가 폴더에 있다. 키 파일은 “R” 폴더의 “hello.R”이고, “man”폴더의 “DESCRIPTION”과 “hello.Rd”이다. 이하에서 각각에 대해 살펴 보기로 한다.</p>
-<div id="hello.r" class="section level3" number="10.2.1">
-<h3><span class="header-section-number">10.2.1</span> <code>hello.R</code></h3>
-<p>게시하려는 모든 코드는 “hello.R”과 마찬가지로 “R” 폴더에 있어야 한/다. 이 파일은 R 패키지 프로젝트를 생성할 때 열리고 다음과 같은 내용을 볼 수 있다.</p>
-<pre><code># Hello, world!
-#
-# This is an example function named &#39;hello&#39;
-# which prints &#39;Hello, world!&#39;.
-#
-# You can learn more about package authoring with
-# RStudio at:
-#
-# http://r-pkgs.had.co.nz/
-#
-# Some useful keyboard shortcuts for package
-# authoring:
-#
-# Install Package: &#39;Cmd + Shift + B&#39;
-# Check Package: &#39;Cmd + Shift + E&#39;
-# Test Package: &#39;Cmd + Shift + T&#39;
-hello &lt;- function() {
-print(&quot;Hello, world!&quot;)
-}</code></pre>
-<p>이것은 매우 간단하지만 R 패키지 구축 프로세스가 어떻게 작동하는지 보여주기에 충분하다. 게시할 기능을 여기에 배치하여 사용 가능하게 할 수 있다. “R” 폴더에 기능 당 하나의 파일을 포함하는 것이 좋다.</p>
-</div>
-<div id="설명서" class="section level3" number="10.2.2">
-<h3><span class="header-section-number">10.2.2</span> 설명서</h3>
-<p>“DESCRIPTION” 파일은 패키지에 대한 메타 데이터를 제공한다. 여기에서 제목, 설명, 버전 그리고 연락처 정보를 문서화한다. 파일을 클릭하여 열고 필드를 R 패키지에 대한 정보로 바꾼다.</p>
-<pre><code>Package: life
-Type: Package
-Title: Shows Life Expectancy Trends Since 1900
-Version: 0.1.0
-Author: Dae Ho Kim
-Maintainer: KIM &lt;mis@mokwon.ac.kr&gt;
-Description: Includes datasets and helper functions to help present information on life expectancy rates.
-License: None
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.1.1</code></pre>
-<p>데모를 따라하기 위해 이를 변경할 필요는 없지만 게시할 준비가되면 이러한 필드에 관련 정보가 포함되어 있는지 확인해야 한다.</p>
-</div>
-<div id="hello.rd" class="section level3" number="10.2.3">
-<h3><span class="header-section-number">10.2.3</span> <code>hello.Rd</code></h3>
-<p>“hello.Rd”는 R 문서 파일이다. 이 파일은 함수에 포함된 문서를 기반으로 자동 생성된다. 아래에서 코드 문서화에 대해 자세히 설명하겠다.</p>
-<p>여기에 있는 정보는 “도움말” 창에서 읽은 패키지 설명서에 나타난다. 제목은 또한 RStudio에서 코드 완성의 일부로 표시되므로 코드 줄을 입력 할 때 콘텐츠가 편집기 화면에 바로 표시된다. 이는 팀의 다른 분석가가 필요할 때 바로 컨텍스트를 제공하는 매우 편리한 방법이다. 이 모든 것이 어떻게 작동하는지 볼 수 있도록 R 패키지를 구축해 보기로 한다.</p>
-</div>
-</div>
-<div id="r-패키지-구축" class="section level2" number="10.3">
-<h2><span class="header-section-number">10.3</span> R 패키지 구축</h2>
-<p>R 패키지 프로젝트로 작업할 때 오른쪽 상단 보기에 “Build”라는 추가 탭이 있다. 이 탭은 R 패키지 구축과 관련된 몇 가지 옵션을 제공한다. 이 탭으로 이동한 다음 그림 <a href="Custom-R-Package.html#fig:ViewBld">10.2</a>와 같이 “More”를 클릭한 다음 “Clean and Rebuild”를 클릭한다.</p>
-<div class="figure"><span id="fig:ViewBld"></span>
-<img src="images/10-002.png" alt="Build 보기" width="100%" />
-<p class="caption">
-그림 10.2: Build 보기
-</p>
-</div>
-<p>그러면 코드가 구축되고 패키징된다. 필요하지만 설치되지 않은 필수 라이브러리가 있는 경우 RStudio는 지금 설치하라는 메시지를 표시한다. 대화 상자 마법사를 따라 필요한 패키지를 설치해 준다.</p>
-<p>이제 패키지를 구축하고 설치했으므로 다음과 같은 기능을 사용할 수 있다.</p>
-<pre><code>library(life)
-hello()</code></pre>
-<p>이 간단한 코드는 콘솔에 “Hello, world!”를 출력한다. 이 함수의 동작을 변경하려면 “hello.R” 파일의 코드를 변경한 다음 패키지를 다시 구축하면된다. 계속해서 이 기능을 변경하고 결과를 확인하기 바란다.</p>
-<p>다른 RStudio 프로젝트에서 동일한 방식으로 이러한 기능을 사용할 수도 있다. 이것이 R 패키지가 코드 재사용을 장려하는 방법이다. R 패키지를 좀 더 보여주기 위해 기대 수명 분석의 일부 기능을 추가해 보기로 한다.</p>
-</div>
-<div id="r-패키지-문서화" class="section level2" number="10.4">
-<h2><span class="header-section-number">10.4</span> R 패키지 문서화</h2>
-<p><code>roxygen2</code> 패키지를 사용하여 R 패키지에 주석을 포함할 수 있다. 먼저 다음 명령을 사용하여 패키지를 설치해야 한다. <code>install.packages("roxygen2")</code>. 그러면 필요한 지원 패키지와 함께 <code>roxygen2</code> 라이브러리가 설치된다.</p>
-<p>다음 단계는 구축 도구를 구성하는 것이다. 메뉴의 “Build”로 이동한 다음 “Configure Build Tools…”를 선택한다. 그러면 그림 <a href="Custom-R-Package.html#fig:BldTlCom">10.3</a>과 같은 대화 상자가 나타난다.</p>
-<div class="figure"><span id="fig:BldTlCom"></span>
-<img src="images/10-003.png" alt="빌드 도구 구성" width="100%" />
-<p class="caption">
-그림 10.3: 빌드 도구 구성
-</p>
-</div>
-<p>“Generate documentation with Roxygen(Roxygen으로 문서 생성)” 확인란을 클릭한다. 그런 다음 “Configure(구성)…” 버튼을 클릭하면 그림 <a href="Custom-R-Package.html#fig:RoxBulOpt">10.4</a>와 같은 대화 상자가 나타난다.</p>
-<div class="figure"><span id="fig:RoxBulOpt"></span>
-<img src="images/10-004.png" alt="Roxygen 빌드 옵션" width="100%" />
-<p class="caption">
-그림 10.4: Roxygen 빌드 옵션
-</p>
-</div>
-<p>“Install and Restart(설치 및 다시 시작)” 확인란을 확인하라. 이제 R 패키지를 구축할 때 제공하는 필드를 기반으로 문서가 자동으로 생성된다. 백틱 # ’을 포함하는 특수 주석이 있는 문서를 포함한다. 각 필드 이름은 <code>@</code>로 시작한다. 몇 가지 일반적인 필드 유형에는 <code>@name</code>, <code>@title</code> 그리고 <code>@description</code>이 있다. 예를 들어 다음은 <code>hello</code> 함수 문서에 포함할 수있는 내용이다.</p>
-<pre><code># Hello, world!
-#
-# This is an example function named &#39;hello&#39;
-# which prints Hey there!.
-#
-#&#39; @name hello
-#&#39; @aliases hello
-#&#39; @title Hello World
-#&#39; @usage hello()
-#&#39; @description Prints &#39;Hey there!&#39;
-#&#39; @examples hello()
-hello &lt;- function() {
-            print(&quot;Hey there!&quot;)
-}</code></pre>
-<p>이제 R 패키지를 구축할 때 도움말 문서에 그림 <a href="Custom-R-Package.html#fig:UsrHelpDoc">10.5</a>에 표시된 대로 위에 포함된 내용이 반영된다.</p>
-<div class="figure"><span id="fig:UsrHelpDoc"></span>
-<img src="images/10-005.png" alt="사용자 지정 도움말 문서" width="100%" />
-<p class="caption">
-그림 10.5: 사용자 지정 도움말 문서
-</p>
-</div>
-<p>도움말 파일에서 <code>hello world</code> 메시지가 함수에서 변경되었음을 반영하도록 설명 필드를 변경했다.</p>
-</div>
-<div id="r-패키지에-데이터-세트-추가" class="section level2" number="10.5">
-<h2><span class="header-section-number">10.5</span> R 패키지에 데이터 세트 추가</h2>
-<p>패키지에 데이터 세트와 함수를 포함할 수 있다. R 패키지에 “data” 폴더를 추가한 다음 데이터 세트를 해당 폴더에 저장하기만 하면 된다. 이러한 데이터 세트는 R 데이터 프레임 또는 모든 유형의 원시 데이터 파일 일 수 있다. 기대 수명 프로젝트의 경우 data.gov 웹 사이트에서 다운로드 한 csv 파일이 포함된 데이터 폴더를 복사하였다. 그런 다음 이 코드를 사용하여 이 데이터 세트를 R 데이터 프레임으로 저장했다.</p>
-<pre><code>library(readr)
-life_expectancy &lt;- read_csv(&quot;data/NCHS_-_Death_rates_and_life_expectancy_at_birth.csv&quot;)
-
-# Clean up dataframe
-
-# Use shorter column names
-names(life_expectancy)[1] &lt;- &quot;year&quot;
-names(life_expectancy)[2] &lt;- &quot;race&quot;
-names(life_expectancy)[3] &lt;- &quot;sex&quot;
-names(life_expectancy)[4] &lt;- &quot;life_expectancy&quot;
-names(life_expectancy)[5] &lt;- &quot;death_rate&quot;
-
-save(life_expectancy, file =&quot;data/life_expectancy.rdata&quot;)</code></pre>
-<p>다음으로, 빌드보기에서 “Clean and Rebuild”를 클릭하여 life 패키지를 다시 구축해 보자. 이 프로세스가 완료되면 모든 RStudio 프로젝트에서이 코드를 사용하여 데이터 세트에 액세스할 수 있다.</p>
-<pre><code>library(life)
-head(life_expectancy)</code></pre>
-<p>이것은 이 데이터 세트의 시작을 보여줄 것이며 더 중요한 것은 기대 수명 분석을 다시 실행하지 않고도 모든 분석에서이 코드를 사용할 수 있다는 것이다.</p>
-</div>
-<div id="코드-완성" class="section level2" number="10.6">
-<h2><span class="header-section-number">10.6</span> 코드 완성</h2>
-<p>RStudio에 코드를 입력할 때 코드를 입력하는 순간마다 매 코드 제안이 팝업되는 것을 볼 수 있다. RStudio 패키지의 코드도이 패턴을 따른다. 또한 그림 <a href="Custom-R-Package.html#fig:CompPkg">10.6</a>과 같이 패키지 이름과 세미콜론 두 개를 입력하면 어떤 데이터와 기능을 사용할 수 있는지 빠르게 확인할 수 있다.</p>
-<div class="figure"><span id="fig:CompPkg"></span>
-<img src="images/10-006.png" alt="패키지 코드 완성" width="100%" />
-<p class="caption">
-그림 10.6: 패키지 코드 완성
-</p>
-</div>
-<p>위의 코드에서 우리는 <code>life::</code>를 입력했다. 이것은 <code>life</code> 패키지에 속한 모든 콘텐츠를 필터링하는 방법이다. R 패키지에 대해 이 작업을 수행하여 어떤 패키지에 어떤 함수가 포함되어 있는지 확인할 수 있다. 도움말 문서의 설명 필드는 도구 설명으로 입력할 때도 표시된다.</p>
-<p>최종적인 life 패키지의 폴더 구조를 보면 다음의 그림 <a href="Custom-R-Package.html#fig:PkgFStr">10.7</a>과 같다.</p>
-<div class="figure"><span id="fig:PkgFStr"></span>
-<img src="images/10-007.png" alt="[life 패키지의 폴더 구조" width="100%" />
-<p class="caption">
-그림 10.7: [life 패키지의 폴더 구조
-</p>
-</div>
-</div>
-<div id="결론-8" class="section level2" number="10.7">
-<h2><span class="header-section-number">10.7</span> 결론</h2>
-<p>이 장에서는 사용자 지정 R 패키지를 만들어 우리 팀과 그 이상으로 작업을 공유하는 방법에 대해 설명했다. R 패키지는 코드 재사용을 장려하고 작업을 문서화하고 패키징하는 수단을 제공하여 코드 수명을 자체 프로젝트 이상으로 연장할 수있는 좋은 방법이다.</p>
-
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="Shiny-R-Dashboard.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="Code-Tools.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="결론-7.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="사용자-지정-r-패키지-사용-사례.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -524,7 +363,8 @@ gitbook.start({
 },
 "download": null,
 "toc": {
-"collapse": "subsection"
+"collapse": "section",
+"scroll_highlight": true
 }
 });
 });

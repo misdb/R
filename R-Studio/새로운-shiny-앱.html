@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>9.1 새로운 Shiny 앱 | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="9.1 새로운 Shiny 앱 | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="9.1 새로운 Shiny 앱 | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="Shiny-R-Dashboard.html"/>
+<link rel="next" href="shiny-이해.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="새로운-shiny-앱" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> 새로운 Shiny 앱</h2>
+<p>RStudio 프로젝트에 Shiny 앱을 추가하는 것은 매우 쉽다. RStudio 메뉴 모음으로 이동 한 다음 “File,” “New File,” “Shiny Web App…” 순으로 선택하면 된다. 그러면 그림 <a href="새로운-shiny-앱.html#fig:NewShApp">9.1</a>과 같은 대화 상자가 나타난다.</p>
+<div class="figure"><span id="fig:NewShApp"></span>
+<img src="images/09-001.png" alt="새 Shiny 앱" width="100%" />
+<p class="caption">
+그림 9.1: 새 Shiny 앱
+</p>
+</div>
+<p>앱의 이름을 지정하고 하나 또는 두 개의 파일에 코드를 넣을 것인지 선택할 수 있다. 웹 앱을 빌드하려면 “만들기” 버튼을 클릭한다.</p>
+<p>RStudio는 대화 상자에서 제공 한 이름으로 프로젝트에 새 폴더를 만든다. “Single File”을 선택하면 “app.R”이라는 새 파일이 나타나고 그림 <a href="새로운-shiny-앱.html#fig:appRcon">9.2</a>와 같이 편집기 보기에서 자동으로 열린다.</p>
+<div class="figure"><span id="fig:appRcon"></span>
+<img src="images/09-002.png" alt="app.R 콘텐츠" width="100%" />
+<p class="caption">
+그림 9.2: app.R 콘텐츠
+</p>
+</div>
+<p>표시되는 코드는 RStudio가 시작점으로 생성하는 템플릿이다. 이것은 예제로 내장된 R의 데이터세트를 사용하는 작동하는 Shiny 앱이다. 웹앱을 실행하려면 그림 9-2와 같은“Run App” 버튼을 클릭한다. 그림 <a href="새로운-shiny-앱.html#fig:LocShApp">9.3</a>과 같이 R에서 관리하는 로컬 웹 서버에서 앱이 실행되기 시작한다.</p>
+<div class="figure"><span id="fig:LocShApp"></span>
+<img src="images/09-003.png" alt="로컬에서 실행되는 Shiny 앱" width="100%" />
+<p class="caption">
+그림 9.3: 로컬에서 실행되는 Shiny 앱
+</p>
+</div>
+<p>이 히스토그램은 매우 상호작용적이며, 왼쪽의 슬라이더 컨트롤을 조정하면 오른쪽의 히스토그램을 다시 생성하기 위해 R 코드가 실행된다. 이것은 단순히 정적 보고서에 미리 적용된 팝 오버(popover)를 포함하는 것 이상의 단계이다. 그림 9-3의 맨 위에 http 주소와 “Open in Browser(브라우저에서 열기)” 버튼이 표시된다. 이 앱은 웹 서버에서 실행되므로 ‘Open in Browser(브라우저에서 열기)’ 버튼을 클릭하거나 브라우저의 주소 표시 줄에 http 주소를 입력하여 일반 브라우저를 사용하여 앱을 볼 수 있다.</p>
+<p>오른쪽에 “Publish(게시)” 버튼이 있음을 알 수 있다. Shiny 앱은 누구나 사용할 수 있도록 웹 사이트에 게시된다. 이러한 앱은 RStudio가 제공하는 서비스를 통해 공개되거나 비즈니스에서 개인 서버를 관리 할 수 ​​있다. 앱을 게시할 무료 계정을 얻으려면 <a href="https://www.shinyapps.io">Shiny 웹 사이트</a>로 접속하여 가입하면 된다.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="Shiny-R-Dashboard.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="shiny-이해.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

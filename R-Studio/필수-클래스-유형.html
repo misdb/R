@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>12.2 필수 클래스 유형 | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="12.2 필수 클래스 유형 | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="12.2 필수 클래스 유형 | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="개체.html"/>
+<link rel="next" href="흐름-제어.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,95 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="필수-클래스-유형" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> 필수 클래스 유형</h2>
+<p>코드를 작성하는 동안 여러 유형의 개체를 정의하고 사용할 수 있지만 R 프로그래밍의 기초가 되는 몇 가지 유형이 있으므로 아래에서 구체적으로 설명한다.</p>
+<div id="문자-및-숫자" class="section level3" number="12.2.1">
+<h3><span class="header-section-number">12.2.1</span> 문자 및 숫자</h3>
+<p>첫 번째 섹션에서 우리는 숫자 개체를 다루었고 문자 개체도 같은 방식으로 작동한다. 실제의 차이점은 문자 개체는 숫자가 아니라 문자를 저장한다는 것이다. 문자 개체는 다음과 같이 작은 따옴표(<code>''</code>) 또는 큰 따옴표(<code>""</code>)로 묶어야 한다.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="필수-클래스-유형.html#cb84-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="st">&quot;nine&quot;</span></span></code></pre></div>
+<p>코드에서 <code>b</code>를 참조하면 “nine” 문자열이 반환된다. 이전에 살펴본 숫자 객체와 달리 <code>b</code>를 2로 곱할 수 없다.이를 시도하면 “non-numeric argument to binary operator(이항 연산자에 대한 숫자가 아닌 인수)”오류가 발생한다.</p>
+<p>문자 개체에 대해 산술연산을 할 수는 없지만 <code>stringr</code> 라이브러리를 사용하여 이러한 개체를 조작할 수 있다. 예를 들어 두 개의 문자 개체를 함께 결합하려면 다음과 같이 <code>stringr</code> 라이브러리의 <code>str_glue()</code> 함수를 사용할 수 있다.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="필수-클래스-유형.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb85-2"><a href="필수-클래스-유형.html#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_glue</span>(b, <span class="st">&quot; times 2&quot;</span>)</span></code></pre></div>
+<pre><code>## nine times 2</code></pre>
+<p>이렇게 하면 “9 x 2” 문자열이 반환된다. 라이브러리 키워드는 함수 라이브러리에 대한 액세스를 제공하는 데 사용된다. 위의 첫 번째 코드 줄은 <code>stringr</code> 라이브러리에 액세스해야 함을 의미한다.</p>
+</div>
+<div id="벡터-1" class="section level3" number="12.2.2">
+<h3><span class="header-section-number">12.2.2</span> 벡터</h3>
+<p>벡터는 동일한 유형의 개체 목록이다. 문자, 숫자 또는 기타 유형의 개체 목록이 있을 수 있다. 1로 시작하는 숫자 값(색인, index)을 사용하여 목록의 개체를 추적한다. 벡터를 만들려면 쉼표로 구분된 값의 목록을 사용하여 목록을 만드는 <code>c()</code>라는 함수를 사용한다. 알파벳의 처음 5 개 문자를 구성하는 문자를 포함하는 벡터를 만드는 방법은 다음과 같다.</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="필수-클래스-유형.html#cb87-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>)</span>
+<span id="cb87-2"><a href="필수-클래스-유형.html#cb87-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-3"><a href="필수-클래스-유형.html#cb87-3" aria-hidden="true" tabindex="-1"></a><span class="do">## OR</span></span>
+<span id="cb87-4"><a href="필수-클래스-유형.html#cb87-4" aria-hidden="true" tabindex="-1"></a>alpha1 <span class="ot">&lt;-</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
+<p><code>alpha</code>라는 이름을 입력하여 전체 목록을 콘솔에 간단히 인쇄하거나, 관심있는 벡터의 요소에 해당하는 인덱스가 있는 개체 이름 뒤에 대괄호를 사용하여 개별 요소를 참조할 수 있다.</p>
+<p>예를 들어, <code>alpha[1]</code>은 “A”를 인쇄하고, <code>alpha[5]</code>는 “E”를 인쇄한다.</p>
+<p>벡터에 곱셈이나 함수와 같은 연산을 적용하면 연산이 벡터의 각 개체에 적용된다. 결과는 새로운 벡터가 된다. 예를 들어 숫자 20, 30, 40, 50, 60의 벡터가 있고 벡터에 4를 곱하면 새로운 벡터 80, 120, 160, 200, 240이 된다.</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="필수-클래스-유형.html#cb88-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">50</span>,<span class="dv">60</span>)</span>
+<span id="cb88-2"><a href="필수-클래스-유형.html#cb88-2" aria-hidden="true" tabindex="-1"></a>n</span></code></pre></div>
+<pre><code>## [1] 20 30 40 50 60</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="필수-클래스-유형.html#cb90-1" aria-hidden="true" tabindex="-1"></a>n <span class="sc">*</span> <span class="dv">4</span></span></code></pre></div>
+<pre><code>## [1]  80 120 160 200 240</code></pre>
+</div>
+<div id="행렬matrix" class="section level3" number="12.2.3">
+<h3><span class="header-section-number">12.2.3</span> 행렬(Matrix)</h3>
+<p>행렬은 2 차원 (본질적으로 행과 열)을 가진 벡터이다.</p>
+<p>벡터와 마찬가지로 행렬의 각 개체는 동일한 유형이어야 한다. 다음과 같이 벡터의 dim(차원) 속성을 설정하여 행렬을 만들 수 있다.</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="필수-클래스-유형.html#cb92-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>)</span>
+<span id="cb92-2"><a href="필수-클래스-유형.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(m) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb92-3"><a href="필수-클래스-유형.html#cb92-3" aria-hidden="true" tabindex="-1"></a>m</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<p><code>m</code>을 검사하면 행렬이 표시된다.</p>
+<pre><code>     [,1] [,2] [,3]
+[1,] 1 4 7
+[2,] 2 5 8
+[3,] 3 6 9</code></pre>
+<p>행렬의 개별 셀을 참조하려면 행과 열 인덱스를 제공한다. 예를 들어, 행 2와 열 1에 무엇이 있는지 확인하려면 <code>m[2,1]</code>에 이 작업을 수행하여 값 <code>2</code>를 얻는다.</p>
+</div>
+<div id="리스트" class="section level3" number="12.2.4">
+<h3><span class="header-section-number">12.2.4</span> 리스트</h3>
+<p>앞에서 논의한 벡터는 동일한 요소를 모두 포함해야 하기 때문에 원자 벡터라고 한다. 혼합된 개체를 포함하는 벡터를 단순히 리스트(list)라고한다. 리스트는 관련 개체의 컬렉션을 관리하려는 경우 편리하다.</p>
+<p>새 리스트를 만들려면 다음과 같은 목록 기능만 있으면 된다.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="필수-클래스-유형.html#cb95-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb95-2"><a href="필수-클래스-유형.html#cb95-2" aria-hidden="true" tabindex="-1"></a>l<span class="sc">$</span>name <span class="ot">&lt;-</span> <span class="st">&quot;Cards&quot;</span></span>
+<span id="cb95-3"><a href="필수-클래스-유형.html#cb95-3" aria-hidden="true" tabindex="-1"></a>l<span class="sc">$</span>cards <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;10&quot;</span>, <span class="st">&quot;Jack&quot;</span>, <span class="st">&quot;Queen&quot;</span>, <span class="st">&quot;King&quot;</span>, <span class="st">&quot;Ace&quot;</span>)</span>
+<span id="cb95-4"><a href="필수-클래스-유형.html#cb95-4" aria-hidden="true" tabindex="-1"></a>l<span class="sc">$</span>bets <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">10</span>)</span></code></pre></div>
+<p>첫 번째 줄은 빈 리스트를 만든 다음 <code>$</code>를 사용하여 개체를 할당할 이름을 만든다. 첫 번째는 리스트를 설명하는 문자 개체이고, 두 번째는 문자로 구성된 벡터이며, 마지막은 숫자 개체로 구성된 벡터이다. 나중에 이러한 값에 액세스하려면 목록 이름 다음에 달러 기호(<code>$</code>)와 개체 이름을 사용해야 한다. 예를 들어, 입력 한 카드 리스트를 보려면 <code>l$cards</code>를 입력하고 목록에서 두 번째 카드를 얻으려면 <code>l$cards[2]</code>를 입력한다.</p>
+</div>
+<div id="factor" class="section level3" number="12.2.5">
+<h3><span class="header-section-number">12.2.5</span> factor</h3>
+<p>factor는 지정된 값만 포함 할 수 있는 벡터 유형이다. 예를 들어 성별을 나타내는 값 목록이 있을 수 있으며 각 값은 ‘남성,’ ‘여성’ 또는 ’알 수 없음’이어야 한다. 이 구조는 개체 범주에 대한 분석을 수행 할 때 유용하다.</p>
+<p><code>factor()</code> 함수를 사용하고 값 목록을 제공하여 factor를 생성한다.</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="필수-클래스-유형.html#cb96-1" aria-hidden="true" tabindex="-1"></a>sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;unknown&quot;</span>, <span class="st">&quot;male&quot;</span>))</span>
+<span id="cb96-2"><a href="필수-클래스-유형.html#cb96-2" aria-hidden="true" tabindex="-1"></a>sex</span></code></pre></div>
+<pre><code>## [1] male    female  unknown male   
+## Levels: female male unknown</code></pre>
+<p>위의 코드는 다음의 정보를 출력한다:</p>
+<pre><code>## [1] male female unknown male
+## Levels: female male unknown</code></pre>
+<p>벡터에서와 같은 값 목록이 있지만 추가적으로 levels에 대한 정보도 있다.</p>
+</div>
+<div id="데이터-프레임" class="section level3" number="12.2.6">
+<h3><span class="header-section-number">12.2.6</span> 데이터 프레임</h3>
+<p>데이터 프레임은 길이가 같은 구성 요소를 가져야 하는 특별한 종류의 리스트이다.</p>
+<p>실제로 이것은 행과 열로 구성된 2차원 데이터 구조와 같은 일종의 스프레드 시트와 같은 구조를 갖는다. 데이터 프레임 구성 요소를 <code>$</code> 연산자를 사용하는 리스트 또는 행과 열 인덱스를 사용하는 행렬처럼 처리할 수 있다.</p>
+<p><code>data.frame()</code> 함수를 사용하여 데이터 프레임을 만들 수 있다.</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="필수-클래스-유형.html#cb99-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">numbers =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">letters =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>))</span>
+<span id="cb99-2"><a href="필수-클래스-유형.html#cb99-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>more <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1st&quot;</span>, <span class="st">&quot;2nd&quot;</span>, <span class="st">&quot;3rd&quot;</span>)</span></code></pre></div>
+<p><code>data.frame()</code> 함수를 사용하여 데이터 프레임을 생성할 때 데이터 프레임에 동일한 길이의 벡터를 모두 제공할 수 있다. 데이터 프레임이 있으면 위에서 볼 수 있듯이 <code>$</code> 연산자를 사용하여 추가 열을 만들 수 있다.</p>
+<p>종종 함수의 출력으로 데이터 프레임이 생성된다. 데이터 프레임은 필수 R 개체이며 “tibble” 버전 유형의 데이터 프레임은 “필수 R 패키지”장에서 자세히 다룬 바 있다.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="개체.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="흐름-제어.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

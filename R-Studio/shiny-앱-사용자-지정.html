@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>9.3 Shiny 앱 사용자 지정 | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="9.3 Shiny 앱 사용자 지정 | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="9.3 Shiny 앱 사용자 지정 | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="shiny-이해.html"/>
+<link rel="next" href="결론-7.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,111 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="shiny-앱-사용자-지정" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> Shiny 앱 사용자 지정</h2>
+<p>이 상용구 코드를 분석에 적합한 것으로 변경해 보자. 지금은 사용자 인터페이스를 약간 조정하고 데이터 세트를 구축하는 대신 데이터를 표시해 보기로 한다.</p>
+<p>가장 먼저해야 할 일은 데이터 세트를 Shiny 폴더에 복사하여 향후 모든 자산과 함께 배포할 수 있도록 하는 것이다. R 명령 줄에서 다음 코드를 사용하여 데이터 세트를 Shiny 앱 폴더에 <code>rdata</code> 파일로 저장한다.</p>
+<pre><code>save(expectancy, file = &quot;life_expectancy_web_app/expectancy.rdata&quot;)</code></pre>
+<p>이제 앱이 시작될 때 이것을 Shiny 세션에 로드할 수 있다. <code>Shiny app.R</code>파일 상단에 코드를 넣어 데이터 세트를 불러온다.</p>
+<pre><code>load(&quot;expectancy.rdata&quot;)
+
+expectancy &lt;- expectancy %&gt;%
+                filter(!is.na(life_expectancy))</code></pre>
+<p>이렇게 하면 데이터 세트가 로드된 다음 히스토그램을 방해하는 결측치(missing values)가 제거된다. 이제 우리는 서버 구성 요소에서 한 줄의 코드를 변경하여 데이터 세트를 검토할 수 있다.</p>
+<pre><code>server &lt;- function(input, output) {
+                output$distPlot &lt;- renderPlot({
+
+                # generate bins based on
+
+                # input$bins from ui.R
+
+                x &lt;- expectancy$life_expectancy
+                bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)
+
+                # draw the histogram with the
+
+                # specified number of bins
+                hist(x, breaks = bins,
+                     col = &#39;darkgray&#39;,
+                     border = &#39;white&#39;)
+        })
+}</code></pre>
+<p>이를 테스트하기 전에 제목 설명을 변경하고 플롯에 자체 색상을 추가해 보겠다. 이러한 변경을 수행할 위치를 짐작할 수 있다. 아래 코드에서 모든 변경 사항은 굵게 강조 표시된다.</p>
+<pre><code>library(shiny)
+library(tidyverse)
+load(&quot;expectancy.rdata&quot;)
+
+expectancy &lt;- expectancy %&gt;%
+        filter(!is.na(life_expectancy))
+
+# Define UI for application that draws a histogram
+ui &lt;- fluidPage(
+        # Application title
+        titlePanel(&quot;Life Expectancy Data&quot;),
+        p(&quot;Life expectancy data was downloaded from
+           data.gov. This dataset contains death rates
+           and life-expectancy statistics
+           from 1900 to 2015. Exploratory analysis was
+           conducted on this dataset. In the
+           visualization below, you can see all life
+           expectancy rates in the dataset and adjust
+           the number of bins used to present the
+           frequency.
+        &quot;),
+
+        # Sidebar with a slider input for number of bins
+        sidebarLayout(
+                sidebarPanel(
+                        sliderInput(&quot;bins&quot;, &quot;Number of bins:&quot;,
+                                    min = 1,
+                                    max = 50,
+                                    value = 30)
+                        ),
+        # Show a plot of the generated distribution
+        mainPanel(
+                plotOutput(&quot;distPlot&quot;)
+        )
+    )
+)
+
+# Define server logic required to draw
+# a histogram
+server &lt;- function(input, output) {
+                output$distPlot &lt;- renderPlot({
+                # generate bins based on
+                # input$bins from ui.R
+                life_expectancy &lt;- expectancy$life_expectancy
+                bins &lt;- seq(min(life_expectancy),
+                            max(life_expectancy),
+                            length.out = input$bins + 1)
+
+                # draw the histogram with the
+                # specified number of bins
+                hist(life_expectancy,
+                     breaks = bins,
+                     col = &#39;lightblue&#39;,
+                     border = &#39;white&#39;)
+                })
+}
+
+# Run the application
+shinyApp(ui = ui, server = server)</code></pre>
+<p>이제 이 코드를 실행하면 앱이 그림 <a href="shiny-앱-사용자-지정.html#fig:lifShApp">9.5</a>에 표시된 것과 비슷해진다.</p>
+<div class="figure"><span id="fig:lifShApp"></span>
+<img src="images/09-005.png" alt="기대 수명 Shiny 앱" width="100%" />
+<p class="caption">
+그림 9.5: 기대 수명 Shiny 앱
+</p>
+</div>
+<p>이제 컨텍스트가 관련성이 있으며 히스토그램에서 막대의 색상도 조정했다. 다음 URL로 이동하면 작성자의 <a href="https://mattjcamp.shinyapps.io/life_expectancy_web_app">shiny.io 페이지</a>에 게시된 버전을 볼 수 있다.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="shiny-이해.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="결론-7.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

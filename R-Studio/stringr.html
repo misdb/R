@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>6.5 stringr | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="6.5 stringr | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="6.5 stringr | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="dplyr.html"/>
+<link rel="next" href="결론-4.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="stringr" class="section level2" number="6.5">
+<h2><span class="header-section-number">6.5</span> <code>stringr</code></h2>
+<p>자세히 살펴볼 마지막 <code>tidyverse</code> 패키지는 문자열 작업에 도움이 될 것이다. 이 데이터 유형은 단순한 숫자보다 더 복잡할 수 있기 때문에 문자열로 작업하는 것은 까다롭다. <code>stringr</code>에는 패턴 감지, 문자열 분할 그리고 문자열 결합을 돕는 함수들이 포함되어 있다.</p>
+<p><code>stringr</code> 함수는 자체적으로 사용할 수 있지만, <code>filter</code>와 <code>mutate</code> 등의 <code>dplyr</code> 동사와 함께 사용할 수도 있다. 예를 들어 <code>race</code> 열에 “<code>All</code>”문자 패턴을 포함하는 레코드를 필터링하려면 다음과 같이 필터 동사에 <code>str_detect</code>를 사용한다.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="stringr.html#cb43-1" aria-hidden="true" tabindex="-1"></a>expectancy <span class="sc">%&gt;%</span></span>
+<span id="cb43-2"><a href="stringr.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(<span class="fu">str_detect</span>(race, <span class="st">&quot;All&quot;</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 357 x 5
+##     year race      sex        life_expectancy death_rate
+##    &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt;
+##  1  1900 All Races Both Sexes            47.3      2518 
+##  2  1901 All Races Both Sexes            49.1      2473.
+##  3  1902 All Races Both Sexes            51.5      2301.
+##  4  1903 All Races Both Sexes            50.5      2379 
+##  5  1904 All Races Both Sexes            47.6      2502.
+##  6  1905 All Races Both Sexes            48.7      2424.
+##  7  1906 All Races Both Sexes            48.7      2399 
+##  8  1907 All Races Both Sexes            47.6      2494.
+##  9  1908 All Races Both Sexes            51.1      2299.
+## 10  1909 All Races Both Sexes            52.1      2249.
+## # ... with 347 more rows</code></pre>
+<p><code>str_replace</code>를 사용하여 한 패턴의 문자를 다른 패턴으로 바꿀 수도 있다. <code>race</code> 열의 “<code>All Races</code>” 항목을 “<code>Most Races</code>”로 변경하려면 다음과 같이 하면 된다.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="stringr.html#cb45-1" aria-hidden="true" tabindex="-1"></a>expectancy <span class="ot">&lt;-</span> expectancy <span class="sc">%&gt;%</span></span>
+<span id="cb45-2"><a href="stringr.html#cb45-2" aria-hidden="true" tabindex="-1"></a>              <span class="fu">mutate</span>(<span class="at">race =</span> <span class="fu">str_replace</span>(race, <span class="st">&quot;All&quot;</span>, <span class="st">&quot;Most&quot;</span>))</span></code></pre></div>
+<p>문자열 작업에 도움이 되는 많은 <code>stringr</code> 함수가 있다. 대부분은 <code>base</code> R 함수와 함께 작동하는 단순히 래퍼이다. <code>stringr</code>의 가치는 주로 일관된 인터페이스를 제공한다는 점이다. 각 함수는 첫 번째 인수로 입력 문자열을 가지므로 <code>magrittr</code> 파이프 연산자와 함께 작동할 수 있다.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="dplyr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="결론-4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

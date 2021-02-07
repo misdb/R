@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>6.2 tidyverse | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="6.2 tidyverse | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="6.2 tidyverse | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="r-패키지.html"/>
+<link rel="next" href="tibble.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="tidyverse" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> <code>tidyverse</code></h2>
+<p>우리가 논의할 패키지는 실제로 “<code>tidyverse</code>”라는 패키지 모음이다. <code>tidyverse</code>는 주로 RStudio를 이용하여 작업하는 Hadley Wickham이 개발했다. <code>tidyverse</code> <a href="https://www.tidyverse.org">웹 사이트</a>는이 패키지 세트를 가장 잘 설명한다. “<code>tidyverse</code>는 데이터 과학을 위해 설계된 독자적인 R 패키지 모음이다. 이 패키지가 담고 있는 모든 패키지들은 기본 디자인 철학, 문법 및 데이터 구조를 공유한다.”</p>
+<p>저자는 <code>tidyverse</code>를 “독자적인” 것으로 설명한다. 이것은 <code>tidyverse</code>가 함수들의 집합 이상이라는 것을 의미한다. 또한 데이터 과학을 수행하는 규정된 방법이기도 하다. 일을 처리하는 tidyverse 방법이 있다. 이것이 그들이 tidyverse가 “독자적이다”는 말의 의미이다.</p>
+<p><code>tidyverse</code>가 잘하는 것 중 하나는 <code>base</code> R의 거친 가장자리를 부드럽게하는 것입니다. <code>tidyverse</code>는 사용하기 쉽고 기억하기 쉬운 <code>base</code> R에 이미 존재하는 함수에 대해 일관된 함수들을 제공한다. 이러한 패키지는 또한 <code>base</code> R에 포함된 기능들에 더 많은 기능들을 추가한다. 예를 들어, <code>ggplot2</code> (<code>tidyverse</code> 패키지 중의 하나)는 <code>base</code> R의 플롯 기능으로 수행 할 수있는 작업을 확장하지만 더 많은 플롯 유형을 추가하고 있다. 지금부터 핵심 <code>tidyverse</code> 패키지를 살펴 보기로 한다.</p>
+<p>아래 예제를 따라 하려면 <code>tidyverse</code>를 설치한 다음, 라이브러리를 프로젝트로 가져와야 한다. 이를 위해 3 장의 패키지 지침을 사용하거나 이 코드를 R 콘솔에 입력할 수 있다.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="tidyverse.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;tidyverse&quot;)</span></span>
+<span id="cb19-2"><a href="tidyverse.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --</code></pre>
+<pre><code>## √ ggplot2 3.3.3     √ dplyr   1.0.2
+## √ tibble  3.0.4     √ stringr 1.4.0
+## √ tidyr   1.1.2     √ forcats 0.5.0
+## √ purrr   0.3.4</code></pre>
+<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="tidyverse.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;magrittr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     set_names</code></pre>
+<pre><code>## The following object is masked from &#39;package:tidyr&#39;:
+## 
+##     extract</code></pre>
+<p><code>magrittr</code> 패키지는 파이프 연산자 (<strong><code>%&lt;%</code></strong>)를 도입하여 R 코딩의 흐름을 변경한다. <strong><code>%&lt;%</code></strong> 연산자는 왼쪽 값을 오른 쪽 표현식으로 파이프한다. 이를 통해 코드 블록이 수행하는 작업을 즉시 명확하게 볼 수 있게 해 주는 “파이프 라인”을 만들 수 있다.</p>
+<p>함수에 너무 많이 의존하는 R과 같은 프로그래밍 언어에서는 다음과 같이 읽기 어려운 코드로 끝날 수 있다.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="tidyverse.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">mean</span>(<span class="fu">subset</span>(expectancy, race <span class="sc">==</span> <span class="st">&quot;All Races&quot;</span>)<span class="sc">$</span>death_rate), <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] 1469.6</code></pre>
+<p>이 한 줄의 코드는 지난 장에서 작업했던 <code>expectancy</code> 데이터 프레임의 평균 사망률을 계산해서 반환해 준다. 그런데 데이터 세트 필터링, 평균 점수 계산, 결과의 반올림 등의 세 가지 작업을 수행하고 있다. 이와 같은 코드를 읽는 것은 매우 어려운데, 문제가 더 복잡해다면 이런 코드는 더 읽기 어려워 진다.</p>
+<p><code>magrittr</code> 패키지의 파이프 연산자 (<code>%&gt;%</code>)는 중첩 함수 호출의 필요성을 제거하여 주고, 코드를 정리하는 데 도움을 준다. 다음은 이 코드를 작성하는 다른 방법을 보여주고 있다.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="tidyverse.html#cb29-1" aria-hidden="true" tabindex="-1"></a>expectancy <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="tidyverse.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">subset</span>(race <span class="sc">==</span> <span class="st">&quot;All Races&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-3"><a href="tidyverse.html#cb29-3" aria-hidden="true" tabindex="-1"></a>  .<span class="sc">$</span>death_rate <span class="sc">%&gt;%</span></span>
+<span id="cb29-4"><a href="tidyverse.html#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb29-5"><a href="tidyverse.html#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] 1469.6</code></pre>
+<p>이 코드는 조금 더 길지만 훨씬 더 명확하다. 이 코드는 위에서 아래의 방향으로 작동하고, 각각의 <code>%&gt;%</code>는 그 위(또는 왼쪽)에 있는 개체를 가져 와서 다음 함수의 첫 번째 인수로 보낸다. 상단에서 <code>%&gt;%</code>를 사용하여 <code>expectancy</code> 데이터 프레임을 서브세팅하기 위해 오른쪽 함수의 인수로 보낸다.</p>
+<p>이제 데이터 프레임에서 시작하여, 행의 일부를 가져오고 <code>death_rate</code>컬럼을 선택하고, 평균을 구하기 위해 <code>mean</code>을 사용한 다음, 값을 반올림(round)했다고 명확하게 말할 수 있다.</p>
+<blockquote>
+<p>Note : 점(<code>.</code>)을 주목하라. 위 코드의 세 번째 줄에서 사용되고 있는 점(<code>.</code>)은 <code>magrittr</code>에 의해 파이프되는 개체를 참조하는 데 사용되는데, 위의 서브세팅 함수가 출력하고 있는 데이터 프레임을 참조한다. 즉, <code>expectancy</code> 데이터 프레임에서 <code>race == "All Races"</code>인 행들로 구성된 데이터 프레임을 참조하고 있다.</p>
+</blockquote>
+<p><code>magrittr</code> 패키지는 모든 <code>tidyverse</code> 패키지에 사용되는 핵심 패키지로, <code>tidyverse</code>에서 사용되는 독자적 분석 스타일을 알리는 데 도움이 된다.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="r-패키지.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tibble.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

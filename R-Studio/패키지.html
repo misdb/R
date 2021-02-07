@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>3.4 패키지 | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="3.4 패키지 | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="3.4 패키지 | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="플롯.html"/>
+<link rel="next" href="도움말.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="패키지" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> 패키지</h2>
+<p>“패키지”라고 표시된 다음 탭에는 사용 가능한 R 패키지 목록이 표시된다. 패키지 목록의 모양을 보려면 그림 <a href="패키지.html#fig:pkgViewer">3.5</a>를 참조하기 바란다.</p>
+<div class="figure"><span id="fig:pkgViewer"></span>
+<img src="images/03-005.png" alt="패키지 뷰어" width="100%" />
+<p class="caption">
+그림 3.5: 패키지 뷰어
+</p>
+</div>
+<p>R 패키지는 1장에서 R을 설치할 때 기본적으로 설치되는 base 패키지를 확장한다. R 패키지는 커뮤니티 기여자가 작성했으며 누구나 사용할 수 있다. 패키지는 CRAN 네트워크에서도 관리되며 패키지 탭에서 이 모든 것을 관리 할 수 있다.</p>
+<p>그림 3-5의 스크린 샷에서 볼 수 있는 것은 컴퓨터에 설치된 모든 패키지 목록이다. 확인 표시는 패키지가 R 환경에 불려와져 있으며, 사용할 준비가 되었음을 보여준다. 패키지를 확인하면 패키지를 불러오는 코드가 콘솔 화면에 나타난다.</p>
+<p>예를 들어, <code>broom</code> 패키지를 사용하려면 확인란을 클릭하기 만하면 콘솔 화면에 다음과 같이 표시된다.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="패키지.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;broom&quot;</span>)</span></code></pre></div>
+<p>정확한 위치는 R 버전과 사용중인 운영 체제에 따라 다르다. 이러한 방식으로 패키지가 로드되면 이전에 사용한 <code>base</code> R 함수와 동일한 방식으로 해당 패키지의 모든 데이터 세트와 함수를 사용할 수 있다.</p>
+<blockquote>
+<p><strong>NOTE</strong> <code>broom</code> 패키지는 <code>tidyverse</code> 패키지 제품군의 일부이다. <code>broom</code> 패키지는 선형 회귀(linear regression)와 같은 분석 함수의 복잡한 출력을 다른 함수의 입력으로 쉽게 사용할 수있는 간단한 데이터 프레임으로 변환하는 데 사용된다. 뒷 부분에서 이와 같은 필수 패키지에 대해 자세히 살펴보기로 한다.</p>
+</blockquote>
+<p>패키지 탭에서이 인터페이스를 사용하여 패키지를 설치할 수도 있다. 원하는 패키지 이름을 알고 있는 경우 “Install” 버튼을 클릭하면 그림 <a href="패키지.html#fig:pkgTab">3.6</a>과 같은 대화 상자가 나타난다.</p>
+<div class="figure"><span id="fig:pkgTab"></span>
+<img src="images/03-006.png" alt="패키지 탭" width="100%" />
+<p class="caption">
+그림 3.6: 패키지 탭
+</p>
+</div>
+<p>그런 다음 원하는 패키지 이름을 입력하고 “Install” 버튼을 클릭한다. CRAN 네트워크에서 사용할 수 있는 모든 패키지를 제공하므로 기본값을 그대로 둔다.</p>
+<p>마지막으로 나타나는 각 패키지 이름은 패키지에 대한 문서로 이동하는 데 사용할 수있는 하이퍼 링크로 작동한다. 이 문서는 패키지를 설치할 때 같이 설치된다. 패키지 사용 방법을 알아 보려면 패키지 이름을 클릭하기만 하면 된다. 그러면 패키지 탭 오른쪽에 나타나는 도움말 위젯으로 자동으로 이동하게 된다.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="플롯.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="도움말.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

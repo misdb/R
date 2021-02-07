@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용</title>
+  <title>6.4 dplyr | R STudio 활용</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta property="og:title" content="6.4 dplyr | R STudio 활용" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 필수적인 R 패키지 : tidyverse | R STudio 활용" />
+  <meta name="twitter:title" content="6.4 dplyr | R STudio 활용" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="결론-3.html"/>
-<link rel="next" href="r-패키지.html"/>
+<link rel="prev" href="tibble.html"/>
+<link rel="next" href="stringr.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -308,18 +308,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Essential_R_Packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 필수적인 R 패키지 : tidyverse</h1>
-<p>이제 필수 RStudio 워크 플로가 준비되었으므로 데이터 분석을 실제로 강화할 몇 가지 도구를 사용할 준비가 되었다. 이러한 모든 도구가 RStudio 전용은 아니며 다른 R에서도 볼 수 있다. 하지만 RStudio IDE와 매우 잘 어울린다는 것이다.</p>
-<p>여기서 첫 번째 순서는 R 툴킷의 초석을 제공할 필수 패키지를 소개하는 것이다. 이러한 패키지 중 상당수는 이미 R에 존재하는 기능을 단순화하는 것도 있고, 어떤 패키지는 <code>base</code> 시스템에 기능을 추가하는 것도 있다. 이러한 패키지와 함께 RStudio는 R을 데이터 실무자를 위한 전문 도구로 변환시켜 준다.</p>
+<div id="dplyr" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> <code>dplyr</code></h2>
+<p><code>dplyr</code>는 데이터 조작에 사용하는 깔끔한 패키지이다. 이 패키지를 사용하면 행을 필터링하고, 변수를 선택하고, 콘텐츠를 변경하는 것이 훨씬 쉬워진다. <code>dplyr</code>는 <code>magrittr</code>과 협력하여 데이터 조작을 위한 “문법”을 제공한다.</p>
+<p><code>dplyr</code>과 <code>tidyverse</code>에서 일반적으로 문법이라는 단어는 R에서 작업하는 독자적인 방식을 나타낸다. <code>tidyverse</code> 문법에서는 함수를 동사라고한다. 동사는 매우 설명적인 방식으로 작성되어 깔끔한 문법을 ​​사용할 때 작성 중인 코드가 매우 명확하게 분석 스토리를 전달한다.</p>
+<p>예를 들어 다음과 같이 <code>dplyr</code>과 <code>magrittr</code>을 사용하여 평균 사망률을 구하는 마지막 예를 코딩할 수 있다.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="dplyr.html#cb32-1" aria-hidden="true" tabindex="-1"></a>expectancy <span class="sc">%&gt;%</span> <span class="fu">filter</span>(race <span class="sc">==</span> <span class="st">&quot;All Races&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="dplyr.html#cb32-2" aria-hidden="true" tabindex="-1"></a>               <span class="fu">summarize</span>(<span class="at">avg =</span> <span class="fu">mean</span>(death_rate)) <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="dplyr.html#cb32-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">mutate</span>(<span class="at">avg =</span> <span class="fu">round</span>(avg, <span class="dv">1</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 1
+##     avg
+##   &lt;dbl&gt;
+## 1 1470.</code></pre>
+<p>위의 코드에서 <code>expectancy</code> 데이터 프레임을 우리가 하는 일을 설명하는 동사 세트로 파이프한다. 우리는 필터링하고, 요약하고, 변형하고 있다. 이것은 우리가 하는 일을 설명하고 있다. 또한 파이프 라인의 어느 곳에서나 간단히 새 동사를 변경하거나 추가할 수 있으므로 이 파이프 라인을 쉽게 변경할 수도 있다.</p>
+<p>위의 코드는 <code>tibble</code>로 반환되는 하나의 값을 출력한다.</p>
+<pre><code>## A tibble: 1 x 1
+##
+##   avg    &lt;dbl&gt;
+##     1     1489.</code></pre>
+<p>동일한 분석을하고 싶지만 성별에 따른 평균 사망률도 확인하려면 파이프 라인에 <code>group_by</code> 동사를 추가하면 된다.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="dplyr.html#cb35-1" aria-hidden="true" tabindex="-1"></a>expectancy <span class="sc">%&gt;%</span> <span class="fu">filter</span>(race <span class="sc">==</span> <span class="st">&quot;All Races&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a href="dplyr.html#cb35-2" aria-hidden="true" tabindex="-1"></a>               <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span></span>
+<span id="cb35-3"><a href="dplyr.html#cb35-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">summarize</span>(<span class="at">avg =</span> <span class="fu">mean</span>(death_rate)) <span class="sc">%&gt;%</span></span>
+<span id="cb35-4"><a href="dplyr.html#cb35-4" aria-hidden="true" tabindex="-1"></a>               <span class="fu">mutate</span>(<span class="at">avg =</span> <span class="fu">round</span>(avg, <span class="dv">1</span>))</span></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## # A tibble: 3 x 2
+##   sex          avg
+##   &lt;chr&gt;      &lt;dbl&gt;
+## 1 Both Sexes 1459 
+## 2 Female     1288.
+## 3 Male       1662</code></pre>
+<p>이번에는 남녀 모두에 대한 값, 남성에 대한 값, 여성에 대한 값 등 세 가지 값을 얻는다.</p>
+<pre><code>## A tibble: 3 x 2
+##
+##       sex       avg
+##     &lt;chr&gt;     &lt;dbl&gt;
+## 1 Both Sexes   1478.
+## 2 Female       1305.
+## 3 Male         1683.</code></pre>
+<div id="sql-유사-조인" class="section level3" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> SQL 유사 조인</h3>
+<p><code>inner_join</code>, <code>left_join</code> 그리고 <code>right_join</code> 동사를 사용하여 두 개의 관련 데이터 세트를 함께 결합한다. 이러한 <code>dplyr</code> 동사는 비슷한 이름의 SQL 문인 INNER JOIN, LEFT JOIN 및 RIGHT JOIN과 대략 동일하다.</p>
+<p><code>dplyr</code> 조인을 설명하기 위해 데이터 프레임(아니, tibble!)에 더 나은 레이블이 필요하고, 더 나은 레이블이 포함된 tibble도 있다고 가정해 보자. 이제 다음과 같이 레이블 티블을 만들 수 있다.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="dplyr.html#cb39-1" aria-hidden="true" tabindex="-1"></a>labels <span class="ot">&lt;-</span> <span class="fu">tribble</span>( </span>
+<span id="cb39-2"><a href="dplyr.html#cb39-2" aria-hidden="true" tabindex="-1"></a>              <span class="sc">~</span>key, <span class="sc">~</span>new_label,</span>
+<span id="cb39-3"><a href="dplyr.html#cb39-3" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;Both Sexes&quot;</span>, <span class="st">&quot;All Genders&quot;</span>,</span>
+<span id="cb39-4"><a href="dplyr.html#cb39-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Identifies Female&quot;</span>,</span>
+<span id="cb39-5"><a href="dplyr.html#cb39-5" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Identifies Male&quot;</span></span>
+<span id="cb39-6"><a href="dplyr.html#cb39-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>이 코드를 실행하면 “labels”라는 새 <code>tibble</code>이 환경 창의 “Data” 아래에 나타난다. 보기에서 개체 이름을 클릭하기 만하면 이전에 데이터 프레임을 본 것과 동일한 방식으로 볼 수 있다. 이제 <code>dplyr</code>의 <code>inner_join</code> 동사를 사용하여 이러한 레이블을 파이프 라인에 쉽게 추가할 수 있다.</p>
+<pre><code>expectancy %&gt;% filter(race == &quot;All Races&quot;) %&gt;%
+               group_by(sex) %&gt;%
+               summarize(avg = mean(death_rate)) %&gt;%
+               inner_join(labels, by = c(&quot;sex&quot; = &quot;key&quot;)) %&gt;%
+               mutate(avg = round(avg, 1)) %&gt;%
+               select(gender = new_label, avg_death_rate = avg)</code></pre>
+<p>위의 코드에서 <code>dplyr</code>의 <code>select</code> 동사를 사용하여 레이블을보 다 나은 방식으로 정렬하고 이름을 바꾼 것을 볼 수 있다. 결과는 그림 <a href="dplyr.html#fig:tblLab">6.2</a>에서 볼 수 있다.</p>
+<div class="figure"><span id="fig:tblLab"></span>
+<img src="images/06-002.png" alt="[tibble에 적용된 성별 라벨기" width="100%" />
+<p class="caption">
+그림 6.2: [tibble에 적용된 성별 라벨기
+</p>
+</div>
+<p>위의 코드를 실행하면 결과가 <code>tibble</code>로 반환되는 것을 알 수 있다. 콘솔에 결과를 표시하는 대신 할당 연산자 <code>&lt;-</code> 를 사용하여 나중에 사용할 수 있도록 결과를 저장할 수도 있다.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="dplyr.html#cb41-1" aria-hidden="true" tabindex="-1"></a>avg_death_rates_by_gender <span class="ot">&lt;-</span> expectancy <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a href="dplyr.html#cb41-2" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">filter</span>(race <span class="sc">==</span> <span class="st">&quot;All Races&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb41-3"><a href="dplyr.html#cb41-3" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span></span>
+<span id="cb41-4"><a href="dplyr.html#cb41-4" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">summarize</span>(<span class="at">avg =</span> <span class="fu">mean</span>(death_rate)) <span class="sc">%&gt;%</span></span>
+<span id="cb41-5"><a href="dplyr.html#cb41-5" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">inner_join</span>(labels, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;sex&quot;</span> <span class="ot">=</span> <span class="st">&quot;key&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb41-6"><a href="dplyr.html#cb41-6" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">mutate</span>(<span class="at">avg =</span> <span class="fu">round</span>(avg, <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb41-7"><a href="dplyr.html#cb41-7" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">select</span>(<span class="at">gender =</span> new_label, <span class="at">avg_death_rate =</span> avg)</span></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="결론-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-패키지.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tibble.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="stringr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
