@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 igraph를 이용한 네트워크 시각화 | R을 이용한 네트워크 분석과 시각화</title>
+  <title>Chapter 5 igraph를 이용한 네트워크 시각화 | R을 이용한 네트워크 분석과 시각화</title>
   <meta name="description" content="Katherine Ognyanova의 ‘Network Analysis and Visualization with R’ 세미나 자료를 번역한 것입니다. 번역의 오류는 번역자의 잘못입니다. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 igraph를 이용한 네트워크 시각화 | R을 이용한 네트워크 분석과 시각화" />
+  <meta property="og:title" content="Chapter 5 igraph를 이용한 네트워크 시각화 | R을 이용한 네트워크 분석과 시각화" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="Network-Analysis" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 igraph를 이용한 네트워크 시각화 | R을 이용한 네트워크 분석과 시각화" />
+  <meta name="twitter:title" content="Chapter 5 igraph를 이용한 네트워크 시각화 | R을 이용한 네트워크 분석과 시각화" />
   
   <meta name="twitter:description" content="Katherine Ognyanova의 ‘Network Analysis and Visualization with R’ 세미나 자료를 번역한 것입니다. 번역의 오류는 번역자의 잘못입니다. The output format for this example is bookdown::gitbook." />
   
@@ -24,16 +24,16 @@
 <meta name="author" content="Translated by Dae Ho Kim, Mokwon University" />
 
 
-<meta name="date" content="2020-12-06" />
+<meta name="date" content="2021-02-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="Turning-Networks-into-Igraph.html"/>
-<link rel="next" href="Network-and-Node-Description.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<link rel="prev" href="데이터-세트-2.html"/>
+<link rel="next" href="plotting-parameters.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,8 +51,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -132,72 +130,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="/">Home</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> R을 이용한 네트워크 분석과 시각화</a></li>
-<li class="chapter" data-level="2" data-path="R-Basics.html"><a href="R-Basics.html"><i class="fa fa-check"></i><b>2</b> R 기초 복습</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Copyright</a></li>
+<li class="chapter" data-level="1" data-path="R-Basics.html"><a href="R-Basics.html"><i class="fa fa-check"></i><b>1</b> R 기초 복습</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="R-Basics.html"><a href="R-Basics.html#할당assignment"><i class="fa fa-check"></i><b>2.1</b> <em>할당(Assignment)</em></a></li>
-<li class="chapter" data-level="2.2" data-path="R-Basics.html"><a href="R-Basics.html#값의-비교value-comparisons"><i class="fa fa-check"></i><b>2.2</b> <em>값의 비교(Value comparisons)</em></a></li>
-<li class="chapter" data-level="2.3" data-path="R-Basics.html"><a href="R-Basics.html#특별한-상수special-constants"><i class="fa fa-check"></i><b>2.3</b> <em>특별한 상수(Special constants)</em></a></li>
-<li class="chapter" data-level="2.4" data-path="R-Basics.html"><a href="R-Basics.html#벡터vectors"><i class="fa fa-check"></i><b>2.4</b> <em>벡터(Vectors)</em></a></li>
-<li class="chapter" data-level="2.5" data-path="R-Basics.html"><a href="R-Basics.html#factors"><i class="fa fa-check"></i><b>2.5</b> <em>Factors</em></a></li>
-<li class="chapter" data-level="2.6" data-path="R-Basics.html"><a href="R-Basics.html#행렬과-배열matrces-arrays"><i class="fa fa-check"></i><b>2.6</b> <em>행렬과 배열(Matrces &amp; Arrays)</em></a></li>
-<li class="chapter" data-level="2.7" data-path="R-Basics.html"><a href="R-Basics.html#리스트lists"><i class="fa fa-check"></i><b>2.7</b> <em>리스트(Lists)</em></a></li>
-<li class="chapter" data-level="2.8" data-path="R-Basics.html"><a href="R-Basics.html#데이터-프레임data-frames"><i class="fa fa-check"></i><b>2.8</b> <em>데이터 프레임(Data Frames)</em></a></li>
-<li class="chapter" data-level="2.9" data-path="R-Basics.html"><a href="R-Basics.html#흐름-제어와-반복-구문flow-control-and-loops"><i class="fa fa-check"></i><b>2.9</b> <em>흐름 제어와 반복 구문(Flow Control and loops)</em></a></li>
-<li class="chapter" data-level="2.10" data-path="R-Basics.html"><a href="R-Basics.html#r-플롯과-색-지정"><i class="fa fa-check"></i><b>2.10</b> <em>R 플롯과 색 지정</em></a></li>
-<li class="chapter" data-level="2.11" data-path="R-Basics.html"><a href="R-Basics.html#r-문제-해결"><i class="fa fa-check"></i><b>2.11</b> <em>R 문제 해결</em></a></li>
+<li class="chapter" data-level="1.1" data-path="할당assignment.html"><a href="할당assignment.html"><i class="fa fa-check"></i><b>1.1</b> <em>할당(Assignment)</em></a></li>
+<li class="chapter" data-level="1.2" data-path="값의-비교value-comparisons.html"><a href="값의-비교value-comparisons.html"><i class="fa fa-check"></i><b>1.2</b> <em>값의 비교(Value comparisons)</em></a></li>
+<li class="chapter" data-level="1.3" data-path="특별한-상수special-constants.html"><a href="특별한-상수special-constants.html"><i class="fa fa-check"></i><b>1.3</b> <em>특별한 상수(Special constants)</em></a></li>
+<li class="chapter" data-level="1.4" data-path="벡터vectors.html"><a href="벡터vectors.html"><i class="fa fa-check"></i><b>1.4</b> <em>벡터(Vectors)</em></a></li>
+<li class="chapter" data-level="1.5" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>1.5</b> <em>Factors</em></a></li>
+<li class="chapter" data-level="1.6" data-path="행렬과-배열matrces-arrays.html"><a href="행렬과-배열matrces-arrays.html"><i class="fa fa-check"></i><b>1.6</b> <em>행렬과 배열(Matrces &amp; Arrays)</em></a></li>
+<li class="chapter" data-level="1.7" data-path="리스트lists.html"><a href="리스트lists.html"><i class="fa fa-check"></i><b>1.7</b> <em>리스트(Lists)</em></a></li>
+<li class="chapter" data-level="1.8" data-path="데이터-프레임data-frames.html"><a href="데이터-프레임data-frames.html"><i class="fa fa-check"></i><b>1.8</b> <em>데이터 프레임(Data Frames)</em></a></li>
+<li class="chapter" data-level="1.9" data-path="흐름-제어와-반복-구문flow-control-and-loops.html"><a href="흐름-제어와-반복-구문flow-control-and-loops.html"><i class="fa fa-check"></i><b>1.9</b> <em>흐름 제어와 반복 구문(Flow Control and loops)</em></a></li>
+<li class="chapter" data-level="1.10" data-path="r-플롯과-색-지정.html"><a href="r-플롯과-색-지정.html"><i class="fa fa-check"></i><b>1.10</b> <em>R 플롯과 색 지정</em></a></li>
+<li class="chapter" data-level="1.11" data-path="r-문제-해결.html"><a href="r-문제-해결.html"><i class="fa fa-check"></i><b>1.11</b> <em>R 문제 해결</em></a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html"><i class="fa fa-check"></i><b>3</b> <code>igraph</code>를 이용한 네트워크</a>
+<li class="chapter" data-level="2" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html"><i class="fa fa-check"></i><b>2</b> <code>igraph</code>를 이용한 네트워크</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html#네트워크-생성create-networks"><i class="fa fa-check"></i><b>3.1</b> <em>네트워크 생성(Create networks)</em></a></li>
-<li class="chapter" data-level="3.2" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html#에지edge-정점vertex-그리고-네트워크-속성network-attributes"><i class="fa fa-check"></i><b>3.2</b> <em>에지(Edge), 정점(vertex), 그리고 네트워크 속성(network attributes)</em></a></li>
-<li class="chapter" data-level="3.3" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html#특수-그래프specific-graphs와-그래프-모델graph-models"><i class="fa fa-check"></i><b>3.3</b> <em>특수 그래프(Specific graphs)와 그래프 모델(graph models)</em></a></li>
+<li class="chapter" data-level="2.1" data-path="네트워크-생성create-networks.html"><a href="네트워크-생성create-networks.html"><i class="fa fa-check"></i><b>2.1</b> <em>네트워크 생성(Create networks)</em></a></li>
+<li class="chapter" data-level="2.2" data-path="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html"><i class="fa fa-check"></i><b>2.2</b> <em>에지(Edge), 정점(vertex), 그리고 네트워크 속성(network attributes)</em></a></li>
+<li class="chapter" data-level="2.3" data-path="특수-그래프specific-graphs와-그래프-모델graph-models.html"><a href="특수-그래프specific-graphs와-그래프-모델graph-models.html"><i class="fa fa-check"></i><b>2.3</b> <em>특수 그래프(Specific graphs)와 그래프 모델(graph models)</em></a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html"><i class="fa fa-check"></i><b>4</b> 파일로 부터 네트워크 데이터 읽어오기</a>
+<li class="chapter" data-level="3" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html"><i class="fa fa-check"></i><b>3</b> 파일로 부터 네트워크 데이터 읽어오기</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html#데이터-세트-1-에지-목록edgelist"><i class="fa fa-check"></i><b>4.1</b> <em>데이터 세트 1: 에지 목록(edgelist)</em></a></li>
-<li class="chapter" data-level="4.2" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html#데이터-세트-2-인접-행렬adjacent-matrix"><i class="fa fa-check"></i><b>4.2</b> <em>데이터 세트 2: 인접 행렬(adjacent matrix)</em></a></li>
+<li class="chapter" data-level="3.1" data-path="데이터-세트-1-에지-목록edgelist.html"><a href="데이터-세트-1-에지-목록edgelist.html"><i class="fa fa-check"></i><b>3.1</b> <em>데이터 세트 1: 에지 목록(edgelist)</em></a></li>
+<li class="chapter" data-level="3.2" data-path="데이터-세트-2-인접-행렬adjacent-matrix.html"><a href="데이터-세트-2-인접-행렬adjacent-matrix.html"><i class="fa fa-check"></i><b>3.2</b> <em>데이터 세트 2: 인접 행렬(adjacent matrix)</em></a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="Turning-Networks-into-Igraph.html"><a href="Turning-Networks-into-Igraph.html"><i class="fa fa-check"></i><b>5</b> 네트워크를 igraph 개체로 변환하기</a>
+<li class="chapter" data-level="4" data-path="Turning-Networks-into-Igraph.html"><a href="Turning-Networks-into-Igraph.html"><i class="fa fa-check"></i><b>4</b> 네트워크를 igraph 개체로 변환하기</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="Turning-Networks-into-Igraph.html"><a href="Turning-Networks-into-Igraph.html#데이터-세트-1"><i class="fa fa-check"></i><b>5.1</b> <em>데이터 세트 1</em></a></li>
-<li class="chapter" data-level="5.2" data-path="Turning-Networks-into-Igraph.html"><a href="Turning-Networks-into-Igraph.html#데이터-세트-2"><i class="fa fa-check"></i><b>5.2</b> <em>데이터 세트 2</em></a></li>
+<li class="chapter" data-level="4.1" data-path="데이터-세트-1.html"><a href="데이터-세트-1.html"><i class="fa fa-check"></i><b>4.1</b> <em>데이터 세트 1</em></a></li>
+<li class="chapter" data-level="4.2" data-path="데이터-세트-2.html"><a href="데이터-세트-2.html"><i class="fa fa-check"></i><b>4.2</b> <em>데이터 세트 2</em></a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html"><i class="fa fa-check"></i><b>6</b> igraph를 이용한 네트워크 시각화</a>
+<li class="chapter" data-level="5" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html"><i class="fa fa-check"></i><b>5</b> igraph를 이용한 네트워크 시각화</a>
 <ul>
-<li><a href="Plotting-Networks-with-Igraph.html#plotting-parameters"><em>Plotting parameters</em></a></li>
-<li class="chapter" data-level="6.1" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#network-layouts"><i class="fa fa-check"></i><b>6.1</b> <em>Network layouts</em></a></li>
-<li class="chapter" data-level="6.2" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#네트워크-시각화-개선"><i class="fa fa-check"></i><b>6.2</b> <em>네트워크 시각화 개선</em></a></li>
-<li class="chapter" data-level="6.3" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#tkplot-패키지를-이용한-상호대화식-시각화"><i class="fa fa-check"></i><b>6.3</b> <em><code>tkplot</code> 패키지를 이용한 상호대화식 시각화</em></a></li>
-<li class="chapter" data-level="6.4" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#다른-네트워크-시각화-방법"><i class="fa fa-check"></i><b>6.4</b> <em>다른 네트워크 시각화 방법</em></a></li>
-<li class="chapter" data-level="6.5" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#igraph로-2-모드-네트워크-시각화하기"><i class="fa fa-check"></i><b>6.5</b> <em>igraph로 2-모드 네트워크 시각화하기</em></a></li>
-<li class="chapter" data-level="" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#참고자료"><i class="fa fa-check"></i>참고자료</a></li>
+<li><a href="plotting-parameters.html#plotting-parameters"><em>Plotting parameters</em></a></li>
+<li class="chapter" data-level="5.1" data-path="network-layouts.html"><a href="network-layouts.html"><i class="fa fa-check"></i><b>5.1</b> <em>Network layouts</em></a></li>
+<li class="chapter" data-level="5.2" data-path="네트워크-시각화-개선.html"><a href="네트워크-시각화-개선.html"><i class="fa fa-check"></i><b>5.2</b> <em>네트워크 시각화 개선</em></a></li>
+<li class="chapter" data-level="5.3" data-path="tkplot-패키지를-이용한-상호대화식-시각화.html"><a href="tkplot-패키지를-이용한-상호대화식-시각화.html"><i class="fa fa-check"></i><b>5.3</b> <em><code>tkplot</code> 패키지를 이용한 상호대화식 시각화</em></a></li>
+<li class="chapter" data-level="5.4" data-path="다른-네트워크-시각화-방법.html"><a href="다른-네트워크-시각화-방법.html"><i class="fa fa-check"></i><b>5.4</b> <em>다른 네트워크 시각화 방법</em></a></li>
+<li class="chapter" data-level="5.5" data-path="igraph로-2-모드-네트워크-시각화하기.html"><a href="igraph로-2-모드-네트워크-시각화하기.html"><i class="fa fa-check"></i><b>5.5</b> <em>igraph로 2-모드 네트워크 시각화하기</em></a></li>
+<li class="chapter" data-level="" data-path="참고자료.html"><a href="참고자료.html"><i class="fa fa-check"></i>참고자료</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html"><i class="fa fa-check"></i><b>7</b> 네트워크과 노드 설명</a>
+<li class="chapter" data-level="6" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html"><i class="fa fa-check"></i><b>6</b> 네트워크과 노드 설명</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#밀도density"><i class="fa fa-check"></i><b>7.1</b> <em>밀도(Density)</em></a></li>
-<li class="chapter" data-level="7.2" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#호혜성reciprocity"><i class="fa fa-check"></i><b>7.2</b> <em>호혜성(Reciprocity)</em></a></li>
-<li class="chapter" data-level="7.3" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#이행성transitivity"><i class="fa fa-check"></i><b>7.3</b> <em>이행성(Transitivity)</em></a></li>
-<li class="chapter" data-level="7.4" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#지름diameter"><i class="fa fa-check"></i><b>7.4</b> <em>지름(Diameter)</em></a></li>
-<li class="chapter" data-level="7.5" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#노드-연결-정도node-degrees"><i class="fa fa-check"></i><b>7.5</b> <em>노드 연결 정도(Node degrees)</em></a></li>
-<li class="chapter" data-level="7.6" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#연결-정도-분포degree-distribution"><i class="fa fa-check"></i><b>7.6</b> <em>연결 정도 분포(Degree distribution)</em></a></li>
-<li class="chapter" data-level="7.7" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#중심성과-중심화centrality-centralization"><i class="fa fa-check"></i><b>7.7</b> <em>중심성과 중심화(Centrality &amp; centralization)</em></a></li>
-<li class="chapter" data-level="7.8" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#허브와-오쏘러티hubs-and-authorities"><i class="fa fa-check"></i><b>7.8</b> <em>허브와 오쏘러티(Hubs and authorities)</em></a></li>
-<li class="chapter" data-level="" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#참고자료-1"><i class="fa fa-check"></i>참고자료</a></li>
+<li class="chapter" data-level="6.1" data-path="밀도density.html"><a href="밀도density.html"><i class="fa fa-check"></i><b>6.1</b> <em>밀도(Density)</em></a></li>
+<li class="chapter" data-level="6.2" data-path="호혜성reciprocity.html"><a href="호혜성reciprocity.html"><i class="fa fa-check"></i><b>6.2</b> <em>호혜성(Reciprocity)</em></a></li>
+<li class="chapter" data-level="6.3" data-path="이행성transitivity.html"><a href="이행성transitivity.html"><i class="fa fa-check"></i><b>6.3</b> <em>이행성(Transitivity)</em></a></li>
+<li class="chapter" data-level="6.4" data-path="지름diameter.html"><a href="지름diameter.html"><i class="fa fa-check"></i><b>6.4</b> <em>지름(Diameter)</em></a></li>
+<li class="chapter" data-level="6.5" data-path="노드-연결-정도node-degrees.html"><a href="노드-연결-정도node-degrees.html"><i class="fa fa-check"></i><b>6.5</b> <em>노드 연결 정도(Node degrees)</em></a></li>
+<li class="chapter" data-level="6.6" data-path="연결-정도-분포degree-distribution.html"><a href="연결-정도-분포degree-distribution.html"><i class="fa fa-check"></i><b>6.6</b> <em>연결 정도 분포(Degree distribution)</em></a></li>
+<li class="chapter" data-level="6.7" data-path="중심성과-중심화centrality-centralization.html"><a href="중심성과-중심화centrality-centralization.html"><i class="fa fa-check"></i><b>6.7</b> <em>중심성과 중심화(Centrality &amp; centralization)</em></a></li>
+<li class="chapter" data-level="6.8" data-path="허브와-오쏘러티hubs-and-authorities.html"><a href="허브와-오쏘러티hubs-and-authorities.html"><i class="fa fa-check"></i><b>6.8</b> <em>허브와 오쏘러티(Hubs and authorities)</em></a></li>
+<li class="chapter" data-level="" data-path="참고자료-1.html"><a href="참고자료-1.html"><i class="fa fa-check"></i>참고자료</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="Distances-and-Paths.html"><a href="Distances-and-Paths.html"><i class="fa fa-check"></i><b>8</b> 거리와 경로(Distances and paths)</a></li>
-<li class="chapter" data-level="9" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html"><i class="fa fa-check"></i><b>9</b> 서브 그룹과 커뮤니티</a>
+<li class="chapter" data-level="7" data-path="Distances-and-Paths.html"><a href="Distances-and-Paths.html"><i class="fa fa-check"></i><b>7</b> 거리와 경로(Distances and paths)</a></li>
+<li class="chapter" data-level="8" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html"><i class="fa fa-check"></i><b>8</b> 서브 그룹과 커뮤니티</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html#클릭cliques"><i class="fa fa-check"></i><b>9.1</b> <em>클릭(Cliques)</em></a></li>
-<li class="chapter" data-level="9.2" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html#커뮤니티-발견community-detection"><i class="fa fa-check"></i><b>9.2</b> <em>커뮤니티 발견(Community detection)</em></a></li>
-<li class="chapter" data-level="" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html#참고자료-2"><i class="fa fa-check"></i>참고자료</a></li>
+<li class="chapter" data-level="8.1" data-path="클릭cliques.html"><a href="클릭cliques.html"><i class="fa fa-check"></i><b>8.1</b> <em>클릭(Cliques)</em></a></li>
+<li class="chapter" data-level="8.2" data-path="커뮤니티-발견community-detection.html"><a href="커뮤니티-발견community-detection.html"><i class="fa fa-check"></i><b>8.2</b> <em>커뮤니티 발견(Community detection)</em></a></li>
+<li class="chapter" data-level="" data-path="참고자료-2.html"><a href="참고자료-2.html"><i class="fa fa-check"></i>참고자료</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="Assortativity-and-Homophily.html"><a href="Assortativity-and-Homophily.html"><i class="fa fa-check"></i><b>10</b> 동류성과 동질성</a>
+<li class="chapter" data-level="9" data-path="Assortativity-and-Homophily.html"><a href="Assortativity-and-Homophily.html"><i class="fa fa-check"></i><b>9</b> 동류성과 동질성</a>
 <ul>
-<li class="chapter" data-level="" data-path="Assortativity-and-Homophily.html"><a href="Assortativity-and-Homophily.html#참고자료-3"><i class="fa fa-check"></i>참고자료</a></li>
+<li class="chapter" data-level="" data-path="참고자료-3.html"><a href="참고자료-3.html"><i class="fa fa-check"></i>참고자료</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -219,587 +217,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Plotting_Networks_with_Igraph" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> igraph를 이용한 네트워크 시각화</h1>
+<div id="Plotting_Networks_with_Igraph" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> igraph를 이용한 네트워크 시각화</h1>
 <p>네트워크의 시각화는 설정할 수 있는 다양한 파라미터들을 가지고 있다. 여기에는 (<code>vertex.</code>으로 시작하는) 노드 옵션들과 (<code>edge.</code>으로 시작하는) 에지 옵션들을 포함한다. 일부의 옵션 목록은 다음과 같으며, 더 많은 정보는 <code>?igraph.plotting</code>로 확인할 수 있다.</p>
 <div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="Plotting-Networks-with-Igraph.html#cb318-1" aria-hidden="true" tabindex="-1"></a>? igraph.plotting</span></code></pre></div>
 <pre><code>## starting httpd help server ... done</code></pre>
 <p><code>igraph</code>의 플로팅 파라미터들은 다음과 같다.</p>
-<div id="plotting-parameters" class="section level2 unnumbered">
-<h2><em>Plotting parameters</em></h2>
-<table>
-<colgroup>
-<col width="27%" />
-<col width="72%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>NODES</strong></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>vertex.color</strong></td>
-<td>Node color</td>
-</tr>
-<tr class="even">
-<td><strong>vertex.frame.color</strong></td>
-<td>Node border color</td>
-</tr>
-<tr class="odd">
-<td><strong>vertex.shape</strong></td>
-<td>One of “none,” “circle,” “square,” “csquare,” “rectangle” “crectangle,” “vrectangle,” “pie,” “raster,” or “sphere”</td>
-</tr>
-<tr class="even">
-<td><strong>vertex.size</strong></td>
-<td>Size of the node (default is 15)</td>
-</tr>
-<tr class="odd">
-<td><strong>vertex.size2</strong></td>
-<td>The second size of the node (e.g. for a rectangle)</td>
-</tr>
-<tr class="even">
-<td><strong>vertex.label</strong></td>
-<td>Character vector used to label the nodes</td>
-</tr>
-<tr class="odd">
-<td><strong>vertex.label.family</strong></td>
-<td>Font family of the label (e.g.“Times,” “Helvetica”)</td>
-</tr>
-<tr class="even">
-<td><strong>vertex.label.font</strong></td>
-<td>Font: 1 plain, 2 bold, 3, italic, 4 bold italic, 5 symbol</td>
-</tr>
-<tr class="odd">
-<td><strong>vertex.label.cex</strong></td>
-<td>Font size (multiplication factor, device-dependent)</td>
-</tr>
-<tr class="even">
-<td><strong>vertex.label.dist</strong></td>
-<td>Distance between the label and the vertex</td>
-</tr>
-<tr class="odd">
-<td><strong>vertex.label.degree</strong></td>
-<td>The position of the label in relation to the vertex, where 0 right, “pi” is left, “pi/2” is below, and “-pi/2” is above</td>
-</tr>
-<tr class="even">
-<td><strong>EDGES</strong></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><strong>edge.color</strong></td>
-<td>Edge color</td>
-</tr>
-<tr class="even">
-<td><strong>edge.width</strong></td>
-<td>Edge width, defaults to 1</td>
-</tr>
-<tr class="odd">
-<td><strong>edge.arrow.size</strong></td>
-<td>Arrow size, defaults to 1</td>
-</tr>
-<tr class="even">
-<td><strong>edge.arrow.width</strong></td>
-<td>Arrow width, defaults to 1</td>
-</tr>
-<tr class="odd">
-<td><strong>edge.lty</strong></td>
-<td>Line type, could be 0 or “blank,” 1 or “solid,” 2 or “dashed,” 3 or “dotted,” 4 or “dotdash,” 5 or “longdash,” 6 or “twodash”</td>
-</tr>
-<tr class="even">
-<td><strong>edge.label</strong></td>
-<td>Character vector used to label edges</td>
-</tr>
-<tr class="odd">
-<td><strong>edge.label.family</strong></td>
-<td>Font family of the label (e.g.“Times,” “Helvetica”)</td>
-</tr>
-<tr class="even">
-<td><strong>edge.label.font</strong></td>
-<td>Font: 1 plain, 2 bold, 3, italic, 4 bold italic, 5 symbol</td>
-</tr>
-<tr class="odd">
-<td><strong>edge.label.cex</strong></td>
-<td>Font size for edge labels</td>
-</tr>
-<tr class="even">
-<td><strong>edge.curved</strong></td>
-<td>Edge curvature, range 0-1 (FALSE sets it to 0, TRUE to 0.5)</td>
-</tr>
-<tr class="odd">
-<td><strong>arrow.mode</strong></td>
-<td>Vector specifying whether edges should have arrows, possible values: 0 no arrow, 1 back, 2 forward, 3 both</td>
-</tr>
-<tr class="even">
-<td><strong>OTHER</strong></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><strong>margin</strong></td>
-<td>Empty space margins around the plot, vector with length 4</td>
-</tr>
-<tr class="even">
-<td><strong>frame</strong></td>
-<td>if TRUE, the plot will be framed</td>
-</tr>
-<tr class="odd">
-<td><strong>main</strong></td>
-<td>If set, adds a title to the plot</td>
-</tr>
-<tr class="even">
-<td><strong>sub</strong></td>
-<td>If set, adds a subtitle to the plot</td>
-</tr>
-</tbody>
-</table>
-<p>노드와 에지 옵션을 두 가지 방법으로 설정할 수 있다 - 첫 번째는 <code>plot()</code> 함수 안에서 다음과 같이 옵션을 설정하는 것이다.</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="Plotting-Networks-with-Igraph.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 곡선형 에지와 화살표 크기 조절하기 :</span></span>
-<span id="cb320-2"><a href="Plotting-Networks-with-Igraph.html#cb320-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net, <span class="at">edge.arrow.size=</span>.<span class="dv">4</span>, <span class="at">edge.curved=</span>.<span class="dv">1</span>)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="Plotting-Networks-with-Igraph.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 에지 색을 회색으로 그리고 노드 색을 오렌지 색으로 설정하기 :</span></span>
-<span id="cb321-2"><a href="Plotting-Networks-with-Igraph.html#cb321-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &quot;media&quot;에 저장된 노드 이름을 노드의 라벨로 대체</span></span>
-<span id="cb321-3"><a href="Plotting-Networks-with-Igraph.html#cb321-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net, <span class="at">edge.arrow.size=</span>.<span class="dv">2</span>, <span class="at">edge.curved=</span><span class="dv">0</span>,</span>
-<span id="cb321-4"><a href="Plotting-Networks-with-Igraph.html#cb321-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.color=</span><span class="st">&quot;orange&quot;</span>, <span class="at">vertex.frame.color=</span><span class="st">&quot;#555555&quot;</span>,</span>
-<span id="cb321-5"><a href="Plotting-Networks-with-Igraph.html#cb321-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.label=</span><span class="fu">V</span>(net)<span class="sc">$</span>media, <span class="at">vertex.label.color=</span><span class="st">&quot;black&quot;</span>,</span>
-<span id="cb321-6"><a href="Plotting-Networks-with-Igraph.html#cb321-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.label.cex=</span>.<span class="dv">7</span>) </span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
-<p>두 번째 방법은 <code>igraph</code> 개체에 옵션을 추가하는 것이다. 네트워크의 노드를 <code>media.type</code> 에 따라 색을 지정하고, <code>audience.size</code>(대규모 <code>audience</code>는 노드를 크게)에 따라 노드의 크기를 설정해 보자. 또한 가중치에 따라 에지의 넓이를 바꿀 수도 있다.</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="Plotting-Networks-with-Igraph.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="co"># media 종류에 따라 색 지정하기 :</span></span>
-<span id="cb322-2"><a href="Plotting-Networks-with-Igraph.html#cb322-2" aria-hidden="true" tabindex="-1"></a>colrs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;gray50&quot;</span>, <span class="st">&quot;tomato&quot;</span>, <span class="st">&quot;gold&quot;</span>)</span>
-<span id="cb322-3"><a href="Plotting-Networks-with-Igraph.html#cb322-3" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(net)<span class="sc">$</span>color <span class="ot">&lt;-</span> colrs[<span class="fu">V</span>(net)<span class="sc">$</span>media.type]</span>
-<span id="cb322-4"><a href="Plotting-Networks-with-Igraph.html#cb322-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb322-5"><a href="Plotting-Networks-with-Igraph.html#cb322-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 고객의 규모에 따라 노드의 크기 지정하기 :</span></span>
-<span id="cb322-6"><a href="Plotting-Networks-with-Igraph.html#cb322-6" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(net)<span class="sc">$</span>size <span class="ot">&lt;-</span> <span class="fu">V</span>(net)<span class="sc">$</span>audience.size<span class="sc">*</span><span class="fl">0.7</span></span>
-<span id="cb322-7"><a href="Plotting-Networks-with-Igraph.html#cb322-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb322-8"><a href="Plotting-Networks-with-Igraph.html#cb322-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 라벨들은 현 노드의 ID이다.</span></span>
-<span id="cb322-9"><a href="Plotting-Networks-with-Igraph.html#cb322-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 라벨을 NA로 설정하면 라벨이 표시되지 않는다.</span></span>
-<span id="cb322-10"><a href="Plotting-Networks-with-Igraph.html#cb322-10" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(net)<span class="sc">$</span>label.color <span class="ot">&lt;-</span> <span class="st">&quot;black&quot;</span></span>
-<span id="cb322-11"><a href="Plotting-Networks-with-Igraph.html#cb322-11" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(net)<span class="sc">$</span>label <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb322-12"><a href="Plotting-Networks-with-Igraph.html#cb322-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb322-13"><a href="Plotting-Networks-with-Igraph.html#cb322-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 가중치에 따라 에지의 넓이를 지정하기 :</span></span>
-<span id="cb322-14"><a href="Plotting-Networks-with-Igraph.html#cb322-14" aria-hidden="true" tabindex="-1"></a><span class="fu">E</span>(net)<span class="sc">$</span>width <span class="ot">&lt;-</span> <span class="fu">E</span>(net)<span class="sc">$</span>weight<span class="sc">/</span><span class="dv">6</span></span>
-<span id="cb322-15"><a href="Plotting-Networks-with-Igraph.html#cb322-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb322-16"><a href="Plotting-Networks-with-Igraph.html#cb322-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 화살표 크기와 에지 색을 변경하기 :</span></span>
-<span id="cb322-17"><a href="Plotting-Networks-with-Igraph.html#cb322-17" aria-hidden="true" tabindex="-1"></a><span class="fu">E</span>(net)<span class="sc">$</span>arrow.size <span class="ot">&lt;-</span> .<span class="dv">2</span></span>
-<span id="cb322-18"><a href="Plotting-Networks-with-Igraph.html#cb322-18" aria-hidden="true" tabindex="-1"></a><span class="fu">E</span>(net)<span class="sc">$</span>edge.color <span class="ot">&lt;-</span> <span class="st">&quot;gray80&quot;</span></span>
-<span id="cb322-19"><a href="Plotting-Networks-with-Igraph.html#cb322-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb322-20"><a href="Plotting-Networks-with-Igraph.html#cb322-20" aria-hidden="true" tabindex="-1"></a><span class="fu">E</span>(net)<span class="sc">$</span>width <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">+</span><span class="fu">E</span>(net)<span class="sc">$</span>weight<span class="sc">/</span><span class="dv">12</span></span></code></pre></div>
-<p>또한 <code>plot()</code>에 명시적으로 속성을 지정할 수 있다.</p>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="Plotting-Networks-with-Igraph.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net, <span class="at">edge.color=</span><span class="st">&quot;orange&quot;</span>, <span class="at">vertex.color=</span><span class="st">&quot;gray50&quot;</span>) </span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
-<p>우리가 사용한 색의 의미를 설정하는 범례를 추가할 수 있다 :</p>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="Plotting-Networks-with-Igraph.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net) </span>
-<span id="cb324-2"><a href="Plotting-Networks-with-Igraph.html#cb324-2" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x=</span><span class="sc">-</span><span class="fl">1.5</span>, <span class="at">y=</span><span class="sc">-</span><span class="fl">1.1</span>, <span class="fu">c</span>(<span class="st">&quot;Newspaper&quot;</span>,<span class="st">&quot;Television&quot;</span>, <span class="st">&quot;Online News&quot;</span>), <span class="at">pch=</span><span class="dv">21</span>,</span>
-<span id="cb324-3"><a href="Plotting-Networks-with-Igraph.html#cb324-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="st">&quot;#777777&quot;</span>, <span class="at">pt.bg=</span>colrs, <span class="at">pt.cex=</span><span class="dv">2</span>, <span class="at">cex=</span>.<span class="dv">8</span>, <span class="at">bty=</span><span class="st">&quot;n&quot;</span>, <span class="at">ncol=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
-<p>때때로 의미 네트워크의 경우 특히, 노드의 라벨만을 표시하고자 할 때가 있다.:</p>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="Plotting-Networks-with-Igraph.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net, <span class="at">vertex.shape=</span><span class="st">&quot;none&quot;</span>, <span class="at">vertex.label=</span><span class="fu">V</span>(net)<span class="sc">$</span>media, </span>
-<span id="cb325-2"><a href="Plotting-Networks-with-Igraph.html#cb325-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.label.font=</span><span class="dv">2</span>, <span class="at">vertex.label.color=</span><span class="st">&quot;gray40&quot;</span>,</span>
-<span id="cb325-3"><a href="Plotting-Networks-with-Igraph.html#cb325-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.label.cex=</span>.<span class="dv">7</span>, <span class="at">edge.color=</span><span class="st">&quot;gray85&quot;</span>)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-89-1.png" width="672" /></p>
-<p>원천 노드의 색에 따라 그래프의 에지 색을 지정할 수 있다. <code>igraph</code> 패키지의 <code>end()</code> 함수로 각 에지의 시작 노드를 알 수 있다.</p>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="Plotting-Networks-with-Igraph.html#cb326-1" aria-hidden="true" tabindex="-1"></a>edge.start <span class="ot">&lt;-</span> <span class="fu">ends</span>(net, <span class="at">es=</span><span class="fu">E</span>(net), <span class="at">names=</span>F)[,<span class="dv">1</span>]</span>
-<span id="cb326-2"><a href="Plotting-Networks-with-Igraph.html#cb326-2" aria-hidden="true" tabindex="-1"></a>edge.start</span></code></pre></div>
-<pre><code>##  [1]  1  1  1  1  2  2  2  2  3  3  3  3  3  3  3  4  4  4  4  4  5  5  5  5  6
-## [26]  6  7  7  7  7  8  8  8  9 10 12 12 12 13 13 14 14 15 15 15 16 16 17</code></pre>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="Plotting-Networks-with-Igraph.html#cb328-1" aria-hidden="true" tabindex="-1"></a>edge.col <span class="ot">&lt;-</span> <span class="fu">V</span>(net)<span class="sc">$</span>color[edge.start]</span>
-<span id="cb328-2"><a href="Plotting-Networks-with-Igraph.html#cb328-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb328-3"><a href="Plotting-Networks-with-Igraph.html#cb328-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net, <span class="at">edge.color=</span>edge.col, <span class="at">edge.curved=</span>.<span class="dv">1</span>)  </span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-90-1.png" width="672" /></p>
-</div>
-<div id="network-layouts" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> <em>Network layouts</em></h2>
-<p>네트워크 레이아웃(Network layouts)은 네트워크 내에 있는 각 노드에 대한 좌표를 반환하는 단순 알고리듬이다.</p>
-<p>레이아웃을 이해하기 위해 약간 규모가 큰 80개 노드로 구성된 그래프를 생성하기로 한다. 사전에 설정된 선호도 수준에 따라 하나의 노드에서 시작해서 더 많은 노드와 에지를 추가하는 단순 그래프를 생성하는 <code>sample_pa()</code> 함수를 사용한다(Barabasi-Albert model).</p>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="Plotting-Networks-with-Igraph.html#cb329-1" aria-hidden="true" tabindex="-1"></a>net.bg <span class="ot">&lt;-</span> <span class="fu">sample_pa</span>(<span class="dv">80</span>) </span>
-<span id="cb329-2"><a href="Plotting-Networks-with-Igraph.html#cb329-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb329-3"><a href="Plotting-Networks-with-Igraph.html#cb329-3" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(net.bg)<span class="sc">$</span>size <span class="ot">&lt;-</span> <span class="dv">8</span></span>
-<span id="cb329-4"><a href="Plotting-Networks-with-Igraph.html#cb329-4" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(net.bg)<span class="sc">$</span>frame.color <span class="ot">&lt;-</span> <span class="st">&quot;white&quot;</span></span>
-<span id="cb329-5"><a href="Plotting-Networks-with-Igraph.html#cb329-5" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(net.bg)<span class="sc">$</span>color <span class="ot">&lt;-</span> <span class="st">&quot;orange&quot;</span></span>
-<span id="cb329-6"><a href="Plotting-Networks-with-Igraph.html#cb329-6" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(net.bg)<span class="sc">$</span>label <span class="ot">&lt;-</span> <span class="st">&quot;&quot;</span> </span>
-<span id="cb329-7"><a href="Plotting-Networks-with-Igraph.html#cb329-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb329-8"><a href="Plotting-Networks-with-Igraph.html#cb329-8" aria-hidden="true" tabindex="-1"></a><span class="fu">E</span>(net.bg)<span class="sc">$</span>arrow.mode <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb329-9"><a href="Plotting-Networks-with-Igraph.html#cb329-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb329-10"><a href="Plotting-Networks-with-Igraph.html#cb329-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
-<p><code>plot()</code> 함수 안에 레이아웃을 설정할 수 있다:</p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="Plotting-Networks-with-Igraph.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>layout_randomly)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-92-1.png" width="672" /></p>
-<p>또는 먼저 노드의 좌표를 계산할 수 있다 :</p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="Plotting-Networks-with-Igraph.html#cb331-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">layout_in_circle</span>(net.bg)</span>
-<span id="cb331-2"><a href="Plotting-Networks-with-Igraph.html#cb331-2" aria-hidden="true" tabindex="-1"></a>l</span></code></pre></div>
-<pre><code>##                [,1]          [,2]
-##  [1,]  1.000000e+00  0.000000e+00
-##  [2,]  9.969173e-01  7.845910e-02
-##  [3,]  9.876883e-01  1.564345e-01
-##  [4,]  9.723699e-01  2.334454e-01
-##  [5,]  9.510565e-01  3.090170e-01
-##  [6,]  9.238795e-01  3.826834e-01
-##  [7,]  8.910065e-01  4.539905e-01
-##  [8,]  8.526402e-01  5.224986e-01
-##  [9,]  8.090170e-01  5.877853e-01
-## [10,]  7.604060e-01  6.494480e-01
-## [11,]  7.071068e-01  7.071068e-01
-## [12,]  6.494480e-01  7.604060e-01
-## [13,]  5.877853e-01  8.090170e-01
-## [14,]  5.224986e-01  8.526402e-01
-## [15,]  4.539905e-01  8.910065e-01
-## [16,]  3.826834e-01  9.238795e-01
-## [17,]  3.090170e-01  9.510565e-01
-## [18,]  2.334454e-01  9.723699e-01
-## [19,]  1.564345e-01  9.876883e-01
-## [20,]  7.845910e-02  9.969173e-01
-## [21,]  6.123032e-17  1.000000e+00
-## [22,] -7.845910e-02  9.969173e-01
-## [23,] -1.564345e-01  9.876883e-01
-## [24,] -2.334454e-01  9.723699e-01
-## [25,] -3.090170e-01  9.510565e-01
-## [26,] -3.826834e-01  9.238795e-01
-## [27,] -4.539905e-01  8.910065e-01
-## [28,] -5.224986e-01  8.526402e-01
-## [29,] -5.877853e-01  8.090170e-01
-## [30,] -6.494480e-01  7.604060e-01
-## [31,] -7.071068e-01  7.071068e-01
-## [32,] -7.604060e-01  6.494480e-01
-## [33,] -8.090170e-01  5.877853e-01
-## [34,] -8.526402e-01  5.224986e-01
-## [35,] -8.910065e-01  4.539905e-01
-## [36,] -9.238795e-01  3.826834e-01
-## [37,] -9.510565e-01  3.090170e-01
-## [38,] -9.723699e-01  2.334454e-01
-## [39,] -9.876883e-01  1.564345e-01
-## [40,] -9.969173e-01  7.845910e-02
-## [41,] -1.000000e+00  1.224606e-16
-## [42,] -9.969173e-01 -7.845910e-02
-## [43,] -9.876883e-01 -1.564345e-01
-## [44,] -9.723699e-01 -2.334454e-01
-## [45,] -9.510565e-01 -3.090170e-01
-## [46,] -9.238795e-01 -3.826834e-01
-## [47,] -8.910065e-01 -4.539905e-01
-## [48,] -8.526402e-01 -5.224986e-01
-## [49,] -8.090170e-01 -5.877853e-01
-## [50,] -7.604060e-01 -6.494480e-01
-## [51,] -7.071068e-01 -7.071068e-01
-## [52,] -6.494480e-01 -7.604060e-01
-## [53,] -5.877853e-01 -8.090170e-01
-## [54,] -5.224986e-01 -8.526402e-01
-## [55,] -4.539905e-01 -8.910065e-01
-## [56,] -3.826834e-01 -9.238795e-01
-## [57,] -3.090170e-01 -9.510565e-01
-## [58,] -2.334454e-01 -9.723699e-01
-## [59,] -1.564345e-01 -9.876883e-01
-## [60,] -7.845910e-02 -9.969173e-01
-## [61,] -1.836910e-16 -1.000000e+00
-## [62,]  7.845910e-02 -9.969173e-01
-## [63,]  1.564345e-01 -9.876883e-01
-## [64,]  2.334454e-01 -9.723699e-01
-## [65,]  3.090170e-01 -9.510565e-01
-## [66,]  3.826834e-01 -9.238795e-01
-## [67,]  4.539905e-01 -8.910065e-01
-## [68,]  5.224986e-01 -8.526402e-01
-## [69,]  5.877853e-01 -8.090170e-01
-## [70,]  6.494480e-01 -7.604060e-01
-## [71,]  7.071068e-01 -7.071068e-01
-## [72,]  7.604060e-01 -6.494480e-01
-## [73,]  8.090170e-01 -5.877853e-01
-## [74,]  8.526402e-01 -5.224986e-01
-## [75,]  8.910065e-01 -4.539905e-01
-## [76,]  9.238795e-01 -3.826834e-01
-## [77,]  9.510565e-01 -3.090170e-01
-## [78,]  9.723699e-01 -2.334454e-01
-## [79,]  9.876883e-01 -1.564345e-01
-## [80,]  9.969173e-01 -7.845910e-02</code></pre>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="Plotting-Networks-with-Igraph.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>l)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-93-1.png" width="672" /></p>
-<p><code>l</code> 은 그래프에 있는 N개 노드에 대하여 단순히 x, y 좌표로 구성되는 (N x 2) 행렬이다. 쉽게 생성할 수 있다 :</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="Plotting-Networks-with-Igraph.html#cb334-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">vcount</span>(net.bg), <span class="fu">c</span>(<span class="dv">1</span>, <span class="fu">vcount</span>(net.bg)<span class="sc">:</span><span class="dv">2</span>))</span>
-<span id="cb334-2"><a href="Plotting-Networks-with-Igraph.html#cb334-2" aria-hidden="true" tabindex="-1"></a>l</span></code></pre></div>
-<pre><code>##       [,1] [,2]
-##  [1,]    1    1
-##  [2,]    2   80
-##  [3,]    3   79
-##  [4,]    4   78
-##  [5,]    5   77
-##  [6,]    6   76
-##  [7,]    7   75
-##  [8,]    8   74
-##  [9,]    9   73
-## [10,]   10   72
-## [11,]   11   71
-## [12,]   12   70
-## [13,]   13   69
-## [14,]   14   68
-## [15,]   15   67
-## [16,]   16   66
-## [17,]   17   65
-## [18,]   18   64
-## [19,]   19   63
-## [20,]   20   62
-## [21,]   21   61
-## [22,]   22   60
-## [23,]   23   59
-## [24,]   24   58
-## [25,]   25   57
-## [26,]   26   56
-## [27,]   27   55
-## [28,]   28   54
-## [29,]   29   53
-## [30,]   30   52
-## [31,]   31   51
-## [32,]   32   50
-## [33,]   33   49
-## [34,]   34   48
-## [35,]   35   47
-## [36,]   36   46
-## [37,]   37   45
-## [38,]   38   44
-## [39,]   39   43
-## [40,]   40   42
-## [41,]   41   41
-## [42,]   42   40
-## [43,]   43   39
-## [44,]   44   38
-## [45,]   45   37
-## [46,]   46   36
-## [47,]   47   35
-## [48,]   48   34
-## [49,]   49   33
-## [50,]   50   32
-## [51,]   51   31
-## [52,]   52   30
-## [53,]   53   29
-## [54,]   54   28
-## [55,]   55   27
-## [56,]   56   26
-## [57,]   57   25
-## [58,]   58   24
-## [59,]   59   23
-## [60,]   60   22
-## [61,]   61   21
-## [62,]   62   20
-## [63,]   63   19
-## [64,]   64   18
-## [65,]   65   17
-## [66,]   66   16
-## [67,]   67   15
-## [68,]   68   14
-## [69,]   69   13
-## [70,]   70   12
-## [71,]   71   11
-## [72,]   72   10
-## [73,]   73    9
-## [74,]   74    8
-## [75,]   75    7
-## [76,]   76    6
-## [77,]   77    5
-## [78,]   78    4
-## [79,]   79    3
-## [80,]   80    2</code></pre>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="Plotting-Networks-with-Igraph.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>l)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
-<p>사전에 네트워크 레이아웃을 설정하고 이를 적용하는 것도 가능하다. 또한 igraph 패키지에 내장된 네트워크 레이아웃 함수는 다음과 같다.</p>
-<ul>
-<li><code>layout.random()</code> : 임의 네트워크 배치</li>
-<li><code>layout.circle()</code> : 원형태 네트워크 배치</li>
-<li><code>layout.sphere()</code> : 구형태 네트워크 배치</li>
-</ul>
-<p>이 레이아웃은 단지 예를 든 것이며 크게 도움이 되는 것은 아니다. 다행히도 igraph는 다음과 같은 다양한 내장된 레이아웃을 가지고 있다 :</p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="Plotting-Networks-with-Igraph.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 정점을 무작위로 배치하기</span></span>
-<span id="cb337-2"><a href="Plotting-Networks-with-Igraph.html#cb337-2" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">layout_randomly</span>(net.bg)</span>
-<span id="cb337-3"><a href="Plotting-Networks-with-Igraph.html#cb337-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>l)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="Plotting-Networks-with-Igraph.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 원형 레이아웃</span></span>
-<span id="cb338-2"><a href="Plotting-Networks-with-Igraph.html#cb338-2" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">layout_in_circle</span>(net.bg)</span>
-<span id="cb338-3"><a href="Plotting-Networks-with-Igraph.html#cb338-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>l)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="Plotting-Networks-with-Igraph.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3D 구형 레이아웃</span></span>
-<span id="cb339-2"><a href="Plotting-Networks-with-Igraph.html#cb339-2" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">layout_on_sphere</span>(net.bg)</span>
-<span id="cb339-3"><a href="Plotting-Networks-with-Igraph.html#cb339-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>l)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-97-1.png" width="672" /></p>
-<ul>
-<li>그 밖의 레이아웃 함수들 :
-<code>layout_as_bipartite()</code>, <code>layout_as_star()</code>, <code>layout_as_tree()</code>, <code>layout_in_circle()</code>, <code>layout_nicely()</code>, <code>layout_on_grid()</code>, <code>layout_on_sphere()</code>, <code>layout_randomly()</code>, <code>layout_with_dh()</code>, <code>layout_with_fr()</code>, <code>layout_with_gem()</code>, <code>layout_with_graphopt()</code>, <code>layout_with_kk()</code>, <code>layout_with_lgl()</code>, <code>layout_with_mds()</code>, <code>layout_with_sugiyama()</code></li>
-</ul>
-<p>심미적으로 보기 좋은 네트워크 그래프를 얻기 위해 많은 알고리즘이 제안되었고, Fruchterman-Reingold 알고리즘을 비롯한 다양한 알고리즘이 존재한다. 물리학에서 가져온 스프링, 힘 등의 개념을 노드와 엣지에 적용하여 컴퓨터의 도움을 얻어 데이터가 크지 않은 경우 빠른 시간내에 시각화가 가능하다.</p>
-<p>Fruchterman-Reingold 알고리즘인 <code>layout_with_fr()</code> 함수는 심미적으로 보기 좋은 네트워크 그래프를 위한 레이아웃 알고리즘 중의 하나이다. Force-directed 네트워크 배치 알고리즘은 에지 길이가 비슷하고, 엣지가 가능하면 서로 거의 겹치지 않는 그래프를 생성하고자 한다. 이는 물리시스템으로 그래프를 모의시험한다. 노드는 서로 가까워지면 서로 밀어내는 성질을 갖는 전기적 성격을 갖는 입자이며, 에지는 연결된 노들들을 서로 가깝게 끌어들이는 스피링처럼 동작한다.</p>
-<p>결과적으로 노드는 시각화 평면에 골고루 분산되어 위치하게 되고, 더 많은 연결점을 갖는 노드는 서로 더 가까이 위치하게 된다는 점에서 직관적이다. 이런 유형의 알고리즘이 갖는 단점은 실행 시간에 오래 걸리며, 따라서 ~ 1,000 개보다 큰 노드를 갖는 그래프에는 잘 사용되지 않는다. 일부 모수를 조정해서 네트워크 그래프를 조정하는 것도 가능하다.</p>
-<ul>
-<li><code>area</code> : 기본 설정값으로 노드 제곱</li>
-<li><code>repulserad</code> : 밀어내는 반경</li>
-<li><code>weight</code> : 노드 사이 끌림을 증대</li>
-</ul>
-<p>예를 들어, <code>weight</code> 인수를 이용하여 강한 에지로 연결되는 노드 사이의 매력도를 증가시킬 수 있다.</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="Plotting-Networks-with-Igraph.html#cb340-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">layout_with_fr</span>(net.bg)</span>
-<span id="cb340-2"><a href="Plotting-Networks-with-Igraph.html#cb340-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>l)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
-<p>이 레이아웃은 확정적이지 않다는 것을 알 수 있다. 시행할 때마다 결과는 약간씩 다를 것이다. 레이아웃을 변수 <code>l</code>에 저장하면 여러분 동일한 결과를 가질 수 있게 해 준다. 즉, 그래프의 시간에 따른 진화를 시각화하거나, 또는 서로 다른 관계성을 시각화하고자 할 때 도움이 될 수 있으며, 노드들이 여러 플롯에서 같은 장소에 위치하게 하고자 할 때도 도움이 된다.</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="Plotting-Networks-with-Igraph.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))     <span class="co"># 2행 2열로 4개의 그림 그리기</span></span>
-<span id="cb341-2"><a href="Plotting-Networks-with-Igraph.html#cb341-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb341-3"><a href="Plotting-Networks-with-Igraph.html#cb341-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>layout_with_fr)   <span class="co"># </span></span>
-<span id="cb341-4"><a href="Plotting-Networks-with-Igraph.html#cb341-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>layout_with_fr)   <span class="co"># 위의 레이아웃과 다름</span></span>
-<span id="cb341-5"><a href="Plotting-Networks-with-Igraph.html#cb341-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>l)                <span class="co">#</span></span>
-<span id="cb341-6"><a href="Plotting-Networks-with-Igraph.html#cb341-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>l)                <span class="co"># 위의 레이아웃과 같음</span></span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="Plotting-Networks-with-Igraph.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
-<pre><code>## null device 
-##           1</code></pre>
-<p>기본 값으로, 플롯의 좌표들은 <code>x</code>와 <code>y</code> 모두 [-1, 1] 구간으로 재설정된다. 이 구간은 <code>rescale = FALSE</code> 파라미터로 변경할 수 있으며, 좌표에 상수 값을 곱해서도 수작업으로 재설정할 수 있다.</p>
-<p>또한 <code>norm_coords()</code> 함수를 이용하여 우리가 원하는 경계로 플롯을 정규화할 수도 있다.</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="Plotting-Networks-with-Igraph.html#cb344-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">layout_with_fr</span>(net.bg)</span>
-<span id="cb344-2"><a href="Plotting-Networks-with-Igraph.html#cb344-2" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">norm_coords</span>(l, <span class="at">ymin=</span><span class="sc">-</span><span class="dv">1</span>, <span class="at">ymax=</span><span class="dv">1</span>, <span class="at">xmin=</span><span class="sc">-</span><span class="dv">1</span>, <span class="at">xmax=</span><span class="dv">1</span>)</span>
-<span id="cb344-3"><a href="Plotting-Networks-with-Igraph.html#cb344-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb344-4"><a href="Plotting-Networks-with-Igraph.html#cb344-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
-<span id="cb344-5"><a href="Plotting-Networks-with-Igraph.html#cb344-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">rescale=</span>F, <span class="at">layout=</span>l<span class="sc">*</span><span class="fl">0.4</span>)</span>
-<span id="cb344-6"><a href="Plotting-Networks-with-Igraph.html#cb344-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">rescale=</span>F, <span class="at">layout=</span>l<span class="sc">*</span><span class="fl">0.6</span>)</span>
-<span id="cb344-7"><a href="Plotting-Networks-with-Igraph.html#cb344-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">rescale=</span>F, <span class="at">layout=</span>l<span class="sc">*</span><span class="fl">0.8</span>)</span>
-<span id="cb344-8"><a href="Plotting-Networks-with-Igraph.html#cb344-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">rescale=</span>F, <span class="at">layout=</span>l<span class="sc">*</span><span class="fl">1.0</span>)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="Plotting-Networks-with-Igraph.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
-<pre><code>## null device 
-##           1</code></pre>
-<p><code>fruchterman.reingold.grid()</code> 함수는 <code>fruchterman.reingold()</code>와 유사하지만 속도가 더 빠르다.</p>
-<p>또 다른 알고리즘으로 Kamada Kawai 알고리즘인 <code>layout_with_kk()</code> 함수가 있다. Fruchterman Reingold 처럼 스프링 시스템에서의 에너지를 최소화하고자 한다.</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="Plotting-Networks-with-Igraph.html#cb347-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">layout_with_kk</span>(net.bg)</span>
-<span id="cb347-2"><a href="Plotting-Networks-with-Igraph.html#cb347-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>l)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
-<p>LGL 알고리즘인 <code>layout_with_lgl()</code> 함수는 대규모(large)의 연결된 그래프를 의미한다. 여기에서 레이아웃을 중심에 위치하는 root를 지정할 수 있다.</p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="Plotting-Networks-with-Igraph.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>layout_with_lgl)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
-<p><code>igraph</code> 패키지에서 이용가능한 모든 레이아웃들은 다음과 같이 살펴볼 수 있다 :</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="Plotting-Networks-with-Igraph.html#cb349-1" aria-hidden="true" tabindex="-1"></a>? igraph<span class="sc">::</span>layout_</span>
-<span id="cb349-2"><a href="Plotting-Networks-with-Igraph.html#cb349-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb349-3"><a href="Plotting-Networks-with-Igraph.html#cb349-3" aria-hidden="true" tabindex="-1"></a>layouts <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;^layout_&quot;</span>, <span class="fu">ls</span>(<span class="st">&quot;package:igraph&quot;</span>), <span class="at">value=</span><span class="cn">TRUE</span>)[<span class="sc">-</span><span class="dv">1</span>] </span>
-<span id="cb349-4"><a href="Plotting-Networks-with-Igraph.html#cb349-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb349-5"><a href="Plotting-Networks-with-Igraph.html#cb349-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 우리의 그래프에 적용되지 않는 레이아웃 제거</span></span>
-<span id="cb349-6"><a href="Plotting-Networks-with-Igraph.html#cb349-6" aria-hidden="true" tabindex="-1"></a>layouts <span class="ot">&lt;-</span> layouts[<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">&quot;bipartite|merge|norm|sugiyama|tree&quot;</span>, layouts)]</span>
-<span id="cb349-7"><a href="Plotting-Networks-with-Igraph.html#cb349-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb349-8"><a href="Plotting-Networks-with-Igraph.html#cb349-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>), <span class="at">mar=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb349-9"><a href="Plotting-Networks-with-Igraph.html#cb349-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (layout <span class="cf">in</span> layouts) {</span>
-<span id="cb349-10"><a href="Plotting-Networks-with-Igraph.html#cb349-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(layout)</span>
-<span id="cb349-11"><a href="Plotting-Networks-with-Igraph.html#cb349-11" aria-hidden="true" tabindex="-1"></a>  l <span class="ot">&lt;-</span> <span class="fu">do.call</span>(layout, <span class="fu">list</span>(net)) </span>
-<span id="cb349-12"><a href="Plotting-Networks-with-Igraph.html#cb349-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(net, <span class="at">edge.arrow.mode=</span><span class="dv">0</span>, <span class="at">layout=</span>l, <span class="at">main=</span>layout) </span>
-<span id="cb349-13"><a href="Plotting-Networks-with-Igraph.html#cb349-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## [1] &quot;layout_as_star&quot;</code></pre>
-<pre><code>## [1] &quot;layout_components&quot;</code></pre>
-<pre><code>## [1] &quot;layout_in_circle&quot;</code></pre>
-<pre><code>## [1] &quot;layout_nicely&quot;</code></pre>
-<pre><code>## [1] &quot;layout_on_grid&quot;</code></pre>
-<pre><code>## [1] &quot;layout_on_sphere&quot;</code></pre>
-<pre><code>## [1] &quot;layout_randomly&quot;</code></pre>
-<pre><code>## [1] &quot;layout_with_dh&quot;</code></pre>
-<pre><code>## [1] &quot;layout_with_drl&quot;</code></pre>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
-<pre><code>## [1] &quot;layout_with_fr&quot;</code></pre>
-<pre><code>## [1] &quot;layout_with_gem&quot;</code></pre>
-<pre><code>## [1] &quot;layout_with_graphopt&quot;</code></pre>
-<pre><code>## [1] &quot;layout_with_kk&quot;</code></pre>
-<pre><code>## [1] &quot;layout_with_lgl&quot;</code></pre>
-<pre><code>## [1] &quot;layout_with_mds&quot;</code></pre>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-103-2.png" width="672" /></p>
-</div>
-<div id="네트워크-시각화-개선" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> <em>네트워크 시각화 개선</em></h2>
-<p>아직 네트워크의 시각화가 그렇게 도움이 되지 않음을 알 수 있다. 노드의 형태와 크기를 지정할 수 있지만, 우리가 검토하고 있는 연결들이 너무 조밀해서 그 구조를 그렇게 잘 파악하기가 쉽지 않다. 이를 위한 하나의 접근방법은 가장 중요한 연결에만 집중하고 나머지는 제거함으로써 네트워크를 간소화할 수 있는지를 알아보는 것이다.</p>
-<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="Plotting-Networks-with-Igraph.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(links<span class="sc">$</span>weight)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-104-1.png" width="672" /></p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="Plotting-Networks-with-Igraph.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(links<span class="sc">$</span>weight)</span></code></pre></div>
-<pre><code>## [1] 12.40816</code></pre>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="Plotting-Networks-with-Igraph.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(links<span class="sc">$</span>weight)</span></code></pre></div>
-<pre><code>## [1] 9.905635</code></pre>
-<p>중요한 에지들을 추출하는 좀 더 복잡한 방법이 있지만 여기서는 네트워크의 평균 가중치 보다 더 큰 가중치를 갖는 노드들만 집중하기로 한다.</p>
-<p><code>igraph</code> 패키지에서는 <code>delete_edges(net, edges)</code> 함수를 이용하여 에지들을 삭제할 수 있다 :</p>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="Plotting-Networks-with-Igraph.html#cb370-1" aria-hidden="true" tabindex="-1"></a>cut.off <span class="ot">&lt;-</span> <span class="fu">mean</span>(links<span class="sc">$</span>weight) </span>
-<span id="cb370-2"><a href="Plotting-Networks-with-Igraph.html#cb370-2" aria-hidden="true" tabindex="-1"></a>net.sp <span class="ot">&lt;-</span> <span class="fu">delete_edges</span>(net, <span class="fu">E</span>(net)[weight <span class="sc">&lt;</span> cut.off])</span>
-<span id="cb370-3"><a href="Plotting-Networks-with-Igraph.html#cb370-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.sp) </span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
-<p>이에 대한 또 다른 고려 방법은 두 개의 연결 유형(<code>hyperlink</code>와 <code>mention</code>)을 따로 시각화하는 것이다.</p>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="Plotting-Networks-with-Igraph.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="fu">E</span>(net)<span class="sc">$</span>width <span class="ot">&lt;-</span> <span class="fl">1.5</span></span>
-<span id="cb371-2"><a href="Plotting-Networks-with-Igraph.html#cb371-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb371-3"><a href="Plotting-Networks-with-Igraph.html#cb371-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net, <span class="at">edge.color=</span><span class="fu">c</span>(<span class="st">&quot;dark red&quot;</span>, <span class="st">&quot;slategrey&quot;</span>)[(<span class="fu">E</span>(net)<span class="sc">$</span>type<span class="sc">==</span><span class="st">&quot;hyperlink&quot;</span>)<span class="sc">+</span><span class="dv">1</span>],</span>
-<span id="cb371-4"><a href="Plotting-Networks-with-Igraph.html#cb371-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.color=</span><span class="st">&quot;gray40&quot;</span>, <span class="at">layout=</span>layout.circle)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
-<p>두 개의 link들을 따로 플롯하기 :</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="Plotting-Networks-with-Igraph.html#cb372-1" aria-hidden="true" tabindex="-1"></a>net.m <span class="ot">&lt;-</span> net <span class="sc">-</span> <span class="fu">E</span>(net)[<span class="fu">E</span>(net)<span class="sc">$</span>type<span class="sc">==</span><span class="st">&quot;hyperlink&quot;</span>] <span class="co"># another way to delete edges</span></span>
-<span id="cb372-2"><a href="Plotting-Networks-with-Igraph.html#cb372-2" aria-hidden="true" tabindex="-1"></a>net.h <span class="ot">&lt;-</span> net <span class="sc">-</span> <span class="fu">E</span>(net)[<span class="fu">E</span>(net)<span class="sc">$</span>type<span class="sc">==</span><span class="st">&quot;mention&quot;</span>]</span>
-<span id="cb372-3"><a href="Plotting-Networks-with-Igraph.html#cb372-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb372-4"><a href="Plotting-Networks-with-Igraph.html#cb372-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 두 개의 link를 따로 시각화하기</span></span>
-<span id="cb372-5"><a href="Plotting-Networks-with-Igraph.html#cb372-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb372-6"><a href="Plotting-Networks-with-Igraph.html#cb372-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.h, <span class="at">vertex.color=</span><span class="st">&quot;orange&quot;</span>, <span class="at">main=</span><span class="st">&quot;Tie: Hyperlink&quot;</span>)</span>
-<span id="cb372-7"><a href="Plotting-Networks-with-Igraph.html#cb372-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.m, <span class="at">vertex.color=</span><span class="st">&quot;lightsteelblue2&quot;</span>, <span class="at">main=</span><span class="st">&quot;Tie: Mention&quot;</span>)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
-<p>두 개의 플롯에서 존재하는 노드들을 확인하기 :</p>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="Plotting-Networks-with-Igraph.html#cb373-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">layout_with_fr</span>(net)</span>
-<span id="cb373-2"><a href="Plotting-Networks-with-Igraph.html#cb373-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.h, <span class="at">vertex.color=</span><span class="st">&quot;orange&quot;</span>, <span class="at">layout=</span>l, <span class="at">main=</span><span class="st">&quot;Tie: Hyperlink&quot;</span>)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="Plotting-Networks-with-Igraph.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.m, <span class="at">vertex.color=</span><span class="st">&quot;lightsteelblue2&quot;</span>, <span class="at">layout=</span>l, <span class="at">main=</span><span class="st">&quot;Tie: Mention&quot;</span>)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-108-2.png" width="672" /></p>
-<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="Plotting-Networks-with-Igraph.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
-<pre><code>## null device 
-##           1</code></pre>
-</div>
-<div id="tkplot-패키지를-이용한-상호대화식-시각화" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> <em><code>tkplot</code> 패키지를 이용한 상호대화식 시각화</em></h2>
-<p>R과 igraph는 상화대화식 네트워크 시각화를 지원한다. 이는 소규모 그래프의 레이아웃을 약간 변경하고 싶을 때 유용한 옵션이 될 수 있다. 레이아웃을 수작업으로 수정한 다음, 노드의 좌표를 확인하고 다른 좌표에서 이용할 수 있다.</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="Plotting-Networks-with-Igraph.html#cb377-1" aria-hidden="true" tabindex="-1"></a>tkid <span class="ot">&lt;-</span> <span class="fu">tkplot</span>(net)                <span class="co"># tkid는 tkplot의 ID</span></span>
-<span id="cb377-2"><a href="Plotting-Networks-with-Igraph.html#cb377-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb377-3"><a href="Plotting-Networks-with-Igraph.html#cb377-3" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">tkplot.getcoords</span>(tkid)        <span class="co"># tkplot에서 좌표 확인하기</span></span>
-<span id="cb377-4"><a href="Plotting-Networks-with-Igraph.html#cb377-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tk_close</span>(tkid, <span class="at">window.close =</span> T)</span>
-<span id="cb377-5"><a href="Plotting-Networks-with-Igraph.html#cb377-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb377-6"><a href="Plotting-Networks-with-Igraph.html#cb377-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net, <span class="at">layout=</span>l)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
-</div>
-<div id="다른-네트워크-시각화-방법" class="section level2" number="6.4">
-<h2><span class="header-section-number">6.4</span> <em>다른 네트워크 시각화 방법</em></h2>
-<p>이제 네트워크를 공모양의 플롯에 국한하지 않고 표시할 수 있는 많은 다양한 방법이 있음을 알아야 한다.</p>
-<p>예를 들어, 네트워크 행렬의 <strong>히트맵</strong>이 있다 :</p>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="Plotting-Networks-with-Igraph.html#cb378-1" aria-hidden="true" tabindex="-1"></a>netm <span class="ot">&lt;-</span> <span class="fu">get.adjacency</span>(net, <span class="at">attr=</span><span class="st">&quot;weight&quot;</span>, <span class="at">sparse=</span>F)</span>
-<span id="cb378-2"><a href="Plotting-Networks-with-Igraph.html#cb378-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb378-3"><a href="Plotting-Networks-with-Igraph.html#cb378-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(netm) <span class="ot">&lt;-</span> <span class="fu">V</span>(net)<span class="sc">$</span>media</span>
-<span id="cb378-4"><a href="Plotting-Networks-with-Igraph.html#cb378-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(netm) <span class="ot">&lt;-</span> <span class="fu">V</span>(net)<span class="sc">$</span>media</span>
-<span id="cb378-5"><a href="Plotting-Networks-with-Igraph.html#cb378-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb378-6"><a href="Plotting-Networks-with-Igraph.html#cb378-6" aria-hidden="true" tabindex="-1"></a>palf <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;gold&quot;</span>, <span class="st">&quot;dark orange&quot;</span>)) </span>
-<span id="cb378-7"><a href="Plotting-Networks-with-Igraph.html#cb378-7" aria-hidden="true" tabindex="-1"></a><span class="fu">heatmap</span>(netm[,<span class="dv">17</span><span class="sc">:</span><span class="dv">1</span>], <span class="at">Rowv =</span> <span class="cn">NA</span>, <span class="at">Colv =</span> <span class="cn">NA</span>, <span class="at">col =</span> <span class="fu">palf</span>(<span class="dv">100</span>), </span>
-<span id="cb378-8"><a href="Plotting-Networks-with-Igraph.html#cb378-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">scale=</span><span class="st">&quot;none&quot;</span>, <span class="at">margins=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">10</span>) )</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
-</div>
-<div id="igraph로-2-모드-네트워크-시각화하기" class="section level2" number="6.5">
-<h2><span class="header-section-number">6.5</span> <em>igraph로 2-모드 네트워크 시각화하기</em></h2>
-<p>1-모드 네트워크에서는 네트워크를 플롯팅할 때 기본 기본 값으로 사용될 수 있는 시각화 속성들을 포함하여 네트워크 개체를 수정할 수 있다. 이번에는 노드의 모양- <code>media</code>는 정사각형으로 그리고 그들의 사용자들은 원형으로-을 변경할 수 있음을 주목하라.</p>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="Plotting-Networks-with-Igraph.html#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(net2)<span class="sc">$</span>color <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;steel blue&quot;</span>, <span class="st">&quot;orange&quot;</span>)[<span class="fu">V</span>(net2)<span class="sc">$</span>type<span class="sc">+</span><span class="dv">1</span>]</span>
-<span id="cb379-2"><a href="Plotting-Networks-with-Igraph.html#cb379-2" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(net2)<span class="sc">$</span>shape <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;square&quot;</span>, <span class="st">&quot;circle&quot;</span>)[<span class="fu">V</span>(net2)<span class="sc">$</span>type<span class="sc">+</span><span class="dv">1</span>]</span>
-<span id="cb379-3"><a href="Plotting-Networks-with-Igraph.html#cb379-3" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(net2)<span class="sc">$</span>label <span class="ot">&lt;-</span> <span class="st">&quot;&quot;</span></span>
-<span id="cb379-4"><a href="Plotting-Networks-with-Igraph.html#cb379-4" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(net2)<span class="sc">$</span>label[<span class="fu">V</span>(net2)<span class="sc">$</span>type<span class="sc">==</span>F] <span class="ot">&lt;-</span> nodes2<span class="sc">$</span>media[<span class="fu">V</span>(net2)<span class="sc">$</span>type<span class="sc">==</span>F] </span>
-<span id="cb379-5"><a href="Plotting-Networks-with-Igraph.html#cb379-5" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(net2)<span class="sc">$</span>label.cex<span class="ot">=</span>.<span class="dv">4</span></span>
-<span id="cb379-6"><a href="Plotting-Networks-with-Igraph.html#cb379-6" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(net2)<span class="sc">$</span>label.font<span class="ot">=</span><span class="dv">2</span></span>
-<span id="cb379-7"><a href="Plotting-Networks-with-Igraph.html#cb379-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb379-8"><a href="Plotting-Networks-with-Igraph.html#cb379-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net2, <span class="at">vertex.label.color=</span><span class="st">&quot;white&quot;</span>, <span class="at">vertex.size=</span>(<span class="dv">2</span><span class="sc">-</span><span class="fu">V</span>(net2)<span class="sc">$</span>type)<span class="sc">*</span><span class="dv">8</span>) </span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
-<p>igraph는 또한 이분할 네트워크를 위한 특별한 레이아웃을 가지고 있다(비록 항상 잘 작동되는 것은 아니지만, 자신만의 이분할 레이아웃을 생성하고자 할 때 더 잘 표현할 수 있다).</p>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="Plotting-Networks-with-Igraph.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net2, <span class="at">vertex.label=</span><span class="cn">NA</span>, <span class="at">vertex.size=</span><span class="dv">7</span>, <span class="at">layout=</span>layout_as_bipartite) </span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
-<p>때때로 노드를 텍스트로 사용하는 것도 유용할 때가 있다 :</p>
-<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="Plotting-Networks-with-Igraph.html#cb381-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net2, <span class="at">vertex.shape=</span><span class="st">&quot;none&quot;</span>, <span class="at">vertex.label=</span>nodes2<span class="sc">$</span>media,</span>
-<span id="cb381-2"><a href="Plotting-Networks-with-Igraph.html#cb381-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.label.color=</span><span class="fu">V</span>(net2)<span class="sc">$</span>color, <span class="at">vertex.label.font=</span><span class="fl">2.5</span>, </span>
-<span id="cb381-3"><a href="Plotting-Networks-with-Igraph.html#cb381-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.label.cex=</span>.<span class="dv">6</span>, <span class="at">edge.color=</span><span class="st">&quot;gray70&quot;</span>,  <span class="at">edge.width=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-113-1.png" width="672" /></p>
-</div>
-<div id="참고자료" class="section level2 unnumbered">
-<h2>참고자료</h2>
-<ul>
-<li><p><a href="https://statkclee.github.io/network/ml-network-static-viz.html" class="uri">https://statkclee.github.io/network/ml-network-static-viz.html</a></p></li>
-<li><p><a href="https://statkclee.github.io/network/ml-network-etc.html" class="uri">https://statkclee.github.io/network/ml-network-etc.html</a></p></li>
-</ul>
-
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="Turning-Networks-into-Igraph.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="Network-and-Node-Description.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="데이터-세트-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="plotting-parameters.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -843,7 +274,8 @@ gitbook.start({
 },
 "download": null,
 "toc": {
-"collapse": "subsection"
+"collapse": "section",
+"scroll_highlight": true
 }
 });
 });

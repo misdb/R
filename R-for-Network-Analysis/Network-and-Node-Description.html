@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 네트워크과 노드 설명 | R을 이용한 네트워크 분석과 시각화</title>
+  <title>Chapter 6 네트워크과 노드 설명 | R을 이용한 네트워크 분석과 시각화</title>
   <meta name="description" content="Katherine Ognyanova의 ‘Network Analysis and Visualization with R’ 세미나 자료를 번역한 것입니다. 번역의 오류는 번역자의 잘못입니다. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 네트워크과 노드 설명 | R을 이용한 네트워크 분석과 시각화" />
+  <meta property="og:title" content="Chapter 6 네트워크과 노드 설명 | R을 이용한 네트워크 분석과 시각화" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="Network-Analysis" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 네트워크과 노드 설명 | R을 이용한 네트워크 분석과 시각화" />
+  <meta name="twitter:title" content="Chapter 6 네트워크과 노드 설명 | R을 이용한 네트워크 분석과 시각화" />
   
   <meta name="twitter:description" content="Katherine Ognyanova의 ‘Network Analysis and Visualization with R’ 세미나 자료를 번역한 것입니다. 번역의 오류는 번역자의 잘못입니다. The output format for this example is bookdown::gitbook." />
   
@@ -24,16 +24,16 @@
 <meta name="author" content="Translated by Dae Ho Kim, Mokwon University" />
 
 
-<meta name="date" content="2020-12-06" />
+<meta name="date" content="2021-02-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="Plotting-Networks-with-Igraph.html"/>
-<link rel="next" href="Distances-and-Paths.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<link rel="prev" href="참고자료.html"/>
+<link rel="next" href="밀도density.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,8 +51,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -132,72 +130,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="/">Home</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> R을 이용한 네트워크 분석과 시각화</a></li>
-<li class="chapter" data-level="2" data-path="R-Basics.html"><a href="R-Basics.html"><i class="fa fa-check"></i><b>2</b> R 기초 복습</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Copyright</a></li>
+<li class="chapter" data-level="1" data-path="R-Basics.html"><a href="R-Basics.html"><i class="fa fa-check"></i><b>1</b> R 기초 복습</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="R-Basics.html"><a href="R-Basics.html#할당assignment"><i class="fa fa-check"></i><b>2.1</b> <em>할당(Assignment)</em></a></li>
-<li class="chapter" data-level="2.2" data-path="R-Basics.html"><a href="R-Basics.html#값의-비교value-comparisons"><i class="fa fa-check"></i><b>2.2</b> <em>값의 비교(Value comparisons)</em></a></li>
-<li class="chapter" data-level="2.3" data-path="R-Basics.html"><a href="R-Basics.html#특별한-상수special-constants"><i class="fa fa-check"></i><b>2.3</b> <em>특별한 상수(Special constants)</em></a></li>
-<li class="chapter" data-level="2.4" data-path="R-Basics.html"><a href="R-Basics.html#벡터vectors"><i class="fa fa-check"></i><b>2.4</b> <em>벡터(Vectors)</em></a></li>
-<li class="chapter" data-level="2.5" data-path="R-Basics.html"><a href="R-Basics.html#factors"><i class="fa fa-check"></i><b>2.5</b> <em>Factors</em></a></li>
-<li class="chapter" data-level="2.6" data-path="R-Basics.html"><a href="R-Basics.html#행렬과-배열matrces-arrays"><i class="fa fa-check"></i><b>2.6</b> <em>행렬과 배열(Matrces &amp; Arrays)</em></a></li>
-<li class="chapter" data-level="2.7" data-path="R-Basics.html"><a href="R-Basics.html#리스트lists"><i class="fa fa-check"></i><b>2.7</b> <em>리스트(Lists)</em></a></li>
-<li class="chapter" data-level="2.8" data-path="R-Basics.html"><a href="R-Basics.html#데이터-프레임data-frames"><i class="fa fa-check"></i><b>2.8</b> <em>데이터 프레임(Data Frames)</em></a></li>
-<li class="chapter" data-level="2.9" data-path="R-Basics.html"><a href="R-Basics.html#흐름-제어와-반복-구문flow-control-and-loops"><i class="fa fa-check"></i><b>2.9</b> <em>흐름 제어와 반복 구문(Flow Control and loops)</em></a></li>
-<li class="chapter" data-level="2.10" data-path="R-Basics.html"><a href="R-Basics.html#r-플롯과-색-지정"><i class="fa fa-check"></i><b>2.10</b> <em>R 플롯과 색 지정</em></a></li>
-<li class="chapter" data-level="2.11" data-path="R-Basics.html"><a href="R-Basics.html#r-문제-해결"><i class="fa fa-check"></i><b>2.11</b> <em>R 문제 해결</em></a></li>
+<li class="chapter" data-level="1.1" data-path="할당assignment.html"><a href="할당assignment.html"><i class="fa fa-check"></i><b>1.1</b> <em>할당(Assignment)</em></a></li>
+<li class="chapter" data-level="1.2" data-path="값의-비교value-comparisons.html"><a href="값의-비교value-comparisons.html"><i class="fa fa-check"></i><b>1.2</b> <em>값의 비교(Value comparisons)</em></a></li>
+<li class="chapter" data-level="1.3" data-path="특별한-상수special-constants.html"><a href="특별한-상수special-constants.html"><i class="fa fa-check"></i><b>1.3</b> <em>특별한 상수(Special constants)</em></a></li>
+<li class="chapter" data-level="1.4" data-path="벡터vectors.html"><a href="벡터vectors.html"><i class="fa fa-check"></i><b>1.4</b> <em>벡터(Vectors)</em></a></li>
+<li class="chapter" data-level="1.5" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>1.5</b> <em>Factors</em></a></li>
+<li class="chapter" data-level="1.6" data-path="행렬과-배열matrces-arrays.html"><a href="행렬과-배열matrces-arrays.html"><i class="fa fa-check"></i><b>1.6</b> <em>행렬과 배열(Matrces &amp; Arrays)</em></a></li>
+<li class="chapter" data-level="1.7" data-path="리스트lists.html"><a href="리스트lists.html"><i class="fa fa-check"></i><b>1.7</b> <em>리스트(Lists)</em></a></li>
+<li class="chapter" data-level="1.8" data-path="데이터-프레임data-frames.html"><a href="데이터-프레임data-frames.html"><i class="fa fa-check"></i><b>1.8</b> <em>데이터 프레임(Data Frames)</em></a></li>
+<li class="chapter" data-level="1.9" data-path="흐름-제어와-반복-구문flow-control-and-loops.html"><a href="흐름-제어와-반복-구문flow-control-and-loops.html"><i class="fa fa-check"></i><b>1.9</b> <em>흐름 제어와 반복 구문(Flow Control and loops)</em></a></li>
+<li class="chapter" data-level="1.10" data-path="r-플롯과-색-지정.html"><a href="r-플롯과-색-지정.html"><i class="fa fa-check"></i><b>1.10</b> <em>R 플롯과 색 지정</em></a></li>
+<li class="chapter" data-level="1.11" data-path="r-문제-해결.html"><a href="r-문제-해결.html"><i class="fa fa-check"></i><b>1.11</b> <em>R 문제 해결</em></a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html"><i class="fa fa-check"></i><b>3</b> <code>igraph</code>를 이용한 네트워크</a>
+<li class="chapter" data-level="2" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html"><i class="fa fa-check"></i><b>2</b> <code>igraph</code>를 이용한 네트워크</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html#네트워크-생성create-networks"><i class="fa fa-check"></i><b>3.1</b> <em>네트워크 생성(Create networks)</em></a></li>
-<li class="chapter" data-level="3.2" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html#에지edge-정점vertex-그리고-네트워크-속성network-attributes"><i class="fa fa-check"></i><b>3.2</b> <em>에지(Edge), 정점(vertex), 그리고 네트워크 속성(network attributes)</em></a></li>
-<li class="chapter" data-level="3.3" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html#특수-그래프specific-graphs와-그래프-모델graph-models"><i class="fa fa-check"></i><b>3.3</b> <em>특수 그래프(Specific graphs)와 그래프 모델(graph models)</em></a></li>
+<li class="chapter" data-level="2.1" data-path="네트워크-생성create-networks.html"><a href="네트워크-생성create-networks.html"><i class="fa fa-check"></i><b>2.1</b> <em>네트워크 생성(Create networks)</em></a></li>
+<li class="chapter" data-level="2.2" data-path="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html"><i class="fa fa-check"></i><b>2.2</b> <em>에지(Edge), 정점(vertex), 그리고 네트워크 속성(network attributes)</em></a></li>
+<li class="chapter" data-level="2.3" data-path="특수-그래프specific-graphs와-그래프-모델graph-models.html"><a href="특수-그래프specific-graphs와-그래프-모델graph-models.html"><i class="fa fa-check"></i><b>2.3</b> <em>특수 그래프(Specific graphs)와 그래프 모델(graph models)</em></a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html"><i class="fa fa-check"></i><b>4</b> 파일로 부터 네트워크 데이터 읽어오기</a>
+<li class="chapter" data-level="3" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html"><i class="fa fa-check"></i><b>3</b> 파일로 부터 네트워크 데이터 읽어오기</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html#데이터-세트-1-에지-목록edgelist"><i class="fa fa-check"></i><b>4.1</b> <em>데이터 세트 1: 에지 목록(edgelist)</em></a></li>
-<li class="chapter" data-level="4.2" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html#데이터-세트-2-인접-행렬adjacent-matrix"><i class="fa fa-check"></i><b>4.2</b> <em>데이터 세트 2: 인접 행렬(adjacent matrix)</em></a></li>
+<li class="chapter" data-level="3.1" data-path="데이터-세트-1-에지-목록edgelist.html"><a href="데이터-세트-1-에지-목록edgelist.html"><i class="fa fa-check"></i><b>3.1</b> <em>데이터 세트 1: 에지 목록(edgelist)</em></a></li>
+<li class="chapter" data-level="3.2" data-path="데이터-세트-2-인접-행렬adjacent-matrix.html"><a href="데이터-세트-2-인접-행렬adjacent-matrix.html"><i class="fa fa-check"></i><b>3.2</b> <em>데이터 세트 2: 인접 행렬(adjacent matrix)</em></a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="Turning-Networks-into-Igraph.html"><a href="Turning-Networks-into-Igraph.html"><i class="fa fa-check"></i><b>5</b> 네트워크를 igraph 개체로 변환하기</a>
+<li class="chapter" data-level="4" data-path="Turning-Networks-into-Igraph.html"><a href="Turning-Networks-into-Igraph.html"><i class="fa fa-check"></i><b>4</b> 네트워크를 igraph 개체로 변환하기</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="Turning-Networks-into-Igraph.html"><a href="Turning-Networks-into-Igraph.html#데이터-세트-1"><i class="fa fa-check"></i><b>5.1</b> <em>데이터 세트 1</em></a></li>
-<li class="chapter" data-level="5.2" data-path="Turning-Networks-into-Igraph.html"><a href="Turning-Networks-into-Igraph.html#데이터-세트-2"><i class="fa fa-check"></i><b>5.2</b> <em>데이터 세트 2</em></a></li>
+<li class="chapter" data-level="4.1" data-path="데이터-세트-1.html"><a href="데이터-세트-1.html"><i class="fa fa-check"></i><b>4.1</b> <em>데이터 세트 1</em></a></li>
+<li class="chapter" data-level="4.2" data-path="데이터-세트-2.html"><a href="데이터-세트-2.html"><i class="fa fa-check"></i><b>4.2</b> <em>데이터 세트 2</em></a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html"><i class="fa fa-check"></i><b>6</b> igraph를 이용한 네트워크 시각화</a>
+<li class="chapter" data-level="5" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html"><i class="fa fa-check"></i><b>5</b> igraph를 이용한 네트워크 시각화</a>
 <ul>
-<li><a href="Plotting-Networks-with-Igraph.html#plotting-parameters"><em>Plotting parameters</em></a></li>
-<li class="chapter" data-level="6.1" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#network-layouts"><i class="fa fa-check"></i><b>6.1</b> <em>Network layouts</em></a></li>
-<li class="chapter" data-level="6.2" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#네트워크-시각화-개선"><i class="fa fa-check"></i><b>6.2</b> <em>네트워크 시각화 개선</em></a></li>
-<li class="chapter" data-level="6.3" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#tkplot-패키지를-이용한-상호대화식-시각화"><i class="fa fa-check"></i><b>6.3</b> <em><code>tkplot</code> 패키지를 이용한 상호대화식 시각화</em></a></li>
-<li class="chapter" data-level="6.4" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#다른-네트워크-시각화-방법"><i class="fa fa-check"></i><b>6.4</b> <em>다른 네트워크 시각화 방법</em></a></li>
-<li class="chapter" data-level="6.5" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#igraph로-2-모드-네트워크-시각화하기"><i class="fa fa-check"></i><b>6.5</b> <em>igraph로 2-모드 네트워크 시각화하기</em></a></li>
-<li class="chapter" data-level="" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#참고자료"><i class="fa fa-check"></i>참고자료</a></li>
+<li><a href="plotting-parameters.html#plotting-parameters"><em>Plotting parameters</em></a></li>
+<li class="chapter" data-level="5.1" data-path="network-layouts.html"><a href="network-layouts.html"><i class="fa fa-check"></i><b>5.1</b> <em>Network layouts</em></a></li>
+<li class="chapter" data-level="5.2" data-path="네트워크-시각화-개선.html"><a href="네트워크-시각화-개선.html"><i class="fa fa-check"></i><b>5.2</b> <em>네트워크 시각화 개선</em></a></li>
+<li class="chapter" data-level="5.3" data-path="tkplot-패키지를-이용한-상호대화식-시각화.html"><a href="tkplot-패키지를-이용한-상호대화식-시각화.html"><i class="fa fa-check"></i><b>5.3</b> <em><code>tkplot</code> 패키지를 이용한 상호대화식 시각화</em></a></li>
+<li class="chapter" data-level="5.4" data-path="다른-네트워크-시각화-방법.html"><a href="다른-네트워크-시각화-방법.html"><i class="fa fa-check"></i><b>5.4</b> <em>다른 네트워크 시각화 방법</em></a></li>
+<li class="chapter" data-level="5.5" data-path="igraph로-2-모드-네트워크-시각화하기.html"><a href="igraph로-2-모드-네트워크-시각화하기.html"><i class="fa fa-check"></i><b>5.5</b> <em>igraph로 2-모드 네트워크 시각화하기</em></a></li>
+<li class="chapter" data-level="" data-path="참고자료.html"><a href="참고자료.html"><i class="fa fa-check"></i>참고자료</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html"><i class="fa fa-check"></i><b>7</b> 네트워크과 노드 설명</a>
+<li class="chapter" data-level="6" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html"><i class="fa fa-check"></i><b>6</b> 네트워크과 노드 설명</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#밀도density"><i class="fa fa-check"></i><b>7.1</b> <em>밀도(Density)</em></a></li>
-<li class="chapter" data-level="7.2" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#호혜성reciprocity"><i class="fa fa-check"></i><b>7.2</b> <em>호혜성(Reciprocity)</em></a></li>
-<li class="chapter" data-level="7.3" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#이행성transitivity"><i class="fa fa-check"></i><b>7.3</b> <em>이행성(Transitivity)</em></a></li>
-<li class="chapter" data-level="7.4" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#지름diameter"><i class="fa fa-check"></i><b>7.4</b> <em>지름(Diameter)</em></a></li>
-<li class="chapter" data-level="7.5" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#노드-연결-정도node-degrees"><i class="fa fa-check"></i><b>7.5</b> <em>노드 연결 정도(Node degrees)</em></a></li>
-<li class="chapter" data-level="7.6" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#연결-정도-분포degree-distribution"><i class="fa fa-check"></i><b>7.6</b> <em>연결 정도 분포(Degree distribution)</em></a></li>
-<li class="chapter" data-level="7.7" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#중심성과-중심화centrality-centralization"><i class="fa fa-check"></i><b>7.7</b> <em>중심성과 중심화(Centrality &amp; centralization)</em></a></li>
-<li class="chapter" data-level="7.8" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#허브와-오쏘러티hubs-and-authorities"><i class="fa fa-check"></i><b>7.8</b> <em>허브와 오쏘러티(Hubs and authorities)</em></a></li>
-<li class="chapter" data-level="" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#참고자료-1"><i class="fa fa-check"></i>참고자료</a></li>
+<li class="chapter" data-level="6.1" data-path="밀도density.html"><a href="밀도density.html"><i class="fa fa-check"></i><b>6.1</b> <em>밀도(Density)</em></a></li>
+<li class="chapter" data-level="6.2" data-path="호혜성reciprocity.html"><a href="호혜성reciprocity.html"><i class="fa fa-check"></i><b>6.2</b> <em>호혜성(Reciprocity)</em></a></li>
+<li class="chapter" data-level="6.3" data-path="이행성transitivity.html"><a href="이행성transitivity.html"><i class="fa fa-check"></i><b>6.3</b> <em>이행성(Transitivity)</em></a></li>
+<li class="chapter" data-level="6.4" data-path="지름diameter.html"><a href="지름diameter.html"><i class="fa fa-check"></i><b>6.4</b> <em>지름(Diameter)</em></a></li>
+<li class="chapter" data-level="6.5" data-path="노드-연결-정도node-degrees.html"><a href="노드-연결-정도node-degrees.html"><i class="fa fa-check"></i><b>6.5</b> <em>노드 연결 정도(Node degrees)</em></a></li>
+<li class="chapter" data-level="6.6" data-path="연결-정도-분포degree-distribution.html"><a href="연결-정도-분포degree-distribution.html"><i class="fa fa-check"></i><b>6.6</b> <em>연결 정도 분포(Degree distribution)</em></a></li>
+<li class="chapter" data-level="6.7" data-path="중심성과-중심화centrality-centralization.html"><a href="중심성과-중심화centrality-centralization.html"><i class="fa fa-check"></i><b>6.7</b> <em>중심성과 중심화(Centrality &amp; centralization)</em></a></li>
+<li class="chapter" data-level="6.8" data-path="허브와-오쏘러티hubs-and-authorities.html"><a href="허브와-오쏘러티hubs-and-authorities.html"><i class="fa fa-check"></i><b>6.8</b> <em>허브와 오쏘러티(Hubs and authorities)</em></a></li>
+<li class="chapter" data-level="" data-path="참고자료-1.html"><a href="참고자료-1.html"><i class="fa fa-check"></i>참고자료</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="Distances-and-Paths.html"><a href="Distances-and-Paths.html"><i class="fa fa-check"></i><b>8</b> 거리와 경로(Distances and paths)</a></li>
-<li class="chapter" data-level="9" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html"><i class="fa fa-check"></i><b>9</b> 서브 그룹과 커뮤니티</a>
+<li class="chapter" data-level="7" data-path="Distances-and-Paths.html"><a href="Distances-and-Paths.html"><i class="fa fa-check"></i><b>7</b> 거리와 경로(Distances and paths)</a></li>
+<li class="chapter" data-level="8" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html"><i class="fa fa-check"></i><b>8</b> 서브 그룹과 커뮤니티</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html#클릭cliques"><i class="fa fa-check"></i><b>9.1</b> <em>클릭(Cliques)</em></a></li>
-<li class="chapter" data-level="9.2" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html#커뮤니티-발견community-detection"><i class="fa fa-check"></i><b>9.2</b> <em>커뮤니티 발견(Community detection)</em></a></li>
-<li class="chapter" data-level="" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html#참고자료-2"><i class="fa fa-check"></i>참고자료</a></li>
+<li class="chapter" data-level="8.1" data-path="클릭cliques.html"><a href="클릭cliques.html"><i class="fa fa-check"></i><b>8.1</b> <em>클릭(Cliques)</em></a></li>
+<li class="chapter" data-level="8.2" data-path="커뮤니티-발견community-detection.html"><a href="커뮤니티-발견community-detection.html"><i class="fa fa-check"></i><b>8.2</b> <em>커뮤니티 발견(Community detection)</em></a></li>
+<li class="chapter" data-level="" data-path="참고자료-2.html"><a href="참고자료-2.html"><i class="fa fa-check"></i>참고자료</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="Assortativity-and-Homophily.html"><a href="Assortativity-and-Homophily.html"><i class="fa fa-check"></i><b>10</b> 동류성과 동질성</a>
+<li class="chapter" data-level="9" data-path="Assortativity-and-Homophily.html"><a href="Assortativity-and-Homophily.html"><i class="fa fa-check"></i><b>9</b> 동류성과 동질성</a>
 <ul>
-<li class="chapter" data-level="" data-path="Assortativity-and-Homophily.html"><a href="Assortativity-and-Homophily.html#참고자료-3"><i class="fa fa-check"></i>참고자료</a></li>
+<li class="chapter" data-level="" data-path="참고자료-3.html"><a href="참고자료-3.html"><i class="fa fa-check"></i>참고자료</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -219,402 +217,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Network_and_Node_Description" class="section level1" number="7">
-<h1><span class="header-section-number">Chapter 7</span> 네트워크과 노드 설명</h1>
-<div id="밀도density" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> <em>밀도(Density)</em></h2>
-<p>네트워크에 있는 <code>모든 가능한 에지들 대비 현존 에지들의 비율</code>을 <strong>밀도</strong>라고 한다.</p>
-<p><strong>밀도(density)</strong>는 네트워크에서 노드 간의 전반적인 연결정도 수준을 나타낸다.</p>
-<ul>
-<li>밀도는 네트워크 내에 존재하는 최대 가능한 라인의 개수 대비 실제 존재하는 라인의 개수의 비율로 측정한다.</li>
-<li>밀도가 높은 네트워크에 대해 우리는 일반적으로 <em>응집력(cohesion)이 높다</em>고 이야기한다</li>
-</ul>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="Network-and-Node-Description.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="fu">edge_density</span>(net, <span class="at">loops=</span>F)</span></code></pre></div>
-<pre><code>## [1] 0.1764706</code></pre>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="Network-and-Node-Description.html#cb384-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ecount</span>(net)<span class="sc">/</span>(<span class="fu">vcount</span>(net)<span class="sc">*</span>(<span class="fu">vcount</span>(net)<span class="sc">-</span><span class="dv">1</span>))  <span class="co"># 방향성 네트워크의 경우</span></span></code></pre></div>
-<pre><code>## [1] 0.1764706</code></pre>
-</div>
-<div id="호혜성reciprocity" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> <em>호혜성(Reciprocity)</em></h2>
-<p>호혜성 : (방향성 네트워크에서의) 호혜적인 연결의 비율</p>
-<ul>
-<li>액터들 간 연결관계의 상호 호혜적 관계를 <strong>호혜성(reciprocity)</strong>이라 한다.
-<ul>
-<li>A에서 B로 향하는 연결관계가 존재하고 동시에 B에서 A로 향하는 연결관계가 존재하는 경우</li>
-<li>네트워크의 응집성 정도</li>
-</ul></li>
-<li>네트워크 간 호혜성의 차이는 종종 네트워크 구조의 계층적 특성, 힘이나 부의 불균형, 문화적 차이 등에 의해 설명된다(Borgatti et al. 2013)</li>
-</ul>
-<p>호혜성의 측정 :</p>
-<ul>
-<li>양자관계(dyad)에 초점을 맞춰서 호혜성을 측정
-<ul>
-<li>전체 연결된 액터쌍 대비 호혜적 액터쌍의 비율을 측정</li>
-<li>두 개의 연결된 액터쌍(AB, BC)이 존재하고 이 중 호혜적 액터 쌍(AB)의 개수는 한 개이다. 따라서 호혜성 비율은 0.5(= 1 2 )가 된다.</li>
-</ul></li>
-<li>선택관계(arc)에 초점을 맞춰서 호혜성을 측정
-<ul>
-<li>방향성을 고려한 선택관계 대비 호혜적 관계구조를 형성하는 라인의 비율을 측정</li>
-<li>방향성을 고려한 선택관계는 세 개(AB, BA, BC)가 존재하고 그 중 두 개(AB, BA)가 상호 호혜적 관계구조를 형성한다.</li>
-</ul></li>
-</ul>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="Network-and-Node-Description.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="fu">reciprocity</span>(net)</span></code></pre></div>
-<pre><code>## [1] 0.4166667</code></pre>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="Network-and-Node-Description.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dyad_census</span>(net) <span class="co"># Mutual, asymmetric, and nyll node pairs</span></span></code></pre></div>
-<pre><code>## $mut
-## [1] 10
-## 
-## $asym
-## [1] 28
-## 
-## $null
-## [1] 98</code></pre>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="Network-and-Node-Description.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">dyad_census</span>(net)<span class="sc">$</span>mut<span class="sc">/</span><span class="fu">ecount</span>(net) <span class="co"># Calculating reciprocity</span></span></code></pre></div>
-<pre><code>## [1] 0.4166667</code></pre>
-</div>
-<div id="이행성transitivity" class="section level2" number="7.3">
-<h2><span class="header-section-number">7.3</span> <em>이행성(Transitivity)</em></h2>
-<p>호혜성은 두 액터(정점, 노드) 간의 관계로부터 정의되는 반면, 이행성(transitivity)은 세 액터(정점, 노드) 간의 관계인 삼자관계(triad)를 기반으 로 한다.</p>
-<p>삼자관계는 세 개의 액터와 그 액터들 간의 연결관계로 구성된다. (삼자관계에 대한 분석은 기본적으로 방향/이진 그 래프를 대상으로 한다.)</p>
-<ul>
-<li>A가 B에 연결되어 있고 B는 C에 연결되어 있을 때 A가 C에 대해 연결관계를 가지면 이 삼자관계는 이행성을 충족한다 고 얘기한다.
-<ul>
-<li>즉 A → B이고 B → C이면서 동시에 A → C인 삼자관계는 이행성을 충족한다.</li>
-<li>네트워크 내에 이행성을 충족하는 삼자관계가 많을수록 그 네트워크는 군집화된 구조(clumpy structure)를 갖게 되는 경향이 있다.</li>
-<li>따라서 이런 의미에서 이행성은 네트워크의 군집화 및 구조적 균형의 정도를 나타낸다.</li>
-</ul></li>
-</ul>
-<p>이행성의 측정 :</p>
-<ul>
-<li>전체(<code>global</code>) - 연결된 삼각관계(triples)에 대한 삼각형(triangle)(방향)의 비율</li>
-<li>부분(<code>local</code>) - 각 정점이 부분인 연결된 삼각관계에 대한 삼각형의 비율</li>
-</ul>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="Network-and-Node-Description.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="fu">transitivity</span>(net, <span class="at">type=</span><span class="st">&quot;global&quot;</span>)                  <span class="co"># net는 무방향 네트워크로 처리됨</span></span></code></pre></div>
-<pre><code>## [1] 0.372549</code></pre>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="Network-and-Node-Description.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="fu">transitivity</span>(<span class="fu">as.undirected</span>(net, <span class="at">mode=</span><span class="st">&quot;collapse&quot;</span>)) <span class="co"># 위와 같음</span></span></code></pre></div>
-<pre><code>## [1] 0.372549</code></pre>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="Network-and-Node-Description.html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="fu">transitivity</span>(net, <span class="at">type=</span><span class="st">&quot;local&quot;</span>)</span></code></pre></div>
-<pre><code>##  [1] 0.2142857 0.4000000 0.1153846 0.1944444 0.5000000 0.2666667 0.2000000
-##  [8] 0.1000000 0.3333333 0.3000000 0.3333333 0.2000000 0.1666667 0.1666667
-## [15] 0.3000000 0.3333333 0.2000000</code></pre>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="Network-and-Node-Description.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="fu">triad_census</span>(net)                                 <span class="co"># 방향성 네트워크에 대해</span></span></code></pre></div>
-<pre><code>##  [1] 244 241  80  13  11  27  15  22   4   1   8   4   4   3   3   0</code></pre>
-<p><em>삼자관계 유형(Triad types) (per Davis &amp; Leinhardt):</em></p>
-<ul>
-<li><p>삼자관계는 총 16가지 유형으로 분류해 볼 수 있으며 이렇게 분류된 삼자관계유형은 네트워크의 구조적 특징 및 이행성 정도를 측정하는 데 활용된다.</p></li>
-<li><p>네트워크 내에 삼자관계 각 유형이 어느 정 도 출현하는지를 조사하여 네트워크의 구조 적 특성을 이해하는 것을 <strong><em>삼자관계 센서스 (triad census)</em></strong>라고 한다.</p>
-<ul>
-<li>003 A, B, C, 빈 삼자관계.</li>
-<li>012 A-&gt;B, C</li>
-<li>102 A&lt;-&gt;B, C</li>
-<li>021D A&lt;-B-&gt;C</li>
-<li>021U A-&gt;B&lt;-C</li>
-<li>021C A-&gt;B-&gt;C</li>
-<li>111D A&lt;-&gt;B&lt;-C</li>
-<li>111U A&lt;-&gt;B-&gt;C</li>
-<li>030T A-&gt;B&lt;-C, A-&gt;C</li>
-<li>030C A&lt;-B&lt;-C, A-&gt;C.</li>
-<li>201 A&lt;-&gt;B&lt;-&gt;C.</li>
-<li>120D A&lt;-B-&gt;C, A&lt;-&gt;C.</li>
-<li>120U A-&gt;B&lt;-C, A&lt;-&gt;C.</li>
-<li>120C A-&gt;B-&gt;C, A&lt;-&gt;C.</li>
-<li>210 A-&gt;B&lt;-&gt;C, A&lt;-&gt;C.</li>
-<li>300 A&lt;-&gt;B&lt;-&gt;C, A&lt;-&gt;C, 완전 연결</li>
-</ul></li>
-</ul>
-<p><img src="images/search_console/image-20201205231217382.png" alt="image-20201205231217382" style="zoom:67%;" /></p>
-</div>
-<div id="지름diameter" class="section level2" number="7.4">
-<h2><span class="header-section-number">7.4</span> <em>지름(Diameter)</em></h2>
-<p>네트워크 지름은 네트워크에서 (두 노드 사이의 최단 경로의 길이인) 가장 긴 측지선 거리이다. <code>igraph</code>에서, <code>diameter()</code> 함수가 거리를 반환한다. 반면에, <code>get_diameter()</code> 함수는 그 거리의 첫 번째 발견된 경로에 있는 노드들을 반환한다. 만일 <code>NA</code>로 설정되어 있지 않다면, 에지의 가중치가 기본 값으로 사용됨을 주목하기 바란다.</p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="Network-and-Node-Description.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diameter</span>(net, <span class="at">directed=</span>F, <span class="at">weights=</span><span class="cn">NA</span>)</span></code></pre></div>
-<pre><code>## [1] 4</code></pre>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="Network-and-Node-Description.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diameter</span>(net, <span class="at">directed=</span>F)</span></code></pre></div>
-<pre><code>## [1] 28</code></pre>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="Network-and-Node-Description.html#cb404-1" aria-hidden="true" tabindex="-1"></a>diam <span class="ot">&lt;-</span> <span class="fu">get_diameter</span>(net, <span class="at">directed=</span>T)</span>
-<span id="cb404-2"><a href="Network-and-Node-Description.html#cb404-2" aria-hidden="true" tabindex="-1"></a>diam</span></code></pre></div>
-<pre><code>## + 7/17 vertices, named, from 924fee6:
-## [1] s12 s06 s17 s04 s03 s08 s07</code></pre>
-<p><code>get_diameter()</code> 함수는 정점 시퀀스(vertex sequence)를 반환함을 주목하라.</p>
-<p>그러나 벡터와 같이 작동하도록 요청되었을 때, 정점 시퀀스는 그 안에 있는 노드들의 수치 색인을 생성하게 됨을 주목하라. 에지 시퀀스에도 동일하게 적용된다.</p>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="Network-and-Node-Description.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(diam)</span></code></pre></div>
-<pre><code>## [1] &quot;igraph.vs&quot;</code></pre>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="Network-and-Node-Description.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.vector</span>(diam)</span></code></pre></div>
-<pre><code>## [1] 12  6 17  4  3  8  7</code></pre>
-<p>지름 내의 노드들 색 지정하기 :</p>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="Network-and-Node-Description.html#cb410-1" aria-hidden="true" tabindex="-1"></a>vcol <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">&quot;gray40&quot;</span>, <span class="fu">vcount</span>(net))</span>
-<span id="cb410-2"><a href="Network-and-Node-Description.html#cb410-2" aria-hidden="true" tabindex="-1"></a>vcol[diam] <span class="ot">&lt;-</span> <span class="st">&quot;gold&quot;</span></span>
-<span id="cb410-3"><a href="Network-and-Node-Description.html#cb410-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb410-4"><a href="Network-and-Node-Description.html#cb410-4" aria-hidden="true" tabindex="-1"></a>ecol <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">&quot;gray80&quot;</span>, <span class="fu">ecount</span>(net))</span>
-<span id="cb410-5"><a href="Network-and-Node-Description.html#cb410-5" aria-hidden="true" tabindex="-1"></a>ecol[<span class="fu">E</span>(net, <span class="at">path=</span>diam)] <span class="ot">&lt;-</span> <span class="st">&quot;orange&quot;</span> </span>
-<span id="cb410-6"><a href="Network-and-Node-Description.html#cb410-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb410-7"><a href="Network-and-Node-Description.html#cb410-7" aria-hidden="true" tabindex="-1"></a><span class="co"># E(net, path=diam) : &#39;diam&#39; 경로에 따른 에지들</span></span>
-<span id="cb410-8"><a href="Network-and-Node-Description.html#cb410-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net, <span class="at">vertex.color=</span>vcol, <span class="at">edge.color=</span>ecol, <span class="at">edge.arrow.mode=</span><span class="dv">0</span>)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-119-1.png" width="672" /></p>
-</div>
-<div id="노드-연결-정도node-degrees" class="section level2" number="7.5">
-<h2><span class="header-section-number">7.5</span> <em>노드 연결 정도(Node degrees)</em></h2>
-<p><code>degree()</code> 함수의 <code>mode</code> 파라미터는 <em><code>in</code></em> for in-degree, <em><code>out</code></em> for out-degree, 그리고 <em><code>all</code></em> 또는 <em><code>total</code></em> for total degree 값을 갖는다.</p>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="Network-and-Node-Description.html#cb411-1" aria-hidden="true" tabindex="-1"></a>deg <span class="ot">&lt;-</span> <span class="fu">degree</span>(net, <span class="at">mode=</span><span class="st">&quot;all&quot;</span>)</span>
-<span id="cb411-2"><a href="Network-and-Node-Description.html#cb411-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net, <span class="at">vertex.size=</span>deg<span class="sc">*</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-120-1.png" width="672" /></p>
-<p>노드 연결 정도의 분포 :</p>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="Network-and-Node-Description.html#cb412-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(deg, <span class="at">breaks=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">vcount</span>(net)<span class="sc">-</span><span class="dv">1</span>, <span class="at">main=</span><span class="st">&quot;Histogram of node degree&quot;</span>)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
-</div>
-<div id="연결-정도-분포degree-distribution" class="section level2" number="7.6">
-<h2><span class="header-section-number">7.6</span> <em>연결 정도 분포(Degree distribution)</em></h2>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="Network-and-Node-Description.html#cb413-1" aria-hidden="true" tabindex="-1"></a>deg.dist <span class="ot">&lt;-</span> <span class="fu">degree_distribution</span>(net, <span class="at">cumulative=</span>T, <span class="at">mode=</span><span class="st">&quot;all&quot;</span>)</span>
-<span id="cb413-2"><a href="Network-and-Node-Description.html#cb413-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>( <span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="fu">max</span>(deg), <span class="at">y=</span><span class="dv">1</span><span class="sc">-</span>deg.dist, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">col=</span><span class="st">&quot;orange&quot;</span>, </span>
-<span id="cb413-3"><a href="Network-and-Node-Description.html#cb413-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab=</span><span class="st">&quot;Degree&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Cumulative Frequency&quot;</span>)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-122-1.png" width="672" /></p>
-</div>
-<div id="중심성과-중심화centrality-centralization" class="section level2" number="7.7">
-<h2><span class="header-section-number">7.7</span> <em>중심성과 중심화(Centrality &amp; centralization)</em></h2>
-<p>(<em>노드 수준</em>에서의) <strong>중심성 함수(Centrality functions)</strong>들과 (<em>그래프 수준</em>의) <strong>중심화 함수(centralization functions)</strong>.</p>
-<p><em>중심화 함수들은 노드의 연결 중심성 값인 <code>res</code>, 중심화 값인 <code>centralization</code>, 그리고 이 사이즈 그래프에 대한 최대 중심화 점수인 <code>theoretical_max</code> 등을 반환한다.</em> 중심화 함수는 (<code>vids</code> 파리미터로 설정된) 노드의 부분집합에서 실행된다. 이는 모든 중심성을 계산하는데 많은 자원이 요구되고 작업하는데 많은 시간이 걸리는 대규모 그래프에서 유용한다.</p>
-<p><strong><em>연결 정도(Degree)</em></strong> (연결의 수, number of ties) : <code>degree()</code> 함수와 <code>centr_degree()</code>함수</p>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="Network-and-Node-Description.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="fu">degree</span>(net, <span class="at">mode=</span><span class="st">&quot;in&quot;</span>)</span></code></pre></div>
-<pre><code>## s01 s02 s03 s04 s05 s06 s07 s08 s09 s10 s11 s12 s13 s14 s15 s16 s17 
-##   4   2   6   4   1   4   1   2   3   4   3   3   2   2   2   1   4</code></pre>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="Network-and-Node-Description.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="fu">centr_degree</span>(net, <span class="at">mode=</span><span class="st">&quot;in&quot;</span>, <span class="at">normalized=</span>T)</span></code></pre></div>
-<pre><code>## $res
-##  [1] 4 2 6 4 1 4 1 2 3 4 3 3 2 2 2 1 4
-## 
-## $centralization
-## [1] 0.1985294
-## 
-## $theoretical_max
-## [1] 272</code></pre>
-<p><strong><em>근접 중심성(Closeness)</em></strong> (그래프에서 다른 노드들과의 거리에 기반한 중심성) : <code>closeness()</code> 함수와 <code>centr_clo()</code> 함수
-노드에 있는 다른 노들들까지의 노드의 평균 측지 거리(average geodesic distance)의 역수.</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="Network-and-Node-Description.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="fu">closeness</span>(net, <span class="at">mode=</span><span class="st">&quot;all&quot;</span>, <span class="at">weights=</span><span class="cn">NA</span>)</span></code></pre></div>
-<pre><code>##        s01        s02        s03        s04        s05        s06        s07 
-## 0.03333333 0.03030303 0.04166667 0.03846154 0.03225806 0.03125000 0.03030303 
-##        s08        s09        s10        s11        s12        s13        s14 
-## 0.02857143 0.02564103 0.02941176 0.03225806 0.03571429 0.02702703 0.02941176 
-##        s15        s16        s17 
-## 0.03030303 0.02222222 0.02857143</code></pre>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="Network-and-Node-Description.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="fu">centr_clo</span>(net, <span class="at">mode=</span><span class="st">&quot;all&quot;</span>, <span class="at">normalized=</span>T) </span></code></pre></div>
-<pre><code>## $res
-##  [1] 0.5333333 0.4848485 0.6666667 0.6153846 0.5161290 0.5000000 0.4848485
-##  [8] 0.4571429 0.4102564 0.4705882 0.5161290 0.5714286 0.4324324 0.4705882
-## [15] 0.4848485 0.3555556 0.4571429
-## 
-## $centralization
-## [1] 0.3753596
-## 
-## $theoretical_max
-## [1] 7.741935</code></pre>
-<p><strong><em>아이겐벡터 중심성(고유벡터, Eigenvector)</em></strong> (연결 중심성 합에 비례한 중심성) : <code>eigen_centrality()</code> 함수와 <code>centr_eigen()</code> 함수</p>
-<p>그래프 행렬의 첫 번째 아이겐벡터 값들.</p>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="Network-and-Node-Description.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen_centrality</span>(net, <span class="at">directed=</span>T, <span class="at">weights=</span><span class="cn">NA</span>)</span></code></pre></div>
-<pre><code>## $vector
-##       s01       s02       s03       s04       s05       s06       s07       s08 
-## 0.6638179 0.3314674 1.0000000 0.9133129 0.3326443 0.7468249 0.1244195 0.3740317 
-##       s09       s10       s11       s12       s13       s14       s15       s16 
-## 0.3453324 0.5991652 0.7334202 0.7519086 0.3470857 0.2915055 0.3314674 0.2484270 
-##       s17 
-## 0.7503292 
-## 
-## $value
-## [1] 3.006215
-## 
-## $options
-## $options$bmat
-## [1] &quot;I&quot;
-## 
-## $options$n
-## [1] 17
-## 
-## $options$which
-## [1] &quot;LR&quot;
-## 
-## $options$nev
-## [1] 1
-## 
-## $options$tol
-## [1] 0
-## 
-## $options$ncv
-## [1] 0
-## 
-## $options$ldv
-## [1] 0
-## 
-## $options$ishift
-## [1] 1
-## 
-## $options$maxiter
-## [1] 1000
-## 
-## $options$nb
-## [1] 1
-## 
-## $options$mode
-## [1] 1
-## 
-## $options$start
-## [1] 1
-## 
-## $options$sigma
-## [1] 0
-## 
-## $options$sigmai
-## [1] 0
-## 
-## $options$info
-## [1] 0
-## 
-## $options$iter
-## [1] 7
-## 
-## $options$nconv
-## [1] 1
-## 
-## $options$numop
-## [1] 31
-## 
-## $options$numopb
-## [1] 0
-## 
-## $options$numreo
-## [1] 18</code></pre>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="Network-and-Node-Description.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="fu">centr_eigen</span>(net, <span class="at">directed=</span>T, <span class="at">normalized=</span>T) </span></code></pre></div>
-<pre><code>## $vector
-##  [1] 0.6638179 0.3314674 1.0000000 0.9133129 0.3326443 0.7468249 0.1244195
-##  [8] 0.3740317 0.3453324 0.5991652 0.7334202 0.7519086 0.3470857 0.2915055
-## [15] 0.3314674 0.2484270 0.7503292
-## 
-## $value
-## [1] 3.006215
-## 
-## $options
-## $options$bmat
-## [1] &quot;I&quot;
-## 
-## $options$n
-## [1] 17
-## 
-## $options$which
-## [1] &quot;LR&quot;
-## 
-## $options$nev
-## [1] 1
-## 
-## $options$tol
-## [1] 0
-## 
-## $options$ncv
-## [1] 0
-## 
-## $options$ldv
-## [1] 0
-## 
-## $options$ishift
-## [1] 1
-## 
-## $options$maxiter
-## [1] 1000
-## 
-## $options$nb
-## [1] 1
-## 
-## $options$mode
-## [1] 1
-## 
-## $options$start
-## [1] 1
-## 
-## $options$sigma
-## [1] 0
-## 
-## $options$sigmai
-## [1] 0
-## 
-## $options$info
-## [1] 0
-## 
-## $options$iter
-## [1] 7
-## 
-## $options$nconv
-## [1] 1
-## 
-## $options$numop
-## [1] 31
-## 
-## $options$numopb
-## [1] 0
-## 
-## $options$numreo
-## [1] 18
-## 
-## 
-## $centralization
-## [1] 0.5071775
-## 
-## $theoretical_max
-## [1] 16</code></pre>
-<p><strong><em>중개 중심성(Betweenness)</em></strong> (다른 노드들을 연결하는 중개자 위치에 기반한 중심성) : <code>betweenness()</code> 함수, <code>edge_betweenness()</code> 함수 그리고 <code>centr_betw()</code> 함수
-노드나 에지를 거쳐가는 측지 수(number of geodesics).</p>
-<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="Network-and-Node-Description.html#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="fu">betweenness</span>(net, <span class="at">directed=</span>T, <span class="at">weights=</span><span class="cn">NA</span>)</span></code></pre></div>
-<pre><code>##         s01         s02         s03         s04         s05         s06 
-##  24.0000000   5.8333333 127.0000000  93.5000000  16.5000000  20.3333333 
-##         s07         s08         s09         s10         s11         s12 
-##   1.8333333  19.5000000   0.8333333  15.0000000   0.0000000  33.5000000 
-##         s13         s14         s15         s16         s17 
-##  20.0000000   4.0000000   5.6666667   0.0000000  58.5000000</code></pre>
-<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="Network-and-Node-Description.html#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="fu">edge_betweenness</span>(net, <span class="at">directed=</span>T, <span class="at">weights=</span><span class="cn">NA</span>)</span></code></pre></div>
-<pre><code>##  [1] 10.833333 11.333333  8.333333  9.500000  4.000000 12.500000  3.000000
-##  [8]  2.333333 24.000000 16.000000 31.500000 32.500000  9.500000  6.500000
-## [15] 23.000000 65.333333 11.000000  6.500000 18.000000  8.666667  5.333333
-## [22] 10.000000  6.000000 11.166667 15.000000 21.333333 10.000000  2.000000
-## [29]  1.333333  4.500000 11.833333 16.833333  6.833333 16.833333 31.000000
-## [36] 17.000000 18.000000 14.500000  7.500000 28.500000  3.000000 17.000000
-## [43]  5.666667  9.666667  6.333333  1.000000 15.000000 74.500000</code></pre>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="Network-and-Node-Description.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="fu">centr_betw</span>(net, <span class="at">directed=</span>T, <span class="at">normalized=</span>T)</span></code></pre></div>
-<pre><code>## $res
-##  [1]  24.0000000   5.8333333 127.0000000  93.5000000  16.5000000  20.3333333
-##  [7]   1.8333333  19.5000000   0.8333333  15.0000000   0.0000000  33.5000000
-## [13]  20.0000000   4.0000000   5.6666667   0.0000000  58.5000000
-## 
-## $centralization
-## [1] 0.4460938
-## 
-## $theoretical_max
-## [1] 3840</code></pre>
-</div>
-<div id="허브와-오쏘러티hubs-and-authorities" class="section level2" number="7.8">
-<h2><span class="header-section-number">7.8</span> <em>허브와 오쏘러티(Hubs and authorities)</em></h2>
-<p>Jon Kleinberg가 개발한 허브와 오쏘러티 알고리즘은 처음에 웹 페이지를 검토할 때 사용되었다. 허브(Hubs)는 대규모의 외부로 나가는 링크를 가지고 있는 목록들을 포함하고 있는 것으로 예상된다. 반면에 오쏘러티(Authorities)는 짐작하건대 고품질의 관련 정보를 담고있기 때문에 허브로 부터 들어오는 많은 링크를 가지고 있을 것으로 기대된다.</p>
-<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="Network-and-Node-Description.html#cb432-1" aria-hidden="true" tabindex="-1"></a>hs <span class="ot">&lt;-</span> <span class="fu">hub_score</span>(net, <span class="at">weights=</span><span class="cn">NA</span>)<span class="sc">$</span>vector</span>
-<span id="cb432-2"><a href="Network-and-Node-Description.html#cb432-2" aria-hidden="true" tabindex="-1"></a>as <span class="ot">&lt;-</span> <span class="fu">authority_score</span>(net, <span class="at">weights=</span><span class="cn">NA</span>)<span class="sc">$</span>vector</span>
-<span id="cb432-3"><a href="Network-and-Node-Description.html#cb432-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb432-4"><a href="Network-and-Node-Description.html#cb432-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb432-5"><a href="Network-and-Node-Description.html#cb432-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net, <span class="at">vertex.size=</span>hs<span class="sc">*</span><span class="dv">50</span>, <span class="at">main=</span><span class="st">&quot;Hubs&quot;</span>)</span>
-<span id="cb432-6"><a href="Network-and-Node-Description.html#cb432-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net, <span class="at">vertex.size=</span>as<span class="sc">*</span><span class="dv">30</span>, <span class="at">main=</span><span class="st">&quot;Authorities&quot;</span>)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-127-1.png" width="672" /></p>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="Network-and-Node-Description.html#cb433-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
-<pre><code>## null device 
-##           1</code></pre>
-</div>
-<div id="참고자료-1" class="section level2 unnumbered">
-<h2>참고자료</h2>
-<ul>
-<li><a href="https://webscience.creation.net/3">HITS 알고리듬과 소셜 네트웍</a> : <a href="https://webscience.creation.net/3" class="uri">https://webscience.creation.net/3</a></li>
-<li><a href="https://kuduz.tistory.com/1087">사회연결망 분석</a> : <a href="https://kuduz.tistory.com/1087" class="uri">https://kuduz.tistory.com/1087</a></li>
-</ul>
-
-</div>
+<div id="Network_and_Node_Description" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> 네트워크과 노드 설명</h1>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="Plotting-Networks-with-Igraph.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="Distances-and-Paths.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="참고자료.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="밀도density.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -658,7 +270,8 @@ gitbook.start({
 },
 "download": null,
 "toc": {
-"collapse": "subsection"
+"collapse": "section",
+"scroll_highlight": true
 }
 });
 });

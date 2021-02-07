@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 서브 그룹과 커뮤니티 | R을 이용한 네트워크 분석과 시각화</title>
+  <title>Chapter 8 서브 그룹과 커뮤니티 | R을 이용한 네트워크 분석과 시각화</title>
   <meta name="description" content="Katherine Ognyanova의 ‘Network Analysis and Visualization with R’ 세미나 자료를 번역한 것입니다. 번역의 오류는 번역자의 잘못입니다. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 9 서브 그룹과 커뮤니티 | R을 이용한 네트워크 분석과 시각화" />
+  <meta property="og:title" content="Chapter 8 서브 그룹과 커뮤니티 | R을 이용한 네트워크 분석과 시각화" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="Network-Analysis" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 서브 그룹과 커뮤니티 | R을 이용한 네트워크 분석과 시각화" />
+  <meta name="twitter:title" content="Chapter 8 서브 그룹과 커뮤니티 | R을 이용한 네트워크 분석과 시각화" />
   
   <meta name="twitter:description" content="Katherine Ognyanova의 ‘Network Analysis and Visualization with R’ 세미나 자료를 번역한 것입니다. 번역의 오류는 번역자의 잘못입니다. The output format for this example is bookdown::gitbook." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Translated by Dae Ho Kim, Mokwon University" />
 
 
-<meta name="date" content="2020-12-06" />
+<meta name="date" content="2021-02-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,8 +32,8 @@
   
   
 <link rel="prev" href="Distances-and-Paths.html"/>
-<link rel="next" href="Assortativity-and-Homophily.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<link rel="next" href="클릭cliques.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,8 +51,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -132,72 +130,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="/">Home</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> R을 이용한 네트워크 분석과 시각화</a></li>
-<li class="chapter" data-level="2" data-path="R-Basics.html"><a href="R-Basics.html"><i class="fa fa-check"></i><b>2</b> R 기초 복습</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Copyright</a></li>
+<li class="chapter" data-level="1" data-path="R-Basics.html"><a href="R-Basics.html"><i class="fa fa-check"></i><b>1</b> R 기초 복습</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="R-Basics.html"><a href="R-Basics.html#할당assignment"><i class="fa fa-check"></i><b>2.1</b> <em>할당(Assignment)</em></a></li>
-<li class="chapter" data-level="2.2" data-path="R-Basics.html"><a href="R-Basics.html#값의-비교value-comparisons"><i class="fa fa-check"></i><b>2.2</b> <em>값의 비교(Value comparisons)</em></a></li>
-<li class="chapter" data-level="2.3" data-path="R-Basics.html"><a href="R-Basics.html#특별한-상수special-constants"><i class="fa fa-check"></i><b>2.3</b> <em>특별한 상수(Special constants)</em></a></li>
-<li class="chapter" data-level="2.4" data-path="R-Basics.html"><a href="R-Basics.html#벡터vectors"><i class="fa fa-check"></i><b>2.4</b> <em>벡터(Vectors)</em></a></li>
-<li class="chapter" data-level="2.5" data-path="R-Basics.html"><a href="R-Basics.html#factors"><i class="fa fa-check"></i><b>2.5</b> <em>Factors</em></a></li>
-<li class="chapter" data-level="2.6" data-path="R-Basics.html"><a href="R-Basics.html#행렬과-배열matrces-arrays"><i class="fa fa-check"></i><b>2.6</b> <em>행렬과 배열(Matrces &amp; Arrays)</em></a></li>
-<li class="chapter" data-level="2.7" data-path="R-Basics.html"><a href="R-Basics.html#리스트lists"><i class="fa fa-check"></i><b>2.7</b> <em>리스트(Lists)</em></a></li>
-<li class="chapter" data-level="2.8" data-path="R-Basics.html"><a href="R-Basics.html#데이터-프레임data-frames"><i class="fa fa-check"></i><b>2.8</b> <em>데이터 프레임(Data Frames)</em></a></li>
-<li class="chapter" data-level="2.9" data-path="R-Basics.html"><a href="R-Basics.html#흐름-제어와-반복-구문flow-control-and-loops"><i class="fa fa-check"></i><b>2.9</b> <em>흐름 제어와 반복 구문(Flow Control and loops)</em></a></li>
-<li class="chapter" data-level="2.10" data-path="R-Basics.html"><a href="R-Basics.html#r-플롯과-색-지정"><i class="fa fa-check"></i><b>2.10</b> <em>R 플롯과 색 지정</em></a></li>
-<li class="chapter" data-level="2.11" data-path="R-Basics.html"><a href="R-Basics.html#r-문제-해결"><i class="fa fa-check"></i><b>2.11</b> <em>R 문제 해결</em></a></li>
+<li class="chapter" data-level="1.1" data-path="할당assignment.html"><a href="할당assignment.html"><i class="fa fa-check"></i><b>1.1</b> <em>할당(Assignment)</em></a></li>
+<li class="chapter" data-level="1.2" data-path="값의-비교value-comparisons.html"><a href="값의-비교value-comparisons.html"><i class="fa fa-check"></i><b>1.2</b> <em>값의 비교(Value comparisons)</em></a></li>
+<li class="chapter" data-level="1.3" data-path="특별한-상수special-constants.html"><a href="특별한-상수special-constants.html"><i class="fa fa-check"></i><b>1.3</b> <em>특별한 상수(Special constants)</em></a></li>
+<li class="chapter" data-level="1.4" data-path="벡터vectors.html"><a href="벡터vectors.html"><i class="fa fa-check"></i><b>1.4</b> <em>벡터(Vectors)</em></a></li>
+<li class="chapter" data-level="1.5" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>1.5</b> <em>Factors</em></a></li>
+<li class="chapter" data-level="1.6" data-path="행렬과-배열matrces-arrays.html"><a href="행렬과-배열matrces-arrays.html"><i class="fa fa-check"></i><b>1.6</b> <em>행렬과 배열(Matrces &amp; Arrays)</em></a></li>
+<li class="chapter" data-level="1.7" data-path="리스트lists.html"><a href="리스트lists.html"><i class="fa fa-check"></i><b>1.7</b> <em>리스트(Lists)</em></a></li>
+<li class="chapter" data-level="1.8" data-path="데이터-프레임data-frames.html"><a href="데이터-프레임data-frames.html"><i class="fa fa-check"></i><b>1.8</b> <em>데이터 프레임(Data Frames)</em></a></li>
+<li class="chapter" data-level="1.9" data-path="흐름-제어와-반복-구문flow-control-and-loops.html"><a href="흐름-제어와-반복-구문flow-control-and-loops.html"><i class="fa fa-check"></i><b>1.9</b> <em>흐름 제어와 반복 구문(Flow Control and loops)</em></a></li>
+<li class="chapter" data-level="1.10" data-path="r-플롯과-색-지정.html"><a href="r-플롯과-색-지정.html"><i class="fa fa-check"></i><b>1.10</b> <em>R 플롯과 색 지정</em></a></li>
+<li class="chapter" data-level="1.11" data-path="r-문제-해결.html"><a href="r-문제-해결.html"><i class="fa fa-check"></i><b>1.11</b> <em>R 문제 해결</em></a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html"><i class="fa fa-check"></i><b>3</b> <code>igraph</code>를 이용한 네트워크</a>
+<li class="chapter" data-level="2" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html"><i class="fa fa-check"></i><b>2</b> <code>igraph</code>를 이용한 네트워크</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html#네트워크-생성create-networks"><i class="fa fa-check"></i><b>3.1</b> <em>네트워크 생성(Create networks)</em></a></li>
-<li class="chapter" data-level="3.2" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html#에지edge-정점vertex-그리고-네트워크-속성network-attributes"><i class="fa fa-check"></i><b>3.2</b> <em>에지(Edge), 정점(vertex), 그리고 네트워크 속성(network attributes)</em></a></li>
-<li class="chapter" data-level="3.3" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html#특수-그래프specific-graphs와-그래프-모델graph-models"><i class="fa fa-check"></i><b>3.3</b> <em>특수 그래프(Specific graphs)와 그래프 모델(graph models)</em></a></li>
+<li class="chapter" data-level="2.1" data-path="네트워크-생성create-networks.html"><a href="네트워크-생성create-networks.html"><i class="fa fa-check"></i><b>2.1</b> <em>네트워크 생성(Create networks)</em></a></li>
+<li class="chapter" data-level="2.2" data-path="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html"><i class="fa fa-check"></i><b>2.2</b> <em>에지(Edge), 정점(vertex), 그리고 네트워크 속성(network attributes)</em></a></li>
+<li class="chapter" data-level="2.3" data-path="특수-그래프specific-graphs와-그래프-모델graph-models.html"><a href="특수-그래프specific-graphs와-그래프-모델graph-models.html"><i class="fa fa-check"></i><b>2.3</b> <em>특수 그래프(Specific graphs)와 그래프 모델(graph models)</em></a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html"><i class="fa fa-check"></i><b>4</b> 파일로 부터 네트워크 데이터 읽어오기</a>
+<li class="chapter" data-level="3" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html"><i class="fa fa-check"></i><b>3</b> 파일로 부터 네트워크 데이터 읽어오기</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html#데이터-세트-1-에지-목록edgelist"><i class="fa fa-check"></i><b>4.1</b> <em>데이터 세트 1: 에지 목록(edgelist)</em></a></li>
-<li class="chapter" data-level="4.2" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html#데이터-세트-2-인접-행렬adjacent-matrix"><i class="fa fa-check"></i><b>4.2</b> <em>데이터 세트 2: 인접 행렬(adjacent matrix)</em></a></li>
+<li class="chapter" data-level="3.1" data-path="데이터-세트-1-에지-목록edgelist.html"><a href="데이터-세트-1-에지-목록edgelist.html"><i class="fa fa-check"></i><b>3.1</b> <em>데이터 세트 1: 에지 목록(edgelist)</em></a></li>
+<li class="chapter" data-level="3.2" data-path="데이터-세트-2-인접-행렬adjacent-matrix.html"><a href="데이터-세트-2-인접-행렬adjacent-matrix.html"><i class="fa fa-check"></i><b>3.2</b> <em>데이터 세트 2: 인접 행렬(adjacent matrix)</em></a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="Turning-Networks-into-Igraph.html"><a href="Turning-Networks-into-Igraph.html"><i class="fa fa-check"></i><b>5</b> 네트워크를 igraph 개체로 변환하기</a>
+<li class="chapter" data-level="4" data-path="Turning-Networks-into-Igraph.html"><a href="Turning-Networks-into-Igraph.html"><i class="fa fa-check"></i><b>4</b> 네트워크를 igraph 개체로 변환하기</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="Turning-Networks-into-Igraph.html"><a href="Turning-Networks-into-Igraph.html#데이터-세트-1"><i class="fa fa-check"></i><b>5.1</b> <em>데이터 세트 1</em></a></li>
-<li class="chapter" data-level="5.2" data-path="Turning-Networks-into-Igraph.html"><a href="Turning-Networks-into-Igraph.html#데이터-세트-2"><i class="fa fa-check"></i><b>5.2</b> <em>데이터 세트 2</em></a></li>
+<li class="chapter" data-level="4.1" data-path="데이터-세트-1.html"><a href="데이터-세트-1.html"><i class="fa fa-check"></i><b>4.1</b> <em>데이터 세트 1</em></a></li>
+<li class="chapter" data-level="4.2" data-path="데이터-세트-2.html"><a href="데이터-세트-2.html"><i class="fa fa-check"></i><b>4.2</b> <em>데이터 세트 2</em></a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html"><i class="fa fa-check"></i><b>6</b> igraph를 이용한 네트워크 시각화</a>
+<li class="chapter" data-level="5" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html"><i class="fa fa-check"></i><b>5</b> igraph를 이용한 네트워크 시각화</a>
 <ul>
-<li><a href="Plotting-Networks-with-Igraph.html#plotting-parameters"><em>Plotting parameters</em></a></li>
-<li class="chapter" data-level="6.1" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#network-layouts"><i class="fa fa-check"></i><b>6.1</b> <em>Network layouts</em></a></li>
-<li class="chapter" data-level="6.2" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#네트워크-시각화-개선"><i class="fa fa-check"></i><b>6.2</b> <em>네트워크 시각화 개선</em></a></li>
-<li class="chapter" data-level="6.3" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#tkplot-패키지를-이용한-상호대화식-시각화"><i class="fa fa-check"></i><b>6.3</b> <em><code>tkplot</code> 패키지를 이용한 상호대화식 시각화</em></a></li>
-<li class="chapter" data-level="6.4" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#다른-네트워크-시각화-방법"><i class="fa fa-check"></i><b>6.4</b> <em>다른 네트워크 시각화 방법</em></a></li>
-<li class="chapter" data-level="6.5" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#igraph로-2-모드-네트워크-시각화하기"><i class="fa fa-check"></i><b>6.5</b> <em>igraph로 2-모드 네트워크 시각화하기</em></a></li>
-<li class="chapter" data-level="" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html#참고자료"><i class="fa fa-check"></i>참고자료</a></li>
+<li><a href="plotting-parameters.html#plotting-parameters"><em>Plotting parameters</em></a></li>
+<li class="chapter" data-level="5.1" data-path="network-layouts.html"><a href="network-layouts.html"><i class="fa fa-check"></i><b>5.1</b> <em>Network layouts</em></a></li>
+<li class="chapter" data-level="5.2" data-path="네트워크-시각화-개선.html"><a href="네트워크-시각화-개선.html"><i class="fa fa-check"></i><b>5.2</b> <em>네트워크 시각화 개선</em></a></li>
+<li class="chapter" data-level="5.3" data-path="tkplot-패키지를-이용한-상호대화식-시각화.html"><a href="tkplot-패키지를-이용한-상호대화식-시각화.html"><i class="fa fa-check"></i><b>5.3</b> <em><code>tkplot</code> 패키지를 이용한 상호대화식 시각화</em></a></li>
+<li class="chapter" data-level="5.4" data-path="다른-네트워크-시각화-방법.html"><a href="다른-네트워크-시각화-방법.html"><i class="fa fa-check"></i><b>5.4</b> <em>다른 네트워크 시각화 방법</em></a></li>
+<li class="chapter" data-level="5.5" data-path="igraph로-2-모드-네트워크-시각화하기.html"><a href="igraph로-2-모드-네트워크-시각화하기.html"><i class="fa fa-check"></i><b>5.5</b> <em>igraph로 2-모드 네트워크 시각화하기</em></a></li>
+<li class="chapter" data-level="" data-path="참고자료.html"><a href="참고자료.html"><i class="fa fa-check"></i>참고자료</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html"><i class="fa fa-check"></i><b>7</b> 네트워크과 노드 설명</a>
+<li class="chapter" data-level="6" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html"><i class="fa fa-check"></i><b>6</b> 네트워크과 노드 설명</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#밀도density"><i class="fa fa-check"></i><b>7.1</b> <em>밀도(Density)</em></a></li>
-<li class="chapter" data-level="7.2" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#호혜성reciprocity"><i class="fa fa-check"></i><b>7.2</b> <em>호혜성(Reciprocity)</em></a></li>
-<li class="chapter" data-level="7.3" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#이행성transitivity"><i class="fa fa-check"></i><b>7.3</b> <em>이행성(Transitivity)</em></a></li>
-<li class="chapter" data-level="7.4" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#지름diameter"><i class="fa fa-check"></i><b>7.4</b> <em>지름(Diameter)</em></a></li>
-<li class="chapter" data-level="7.5" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#노드-연결-정도node-degrees"><i class="fa fa-check"></i><b>7.5</b> <em>노드 연결 정도(Node degrees)</em></a></li>
-<li class="chapter" data-level="7.6" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#연결-정도-분포degree-distribution"><i class="fa fa-check"></i><b>7.6</b> <em>연결 정도 분포(Degree distribution)</em></a></li>
-<li class="chapter" data-level="7.7" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#중심성과-중심화centrality-centralization"><i class="fa fa-check"></i><b>7.7</b> <em>중심성과 중심화(Centrality &amp; centralization)</em></a></li>
-<li class="chapter" data-level="7.8" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#허브와-오쏘러티hubs-and-authorities"><i class="fa fa-check"></i><b>7.8</b> <em>허브와 오쏘러티(Hubs and authorities)</em></a></li>
-<li class="chapter" data-level="" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html#참고자료-1"><i class="fa fa-check"></i>참고자료</a></li>
+<li class="chapter" data-level="6.1" data-path="밀도density.html"><a href="밀도density.html"><i class="fa fa-check"></i><b>6.1</b> <em>밀도(Density)</em></a></li>
+<li class="chapter" data-level="6.2" data-path="호혜성reciprocity.html"><a href="호혜성reciprocity.html"><i class="fa fa-check"></i><b>6.2</b> <em>호혜성(Reciprocity)</em></a></li>
+<li class="chapter" data-level="6.3" data-path="이행성transitivity.html"><a href="이행성transitivity.html"><i class="fa fa-check"></i><b>6.3</b> <em>이행성(Transitivity)</em></a></li>
+<li class="chapter" data-level="6.4" data-path="지름diameter.html"><a href="지름diameter.html"><i class="fa fa-check"></i><b>6.4</b> <em>지름(Diameter)</em></a></li>
+<li class="chapter" data-level="6.5" data-path="노드-연결-정도node-degrees.html"><a href="노드-연결-정도node-degrees.html"><i class="fa fa-check"></i><b>6.5</b> <em>노드 연결 정도(Node degrees)</em></a></li>
+<li class="chapter" data-level="6.6" data-path="연결-정도-분포degree-distribution.html"><a href="연결-정도-분포degree-distribution.html"><i class="fa fa-check"></i><b>6.6</b> <em>연결 정도 분포(Degree distribution)</em></a></li>
+<li class="chapter" data-level="6.7" data-path="중심성과-중심화centrality-centralization.html"><a href="중심성과-중심화centrality-centralization.html"><i class="fa fa-check"></i><b>6.7</b> <em>중심성과 중심화(Centrality &amp; centralization)</em></a></li>
+<li class="chapter" data-level="6.8" data-path="허브와-오쏘러티hubs-and-authorities.html"><a href="허브와-오쏘러티hubs-and-authorities.html"><i class="fa fa-check"></i><b>6.8</b> <em>허브와 오쏘러티(Hubs and authorities)</em></a></li>
+<li class="chapter" data-level="" data-path="참고자료-1.html"><a href="참고자료-1.html"><i class="fa fa-check"></i>참고자료</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="Distances-and-Paths.html"><a href="Distances-and-Paths.html"><i class="fa fa-check"></i><b>8</b> 거리와 경로(Distances and paths)</a></li>
-<li class="chapter" data-level="9" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html"><i class="fa fa-check"></i><b>9</b> 서브 그룹과 커뮤니티</a>
+<li class="chapter" data-level="7" data-path="Distances-and-Paths.html"><a href="Distances-and-Paths.html"><i class="fa fa-check"></i><b>7</b> 거리와 경로(Distances and paths)</a></li>
+<li class="chapter" data-level="8" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html"><i class="fa fa-check"></i><b>8</b> 서브 그룹과 커뮤니티</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html#클릭cliques"><i class="fa fa-check"></i><b>9.1</b> <em>클릭(Cliques)</em></a></li>
-<li class="chapter" data-level="9.2" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html#커뮤니티-발견community-detection"><i class="fa fa-check"></i><b>9.2</b> <em>커뮤니티 발견(Community detection)</em></a></li>
-<li class="chapter" data-level="" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html#참고자료-2"><i class="fa fa-check"></i>참고자료</a></li>
+<li class="chapter" data-level="8.1" data-path="클릭cliques.html"><a href="클릭cliques.html"><i class="fa fa-check"></i><b>8.1</b> <em>클릭(Cliques)</em></a></li>
+<li class="chapter" data-level="8.2" data-path="커뮤니티-발견community-detection.html"><a href="커뮤니티-발견community-detection.html"><i class="fa fa-check"></i><b>8.2</b> <em>커뮤니티 발견(Community detection)</em></a></li>
+<li class="chapter" data-level="" data-path="참고자료-2.html"><a href="참고자료-2.html"><i class="fa fa-check"></i>참고자료</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="Assortativity-and-Homophily.html"><a href="Assortativity-and-Homophily.html"><i class="fa fa-check"></i><b>10</b> 동류성과 동질성</a>
+<li class="chapter" data-level="9" data-path="Assortativity-and-Homophily.html"><a href="Assortativity-and-Homophily.html"><i class="fa fa-check"></i><b>9</b> 동류성과 동질성</a>
 <ul>
-<li class="chapter" data-level="" data-path="Assortativity-and-Homophily.html"><a href="Assortativity-and-Homophily.html#참고자료-3"><i class="fa fa-check"></i>참고자료</a></li>
+<li class="chapter" data-level="" data-path="참고자료-3.html"><a href="참고자료-3.html"><i class="fa fa-check"></i>참고자료</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -219,8 +217,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Subgroups_and_Communities" class="section level1" number="9">
-<h1><span class="header-section-number">Chapter 9</span> 서브 그룹과 커뮤니티</h1>
+<div id="Subgroups_and_Communities" class="section level1" number="8">
+<h1><span class="header-section-number">Chapter 8</span> 서브 그룹과 커뮤니티</h1>
 <p>네트워크 분석에서 하위집단, 커뮤니티 식별은 관심이 가는 흥미로운 주제중 하나다. 하위집단, 커뮤니티 탐지 분석작업을 위해서 먼저 방향성 없는 그래프로 변환해야 하는데 다음과 같은 3가지 방법을 사용할 수 있다.</p>
 <ul>
 <li>연결된 노드들의 모든 쌍 사이의 무방향 링크를 생성할 수 있다 (<code>mode = "collapse"</code>)</li>
@@ -231,398 +229,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="Subgroups-and-Communities.html#cb451-1" aria-hidden="true" tabindex="-1"></a>net.sym <span class="ot">&lt;-</span> <span class="fu">as.undirected</span>(net, <span class="at">mode=</span> <span class="st">&quot;collapse&quot;</span>,</span>
 <span id="cb451-2"><a href="Subgroups-and-Communities.html#cb451-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb451-3"><a href="Subgroups-and-Communities.html#cb451-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">edge.attr.comb=</span><span class="fu">list</span>(<span class="at">weight=</span><span class="st">&quot;sum&quot;</span>, <span class="st">&quot;ignore&quot;</span>))</span></code></pre></div>
-<div id="클릭cliques" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> <em>클릭(Cliques)</em></h2>
-<p>클릭(cliques)를 통해 방향성 없는 그래프 전체가 연결된 하위집단을 식별한다.</p>
-<p>(무방향 그래프의 완전한 서브 그룹인) <strong>클릭</strong>을 찾아보자 : <code>cliques()</code> 함수</p>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="Subgroups-and-Communities.html#cb452-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cliques</span>(net.sym)                    <span class="co"># 클릭 목록</span></span></code></pre></div>
-<pre><code>## [[1]]
-## + 1/17 vertex, named, from 96fd32c:
-## [1] s03
-## 
-## [[2]]
-## + 1/17 vertex, named, from 96fd32c:
-## [1] s06
-## 
-## [[3]]
-## + 1/17 vertex, named, from 96fd32c:
-## [1] s14
-## 
-## [[4]]
-## + 1/17 vertex, named, from 96fd32c:
-## [1] s09
-## 
-## [[5]]
-## + 1/17 vertex, named, from 96fd32c:
-## [1] s04
-## 
-## [[6]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s04 s06
-## 
-## [[7]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s03 s04
-## 
-## [[8]]
-## + 1/17 vertex, named, from 96fd32c:
-## [1] s05
-## 
-## [[9]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s05 s09
-## 
-## [[10]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s03 s05
-## 
-## [[11]]
-## + 1/17 vertex, named, from 96fd32c:
-## [1] s13
-## 
-## [[12]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s13 s14
-## 
-## [[13]]
-## + 1/17 vertex, named, from 96fd32c:
-## [1] s10
-## 
-## [[14]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s09 s10
-## 
-## [[15]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s03 s10
-## 
-## [[16]]
-## + 1/17 vertex, named, from 96fd32c:
-## [1] s16
-## 
-## [[17]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s06 s16
-## 
-## [[18]]
-## + 1/17 vertex, named, from 96fd32c:
-## [1] s08
-## 
-## [[19]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s08 s09
-## 
-## [[20]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s03 s08
-## 
-## [[21]]
-## + 1/17 vertex, named, from 96fd32c:
-## [1] s01
-## 
-## [[22]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s01 s05
-## 
-## [[23]]
-## + 3/17 vertices, named, from 96fd32c:
-## [1] s01 s03 s05
-## 
-## [[24]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s01 s04
-## 
-## [[25]]
-## + 3/17 vertices, named, from 96fd32c:
-## [1] s01 s03 s04
-## 
-## [[26]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s01 s03
-## 
-## [[27]]
-## + 1/17 vertex, named, from 96fd32c:
-## [1] s17
-## 
-## [[28]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s16 s17
-## 
-## [[29]]
-## + 3/17 vertices, named, from 96fd32c:
-## [1] s06 s16 s17
-## 
-## [[30]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s13 s17
-## 
-## [[31]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s04 s17
-## 
-## [[32]]
-## + 3/17 vertices, named, from 96fd32c:
-## [1] s04 s06 s17
-## 
-## [[33]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s06 s17
-## 
-## [[34]]
-## + 1/17 vertex, named, from 96fd32c:
-## [1] s12
-## 
-## [[35]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s12 s13
-## 
-## [[36]]
-## + 3/17 vertices, named, from 96fd32c:
-## [1] s12 s13 s14
-## 
-## [[37]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s04 s12
-## 
-## [[38]]
-## + 3/17 vertices, named, from 96fd32c:
-## [1] s04 s06 s12
-## 
-## [[39]]
-## + 3/17 vertices, named, from 96fd32c:
-## [1] s03 s04 s12
-## 
-## [[40]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s12 s14
-## 
-## [[41]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s06 s12
-## 
-## [[42]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s03 s12
-## 
-## [[43]]
-## + 1/17 vertex, named, from 96fd32c:
-## [1] s11
-## 
-## [[44]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s04 s11
-## 
-## [[45]]
-## + 3/17 vertices, named, from 96fd32c:
-## [1] s03 s04 s11
-## 
-## [[46]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s11 s14
-## 
-## [[47]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s03 s11
-## 
-## [[48]]
-## + 1/17 vertex, named, from 96fd32c:
-## [1] s07
-## 
-## [[49]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s07 s08
-## 
-## [[50]]
-## + 3/17 vertices, named, from 96fd32c:
-## [1] s03 s07 s08
-## 
-## [[51]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s07 s10
-## 
-## [[52]]
-## + 3/17 vertices, named, from 96fd32c:
-## [1] s03 s07 s10
-## 
-## [[53]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s07 s14
-## 
-## [[54]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s03 s07
-## 
-## [[55]]
-## + 1/17 vertex, named, from 96fd32c:
-## [1] s15
-## 
-## [[56]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s01 s15
-## 
-## [[57]]
-## + 3/17 vertices, named, from 96fd32c:
-## [1] s01 s05 s15
-## 
-## [[58]]
-## + 3/17 vertices, named, from 96fd32c:
-## [1] s01 s04 s15
-## 
-## [[59]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s05 s15
-## 
-## [[60]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s04 s15
-## 
-## [[61]]
-## + 3/17 vertices, named, from 96fd32c:
-## [1] s04 s06 s15
-## 
-## [[62]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s06 s15
-## 
-## [[63]]
-## + 1/17 vertex, named, from 96fd32c:
-## [1] s02
-## 
-## [[64]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s01 s02
-## 
-## [[65]]
-## + 3/17 vertices, named, from 96fd32c:
-## [1] s01 s02 s05
-## 
-## [[66]]
-## + 4/17 vertices, named, from 96fd32c:
-## [1] s01 s02 s03 s05
-## 
-## [[67]]
-## + 3/17 vertices, named, from 96fd32c:
-## [1] s01 s02 s03
-## 
-## [[68]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s02 s10
-## 
-## [[69]]
-## + 3/17 vertices, named, from 96fd32c:
-## [1] s02 s09 s10
-## 
-## [[70]]
-## + 3/17 vertices, named, from 96fd32c:
-## [1] s02 s03 s10
-## 
-## [[71]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s02 s05
-## 
-## [[72]]
-## + 3/17 vertices, named, from 96fd32c:
-## [1] s02 s05 s09
-## 
-## [[73]]
-## + 3/17 vertices, named, from 96fd32c:
-## [1] s02 s03 s05
-## 
-## [[74]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s02 s09
-## 
-## [[75]]
-## + 2/17 vertices, named, from 96fd32c:
-## [1] s02 s03</code></pre>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="Subgroups-and-Communities.html#cb454-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">cliques</span>(net.sym), length)    <span class="co"># 클릭 크기</span></span></code></pre></div>
-<pre><code>##  [1] 1 1 1 1 1 2 2 1 2 2 1 2 1 2 2 1 2 1 2 2 1 2 3 2 3 2 1 2 3 2 2 3 2 1 2 3 2 3
-## [39] 3 2 2 2 1 2 3 2 2 1 2 3 2 3 2 2 1 2 3 3 2 2 3 2 1 2 3 4 3 2 3 3 2 3 3 2 2</code></pre>
-<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="Subgroups-and-Communities.html#cb456-1" aria-hidden="true" tabindex="-1"></a><span class="fu">largest_cliques</span>(net.sym)            <span class="co"># 최대 수의 노드를 갖는 클릭</span></span></code></pre></div>
-<pre><code>## [[1]]
-## + 4/17 vertices, named, from 96fd32c:
-## [1] s03 s01 s02 s05</code></pre>
-<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="Subgroups-and-Communities.html#cb458-1" aria-hidden="true" tabindex="-1"></a>vcol <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">&quot;grey80&quot;</span>, <span class="fu">vcount</span>(net.sym))</span>
-<span id="cb458-2"><a href="Subgroups-and-Communities.html#cb458-2" aria-hidden="true" tabindex="-1"></a>vcol[<span class="fu">unlist</span>(<span class="fu">largest_cliques</span>(net.sym))] <span class="ot">&lt;-</span> <span class="st">&quot;gold&quot;</span></span>
-<span id="cb458-3"><a href="Subgroups-and-Communities.html#cb458-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb458-4"><a href="Subgroups-and-Communities.html#cb458-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.undirected</span>(net.sym), <span class="at">vertex.label=</span><span class="fu">V</span>(net.sym)<span class="sc">$</span>name, <span class="at">vertex.color=</span>vcol)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-137-1.png" width="672" /></p>
-</div>
-<div id="커뮤니티-발견community-detection" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> <em>커뮤니티 발견(Community detection)</em></h2>
-<p>다양한 알고리즘이 커뮤니티 탐지를 위해 개발되었다. 커뮤니티 사이는 링크연결이 최소화되고, 커뮤니티 내에는 연결이 조밀하게 많아야 된다.</p>
-<ol style="list-style-type: decimal">
-<li>Newman-Girvan</li>
-<li>라벨 전파(Propagating labels)</li>
-<li>Greedy optimization of modularity</li>
-<li>K-core 분해</li>
-</ol>
-<p><strong>에지 중개 중심성에 기반한 커뮤니티 발견(Newman-Girvan)</strong>
-높은 중개 에지 중심성들이 (각 단계마다 다시 계산하여) 순차적으로 제거되고, 가장 좋은 네트워크의 분할이 선택된다 : <code>cluster_edge_betweenness()</code> 함수</p>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="Subgroups-and-Communities.html#cb459-1" aria-hidden="true" tabindex="-1"></a>ceb <span class="ot">&lt;-</span> <span class="fu">cluster_edge_betweenness</span>(net) </span></code></pre></div>
-<pre><code>## Warning in cluster_edge_betweenness(net): At community.c:460 :Membership vector
-## will be selected based on the lowest modularity score.</code></pre>
-<pre><code>## Warning in cluster_edge_betweenness(net): At community.c:467 :Modularity
-## calculation with weighted edge betweenness community detection might not make
-## sense -- modularity treats edge weights as similarities while edge betwenness
-## treats them as distances</code></pre>
-<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="Subgroups-and-Communities.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dendPlot</span>(ceb, <span class="at">mode=</span><span class="st">&quot;hclust&quot;</span>)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="Subgroups-and-Communities.html#cb463-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ceb, net) </span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-138-2.png" width="672" /></p>
-<p>커뮤니티 탐지 <code>igraph</code> 개체를 검토해 보자 : <code>membership()</code> 함수, <code>modularity()</code> 함수 그리고 <code>crossing()</code> 함수</p>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="Subgroups-and-Communities.html#cb464-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(ceb)</span></code></pre></div>
-<pre><code>## [1] &quot;communities&quot;</code></pre>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="Subgroups-and-Communities.html#cb466-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(ceb)          <span class="co"># 커뮤니티 수</span></span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="Subgroups-and-Communities.html#cb468-1" aria-hidden="true" tabindex="-1"></a><span class="fu">membership</span>(ceb)      <span class="co"># 각 노드의 커뮤니티 소속</span></span></code></pre></div>
-<pre><code>## s01 s02 s03 s04 s05 s06 s07 s08 s09 s10 s11 s12 s13 s14 s15 s16 s17 
-##   1   2   3   4   1   4   3   3   5   5   4   4   4   4   1   4   4</code></pre>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="Subgroups-and-Communities.html#cb470-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modularity</span>(ceb)      <span class="co"># 그래프 분할의 모듈성</span></span></code></pre></div>
-<pre><code>## [1] 0.292476</code></pre>
-<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="Subgroups-and-Communities.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="fu">crossing</span>(ceb, net)   <span class="co"># 부울리안 벡터 : 커뮤니티와 교차하는 에지들은 TRUE</span></span></code></pre></div>
-<pre><code>## s01|s02 s01|s03 s01|s04 s01|s15 s02|s01 s02|s03 s02|s09 s02|s10 s03|s01 s03|s04 
-##    TRUE    TRUE    TRUE   FALSE    TRUE    TRUE    TRUE    TRUE    TRUE    TRUE 
-## s03|s05 s03|s08 s03|s10 s03|s11 s03|s12 s04|s03 s04|s06 s04|s11 s04|s12 s04|s17 
-##    TRUE   FALSE    TRUE    TRUE    TRUE    TRUE   FALSE   FALSE   FALSE   FALSE 
-## s05|s01 s05|s02 s05|s09 s05|s15 s06|s16 s06|s17 s07|s03 s07|s08 s07|s10 s07|s14 
-##   FALSE    TRUE    TRUE   FALSE   FALSE   FALSE   FALSE   FALSE    TRUE    TRUE 
-## s08|s03 s08|s07 s08|s09 s09|s10 s10|s03 s12|s06 s12|s13 s12|s14 s13|s12 s13|s17 
-##   FALSE   FALSE    TRUE   FALSE    TRUE   FALSE   FALSE   FALSE   FALSE   FALSE 
-## s14|s11 s14|s13 s15|s01 s15|s04 s15|s06 s16|s06 s16|s17 s17|s04 
-##   FALSE   FALSE   FALSE    TRUE    TRUE   FALSE   FALSE   FALSE</code></pre>
-<p>분할의 높은 모듈성(High modularity)은 커뮤니티 내의 강한 연결성(dense connection)과 커뮤니티 간의 약한 연결성(sparse connection)을 반영한다.</p>
-<p><strong>전파 라벨(propagating lables)에 기반한 커뮤니티 탐지</strong></p>
-<p>노드에 라벨을 할당하고, 랜덤화한 다음, 이웃 사이에 가장 자주 나타나는 각 정점의 라벨로 대체한다 이 절차들은 각 정점이 이웃들과 가장 공통적인 라벨을 가질 때까지 반복 수행된다.</p>
-<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="Subgroups-and-Communities.html#cb474-1" aria-hidden="true" tabindex="-1"></a>clp <span class="ot">&lt;-</span> <span class="fu">cluster_label_prop</span>(net)</span>
-<span id="cb474-2"><a href="Subgroups-and-Communities.html#cb474-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(clp, net)</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-140-1.png" width="672" /></p>
-<p><strong>모듈성의 탐욕적 최적화(greedy optimization of modularity)에 기반한 커뮤니티 탐지</strong></p>
-<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="Subgroups-and-Communities.html#cb475-1" aria-hidden="true" tabindex="-1"></a>cfg <span class="ot">&lt;-</span> <span class="fu">cluster_fast_greedy</span>(<span class="fu">as.undirected</span>(net))</span>
-<span id="cb475-2"><a href="Subgroups-and-Communities.html#cb475-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cfg, <span class="fu">as.undirected</span>(net))</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-141-1.png" width="672" /></p>
-<p>내장된 plot() 함수에 의존하지 않고도 커뮤니티를 시각화할 수 있다.</p>
-<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="Subgroups-and-Communities.html#cb476-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(net)<span class="sc">$</span>community <span class="ot">&lt;-</span> cfg<span class="sc">$</span>membership</span>
-<span id="cb476-2"><a href="Subgroups-and-Communities.html#cb476-2" aria-hidden="true" tabindex="-1"></a>colrs <span class="ot">&lt;-</span> <span class="fu">adjustcolor</span>( <span class="fu">c</span>(<span class="st">&quot;gray50&quot;</span>, <span class="st">&quot;tomato&quot;</span>, <span class="st">&quot;gold&quot;</span>, <span class="st">&quot;yellowgreen&quot;</span>), <span class="at">alpha=</span>.<span class="dv">6</span>)</span>
-<span id="cb476-3"><a href="Subgroups-and-Communities.html#cb476-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net, <span class="at">vertex.color=</span>colrs[<span class="fu">V</span>(net)<span class="sc">$</span>community])</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-142-1.png" width="672" /></p>
-<p><strong>K-코어 분할(K-core decomposition)</strong></p>
-<p>k-core는 모든 노드들이 최소한 k의 연결중심성을 갖는 최대의 서브그래프이다. 결과는 네트워크 내에 있는 각 정점들의 coreness이다. 만일 한 노드가 D-코어에 속하지만, (D+1) –코어에 속하지 않는다면, 그 노드의 coreness는 D가 된다.</p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="Subgroups-and-Communities.html#cb477-1" aria-hidden="true" tabindex="-1"></a>kc <span class="ot">&lt;-</span> <span class="fu">coreness</span>(net, <span class="at">mode=</span><span class="st">&quot;all&quot;</span>)</span>
-<span id="cb477-2"><a href="Subgroups-and-Communities.html#cb477-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net, <span class="at">vertex.size=</span>kc<span class="sc">*</span><span class="dv">6</span>, <span class="at">vertex.label=</span>kc, <span class="at">vertex.color=</span>colrs[kc])</span></code></pre></div>
-<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
-</div>
-<div id="참고자료-2" class="section level2 unnumbered">
-<h2>참고자료</h2>
-<ul>
-<li><p><a href="https://lsjsj92.tistory.com/587">커뮤니티 탐지란?</a> : <a href="https://lsjsj92.tistory.com/587" class="uri">https://lsjsj92.tistory.com/587</a></p></li>
-<li><p><a href="https://statkclee.github.io/network/ml-network-communities.html">네트워크 커뮤니티 탐지</a> : <a href="https://statkclee.github.io/network/ml-network-communities.html" class="uri">https://statkclee.github.io/network/ml-network-communities.html</a></p></li>
-<li><p>[withR]소셜네트워크분석 — subgroup(부그룹)](<a href="https://medium.com/excitinglab/withr-%EC%86%8C%EC%85%9C%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%EB%B6%84%EC%84%9D-subgroup-%EB%B6%80%EA%B7%B8%EB%A3%B9-834bf221b017" class="uri">https://medium.com/excitinglab/withr-%EC%86%8C%EC%85%9C%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%EB%B6%84%EC%84%9D-subgroup-%EB%B6%80%EA%B7%B8%EB%A3%B9-834bf221b017</a>)</p></li>
-<li><p><a href="https://frhyme.github.io/python-libs/nx_clique_wrapup/#network에서-clique를-뽑고-사용하는-방법">network에서 clique를 뽑고, 사용하는 방법.</a></p></li>
-<li><p><a href="https://mons1220.tistory.com/93">Network Modularity (네트워크의 모듈성)</a> : <a href="https://mons1220.tistory.com/93" class="uri">https://mons1220.tistory.com/93</a></p></li>
-</ul>
-
-</div>
 </div>
             </section>
 
@@ -630,7 +236,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="Distances-and-Paths.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="Assortativity-and-Homophily.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="클릭cliques.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -674,7 +280,8 @@ gitbook.start({
 },
 "download": null,
 "toc": {
-"collapse": "subsection"
+"collapse": "section",
+"scroll_highlight": true
 }
 });
 });

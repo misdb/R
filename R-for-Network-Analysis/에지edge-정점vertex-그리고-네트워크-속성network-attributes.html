@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.2 에지(Edge), 정점(vertex), 그리고 네트워크 속성(network attributes) | R을 이용한 네트워크 분석과 시각화</title>
+  <meta name="description" content="Katherine Ognyanova의 ‘Network Analysis and Visualization with R’ 세미나 자료를 번역한 것입니다. 번역의 오류는 번역자의 잘못입니다. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.2 에지(Edge), 정점(vertex), 그리고 네트워크 속성(network attributes) | R을 이용한 네트워크 분석과 시각화" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Katherine Ognyanova의 ‘Network Analysis and Visualization with R’ 세미나 자료를 번역한 것입니다. 번역의 오류는 번역자의 잘못입니다. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="Network-Analysis" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.2 에지(Edge), 정점(vertex), 그리고 네트워크 속성(network attributes) | R을 이용한 네트워크 분석과 시각화" />
+  
+  <meta name="twitter:description" content="Katherine Ognyanova의 ‘Network Analysis and Visualization with R’ 세미나 자료를 번역한 것입니다. 번역의 오류는 번역자의 잘못입니다. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Translated by Dae Ho Kim, Mokwon University" />
+
+
+<meta name="date" content="2021-02-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="네트워크-생성create-networks.html"/>
+<link rel="next" href="특수-그래프specific-graphs와-그래프-모델graph-models.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="/">Home</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Copyright</a></li>
+<li class="chapter" data-level="1" data-path="R-Basics.html"><a href="R-Basics.html"><i class="fa fa-check"></i><b>1</b> R 기초 복습</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="할당assignment.html"><a href="할당assignment.html"><i class="fa fa-check"></i><b>1.1</b> <em>할당(Assignment)</em></a></li>
+<li class="chapter" data-level="1.2" data-path="값의-비교value-comparisons.html"><a href="값의-비교value-comparisons.html"><i class="fa fa-check"></i><b>1.2</b> <em>값의 비교(Value comparisons)</em></a></li>
+<li class="chapter" data-level="1.3" data-path="특별한-상수special-constants.html"><a href="특별한-상수special-constants.html"><i class="fa fa-check"></i><b>1.3</b> <em>특별한 상수(Special constants)</em></a></li>
+<li class="chapter" data-level="1.4" data-path="벡터vectors.html"><a href="벡터vectors.html"><i class="fa fa-check"></i><b>1.4</b> <em>벡터(Vectors)</em></a></li>
+<li class="chapter" data-level="1.5" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>1.5</b> <em>Factors</em></a></li>
+<li class="chapter" data-level="1.6" data-path="행렬과-배열matrces-arrays.html"><a href="행렬과-배열matrces-arrays.html"><i class="fa fa-check"></i><b>1.6</b> <em>행렬과 배열(Matrces &amp; Arrays)</em></a></li>
+<li class="chapter" data-level="1.7" data-path="리스트lists.html"><a href="리스트lists.html"><i class="fa fa-check"></i><b>1.7</b> <em>리스트(Lists)</em></a></li>
+<li class="chapter" data-level="1.8" data-path="데이터-프레임data-frames.html"><a href="데이터-프레임data-frames.html"><i class="fa fa-check"></i><b>1.8</b> <em>데이터 프레임(Data Frames)</em></a></li>
+<li class="chapter" data-level="1.9" data-path="흐름-제어와-반복-구문flow-control-and-loops.html"><a href="흐름-제어와-반복-구문flow-control-and-loops.html"><i class="fa fa-check"></i><b>1.9</b> <em>흐름 제어와 반복 구문(Flow Control and loops)</em></a></li>
+<li class="chapter" data-level="1.10" data-path="r-플롯과-색-지정.html"><a href="r-플롯과-색-지정.html"><i class="fa fa-check"></i><b>1.10</b> <em>R 플롯과 색 지정</em></a></li>
+<li class="chapter" data-level="1.11" data-path="r-문제-해결.html"><a href="r-문제-해결.html"><i class="fa fa-check"></i><b>1.11</b> <em>R 문제 해결</em></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html"><i class="fa fa-check"></i><b>2</b> <code>igraph</code>를 이용한 네트워크</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="네트워크-생성create-networks.html"><a href="네트워크-생성create-networks.html"><i class="fa fa-check"></i><b>2.1</b> <em>네트워크 생성(Create networks)</em></a></li>
+<li class="chapter" data-level="2.2" data-path="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html"><i class="fa fa-check"></i><b>2.2</b> <em>에지(Edge), 정점(vertex), 그리고 네트워크 속성(network attributes)</em></a></li>
+<li class="chapter" data-level="2.3" data-path="특수-그래프specific-graphs와-그래프-모델graph-models.html"><a href="특수-그래프specific-graphs와-그래프-모델graph-models.html"><i class="fa fa-check"></i><b>2.3</b> <em>특수 그래프(Specific graphs)와 그래프 모델(graph models)</em></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html"><i class="fa fa-check"></i><b>3</b> 파일로 부터 네트워크 데이터 읽어오기</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="데이터-세트-1-에지-목록edgelist.html"><a href="데이터-세트-1-에지-목록edgelist.html"><i class="fa fa-check"></i><b>3.1</b> <em>데이터 세트 1: 에지 목록(edgelist)</em></a></li>
+<li class="chapter" data-level="3.2" data-path="데이터-세트-2-인접-행렬adjacent-matrix.html"><a href="데이터-세트-2-인접-행렬adjacent-matrix.html"><i class="fa fa-check"></i><b>3.2</b> <em>데이터 세트 2: 인접 행렬(adjacent matrix)</em></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Turning-Networks-into-Igraph.html"><a href="Turning-Networks-into-Igraph.html"><i class="fa fa-check"></i><b>4</b> 네트워크를 igraph 개체로 변환하기</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="데이터-세트-1.html"><a href="데이터-세트-1.html"><i class="fa fa-check"></i><b>4.1</b> <em>데이터 세트 1</em></a></li>
+<li class="chapter" data-level="4.2" data-path="데이터-세트-2.html"><a href="데이터-세트-2.html"><i class="fa fa-check"></i><b>4.2</b> <em>데이터 세트 2</em></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html"><i class="fa fa-check"></i><b>5</b> igraph를 이용한 네트워크 시각화</a>
+<ul>
+<li><a href="plotting-parameters.html#plotting-parameters"><em>Plotting parameters</em></a></li>
+<li class="chapter" data-level="5.1" data-path="network-layouts.html"><a href="network-layouts.html"><i class="fa fa-check"></i><b>5.1</b> <em>Network layouts</em></a></li>
+<li class="chapter" data-level="5.2" data-path="네트워크-시각화-개선.html"><a href="네트워크-시각화-개선.html"><i class="fa fa-check"></i><b>5.2</b> <em>네트워크 시각화 개선</em></a></li>
+<li class="chapter" data-level="5.3" data-path="tkplot-패키지를-이용한-상호대화식-시각화.html"><a href="tkplot-패키지를-이용한-상호대화식-시각화.html"><i class="fa fa-check"></i><b>5.3</b> <em><code>tkplot</code> 패키지를 이용한 상호대화식 시각화</em></a></li>
+<li class="chapter" data-level="5.4" data-path="다른-네트워크-시각화-방법.html"><a href="다른-네트워크-시각화-방법.html"><i class="fa fa-check"></i><b>5.4</b> <em>다른 네트워크 시각화 방법</em></a></li>
+<li class="chapter" data-level="5.5" data-path="igraph로-2-모드-네트워크-시각화하기.html"><a href="igraph로-2-모드-네트워크-시각화하기.html"><i class="fa fa-check"></i><b>5.5</b> <em>igraph로 2-모드 네트워크 시각화하기</em></a></li>
+<li class="chapter" data-level="" data-path="참고자료.html"><a href="참고자료.html"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html"><i class="fa fa-check"></i><b>6</b> 네트워크과 노드 설명</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="밀도density.html"><a href="밀도density.html"><i class="fa fa-check"></i><b>6.1</b> <em>밀도(Density)</em></a></li>
+<li class="chapter" data-level="6.2" data-path="호혜성reciprocity.html"><a href="호혜성reciprocity.html"><i class="fa fa-check"></i><b>6.2</b> <em>호혜성(Reciprocity)</em></a></li>
+<li class="chapter" data-level="6.3" data-path="이행성transitivity.html"><a href="이행성transitivity.html"><i class="fa fa-check"></i><b>6.3</b> <em>이행성(Transitivity)</em></a></li>
+<li class="chapter" data-level="6.4" data-path="지름diameter.html"><a href="지름diameter.html"><i class="fa fa-check"></i><b>6.4</b> <em>지름(Diameter)</em></a></li>
+<li class="chapter" data-level="6.5" data-path="노드-연결-정도node-degrees.html"><a href="노드-연결-정도node-degrees.html"><i class="fa fa-check"></i><b>6.5</b> <em>노드 연결 정도(Node degrees)</em></a></li>
+<li class="chapter" data-level="6.6" data-path="연결-정도-분포degree-distribution.html"><a href="연결-정도-분포degree-distribution.html"><i class="fa fa-check"></i><b>6.6</b> <em>연결 정도 분포(Degree distribution)</em></a></li>
+<li class="chapter" data-level="6.7" data-path="중심성과-중심화centrality-centralization.html"><a href="중심성과-중심화centrality-centralization.html"><i class="fa fa-check"></i><b>6.7</b> <em>중심성과 중심화(Centrality &amp; centralization)</em></a></li>
+<li class="chapter" data-level="6.8" data-path="허브와-오쏘러티hubs-and-authorities.html"><a href="허브와-오쏘러티hubs-and-authorities.html"><i class="fa fa-check"></i><b>6.8</b> <em>허브와 오쏘러티(Hubs and authorities)</em></a></li>
+<li class="chapter" data-level="" data-path="참고자료-1.html"><a href="참고자료-1.html"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="Distances-and-Paths.html"><a href="Distances-and-Paths.html"><i class="fa fa-check"></i><b>7</b> 거리와 경로(Distances and paths)</a></li>
+<li class="chapter" data-level="8" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html"><i class="fa fa-check"></i><b>8</b> 서브 그룹과 커뮤니티</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="클릭cliques.html"><a href="클릭cliques.html"><i class="fa fa-check"></i><b>8.1</b> <em>클릭(Cliques)</em></a></li>
+<li class="chapter" data-level="8.2" data-path="커뮤니티-발견community-detection.html"><a href="커뮤니티-발견community-detection.html"><i class="fa fa-check"></i><b>8.2</b> <em>커뮤니티 발견(Community detection)</em></a></li>
+<li class="chapter" data-level="" data-path="참고자료-2.html"><a href="참고자료-2.html"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="Assortativity-and-Homophily.html"><a href="Assortativity-and-Homophily.html"><i class="fa fa-check"></i><b>9</b> 동류성과 동질성</a>
+<ul>
+<li class="chapter" data-level="" data-path="참고자료-3.html"><a href="참고자료-3.html"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R을 이용한 네트워크 분석과 시각화</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="에지edge-정점vertex-그리고-네트워크-속성network-attributes" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> <em>에지(Edge), 정점(vertex), 그리고 네트워크 속성(network attributes)</em></h2>
+<p><strong>정점과 에지 접근</strong> :</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="fu">E</span>(g4)        <span class="co"># 개체 g4의 에지들</span></span></code></pre></div>
+<pre><code>## + 4/4 edges from d1032c5 (vertex names):
+## [1] John-&gt;Jim  Jim -&gt;Jack Jim -&gt;Jack John-&gt;John</code></pre>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(g4)        <span class="co"># 개체 g4의 정점들</span></span></code></pre></div>
+<pre><code>## + 7/7 vertices, named, from d1032c5:
+## [1] John     Jim      Jack     Jesse    Janis    Jennifer Justin</code></pre>
+<p>또한 <strong>네트워크 행렬(network matrix)</strong>을 직접 검토할 수 있다 :</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb221-1" aria-hidden="true" tabindex="-1"></a>g4[]</span></code></pre></div>
+<pre><code>## 7 x 7 sparse Matrix of class &quot;dgCMatrix&quot;
+##          John Jim Jack Jesse Janis Jennifer Justin
+## John        1   1    .     .     .        .      .
+## Jim         .   .    2     .     .        .      .
+## Jack        .   .    .     .     .        .      .
+## Jesse       .   .    .     .     .        .      .
+## Janis       .   .    .     .     .        .      .
+## Jennifer    .   .    .     .     .        .      .
+## Justin      .   .    .     .     .        .      .</code></pre>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb223-1" aria-hidden="true" tabindex="-1"></a>g4[<span class="dv">1</span>,]</span></code></pre></div>
+<pre><code>##     John      Jim     Jack    Jesse    Janis Jennifer   Justin 
+##        1        1        0        0        0        0        0</code></pre>
+<p><strong>네트워크 속성, 정점들 그리고 에지들 추가하기</strong> :</p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(g4)<span class="sc">$</span>name            <span class="co"># 네트워크 생성시 자동으로 생성됨.</span></span></code></pre></div>
+<pre><code>## [1] &quot;John&quot;     &quot;Jim&quot;      &quot;Jack&quot;     &quot;Jesse&quot;    &quot;Janis&quot;    &quot;Jennifer&quot; &quot;Justin&quot;</code></pre>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb227-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(g4)<span class="sc">$</span>gender <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>)</span>
+<span id="cb227-2"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb227-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb227-3"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb227-3" aria-hidden="true" tabindex="-1"></a><span class="fu">E</span>(g4)<span class="sc">$</span>type <span class="ot">&lt;-</span> <span class="st">&quot;email&quot;</span> <span class="co"># 에지의 속성 모든 에지에 &quot;email&quot; 할당</span></span>
+<span id="cb227-4"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb227-4" aria-hidden="true" tabindex="-1"></a><span class="fu">E</span>(g4)<span class="sc">$</span>weight <span class="ot">&lt;-</span> <span class="dv">10</span>    <span class="co"># 에지의 가중치, 모든 기존 에지에 10으로 설정</span></span></code></pre></div>
+<p><strong>속성의 확인</strong> :</p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">edge_attr</span>(g4)         <span class="co"># 에지의 속성 확인</span></span></code></pre></div>
+<pre><code>## $type
+## [1] &quot;email&quot; &quot;email&quot; &quot;email&quot; &quot;email&quot;
+## 
+## $weight
+## [1] 10 10 10 10</code></pre>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vertex_attr</span>(g4)       <span class="co"># 정점의 속성 확인</span></span></code></pre></div>
+<pre><code>## $name
+## [1] &quot;John&quot;     &quot;Jim&quot;      &quot;Jack&quot;     &quot;Jesse&quot;    &quot;Janis&quot;    &quot;Jennifer&quot; &quot;Justin&quot;  
+## 
+## $gender
+## [1] &quot;male&quot;   &quot;male&quot;   &quot;male&quot;   &quot;male&quot;   &quot;female&quot; &quot;female&quot; &quot;male&quot;</code></pre>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">graph_attr</span>(g4)        <span class="co"># 네트워크 속성 확인</span></span></code></pre></div>
+<pre><code>## named list()</code></pre>
+<p><strong>속성 설정 방법</strong> (비슷하게 <code>set_edge_attr()</code>, <code>set_vertex_attr()</code>, 등을 사용) :</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb234-1" aria-hidden="true" tabindex="-1"></a>g4 <span class="ot">&lt;-</span> <span class="fu">set_graph_attr</span>(g4, <span class="st">&quot;name&quot;</span>, <span class="st">&quot;Email Network&quot;</span>)</span>
+<span id="cb234-2"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb234-2" aria-hidden="true" tabindex="-1"></a>g4 <span class="ot">&lt;-</span> <span class="fu">set_graph_attr</span>(g4, <span class="st">&quot;something&quot;</span>, <span class="st">&quot;A thing&quot;</span>)</span>
+<span id="cb234-3"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb234-3" aria-hidden="true" tabindex="-1"></a><span class="fu">graph_attr_names</span>(g4)</span></code></pre></div>
+<pre><code>## [1] &quot;name&quot;      &quot;something&quot;</code></pre>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">graph_attr</span>(g4, <span class="st">&quot;name&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Email Network&quot;</code></pre>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">graph_attr</span>(g4)</span></code></pre></div>
+<pre><code>## $name
+## [1] &quot;Email Network&quot;
+## 
+## $something
+## [1] &quot;A thing&quot;</code></pre>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb240-1" aria-hidden="true" tabindex="-1"></a>g4 <span class="ot">&lt;-</span> <span class="fu">delete_graph_attr</span>(g4, <span class="st">&quot;something&quot;</span>)</span>
+<span id="cb240-2"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb240-2" aria-hidden="true" tabindex="-1"></a><span class="fu">graph_attr</span>(g4)</span></code></pre></div>
+<pre><code>## $name
+## [1] &quot;Email Network&quot;</code></pre>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(g4, <span class="at">edge.arrow.size=</span>.<span class="dv">5</span>, <span class="at">vertex.label.color=</span><span class="st">&quot;black&quot;</span>, <span class="at">vertex.label.dist=</span><span class="fl">1.5</span>,</span>
+<span id="cb242-2"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb242-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.color=</span><span class="fu">c</span>( <span class="st">&quot;pink&quot;</span>, <span class="st">&quot;skyblue&quot;</span>)[<span class="dv">1</span><span class="sc">+</span>(<span class="fu">V</span>(g4)<span class="sc">$</span>gender<span class="sc">==</span><span class="st">&quot;male&quot;</span>)] ) </span></code></pre></div>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<p>그래프 <code>g4</code>는 <code>Jim</code>에서 <code>Jack</code>으로 두 개의 에지를 가지고 있으며, <code>John</code>은 자신에게로 향하는 루프(loop)를 가지고 있다. 그래프에서 루프를 제거하고 같은 노드 사이의 복수개의 에지들을 제거하여 그래프를 단순화할 수 있다.</p>
+<p>에지 속성들이 어떻게 결합되는지를 나타내기 위해 <code>edge.attr.comb</code> 을 사용한다. 가능한 옵션은 <code>sum</code>, <code>mean</code>, <code>prod</code> (product), <code>min</code>, <code>max</code>, <code>first</code>/<code>last</code> (첫/마지막 에지 속성 선택) 등을 포함한다. “<code>type = ignore</code>” 옵션은 속성이 무시되거나 제거되어야 함을 의미한다.</p>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb243-1" aria-hidden="true" tabindex="-1"></a>g4s <span class="ot">&lt;-</span> <span class="fu">simplify</span>( g4, <span class="at">remove.multiple =</span> T, <span class="at">remove.loops =</span> F, </span>
+<span id="cb243-2"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb243-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">edge.attr.comb=</span><span class="fu">c</span>(<span class="at">weight=</span><span class="st">&quot;sum&quot;</span>, <span class="at">type=</span><span class="st">&quot;ignore&quot;</span>) )</span>
+<span id="cb243-3"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb243-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(g4s, <span class="at">vertex.label.dist=</span><span class="fl">1.5</span>)</span></code></pre></div>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html#cb244-1" aria-hidden="true" tabindex="-1"></a>g4s</span></code></pre></div>
+<pre><code>## IGRAPH d22669a DNW- 7 3 -- Email Network
+## + attr: name (g/c), name (v/c), gender (v/c), weight (e/n)
+## + edges from d22669a (vertex names):
+## [1] John-&gt;John John-&gt;Jim  Jim -&gt;Jack</code></pre>
+<p>igraph 개체의 설명은 4 가지 글자로 시작한다.</p>
+<ol style="list-style-type: decimal">
+<li><code>D</code> 또는 <code>U</code> : 방향성 또는 무방향성 그래프</li>
+<li><code>N</code> : 명명된 그래프(노드가 <code>name</code> 속성을 가짐)</li>
+<li><code>W</code> : 가중 그래프(에지들이 <code>weight</code> 속성을 가짐)</li>
+<li><code>B</code> : 이분할 (bipartite; two-mode) 그래프(노드들이 <code>type</code> 속성을 가짐)</li>
+</ol>
+<p>그래프에서 (7 5) 와 같은 두 숫자는 노드와 에지의 수를 의미한다. 설명은 또한 노드와 에지의 속성을 나열한다. 예를 들어,</p>
+<ul>
+<li><code>(g/c)</code> - 그래프 수준의 문자 속성</li>
+<li><code>(v/c)</code> - 정점 수준의 문자 속성</li>
+<li><code>(e/n)</code> - 에지 수준의 숫자 속성</li>
+</ul>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="네트워크-생성create-networks.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="특수-그래프specific-graphs와-그래프-모델graph-models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/2-Networks_in_igraph.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>

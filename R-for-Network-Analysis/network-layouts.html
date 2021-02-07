@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5.1 Network layouts | R을 이용한 네트워크 분석과 시각화</title>
+  <meta name="description" content="Katherine Ognyanova의 ‘Network Analysis and Visualization with R’ 세미나 자료를 번역한 것입니다. 번역의 오류는 번역자의 잘못입니다. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5.1 Network layouts | R을 이용한 네트워크 분석과 시각화" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Katherine Ognyanova의 ‘Network Analysis and Visualization with R’ 세미나 자료를 번역한 것입니다. 번역의 오류는 번역자의 잘못입니다. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="Network-Analysis" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5.1 Network layouts | R을 이용한 네트워크 분석과 시각화" />
+  
+  <meta name="twitter:description" content="Katherine Ognyanova의 ‘Network Analysis and Visualization with R’ 세미나 자료를 번역한 것입니다. 번역의 오류는 번역자의 잘못입니다. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Translated by Dae Ho Kim, Mokwon University" />
+
+
+<meta name="date" content="2021-02-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="plotting-parameters.html"/>
+<link rel="next" href="네트워크-시각화-개선.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="/">Home</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Copyright</a></li>
+<li class="chapter" data-level="1" data-path="R-Basics.html"><a href="R-Basics.html"><i class="fa fa-check"></i><b>1</b> R 기초 복습</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="할당assignment.html"><a href="할당assignment.html"><i class="fa fa-check"></i><b>1.1</b> <em>할당(Assignment)</em></a></li>
+<li class="chapter" data-level="1.2" data-path="값의-비교value-comparisons.html"><a href="값의-비교value-comparisons.html"><i class="fa fa-check"></i><b>1.2</b> <em>값의 비교(Value comparisons)</em></a></li>
+<li class="chapter" data-level="1.3" data-path="특별한-상수special-constants.html"><a href="특별한-상수special-constants.html"><i class="fa fa-check"></i><b>1.3</b> <em>특별한 상수(Special constants)</em></a></li>
+<li class="chapter" data-level="1.4" data-path="벡터vectors.html"><a href="벡터vectors.html"><i class="fa fa-check"></i><b>1.4</b> <em>벡터(Vectors)</em></a></li>
+<li class="chapter" data-level="1.5" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>1.5</b> <em>Factors</em></a></li>
+<li class="chapter" data-level="1.6" data-path="행렬과-배열matrces-arrays.html"><a href="행렬과-배열matrces-arrays.html"><i class="fa fa-check"></i><b>1.6</b> <em>행렬과 배열(Matrces &amp; Arrays)</em></a></li>
+<li class="chapter" data-level="1.7" data-path="리스트lists.html"><a href="리스트lists.html"><i class="fa fa-check"></i><b>1.7</b> <em>리스트(Lists)</em></a></li>
+<li class="chapter" data-level="1.8" data-path="데이터-프레임data-frames.html"><a href="데이터-프레임data-frames.html"><i class="fa fa-check"></i><b>1.8</b> <em>데이터 프레임(Data Frames)</em></a></li>
+<li class="chapter" data-level="1.9" data-path="흐름-제어와-반복-구문flow-control-and-loops.html"><a href="흐름-제어와-반복-구문flow-control-and-loops.html"><i class="fa fa-check"></i><b>1.9</b> <em>흐름 제어와 반복 구문(Flow Control and loops)</em></a></li>
+<li class="chapter" data-level="1.10" data-path="r-플롯과-색-지정.html"><a href="r-플롯과-색-지정.html"><i class="fa fa-check"></i><b>1.10</b> <em>R 플롯과 색 지정</em></a></li>
+<li class="chapter" data-level="1.11" data-path="r-문제-해결.html"><a href="r-문제-해결.html"><i class="fa fa-check"></i><b>1.11</b> <em>R 문제 해결</em></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="Networks-in-igraph.html"><a href="Networks-in-igraph.html"><i class="fa fa-check"></i><b>2</b> <code>igraph</code>를 이용한 네트워크</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="네트워크-생성create-networks.html"><a href="네트워크-생성create-networks.html"><i class="fa fa-check"></i><b>2.1</b> <em>네트워크 생성(Create networks)</em></a></li>
+<li class="chapter" data-level="2.2" data-path="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html"><a href="에지edge-정점vertex-그리고-네트워크-속성network-attributes.html"><i class="fa fa-check"></i><b>2.2</b> <em>에지(Edge), 정점(vertex), 그리고 네트워크 속성(network attributes)</em></a></li>
+<li class="chapter" data-level="2.3" data-path="특수-그래프specific-graphs와-그래프-모델graph-models.html"><a href="특수-그래프specific-graphs와-그래프-모델graph-models.html"><i class="fa fa-check"></i><b>2.3</b> <em>특수 그래프(Specific graphs)와 그래프 모델(graph models)</em></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Reading-Network-Data-Files.html"><a href="Reading-Network-Data-Files.html"><i class="fa fa-check"></i><b>3</b> 파일로 부터 네트워크 데이터 읽어오기</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="데이터-세트-1-에지-목록edgelist.html"><a href="데이터-세트-1-에지-목록edgelist.html"><i class="fa fa-check"></i><b>3.1</b> <em>데이터 세트 1: 에지 목록(edgelist)</em></a></li>
+<li class="chapter" data-level="3.2" data-path="데이터-세트-2-인접-행렬adjacent-matrix.html"><a href="데이터-세트-2-인접-행렬adjacent-matrix.html"><i class="fa fa-check"></i><b>3.2</b> <em>데이터 세트 2: 인접 행렬(adjacent matrix)</em></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Turning-Networks-into-Igraph.html"><a href="Turning-Networks-into-Igraph.html"><i class="fa fa-check"></i><b>4</b> 네트워크를 igraph 개체로 변환하기</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="데이터-세트-1.html"><a href="데이터-세트-1.html"><i class="fa fa-check"></i><b>4.1</b> <em>데이터 세트 1</em></a></li>
+<li class="chapter" data-level="4.2" data-path="데이터-세트-2.html"><a href="데이터-세트-2.html"><i class="fa fa-check"></i><b>4.2</b> <em>데이터 세트 2</em></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Plotting-Networks-with-Igraph.html"><a href="Plotting-Networks-with-Igraph.html"><i class="fa fa-check"></i><b>5</b> igraph를 이용한 네트워크 시각화</a>
+<ul>
+<li><a href="plotting-parameters.html#plotting-parameters"><em>Plotting parameters</em></a></li>
+<li class="chapter" data-level="5.1" data-path="network-layouts.html"><a href="network-layouts.html"><i class="fa fa-check"></i><b>5.1</b> <em>Network layouts</em></a></li>
+<li class="chapter" data-level="5.2" data-path="네트워크-시각화-개선.html"><a href="네트워크-시각화-개선.html"><i class="fa fa-check"></i><b>5.2</b> <em>네트워크 시각화 개선</em></a></li>
+<li class="chapter" data-level="5.3" data-path="tkplot-패키지를-이용한-상호대화식-시각화.html"><a href="tkplot-패키지를-이용한-상호대화식-시각화.html"><i class="fa fa-check"></i><b>5.3</b> <em><code>tkplot</code> 패키지를 이용한 상호대화식 시각화</em></a></li>
+<li class="chapter" data-level="5.4" data-path="다른-네트워크-시각화-방법.html"><a href="다른-네트워크-시각화-방법.html"><i class="fa fa-check"></i><b>5.4</b> <em>다른 네트워크 시각화 방법</em></a></li>
+<li class="chapter" data-level="5.5" data-path="igraph로-2-모드-네트워크-시각화하기.html"><a href="igraph로-2-모드-네트워크-시각화하기.html"><i class="fa fa-check"></i><b>5.5</b> <em>igraph로 2-모드 네트워크 시각화하기</em></a></li>
+<li class="chapter" data-level="" data-path="참고자료.html"><a href="참고자료.html"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Network-and-Node-Description.html"><a href="Network-and-Node-Description.html"><i class="fa fa-check"></i><b>6</b> 네트워크과 노드 설명</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="밀도density.html"><a href="밀도density.html"><i class="fa fa-check"></i><b>6.1</b> <em>밀도(Density)</em></a></li>
+<li class="chapter" data-level="6.2" data-path="호혜성reciprocity.html"><a href="호혜성reciprocity.html"><i class="fa fa-check"></i><b>6.2</b> <em>호혜성(Reciprocity)</em></a></li>
+<li class="chapter" data-level="6.3" data-path="이행성transitivity.html"><a href="이행성transitivity.html"><i class="fa fa-check"></i><b>6.3</b> <em>이행성(Transitivity)</em></a></li>
+<li class="chapter" data-level="6.4" data-path="지름diameter.html"><a href="지름diameter.html"><i class="fa fa-check"></i><b>6.4</b> <em>지름(Diameter)</em></a></li>
+<li class="chapter" data-level="6.5" data-path="노드-연결-정도node-degrees.html"><a href="노드-연결-정도node-degrees.html"><i class="fa fa-check"></i><b>6.5</b> <em>노드 연결 정도(Node degrees)</em></a></li>
+<li class="chapter" data-level="6.6" data-path="연결-정도-분포degree-distribution.html"><a href="연결-정도-분포degree-distribution.html"><i class="fa fa-check"></i><b>6.6</b> <em>연결 정도 분포(Degree distribution)</em></a></li>
+<li class="chapter" data-level="6.7" data-path="중심성과-중심화centrality-centralization.html"><a href="중심성과-중심화centrality-centralization.html"><i class="fa fa-check"></i><b>6.7</b> <em>중심성과 중심화(Centrality &amp; centralization)</em></a></li>
+<li class="chapter" data-level="6.8" data-path="허브와-오쏘러티hubs-and-authorities.html"><a href="허브와-오쏘러티hubs-and-authorities.html"><i class="fa fa-check"></i><b>6.8</b> <em>허브와 오쏘러티(Hubs and authorities)</em></a></li>
+<li class="chapter" data-level="" data-path="참고자료-1.html"><a href="참고자료-1.html"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="Distances-and-Paths.html"><a href="Distances-and-Paths.html"><i class="fa fa-check"></i><b>7</b> 거리와 경로(Distances and paths)</a></li>
+<li class="chapter" data-level="8" data-path="Subgroups-and-Communities.html"><a href="Subgroups-and-Communities.html"><i class="fa fa-check"></i><b>8</b> 서브 그룹과 커뮤니티</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="클릭cliques.html"><a href="클릭cliques.html"><i class="fa fa-check"></i><b>8.1</b> <em>클릭(Cliques)</em></a></li>
+<li class="chapter" data-level="8.2" data-path="커뮤니티-발견community-detection.html"><a href="커뮤니티-발견community-detection.html"><i class="fa fa-check"></i><b>8.2</b> <em>커뮤니티 발견(Community detection)</em></a></li>
+<li class="chapter" data-level="" data-path="참고자료-2.html"><a href="참고자료-2.html"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="Assortativity-and-Homophily.html"><a href="Assortativity-and-Homophily.html"><i class="fa fa-check"></i><b>9</b> 동류성과 동질성</a>
+<ul>
+<li class="chapter" data-level="" data-path="참고자료-3.html"><a href="참고자료-3.html"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R을 이용한 네트워크 분석과 시각화</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="network-layouts" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> <em>Network layouts</em></h2>
+<p>네트워크 레이아웃(Network layouts)은 네트워크 내에 있는 각 노드에 대한 좌표를 반환하는 단순 알고리듬이다.</p>
+<p>레이아웃을 이해하기 위해 약간 규모가 큰 80개 노드로 구성된 그래프를 생성하기로 한다. 사전에 설정된 선호도 수준에 따라 하나의 노드에서 시작해서 더 많은 노드와 에지를 추가하는 단순 그래프를 생성하는 <code>sample_pa()</code> 함수를 사용한다(Barabasi-Albert model).</p>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="network-layouts.html#cb329-1" aria-hidden="true" tabindex="-1"></a>net.bg <span class="ot">&lt;-</span> <span class="fu">sample_pa</span>(<span class="dv">80</span>) </span>
+<span id="cb329-2"><a href="network-layouts.html#cb329-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb329-3"><a href="network-layouts.html#cb329-3" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(net.bg)<span class="sc">$</span>size <span class="ot">&lt;-</span> <span class="dv">8</span></span>
+<span id="cb329-4"><a href="network-layouts.html#cb329-4" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(net.bg)<span class="sc">$</span>frame.color <span class="ot">&lt;-</span> <span class="st">&quot;white&quot;</span></span>
+<span id="cb329-5"><a href="network-layouts.html#cb329-5" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(net.bg)<span class="sc">$</span>color <span class="ot">&lt;-</span> <span class="st">&quot;orange&quot;</span></span>
+<span id="cb329-6"><a href="network-layouts.html#cb329-6" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(net.bg)<span class="sc">$</span>label <span class="ot">&lt;-</span> <span class="st">&quot;&quot;</span> </span>
+<span id="cb329-7"><a href="network-layouts.html#cb329-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb329-8"><a href="network-layouts.html#cb329-8" aria-hidden="true" tabindex="-1"></a><span class="fu">E</span>(net.bg)<span class="sc">$</span>arrow.mode <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb329-9"><a href="network-layouts.html#cb329-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb329-10"><a href="network-layouts.html#cb329-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg)</span></code></pre></div>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-90-1.png" width="672" /></p>
+<p><code>plot()</code> 함수 안에 레이아웃을 설정할 수 있다:</p>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="network-layouts.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>layout_randomly)</span></code></pre></div>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
+<p>또는 먼저 노드의 좌표를 계산할 수 있다 :</p>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="network-layouts.html#cb331-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">layout_in_circle</span>(net.bg)</span>
+<span id="cb331-2"><a href="network-layouts.html#cb331-2" aria-hidden="true" tabindex="-1"></a>l</span></code></pre></div>
+<pre><code>##                [,1]          [,2]
+##  [1,]  1.000000e+00  0.000000e+00
+##  [2,]  9.969173e-01  7.845910e-02
+##  [3,]  9.876883e-01  1.564345e-01
+##  [4,]  9.723699e-01  2.334454e-01
+##  [5,]  9.510565e-01  3.090170e-01
+##  [6,]  9.238795e-01  3.826834e-01
+##  [7,]  8.910065e-01  4.539905e-01
+##  [8,]  8.526402e-01  5.224986e-01
+##  [9,]  8.090170e-01  5.877853e-01
+## [10,]  7.604060e-01  6.494480e-01
+## [11,]  7.071068e-01  7.071068e-01
+## [12,]  6.494480e-01  7.604060e-01
+## [13,]  5.877853e-01  8.090170e-01
+## [14,]  5.224986e-01  8.526402e-01
+## [15,]  4.539905e-01  8.910065e-01
+## [16,]  3.826834e-01  9.238795e-01
+## [17,]  3.090170e-01  9.510565e-01
+## [18,]  2.334454e-01  9.723699e-01
+## [19,]  1.564345e-01  9.876883e-01
+## [20,]  7.845910e-02  9.969173e-01
+## [21,]  6.123032e-17  1.000000e+00
+## [22,] -7.845910e-02  9.969173e-01
+## [23,] -1.564345e-01  9.876883e-01
+## [24,] -2.334454e-01  9.723699e-01
+## [25,] -3.090170e-01  9.510565e-01
+## [26,] -3.826834e-01  9.238795e-01
+## [27,] -4.539905e-01  8.910065e-01
+## [28,] -5.224986e-01  8.526402e-01
+## [29,] -5.877853e-01  8.090170e-01
+## [30,] -6.494480e-01  7.604060e-01
+## [31,] -7.071068e-01  7.071068e-01
+## [32,] -7.604060e-01  6.494480e-01
+## [33,] -8.090170e-01  5.877853e-01
+## [34,] -8.526402e-01  5.224986e-01
+## [35,] -8.910065e-01  4.539905e-01
+## [36,] -9.238795e-01  3.826834e-01
+## [37,] -9.510565e-01  3.090170e-01
+## [38,] -9.723699e-01  2.334454e-01
+## [39,] -9.876883e-01  1.564345e-01
+## [40,] -9.969173e-01  7.845910e-02
+## [41,] -1.000000e+00  1.224606e-16
+## [42,] -9.969173e-01 -7.845910e-02
+## [43,] -9.876883e-01 -1.564345e-01
+## [44,] -9.723699e-01 -2.334454e-01
+## [45,] -9.510565e-01 -3.090170e-01
+## [46,] -9.238795e-01 -3.826834e-01
+## [47,] -8.910065e-01 -4.539905e-01
+## [48,] -8.526402e-01 -5.224986e-01
+## [49,] -8.090170e-01 -5.877853e-01
+## [50,] -7.604060e-01 -6.494480e-01
+## [51,] -7.071068e-01 -7.071068e-01
+## [52,] -6.494480e-01 -7.604060e-01
+## [53,] -5.877853e-01 -8.090170e-01
+## [54,] -5.224986e-01 -8.526402e-01
+## [55,] -4.539905e-01 -8.910065e-01
+## [56,] -3.826834e-01 -9.238795e-01
+## [57,] -3.090170e-01 -9.510565e-01
+## [58,] -2.334454e-01 -9.723699e-01
+## [59,] -1.564345e-01 -9.876883e-01
+## [60,] -7.845910e-02 -9.969173e-01
+## [61,] -1.836910e-16 -1.000000e+00
+## [62,]  7.845910e-02 -9.969173e-01
+## [63,]  1.564345e-01 -9.876883e-01
+## [64,]  2.334454e-01 -9.723699e-01
+## [65,]  3.090170e-01 -9.510565e-01
+## [66,]  3.826834e-01 -9.238795e-01
+## [67,]  4.539905e-01 -8.910065e-01
+## [68,]  5.224986e-01 -8.526402e-01
+## [69,]  5.877853e-01 -8.090170e-01
+## [70,]  6.494480e-01 -7.604060e-01
+## [71,]  7.071068e-01 -7.071068e-01
+## [72,]  7.604060e-01 -6.494480e-01
+## [73,]  8.090170e-01 -5.877853e-01
+## [74,]  8.526402e-01 -5.224986e-01
+## [75,]  8.910065e-01 -4.539905e-01
+## [76,]  9.238795e-01 -3.826834e-01
+## [77,]  9.510565e-01 -3.090170e-01
+## [78,]  9.723699e-01 -2.334454e-01
+## [79,]  9.876883e-01 -1.564345e-01
+## [80,]  9.969173e-01 -7.845910e-02</code></pre>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="network-layouts.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>l)</span></code></pre></div>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-92-1.png" width="672" /></p>
+<p><code>l</code> 은 그래프에 있는 N개 노드에 대하여 단순히 x, y 좌표로 구성되는 (N x 2) 행렬이다. 쉽게 생성할 수 있다 :</p>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="network-layouts.html#cb334-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">vcount</span>(net.bg), <span class="fu">c</span>(<span class="dv">1</span>, <span class="fu">vcount</span>(net.bg)<span class="sc">:</span><span class="dv">2</span>))</span>
+<span id="cb334-2"><a href="network-layouts.html#cb334-2" aria-hidden="true" tabindex="-1"></a>l</span></code></pre></div>
+<pre><code>##       [,1] [,2]
+##  [1,]    1    1
+##  [2,]    2   80
+##  [3,]    3   79
+##  [4,]    4   78
+##  [5,]    5   77
+##  [6,]    6   76
+##  [7,]    7   75
+##  [8,]    8   74
+##  [9,]    9   73
+## [10,]   10   72
+## [11,]   11   71
+## [12,]   12   70
+## [13,]   13   69
+## [14,]   14   68
+## [15,]   15   67
+## [16,]   16   66
+## [17,]   17   65
+## [18,]   18   64
+## [19,]   19   63
+## [20,]   20   62
+## [21,]   21   61
+## [22,]   22   60
+## [23,]   23   59
+## [24,]   24   58
+## [25,]   25   57
+## [26,]   26   56
+## [27,]   27   55
+## [28,]   28   54
+## [29,]   29   53
+## [30,]   30   52
+## [31,]   31   51
+## [32,]   32   50
+## [33,]   33   49
+## [34,]   34   48
+## [35,]   35   47
+## [36,]   36   46
+## [37,]   37   45
+## [38,]   38   44
+## [39,]   39   43
+## [40,]   40   42
+## [41,]   41   41
+## [42,]   42   40
+## [43,]   43   39
+## [44,]   44   38
+## [45,]   45   37
+## [46,]   46   36
+## [47,]   47   35
+## [48,]   48   34
+## [49,]   49   33
+## [50,]   50   32
+## [51,]   51   31
+## [52,]   52   30
+## [53,]   53   29
+## [54,]   54   28
+## [55,]   55   27
+## [56,]   56   26
+## [57,]   57   25
+## [58,]   58   24
+## [59,]   59   23
+## [60,]   60   22
+## [61,]   61   21
+## [62,]   62   20
+## [63,]   63   19
+## [64,]   64   18
+## [65,]   65   17
+## [66,]   66   16
+## [67,]   67   15
+## [68,]   68   14
+## [69,]   69   13
+## [70,]   70   12
+## [71,]   71   11
+## [72,]   72   10
+## [73,]   73    9
+## [74,]   74    8
+## [75,]   75    7
+## [76,]   76    6
+## [77,]   77    5
+## [78,]   78    4
+## [79,]   79    3
+## [80,]   80    2</code></pre>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="network-layouts.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>l)</span></code></pre></div>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-93-1.png" width="672" /></p>
+<p>사전에 네트워크 레이아웃을 설정하고 이를 적용하는 것도 가능하다. 또한 igraph 패키지에 내장된 네트워크 레이아웃 함수는 다음과 같다.</p>
+<ul>
+<li><code>layout.random()</code> : 임의 네트워크 배치</li>
+<li><code>layout.circle()</code> : 원형태 네트워크 배치</li>
+<li><code>layout.sphere()</code> : 구형태 네트워크 배치</li>
+</ul>
+<p>이 레이아웃은 단지 예를 든 것이며 크게 도움이 되는 것은 아니다. 다행히도 igraph는 다음과 같은 다양한 내장된 레이아웃을 가지고 있다 :</p>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="network-layouts.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 정점을 무작위로 배치하기</span></span>
+<span id="cb337-2"><a href="network-layouts.html#cb337-2" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">layout_randomly</span>(net.bg)</span>
+<span id="cb337-3"><a href="network-layouts.html#cb337-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>l)</span></code></pre></div>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="network-layouts.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 원형 레이아웃</span></span>
+<span id="cb338-2"><a href="network-layouts.html#cb338-2" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">layout_in_circle</span>(net.bg)</span>
+<span id="cb338-3"><a href="network-layouts.html#cb338-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>l)</span></code></pre></div>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="network-layouts.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3D 구형 레이아웃</span></span>
+<span id="cb339-2"><a href="network-layouts.html#cb339-2" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">layout_on_sphere</span>(net.bg)</span>
+<span id="cb339-3"><a href="network-layouts.html#cb339-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>l)</span></code></pre></div>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
+<ul>
+<li>그 밖의 레이아웃 함수들 :
+<code>layout_as_bipartite()</code>, <code>layout_as_star()</code>, <code>layout_as_tree()</code>, <code>layout_in_circle()</code>, <code>layout_nicely()</code>, <code>layout_on_grid()</code>, <code>layout_on_sphere()</code>, <code>layout_randomly()</code>, <code>layout_with_dh()</code>, <code>layout_with_fr()</code>, <code>layout_with_gem()</code>, <code>layout_with_graphopt()</code>, <code>layout_with_kk()</code>, <code>layout_with_lgl()</code>, <code>layout_with_mds()</code>, <code>layout_with_sugiyama()</code></li>
+</ul>
+<p>심미적으로 보기 좋은 네트워크 그래프를 얻기 위해 많은 알고리즘이 제안되었고, Fruchterman-Reingold 알고리즘을 비롯한 다양한 알고리즘이 존재한다. 물리학에서 가져온 스프링, 힘 등의 개념을 노드와 엣지에 적용하여 컴퓨터의 도움을 얻어 데이터가 크지 않은 경우 빠른 시간내에 시각화가 가능하다.</p>
+<p>Fruchterman-Reingold 알고리즘인 <code>layout_with_fr()</code> 함수는 심미적으로 보기 좋은 네트워크 그래프를 위한 레이아웃 알고리즘 중의 하나이다. Force-directed 네트워크 배치 알고리즘은 에지 길이가 비슷하고, 엣지가 가능하면 서로 거의 겹치지 않는 그래프를 생성하고자 한다. 이는 물리시스템으로 그래프를 모의시험한다. 노드는 서로 가까워지면 서로 밀어내는 성질을 갖는 전기적 성격을 갖는 입자이며, 에지는 연결된 노들들을 서로 가깝게 끌어들이는 스피링처럼 동작한다.</p>
+<p>결과적으로 노드는 시각화 평면에 골고루 분산되어 위치하게 되고, 더 많은 연결점을 갖는 노드는 서로 더 가까이 위치하게 된다는 점에서 직관적이다. 이런 유형의 알고리즘이 갖는 단점은 실행 시간에 오래 걸리며, 따라서 ~ 1,000 개보다 큰 노드를 갖는 그래프에는 잘 사용되지 않는다. 일부 모수를 조정해서 네트워크 그래프를 조정하는 것도 가능하다.</p>
+<ul>
+<li><code>area</code> : 기본 설정값으로 노드 제곱</li>
+<li><code>repulserad</code> : 밀어내는 반경</li>
+<li><code>weight</code> : 노드 사이 끌림을 증대</li>
+</ul>
+<p>예를 들어, <code>weight</code> 인수를 이용하여 강한 에지로 연결되는 노드 사이의 매력도를 증가시킬 수 있다.</p>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="network-layouts.html#cb340-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">layout_with_fr</span>(net.bg)</span>
+<span id="cb340-2"><a href="network-layouts.html#cb340-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>l)</span></code></pre></div>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-97-1.png" width="672" /></p>
+<p>이 레이아웃은 확정적이지 않다는 것을 알 수 있다. 시행할 때마다 결과는 약간씩 다를 것이다. 레이아웃을 변수 <code>l</code>에 저장하면 여러분 동일한 결과를 가질 수 있게 해 준다. 즉, 그래프의 시간에 따른 진화를 시각화하거나, 또는 서로 다른 관계성을 시각화하고자 할 때 도움이 될 수 있으며, 노드들이 여러 플롯에서 같은 장소에 위치하게 하고자 할 때도 도움이 된다.</p>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="network-layouts.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))     <span class="co"># 2행 2열로 4개의 그림 그리기</span></span>
+<span id="cb341-2"><a href="network-layouts.html#cb341-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb341-3"><a href="network-layouts.html#cb341-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>layout_with_fr)   <span class="co"># </span></span>
+<span id="cb341-4"><a href="network-layouts.html#cb341-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>layout_with_fr)   <span class="co"># 위의 레이아웃과 다름</span></span>
+<span id="cb341-5"><a href="network-layouts.html#cb341-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>l)                <span class="co">#</span></span>
+<span id="cb341-6"><a href="network-layouts.html#cb341-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>l)                <span class="co"># 위의 레이아웃과 같음</span></span></code></pre></div>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="network-layouts.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<pre><code>## null device 
+##           1</code></pre>
+<p>기본 값으로, 플롯의 좌표들은 <code>x</code>와 <code>y</code> 모두 [-1, 1] 구간으로 재설정된다. 이 구간은 <code>rescale = FALSE</code> 파라미터로 변경할 수 있으며, 좌표에 상수 값을 곱해서도 수작업으로 재설정할 수 있다.</p>
+<p>또한 <code>norm_coords()</code> 함수를 이용하여 우리가 원하는 경계로 플롯을 정규화할 수도 있다.</p>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="network-layouts.html#cb344-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">layout_with_fr</span>(net.bg)</span>
+<span id="cb344-2"><a href="network-layouts.html#cb344-2" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">norm_coords</span>(l, <span class="at">ymin=</span><span class="sc">-</span><span class="dv">1</span>, <span class="at">ymax=</span><span class="dv">1</span>, <span class="at">xmin=</span><span class="sc">-</span><span class="dv">1</span>, <span class="at">xmax=</span><span class="dv">1</span>)</span>
+<span id="cb344-3"><a href="network-layouts.html#cb344-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb344-4"><a href="network-layouts.html#cb344-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb344-5"><a href="network-layouts.html#cb344-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">rescale=</span>F, <span class="at">layout=</span>l<span class="sc">*</span><span class="fl">0.4</span>)</span>
+<span id="cb344-6"><a href="network-layouts.html#cb344-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">rescale=</span>F, <span class="at">layout=</span>l<span class="sc">*</span><span class="fl">0.6</span>)</span>
+<span id="cb344-7"><a href="network-layouts.html#cb344-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">rescale=</span>F, <span class="at">layout=</span>l<span class="sc">*</span><span class="fl">0.8</span>)</span>
+<span id="cb344-8"><a href="network-layouts.html#cb344-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">rescale=</span>F, <span class="at">layout=</span>l<span class="sc">*</span><span class="fl">1.0</span>)</span></code></pre></div>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="network-layouts.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<pre><code>## null device 
+##           1</code></pre>
+<p><code>fruchterman.reingold.grid()</code> 함수는 <code>fruchterman.reingold()</code>와 유사하지만 속도가 더 빠르다.</p>
+<p>또 다른 알고리즘으로 Kamada Kawai 알고리즘인 <code>layout_with_kk()</code> 함수가 있다. Fruchterman Reingold 처럼 스프링 시스템에서의 에너지를 최소화하고자 한다.</p>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="network-layouts.html#cb347-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">layout_with_kk</span>(net.bg)</span>
+<span id="cb347-2"><a href="network-layouts.html#cb347-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>l)</span></code></pre></div>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
+<p>LGL 알고리즘인 <code>layout_with_lgl()</code> 함수는 대규모(large)의 연결된 그래프를 의미한다. 여기에서 레이아웃을 중심에 위치하는 root를 지정할 수 있다.</p>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="network-layouts.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(net.bg, <span class="at">layout=</span>layout_with_lgl)</span></code></pre></div>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
+<p><code>igraph</code> 패키지에서 이용가능한 모든 레이아웃들은 다음과 같이 살펴볼 수 있다 :</p>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="network-layouts.html#cb349-1" aria-hidden="true" tabindex="-1"></a>? igraph<span class="sc">::</span>layout_</span>
+<span id="cb349-2"><a href="network-layouts.html#cb349-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb349-3"><a href="network-layouts.html#cb349-3" aria-hidden="true" tabindex="-1"></a>layouts <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;^layout_&quot;</span>, <span class="fu">ls</span>(<span class="st">&quot;package:igraph&quot;</span>), <span class="at">value=</span><span class="cn">TRUE</span>)[<span class="sc">-</span><span class="dv">1</span>] </span>
+<span id="cb349-4"><a href="network-layouts.html#cb349-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb349-5"><a href="network-layouts.html#cb349-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 우리의 그래프에 적용되지 않는 레이아웃 제거</span></span>
+<span id="cb349-6"><a href="network-layouts.html#cb349-6" aria-hidden="true" tabindex="-1"></a>layouts <span class="ot">&lt;-</span> layouts[<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">&quot;bipartite|merge|norm|sugiyama|tree&quot;</span>, layouts)]</span>
+<span id="cb349-7"><a href="network-layouts.html#cb349-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb349-8"><a href="network-layouts.html#cb349-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>), <span class="at">mar=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb349-9"><a href="network-layouts.html#cb349-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (layout <span class="cf">in</span> layouts) {</span>
+<span id="cb349-10"><a href="network-layouts.html#cb349-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(layout)</span>
+<span id="cb349-11"><a href="network-layouts.html#cb349-11" aria-hidden="true" tabindex="-1"></a>  l <span class="ot">&lt;-</span> <span class="fu">do.call</span>(layout, <span class="fu">list</span>(net)) </span>
+<span id="cb349-12"><a href="network-layouts.html#cb349-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(net, <span class="at">edge.arrow.mode=</span><span class="dv">0</span>, <span class="at">layout=</span>l, <span class="at">main=</span>layout) </span>
+<span id="cb349-13"><a href="network-layouts.html#cb349-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;layout_as_star&quot;</code></pre>
+<pre><code>## [1] &quot;layout_components&quot;</code></pre>
+<pre><code>## [1] &quot;layout_in_circle&quot;</code></pre>
+<pre><code>## [1] &quot;layout_nicely&quot;</code></pre>
+<pre><code>## [1] &quot;layout_on_grid&quot;</code></pre>
+<pre><code>## [1] &quot;layout_on_sphere&quot;</code></pre>
+<pre><code>## [1] &quot;layout_randomly&quot;</code></pre>
+<pre><code>## [1] &quot;layout_with_dh&quot;</code></pre>
+<pre><code>## [1] &quot;layout_with_drl&quot;</code></pre>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
+<pre><code>## [1] &quot;layout_with_fr&quot;</code></pre>
+<pre><code>## [1] &quot;layout_with_gem&quot;</code></pre>
+<pre><code>## [1] &quot;layout_with_graphopt&quot;</code></pre>
+<pre><code>## [1] &quot;layout_with_kk&quot;</code></pre>
+<pre><code>## [1] &quot;layout_with_lgl&quot;</code></pre>
+<pre><code>## [1] &quot;layout_with_mds&quot;</code></pre>
+<p><img src="Network-Analysis_files/figure-html/unnamed-chunk-102-2.png" width="672" /></p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="plotting-parameters.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="네트워크-시각화-개선.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/5-Plotting_Networks_with_igraph.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>
