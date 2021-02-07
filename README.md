@@ -21,7 +21,7 @@
 
 ### Data Visualization
 
-- [Data Visualization](http://misdb.github.io/R/R/Data-Visualization/index.html)
+- [Data Visualization](http://misdb.github.io/R/Data-Visualization/index.html)
 - [19th Presidential Vote](http://misdb.github.io/R/GGMAP_19th_Presidential_Vote)
 - [Bus Information and Real-time Location of Bus in Seoul](http://misdb.github.io/R/BusRoute_Seoul/index.html)
 - [Bus Information and Real-time Location of Bus in Daejeon](http://misdb.github.io/R/BusRoute_Daejeon/index.html)
