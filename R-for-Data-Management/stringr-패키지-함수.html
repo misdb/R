@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>11.4 stringr 패키지 함수 | tidyverse를 이용한 데이터 관리</title>
+  <meta name="description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="11.4 stringr 패키지 함수 | tidyverse를 이용한 데이터 관리" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="11.4 stringr 패키지 함수 | tidyverse를 이용한 데이터 관리" />
+  
+  <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Dae Ho Kim" />
+
+
+<meta name="date" content="2021-02-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="문자-벡터의-분할.html"/>
+
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.17/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
+<script src="libs/str_view-binding-1.4.0/str_view.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="/">Home</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>tidyverse를 이용한 데이터 관리</a></li>
+<li class="chapter" data-level="" data-path="서론.html"><a href="서론.html"><i class="fa fa-check"></i>서론</a></li>
+<li class="chapter" data-level="1" data-path="data-import-export.html"><a href="data-import-export.html"><i class="fa fa-check"></i><b>1</b> 데이터 불러오기와 저장하기</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="패키지-설치하고-불러오기.html"><a href="패키지-설치하고-불러오기.html"><i class="fa fa-check"></i><b>1.1</b> 패키지 설치하고 불러오기</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="패키지-설치하고-불러오기.html"><a href="패키지-설치하고-불러오기.html#패키지-설치하기"><i class="fa fa-check"></i><b>1.1.1</b> 패키지 설치하기</a></li>
+<li class="chapter" data-level="1.1.2" data-path="패키지-설치하고-불러오기.html"><a href="패키지-설치하고-불러오기.html#패키지-불러오기"><i class="fa fa-check"></i><b>1.1.2</b> 패키지 불러오기</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html"><i class="fa fa-check"></i><b>1.2</b> 데이터 불러오기</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#관련-함수"><i class="fa fa-check"></i><b>1.2.1</b> 관련 함수</a></li>
+<li class="chapter" data-level="1.2.2" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#파일-경로-지정"><i class="fa fa-check"></i><b>1.2.2</b> 파일 경로 지정</a></li>
+<li class="chapter" data-level="1.2.3" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#다른-인수들"><i class="fa fa-check"></i><b>1.2.3</b> 다른 인수들</a></li>
+<li class="chapter" data-level="1.2.4" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#read_csv의-예"><i class="fa fa-check"></i><b>1.2.4</b> <code>read_csv()</code>의 예</a></li>
+<li class="chapter" data-level="1.2.5" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#read_csv2의-예"><i class="fa fa-check"></i><b>1.2.5</b> <code>read_csv2()</code>의 예</a></li>
+<li class="chapter" data-level="1.2.6" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#read_delim의-예"><i class="fa fa-check"></i><b>1.2.6</b> <code>read_delim()</code>의 예</a></li>
+<li class="chapter" data-level="1.2.7" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#read_fwf의-예"><i class="fa fa-check"></i><b>1.2.7</b> <code>read_fwf()</code>의 예</a></li>
+<li class="chapter" data-level="1.2.8" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#read_tsv의-예"><i class="fa fa-check"></i><b>1.2.8</b> read_tsv()의 예</a></li>
+<li class="chapter" data-level="1.2.9" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#한글-파일-불러오기"><i class="fa fa-check"></i><b>1.2.9</b> 한글 파일 불러오기</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="벡터-파싱.html"><a href="벡터-파싱.html"><i class="fa fa-check"></i><b>1.3</b> 벡터 파싱</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="벡터-파싱.html"><a href="벡터-파싱.html#파싱-함수"><i class="fa fa-check"></i><b>1.3.1</b> 파싱 함수</a></li>
+<li class="chapter" data-level="1.3.2" data-path="벡터-파싱.html"><a href="벡터-파싱.html#문자형-벡터의-변환"><i class="fa fa-check"></i><b>1.3.2</b> 문자형 벡터의 변환</a></li>
+<li class="chapter" data-level="1.3.3" data-path="벡터-파싱.html"><a href="벡터-파싱.html#팩터형-변환"><i class="fa fa-check"></i><b>1.3.3</b> 팩터형 변환</a></li>
+<li class="chapter" data-level="1.3.4" data-path="벡터-파싱.html"><a href="벡터-파싱.html#날짜형-날짜-시간형-시간형-파싱"><i class="fa fa-check"></i><b>1.3.4</b> 날짜형, 날짜-시간형, 시간형 파싱</a></li>
+<li class="chapter" data-level="1.3.5" data-path="벡터-파싱.html"><a href="벡터-파싱.html#숫자형-벡터의-변환"><i class="fa fa-check"></i><b>1.3.5</b> 숫자형 벡터의 변환</a></li>
+<li class="chapter" data-level="" data-path="벡터-파싱.html"><a href="벡터-파싱.html#연습문제-2"><i class="fa fa-check"></i>연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="파일-파싱하기.html"><a href="파일-파싱하기.html"><i class="fa fa-check"></i><b>1.4</b> 파일 파싱하기</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="파일-파싱하기.html"><a href="파일-파싱하기.html#전략"><i class="fa fa-check"></i><b>1.4.1</b> 전략</a></li>
+<li class="chapter" data-level="1.4.2" data-path="파일-파싱하기.html"><a href="파일-파싱하기.html#문제점"><i class="fa fa-check"></i><b>1.4.2</b> 문제점</a></li>
+<li class="chapter" data-level="1.4.3" data-path="파일-파싱하기.html"><a href="파일-파싱하기.html#문제-해결-전략"><i class="fa fa-check"></i><b>1.4.3</b> 문제 해결 전략</a></li>
+<li class="chapter" data-level="1.4.4" data-path="파일-파싱하기.html"><a href="파일-파싱하기.html#기타-전략"><i class="fa fa-check"></i><b>1.4.4</b> 기타 전략</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="data-export.html"><a href="data-export.html"><i class="fa fa-check"></i><b>1.5</b> 데이터 저장하기</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="data-export.html"><a href="data-export.html#write_csv"><i class="fa fa-check"></i><b>1.5.1</b> <code>write_csv()</code></a></li>
+<li class="chapter" data-level="1.5.2" data-path="data-export.html"><a href="data-export.html#write_rds"><i class="fa fa-check"></i><b>1.5.2</b> <code>write_rds()</code></a></li>
+<li class="chapter" data-level="1.5.3" data-path="data-export.html"><a href="data-export.html#write_feather"><i class="fa fa-check"></i><b>1.5.3</b> <code>write_feather()</code></a></li>
+<li class="chapter" data-level="1.5.4" data-path="data-export.html"><a href="data-export.html#read_csv와-read_rds의-비교"><i class="fa fa-check"></i><b>1.5.4</b> <code>read_csv()</code>와 <code>read_rds()</code>의 비교</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html"><i class="fa fa-check"></i><b>2</b> 데이터 프레임, 티블 그리고 팩터</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="dataframe.html"><a href="dataframe.html"><i class="fa fa-check"></i><b>2.1</b> 데이터 프레임</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임의-생성"><i class="fa fa-check"></i><b>2.1.1</b> 데이터 프레임의 생성</a></li>
+<li class="chapter" data-level="2.1.2" data-path="dataframe.html"><a href="dataframe.html#행열-결합에-의한-데이터-프레임-생성하기"><i class="fa fa-check"></i><b>2.1.2</b> 행/열 결합에 의한 데이터 프레임 생성하기</a></li>
+<li class="chapter" data-level="2.1.3" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임의-구조-확인"><i class="fa fa-check"></i><b>2.1.3</b> 데이터 프레임의 구조 확인</a></li>
+<li class="chapter" data-level="2.1.4" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임의-데이터-확인"><i class="fa fa-check"></i><b>2.1.4</b> 데이터 프레임의 데이터 확인</a></li>
+<li class="chapter" data-level="2.1.5" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임의-통계적-요약-정보"><i class="fa fa-check"></i><b>2.1.5</b> 데이터 프레임의 통계적 요약 정보</a></li>
+<li class="chapter" data-level="2.1.6" data-path="dataframe.html"><a href="dataframe.html#iris-데이터-세트의-예"><i class="fa fa-check"></i><b>2.1.6</b> <code>iris</code> 데이터 세트의 예</a></li>
+<li class="chapter" data-level="2.1.7" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임의-행열의-이름-지정하기"><i class="fa fa-check"></i><b>2.1.7</b> 데이터 프레임의 행/열의 이름 지정하기</a></li>
+<li class="chapter" data-level="2.1.8" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임의-데이터에-접근하기"><i class="fa fa-check"></i><b>2.1.8</b> 데이터 프레임의 데이터에 접근하기</a></li>
+<li class="chapter" data-level="" data-path="dataframe.html"><a href="dataframe.html#연습문제-3"><i class="fa fa-check"></i>연습문제</a></li>
+<li class="chapter" data-level="2.1.9" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임에-행열-추가하기"><i class="fa fa-check"></i><b>2.1.9</b> 데이터 프레임에 행/열 추가하기</a></li>
+<li class="chapter" data-level="2.1.10" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임의-행열-삭제"><i class="fa fa-check"></i><b>2.1.10</b> 데이터 프레임의 행/열 삭제</a></li>
+<li class="chapter" data-level="2.1.11" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임-컬럼의-데이터-타입-변환"><i class="fa fa-check"></i><b>2.1.11</b> 데이터 프레임 컬럼의 데이터 타입 변환</a></li>
+<li class="chapter" data-level="2.1.12" data-path="dataframe.html"><a href="dataframe.html#연습문제-4"><i class="fa fa-check"></i><b>2.1.12</b> 연습문제</a></li>
+<li class="chapter" data-level="2.1.13" data-path="dataframe.html"><a href="dataframe.html#실습-과제"><i class="fa fa-check"></i><b>2.1.13</b> 실습 과제</a></li>
+<li class="chapter" data-level="2.1.14" data-path="dataframe.html"><a href="dataframe.html#apply-함수-이해하기"><i class="fa fa-check"></i><b>2.1.14</b> <code>apply()</code> 함수 이해하기</a></li>
+<li class="chapter" data-level="2.1.15" data-path="dataframe.html"><a href="dataframe.html#연습문제-5"><i class="fa fa-check"></i><b>2.1.15</b> 연습문제</a></li>
+<li class="chapter" data-level="2.1.16" data-path="dataframe.html"><a href="dataframe.html#연습문제-6"><i class="fa fa-check"></i><b>2.1.16</b> 연습문제</a></li>
+<li class="chapter" data-level="2.1.17" data-path="dataframe.html"><a href="dataframe.html#apply-함수의-사촌들"><i class="fa fa-check"></i><b>2.1.17</b> <code>apply()</code> 함수의 사촌들</a></li>
+<li class="chapter" data-level="2.1.18" data-path="dataframe.html"><a href="dataframe.html#연습문제-7"><i class="fa fa-check"></i><b>2.1.18</b> 연습문제</a></li>
+<li class="chapter" data-level="" data-path="dataframe.html"><a href="dataframe.html#참고-sampling"><i class="fa fa-check"></i>[참고 : Sampling]</a></li>
+<li class="chapter" data-level="" data-path="dataframe.html"><a href="dataframe.html#reference"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="tibble.html"><a href="tibble.html"><i class="fa fa-check"></i><b>2.2</b> 티블</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="tibble.html"><a href="tibble.html#참고자료"><i class="fa fa-check"></i><b>2.2.1</b> 참고자료</a></li>
+<li class="chapter" data-level="2.2.2" data-path="tibble.html"><a href="tibble.html#티블의-생성"><i class="fa fa-check"></i><b>2.2.2</b> 티블의 생성</a></li>
+<li class="chapter" data-level="2.2.3" data-path="tibble.html"><a href="tibble.html#강제변환coercion"><i class="fa fa-check"></i><b>2.2.3</b> 강제변환(Coercion)</a></li>
+<li class="chapter" data-level="2.2.4" data-path="tibble.html"><a href="tibble.html#티블과-데이터-프레임의-비교"><i class="fa fa-check"></i><b>2.2.4</b> 티블과 데이터 프레임의 비교</a></li>
+<li class="chapter" data-level="2.2.5" data-path="tibble.html"><a href="tibble.html#이전-코드와-상호작용"><i class="fa fa-check"></i><b>2.2.5</b> 이전 코드와 상호작용</a></li>
+<li class="chapter" data-level="2.2.6" data-path="tibble.html"><a href="tibble.html#외부-데이터-가져오기-importing"><i class="fa fa-check"></i><b>2.2.6</b> 외부 데이터 가져오기 (importing)</a></li>
+<li class="chapter" data-level="2.2.7" data-path="tibble.html"><a href="tibble.html#연습문제-8"><i class="fa fa-check"></i><b>2.2.7</b> 연습문제</a></li>
+<li class="chapter" data-level="" data-path="tibble.html"><a href="tibble.html#references"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="factor.html"><a href="factor.html"><i class="fa fa-check"></i><b>2.3</b> Factor</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="factor.html"><a href="factor.html#범주형-자료"><i class="fa fa-check"></i><b>2.3.1</b> 범주형 자료</a></li>
+<li class="chapter" data-level="2.3.2" data-path="factor.html"><a href="factor.html#factor의-요소-및-특징"><i class="fa fa-check"></i><b>2.3.2</b> Factor의 요소 및 특징</a></li>
+<li class="chapter" data-level="2.3.3" data-path="factor.html"><a href="factor.html#factor-함수의-형식"><i class="fa fa-check"></i><b>2.3.3</b> <code>factor()</code> 함수의 형식</a></li>
+<li class="chapter" data-level="2.3.4" data-path="factor.html"><a href="factor.html#factor-생성"><i class="fa fa-check"></i><b>2.3.4</b> factor 생성</a></li>
+<li class="chapter" data-level="" data-path="factor.html"><a href="factor.html#reference-1"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-cleansing.html"><a href="data-cleansing.html"><i class="fa fa-check"></i><b>3</b> Data Cleansing</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html"><i class="fa fa-check"></i><b>3.1</b> Data Cleansing</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#변수-요약"><i class="fa fa-check"></i><b>3.1.1</b> 변수 요약</a></li>
+<li class="chapter" data-level="3.1.2" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#데이터-세트-3"><i class="fa fa-check"></i><b>3.1.2</b> 데이터 세트</a></li>
+<li class="chapter" data-level="3.1.3" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#데이터-세트의-통계적-요약-정보"><i class="fa fa-check"></i><b>3.1.3</b> 데이터 세트의 통계적 요약 정보</a></li>
+<li class="chapter" data-level="3.1.4" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#data_cleansing_describe"><i class="fa fa-check"></i><b>3.1.4</b> <code>Hmisc</code> 패키지의 <code>describe()</code> 함수</a></li>
+<li class="chapter" data-level="3.1.5" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#의심스러운-값"><i class="fa fa-check"></i><b>3.1.5</b> 의심스러운 값</a></li>
+<li class="chapter" data-level="3.1.6" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#describe함수의-결과의-시각화"><i class="fa fa-check"></i><b>3.1.6</b> <code>describe()</code>함수의 결과의 시각화</a></li>
+<li class="chapter" data-level="3.1.7" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#의심스러운-값을-결측치로-바꾸기"><i class="fa fa-check"></i><b>3.1.7</b> 의심스러운 값을 결측치로 바꾸기</a></li>
+<li class="chapter" data-level="3.1.8" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#data_cleansing_Complete_cases"><i class="fa fa-check"></i><b>3.1.8</b> <code>NA</code>가 없는 완전한 데이터</a></li>
+<li class="chapter" data-level="3.1.9" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#data_cleansing_after_cleansing"><i class="fa fa-check"></i><b>3.1.9</b> 데이터 정제 후의 <code>describe()</code>함수 결과 그림</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-cleansing-missing-value.html"><a href="data-cleansing-missing-value.html"><i class="fa fa-check"></i><b>3.2</b> 결측치(Missing Values) 처리</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="data-cleansing-missing-value.html"><a href="data-cleansing-missing-value.html#결측값이-포함되어-있는지-확인하는-방법-is.na"><i class="fa fa-check"></i><b>3.2.1</b> 결측값이 포함되어 있는지 확인하는 방법: <code>is.na()</code></a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-cleansing-missing-value.html"><a href="data-cleansing-missing-value.html#결측치-갯수-sumis.na"><i class="fa fa-check"></i><b>3.2.2</b> 결측치 갯수: <code>sum(is.na())</code></a></li>
+<li class="chapter" data-level="3.2.3" data-path="data-cleansing-missing-value.html"><a href="data-cleansing-missing-value.html#결측치를-통계-분석시-제외시키기-na.rm-true"><i class="fa fa-check"></i><b>3.2.3</b> 결측치를 통계 분석시 제외시키기 : <code>na.rm = TRUE</code></a></li>
+<li class="chapter" data-level="3.2.4" data-path="data-cleansing-missing-value.html"><a href="data-cleansing-missing-value.html#결측치가-있는-행-제거-na.omit"><i class="fa fa-check"></i><b>3.2.4</b> 결측치가 있는 행 제거: <code>na.omit()</code></a></li>
+<li class="chapter" data-level="3.2.5" data-path="data-cleansing-missing-value.html"><a href="data-cleansing-missing-value.html#결측치를-다른-값으로-대체"><i class="fa fa-check"></i><b>3.2.5</b> 결측치를 다른 값으로 대체</a></li>
+<li class="chapter" data-level="" data-path="data-cleansing-missing-value.html"><a href="data-cleansing-missing-value.html#reference-2"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-cleansing-outlier.html"><a href="data-cleansing-outlier.html"><i class="fa fa-check"></i><b>3.3</b> 이상치(Outlier) 처리 {#outlier}</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="data-cleansing-outlier.html"><a href="data-cleansing-outlier.html#표준값-z를-이용한-이상치-확인-및-처리"><i class="fa fa-check"></i><b>3.3.1</b> 표준값 Z를 이용한 이상치 확인 및 처리</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data-cleansing-outlier.html"><a href="data-cleansing-outlier.html#수정된-표준값을-이용한-이상치-확인-및-처리"><i class="fa fa-check"></i><b>3.3.2</b> 수정된 표준값을 이용한 이상치 확인 및 처리</a></li>
+<li class="chapter" data-level="3.3.3" data-path="data-cleansing-outlier.html"><a href="data-cleansing-outlier.html#사분위수를-이용한-이상치-확인-및-처리"><i class="fa fa-check"></i><b>3.3.3</b> 사분위수를 이용한 이상치 확인 및 처리</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="preprocessing.html"><a href="preprocessing.html"><i class="fa fa-check"></i><b>4</b> Data Preprocessing</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="들어가는-말.html"><a href="들어가는-말.html"><i class="fa fa-check"></i><b>4.1</b> 들어가는 말</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="들어가는-말.html"><a href="들어가는-말.html#데이터-전처리란"><i class="fa fa-check"></i><b>4.1.1</b> 데이터 전처리란?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="들어가는-말.html"><a href="들어가는-말.html#왜-dplyr-패키지-인가"><i class="fa fa-check"></i><b>4.1.2</b> 왜 <code>dplyr</code> 패키지 인가?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="dplyr-패키지에-있는-함수들.html"><a href="dplyr-패키지에-있는-함수들.html"><i class="fa fa-check"></i><b>4.2</b> <code>dplyr</code> 패키지에 있는 함수들</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="dplyr-패키지에-있는-함수들.html"><a href="dplyr-패키지에-있는-함수들.html#패키지-설치"><i class="fa fa-check"></i><b>4.2.1</b> 패키지 설치</a></li>
+<li class="chapter" data-level="4.2.2" data-path="dplyr-패키지에-있는-함수들.html"><a href="dplyr-패키지에-있는-함수들.html#예제-데이터-확인"><i class="fa fa-check"></i><b>4.2.2</b> 예제 데이터 확인</a></li>
+<li class="chapter" data-level="4.2.3" data-path="dplyr-패키지에-있는-함수들.html"><a href="dplyr-패키지에-있는-함수들.html#dplyr-패키지의-주요-함수-목록"><i class="fa fa-check"></i><b>4.2.3</b> <code>dplyr</code> 패키지의 주요 함수 목록</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html"><i class="fa fa-check"></i><b>4.3</b> 데이터 프레임의 컬럼 선택: <code>select()</code></a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#select-함수의-기본-형식"><i class="fa fa-check"></i><b>4.3.1</b> <code>select()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.3.2" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#a번째-부터-n번째의-연속적-컬럼-선택"><i class="fa fa-check"></i><b>4.3.2</b> a번째 부터 n번째의 연속적 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.3" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#a번째-부터-n번째의-연속적-컬럼을-제외한-선택"><i class="fa fa-check"></i><b>4.3.3</b> <code>a</code>번째 부터 <code>n</code>번째의 연속적 컬럼을 제외한 선택</a></li>
+<li class="chapter" data-level="4.3.4" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#컬럼-이름의-앞-부분을-지정하여-선택"><i class="fa fa-check"></i><b>4.3.4</b> 컬럼 이름의 ’앞 부분’을 지정하여 선택</a></li>
+<li class="chapter" data-level="4.3.5" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#컬럼-이름의-끝-부분을-지정하여-선택"><i class="fa fa-check"></i><b>4.3.5</b> 컬럼 이름의 ’끝 부분’을 지정하여 선택</a></li>
+<li class="chapter" data-level="4.3.6" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#컬럼-이름의-일부를-포함하는-컬럼-선택"><i class="fa fa-check"></i><b>4.3.6</b> 컬럼 이름의 일부를 포함하는 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.7" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#정규-표현식과-일치하는-문자열을-포함하는-컬럼-선택"><i class="fa fa-check"></i><b>4.3.7</b> 정규 표현식과 일치하는 문자열을 포함하는 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.8" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#원하는-컬럼-명의-그룹에-포함된-컬럼-선택"><i class="fa fa-check"></i><b>4.3.8</b> 원하는 컬럼 명의 그룹에 포함된 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.9" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#컬럼-이름의-접두사와-숫자-범위를-조합하여-컬럼-선택"><i class="fa fa-check"></i><b>4.3.9</b> 컬럼 이름의 접두사와 숫자 범위를 조합하여 컬럼 선택</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="filter-함수를-이용한-행의-선택.html"><a href="filter-함수를-이용한-행의-선택.html"><i class="fa fa-check"></i><b>4.4</b> <code>filter()</code> 함수를 이용한 행의 선택</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="filter-함수를-이용한-행의-선택.html"><a href="filter-함수를-이용한-행의-선택.html#filter-함수의-기본-형식"><i class="fa fa-check"></i><b>4.4.1</b> <code>filter()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.4.2" data-path="filter-함수를-이용한-행의-선택.html"><a href="filter-함수를-이용한-행의-선택.html#단일-조건에-의한-행의-선택"><i class="fa fa-check"></i><b>4.4.2</b> 단일 조건에 의한 행의 선택</a></li>
+<li class="chapter" data-level="4.4.3" data-path="filter-함수를-이용한-행의-선택.html"><a href="filter-함수를-이용한-행의-선택.html#복수-조건을-and로-결합한-행의-선택"><i class="fa fa-check"></i><b>4.4.3</b> 복수 조건을 AND(<code>,</code>)로 결합한 행의 선택</a></li>
+<li class="chapter" data-level="4.4.4" data-path="filter-함수를-이용한-행의-선택.html"><a href="filter-함수를-이용한-행의-선택.html#복수-조건을-or로-결합한-행의-선택"><i class="fa fa-check"></i><b>4.4.4</b> 복수 조건을 OR(<code>|</code>)로 결합한 행의 선택</a></li>
+<li class="chapter" data-level="4.4.5" data-path="filter-함수를-이용한-행의-선택.html"><a href="filter-함수를-이용한-행의-선택.html#행의-위치를-지정해서-행의-데이터-부분집합-선택"><i class="fa fa-check"></i><b>4.4.5</b> 행의 위치를 지정해서 행의 데이터 부분집합 선택</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="arrange-함수를-이용한-행의-정렬.html"><a href="arrange-함수를-이용한-행의-정렬.html"><i class="fa fa-check"></i><b>4.5</b> <code>arrange()</code> 함수를 이용한 행의 정렬</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="arrange-함수를-이용한-행의-정렬.html"><a href="arrange-함수를-이용한-행의-정렬.html#arrange-함수의-기본-형식"><i class="fa fa-check"></i><b>4.5.1</b> <code>arrange()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.5.2" data-path="arrange-함수를-이용한-행의-정렬.html"><a href="arrange-함수를-이용한-행의-정렬.html#복수-개의-정렬-기준으로-행을-정렬하기"><i class="fa fa-check"></i><b>4.5.2</b> 복수 개의 정렬 기준으로 행을 정렬하기</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="preprocessing-rename.html"><a href="preprocessing-rename.html"><i class="fa fa-check"></i><b>4.6</b> <code>rename()</code> 함수를 이용한 데이터 프레임의 컬럼 이름 변경</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="preprocessing-rename.html"><a href="preprocessing-rename.html#rename-함수의-기본-형식"><i class="fa fa-check"></i><b>4.6.1</b> <code>rename()</code> 함수의 기본 형식</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="distinct-함수를-이용한-유일한-값-추출.html"><a href="distinct-함수를-이용한-유일한-값-추출.html"><i class="fa fa-check"></i><b>4.7</b> <code>distinct()</code> 함수를 이용한 유일한 값 추출</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="distinct-함수를-이용한-유일한-값-추출.html"><a href="distinct-함수를-이용한-유일한-값-추출.html#distinct-함수의-기본-형식"><i class="fa fa-check"></i><b>4.7.1</b> <code>distinct()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.7.2" data-path="distinct-함수를-이용한-유일한-값-추출.html"><a href="distinct-함수를-이용한-유일한-값-추출.html#단일-기준에-의한-유일-값-추출"><i class="fa fa-check"></i><b>4.7.2</b> 단일 기준에 의한 유일 값 추출</a></li>
+<li class="chapter" data-level="4.7.3" data-path="distinct-함수를-이용한-유일한-값-추출.html"><a href="distinct-함수를-이용한-유일한-값-추출.html#복수-기준에-의한-유일-값-추출"><i class="fa fa-check"></i><b>4.7.3</b> 복수 기준에 의한 유일 값 추출</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="무작위-표본-추출.html"><a href="무작위-표본-추출.html"><i class="fa fa-check"></i><b>4.8</b> 무작위 표본 추출</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="무작위-표본-추출.html"><a href="무작위-표본-추출.html#정해진-갯수-만큼의-표본-무작위-추출"><i class="fa fa-check"></i><b>4.8.1</b> 정해진 갯수 만큼의 표본 무작위 추출</a></li>
+<li class="chapter" data-level="4.8.2" data-path="무작위-표본-추출.html"><a href="무작위-표본-추출.html#정해진-비율로-표본-무작위-추출"><i class="fa fa-check"></i><b>4.8.2</b> 정해진 비율로 표본 무작위 추출</a></li>
+<li class="chapter" data-level="4.8.3" data-path="무작위-표본-추출.html"><a href="무작위-표본-추출.html#정해진-갯수-만큼의-표본-복원-추출"><i class="fa fa-check"></i><b>4.8.3</b> 정해진 갯수 만큼의 표본 복원 추출</a></li>
+<li class="chapter" data-level="4.8.4" data-path="무작위-표본-추출.html"><a href="무작위-표본-추출.html#집단별-층화-표본-추출"><i class="fa fa-check"></i><b>4.8.4</b> 집단별 층화 표본 추출</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html"><i class="fa fa-check"></i><b>4.9</b> <code>mutate()</code> 함수를 이용한 새로운 컬럼 생성</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html#mutate-함수의-기본-형식"><i class="fa fa-check"></i><b>4.9.1</b> <code>mutate()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.9.2" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html#새로운-컬럼-생성-예"><i class="fa fa-check"></i><b>4.9.2</b> 새로운 컬럼 생성 예</a></li>
+<li class="chapter" data-level="4.9.3" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html#새로운-만든-컬럼변수를-이용하여-또-다른-컬럼-생성하기"><i class="fa fa-check"></i><b>4.9.3</b> 새로운 만든 컬럼(변수)를 이용하여 또 다른 컬럼 생성하기</a></li>
+<li class="chapter" data-level="4.9.4" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html#컬럼의-값을-새로운-값으로-변경하기"><i class="fa fa-check"></i><b>4.9.4</b> 컬럼의 값을 새로운 값으로 변경하기</a></li>
+<li class="chapter" data-level="4.9.5" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html#keep-인수의-사용-예"><i class="fa fa-check"></i><b>4.9.5</b> <code>.keep</code> 인수의 사용 예</a></li>
+<li class="chapter" data-level="4.9.6" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html#after와-.before-인수의-사용-예"><i class="fa fa-check"></i><b>4.9.6</b> <code>.after</code>와 <code>.before</code> 인수의 사용 예</a></li>
+<li class="chapter" data-level="4.9.7" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html#transmute-함수를-이용한-새로운-컬럼-생성"><i class="fa fa-check"></i><b>4.9.7</b> <code>transmute()</code> 함수를 이용한 새로운 컬럼 생성</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="preprocessing-summarise.html"><a href="preprocessing-summarise.html"><i class="fa fa-check"></i><b>4.10</b> <code>summarise()</code>함수를 이용한 요약 통계량 계산</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="preprocessing-summarise.html"><a href="preprocessing-summarise.html#summarise-함수의-기본-형식"><i class="fa fa-check"></i><b>4.10.1</b> <code>summarise()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.10.2" data-path="preprocessing-summarise.html"><a href="preprocessing-summarise.html#summarise-함수를-이용한-요약-통계-계산"><i class="fa fa-check"></i><b>4.10.2</b> <code>summarise()</code> 함수를 이용한 요약 통계 계산</a></li>
+<li class="chapter" data-level="4.10.3" data-path="preprocessing-summarise.html"><a href="preprocessing-summarise.html#summarise를-이용한-관측치의-갯수-및-색인-찾기"><i class="fa fa-check"></i><b>4.10.3</b> <code>summarise()</code>를 이용한 관측치의 갯수 및 색인 찾기</a></li>
+<li class="chapter" data-level="4.10.4" data-path="preprocessing-summarise.html"><a href="preprocessing-summarise.html#summarise-함수를-이용한-그룹별-요약-통계량-계산"><i class="fa fa-check"></i><b>4.10.4</b> <code>summarise()</code> 함수를 이용한 그룹별 요약 통계량 계산</a></li>
+<li class="chapter" data-level="4.10.5" data-path="preprocessing-summarise.html"><a href="preprocessing-summarise.html#복수-개의-변수에-동일한-summarise-함수-적용하기"><i class="fa fa-check"></i><b>4.10.5</b> 복수 개의 변수에 동일한 <code>summarise()</code> 함수 적용하기</a></li>
+<li class="chapter" data-level="" data-path="preprocessing-summarise.html"><a href="preprocessing-summarise.html#reference-3"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="piping-operator.html"><a href="piping-operator.html"><i class="fa fa-check"></i><b>5</b> Pipe Operator</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="파이프-연산자.html"><a href="파이프-연산자.html"><i class="fa fa-check"></i><b>5.1</b> 파이프 연산자 : <code>%&gt;%</code></a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="파이프-연산자.html"><a href="파이프-연산자.html#파이프-연산자의-사용-예"><i class="fa fa-check"></i><b>5.1.1</b> 파이프 연산자의 사용 예</a></li>
+<li class="chapter" data-level="5.1.2" data-path="파이프-연산자.html"><a href="파이프-연산자.html#또-다른-예"><i class="fa fa-check"></i><b>5.1.2</b> 또 다른 예</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="piping-point-usage.html"><a href="piping-point-usage.html"><i class="fa fa-check"></i><b>5.2</b> 파이프된 명령어에 <code>‘.’</code> 사용하기</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="relational-data-top.html"><a href="relational-data-top.html"><i class="fa fa-check"></i><b>6</b> Relational Data</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="결합append.html"><a href="결합append.html"><i class="fa fa-check"></i><b>6.1</b> 결합(Append)</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="결합append.html"><a href="결합append.html#데이터-프레임의-결합append"><i class="fa fa-check"></i><b>6.1.1</b> 데이터 프레임의 결합(append)</a></li>
+<li class="chapter" data-level="6.1.2" data-path="결합append.html"><a href="결합append.html#결합의-두-가지-방법-rbind-함수와-bind_rows함수"><i class="fa fa-check"></i><b>6.1.2</b> 결합의 두 가지 방법 : <code>rbind()</code> 함수와 <code>bind_rows()</code>함수</a></li>
+<li class="chapter" data-level="6.1.3" data-path="결합append.html"><a href="결합append.html#데이터-세트-결합의-예대응되지-않는-컬럼이-있는-경우"><i class="fa fa-check"></i><b>6.1.3</b> 데이터 세트 결합의 예(대응되지 않는 컬럼이 있는 경우)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="데이터-세트의-병합merge.html"><a href="데이터-세트의-병합merge.html"><i class="fa fa-check"></i><b>6.2</b> 데이터 세트의 병합(Merge)</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="데이터-세트의-병합merge.html"><a href="데이터-세트의-병합merge.html#join-함수를-이용한-병합-예"><i class="fa fa-check"></i><b>6.2.1</b> join 함수를 이용한 병합 예</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="relational-data.html"><a href="relational-data.html"><i class="fa fa-check"></i><b>6.3</b> Relational Data</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="relational-data.html"><a href="relational-data.html#들어가기"><i class="fa fa-check"></i><b>6.3.1</b> 들어가기</a></li>
+<li class="chapter" data-level="6.3.2" data-path="relational-data.html"><a href="relational-data.html#준비하기"><i class="fa fa-check"></i><b>6.3.2</b> 준비하기</a></li>
+<li class="chapter" data-level="6.3.3" data-path="relational-data.html"><a href="relational-data.html#nycflights13-패키지-내의-데이터-세트"><i class="fa fa-check"></i><b>6.3.3</b> <code>nycflights13</code> 패키지 내의 데이터 세트</a></li>
+<li class="chapter" data-level="6.3.4" data-path="relational-data.html"><a href="relational-data.html#연습문제-9"><i class="fa fa-check"></i><b>6.3.4</b> 연습문제</a></li>
+<li class="chapter" data-level="6.3.5" data-path="relational-data.html"><a href="relational-data.html#키key"><i class="fa fa-check"></i><b>6.3.5</b> 키(Key)</a></li>
+<li class="chapter" data-level="6.3.6" data-path="relational-data.html"><a href="relational-data.html#연습문제-10"><i class="fa fa-check"></i><b>6.3.6</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html"><i class="fa fa-check"></i><b>6.4</b> 변환 조인(Mutating Join)</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html#조인-이해하기"><i class="fa fa-check"></i><b>6.4.1</b> 조인 이해하기</a></li>
+<li class="chapter" data-level="6.4.2" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html#내부-조인-inner-join"><i class="fa fa-check"></i><b>6.4.2</b> 내부 조인 (inner join)</a></li>
+<li class="chapter" data-level="6.4.3" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html#외부-조인-outer-join"><i class="fa fa-check"></i><b>6.4.3</b> 외부 조인 (outer join)</a></li>
+<li class="chapter" data-level="6.4.4" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html#중복키"><i class="fa fa-check"></i><b>6.4.4</b> 중복키</a></li>
+<li class="chapter" data-level="6.4.5" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html#키열-정의하기"><i class="fa fa-check"></i><b>6.4.5</b> 키열 정의하기</a></li>
+<li class="chapter" data-level="6.4.6" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html#연습문제-11"><i class="fa fa-check"></i><b>6.4.6</b> 연습문제</a></li>
+<li class="chapter" data-level="6.4.7" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html#기타-구현"><i class="fa fa-check"></i><b>6.4.7</b> 기타 구현</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="필터링-조인.html"><a href="필터링-조인.html"><i class="fa fa-check"></i><b>6.5</b> 필터링 조인</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="필터링-조인.html"><a href="필터링-조인.html#연습문제-12"><i class="fa fa-check"></i><b>6.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="조인-문제.html"><a href="조인-문제.html"><i class="fa fa-check"></i><b>6.6</b> 조인 문제</a></li>
+<li class="chapter" data-level="6.7" data-path="집합-연산.html"><a href="집합-연산.html"><i class="fa fa-check"></i><b>6.7</b> 집합 연산</a>
+<ul>
+<li class="chapter" data-level="" data-path="집합-연산.html"><a href="집합-연산.html#reference-4"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="join-exercises.html"><a href="join-exercises.html"><i class="fa fa-check"></i><b>6.8</b> Join Exercises</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="join-exercises.html"><a href="join-exercises.html#예제-데이터의-생성-1"><i class="fa fa-check"></i><b>6.8.1</b> 예제 데이터의 생성</a></li>
+<li class="chapter" data-level="6.8.2" data-path="join-exercises.html"><a href="join-exercises.html#예제-1-inner_join"><i class="fa fa-check"></i><b>6.8.2</b> 예제 1: <code>inner_join()</code></a></li>
+<li class="chapter" data-level="6.8.3" data-path="join-exercises.html"><a href="join-exercises.html#예제-2-left_join"><i class="fa fa-check"></i><b>6.8.3</b> 예제 2: <code>left_join()</code></a></li>
+<li class="chapter" data-level="6.8.4" data-path="join-exercises.html"><a href="join-exercises.html#예제-3-right_join"><i class="fa fa-check"></i><b>6.8.4</b> 예제 3: <code>right_join()</code></a></li>
+<li class="chapter" data-level="6.8.5" data-path="join-exercises.html"><a href="join-exercises.html#예제-4-full_join"><i class="fa fa-check"></i><b>6.8.5</b> 예제 4: <code>full_join()</code></a></li>
+<li class="chapter" data-level="6.8.6" data-path="join-exercises.html"><a href="join-exercises.html#예제-5-semi_join"><i class="fa fa-check"></i><b>6.8.6</b> 예제 5: <code>semi_join()</code></a></li>
+<li class="chapter" data-level="6.8.7" data-path="join-exercises.html"><a href="join-exercises.html#예제-6-anti_join"><i class="fa fa-check"></i><b>6.8.7</b> 예제 6 : <code>anti_join()</code></a></li>
+<li class="chapter" data-level="6.8.8" data-path="join-exercises.html"><a href="join-exercises.html#예제-7-복수-개의-데이터-프레임-조인"><i class="fa fa-check"></i><b>6.8.8</b> 예제 7: 복수 개의 데이터 프레임 조인</a></li>
+<li class="chapter" data-level="6.8.9" data-path="join-exercises.html"><a href="join-exercises.html#예제-8-복수-컬럼에-의한-조인"><i class="fa fa-check"></i><b>6.8.9</b> 예제 8: 복수 컬럼에 의한 조인</a></li>
+<li class="chapter" data-level="6.8.10" data-path="join-exercises.html"><a href="join-exercises.html#예제-9-데이터-조인과-id-삭제"><i class="fa fa-check"></i><b>6.8.10</b> 예제 9: 데이터 조인과 ID 삭제</a></li>
+<li class="chapter" data-level="" data-path="join-exercises.html"><a href="join-exercises.html#further-reading"><i class="fa fa-check"></i>Further Reading</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>7</b> Tidy Data</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="tidy-data-philosophy.html"><a href="tidy-data-philosophy.html"><i class="fa fa-check"></i><b>7.1</b> 타이디 데이터 철학</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="tidy-data-philosophy.html"><a href="tidy-data-philosophy.html#분석의-단위"><i class="fa fa-check"></i><b>7.1.1</b> 분석의 단위</a></li>
+<li class="chapter" data-level="7.1.2" data-path="tidy-data-philosophy.html"><a href="tidy-data-philosophy.html#데이터-세트-4"><i class="fa fa-check"></i><b>7.1.2</b> 데이터 세트</a></li>
+<li class="chapter" data-level="7.1.3" data-path="tidy-data-philosophy.html"><a href="tidy-data-philosophy.html#docid-별-그루핑"><i class="fa fa-check"></i><b>7.1.3</b> <code>docid</code> 별 그루핑</a></li>
+<li class="chapter" data-level="7.1.4" data-path="tidy-data-philosophy.html"><a href="tidy-data-philosophy.html#요약-정보-확인"><i class="fa fa-check"></i><b>7.1.4</b> 요약 정보 확인</a></li>
+<li class="chapter" data-level="7.1.5" data-path="tidy-data-philosophy.html"><a href="tidy-data-philosophy.html#다중-레벨-데이터-확인"><i class="fa fa-check"></i><b>7.1.5</b> 다중 레벨 데이터 확인</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="tidy-data-untidy.html"><a href="tidy-data-untidy.html"><i class="fa fa-check"></i><b>7.2</b> Untidy data</a></li>
+<li class="chapter" data-level="7.3" data-path="컬럼-제목들이-변수-명이-아니고-값들인-경우.html"><a href="컬럼-제목들이-변수-명이-아니고-값들인-경우.html"><i class="fa fa-check"></i><b>7.3</b> 컬럼 제목들이 변수 명이 아니고 값들인 경우</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="컬럼-제목들이-변수-명이-아니고-값들인-경우.html"><a href="컬럼-제목들이-변수-명이-아니고-값들인-경우.html#데이터-세트-5"><i class="fa fa-check"></i><b>7.3.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="7.3.2" data-path="컬럼-제목들이-변수-명이-아니고-값들인-경우.html"><a href="컬럼-제목들이-변수-명이-아니고-값들인-경우.html#tidy_data_functions"><i class="fa fa-check"></i><b>7.3.2</b> 사용할 수 있는 함수의 종류</a></li>
+<li class="chapter" data-level="7.3.3" data-path="컬럼-제목들이-변수-명이-아니고-값들인-경우.html"><a href="컬럼-제목들이-변수-명이-아니고-값들인-경우.html#pivot_longer-함수"><i class="fa fa-check"></i><b>7.3.3</b> <code>pivot_longer()</code> 함수</a></li>
+<li class="chapter" data-level="7.3.4" data-path="컬럼-제목들이-변수-명이-아니고-값들인-경우.html"><a href="컬럼-제목들이-변수-명이-아니고-값들인-경우.html#gather-함수"><i class="fa fa-check"></i><b>7.3.4</b> <code>gather()</code> 함수</a></li>
+<li class="chapter" data-level="7.3.5" data-path="컬럼-제목들이-변수-명이-아니고-값들인-경우.html"><a href="컬럼-제목들이-변수-명이-아니고-값들인-경우.html#melt-함수"><i class="fa fa-check"></i><b>7.3.5</b> <code>melt()</code> 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="tidy-data-one-column.html"><a href="tidy-data-one-column.html"><i class="fa fa-check"></i><b>7.4</b> 하나의 컬럼에 복수 개의 변수들이 있는 경우</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="tidy-data-one-column.html"><a href="tidy-data-one-column.html#데이터-세트-6"><i class="fa fa-check"></i><b>7.4.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="7.4.2" data-path="tidy-data-one-column.html"><a href="tidy-data-one-column.html#사용할-수-있는-함수의-종류"><i class="fa fa-check"></i><b>7.4.2</b> 사용할 수 있는 함수의 종류</a></li>
+<li class="chapter" data-level="7.4.3" data-path="tidy-data-one-column.html"><a href="tidy-data-one-column.html#pivot_wider-함수"><i class="fa fa-check"></i><b>7.4.3</b> <code>pivot_wider()</code> 함수</a></li>
+<li class="chapter" data-level="7.4.4" data-path="tidy-data-one-column.html"><a href="tidy-data-one-column.html#spread-함수"><i class="fa fa-check"></i><b>7.4.4</b> <code>spread()</code> 함수</a></li>
+<li class="chapter" data-level="7.4.5" data-path="tidy-data-one-column.html"><a href="tidy-data-one-column.html#dcast-함수"><i class="fa fa-check"></i><b>7.4.5</b> <code>dcast()</code> 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="tidy-data-one-cell.html"><a href="tidy-data-one-cell.html"><i class="fa fa-check"></i><b>7.5</b> 하나의 셀에 저장된 여러 변수 또는 여러 셀에 흩어져 있는 한 변수</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="tidy-data-one-cell.html"><a href="tidy-data-one-cell.html#데이터-세트-7"><i class="fa fa-check"></i><b>7.5.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="" data-path="tidy-data-one-cell.html"><a href="tidy-data-one-cell.html#data-wrangling-with-dplyr-and-tidyr"><i class="fa fa-check"></i>Data Wrangling with dplyr and tidyr</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="separate-함수와-unite-함수.html"><a href="separate-함수와-unite-함수.html"><i class="fa fa-check"></i><b>7.6</b> <code>separate()</code> 함수와 <code>unite()</code> 함수</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="separate-함수와-unite-함수.html"><a href="separate-함수와-unite-함수.html#separate-함수"><i class="fa fa-check"></i><b>7.6.1</b> <code>separate()</code> 함수</a></li>
+<li class="chapter" data-level="7.6.2" data-path="separate-함수와-unite-함수.html"><a href="separate-함수와-unite-함수.html#unite-함수"><i class="fa fa-check"></i><b>7.6.2</b> <code>unite()</code> 함수</a></li>
+<li class="chapter" data-level="7.6.3" data-path="separate-함수와-unite-함수.html"><a href="separate-함수와-unite-함수.html#separate-함수와-unite-함수의-예"><i class="fa fa-check"></i><b>7.6.3</b> <code>separate()</code> 함수와 <code>unite()</code> 함수의 예</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="tidy-data-reference-table.html"><a href="tidy-data-reference-table.html"><i class="fa fa-check"></i><b>7.7</b> <code>tidyverse</code> 참조표</a></li>
+<li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>8</b> Dates</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="dates-in-R.html"><a href="dates-in-R.html"><i class="fa fa-check"></i><b>8.1</b> R에서의 날짜 데이터</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="dates-in-R.html"><a href="dates-in-R.html#as.date-함수"><i class="fa fa-check"></i><b>8.1.1</b> <code>as.Date()</code> 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="dates-lubridate.html"><a href="dates-lubridate.html"><i class="fa fa-check"></i><b>8.2</b> <code>lubridate</code> 패키지</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="dates-lubridate.html"><a href="dates-lubridate.html#lubridate-패키지의-활용"><i class="fa fa-check"></i><b>8.2.1</b> <code>lubridate</code> 패키지의 활용</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="dates-variables.html"><a href="dates-variables.html"><i class="fa fa-check"></i><b>8.3</b> 날짜-시간 변수</a></li>
+<li class="chapter" data-level="8.4" data-path="dates-elements.html"><a href="dates-elements.html"><i class="fa fa-check"></i><b>8.4</b> <code>Date</code> 변수에서 정보 추출하기</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="dates-elements.html"><a href="dates-elements.html#관련-함수-1"><i class="fa fa-check"></i><b>8.4.1</b> 관련 함수</a></li>
+<li class="chapter" data-level="8.4.2" data-path="dates-elements.html"><a href="dates-elements.html#date-변수의-정보-추출-예"><i class="fa fa-check"></i><b>8.4.2</b> <code>Date</code> 변수의 정보 추출 예</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="dates-POSIXct.html"><a href="dates-POSIXct.html"><i class="fa fa-check"></i><b>8.5</b> 날짜-시간(<code>POSIXct</code>) 변수에서 정보 추출하기</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="dates-POSIXct.html"><a href="dates-POSIXct.html#관련-함수-2"><i class="fa fa-check"></i><b>8.5.1</b> 관련 함수</a></li>
+<li class="chapter" data-level="8.5.2" data-path="dates-POSIXct.html"><a href="dates-POSIXct.html#posixct-변수에서-정보-추출-예"><i class="fa fa-check"></i><b>8.5.2</b> <code>POSIXct</code> 변수에서 정보 추출 예</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="dates-functions.html"><a href="dates-functions.html"><i class="fa fa-check"></i><b>8.6</b> 날짜-시간 산술연산을 위한 두 종류의 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="dates-and-time.html"><a href="dates-and-time.html"><i class="fa fa-check"></i><b>9</b> Dates and Times</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="dates-time-intro.html"><a href="dates-time-intro.html"><i class="fa fa-check"></i><b>9.1</b> 들어가기</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="dates-time-intro.html"><a href="dates-time-intro.html#준비하기-1"><i class="fa fa-check"></i><b>9.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="dates-time-create.html"><a href="dates-time-create.html"><i class="fa fa-check"></i><b>9.2</b> 날짜/시간 생성하기</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="dates-time-create.html"><a href="dates-time-create.html#문자열에서-생성"><i class="fa fa-check"></i><b>9.2.1</b> 문자열에서 생성</a></li>
+<li class="chapter" data-level="9.2.2" data-path="dates-time-create.html"><a href="dates-time-create.html#개별-구성요소로-생성"><i class="fa fa-check"></i><b>9.2.2</b> 개별 구성요소로 생성</a></li>
+<li class="chapter" data-level="9.2.3" data-path="dates-time-create.html"><a href="dates-time-create.html#기타-유형에서-생성"><i class="fa fa-check"></i><b>9.2.3</b> 기타 유형에서 생성</a></li>
+<li class="chapter" data-level="9.2.4" data-path="dates-time-create.html"><a href="dates-time-create.html#연습문제-13"><i class="fa fa-check"></i><b>9.2.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="dates-time-arguments.html"><a href="dates-time-arguments.html"><i class="fa fa-check"></i><b>9.3</b> 데이트-타임형 구성요소</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="dates-time-arguments.html"><a href="dates-time-arguments.html#구성요소-가져오기"><i class="fa fa-check"></i><b>9.3.1</b> 구성요소 가져오기</a></li>
+<li class="chapter" data-level="9.3.2" data-path="dates-time-arguments.html"><a href="dates-time-arguments.html#반올림"><i class="fa fa-check"></i><b>9.3.2</b> 반올림</a></li>
+<li class="chapter" data-level="9.3.3" data-path="dates-time-arguments.html"><a href="dates-time-arguments.html#구성요소-설정"><i class="fa fa-check"></i><b>9.3.3</b> 구성요소 설정</a></li>
+<li class="chapter" data-level="9.3.4" data-path="dates-time-arguments.html"><a href="dates-time-arguments.html#연습문제-14"><i class="fa fa-check"></i><b>9.3.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="dates-time-time-span.html"><a href="dates-time-time-span.html"><i class="fa fa-check"></i><b>9.4</b> 시간 범위</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="dates-time-time-span.html"><a href="dates-time-time-span.html#듀레이션형"><i class="fa fa-check"></i><b>9.4.1</b> 듀레이션형</a></li>
+<li class="chapter" data-level="9.4.2" data-path="dates-time-time-span.html"><a href="dates-time-time-span.html#피리어드형"><i class="fa fa-check"></i><b>9.4.2</b> 피리어드형</a></li>
+<li class="chapter" data-level="9.4.3" data-path="dates-time-time-span.html"><a href="dates-time-time-span.html#인터벌형"><i class="fa fa-check"></i><b>9.4.3</b> 인터벌형</a></li>
+<li class="chapter" data-level="9.4.4" data-path="dates-time-time-span.html"><a href="dates-time-time-span.html#요약"><i class="fa fa-check"></i><b>9.4.4</b> 요약</a></li>
+<li class="chapter" data-level="9.4.5" data-path="dates-time-time-span.html"><a href="dates-time-time-span.html#연습문제-15"><i class="fa fa-check"></i><b>9.4.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="dates-time-EST.html"><a href="dates-time-EST.html"><i class="fa fa-check"></i><b>9.5</b> 시간대</a></li>
+<li class="chapter" data-level="" data-path="references-2.html"><a href="references-2.html"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>10</b> Strings</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="strings-intro.html"><a href="strings-intro.html"><i class="fa fa-check"></i><b>10.1</b> 들어가기</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="strings-intro.html"><a href="strings-intro.html#준비하기-2"><i class="fa fa-check"></i><b>10.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="strings-basic.html"><a href="strings-basic.html"><i class="fa fa-check"></i><b>10.2</b> 문자열 기초</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="strings-basic.html"><a href="strings-basic.html#문자열-길이"><i class="fa fa-check"></i><b>10.2.1</b> 문자열 길이</a></li>
+<li class="chapter" data-level="10.2.2" data-path="strings-basic.html"><a href="strings-basic.html#문자열-결합"><i class="fa fa-check"></i><b>10.2.2</b> 문자열 결합</a></li>
+<li class="chapter" data-level="10.2.3" data-path="strings-basic.html"><a href="strings-basic.html#문자열-서브셋하기"><i class="fa fa-check"></i><b>10.2.3</b> 문자열 서브셋하기</a></li>
+<li class="chapter" data-level="10.2.4" data-path="strings-basic.html"><a href="strings-basic.html#로케일"><i class="fa fa-check"></i><b>10.2.4</b> 로케일</a></li>
+<li class="chapter" data-level="10.2.5" data-path="strings-basic.html"><a href="strings-basic.html#연습문제-16"><i class="fa fa-check"></i><b>10.2.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="pattern-matching.html"><a href="pattern-matching.html"><i class="fa fa-check"></i><b>10.3</b> 정규표현식을 이용한 패턴 매칭</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="pattern-matching.html"><a href="pattern-matching.html#기본-매칭"><i class="fa fa-check"></i><b>10.3.1</b> 기본 매칭</a></li>
+<li class="chapter" data-level="10.3.2" data-path="pattern-matching.html"><a href="pattern-matching.html#앵커"><i class="fa fa-check"></i><b>10.3.2</b> 앵커</a></li>
+<li class="chapter" data-level="10.3.3" data-path="pattern-matching.html"><a href="pattern-matching.html#문자-클래스와-대체구문"><i class="fa fa-check"></i><b>10.3.3</b> 문자 클래스와 대체구문</a></li>
+<li class="chapter" data-level="10.3.4" data-path="pattern-matching.html"><a href="pattern-matching.html#반복"><i class="fa fa-check"></i><b>10.3.4</b> 반복</a></li>
+<li class="chapter" data-level="10.3.5" data-path="pattern-matching.html"><a href="pattern-matching.html#그룹화와-역참조"><i class="fa fa-check"></i><b>10.3.5</b> 그룹화와 역참조</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="tools.html"><a href="tools.html"><i class="fa fa-check"></i><b>10.4</b> 패턴 매칭</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="tools.html"><a href="tools.html#매칭-탐지"><i class="fa fa-check"></i><b>10.4.1</b> 매칭 탐지</a></li>
+<li class="chapter" data-level="10.4.2" data-path="tools.html"><a href="tools.html#매칭-추출"><i class="fa fa-check"></i><b>10.4.2</b> 매칭 추출</a></li>
+<li class="chapter" data-level="10.4.3" data-path="tools.html"><a href="tools.html#그룹화-매칭"><i class="fa fa-check"></i><b>10.4.3</b> 그룹화 매칭</a></li>
+<li class="chapter" data-level="10.4.4" data-path="tools.html"><a href="tools.html#매칭-치환"><i class="fa fa-check"></i><b>10.4.4</b> 매칭 치환</a></li>
+<li class="chapter" data-level="10.4.5" data-path="tools.html"><a href="tools.html#문자열-분할"><i class="fa fa-check"></i><b>10.4.5</b> 문자열 분할</a></li>
+<li class="chapter" data-level="10.4.6" data-path="tools.html"><a href="tools.html#매치-찾기"><i class="fa fa-check"></i><b>10.4.6</b> 매치 찾기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="other-patterns.html"><a href="other-patterns.html"><i class="fa fa-check"></i><b>10.5</b> 기타 패턴 유형</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="other-patterns.html"><a href="other-patterns.html#연습문제-27"><i class="fa fa-check"></i><b>10.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="reg-other-usage.html"><a href="reg-other-usage.html"><i class="fa fa-check"></i><b>10.6</b> 정규 표현식의 기타 용도</a></li>
+<li class="chapter" data-level="10.7" data-path="stringi.html"><a href="stringi.html"><i class="fa fa-check"></i><b>10.7</b> <code>stringi</code></a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="stringi.html"><a href="stringi.html#연습문제-28"><i class="fa fa-check"></i><b>10.7.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-5.html"><a href="reference-5.html"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="Using-RegEx.html"><a href="Using-RegEx.html"><i class="fa fa-check"></i><b>11</b> 정규 표현식의 활용</a>
+<ul>
+<li class="chapter" data-level="" data-path="패키지-불러오기-1.html"><a href="패키지-불러오기-1.html"><i class="fa fa-check"></i>패키지 불러오기</a></li>
+<li class="chapter" data-level="11.1" data-path="패턴-찾기-함수.html"><a href="패턴-찾기-함수.html"><i class="fa fa-check"></i><b>11.1</b> 패턴 찾기 함수</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="패턴-찾기-함수.html"><a href="패턴-찾기-함수.html#grep-함수"><i class="fa fa-check"></i><b>11.1.1</b> <code>grep()</code> 함수</a></li>
+<li class="chapter" data-level="11.1.2" data-path="패턴-찾기-함수.html"><a href="패턴-찾기-함수.html#grepl-함수"><i class="fa fa-check"></i><b>11.1.2</b> <code>grepl()</code> 함수</a></li>
+<li class="chapter" data-level="11.1.3" data-path="패턴-찾기-함수.html"><a href="패턴-찾기-함수.html#regexpr-함수"><i class="fa fa-check"></i><b>11.1.3</b> <code>regexpr()</code> 함수</a></li>
+<li class="chapter" data-level="11.1.4" data-path="패턴-찾기-함수.html"><a href="패턴-찾기-함수.html#gregexpr-함수"><i class="fa fa-check"></i><b>11.1.4</b> <code>gregexpr()</code> 함수</a></li>
+<li class="chapter" data-level="11.1.5" data-path="패턴-찾기-함수.html"><a href="패턴-찾기-함수.html#regexec-함수"><i class="fa fa-check"></i><b>11.1.5</b> <code>regexec()</code> 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="패턴-대체-함수.html"><a href="패턴-대체-함수.html"><i class="fa fa-check"></i><b>11.2</b> 패턴 대체 함수</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="패턴-대체-함수.html"><a href="패턴-대체-함수.html#sub-함수를-이용한-첫-번째-일치의-대체"><i class="fa fa-check"></i><b>11.2.1</b> <code>sub()</code> 함수를 이용한 첫 번째 일치의 대체</a></li>
+<li class="chapter" data-level="11.2.2" data-path="패턴-대체-함수.html"><a href="패턴-대체-함수.html#gsub-함수를-이용한-모든-일치-대체"><i class="fa fa-check"></i><b>11.2.2</b> <code>gsub()</code> 함수를 이용한 모든 일치 대체</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="문자-벡터의-분할.html"><a href="문자-벡터의-분할.html"><i class="fa fa-check"></i><b>11.3</b> 문자 벡터의 분할</a></li>
+<li class="chapter" data-level="11.4" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html"><i class="fa fa-check"></i><b>11.4</b> <code>stringr</code> 패키지 함수</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_detect-함수를-이용한-패턴의-발견"><i class="fa fa-check"></i><b>11.4.1</b> <code>str_detect()</code> 함수를 이용한 패턴의 발견</a></li>
+<li class="chapter" data-level="11.4.2" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_extract-함수를-이용한-첫-번째-일치-추출"><i class="fa fa-check"></i><b>11.4.2</b> <code>str_extract()</code> 함수를 이용한 첫 번째 일치 추출</a></li>
+<li class="chapter" data-level="11.4.3" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_extract_all-함수를-이용한-모든-일치-추출"><i class="fa fa-check"></i><b>11.4.3</b> <code>str_extract_all()</code> 함수를 이용한 모든 일치 추출</a></li>
+<li class="chapter" data-level="11.4.4" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_match-함수를-이용한-첫-번째-일치-추출"><i class="fa fa-check"></i><b>11.4.4</b> <code>str_match()</code> 함수를 이용한 첫 번째 일치 추출</a></li>
+<li class="chapter" data-level="11.4.5" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_match_all-함수를-이용한-모든-일치-추출"><i class="fa fa-check"></i><b>11.4.5</b> <code>str_match_all()</code> 함수를 이용한 모든 일치 추출</a></li>
+<li class="chapter" data-level="11.4.6" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_locate-함수를-이용한-첫-번째-일치-위치-확인"><i class="fa fa-check"></i><b>11.4.6</b> <code>str_locate()</code> 함수를 이용한 첫 번째 일치 위치 확인</a></li>
+<li class="chapter" data-level="11.4.7" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_locate_all-함수를-이용한-모든-일치-위치-확인"><i class="fa fa-check"></i><b>11.4.7</b> <code>str_locate_all()</code> 함수를 이용한 모든 일치 위치 확인</a></li>
+<li class="chapter" data-level="11.4.8" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_replace-함수를-이용한-첫-번째-일치-대체"><i class="fa fa-check"></i><b>11.4.8</b> <code>str_replace()</code> 함수를 이용한 첫 번째 일치 대체</a></li>
+<li class="chapter" data-level="11.4.9" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_replace_all-함수를-이용한-모든-일치-대체"><i class="fa fa-check"></i><b>11.4.9</b> <code>str_replace_all()</code> 함수를 이용한 모든 일치 대체</a></li>
+<li class="chapter" data-level="11.4.10" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_split-함수를-이용한-문자열-분할"><i class="fa fa-check"></i><b>11.4.10</b> <code>str_split()</code> 함수를 이용한 문자열 분할</a></li>
+<li class="chapter" data-level="11.4.11" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_split_fixed-함수를-이용한-문자열-분할"><i class="fa fa-check"></i><b>11.4.11</b> <code>str_split_fixed()</code> 함수를 이용한 문자열 분할</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">tidyverse를 이용한 데이터 관리</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="stringr-패키지-함수" class="section level2" number="11.4">
+<h2><span class="header-section-number">11.4</span> <code>stringr</code> 패키지 함수</h2>
+<p>이전 장에서는 정규식을 위한 R 의 <code>stringr</code> 패키지의 함수들에 대하여 간략하게 살펴보았다.</p>
+<p>앞에서 언급했듯이 모든 <code>stringr</code> 패키지의 함수들은 공통적인 함수의 구조를 공유한다.</p>
+<pre><code>`str_function(string, pattern)`</code></pre>
+<p><strong>주요 두 인수</strong>는 처리 될 <strong><code>string</code> 벡터</strong>와 일치하는 단일 <strong><code>pattern</code> (예 : 정규 표현식)</strong>이다.</p>
+<p>또한 모든 함수의 이름은 접두사 <strong><code>str_</code></strong>로 시작하고 처리할 행동의 이름이 온다.</p>
+<p>예를 들어, 첫 번째 발생 위치를 찾으려면 <code>str_locate()</code>; 모든 일치하는 위치를 찾으려면 <code>str_locate.all()</code>을 사용한다.</p>
+<div id="str_detect-함수를-이용한-패턴의-발견" class="section level3" number="11.4.1">
+<h3><span class="header-section-number">11.4.1</span> <code>str_detect()</code> 함수를 이용한 패턴의 발견</h3>
+<p><code>string</code> 벡터에 <code>pattern</code>이 있는지 여부를 감지하기 위해 <code>str_detect()</code> 함수를 사용할 수 있다.</p>
+<p>실제로 이 함수는 <strong><code>grepl()</code>와 유사</strong>하다. 즉, 결과는 논리형을 반환한다.</p>
+<div class="sourceCode" id="cb1887"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1887-1"><a href="stringr-패키지-함수.html#cb1887-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb1887-2"><a href="stringr-패키지-함수.html#cb1887-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1887-3"><a href="stringr-패키지-함수.html#cb1887-3" aria-hidden="true" tabindex="-1"></a><span class="co"># some objects</span></span>
+<span id="cb1887-4"><a href="stringr-패키지-함수.html#cb1887-4" aria-hidden="true" tabindex="-1"></a>some_objs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;pen&quot;</span>, <span class="st">&quot;pencil&quot;</span>, <span class="st">&quot;marker&quot;</span>, <span class="st">&quot;spray&quot;</span>)</span>
+<span id="cb1887-5"><a href="stringr-패키지-함수.html#cb1887-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1887-6"><a href="stringr-패키지-함수.html#cb1887-6" aria-hidden="true" tabindex="-1"></a><span class="co"># detect phones</span></span>
+<span id="cb1887-7"><a href="stringr-패키지-함수.html#cb1887-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(some_objs, <span class="st">&quot;pen&quot;</span>)</span></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb1889"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1889-1"><a href="stringr-패키지-함수.html#cb1889-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select detected macthes</span></span>
+<span id="cb1889-2"><a href="stringr-패키지-함수.html#cb1889-2" aria-hidden="true" tabindex="-1"></a>some_objs[<span class="fu">str_detect</span>(some_objs, <span class="st">&quot;pen&quot;</span>)]</span></code></pre></div>
+<pre><code>## [1] &quot;pen&quot;    &quot;pencil&quot;</code></pre>
+<p><code>str_detect()</code> 함수의 출력은 지정된 <code>string</code>과 길이가 같은 이진 벡터(<code>TRUE</code>/<code>FALSE</code>)이다.</p>
+<p><code>string</code>에서 일치하는 항목이 발견되면 <code>TRUE</code>이고, 그렇지 않으면 <code>FALSE</code>이다.</p>
+<p>다음은 <code>pattern</code>이 <em><code>day-month-year</code></em>의 날짜와 일치하는 더 정교한 예이다.</p>
+<div class="sourceCode" id="cb1891"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1891-1"><a href="stringr-패키지-함수.html#cb1891-1" aria-hidden="true" tabindex="-1"></a><span class="co"># some strings</span></span>
+<span id="cb1891-2"><a href="stringr-패키지-함수.html#cb1891-2" aria-hidden="true" tabindex="-1"></a>strings <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;12 Jun 2002&quot;</span>, <span class="st">&quot; 8 September 2004 &quot;</span>, <span class="st">&quot;22-July-2009 &quot;</span>,</span>
+<span id="cb1891-3"><a href="stringr-패키지-함수.html#cb1891-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;01 01 2001&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;02.06.2000&quot;</span>,</span>
+<span id="cb1891-4"><a href="stringr-패키지-함수.html#cb1891-4" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;xxx-yyy-zzzz&quot;</span>, <span class="st">&quot;$2,600&quot;</span>)</span>
+<span id="cb1891-5"><a href="stringr-패키지-함수.html#cb1891-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1891-6"><a href="stringr-패키지-함수.html#cb1891-6" aria-hidden="true" tabindex="-1"></a><span class="co"># date pattern (month as text)</span></span>
+<span id="cb1891-7"><a href="stringr-패키지-함수.html#cb1891-7" aria-hidden="true" tabindex="-1"></a>dates <span class="ot">&lt;-</span> <span class="st">&quot;([0-9]{1,2})[- .]([a-zA-Z]+)[- .]([0-9]{4})&quot;</span></span>
+<span id="cb1891-8"><a href="stringr-패키지-함수.html#cb1891-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1891-9"><a href="stringr-패키지-함수.html#cb1891-9" aria-hidden="true" tabindex="-1"></a><span class="co"># detect dates</span></span>
+<span id="cb1891-10"><a href="stringr-패키지-함수.html#cb1891-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(strings, dates)</span></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb1893"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1893-1"><a href="stringr-패키지-함수.html#cb1893-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select detected macthes</span></span>
+<span id="cb1893-2"><a href="stringr-패키지-함수.html#cb1893-2" aria-hidden="true" tabindex="-1"></a>strings[<span class="fu">str_detect</span>(strings, dates)]</span></code></pre></div>
+<pre><code>## [1] &quot;12 Jun 2002&quot;        &quot; 8 September 2004 &quot; &quot;22-July-2009 &quot;</code></pre>
+</div>
+<div id="str_extract-함수를-이용한-첫-번째-일치-추출" class="section level3" number="11.4.2">
+<h3><span class="header-section-number">11.4.2</span> <code>str_extract()</code> 함수를 이용한 첫 번째 일치 추출</h3>
+<p><code>pattern</code>이 포함된 <code>string</code>을 추출하기 위해 <code>str_extract()</code> 함수를 사용할 수 있다.</p>
+<p>실제로 이 함수는 주어진 <code>pattern</code>과 일치하는 <code>string</code>의 첫 번째 부분을 추출한다.</p>
+<p>예를 들어 <em><code>Paris</code></em>에 대한 트윗이있는 문자형 벡터가 있고 해시 태그를 추출한다고 가정하자.</p>
+<p><code># [a-zA-Z]{1}</code>과 같은 <strong>#hashtag</strong> <code>pattern</code>을 정의하면 된다.</p>
+<div class="sourceCode" id="cb1895"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1895-1"><a href="stringr-패키지-함수.html#cb1895-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tweets about &#39;Paris&#39;</span></span>
+<span id="cb1895-2"><a href="stringr-패키지-함수.html#cb1895-2" aria-hidden="true" tabindex="-1"></a>paris_tweets <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1895-3"><a href="stringr-패키지-함수.html#cb1895-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;#Paris is chock-full of cultural and culinary attractions&quot;</span>,</span>
+<span id="cb1895-4"><a href="stringr-패키지-함수.html#cb1895-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Some time in #Paris along Canal St.-Martin famous by #Amelie&quot;</span>,</span>
+<span id="cb1895-5"><a href="stringr-패키지-함수.html#cb1895-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;While you&#39;re in #Paris, stop at cafe: http://goo.gl/yaCbW&quot;</span>,</span>
+<span id="cb1895-6"><a href="stringr-패키지-함수.html#cb1895-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Paris, the city of light&quot;</span>)</span>
+<span id="cb1895-7"><a href="stringr-패키지-함수.html#cb1895-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1895-8"><a href="stringr-패키지-함수.html#cb1895-8" aria-hidden="true" tabindex="-1"></a><span class="co"># hashtag pattern</span></span>
+<span id="cb1895-9"><a href="stringr-패키지-함수.html#cb1895-9" aria-hidden="true" tabindex="-1"></a>hash <span class="ot">&lt;-</span> <span class="st">&quot;#[a-zA-Z]{1,}&quot;</span></span>
+<span id="cb1895-10"><a href="stringr-패키지-함수.html#cb1895-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1895-11"><a href="stringr-패키지-함수.html#cb1895-11" aria-hidden="true" tabindex="-1"></a><span class="co"># extract (first) hashtag</span></span>
+<span id="cb1895-12"><a href="stringr-패키지-함수.html#cb1895-12" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(paris_tweets, hash)</span></code></pre></div>
+<pre><code>## [1] &quot;#Paris&quot; &quot;#Paris&quot; &quot;#Paris&quot; NA</code></pre>
+<ul>
+<li><code>str_extract()</code> 함수의 출력은 <code>string</code> 즉, <code>paris_tweets</code>와 길이가 같은 벡터이다.</li>
+<li><code>pattern</code>과 일치하지 않는 요소는 <code>NA</code>로 표시된다.</li>
+<li><code>str_extract()</code> 함수는 첫 번째 pattern하고만 일치한다. 두 번째 요소에 있는 <code>"#Amelie"</code> 해시 태그는 추출되지 않았다.</li>
+</ul>
+</div>
+<div id="str_extract_all-함수를-이용한-모든-일치-추출" class="section level3" number="11.4.3">
+<h3><span class="header-section-number">11.4.3</span> <code>str_extract_all()</code> 함수를 이용한 모든 일치 추출</h3>
+<p><code>str_extract()</code> 함수이외에도 <code>stringr</code> 패키지는 <code>str_extract_all()</code> 함수를 제공한다.</p>
+<p>함수의 이름에서 알 수 있듯이 <code>str_extract_all()</code> 함수를 사용하여 <code>string</code> 벡터의 모든 패턴을 추출한다.</p>
+<p>출력 결과는 <strong>list 형</strong>이다.</p>
+<p>이전 예제와 동일한 <code>string</code>을 사용하여 다음과 같이 모든 해시 태그 일치를 추출 할 수 있다.</p>
+<div class="sourceCode" id="cb1897"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1897-1"><a href="stringr-패키지-함수.html#cb1897-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract (all) hashtags</span></span>
+<span id="cb1897-2"><a href="stringr-패키지-함수.html#cb1897-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract_all</span>(paris_tweets, <span class="st">&quot;#[a-zA-Z]{1,}&quot;</span>)</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;#Paris&quot;
+## 
+## [[2]]
+## [1] &quot;#Paris&quot;  &quot;#Amelie&quot;
+## 
+## [[3]]
+## [1] &quot;#Paris&quot;
+## 
+## [[4]]
+## character(0)</code></pre>
+<ul>
+<li><code>str_extract()</code> 함수와 비교하여 <code>str_extract_all()</code> 함수의 출력은 <code>string</code>과 동일한 길이의 <strong>list 형</strong> 이다.</li>
+<li>또한 <code>pattern</code>과 <strong>일치하지 않는 요소</strong>는 <code>NA</code> 대신 빈 문자형 벡터 <strong><code>character (0)</code></strong>로 표시된다.</li>
+</ul>
+</div>
+<div id="str_match-함수를-이용한-첫-번째-일치-추출" class="section level3" number="11.4.4">
+<h3><span class="header-section-number">11.4.4</span> <code>str_match()</code> 함수를 이용한 첫 번째 일치 추출</h3>
+<p><code>str_extract()</code> 함수와 밀접한 관련이 있는 함수로 <code>stringr</code> 패키지가 제공하는 또 다른 추출 함수는 <code>str_match()</code> 함수이다.</p>
+<p>이 함수는 일치하는 패턴을 추출 할 뿐만 아니라, 일치하는 각 그룹을 <strong>정규 표현식 문자 클래스 패턴</strong>으로 표시한다.</p>
+<div class="sourceCode" id="cb1899"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1899-1"><a href="stringr-패키지-함수.html#cb1899-1" aria-hidden="true" tabindex="-1"></a><span class="co"># string vector</span></span>
+<span id="cb1899-2"><a href="stringr-패키지-함수.html#cb1899-2" aria-hidden="true" tabindex="-1"></a>strings <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;12 Jun 2002&quot;</span>, <span class="st">&quot; 8 September 2004 &quot;</span>, <span class="st">&quot;22-July-2009 &quot;</span>,</span>
+<span id="cb1899-3"><a href="stringr-패키지-함수.html#cb1899-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;01 01 2001&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;02.06.2000&quot;</span>,</span>
+<span id="cb1899-4"><a href="stringr-패키지-함수.html#cb1899-4" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;xxx-yyy-zzzz&quot;</span>, <span class="st">&quot;$2,600&quot;</span>)</span>
+<span id="cb1899-5"><a href="stringr-패키지-함수.html#cb1899-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1899-6"><a href="stringr-패키지-함수.html#cb1899-6" aria-hidden="true" tabindex="-1"></a><span class="co"># date pattern (month as text)</span></span>
+<span id="cb1899-7"><a href="stringr-패키지-함수.html#cb1899-7" aria-hidden="true" tabindex="-1"></a>dates <span class="ot">&lt;-</span> <span class="st">&quot;([0-9]{1,2})[- .]([a-zA-Z]+)[- .]([0-9]{4})&quot;</span></span>
+<span id="cb1899-8"><a href="stringr-패키지-함수.html#cb1899-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1899-9"><a href="stringr-패키지-함수.html#cb1899-9" aria-hidden="true" tabindex="-1"></a><span class="co"># extract first matched group</span></span>
+<span id="cb1899-10"><a href="stringr-패키지-함수.html#cb1899-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str_match</span>(strings, dates)</span></code></pre></div>
+<pre><code>##      [,1]               [,2] [,3]        [,4]  
+## [1,] &quot;12 Jun 2002&quot;      &quot;12&quot; &quot;Jun&quot;       &quot;2002&quot;
+## [2,] &quot;8 September 2004&quot; &quot;8&quot;  &quot;September&quot; &quot;2004&quot;
+## [3,] &quot;22-July-2009&quot;     &quot;22&quot; &quot;July&quot;      &quot;2009&quot;
+## [4,] NA                 NA   NA          NA    
+## [5,] NA                 NA   NA          NA    
+## [6,] NA                 NA   NA          NA    
+## [7,] NA                 NA   NA          NA    
+## [8,] NA                 NA   NA          NA</code></pre>
+<ul>
+<li>출력은 벡터가 아니라 <strong>문자 행렬</strong>이다.</li>
+<li>각각의 행은 첫 번째 열은 <code>strings</code> 요소가 패턴과 일치하는 경우 그 요소 값을 표시하고, 다른 열은 각각의 포착된 요소들을 표기하고 있다.</li>
+<li><code>dates</code> 패턴과 일치하지 않는 요소의 경우는 <code>NA</code>로 출력이 된다.</li>
+</ul>
+</div>
+<div id="str_match_all-함수를-이용한-모든-일치-추출" class="section level3" number="11.4.5">
+<h3><span class="header-section-number">11.4.5</span> <code>str_match_all()</code> 함수를 이용한 모든 일치 추출</h3>
+<p>우리가 찾고 있는 것이 <code>string</code> 벡터에서 <strong>모든 패턴을 추출</strong>하는 경우 <code>str_extract()</code> 함수 대신 <code>str_extract_all()</code> 함수를 사용해야 한다.</p>
+<div class="sourceCode" id="cb1901"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1901-1"><a href="stringr-패키지-함수.html#cb1901-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tweets about &#39;Paris&#39;</span></span>
+<span id="cb1901-2"><a href="stringr-패키지-함수.html#cb1901-2" aria-hidden="true" tabindex="-1"></a>paris_tweets <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1901-3"><a href="stringr-패키지-함수.html#cb1901-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;#Paris is chock-full of cultural and culinary attractions&quot;</span>,</span>
+<span id="cb1901-4"><a href="stringr-패키지-함수.html#cb1901-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Some time in #Paris along Canal St.-Martin famous by #Amelie&quot;</span>,</span>
+<span id="cb1901-5"><a href="stringr-패키지-함수.html#cb1901-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;While you&#39;re in #Paris, stop at cafe: http://goo.gl/yaCbW&quot;</span>,</span>
+<span id="cb1901-6"><a href="stringr-패키지-함수.html#cb1901-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Paris, the city of light&quot;</span>)</span>
+<span id="cb1901-7"><a href="stringr-패키지-함수.html#cb1901-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1901-8"><a href="stringr-패키지-함수.html#cb1901-8" aria-hidden="true" tabindex="-1"></a><span class="co"># match (all) hashtags in &#39;paris_tweets&#39;</span></span>
+<span id="cb1901-9"><a href="stringr-패키지-함수.html#cb1901-9" aria-hidden="true" tabindex="-1"></a><span class="fu">str_match_all</span>(paris_tweets, <span class="st">&quot;#[a-zA-Z]{1,}&quot;</span>)</span></code></pre></div>
+<pre><code>## [[1]]
+##      [,1]    
+## [1,] &quot;#Paris&quot;
+## 
+## [[2]]
+##      [,1]     
+## [1,] &quot;#Paris&quot; 
+## [2,] &quot;#Amelie&quot;
+## 
+## [[3]]
+##      [,1]    
+## [1,] &quot;#Paris&quot;
+## 
+## [[4]]
+##      [,1]</code></pre>
+<ul>
+<li><code>str_match ()</code> 함수와 비교하여 <code>str_match_all()</code> 함수의 출력은 <strong>list</strong>이다.</li>
+<li>또한 <strong>list의 각 요소</strong>는 해시 태그와 일치하는 행의 수를 갖는 행렬이다.</li>
+<li><code>pattern</code>과 일치하는 것이 없는 요소는 아무 것도 출력되지 않는다.</li>
+</ul>
+</div>
+<div id="str_locate-함수를-이용한-첫-번째-일치-위치-확인" class="section level3" number="11.4.6">
+<h3><span class="header-section-number">11.4.6</span> <code>str_locate()</code> 함수를 이용한 첫 번째 일치 위치 확인</h3>
+<p>정규 표현식 패턴을 감지, 추출 및 일치시키는 것 외에도 <code>stringr</code> 패키지는 <strong>패턴의 발생 위치</strong>를 찾을 수 있게 해준다.</p>
+<p><code>string</code> 벡터에서 <code>pattern</code>의 <strong>첫 번째 발생 위치</strong>를 찾으려면 <code>str_locate()</code> 함수를 사용해야 한다.</p>
+<div class="sourceCode" id="cb1903"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1903-1"><a href="stringr-패키지-함수.html#cb1903-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tweets about &#39;Paris&#39;</span></span>
+<span id="cb1903-2"><a href="stringr-패키지-함수.html#cb1903-2" aria-hidden="true" tabindex="-1"></a>paris_tweets <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1903-3"><a href="stringr-패키지-함수.html#cb1903-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;#Paris is chock-full of cultural and culinary attractions&quot;</span>,</span>
+<span id="cb1903-4"><a href="stringr-패키지-함수.html#cb1903-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Some time in #Paris along Canal St.-Martin famous by #Amelie&quot;</span>,</span>
+<span id="cb1903-5"><a href="stringr-패키지-함수.html#cb1903-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;While you&#39;re in #Paris, stop at cafe: http://goo.gl/yaCbW&quot;</span>,</span>
+<span id="cb1903-6"><a href="stringr-패키지-함수.html#cb1903-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Paris, the city of light&quot;</span>)</span>
+<span id="cb1903-7"><a href="stringr-패키지-함수.html#cb1903-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1903-8"><a href="stringr-패키지-함수.html#cb1903-8" aria-hidden="true" tabindex="-1"></a><span class="co"># locate position of (first) hashtag</span></span>
+<span id="cb1903-9"><a href="stringr-패키지-함수.html#cb1903-9" aria-hidden="true" tabindex="-1"></a><span class="fu">str_locate</span>(paris_tweets, <span class="st">&quot;#[a-zA-Z]{1,}&quot;</span>)</span></code></pre></div>
+<pre><code>##      start end
+## [1,]     1   6
+## [2,]    14  19
+## [3,]    17  22
+## [4,]    NA  NA</code></pre>
+<ul>
+<li><code>str_locate()</code> 함수의 출력은 두 개의 열과 (string) 벡터의 요소 만큼의 행을 가지는 <strong>행렬</strong>이다.
+<ul>
+<li>출력의 첫 번째 열은 <strong>시작 위치(<code>start</code>)</strong>이고, 두 번째 열은 <strong>종료 위치(<code>end</code>)</strong>이다.</li>
+</ul></li>
+<li>앞의 예에서 결과는 4행 2열의 행렬이다.
+<ul>
+<li>첫 번째 행은 첫 번째 트윗의 해시 태그에 해당하는데, 위치 1에서 시작하여 위치 6에서 끝나고 있음을 보여주고 있다.</li>
+<li>두 번째 행은 두 번째 트윗의 해시 태그에 해당하며, 시작 위치는 14 번째 문자이고 끝 위치는 19 번째 문자이다.</li>
+<li>네 번째 행은 네 번째 트윗에 해당하며, 해시 태그가 없으므로 해당 행의 값은 <code>NA</code>입니다.</li>
+</ul></li>
+</ul>
+</div>
+<div id="str_locate_all-함수를-이용한-모든-일치-위치-확인" class="section level3" number="11.4.7">
+<h3><span class="header-section-number">11.4.7</span> <code>str_locate_all()</code> 함수를 이용한 모든 일치 위치 확인</h3>
+<p><code>string</code> 벡터에서 첫 번째 패턴뿐만 아니라 모든 패턴의 발생 위치를 찾으려면 <code>str_locate_all()</code> 함수를 사용해야 한다.</p>
+<div class="sourceCode" id="cb1905"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1905-1"><a href="stringr-패키지-함수.html#cb1905-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tweets about &#39;Paris&#39;</span></span>
+<span id="cb1905-2"><a href="stringr-패키지-함수.html#cb1905-2" aria-hidden="true" tabindex="-1"></a>paris_tweets <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1905-3"><a href="stringr-패키지-함수.html#cb1905-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;#Paris is chock-full of cultural and culinary attractions&quot;</span>,</span>
+<span id="cb1905-4"><a href="stringr-패키지-함수.html#cb1905-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Some time in #Paris along Canal St.-Martin famous by #Amelie&quot;</span>,</span>
+<span id="cb1905-5"><a href="stringr-패키지-함수.html#cb1905-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;While you&#39;re in #Paris, stop at cafe: http://goo.gl/yaCbW&quot;</span>,</span>
+<span id="cb1905-6"><a href="stringr-패키지-함수.html#cb1905-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Paris, the city of light&quot;</span>)</span>
+<span id="cb1905-7"><a href="stringr-패키지-함수.html#cb1905-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1905-8"><a href="stringr-패키지-함수.html#cb1905-8" aria-hidden="true" tabindex="-1"></a><span class="co"># locate (all) hashtags in &#39;paris_tweets&#39;</span></span>
+<span id="cb1905-9"><a href="stringr-패키지-함수.html#cb1905-9" aria-hidden="true" tabindex="-1"></a><span class="fu">str_locate_all</span>(paris_tweets, <span class="st">&quot;#[a-zA-Z]{1,}&quot;</span>)</span></code></pre></div>
+<pre><code>## [[1]]
+##      start end
+## [1,]     1   6
+## 
+## [[2]]
+##      start end
+## [1,]    14  19
+## [2,]    54  60
+## 
+## [[3]]
+##      start end
+## [1,]    17  22
+## 
+## [[4]]
+##      start end</code></pre>
+<ul>
+<li><code>str_locate()</code> 함수와 비교하여 <code>str_locate_all()</code> 함수의 출력은 제공된 <code>string</code> 벡터와 동일한 길이의 <strong>list</strong> 이다.</li>
+<li>각 <strong>list의 요소</strong>는 차례로 두 개의 열을 갖는 행렬이다. <code>pattern</code>과 일치하지 않는 요소들은 <code>NA</code> 대신 아무것도 표시가 되지 않는다.</li>
+<li><code>str_locate_all()</code> 함수를 Paris 트윗에 적용한 결과를 보면,
+<ul>
+<li>두 번째 요소에 <code>#Paris</code>와 <code>#Amelie</code> 해시 태그의 시작 및 끝 위치가 표시되어 있음을 알 수 있다.</li>
+<li>결과적으로 네 번째 요소는 연관된 트윗에 해시 태그가 없음을 보여 주고 있다.</li>
+</ul></li>
+</ul>
+</div>
+<div id="str_replace-함수를-이용한-첫-번째-일치-대체" class="section level3" number="11.4.8">
+<h3><span class="header-section-number">11.4.8</span> <code>str_replace()</code> 함수를 이용한 첫 번째 일치 대체</h3>
+<p><code>string</code> 벡터에서 처음 일치하는 패턴을 대체하기 위해서는 <code>str_replace()</code> 함수를 사용할 수 있다.</p>
+<p>사용법은 다음과 같다:</p>
+<pre><code>`str_replace(string, pattern, replacement)`</code></pre>
+<ul>
+<li><code>str_replace()</code> 함수에는 <code>string</code>과 <code>pattern</code> 이라는 두 개의 인수 이외에도 <code>replacement</code> (대체)을 나타내는 세 번째 인수가 필요하다.</li>
+</ul>
+<p><code>San Francisco</code>, <code>Barcelona</code>, <code>Naples</code> 그리고 <code>Paris</code> 등의 도시 이름이 벡터로 있다고 가정해 보자.</p>
+<p>각 이름의 첫 번째 모음을 세미콜론(<code>;</code>)으로 바꾸려고 한다고 가정하자.</p>
+<p>이를 수행하는 방법은 다음과 같다:</p>
+<div class="sourceCode" id="cb1908"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1908-1"><a href="stringr-패키지-함수.html#cb1908-1" aria-hidden="true" tabindex="-1"></a><span class="co"># city names</span></span>
+<span id="cb1908-2"><a href="stringr-패키지-함수.html#cb1908-2" aria-hidden="true" tabindex="-1"></a>cities <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;San Francisco&quot;</span>, <span class="st">&quot;Barcelona&quot;</span>, <span class="st">&quot;Naples&quot;</span>, <span class="st">&quot;Paris&quot;</span>)</span>
+<span id="cb1908-3"><a href="stringr-패키지-함수.html#cb1908-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1908-4"><a href="stringr-패키지-함수.html#cb1908-4" aria-hidden="true" tabindex="-1"></a><span class="co"># replace first matched vowel</span></span>
+<span id="cb1908-5"><a href="stringr-패키지-함수.html#cb1908-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(cities, <span class="st">&quot;[aeiou]&quot;</span>, <span class="st">&quot;;&quot;</span>)    <span class="co"># 각각의 도시명에서 첫번째 모음을 ;으로 바꿈</span></span></code></pre></div>
+<pre><code>## [1] &quot;S;n Francisco&quot; &quot;B;rcelona&quot;     &quot;N;ples&quot;        &quot;P;ris&quot;</code></pre>
+<p>이제 각 이름에서 첫 번째 자음을 바꿔 보자. 부정 클래스(negated class)로 패턴을 수정하면 된다:</p>
+<div class="sourceCode" id="cb1910"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1910-1"><a href="stringr-패키지-함수.html#cb1910-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace first matched consonant</span></span>
+<span id="cb1910-2"><a href="stringr-패키지-함수.html#cb1910-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(cities, <span class="st">&quot;[^aeiou]&quot;</span>, <span class="st">&quot;;&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;;an Francisco&quot; &quot;;arcelona&quot;     &quot;;aples&quot;        &quot;;aris&quot;</code></pre>
+</div>
+<div id="str_replace_all-함수를-이용한-모든-일치-대체" class="section level3" number="11.4.9">
+<h3><span class="header-section-number">11.4.9</span> <code>str_replace_all()</code> 함수를 이용한 모든 일치 대체</h3>
+<p><code>string</code>에서 일치하는 <code>pattern</code>의 모든 항목을 바꾸려면 <code>str_replace_all()</code> 함수를 사용할 수 있다.</p>
+<p>다시 한 번 도시 이름(<code>cities</code>)을 가진 벡터를 고려하고 각 이름에 있는 모든 모음을 바꾸고 싶다고 가정 해 보자:</p>
+<div class="sourceCode" id="cb1912"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1912-1"><a href="stringr-패키지-함수.html#cb1912-1" aria-hidden="true" tabindex="-1"></a><span class="co"># city names</span></span>
+<span id="cb1912-2"><a href="stringr-패키지-함수.html#cb1912-2" aria-hidden="true" tabindex="-1"></a>cities <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;San Francisco&quot;</span>, <span class="st">&quot;Barcelona&quot;</span>, <span class="st">&quot;Naples&quot;</span>, <span class="st">&quot;Paris&quot;</span>)</span>
+<span id="cb1912-3"><a href="stringr-패키지-함수.html#cb1912-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1912-4"><a href="stringr-패키지-함수.html#cb1912-4" aria-hidden="true" tabindex="-1"></a><span class="co"># replace all matched vowel</span></span>
+<span id="cb1912-5"><a href="stringr-패키지-함수.html#cb1912-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(cities, <span class="at">pattern =</span> <span class="st">&quot;[aeiou]&quot;</span>, <span class="st">&quot;;&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;S;n Fr;nc;sc;&quot; &quot;B;rc;l;n;&quot;     &quot;N;pl;s&quot;        &quot;P;r;s&quot;</code></pre>
+<p>다른 방법으로, 각 이름에 있는 모든 자음을 세미콜론(<code>;</code>)으로 바꾸려면 <code>pattern</code>을 <strong>부정 클래스(^)</strong>인 <strong><code>"[^aeiou]"</code></strong>로 변경하면 된다.</p>
+<div class="sourceCode" id="cb1914"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1914-1"><a href="stringr-패키지-함수.html#cb1914-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace all matched consonants</span></span>
+<span id="cb1914-2"><a href="stringr-패키지-함수.html#cb1914-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(cities, <span class="at">pattern =</span> <span class="st">&quot;[^aeiou]&quot;</span>, <span class="st">&quot;;&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;;a;;;;a;;i;;o&quot; &quot;;a;;e;o;a&quot;     &quot;;a;;e;&quot;        &quot;;a;i;&quot;</code></pre>
+</div>
+<div id="str_split-함수를-이용한-문자열-분할" class="section level3" number="11.4.10">
+<h3><span class="header-section-number">11.4.10</span> <code>str_split()</code> 함수를 이용한 문자열 분할</h3>
+<p><code>strsplit()</code> 함수와 유사하게 <code>stringr</code> 패키지는 문자 벡터를 여러 조각으로 분리하는 <code>str_split()</code> 함수를 제공한다.</p>
+<p>이 함수의 사용은 다음과 같은 형식을 따른다:</p>
+<pre><code>`str_split(string, pattern, n = Inf)`</code></pre>
+<ul>
+<li>인수 <code>n</code>은 분할할 최대의 개수이다.</li>
+<li>디폴트 값(<code>n = Inf</code>)은 가능한 모든 분할 위치가 사용됨을 의미한다.</li>
+</ul>
+<p>하나의 문장을 개별 단어들로 나누고자 할 때, <code>strsplit()</code> 함수와 같은 예를 살펴보자:</p>
+<div class="sourceCode" id="cb1917"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1917-1"><a href="stringr-패키지-함수.html#cb1917-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a sentence</span></span>
+<span id="cb1917-2"><a href="stringr-패키지-함수.html#cb1917-2" aria-hidden="true" tabindex="-1"></a>sentence <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;R is a collaborative project with many contributors&quot;</span>)</span>
+<span id="cb1917-3"><a href="stringr-패키지-함수.html#cb1917-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1917-4"><a href="stringr-패키지-함수.html#cb1917-4" aria-hidden="true" tabindex="-1"></a><span class="co"># split into words</span></span>
+<span id="cb1917-5"><a href="stringr-패키지-함수.html#cb1917-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(sentence, <span class="st">&quot; &quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">unlist</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;R&quot;             &quot;is&quot;            &quot;a&quot;             &quot;collaborative&quot;
+## [5] &quot;project&quot;       &quot;with&quot;          &quot;many&quot;          &quot;contributors&quot;</code></pre>
+<p>마찬가지로 “<code>-</code>”로 연결된 전화번호 숫자를 부분 부분 분리하여 보자.</p>
+<div class="sourceCode" id="cb1919"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1919-1"><a href="stringr-패키지-함수.html#cb1919-1" aria-hidden="true" tabindex="-1"></a><span class="co"># telephone numbers</span></span>
+<span id="cb1919-2"><a href="stringr-패키지-함수.html#cb1919-2" aria-hidden="true" tabindex="-1"></a>tels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;510-548-2238&quot;</span>, <span class="st">&quot;707-231-2440&quot;</span>, <span class="st">&quot;650-752-1300&quot;</span>)</span>
+<span id="cb1919-3"><a href="stringr-패키지-함수.html#cb1919-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1919-4"><a href="stringr-패키지-함수.html#cb1919-4" aria-hidden="true" tabindex="-1"></a><span class="co"># split each number into its portions</span></span>
+<span id="cb1919-5"><a href="stringr-패키지-함수.html#cb1919-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(tels, <span class="st">&quot;-&quot;</span>)</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;510&quot;  &quot;548&quot;  &quot;2238&quot;
+## 
+## [[2]]
+## [1] &quot;707&quot;  &quot;231&quot;  &quot;2440&quot;
+## 
+## [[3]]
+## [1] &quot;650&quot;  &quot;752&quot;  &quot;1300&quot;</code></pre>
+<ul>
+<li>결과는 문자형 벡터의 <strong>list</strong> 이다. <code>string</code> 벡터의 각 요소는 결과 list의 요소에 해당한다.</li>
+<li>list의 각 요소는 일치로부터 발생하는 분할 벡터 (즉, 분할 개수)를 포함할 것이다.</li>
+</ul>
+<p><strong>인수 <code>n</code>의 사용</strong>을 보여주기 위해, <code>"chocolate"</code>, <code>"vanilla"</code>, <code>"cinnamon"</code>, <code>"mint"</code>, 그리고 <code>"lemon"</code> 등을 요소로 하는 <code>flavors</code>벡터를 생각해 보자.</p>
+<p>모음의 클래스(<code>[aeiou]</code>)를 <code>pattern</code>으로 정의하는 각 <code>flavors</code> 이름을 분할한다고 가정하자:</p>
+<div class="sourceCode" id="cb1921"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1921-1"><a href="stringr-패키지-함수.html#cb1921-1" aria-hidden="true" tabindex="-1"></a><span class="co"># string</span></span>
+<span id="cb1921-2"><a href="stringr-패키지-함수.html#cb1921-2" aria-hidden="true" tabindex="-1"></a>flavors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;chocolate&quot;</span>, <span class="st">&quot;vanilla&quot;</span>, <span class="st">&quot;cinnamon&quot;</span>, <span class="st">&quot;mint&quot;</span>, <span class="st">&quot;lemon&quot;</span>)</span>
+<span id="cb1921-3"><a href="stringr-패키지-함수.html#cb1921-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1921-4"><a href="stringr-패키지-함수.html#cb1921-4" aria-hidden="true" tabindex="-1"></a><span class="co"># split by vowels</span></span>
+<span id="cb1921-5"><a href="stringr-패키지-함수.html#cb1921-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(flavors, <span class="st">&quot;[aeiou]&quot;</span>)</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;ch&quot; &quot;c&quot;  &quot;l&quot;  &quot;t&quot;  &quot;&quot;  
+## 
+## [[2]]
+## [1] &quot;v&quot;  &quot;n&quot;  &quot;ll&quot; &quot;&quot;  
+## 
+## [[3]]
+## [1] &quot;c&quot;  &quot;nn&quot; &quot;m&quot;  &quot;n&quot; 
+## 
+## [[4]]
+## [1] &quot;m&quot;  &quot;nt&quot;
+## 
+## [[5]]
+## [1] &quot;l&quot; &quot;m&quot; &quot;n&quot;</code></pre>
+<p>이제 최대 개수를 <code>n = 2</code>로 수정한다.</p>
+<p>이는 <code>str_split()</code> 함수가 각 요소를 최대 2 개로 분할한다는 의미이다.</p>
+<p>우리는 다음과 같은 결과를 얻을 것이다:</p>
+<div class="sourceCode" id="cb1923"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1923-1"><a href="stringr-패키지-함수.html#cb1923-1" aria-hidden="true" tabindex="-1"></a><span class="co"># split by first vowel</span></span>
+<span id="cb1923-2"><a href="stringr-패키지-함수.html#cb1923-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(flavors, <span class="st">&quot;[aeiou]&quot;</span>, <span class="at">n =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;ch&quot;     &quot;colate&quot;
+## 
+## [[2]]
+## [1] &quot;v&quot;     &quot;nilla&quot;
+## 
+## [[3]]
+## [1] &quot;c&quot;      &quot;nnamon&quot;
+## 
+## [[4]]
+## [1] &quot;m&quot;  &quot;nt&quot;
+## 
+## [[5]]
+## [1] &quot;l&quot;   &quot;mon&quot;</code></pre>
+</div>
+<div id="str_split_fixed-함수를-이용한-문자열-분할" class="section level3" number="11.4.11">
+<h3><span class="header-section-number">11.4.11</span> <code>str_split_fixed()</code> 함수를 이용한 문자열 분할</h3>
+<p><code>str_split()</code> 함수 이외에도 <code>string</code>을 <strong>고정된 수의 조각으로 나누는</strong> <code>str_ split_fixed()</code> 함수도 있다.</p>
+<p><strong>사용 형식</strong>은 다음과 같다:</p>
+<pre><code>`str_split_fixed(string, pattern, n)`</code></pre>
+<ul>
+<li>인수 <code>n</code>에는 기본값이 없다. 다시 말해, 조각의 수를 나타내기 위해 정수를 지정해야 한다.</li>
+</ul>
+<p>동일한 <code>flavors</code> 벡터와 일치하는 <code>pattern</code>으로 문자 “n”을 다시 고려하기로 한다.</p>
+<p><code>n = 2</code> 인 <code>str_split_fixed()</code> 함수의 동작을 살펴보기로 한다.</p>
+<div class="sourceCode" id="cb1926"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1926-1"><a href="stringr-패키지-함수.html#cb1926-1" aria-hidden="true" tabindex="-1"></a><span class="co"># string</span></span>
+<span id="cb1926-2"><a href="stringr-패키지-함수.html#cb1926-2" aria-hidden="true" tabindex="-1"></a>flavors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;chocolate&quot;</span>, <span class="st">&quot;vanilla&quot;</span>, <span class="st">&quot;cinnamon&quot;</span>, <span class="st">&quot;mint&quot;</span>, <span class="st">&quot;lemon&quot;</span>)</span>
+<span id="cb1926-3"><a href="stringr-패키지-함수.html#cb1926-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1926-4"><a href="stringr-패키지-함수.html#cb1926-4" aria-hidden="true" tabindex="-1"></a><span class="co"># split flavors into 2 pieces</span></span>
+<span id="cb1926-5"><a href="stringr-패키지-함수.html#cb1926-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split_fixed</span>(flavors, <span class="st">&quot;n&quot;</span>, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##      [,1]        [,2]   
+## [1,] &quot;chocolate&quot; &quot;&quot;     
+## [2,] &quot;va&quot;        &quot;illa&quot; 
+## [3,] &quot;ci&quot;        &quot;namon&quot;
+## [4,] &quot;mi&quot;        &quot;t&quot;    
+## [5,] &quot;lemo&quot;      &quot;&quot;</code></pre>
+<ul>
+<li>출력은 <code>n = 2</code>만큼 <code>2</code>개의 컬럼을 가진 <strong>문자 행렬</strong>이다.</li>
+<li><code>"chocolate"</code>에는 문자 <code>"n"</code>이 포함되어 있지 않으므로 두 번째 열의 해당 값은 <code>""</code>로 유지된다.</li>
+<li>반대로 <code>"lemon"</code>과 관련된 두 번째 열의 값도 비어 있다. 그러나 이것은이 <code>flavor</code>가 <code>"lemo"</code>와 <code>""</code>로 분리되기 때문이다.</li>
+</ul>
+<p><code>n</code>의 값을 <code>n = 3</code>으로 변경하면 <code>3</code> 개의 열이있는 행렬이 생성된다.</p>
+<div class="sourceCode" id="cb1928"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1928-1"><a href="stringr-패키지-함수.html#cb1928-1" aria-hidden="true" tabindex="-1"></a><span class="co"># split favors into 3 pieces</span></span>
+<span id="cb1928-2"><a href="stringr-패키지-함수.html#cb1928-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split_fixed</span>(flavors, <span class="st">&quot;n&quot;</span>, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##      [,1]        [,2]   [,3]  
+## [1,] &quot;chocolate&quot; &quot;&quot;     &quot;&quot;    
+## [2,] &quot;va&quot;        &quot;illa&quot; &quot;&quot;    
+## [3,] &quot;ci&quot;        &quot;&quot;     &quot;amon&quot;
+## [4,] &quot;mi&quot;        &quot;t&quot;    &quot;&quot;    
+## [5,] &quot;lemo&quot;      &quot;&quot;     &quot;&quot;</code></pre>
+
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="문자-벡터의-분할.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>

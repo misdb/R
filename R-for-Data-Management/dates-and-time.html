@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 Dates and Times | Data Management with R</title>
+  <title>Chapter 9 Dates and Times | tidyverse를 이용한 데이터 관리</title>
   <meta name="description" content="The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 9 Dates and Times | Data Management with R" />
+  <meta property="og:title" content="Chapter 9 Dates and Times | tidyverse를 이용한 데이터 관리" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 Dates and Times | Data Management with R" />
+  <meta name="twitter:title" content="Chapter 9 Dates and Times | tidyverse를 이용한 데이터 관리" />
   
   <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
   
@@ -24,17 +24,17 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2020-12-06" />
+<meta name="date" content="2021-02-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="dates.html"/>
-<link rel="next" href="strings.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link rel="prev" href="dates-functions.html"/>
+<link rel="next" href="dates-time-intro.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,16 +51,14 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.16/datatables.js"></script>
+<script src="libs/datatables-binding-0.17/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 <link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
 <script src="libs/str_view-binding-1.4.0/str_view.js"></script>
 
@@ -129,6 +127,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -141,411 +140,441 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
-<li class="chapter" data-level="1" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>1</b> Data Import and Export</a>
+<li><a href="/">Home</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>tidyverse를 이용한 데이터 관리</a></li>
+<li class="chapter" data-level="" data-path="서론.html"><a href="서론.html"><i class="fa fa-check"></i>서론</a></li>
+<li class="chapter" data-level="1" data-path="data-import-export.html"><a href="data-import-export.html"><i class="fa fa-check"></i><b>1</b> 데이터 불러오기와 저장하기</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="data-import.html"><a href="data-import.html#data-import"><i class="fa fa-check"></i><b>1.1</b> Data Import</a>
+<li class="chapter" data-level="1.1" data-path="패키지-설치하고-불러오기.html"><a href="패키지-설치하고-불러오기.html"><i class="fa fa-check"></i><b>1.1</b> 패키지 설치하고 불러오기</a>
 <ul>
-<li class="chapter" data-level="1.1.1" data-path="data-import.html"><a href="data-import.html#준비하기"><i class="fa fa-check"></i><b>1.1.1</b> 준비하기</a></li>
-<li class="chapter" data-level="1.1.2" data-path="data-import.html"><a href="data-import.html#시작하기"><i class="fa fa-check"></i><b>1.1.2</b> 시작하기</a></li>
-<li class="chapter" data-level="1.1.3" data-path="data-import.html"><a href="data-import.html#벡터-파싱하기"><i class="fa fa-check"></i><b>1.1.3</b> 벡터 파싱하기</a></li>
-<li class="chapter" data-level="1.1.4" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>1.1.4</b> 연습문제</a></li>
-<li class="chapter" data-level="1.1.5" data-path="data-import.html"><a href="data-import.html#파일-파싱하기"><i class="fa fa-check"></i><b>1.1.5</b> 파일 파싱하기</a></li>
+<li class="chapter" data-level="1.1.1" data-path="패키지-설치하고-불러오기.html"><a href="패키지-설치하고-불러오기.html#패키지-설치하기"><i class="fa fa-check"></i><b>1.1.1</b> 패키지 설치하기</a></li>
+<li class="chapter" data-level="1.1.2" data-path="패키지-설치하고-불러오기.html"><a href="패키지-설치하고-불러오기.html#패키지-불러오기"><i class="fa fa-check"></i><b>1.1.2</b> 패키지 불러오기</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="data-import.html"><a href="data-import.html#data_export"><i class="fa fa-check"></i><b>1.2</b> Data Export</a>
+<li class="chapter" data-level="1.2" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html"><i class="fa fa-check"></i><b>1.2</b> 데이터 불러오기</a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="data-import.html"><a href="data-import.html#write_csv"><i class="fa fa-check"></i><b>1.2.1</b> <code>write_csv()</code></a></li>
-<li class="chapter" data-level="1.2.2" data-path="data-import.html"><a href="data-import.html#write_rds"><i class="fa fa-check"></i><b>1.2.2</b> <code>write_rds()</code></a></li>
-<li class="chapter" data-level="1.2.3" data-path="data-import.html"><a href="data-import.html#write_feather"><i class="fa fa-check"></i><b>1.2.3</b> <code>write_feather()</code></a></li>
-<li class="chapter" data-level="1.2.4" data-path="data-import.html"><a href="data-import.html#read_csv와-read_rds의-비교"><i class="fa fa-check"></i><b>1.2.4</b> <code>read_csv()</code>와 <code>read_rds()</code>의 비교</a></li>
+<li class="chapter" data-level="1.2.1" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#관련-함수"><i class="fa fa-check"></i><b>1.2.1</b> 관련 함수</a></li>
+<li class="chapter" data-level="1.2.2" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#파일-경로-지정"><i class="fa fa-check"></i><b>1.2.2</b> 파일 경로 지정</a></li>
+<li class="chapter" data-level="1.2.3" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#다른-인수들"><i class="fa fa-check"></i><b>1.2.3</b> 다른 인수들</a></li>
+<li class="chapter" data-level="1.2.4" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#read_csv의-예"><i class="fa fa-check"></i><b>1.2.4</b> <code>read_csv()</code>의 예</a></li>
+<li class="chapter" data-level="1.2.5" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#read_csv2의-예"><i class="fa fa-check"></i><b>1.2.5</b> <code>read_csv2()</code>의 예</a></li>
+<li class="chapter" data-level="1.2.6" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#read_delim의-예"><i class="fa fa-check"></i><b>1.2.6</b> <code>read_delim()</code>의 예</a></li>
+<li class="chapter" data-level="1.2.7" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#read_fwf의-예"><i class="fa fa-check"></i><b>1.2.7</b> <code>read_fwf()</code>의 예</a></li>
+<li class="chapter" data-level="1.2.8" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#read_tsv의-예"><i class="fa fa-check"></i><b>1.2.8</b> read_tsv()의 예</a></li>
+<li class="chapter" data-level="1.2.9" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#한글-파일-불러오기"><i class="fa fa-check"></i><b>1.2.9</b> 한글 파일 불러오기</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="data-import.html"><a href="data-import.html#data_import_additional"><i class="fa fa-check"></i><b>1.3</b> Read Tabular Data의 보충설명</a>
+<li class="chapter" data-level="1.3" data-path="벡터-파싱.html"><a href="벡터-파싱.html"><i class="fa fa-check"></i><b>1.3</b> 벡터 파싱</a>
 <ul>
-<li class="chapter" data-level="1.3.1" data-path="data-import.html"><a href="data-import.html#read_csv의-예"><i class="fa fa-check"></i><b>1.3.1</b> <code>read_csv()</code>의 예</a></li>
-<li class="chapter" data-level="1.3.2" data-path="data-import.html"><a href="data-import.html#read_csv2의-예"><i class="fa fa-check"></i><b>1.3.2</b> <code>read_csv2()</code>의 예</a></li>
-<li class="chapter" data-level="1.3.3" data-path="data-import.html"><a href="data-import.html#read_delim의-예"><i class="fa fa-check"></i><b>1.3.3</b> <code>read_delim()</code>의 예</a></li>
-<li class="chapter" data-level="1.3.4" data-path="data-import.html"><a href="data-import.html#read_fwf의-예"><i class="fa fa-check"></i><b>1.3.4</b> <code>read_fwf()</code>의 예</a></li>
-<li class="chapter" data-level="1.3.5" data-path="data-import.html"><a href="data-import.html#read_tsv의-예"><i class="fa fa-check"></i><b>1.3.5</b> read_tsv()의 예</a></li>
+<li class="chapter" data-level="1.3.1" data-path="벡터-파싱.html"><a href="벡터-파싱.html#파싱-함수"><i class="fa fa-check"></i><b>1.3.1</b> 파싱 함수</a></li>
+<li class="chapter" data-level="1.3.2" data-path="벡터-파싱.html"><a href="벡터-파싱.html#문자형-벡터의-변환"><i class="fa fa-check"></i><b>1.3.2</b> 문자형 벡터의 변환</a></li>
+<li class="chapter" data-level="1.3.3" data-path="벡터-파싱.html"><a href="벡터-파싱.html#팩터형-변환"><i class="fa fa-check"></i><b>1.3.3</b> 팩터형 변환</a></li>
+<li class="chapter" data-level="1.3.4" data-path="벡터-파싱.html"><a href="벡터-파싱.html#날짜형-날짜-시간형-시간형-파싱"><i class="fa fa-check"></i><b>1.3.4</b> 날짜형, 날짜-시간형, 시간형 파싱</a></li>
+<li class="chapter" data-level="1.3.5" data-path="벡터-파싱.html"><a href="벡터-파싱.html#숫자형-벡터의-변환"><i class="fa fa-check"></i><b>1.3.5</b> 숫자형 벡터의 변환</a></li>
+<li class="chapter" data-level="" data-path="벡터-파싱.html"><a href="벡터-파싱.html#연습문제-2"><i class="fa fa-check"></i>연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="파일-파싱하기.html"><a href="파일-파싱하기.html"><i class="fa fa-check"></i><b>1.4</b> 파일 파싱하기</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="파일-파싱하기.html"><a href="파일-파싱하기.html#전략"><i class="fa fa-check"></i><b>1.4.1</b> 전략</a></li>
+<li class="chapter" data-level="1.4.2" data-path="파일-파싱하기.html"><a href="파일-파싱하기.html#문제점"><i class="fa fa-check"></i><b>1.4.2</b> 문제점</a></li>
+<li class="chapter" data-level="1.4.3" data-path="파일-파싱하기.html"><a href="파일-파싱하기.html#문제-해결-전략"><i class="fa fa-check"></i><b>1.4.3</b> 문제 해결 전략</a></li>
+<li class="chapter" data-level="1.4.4" data-path="파일-파싱하기.html"><a href="파일-파싱하기.html#기타-전략"><i class="fa fa-check"></i><b>1.4.4</b> 기타 전략</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="data-export.html"><a href="data-export.html"><i class="fa fa-check"></i><b>1.5</b> 데이터 저장하기</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="data-export.html"><a href="data-export.html#write_csv"><i class="fa fa-check"></i><b>1.5.1</b> <code>write_csv()</code></a></li>
+<li class="chapter" data-level="1.5.2" data-path="data-export.html"><a href="data-export.html#write_rds"><i class="fa fa-check"></i><b>1.5.2</b> <code>write_rds()</code></a></li>
+<li class="chapter" data-level="1.5.3" data-path="data-export.html"><a href="data-export.html#write_feather"><i class="fa fa-check"></i><b>1.5.3</b> <code>write_feather()</code></a></li>
+<li class="chapter" data-level="1.5.4" data-path="data-export.html"><a href="data-export.html#read_csv와-read_rds의-비교"><i class="fa fa-check"></i><b>1.5.4</b> <code>read_csv()</code>와 <code>read_rds()</code>의 비교</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html"><i class="fa fa-check"></i><b>2</b> Dataframe, Tibble and Factor</a>
+<li class="chapter" data-level="2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html"><i class="fa fa-check"></i><b>2</b> 데이터 프레임, 티블 그리고 팩터</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#dataframe"><i class="fa fa-check"></i><b>2.1</b> Data Frame</a>
+<li class="chapter" data-level="2.1" data-path="dataframe.html"><a href="dataframe.html"><i class="fa fa-check"></i><b>2.1</b> 데이터 프레임</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#데이터-프레임의-생성"><i class="fa fa-check"></i><b>2.1.1</b> 데이터 프레임의 생성</a></li>
-<li class="chapter" data-level="2.1.2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#데이터-프레임의-구조"><i class="fa fa-check"></i><b>2.1.2</b> 데이터 프레임의 구조</a></li>
-<li class="chapter" data-level="2.1.3" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#행열-추가하기"><i class="fa fa-check"></i><b>2.1.3</b> 행/열 추가하기</a></li>
-<li class="chapter" data-level="2.1.4" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#행과-열-접근하기"><i class="fa fa-check"></i><b>2.1.4</b> 행과 열 접근하기</a></li>
-<li class="chapter" data-level="2.1.5" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-2"><i class="fa fa-check"></i><b>2.1.5</b> 연습문제</a></li>
-<li class="chapter" data-level="2.1.6" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#행과-열의-이름-지정하기"><i class="fa fa-check"></i><b>2.1.6</b> 행과 열의 이름 지정하기</a></li>
-<li class="chapter" data-level="2.1.7" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#데이터-타입-변환"><i class="fa fa-check"></i><b>2.1.7</b> 데이터 타입 변환</a></li>
-<li class="chapter" data-level="2.1.8" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-3"><i class="fa fa-check"></i><b>2.1.8</b> 연습문제</a></li>
-<li class="chapter" data-level="2.1.9" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#실습-과제"><i class="fa fa-check"></i><b>2.1.9</b> 실습 과제</a></li>
-<li class="chapter" data-level="2.1.10" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#apply-함수-이해하기"><i class="fa fa-check"></i><b>2.1.10</b> <code>apply()</code> 함수 이해하기</a></li>
-<li class="chapter" data-level="2.1.11" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-4"><i class="fa fa-check"></i><b>2.1.11</b> 연습문제</a></li>
-<li class="chapter" data-level="2.1.12" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-5"><i class="fa fa-check"></i><b>2.1.12</b> 연습문제</a></li>
-<li class="chapter" data-level="2.1.13" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#apply-함수의-사촌들"><i class="fa fa-check"></i><b>2.1.13</b> <code>apply()</code> 함수의 사촌들</a></li>
-<li class="chapter" data-level="2.1.14" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-6"><i class="fa fa-check"></i><b>2.1.14</b> 연습문제</a></li>
-<li class="chapter" data-level="" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#참고-sampling"><i class="fa fa-check"></i>[참고 : Sampling]</a></li>
-<li class="chapter" data-level="" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#reference"><i class="fa fa-check"></i>Reference</a></li>
+<li class="chapter" data-level="2.1.1" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임의-생성"><i class="fa fa-check"></i><b>2.1.1</b> 데이터 프레임의 생성</a></li>
+<li class="chapter" data-level="2.1.2" data-path="dataframe.html"><a href="dataframe.html#행열-결합에-의한-데이터-프레임-생성하기"><i class="fa fa-check"></i><b>2.1.2</b> 행/열 결합에 의한 데이터 프레임 생성하기</a></li>
+<li class="chapter" data-level="2.1.3" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임의-구조-확인"><i class="fa fa-check"></i><b>2.1.3</b> 데이터 프레임의 구조 확인</a></li>
+<li class="chapter" data-level="2.1.4" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임의-데이터-확인"><i class="fa fa-check"></i><b>2.1.4</b> 데이터 프레임의 데이터 확인</a></li>
+<li class="chapter" data-level="2.1.5" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임의-통계적-요약-정보"><i class="fa fa-check"></i><b>2.1.5</b> 데이터 프레임의 통계적 요약 정보</a></li>
+<li class="chapter" data-level="2.1.6" data-path="dataframe.html"><a href="dataframe.html#iris-데이터-세트의-예"><i class="fa fa-check"></i><b>2.1.6</b> <code>iris</code> 데이터 세트의 예</a></li>
+<li class="chapter" data-level="2.1.7" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임의-행열의-이름-지정하기"><i class="fa fa-check"></i><b>2.1.7</b> 데이터 프레임의 행/열의 이름 지정하기</a></li>
+<li class="chapter" data-level="2.1.8" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임의-데이터에-접근하기"><i class="fa fa-check"></i><b>2.1.8</b> 데이터 프레임의 데이터에 접근하기</a></li>
+<li class="chapter" data-level="" data-path="dataframe.html"><a href="dataframe.html#연습문제-3"><i class="fa fa-check"></i>연습문제</a></li>
+<li class="chapter" data-level="2.1.9" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임에-행열-추가하기"><i class="fa fa-check"></i><b>2.1.9</b> 데이터 프레임에 행/열 추가하기</a></li>
+<li class="chapter" data-level="2.1.10" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임의-행열-삭제"><i class="fa fa-check"></i><b>2.1.10</b> 데이터 프레임의 행/열 삭제</a></li>
+<li class="chapter" data-level="2.1.11" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임-컬럼의-데이터-타입-변환"><i class="fa fa-check"></i><b>2.1.11</b> 데이터 프레임 컬럼의 데이터 타입 변환</a></li>
+<li class="chapter" data-level="2.1.12" data-path="dataframe.html"><a href="dataframe.html#연습문제-4"><i class="fa fa-check"></i><b>2.1.12</b> 연습문제</a></li>
+<li class="chapter" data-level="2.1.13" data-path="dataframe.html"><a href="dataframe.html#실습-과제"><i class="fa fa-check"></i><b>2.1.13</b> 실습 과제</a></li>
+<li class="chapter" data-level="2.1.14" data-path="dataframe.html"><a href="dataframe.html#apply-함수-이해하기"><i class="fa fa-check"></i><b>2.1.14</b> <code>apply()</code> 함수 이해하기</a></li>
+<li class="chapter" data-level="2.1.15" data-path="dataframe.html"><a href="dataframe.html#연습문제-5"><i class="fa fa-check"></i><b>2.1.15</b> 연습문제</a></li>
+<li class="chapter" data-level="2.1.16" data-path="dataframe.html"><a href="dataframe.html#연습문제-6"><i class="fa fa-check"></i><b>2.1.16</b> 연습문제</a></li>
+<li class="chapter" data-level="2.1.17" data-path="dataframe.html"><a href="dataframe.html#apply-함수의-사촌들"><i class="fa fa-check"></i><b>2.1.17</b> <code>apply()</code> 함수의 사촌들</a></li>
+<li class="chapter" data-level="2.1.18" data-path="dataframe.html"><a href="dataframe.html#연습문제-7"><i class="fa fa-check"></i><b>2.1.18</b> 연습문제</a></li>
+<li class="chapter" data-level="" data-path="dataframe.html"><a href="dataframe.html#참고-sampling"><i class="fa fa-check"></i>[참고 : Sampling]</a></li>
+<li class="chapter" data-level="" data-path="dataframe.html"><a href="dataframe.html#reference"><i class="fa fa-check"></i>Reference</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#tibble"><i class="fa fa-check"></i><b>2.2</b> tibble</a>
+<li class="chapter" data-level="2.2" data-path="tibble.html"><a href="tibble.html"><i class="fa fa-check"></i><b>2.2</b> 티블</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#티블-생성"><i class="fa fa-check"></i><b>2.2.1</b> 티블 생성</a></li>
-<li class="chapter" data-level="2.2.2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#강제변환coercion"><i class="fa fa-check"></i><b>2.2.2</b> 강제변환(Coercion)</a></li>
-<li class="chapter" data-level="2.2.3" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#티블과-데이터-프레임의-비교"><i class="fa fa-check"></i><b>2.2.3</b> 티블과 데이터 프레임의 비교</a></li>
-<li class="chapter" data-level="2.2.4" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#이전-코드와-상호작용"><i class="fa fa-check"></i><b>2.2.4</b> 이전 코드와 상호작용</a></li>
-<li class="chapter" data-level="2.2.5" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#외부-데이터-가져오기-importing"><i class="fa fa-check"></i><b>2.2.5</b> 외부 데이터 가져오기 (importing)</a></li>
-<li class="chapter" data-level="2.2.6" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#연습문제-7"><i class="fa fa-check"></i><b>2.2.6</b> 연습문제</a></li>
-<li class="chapter" data-level="" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#references"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="2.2.1" data-path="tibble.html"><a href="tibble.html#참고자료"><i class="fa fa-check"></i><b>2.2.1</b> 참고자료</a></li>
+<li class="chapter" data-level="2.2.2" data-path="tibble.html"><a href="tibble.html#티블의-생성"><i class="fa fa-check"></i><b>2.2.2</b> 티블의 생성</a></li>
+<li class="chapter" data-level="2.2.3" data-path="tibble.html"><a href="tibble.html#강제변환coercion"><i class="fa fa-check"></i><b>2.2.3</b> 강제변환(Coercion)</a></li>
+<li class="chapter" data-level="2.2.4" data-path="tibble.html"><a href="tibble.html#티블과-데이터-프레임의-비교"><i class="fa fa-check"></i><b>2.2.4</b> 티블과 데이터 프레임의 비교</a></li>
+<li class="chapter" data-level="2.2.5" data-path="tibble.html"><a href="tibble.html#이전-코드와-상호작용"><i class="fa fa-check"></i><b>2.2.5</b> 이전 코드와 상호작용</a></li>
+<li class="chapter" data-level="2.2.6" data-path="tibble.html"><a href="tibble.html#외부-데이터-가져오기-importing"><i class="fa fa-check"></i><b>2.2.6</b> 외부 데이터 가져오기 (importing)</a></li>
+<li class="chapter" data-level="2.2.7" data-path="tibble.html"><a href="tibble.html#연습문제-8"><i class="fa fa-check"></i><b>2.2.7</b> 연습문제</a></li>
+<li class="chapter" data-level="" data-path="tibble.html"><a href="tibble.html#references"><i class="fa fa-check"></i>References</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#factor"><i class="fa fa-check"></i><b>2.3</b> Factor</a>
+<li class="chapter" data-level="2.3" data-path="factor.html"><a href="factor.html"><i class="fa fa-check"></i><b>2.3</b> Factor</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#범주형-자료"><i class="fa fa-check"></i><b>2.3.1</b> 범주형 자료</a></li>
-<li class="chapter" data-level="2.3.2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#factor의-요소-및-특징"><i class="fa fa-check"></i><b>2.3.2</b> Factor의 요소 및 특징</a></li>
-<li class="chapter" data-level="2.3.3" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#factor-함수의-형식"><i class="fa fa-check"></i><b>2.3.3</b> <code>factor()</code> 함수의 형식</a></li>
-<li class="chapter" data-level="2.3.4" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#factor-생성"><i class="fa fa-check"></i><b>2.3.4</b> factor 생성</a></li>
-<li class="chapter" data-level="" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html#reference-1"><i class="fa fa-check"></i>Reference</a></li>
+<li class="chapter" data-level="2.3.1" data-path="factor.html"><a href="factor.html#범주형-자료"><i class="fa fa-check"></i><b>2.3.1</b> 범주형 자료</a></li>
+<li class="chapter" data-level="2.3.2" data-path="factor.html"><a href="factor.html#factor의-요소-및-특징"><i class="fa fa-check"></i><b>2.3.2</b> Factor의 요소 및 특징</a></li>
+<li class="chapter" data-level="2.3.3" data-path="factor.html"><a href="factor.html#factor-함수의-형식"><i class="fa fa-check"></i><b>2.3.3</b> <code>factor()</code> 함수의 형식</a></li>
+<li class="chapter" data-level="2.3.4" data-path="factor.html"><a href="factor.html#factor-생성"><i class="fa fa-check"></i><b>2.3.4</b> factor 생성</a></li>
+<li class="chapter" data-level="" data-path="factor.html"><a href="factor.html#reference-1"><i class="fa fa-check"></i>Reference</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-cleansing.html"><a href="data-cleansing.html"><i class="fa fa-check"></i><b>3</b> Data Cleansing</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_summary"><i class="fa fa-check"></i><b>3.1</b> Data Cleansing</a>
+<li class="chapter" data-level="3.1" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html"><i class="fa fa-check"></i><b>3.1</b> Data Cleansing</a>
 <ul>
-<li class="chapter" data-level="3.1.1" data-path="data-cleansing.html"><a href="data-cleansing.html#변수-요약"><i class="fa fa-check"></i><b>3.1.1</b> 변수 요약</a></li>
-<li class="chapter" data-level="3.1.2" data-path="data-cleansing.html"><a href="data-cleansing.html#데이터-세트-4"><i class="fa fa-check"></i><b>3.1.2</b> 데이터 세트</a></li>
-<li class="chapter" data-level="3.1.3" data-path="data-cleansing.html"><a href="data-cleansing.html#데이터-세트의-통계적-요약-정보"><i class="fa fa-check"></i><b>3.1.3</b> 데이터 세트의 통계적 요약 정보</a></li>
-<li class="chapter" data-level="3.1.4" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_describe"><i class="fa fa-check"></i><b>3.1.4</b> <code>Hmisc</code> 패키지의 <code>describe()</code> 함수</a></li>
-<li class="chapter" data-level="3.1.5" data-path="data-cleansing.html"><a href="data-cleansing.html#의심스러운-값"><i class="fa fa-check"></i><b>3.1.5</b> 의심스러운 값</a></li>
-<li class="chapter" data-level="3.1.6" data-path="data-cleansing.html"><a href="data-cleansing.html#describe함수의-결과의-시각화"><i class="fa fa-check"></i><b>3.1.6</b> <code>describe()</code>함수의 결과의 시각화</a></li>
-<li class="chapter" data-level="3.1.7" data-path="data-cleansing.html"><a href="data-cleansing.html#의심스러운-값을-결측치로-바꾸기"><i class="fa fa-check"></i><b>3.1.7</b> 의심스러운 값을 결측치로 바꾸기</a></li>
-<li class="chapter" data-level="3.1.8" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_Complete_cases"><i class="fa fa-check"></i><b>3.1.8</b> <code>NA</code>가 없는 완전한 데이터</a></li>
-<li class="chapter" data-level="3.1.9" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_after_cleansing"><i class="fa fa-check"></i><b>3.1.9</b> 데이터 정제 후의 <code>describe()</code>함수 결과 그림</a></li>
+<li class="chapter" data-level="3.1.1" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#변수-요약"><i class="fa fa-check"></i><b>3.1.1</b> 변수 요약</a></li>
+<li class="chapter" data-level="3.1.2" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#데이터-세트-3"><i class="fa fa-check"></i><b>3.1.2</b> 데이터 세트</a></li>
+<li class="chapter" data-level="3.1.3" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#데이터-세트의-통계적-요약-정보"><i class="fa fa-check"></i><b>3.1.3</b> 데이터 세트의 통계적 요약 정보</a></li>
+<li class="chapter" data-level="3.1.4" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#data_cleansing_describe"><i class="fa fa-check"></i><b>3.1.4</b> <code>Hmisc</code> 패키지의 <code>describe()</code> 함수</a></li>
+<li class="chapter" data-level="3.1.5" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#의심스러운-값"><i class="fa fa-check"></i><b>3.1.5</b> 의심스러운 값</a></li>
+<li class="chapter" data-level="3.1.6" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#describe함수의-결과의-시각화"><i class="fa fa-check"></i><b>3.1.6</b> <code>describe()</code>함수의 결과의 시각화</a></li>
+<li class="chapter" data-level="3.1.7" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#의심스러운-값을-결측치로-바꾸기"><i class="fa fa-check"></i><b>3.1.7</b> 의심스러운 값을 결측치로 바꾸기</a></li>
+<li class="chapter" data-level="3.1.8" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#data_cleansing_Complete_cases"><i class="fa fa-check"></i><b>3.1.8</b> <code>NA</code>가 없는 완전한 데이터</a></li>
+<li class="chapter" data-level="3.1.9" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#data_cleansing_after_cleansing"><i class="fa fa-check"></i><b>3.1.9</b> 데이터 정제 후의 <code>describe()</code>함수 결과 그림</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_missing_value"><i class="fa fa-check"></i><b>3.2</b> 결측치(Missing Values) 처리</a>
+<li class="chapter" data-level="3.2" data-path="data-cleansing-missing-value.html"><a href="data-cleansing-missing-value.html"><i class="fa fa-check"></i><b>3.2</b> 결측치(Missing Values) 처리</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="data-cleansing.html"><a href="data-cleansing.html#결측값이-포함되어-있는지-확인하는-방법-is.na"><i class="fa fa-check"></i><b>3.2.1</b> 결측값이 포함되어 있는지 확인하는 방법: <code>is.na()</code></a></li>
-<li class="chapter" data-level="3.2.2" data-path="data-cleansing.html"><a href="data-cleansing.html#결측치-갯수-sumis.na"><i class="fa fa-check"></i><b>3.2.2</b> 결측치 갯수: <code>sum(is.na())</code></a></li>
-<li class="chapter" data-level="3.2.3" data-path="data-cleansing.html"><a href="data-cleansing.html#결측치를-통계-분석시-제외시키기-na.rm-true"><i class="fa fa-check"></i><b>3.2.3</b> 결측치를 통계 분석시 제외시키기 : <code>na.rm = TRUE</code></a></li>
-<li class="chapter" data-level="3.2.4" data-path="data-cleansing.html"><a href="data-cleansing.html#결측치가-있는-행-제거-na.omit"><i class="fa fa-check"></i><b>3.2.4</b> 결측치가 있는 행 제거: <code>na.omit()</code></a></li>
-<li class="chapter" data-level="3.2.5" data-path="data-cleansing.html"><a href="data-cleansing.html#결측치를-다른-값으로-대체"><i class="fa fa-check"></i><b>3.2.5</b> 결측치를 다른 값으로 대체</a></li>
-<li class="chapter" data-level="" data-path="data-cleansing.html"><a href="data-cleansing.html#reference-2"><i class="fa fa-check"></i>Reference</a></li>
+<li class="chapter" data-level="3.2.1" data-path="data-cleansing-missing-value.html"><a href="data-cleansing-missing-value.html#결측값이-포함되어-있는지-확인하는-방법-is.na"><i class="fa fa-check"></i><b>3.2.1</b> 결측값이 포함되어 있는지 확인하는 방법: <code>is.na()</code></a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-cleansing-missing-value.html"><a href="data-cleansing-missing-value.html#결측치-갯수-sumis.na"><i class="fa fa-check"></i><b>3.2.2</b> 결측치 갯수: <code>sum(is.na())</code></a></li>
+<li class="chapter" data-level="3.2.3" data-path="data-cleansing-missing-value.html"><a href="data-cleansing-missing-value.html#결측치를-통계-분석시-제외시키기-na.rm-true"><i class="fa fa-check"></i><b>3.2.3</b> 결측치를 통계 분석시 제외시키기 : <code>na.rm = TRUE</code></a></li>
+<li class="chapter" data-level="3.2.4" data-path="data-cleansing-missing-value.html"><a href="data-cleansing-missing-value.html#결측치가-있는-행-제거-na.omit"><i class="fa fa-check"></i><b>3.2.4</b> 결측치가 있는 행 제거: <code>na.omit()</code></a></li>
+<li class="chapter" data-level="3.2.5" data-path="data-cleansing-missing-value.html"><a href="data-cleansing-missing-value.html#결측치를-다른-값으로-대체"><i class="fa fa-check"></i><b>3.2.5</b> 결측치를 다른 값으로 대체</a></li>
+<li class="chapter" data-level="" data-path="data-cleansing-missing-value.html"><a href="data-cleansing-missing-value.html#reference-2"><i class="fa fa-check"></i>Reference</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="data-cleansing.html"><a href="data-cleansing.html#data_cleansing_outlier"><i class="fa fa-check"></i><b>3.3</b> 이상치(Outlier) 처리 {#outlier}</a>
+<li class="chapter" data-level="3.3" data-path="data-cleansing-outlier.html"><a href="data-cleansing-outlier.html"><i class="fa fa-check"></i><b>3.3</b> 이상치(Outlier) 처리 {#outlier}</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="data-cleansing.html"><a href="data-cleansing.html#표준값-z를-이용한-이상치-확인-및-처리"><i class="fa fa-check"></i><b>3.3.1</b> 표준값 Z를 이용한 이상치 확인 및 처리</a></li>
-<li class="chapter" data-level="3.3.2" data-path="data-cleansing.html"><a href="data-cleansing.html#수정된-표준값을-이용한-이상치-확인-및-처리"><i class="fa fa-check"></i><b>3.3.2</b> 수정된 표준값을 이용한 이상치 확인 및 처리</a></li>
-<li class="chapter" data-level="3.3.3" data-path="data-cleansing.html"><a href="data-cleansing.html#사분위수를-이용한-이상치-확인-및-처리"><i class="fa fa-check"></i><b>3.3.3</b> 사분위수를 이용한 이상치 확인 및 처리</a></li>
+<li class="chapter" data-level="3.3.1" data-path="data-cleansing-outlier.html"><a href="data-cleansing-outlier.html#표준값-z를-이용한-이상치-확인-및-처리"><i class="fa fa-check"></i><b>3.3.1</b> 표준값 Z를 이용한 이상치 확인 및 처리</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data-cleansing-outlier.html"><a href="data-cleansing-outlier.html#수정된-표준값을-이용한-이상치-확인-및-처리"><i class="fa fa-check"></i><b>3.3.2</b> 수정된 표준값을 이용한 이상치 확인 및 처리</a></li>
+<li class="chapter" data-level="3.3.3" data-path="data-cleansing-outlier.html"><a href="data-cleansing-outlier.html#사분위수를-이용한-이상치-확인-및-처리"><i class="fa fa-check"></i><b>3.3.3</b> 사분위수를 이용한 이상치 확인 및 처리</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="preprocessing.html"><a href="preprocessing.html"><i class="fa fa-check"></i><b>4</b> Data Preprocessing</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="preprocessing.html"><a href="preprocessing.html#들어가는-말"><i class="fa fa-check"></i><b>4.1</b> 들어가는 말</a>
+<li class="chapter" data-level="4.1" data-path="들어가는-말.html"><a href="들어가는-말.html"><i class="fa fa-check"></i><b>4.1</b> 들어가는 말</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="preprocessing.html"><a href="preprocessing.html#데이터-전처리란"><i class="fa fa-check"></i><b>4.1.1</b> 데이터 전처리란?</a></li>
-<li class="chapter" data-level="4.1.2" data-path="preprocessing.html"><a href="preprocessing.html#왜-dplyr-패키지-인가"><i class="fa fa-check"></i><b>4.1.2</b> 왜 <code>dplyr</code> 패키지 인가?</a></li>
+<li class="chapter" data-level="4.1.1" data-path="들어가는-말.html"><a href="들어가는-말.html#데이터-전처리란"><i class="fa fa-check"></i><b>4.1.1</b> 데이터 전처리란?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="들어가는-말.html"><a href="들어가는-말.html#왜-dplyr-패키지-인가"><i class="fa fa-check"></i><b>4.1.2</b> 왜 <code>dplyr</code> 패키지 인가?</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="preprocessing.html"><a href="preprocessing.html#dplyr-패키지에-있는-함수들"><i class="fa fa-check"></i><b>4.2</b> <code>dplyr</code> 패키지에 있는 함수들</a>
+<li class="chapter" data-level="4.2" data-path="dplyr-패키지에-있는-함수들.html"><a href="dplyr-패키지에-있는-함수들.html"><i class="fa fa-check"></i><b>4.2</b> <code>dplyr</code> 패키지에 있는 함수들</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="preprocessing.html"><a href="preprocessing.html#패키지-설치"><i class="fa fa-check"></i><b>4.2.1</b> 패키지 설치</a></li>
-<li class="chapter" data-level="4.2.2" data-path="preprocessing.html"><a href="preprocessing.html#예제-데이터-확인"><i class="fa fa-check"></i><b>4.2.2</b> 예제 데이터 확인</a></li>
-<li class="chapter" data-level="4.2.3" data-path="preprocessing.html"><a href="preprocessing.html#dplyr-패키지의-주요-함수-목록"><i class="fa fa-check"></i><b>4.2.3</b> <code>dplyr</code> 패키지의 주요 함수 목록</a></li>
+<li class="chapter" data-level="4.2.1" data-path="dplyr-패키지에-있는-함수들.html"><a href="dplyr-패키지에-있는-함수들.html#패키지-설치"><i class="fa fa-check"></i><b>4.2.1</b> 패키지 설치</a></li>
+<li class="chapter" data-level="4.2.2" data-path="dplyr-패키지에-있는-함수들.html"><a href="dplyr-패키지에-있는-함수들.html#예제-데이터-확인"><i class="fa fa-check"></i><b>4.2.2</b> 예제 데이터 확인</a></li>
+<li class="chapter" data-level="4.2.3" data-path="dplyr-패키지에-있는-함수들.html"><a href="dplyr-패키지에-있는-함수들.html#dplyr-패키지의-주요-함수-목록"><i class="fa fa-check"></i><b>4.2.3</b> <code>dplyr</code> 패키지의 주요 함수 목록</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="preprocessing.html"><a href="preprocessing.html#데이터-프레임의-컬럼-선택-select"><i class="fa fa-check"></i><b>4.3</b> 데이터 프레임의 컬럼 선택: <code>select()</code></a>
+<li class="chapter" data-level="4.3" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html"><i class="fa fa-check"></i><b>4.3</b> 데이터 프레임의 컬럼 선택: <code>select()</code></a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="preprocessing.html"><a href="preprocessing.html#select-함수의-기본-형식"><i class="fa fa-check"></i><b>4.3.1</b> <code>select()</code> 함수의 기본 형식</a></li>
-<li class="chapter" data-level="4.3.2" data-path="preprocessing.html"><a href="preprocessing.html#a번째-부터-n번째의-연속적-컬럼-선택"><i class="fa fa-check"></i><b>4.3.2</b> a번째 부터 n번째의 연속적 컬럼 선택</a></li>
-<li class="chapter" data-level="4.3.3" data-path="preprocessing.html"><a href="preprocessing.html#a번째-부터-n번째의-연속적-컬럼을-제외한-선택"><i class="fa fa-check"></i><b>4.3.3</b> <code>a</code>번째 부터 <code>n</code>번째의 연속적 컬럼을 제외한 선택</a></li>
-<li class="chapter" data-level="4.3.4" data-path="preprocessing.html"><a href="preprocessing.html#컬럼-이름의-앞-부분을-지정하여-선택"><i class="fa fa-check"></i><b>4.3.4</b> 컬럼 이름의 ’앞 부분’을 지정하여 선택</a></li>
-<li class="chapter" data-level="4.3.5" data-path="preprocessing.html"><a href="preprocessing.html#컬럼-이름의-끝-부분을-지정하여-선택"><i class="fa fa-check"></i><b>4.3.5</b> 컬럼 이름의 ’끝 부분’을 지정하여 선택</a></li>
-<li class="chapter" data-level="4.3.6" data-path="preprocessing.html"><a href="preprocessing.html#컬럼-이름의-일부를-포함하는-컬럼-선택"><i class="fa fa-check"></i><b>4.3.6</b> 컬럼 이름의 일부를 포함하는 컬럼 선택</a></li>
-<li class="chapter" data-level="4.3.7" data-path="preprocessing.html"><a href="preprocessing.html#정규-표현식과-일치하는-문자열을-포함하는-컬럼-선택"><i class="fa fa-check"></i><b>4.3.7</b> 정규 표현식과 일치하는 문자열을 포함하는 컬럼 선택</a></li>
-<li class="chapter" data-level="4.3.8" data-path="preprocessing.html"><a href="preprocessing.html#원하는-컬럼-명의-그룹에-포함된-컬럼-선택"><i class="fa fa-check"></i><b>4.3.8</b> 원하는 컬럼 명의 그룹에 포함된 컬럼 선택</a></li>
-<li class="chapter" data-level="4.3.9" data-path="preprocessing.html"><a href="preprocessing.html#컬럼-이름의-접두사와-숫자-범위를-조합하여-컬럼-선택"><i class="fa fa-check"></i><b>4.3.9</b> 컬럼 이름의 접두사와 숫자 범위를 조합하여 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.1" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#select-함수의-기본-형식"><i class="fa fa-check"></i><b>4.3.1</b> <code>select()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.3.2" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#a번째-부터-n번째의-연속적-컬럼-선택"><i class="fa fa-check"></i><b>4.3.2</b> a번째 부터 n번째의 연속적 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.3" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#a번째-부터-n번째의-연속적-컬럼을-제외한-선택"><i class="fa fa-check"></i><b>4.3.3</b> <code>a</code>번째 부터 <code>n</code>번째의 연속적 컬럼을 제외한 선택</a></li>
+<li class="chapter" data-level="4.3.4" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#컬럼-이름의-앞-부분을-지정하여-선택"><i class="fa fa-check"></i><b>4.3.4</b> 컬럼 이름의 ’앞 부분’을 지정하여 선택</a></li>
+<li class="chapter" data-level="4.3.5" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#컬럼-이름의-끝-부분을-지정하여-선택"><i class="fa fa-check"></i><b>4.3.5</b> 컬럼 이름의 ’끝 부분’을 지정하여 선택</a></li>
+<li class="chapter" data-level="4.3.6" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#컬럼-이름의-일부를-포함하는-컬럼-선택"><i class="fa fa-check"></i><b>4.3.6</b> 컬럼 이름의 일부를 포함하는 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.7" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#정규-표현식과-일치하는-문자열을-포함하는-컬럼-선택"><i class="fa fa-check"></i><b>4.3.7</b> 정규 표현식과 일치하는 문자열을 포함하는 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.8" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#원하는-컬럼-명의-그룹에-포함된-컬럼-선택"><i class="fa fa-check"></i><b>4.3.8</b> 원하는 컬럼 명의 그룹에 포함된 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.9" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#컬럼-이름의-접두사와-숫자-범위를-조합하여-컬럼-선택"><i class="fa fa-check"></i><b>4.3.9</b> 컬럼 이름의 접두사와 숫자 범위를 조합하여 컬럼 선택</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="preprocessing.html"><a href="preprocessing.html#filter-함수를-이용한-행의-선택"><i class="fa fa-check"></i><b>4.4</b> <code>filter()</code> 함수를 이용한 행의 선택</a>
+<li class="chapter" data-level="4.4" data-path="filter-함수를-이용한-행의-선택.html"><a href="filter-함수를-이용한-행의-선택.html"><i class="fa fa-check"></i><b>4.4</b> <code>filter()</code> 함수를 이용한 행의 선택</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="preprocessing.html"><a href="preprocessing.html#filter-함수의-기본-형식"><i class="fa fa-check"></i><b>4.4.1</b> <code>filter()</code> 함수의 기본 형식</a></li>
-<li class="chapter" data-level="4.4.2" data-path="preprocessing.html"><a href="preprocessing.html#단일-조건에-의한-행의-선택"><i class="fa fa-check"></i><b>4.4.2</b> 단일 조건에 의한 행의 선택</a></li>
-<li class="chapter" data-level="4.4.3" data-path="preprocessing.html"><a href="preprocessing.html#복수-조건을-and로-결합한-행의-선택"><i class="fa fa-check"></i><b>4.4.3</b> 복수 조건을 AND(<code>,</code>)로 결합한 행의 선택</a></li>
-<li class="chapter" data-level="4.4.4" data-path="preprocessing.html"><a href="preprocessing.html#복수-조건을-or로-결합한-행의-선택"><i class="fa fa-check"></i><b>4.4.4</b> 복수 조건을 OR(<code>|</code>)로 결합한 행의 선택</a></li>
-<li class="chapter" data-level="4.4.5" data-path="preprocessing.html"><a href="preprocessing.html#행의-위치를-지정해서-행의-데이터-부분집합-선택"><i class="fa fa-check"></i><b>4.4.5</b> 행의 위치를 지정해서 행의 데이터 부분집합 선택</a></li>
+<li class="chapter" data-level="4.4.1" data-path="filter-함수를-이용한-행의-선택.html"><a href="filter-함수를-이용한-행의-선택.html#filter-함수의-기본-형식"><i class="fa fa-check"></i><b>4.4.1</b> <code>filter()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.4.2" data-path="filter-함수를-이용한-행의-선택.html"><a href="filter-함수를-이용한-행의-선택.html#단일-조건에-의한-행의-선택"><i class="fa fa-check"></i><b>4.4.2</b> 단일 조건에 의한 행의 선택</a></li>
+<li class="chapter" data-level="4.4.3" data-path="filter-함수를-이용한-행의-선택.html"><a href="filter-함수를-이용한-행의-선택.html#복수-조건을-and로-결합한-행의-선택"><i class="fa fa-check"></i><b>4.4.3</b> 복수 조건을 AND(<code>,</code>)로 결합한 행의 선택</a></li>
+<li class="chapter" data-level="4.4.4" data-path="filter-함수를-이용한-행의-선택.html"><a href="filter-함수를-이용한-행의-선택.html#복수-조건을-or로-결합한-행의-선택"><i class="fa fa-check"></i><b>4.4.4</b> 복수 조건을 OR(<code>|</code>)로 결합한 행의 선택</a></li>
+<li class="chapter" data-level="4.4.5" data-path="filter-함수를-이용한-행의-선택.html"><a href="filter-함수를-이용한-행의-선택.html#행의-위치를-지정해서-행의-데이터-부분집합-선택"><i class="fa fa-check"></i><b>4.4.5</b> 행의 위치를 지정해서 행의 데이터 부분집합 선택</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="preprocessing.html"><a href="preprocessing.html#arrange-함수를-이용한-행의-정렬"><i class="fa fa-check"></i><b>4.5</b> <code>arrange()</code> 함수를 이용한 행의 정렬</a>
+<li class="chapter" data-level="4.5" data-path="arrange-함수를-이용한-행의-정렬.html"><a href="arrange-함수를-이용한-행의-정렬.html"><i class="fa fa-check"></i><b>4.5</b> <code>arrange()</code> 함수를 이용한 행의 정렬</a>
 <ul>
-<li class="chapter" data-level="4.5.1" data-path="preprocessing.html"><a href="preprocessing.html#arrange-함수의-기본-형식"><i class="fa fa-check"></i><b>4.5.1</b> <code>arrange()</code> 함수의 기본 형식</a></li>
-<li class="chapter" data-level="4.5.2" data-path="preprocessing.html"><a href="preprocessing.html#복수-개의-정렬-기준으로-행을-정렬하기"><i class="fa fa-check"></i><b>4.5.2</b> 복수 개의 정렬 기준으로 행을 정렬하기</a></li>
+<li class="chapter" data-level="4.5.1" data-path="arrange-함수를-이용한-행의-정렬.html"><a href="arrange-함수를-이용한-행의-정렬.html#arrange-함수의-기본-형식"><i class="fa fa-check"></i><b>4.5.1</b> <code>arrange()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.5.2" data-path="arrange-함수를-이용한-행의-정렬.html"><a href="arrange-함수를-이용한-행의-정렬.html#복수-개의-정렬-기준으로-행을-정렬하기"><i class="fa fa-check"></i><b>4.5.2</b> 복수 개의 정렬 기준으로 행을 정렬하기</a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="preprocessing.html"><a href="preprocessing.html#preprocessing_rename"><i class="fa fa-check"></i><b>4.6</b> <code>rename()</code> 함수를 이용한 데이터 프레임의 컬럼 이름 변경</a>
+<li class="chapter" data-level="4.6" data-path="preprocessing-rename.html"><a href="preprocessing-rename.html"><i class="fa fa-check"></i><b>4.6</b> <code>rename()</code> 함수를 이용한 데이터 프레임의 컬럼 이름 변경</a>
 <ul>
-<li class="chapter" data-level="4.6.1" data-path="preprocessing.html"><a href="preprocessing.html#rename-함수의-기본-형식"><i class="fa fa-check"></i><b>4.6.1</b> <code>rename()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.6.1" data-path="preprocessing-rename.html"><a href="preprocessing-rename.html#rename-함수의-기본-형식"><i class="fa fa-check"></i><b>4.6.1</b> <code>rename()</code> 함수의 기본 형식</a></li>
 </ul></li>
-<li class="chapter" data-level="4.7" data-path="preprocessing.html"><a href="preprocessing.html#distinct-함수를-이용한-유일한-값-추출"><i class="fa fa-check"></i><b>4.7</b> <code>distinct()</code> 함수를 이용한 유일한 값 추출</a>
+<li class="chapter" data-level="4.7" data-path="distinct-함수를-이용한-유일한-값-추출.html"><a href="distinct-함수를-이용한-유일한-값-추출.html"><i class="fa fa-check"></i><b>4.7</b> <code>distinct()</code> 함수를 이용한 유일한 값 추출</a>
 <ul>
-<li class="chapter" data-level="4.7.1" data-path="preprocessing.html"><a href="preprocessing.html#distinct-함수의-기본-형식"><i class="fa fa-check"></i><b>4.7.1</b> <code>distinct()</code> 함수의 기본 형식</a></li>
-<li class="chapter" data-level="4.7.2" data-path="preprocessing.html"><a href="preprocessing.html#단일-기준에-의한-유일-값-추출"><i class="fa fa-check"></i><b>4.7.2</b> 단일 기준에 의한 유일 값 추출</a></li>
-<li class="chapter" data-level="4.7.3" data-path="preprocessing.html"><a href="preprocessing.html#복수-기준에-의한-유일-값-추출"><i class="fa fa-check"></i><b>4.7.3</b> 복수 기준에 의한 유일 값 추출</a></li>
+<li class="chapter" data-level="4.7.1" data-path="distinct-함수를-이용한-유일한-값-추출.html"><a href="distinct-함수를-이용한-유일한-값-추출.html#distinct-함수의-기본-형식"><i class="fa fa-check"></i><b>4.7.1</b> <code>distinct()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.7.2" data-path="distinct-함수를-이용한-유일한-값-추출.html"><a href="distinct-함수를-이용한-유일한-값-추출.html#단일-기준에-의한-유일-값-추출"><i class="fa fa-check"></i><b>4.7.2</b> 단일 기준에 의한 유일 값 추출</a></li>
+<li class="chapter" data-level="4.7.3" data-path="distinct-함수를-이용한-유일한-값-추출.html"><a href="distinct-함수를-이용한-유일한-값-추출.html#복수-기준에-의한-유일-값-추출"><i class="fa fa-check"></i><b>4.7.3</b> 복수 기준에 의한 유일 값 추출</a></li>
 </ul></li>
-<li class="chapter" data-level="4.8" data-path="preprocessing.html"><a href="preprocessing.html#무작위-표본-추출"><i class="fa fa-check"></i><b>4.8</b> 무작위 표본 추출</a>
+<li class="chapter" data-level="4.8" data-path="무작위-표본-추출.html"><a href="무작위-표본-추출.html"><i class="fa fa-check"></i><b>4.8</b> 무작위 표본 추출</a>
 <ul>
-<li class="chapter" data-level="4.8.1" data-path="preprocessing.html"><a href="preprocessing.html#정해진-갯수-만큼의-표본-무작위-추출"><i class="fa fa-check"></i><b>4.8.1</b> 정해진 갯수 만큼의 표본 무작위 추출</a></li>
-<li class="chapter" data-level="4.8.2" data-path="preprocessing.html"><a href="preprocessing.html#정해진-비율로-표본-무작위-추출"><i class="fa fa-check"></i><b>4.8.2</b> 정해진 비율로 표본 무작위 추출</a></li>
-<li class="chapter" data-level="4.8.3" data-path="preprocessing.html"><a href="preprocessing.html#정해진-갯수-만큼의-표본-복원-추출"><i class="fa fa-check"></i><b>4.8.3</b> 정해진 갯수 만큼의 표본 복원 추출</a></li>
-<li class="chapter" data-level="4.8.4" data-path="preprocessing.html"><a href="preprocessing.html#집단별-층화-표본-추출"><i class="fa fa-check"></i><b>4.8.4</b> 집단별 층화 표본 추출</a></li>
+<li class="chapter" data-level="4.8.1" data-path="무작위-표본-추출.html"><a href="무작위-표본-추출.html#정해진-갯수-만큼의-표본-무작위-추출"><i class="fa fa-check"></i><b>4.8.1</b> 정해진 갯수 만큼의 표본 무작위 추출</a></li>
+<li class="chapter" data-level="4.8.2" data-path="무작위-표본-추출.html"><a href="무작위-표본-추출.html#정해진-비율로-표본-무작위-추출"><i class="fa fa-check"></i><b>4.8.2</b> 정해진 비율로 표본 무작위 추출</a></li>
+<li class="chapter" data-level="4.8.3" data-path="무작위-표본-추출.html"><a href="무작위-표본-추출.html#정해진-갯수-만큼의-표본-복원-추출"><i class="fa fa-check"></i><b>4.8.3</b> 정해진 갯수 만큼의 표본 복원 추출</a></li>
+<li class="chapter" data-level="4.8.4" data-path="무작위-표본-추출.html"><a href="무작위-표본-추출.html#집단별-층화-표본-추출"><i class="fa fa-check"></i><b>4.8.4</b> 집단별 층화 표본 추출</a></li>
 </ul></li>
-<li class="chapter" data-level="4.9" data-path="preprocessing.html"><a href="preprocessing.html#mutate-함수를-이용한-새로운-컬럼-생성"><i class="fa fa-check"></i><b>4.9</b> <code>mutate()</code> 함수를 이용한 새로운 컬럼 생성</a>
+<li class="chapter" data-level="4.9" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html"><i class="fa fa-check"></i><b>4.9</b> <code>mutate()</code> 함수를 이용한 새로운 컬럼 생성</a>
 <ul>
-<li class="chapter" data-level="4.9.1" data-path="preprocessing.html"><a href="preprocessing.html#mutate-함수의-기본-형식"><i class="fa fa-check"></i><b>4.9.1</b> <code>mutate()</code> 함수의 기본 형식</a></li>
-<li class="chapter" data-level="4.9.2" data-path="preprocessing.html"><a href="preprocessing.html#새로운-컬럼-생성-예"><i class="fa fa-check"></i><b>4.9.2</b> 새로운 컬럼 생성 예</a></li>
-<li class="chapter" data-level="4.9.3" data-path="preprocessing.html"><a href="preprocessing.html#새로운-만든-컬럼변수를-이용하여-또-다른-컬럼-생성하기"><i class="fa fa-check"></i><b>4.9.3</b> 새로운 만든 컬럼(변수)를 이용하여 또 다른 컬럼 생성하기</a></li>
-<li class="chapter" data-level="4.9.4" data-path="preprocessing.html"><a href="preprocessing.html#컬럼의-값을-새로운-값으로-변경하기"><i class="fa fa-check"></i><b>4.9.4</b> 컬럼의 값을 새로운 값으로 변경하기</a></li>
-<li class="chapter" data-level="4.9.5" data-path="preprocessing.html"><a href="preprocessing.html#keep-인수의-사용-예"><i class="fa fa-check"></i><b>4.9.5</b> <code>.keep</code> 인수의 사용 예</a></li>
-<li class="chapter" data-level="4.9.6" data-path="preprocessing.html"><a href="preprocessing.html#after와-.before-인수의-사용-예"><i class="fa fa-check"></i><b>4.9.6</b> <code>.after</code>와 <code>.before</code> 인수의 사용 예</a></li>
-<li class="chapter" data-level="4.9.7" data-path="preprocessing.html"><a href="preprocessing.html#transmute-함수를-이용한-새로운-컬럼-생성"><i class="fa fa-check"></i><b>4.9.7</b> <code>transmute()</code> 함수를 이용한 새로운 컬럼 생성</a></li>
+<li class="chapter" data-level="4.9.1" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html#mutate-함수의-기본-형식"><i class="fa fa-check"></i><b>4.9.1</b> <code>mutate()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.9.2" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html#새로운-컬럼-생성-예"><i class="fa fa-check"></i><b>4.9.2</b> 새로운 컬럼 생성 예</a></li>
+<li class="chapter" data-level="4.9.3" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html#새로운-만든-컬럼변수를-이용하여-또-다른-컬럼-생성하기"><i class="fa fa-check"></i><b>4.9.3</b> 새로운 만든 컬럼(변수)를 이용하여 또 다른 컬럼 생성하기</a></li>
+<li class="chapter" data-level="4.9.4" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html#컬럼의-값을-새로운-값으로-변경하기"><i class="fa fa-check"></i><b>4.9.4</b> 컬럼의 값을 새로운 값으로 변경하기</a></li>
+<li class="chapter" data-level="4.9.5" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html#keep-인수의-사용-예"><i class="fa fa-check"></i><b>4.9.5</b> <code>.keep</code> 인수의 사용 예</a></li>
+<li class="chapter" data-level="4.9.6" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html#after와-.before-인수의-사용-예"><i class="fa fa-check"></i><b>4.9.6</b> <code>.after</code>와 <code>.before</code> 인수의 사용 예</a></li>
+<li class="chapter" data-level="4.9.7" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html#transmute-함수를-이용한-새로운-컬럼-생성"><i class="fa fa-check"></i><b>4.9.7</b> <code>transmute()</code> 함수를 이용한 새로운 컬럼 생성</a></li>
 </ul></li>
-<li class="chapter" data-level="4.10" data-path="preprocessing.html"><a href="preprocessing.html#preprocessing_summarise"><i class="fa fa-check"></i><b>4.10</b> <code>summarise()</code>함수를 이용한 요약 통계량 계산</a>
+<li class="chapter" data-level="4.10" data-path="preprocessing-summarise.html"><a href="preprocessing-summarise.html"><i class="fa fa-check"></i><b>4.10</b> <code>summarise()</code>함수를 이용한 요약 통계량 계산</a>
 <ul>
-<li class="chapter" data-level="4.10.1" data-path="preprocessing.html"><a href="preprocessing.html#summarise-함수의-기본-형식"><i class="fa fa-check"></i><b>4.10.1</b> <code>summarise()</code> 함수의 기본 형식</a></li>
-<li class="chapter" data-level="4.10.2" data-path="preprocessing.html"><a href="preprocessing.html#summarise-함수를-이용한-요약-통계-계산"><i class="fa fa-check"></i><b>4.10.2</b> <code>summarise()</code> 함수를 이용한 요약 통계 계산</a></li>
-<li class="chapter" data-level="4.10.3" data-path="preprocessing.html"><a href="preprocessing.html#summarise를-이용한-관측치의-갯수-및-색인-찾기"><i class="fa fa-check"></i><b>4.10.3</b> <code>summarise()</code>를 이용한 관측치의 갯수 및 색인 찾기</a></li>
-<li class="chapter" data-level="4.10.4" data-path="preprocessing.html"><a href="preprocessing.html#summarise-함수를-이용한-그룹별-요약-통계량-계산"><i class="fa fa-check"></i><b>4.10.4</b> <code>summarise()</code> 함수를 이용한 그룹별 요약 통계량 계산</a></li>
-<li class="chapter" data-level="4.10.5" data-path="preprocessing.html"><a href="preprocessing.html#복수-개의-변수에-동일한-summarise-함수-적용하기"><i class="fa fa-check"></i><b>4.10.5</b> 복수 개의 변수에 동일한 <code>summarise()</code> 함수 적용하기</a></li>
-<li class="chapter" data-level="" data-path="preprocessing.html"><a href="preprocessing.html#reference-3"><i class="fa fa-check"></i>Reference</a></li>
+<li class="chapter" data-level="4.10.1" data-path="preprocessing-summarise.html"><a href="preprocessing-summarise.html#summarise-함수의-기본-형식"><i class="fa fa-check"></i><b>4.10.1</b> <code>summarise()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.10.2" data-path="preprocessing-summarise.html"><a href="preprocessing-summarise.html#summarise-함수를-이용한-요약-통계-계산"><i class="fa fa-check"></i><b>4.10.2</b> <code>summarise()</code> 함수를 이용한 요약 통계 계산</a></li>
+<li class="chapter" data-level="4.10.3" data-path="preprocessing-summarise.html"><a href="preprocessing-summarise.html#summarise를-이용한-관측치의-갯수-및-색인-찾기"><i class="fa fa-check"></i><b>4.10.3</b> <code>summarise()</code>를 이용한 관측치의 갯수 및 색인 찾기</a></li>
+<li class="chapter" data-level="4.10.4" data-path="preprocessing-summarise.html"><a href="preprocessing-summarise.html#summarise-함수를-이용한-그룹별-요약-통계량-계산"><i class="fa fa-check"></i><b>4.10.4</b> <code>summarise()</code> 함수를 이용한 그룹별 요약 통계량 계산</a></li>
+<li class="chapter" data-level="4.10.5" data-path="preprocessing-summarise.html"><a href="preprocessing-summarise.html#복수-개의-변수에-동일한-summarise-함수-적용하기"><i class="fa fa-check"></i><b>4.10.5</b> 복수 개의 변수에 동일한 <code>summarise()</code> 함수 적용하기</a></li>
+<li class="chapter" data-level="" data-path="preprocessing-summarise.html"><a href="preprocessing-summarise.html#reference-3"><i class="fa fa-check"></i>Reference</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="piping-operator.html"><a href="piping-operator.html"><i class="fa fa-check"></i><b>5</b> Pipe Operator</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="piping-operator.html"><a href="piping-operator.html#파이프-연산자"><i class="fa fa-check"></i><b>5.1</b> 파이프 연산자 : <code>%&gt;%</code></a>
+<li class="chapter" data-level="5.1" data-path="파이프-연산자.html"><a href="파이프-연산자.html"><i class="fa fa-check"></i><b>5.1</b> 파이프 연산자 : <code>%&gt;%</code></a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="piping-operator.html"><a href="piping-operator.html#파이프-연산자의-사용-예"><i class="fa fa-check"></i><b>5.1.1</b> 파이프 연산자의 사용 예</a></li>
-<li class="chapter" data-level="5.1.2" data-path="piping-operator.html"><a href="piping-operator.html#또-다른-예"><i class="fa fa-check"></i><b>5.1.2</b> 또 다른 예</a></li>
+<li class="chapter" data-level="5.1.1" data-path="파이프-연산자.html"><a href="파이프-연산자.html#파이프-연산자의-사용-예"><i class="fa fa-check"></i><b>5.1.1</b> 파이프 연산자의 사용 예</a></li>
+<li class="chapter" data-level="5.1.2" data-path="파이프-연산자.html"><a href="파이프-연산자.html#또-다른-예"><i class="fa fa-check"></i><b>5.1.2</b> 또 다른 예</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="piping-operator.html"><a href="piping-operator.html#piping_point_usage"><i class="fa fa-check"></i><b>5.2</b> 파이프된 명령어에 <code>‘.’</code> 사용하기</a></li>
+<li class="chapter" data-level="5.2" data-path="piping-point-usage.html"><a href="piping-point-usage.html"><i class="fa fa-check"></i><b>5.2</b> 파이프된 명령어에 <code>‘.’</code> 사용하기</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="relational-data-top.html"><a href="relational-data-top.html"><i class="fa fa-check"></i><b>6</b> Relational Data</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="relational-data-top.html"><a href="relational-data-top.html#결합append"><i class="fa fa-check"></i><b>6.1</b> 결합(Append)</a>
+<li class="chapter" data-level="6.1" data-path="결합append.html"><a href="결합append.html"><i class="fa fa-check"></i><b>6.1</b> 결합(Append)</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="relational-data-top.html"><a href="relational-data-top.html#데이터-프레임의-결합append"><i class="fa fa-check"></i><b>6.1.1</b> 데이터 프레임의 결합(append)</a></li>
-<li class="chapter" data-level="6.1.2" data-path="relational-data-top.html"><a href="relational-data-top.html#결합의-두-가지-방법-rbind-함수와-bind_rows함수"><i class="fa fa-check"></i><b>6.1.2</b> 결합의 두 가지 방법 : <code>rbind()</code> 함수와 <code>bind_rows()</code>함수</a></li>
-<li class="chapter" data-level="6.1.3" data-path="relational-data-top.html"><a href="relational-data-top.html#데이터-세트-결합의-예대응되지-않는-컬럼이-있는-경우"><i class="fa fa-check"></i><b>6.1.3</b> 데이터 세트 결합의 예(대응되지 않는 컬럼이 있는 경우)</a></li>
+<li class="chapter" data-level="6.1.1" data-path="결합append.html"><a href="결합append.html#데이터-프레임의-결합append"><i class="fa fa-check"></i><b>6.1.1</b> 데이터 프레임의 결합(append)</a></li>
+<li class="chapter" data-level="6.1.2" data-path="결합append.html"><a href="결합append.html#결합의-두-가지-방법-rbind-함수와-bind_rows함수"><i class="fa fa-check"></i><b>6.1.2</b> 결합의 두 가지 방법 : <code>rbind()</code> 함수와 <code>bind_rows()</code>함수</a></li>
+<li class="chapter" data-level="6.1.3" data-path="결합append.html"><a href="결합append.html#데이터-세트-결합의-예대응되지-않는-컬럼이-있는-경우"><i class="fa fa-check"></i><b>6.1.3</b> 데이터 세트 결합의 예(대응되지 않는 컬럼이 있는 경우)</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="relational-data-top.html"><a href="relational-data-top.html#데이터-세트의-병합merge"><i class="fa fa-check"></i><b>6.2</b> 데이터 세트의 병합(Merge)</a>
+<li class="chapter" data-level="6.2" data-path="데이터-세트의-병합merge.html"><a href="데이터-세트의-병합merge.html"><i class="fa fa-check"></i><b>6.2</b> 데이터 세트의 병합(Merge)</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="relational-data-top.html"><a href="relational-data-top.html#join-함수를-이용한-병합-예"><i class="fa fa-check"></i><b>6.2.1</b> join 함수를 이용한 병합 예</a></li>
+<li class="chapter" data-level="6.2.1" data-path="데이터-세트의-병합merge.html"><a href="데이터-세트의-병합merge.html#join-함수를-이용한-병합-예"><i class="fa fa-check"></i><b>6.2.1</b> join 함수를 이용한 병합 예</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="relational-data-top.html"><a href="relational-data-top.html#relational-data"><i class="fa fa-check"></i><b>6.3</b> Relational Data</a>
+<li class="chapter" data-level="6.3" data-path="relational-data.html"><a href="relational-data.html"><i class="fa fa-check"></i><b>6.3</b> Relational Data</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="relational-data-top.html"><a href="relational-data-top.html#들어가기"><i class="fa fa-check"></i><b>6.3.1</b> 들어가기</a></li>
-<li class="chapter" data-level="6.3.2" data-path="relational-data-top.html"><a href="relational-data-top.html#준비하기-1"><i class="fa fa-check"></i><b>6.3.2</b> 준비하기</a></li>
-<li class="chapter" data-level="6.3.3" data-path="relational-data-top.html"><a href="relational-data-top.html#nycflights13-패키지-내의-데이터-세트"><i class="fa fa-check"></i><b>6.3.3</b> <code>nycflights13</code> 패키지 내의 데이터 세트</a></li>
-<li class="chapter" data-level="6.3.4" data-path="relational-data-top.html"><a href="relational-data-top.html#연습문제-8"><i class="fa fa-check"></i><b>6.3.4</b> 연습문제</a></li>
-<li class="chapter" data-level="6.3.5" data-path="relational-data-top.html"><a href="relational-data-top.html#키key"><i class="fa fa-check"></i><b>6.3.5</b> 키(Key)</a></li>
-<li class="chapter" data-level="6.3.6" data-path="relational-data-top.html"><a href="relational-data-top.html#연습문제-9"><i class="fa fa-check"></i><b>6.3.6</b> 연습문제</a></li>
+<li class="chapter" data-level="6.3.1" data-path="relational-data.html"><a href="relational-data.html#들어가기"><i class="fa fa-check"></i><b>6.3.1</b> 들어가기</a></li>
+<li class="chapter" data-level="6.3.2" data-path="relational-data.html"><a href="relational-data.html#준비하기"><i class="fa fa-check"></i><b>6.3.2</b> 준비하기</a></li>
+<li class="chapter" data-level="6.3.3" data-path="relational-data.html"><a href="relational-data.html#nycflights13-패키지-내의-데이터-세트"><i class="fa fa-check"></i><b>6.3.3</b> <code>nycflights13</code> 패키지 내의 데이터 세트</a></li>
+<li class="chapter" data-level="6.3.4" data-path="relational-data.html"><a href="relational-data.html#연습문제-9"><i class="fa fa-check"></i><b>6.3.4</b> 연습문제</a></li>
+<li class="chapter" data-level="6.3.5" data-path="relational-data.html"><a href="relational-data.html#키key"><i class="fa fa-check"></i><b>6.3.5</b> 키(Key)</a></li>
+<li class="chapter" data-level="6.3.6" data-path="relational-data.html"><a href="relational-data.html#연습문제-10"><i class="fa fa-check"></i><b>6.3.6</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="relational-data-top.html"><a href="relational-data-top.html#변환-조인mutating-join"><i class="fa fa-check"></i><b>6.4</b> 변환 조인(Mutating Join)</a>
+<li class="chapter" data-level="6.4" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html"><i class="fa fa-check"></i><b>6.4</b> 변환 조인(Mutating Join)</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="relational-data-top.html"><a href="relational-data-top.html#조인-이해하기"><i class="fa fa-check"></i><b>6.4.1</b> 조인 이해하기</a></li>
-<li class="chapter" data-level="6.4.2" data-path="relational-data-top.html"><a href="relational-data-top.html#내부-조인-inner-join"><i class="fa fa-check"></i><b>6.4.2</b> 내부 조인 (inner join)</a></li>
-<li class="chapter" data-level="6.4.3" data-path="relational-data-top.html"><a href="relational-data-top.html#외부-조인-outer-join"><i class="fa fa-check"></i><b>6.4.3</b> 외부 조인 (outer join)</a></li>
-<li class="chapter" data-level="6.4.4" data-path="relational-data-top.html"><a href="relational-data-top.html#중복키"><i class="fa fa-check"></i><b>6.4.4</b> 중복키</a></li>
-<li class="chapter" data-level="6.4.5" data-path="relational-data-top.html"><a href="relational-data-top.html#키열-정의하기"><i class="fa fa-check"></i><b>6.4.5</b> 키열 정의하기</a></li>
-<li class="chapter" data-level="6.4.6" data-path="relational-data-top.html"><a href="relational-data-top.html#연습문제-10"><i class="fa fa-check"></i><b>6.4.6</b> 연습문제</a></li>
-<li class="chapter" data-level="6.4.7" data-path="relational-data-top.html"><a href="relational-data-top.html#기타-구현"><i class="fa fa-check"></i><b>6.4.7</b> 기타 구현</a></li>
+<li class="chapter" data-level="6.4.1" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html#조인-이해하기"><i class="fa fa-check"></i><b>6.4.1</b> 조인 이해하기</a></li>
+<li class="chapter" data-level="6.4.2" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html#내부-조인-inner-join"><i class="fa fa-check"></i><b>6.4.2</b> 내부 조인 (inner join)</a></li>
+<li class="chapter" data-level="6.4.3" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html#외부-조인-outer-join"><i class="fa fa-check"></i><b>6.4.3</b> 외부 조인 (outer join)</a></li>
+<li class="chapter" data-level="6.4.4" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html#중복키"><i class="fa fa-check"></i><b>6.4.4</b> 중복키</a></li>
+<li class="chapter" data-level="6.4.5" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html#키열-정의하기"><i class="fa fa-check"></i><b>6.4.5</b> 키열 정의하기</a></li>
+<li class="chapter" data-level="6.4.6" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html#연습문제-11"><i class="fa fa-check"></i><b>6.4.6</b> 연습문제</a></li>
+<li class="chapter" data-level="6.4.7" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html#기타-구현"><i class="fa fa-check"></i><b>6.4.7</b> 기타 구현</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="relational-data-top.html"><a href="relational-data-top.html#필터링-조인"><i class="fa fa-check"></i><b>6.5</b> 필터링 조인</a>
+<li class="chapter" data-level="6.5" data-path="필터링-조인.html"><a href="필터링-조인.html"><i class="fa fa-check"></i><b>6.5</b> 필터링 조인</a>
 <ul>
-<li class="chapter" data-level="6.5.1" data-path="relational-data-top.html"><a href="relational-data-top.html#연습문제-11"><i class="fa fa-check"></i><b>6.5.1</b> 연습문제</a></li>
+<li class="chapter" data-level="6.5.1" data-path="필터링-조인.html"><a href="필터링-조인.html#연습문제-12"><i class="fa fa-check"></i><b>6.5.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="relational-data-top.html"><a href="relational-data-top.html#조인-문제"><i class="fa fa-check"></i><b>6.6</b> 조인 문제</a></li>
-<li class="chapter" data-level="6.7" data-path="relational-data-top.html"><a href="relational-data-top.html#집합-연산"><i class="fa fa-check"></i><b>6.7</b> 집합 연산</a>
+<li class="chapter" data-level="6.6" data-path="조인-문제.html"><a href="조인-문제.html"><i class="fa fa-check"></i><b>6.6</b> 조인 문제</a></li>
+<li class="chapter" data-level="6.7" data-path="집합-연산.html"><a href="집합-연산.html"><i class="fa fa-check"></i><b>6.7</b> 집합 연산</a>
 <ul>
-<li class="chapter" data-level="" data-path="relational-data-top.html"><a href="relational-data-top.html#reference-4"><i class="fa fa-check"></i>Reference</a></li>
+<li class="chapter" data-level="" data-path="집합-연산.html"><a href="집합-연산.html#reference-4"><i class="fa fa-check"></i>Reference</a></li>
 </ul></li>
-<li class="chapter" data-level="6.8" data-path="relational-data-top.html"><a href="relational-data-top.html#join_exercises"><i class="fa fa-check"></i><b>6.8</b> Join Exercises</a>
+<li class="chapter" data-level="6.8" data-path="join-exercises.html"><a href="join-exercises.html"><i class="fa fa-check"></i><b>6.8</b> Join Exercises</a>
 <ul>
-<li class="chapter" data-level="6.8.1" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-데이터의-생성-1"><i class="fa fa-check"></i><b>6.8.1</b> 예제 데이터의 생성</a></li>
-<li class="chapter" data-level="6.8.2" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-1-inner_join"><i class="fa fa-check"></i><b>6.8.2</b> 예제 1: <code>inner_join()</code></a></li>
-<li class="chapter" data-level="6.8.3" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-2-left_join"><i class="fa fa-check"></i><b>6.8.3</b> 예제 2: <code>left_join()</code></a></li>
-<li class="chapter" data-level="6.8.4" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-3-right_join"><i class="fa fa-check"></i><b>6.8.4</b> 예제 3: <code>right_join()</code></a></li>
-<li class="chapter" data-level="6.8.5" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-4-full_join"><i class="fa fa-check"></i><b>6.8.5</b> 예제 4: <code>full_join()</code></a></li>
-<li class="chapter" data-level="6.8.6" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-5-semi_join"><i class="fa fa-check"></i><b>6.8.6</b> 예제 5: <code>semi_join()</code></a></li>
-<li class="chapter" data-level="6.8.7" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-6-anti_join"><i class="fa fa-check"></i><b>6.8.7</b> 예제 6 : <code>anti_join()</code></a></li>
-<li class="chapter" data-level="6.8.8" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-7-복수-개의-데이터-프레임-조인"><i class="fa fa-check"></i><b>6.8.8</b> 예제 7: 복수 개의 데이터 프레임 조인</a></li>
-<li class="chapter" data-level="6.8.9" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-8-복수-컬럼에-의한-조인"><i class="fa fa-check"></i><b>6.8.9</b> 예제 8: 복수 컬럼에 의한 조인</a></li>
-<li class="chapter" data-level="6.8.10" data-path="relational-data-top.html"><a href="relational-data-top.html#예제-9-데이터-조인과-id-삭제"><i class="fa fa-check"></i><b>6.8.10</b> 예제 9: 데이터 조인과 ID 삭제</a></li>
-<li class="chapter" data-level="" data-path="relational-data-top.html"><a href="relational-data-top.html#further-reading"><i class="fa fa-check"></i>Further Reading</a></li>
+<li class="chapter" data-level="6.8.1" data-path="join-exercises.html"><a href="join-exercises.html#예제-데이터의-생성-1"><i class="fa fa-check"></i><b>6.8.1</b> 예제 데이터의 생성</a></li>
+<li class="chapter" data-level="6.8.2" data-path="join-exercises.html"><a href="join-exercises.html#예제-1-inner_join"><i class="fa fa-check"></i><b>6.8.2</b> 예제 1: <code>inner_join()</code></a></li>
+<li class="chapter" data-level="6.8.3" data-path="join-exercises.html"><a href="join-exercises.html#예제-2-left_join"><i class="fa fa-check"></i><b>6.8.3</b> 예제 2: <code>left_join()</code></a></li>
+<li class="chapter" data-level="6.8.4" data-path="join-exercises.html"><a href="join-exercises.html#예제-3-right_join"><i class="fa fa-check"></i><b>6.8.4</b> 예제 3: <code>right_join()</code></a></li>
+<li class="chapter" data-level="6.8.5" data-path="join-exercises.html"><a href="join-exercises.html#예제-4-full_join"><i class="fa fa-check"></i><b>6.8.5</b> 예제 4: <code>full_join()</code></a></li>
+<li class="chapter" data-level="6.8.6" data-path="join-exercises.html"><a href="join-exercises.html#예제-5-semi_join"><i class="fa fa-check"></i><b>6.8.6</b> 예제 5: <code>semi_join()</code></a></li>
+<li class="chapter" data-level="6.8.7" data-path="join-exercises.html"><a href="join-exercises.html#예제-6-anti_join"><i class="fa fa-check"></i><b>6.8.7</b> 예제 6 : <code>anti_join()</code></a></li>
+<li class="chapter" data-level="6.8.8" data-path="join-exercises.html"><a href="join-exercises.html#예제-7-복수-개의-데이터-프레임-조인"><i class="fa fa-check"></i><b>6.8.8</b> 예제 7: 복수 개의 데이터 프레임 조인</a></li>
+<li class="chapter" data-level="6.8.9" data-path="join-exercises.html"><a href="join-exercises.html#예제-8-복수-컬럼에-의한-조인"><i class="fa fa-check"></i><b>6.8.9</b> 예제 8: 복수 컬럼에 의한 조인</a></li>
+<li class="chapter" data-level="6.8.10" data-path="join-exercises.html"><a href="join-exercises.html#예제-9-데이터-조인과-id-삭제"><i class="fa fa-check"></i><b>6.8.10</b> 예제 9: 데이터 조인과 ID 삭제</a></li>
+<li class="chapter" data-level="" data-path="join-exercises.html"><a href="join-exercises.html#further-reading"><i class="fa fa-check"></i>Further Reading</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>7</b> Tidy Data</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_philosophy"><i class="fa fa-check"></i><b>7.1</b> 타이디 데이터 철학</a>
+<li class="chapter" data-level="7.1" data-path="tidy-data-philosophy.html"><a href="tidy-data-philosophy.html"><i class="fa fa-check"></i><b>7.1</b> 타이디 데이터 철학</a>
 <ul>
-<li class="chapter" data-level="7.1.1" data-path="tidy-data.html"><a href="tidy-data.html#분석의-단위"><i class="fa fa-check"></i><b>7.1.1</b> 분석의 단위</a></li>
-<li class="chapter" data-level="7.1.2" data-path="tidy-data.html"><a href="tidy-data.html#데이터-세트-5"><i class="fa fa-check"></i><b>7.1.2</b> 데이터 세트</a></li>
-<li class="chapter" data-level="7.1.3" data-path="tidy-data.html"><a href="tidy-data.html#docid-별-그루핑"><i class="fa fa-check"></i><b>7.1.3</b> <code>docid</code> 별 그루핑</a></li>
-<li class="chapter" data-level="7.1.4" data-path="tidy-data.html"><a href="tidy-data.html#요약-정보-확인"><i class="fa fa-check"></i><b>7.1.4</b> 요약 정보 확인</a></li>
-<li class="chapter" data-level="7.1.5" data-path="tidy-data.html"><a href="tidy-data.html#다중-레벨-데이터-확인"><i class="fa fa-check"></i><b>7.1.5</b> 다중 레벨 데이터 확인</a></li>
+<li class="chapter" data-level="7.1.1" data-path="tidy-data-philosophy.html"><a href="tidy-data-philosophy.html#분석의-단위"><i class="fa fa-check"></i><b>7.1.1</b> 분석의 단위</a></li>
+<li class="chapter" data-level="7.1.2" data-path="tidy-data-philosophy.html"><a href="tidy-data-philosophy.html#데이터-세트-4"><i class="fa fa-check"></i><b>7.1.2</b> 데이터 세트</a></li>
+<li class="chapter" data-level="7.1.3" data-path="tidy-data-philosophy.html"><a href="tidy-data-philosophy.html#docid-별-그루핑"><i class="fa fa-check"></i><b>7.1.3</b> <code>docid</code> 별 그루핑</a></li>
+<li class="chapter" data-level="7.1.4" data-path="tidy-data-philosophy.html"><a href="tidy-data-philosophy.html#요약-정보-확인"><i class="fa fa-check"></i><b>7.1.4</b> 요약 정보 확인</a></li>
+<li class="chapter" data-level="7.1.5" data-path="tidy-data-philosophy.html"><a href="tidy-data-philosophy.html#다중-레벨-데이터-확인"><i class="fa fa-check"></i><b>7.1.5</b> 다중 레벨 데이터 확인</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_untidy"><i class="fa fa-check"></i><b>7.2</b> Untidy data</a></li>
-<li class="chapter" data-level="7.3" data-path="tidy-data.html"><a href="tidy-data.html#컬럼-제목들이-변수-명이-아니고-값들인-경우"><i class="fa fa-check"></i><b>7.3</b> 컬럼 제목들이 변수 명이 아니고 값들인 경우</a>
+<li class="chapter" data-level="7.2" data-path="tidy-data-untidy.html"><a href="tidy-data-untidy.html"><i class="fa fa-check"></i><b>7.2</b> Untidy data</a></li>
+<li class="chapter" data-level="7.3" data-path="컬럼-제목들이-변수-명이-아니고-값들인-경우.html"><a href="컬럼-제목들이-변수-명이-아니고-값들인-경우.html"><i class="fa fa-check"></i><b>7.3</b> 컬럼 제목들이 변수 명이 아니고 값들인 경우</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="tidy-data.html"><a href="tidy-data.html#데이터-세트-6"><i class="fa fa-check"></i><b>7.3.1</b> 데이터 세트</a></li>
-<li class="chapter" data-level="7.3.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_functions"><i class="fa fa-check"></i><b>7.3.2</b> 사용할 수 있는 함수의 종류</a></li>
-<li class="chapter" data-level="7.3.3" data-path="tidy-data.html"><a href="tidy-data.html#pivot_longer-함수"><i class="fa fa-check"></i><b>7.3.3</b> <code>pivot_longer()</code> 함수</a></li>
-<li class="chapter" data-level="7.3.4" data-path="tidy-data.html"><a href="tidy-data.html#gather-함수"><i class="fa fa-check"></i><b>7.3.4</b> <code>gather()</code> 함수</a></li>
-<li class="chapter" data-level="7.3.5" data-path="tidy-data.html"><a href="tidy-data.html#melt-함수"><i class="fa fa-check"></i><b>7.3.5</b> <code>melt()</code> 함수</a></li>
+<li class="chapter" data-level="7.3.1" data-path="컬럼-제목들이-변수-명이-아니고-값들인-경우.html"><a href="컬럼-제목들이-변수-명이-아니고-값들인-경우.html#데이터-세트-5"><i class="fa fa-check"></i><b>7.3.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="7.3.2" data-path="컬럼-제목들이-변수-명이-아니고-값들인-경우.html"><a href="컬럼-제목들이-변수-명이-아니고-값들인-경우.html#tidy_data_functions"><i class="fa fa-check"></i><b>7.3.2</b> 사용할 수 있는 함수의 종류</a></li>
+<li class="chapter" data-level="7.3.3" data-path="컬럼-제목들이-변수-명이-아니고-값들인-경우.html"><a href="컬럼-제목들이-변수-명이-아니고-값들인-경우.html#pivot_longer-함수"><i class="fa fa-check"></i><b>7.3.3</b> <code>pivot_longer()</code> 함수</a></li>
+<li class="chapter" data-level="7.3.4" data-path="컬럼-제목들이-변수-명이-아니고-값들인-경우.html"><a href="컬럼-제목들이-변수-명이-아니고-값들인-경우.html#gather-함수"><i class="fa fa-check"></i><b>7.3.4</b> <code>gather()</code> 함수</a></li>
+<li class="chapter" data-level="7.3.5" data-path="컬럼-제목들이-변수-명이-아니고-값들인-경우.html"><a href="컬럼-제목들이-변수-명이-아니고-값들인-경우.html#melt-함수"><i class="fa fa-check"></i><b>7.3.5</b> <code>melt()</code> 함수</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_one_column"><i class="fa fa-check"></i><b>7.4</b> 하나의 컬럼에 복수 개의 변수들이 있는 경우</a>
+<li class="chapter" data-level="7.4" data-path="tidy-data-one-column.html"><a href="tidy-data-one-column.html"><i class="fa fa-check"></i><b>7.4</b> 하나의 컬럼에 복수 개의 변수들이 있는 경우</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="tidy-data.html"><a href="tidy-data.html#데이터-세트-7"><i class="fa fa-check"></i><b>7.4.1</b> 데이터 세트</a></li>
-<li class="chapter" data-level="7.4.2" data-path="tidy-data.html"><a href="tidy-data.html#사용할-수-있는-함수의-종류"><i class="fa fa-check"></i><b>7.4.2</b> 사용할 수 있는 함수의 종류</a></li>
-<li class="chapter" data-level="7.4.3" data-path="tidy-data.html"><a href="tidy-data.html#pivot_wider-함수"><i class="fa fa-check"></i><b>7.4.3</b> <code>pivot_wider()</code> 함수</a></li>
-<li class="chapter" data-level="7.4.4" data-path="tidy-data.html"><a href="tidy-data.html#spread-함수"><i class="fa fa-check"></i><b>7.4.4</b> <code>spread()</code> 함수</a></li>
-<li class="chapter" data-level="7.4.5" data-path="tidy-data.html"><a href="tidy-data.html#dcast-함수"><i class="fa fa-check"></i><b>7.4.5</b> <code>dcast()</code> 함수</a></li>
+<li class="chapter" data-level="7.4.1" data-path="tidy-data-one-column.html"><a href="tidy-data-one-column.html#데이터-세트-6"><i class="fa fa-check"></i><b>7.4.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="7.4.2" data-path="tidy-data-one-column.html"><a href="tidy-data-one-column.html#사용할-수-있는-함수의-종류"><i class="fa fa-check"></i><b>7.4.2</b> 사용할 수 있는 함수의 종류</a></li>
+<li class="chapter" data-level="7.4.3" data-path="tidy-data-one-column.html"><a href="tidy-data-one-column.html#pivot_wider-함수"><i class="fa fa-check"></i><b>7.4.3</b> <code>pivot_wider()</code> 함수</a></li>
+<li class="chapter" data-level="7.4.4" data-path="tidy-data-one-column.html"><a href="tidy-data-one-column.html#spread-함수"><i class="fa fa-check"></i><b>7.4.4</b> <code>spread()</code> 함수</a></li>
+<li class="chapter" data-level="7.4.5" data-path="tidy-data-one-column.html"><a href="tidy-data-one-column.html#dcast-함수"><i class="fa fa-check"></i><b>7.4.5</b> <code>dcast()</code> 함수</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_one_cell"><i class="fa fa-check"></i><b>7.5</b> 하나의 셀에 저장된 여러 변수 또는 여러 셀에 흩어져 있는 한 변수</a>
+<li class="chapter" data-level="7.5" data-path="tidy-data-one-cell.html"><a href="tidy-data-one-cell.html"><i class="fa fa-check"></i><b>7.5</b> 하나의 셀에 저장된 여러 변수 또는 여러 셀에 흩어져 있는 한 변수</a>
 <ul>
-<li class="chapter" data-level="7.5.1" data-path="tidy-data.html"><a href="tidy-data.html#데이터-세트-8"><i class="fa fa-check"></i><b>7.5.1</b> 데이터 세트</a></li>
-<li class="chapter" data-level="" data-path="tidy-data.html"><a href="tidy-data.html#data-wrangling-with-dplyr-and-tidyr"><i class="fa fa-check"></i>Data Wrangling with dplyr and tidyr</a></li>
+<li class="chapter" data-level="7.5.1" data-path="tidy-data-one-cell.html"><a href="tidy-data-one-cell.html#데이터-세트-7"><i class="fa fa-check"></i><b>7.5.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="" data-path="tidy-data-one-cell.html"><a href="tidy-data-one-cell.html#data-wrangling-with-dplyr-and-tidyr"><i class="fa fa-check"></i>Data Wrangling with dplyr and tidyr</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="tidy-data.html"><a href="tidy-data.html#separate-함수와-unite-함수"><i class="fa fa-check"></i><b>7.6</b> <code>separate()</code> 함수와 <code>unite()</code> 함수</a>
+<li class="chapter" data-level="7.6" data-path="separate-함수와-unite-함수.html"><a href="separate-함수와-unite-함수.html"><i class="fa fa-check"></i><b>7.6</b> <code>separate()</code> 함수와 <code>unite()</code> 함수</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="tidy-data.html"><a href="tidy-data.html#separate-함수"><i class="fa fa-check"></i><b>7.6.1</b> <code>separate()</code> 함수</a></li>
-<li class="chapter" data-level="7.6.2" data-path="tidy-data.html"><a href="tidy-data.html#unite-함수"><i class="fa fa-check"></i><b>7.6.2</b> <code>unite()</code> 함수</a></li>
-<li class="chapter" data-level="7.6.3" data-path="tidy-data.html"><a href="tidy-data.html#separate-함수와-unite-함수의-예"><i class="fa fa-check"></i><b>7.6.3</b> <code>separate()</code> 함수와 <code>unite()</code> 함수의 예</a></li>
+<li class="chapter" data-level="7.6.1" data-path="separate-함수와-unite-함수.html"><a href="separate-함수와-unite-함수.html#separate-함수"><i class="fa fa-check"></i><b>7.6.1</b> <code>separate()</code> 함수</a></li>
+<li class="chapter" data-level="7.6.2" data-path="separate-함수와-unite-함수.html"><a href="separate-함수와-unite-함수.html#unite-함수"><i class="fa fa-check"></i><b>7.6.2</b> <code>unite()</code> 함수</a></li>
+<li class="chapter" data-level="7.6.3" data-path="separate-함수와-unite-함수.html"><a href="separate-함수와-unite-함수.html#separate-함수와-unite-함수의-예"><i class="fa fa-check"></i><b>7.6.3</b> <code>separate()</code> 함수와 <code>unite()</code> 함수의 예</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="tidy-data.html"><a href="tidy-data.html#tidy_data_reference_table"><i class="fa fa-check"></i><b>7.7</b> <code>tidyverse</code> 참조표</a></li>
-<li class="chapter" data-level="" data-path="tidy-data.html"><a href="tidy-data.html#references-1"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="7.7" data-path="tidy-data-reference-table.html"><a href="tidy-data-reference-table.html"><i class="fa fa-check"></i><b>7.7</b> <code>tidyverse</code> 참조표</a></li>
+<li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>8</b> Dates</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="dates.html"><a href="dates.html#dates_in_R"><i class="fa fa-check"></i><b>8.1</b> R에서의 날짜 데이터</a>
+<li class="chapter" data-level="8.1" data-path="dates-in-R.html"><a href="dates-in-R.html"><i class="fa fa-check"></i><b>8.1</b> R에서의 날짜 데이터</a>
 <ul>
-<li class="chapter" data-level="8.1.1" data-path="dates.html"><a href="dates.html#as.date-함수"><i class="fa fa-check"></i><b>8.1.1</b> <code>as.Date()</code> 함수</a></li>
+<li class="chapter" data-level="8.1.1" data-path="dates-in-R.html"><a href="dates-in-R.html#as.date-함수"><i class="fa fa-check"></i><b>8.1.1</b> <code>as.Date()</code> 함수</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="dates.html"><a href="dates.html#dates_lubridate"><i class="fa fa-check"></i><b>8.2</b> <code>lubridate</code> 패키지</a>
+<li class="chapter" data-level="8.2" data-path="dates-lubridate.html"><a href="dates-lubridate.html"><i class="fa fa-check"></i><b>8.2</b> <code>lubridate</code> 패키지</a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="dates.html"><a href="dates.html#lubridate-패키지의-활용"><i class="fa fa-check"></i><b>8.2.1</b> <code>lubridate</code> 패키지의 활용</a></li>
+<li class="chapter" data-level="8.2.1" data-path="dates-lubridate.html"><a href="dates-lubridate.html#lubridate-패키지의-활용"><i class="fa fa-check"></i><b>8.2.1</b> <code>lubridate</code> 패키지의 활용</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="dates.html"><a href="dates.html#dates_variables"><i class="fa fa-check"></i><b>8.3</b> 날짜-시간 변수</a></li>
-<li class="chapter" data-level="8.4" data-path="dates.html"><a href="dates.html#dates_elements"><i class="fa fa-check"></i><b>8.4</b> <code>Date</code> 변수에서 정보 추출하기</a>
+<li class="chapter" data-level="8.3" data-path="dates-variables.html"><a href="dates-variables.html"><i class="fa fa-check"></i><b>8.3</b> 날짜-시간 변수</a></li>
+<li class="chapter" data-level="8.4" data-path="dates-elements.html"><a href="dates-elements.html"><i class="fa fa-check"></i><b>8.4</b> <code>Date</code> 변수에서 정보 추출하기</a>
 <ul>
-<li class="chapter" data-level="8.4.1" data-path="dates.html"><a href="dates.html#관련-함수"><i class="fa fa-check"></i><b>8.4.1</b> 관련 함수</a></li>
-<li class="chapter" data-level="8.4.2" data-path="dates.html"><a href="dates.html#date-변수의-정보-추출-예"><i class="fa fa-check"></i><b>8.4.2</b> <code>Date</code> 변수의 정보 추출 예</a></li>
+<li class="chapter" data-level="8.4.1" data-path="dates-elements.html"><a href="dates-elements.html#관련-함수-1"><i class="fa fa-check"></i><b>8.4.1</b> 관련 함수</a></li>
+<li class="chapter" data-level="8.4.2" data-path="dates-elements.html"><a href="dates-elements.html#date-변수의-정보-추출-예"><i class="fa fa-check"></i><b>8.4.2</b> <code>Date</code> 변수의 정보 추출 예</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="dates.html"><a href="dates.html#dates_POSIXct"><i class="fa fa-check"></i><b>8.5</b> 날짜-시간(<code>POSIXct</code>) 변수에서 정보 추출하기</a>
+<li class="chapter" data-level="8.5" data-path="dates-POSIXct.html"><a href="dates-POSIXct.html"><i class="fa fa-check"></i><b>8.5</b> 날짜-시간(<code>POSIXct</code>) 변수에서 정보 추출하기</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="dates.html"><a href="dates.html#관련-함수-1"><i class="fa fa-check"></i><b>8.5.1</b> 관련 함수</a></li>
-<li class="chapter" data-level="8.5.2" data-path="dates.html"><a href="dates.html#posixct-변수에서-정보-추출-예"><i class="fa fa-check"></i><b>8.5.2</b> <code>POSIXct</code> 변수에서 정보 추출 예</a></li>
+<li class="chapter" data-level="8.5.1" data-path="dates-POSIXct.html"><a href="dates-POSIXct.html#관련-함수-2"><i class="fa fa-check"></i><b>8.5.1</b> 관련 함수</a></li>
+<li class="chapter" data-level="8.5.2" data-path="dates-POSIXct.html"><a href="dates-POSIXct.html#posixct-변수에서-정보-추출-예"><i class="fa fa-check"></i><b>8.5.2</b> <code>POSIXct</code> 변수에서 정보 추출 예</a></li>
 </ul></li>
-<li class="chapter" data-level="8.6" data-path="dates.html"><a href="dates.html#dates_functions"><i class="fa fa-check"></i><b>8.6</b> 날짜-시간 산술연산을 위한 두 종류의 함수</a></li>
+<li class="chapter" data-level="8.6" data-path="dates-functions.html"><a href="dates-functions.html"><i class="fa fa-check"></i><b>8.6</b> 날짜-시간 산술연산을 위한 두 종류의 함수</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="dates-and-time.html"><a href="dates-and-time.html"><i class="fa fa-check"></i><b>9</b> Dates and Times</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="dates-and-time.html"><a href="dates-and-time.html#dates_time_intro"><i class="fa fa-check"></i><b>9.1</b> 들어가기</a>
+<li class="chapter" data-level="9.1" data-path="dates-time-intro.html"><a href="dates-time-intro.html"><i class="fa fa-check"></i><b>9.1</b> 들어가기</a>
 <ul>
-<li class="chapter" data-level="9.1.1" data-path="dates-and-time.html"><a href="dates-and-time.html#준비하기-2"><i class="fa fa-check"></i><b>9.1.1</b> 준비하기</a></li>
+<li class="chapter" data-level="9.1.1" data-path="dates-time-intro.html"><a href="dates-time-intro.html#준비하기-1"><i class="fa fa-check"></i><b>9.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="dates-and-time.html"><a href="dates-and-time.html#dates_time_create"><i class="fa fa-check"></i><b>9.2</b> 날짜/시간 생성하기</a>
+<li class="chapter" data-level="9.2" data-path="dates-time-create.html"><a href="dates-time-create.html"><i class="fa fa-check"></i><b>9.2</b> 날짜/시간 생성하기</a>
 <ul>
-<li class="chapter" data-level="9.2.1" data-path="dates-and-time.html"><a href="dates-and-time.html#문자열에서-생성"><i class="fa fa-check"></i><b>9.2.1</b> 문자열에서 생성</a></li>
-<li class="chapter" data-level="9.2.2" data-path="dates-and-time.html"><a href="dates-and-time.html#개별-구성요소로-생성"><i class="fa fa-check"></i><b>9.2.2</b> 개별 구성요소로 생성</a></li>
-<li class="chapter" data-level="9.2.3" data-path="dates-and-time.html"><a href="dates-and-time.html#기타-유형에서-생성"><i class="fa fa-check"></i><b>9.2.3</b> 기타 유형에서 생성</a></li>
-<li class="chapter" data-level="9.2.4" data-path="dates-and-time.html"><a href="dates-and-time.html#연습문제-12"><i class="fa fa-check"></i><b>9.2.4</b> 연습문제</a></li>
+<li class="chapter" data-level="9.2.1" data-path="dates-time-create.html"><a href="dates-time-create.html#문자열에서-생성"><i class="fa fa-check"></i><b>9.2.1</b> 문자열에서 생성</a></li>
+<li class="chapter" data-level="9.2.2" data-path="dates-time-create.html"><a href="dates-time-create.html#개별-구성요소로-생성"><i class="fa fa-check"></i><b>9.2.2</b> 개별 구성요소로 생성</a></li>
+<li class="chapter" data-level="9.2.3" data-path="dates-time-create.html"><a href="dates-time-create.html#기타-유형에서-생성"><i class="fa fa-check"></i><b>9.2.3</b> 기타 유형에서 생성</a></li>
+<li class="chapter" data-level="9.2.4" data-path="dates-time-create.html"><a href="dates-time-create.html#연습문제-13"><i class="fa fa-check"></i><b>9.2.4</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="dates-and-time.html"><a href="dates-and-time.html#dates_time_arguments"><i class="fa fa-check"></i><b>9.3</b> 데이트-타임형 구성요소</a>
+<li class="chapter" data-level="9.3" data-path="dates-time-arguments.html"><a href="dates-time-arguments.html"><i class="fa fa-check"></i><b>9.3</b> 데이트-타임형 구성요소</a>
 <ul>
-<li class="chapter" data-level="9.3.1" data-path="dates-and-time.html"><a href="dates-and-time.html#구성요소-가져오기"><i class="fa fa-check"></i><b>9.3.1</b> 구성요소 가져오기</a></li>
-<li class="chapter" data-level="9.3.2" data-path="dates-and-time.html"><a href="dates-and-time.html#반올림"><i class="fa fa-check"></i><b>9.3.2</b> 반올림</a></li>
-<li class="chapter" data-level="9.3.3" data-path="dates-and-time.html"><a href="dates-and-time.html#구성요소-설정"><i class="fa fa-check"></i><b>9.3.3</b> 구성요소 설정</a></li>
-<li class="chapter" data-level="9.3.4" data-path="dates-and-time.html"><a href="dates-and-time.html#연습문제-13"><i class="fa fa-check"></i><b>9.3.4</b> 연습문제</a></li>
+<li class="chapter" data-level="9.3.1" data-path="dates-time-arguments.html"><a href="dates-time-arguments.html#구성요소-가져오기"><i class="fa fa-check"></i><b>9.3.1</b> 구성요소 가져오기</a></li>
+<li class="chapter" data-level="9.3.2" data-path="dates-time-arguments.html"><a href="dates-time-arguments.html#반올림"><i class="fa fa-check"></i><b>9.3.2</b> 반올림</a></li>
+<li class="chapter" data-level="9.3.3" data-path="dates-time-arguments.html"><a href="dates-time-arguments.html#구성요소-설정"><i class="fa fa-check"></i><b>9.3.3</b> 구성요소 설정</a></li>
+<li class="chapter" data-level="9.3.4" data-path="dates-time-arguments.html"><a href="dates-time-arguments.html#연습문제-14"><i class="fa fa-check"></i><b>9.3.4</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="dates-and-time.html"><a href="dates-and-time.html#dates_time_time_span"><i class="fa fa-check"></i><b>9.4</b> 시간 범위</a>
+<li class="chapter" data-level="9.4" data-path="dates-time-time-span.html"><a href="dates-time-time-span.html"><i class="fa fa-check"></i><b>9.4</b> 시간 범위</a>
 <ul>
-<li class="chapter" data-level="9.4.1" data-path="dates-and-time.html"><a href="dates-and-time.html#듀레이션형"><i class="fa fa-check"></i><b>9.4.1</b> 듀레이션형</a></li>
-<li class="chapter" data-level="9.4.2" data-path="dates-and-time.html"><a href="dates-and-time.html#피리어드형"><i class="fa fa-check"></i><b>9.4.2</b> 피리어드형</a></li>
-<li class="chapter" data-level="9.4.3" data-path="dates-and-time.html"><a href="dates-and-time.html#인터벌형"><i class="fa fa-check"></i><b>9.4.3</b> 인터벌형</a></li>
-<li class="chapter" data-level="9.4.4" data-path="dates-and-time.html"><a href="dates-and-time.html#요약"><i class="fa fa-check"></i><b>9.4.4</b> 요약</a></li>
-<li class="chapter" data-level="9.4.5" data-path="dates-and-time.html"><a href="dates-and-time.html#연습문제-14"><i class="fa fa-check"></i><b>9.4.5</b> 연습문제</a></li>
+<li class="chapter" data-level="9.4.1" data-path="dates-time-time-span.html"><a href="dates-time-time-span.html#듀레이션형"><i class="fa fa-check"></i><b>9.4.1</b> 듀레이션형</a></li>
+<li class="chapter" data-level="9.4.2" data-path="dates-time-time-span.html"><a href="dates-time-time-span.html#피리어드형"><i class="fa fa-check"></i><b>9.4.2</b> 피리어드형</a></li>
+<li class="chapter" data-level="9.4.3" data-path="dates-time-time-span.html"><a href="dates-time-time-span.html#인터벌형"><i class="fa fa-check"></i><b>9.4.3</b> 인터벌형</a></li>
+<li class="chapter" data-level="9.4.4" data-path="dates-time-time-span.html"><a href="dates-time-time-span.html#요약"><i class="fa fa-check"></i><b>9.4.4</b> 요약</a></li>
+<li class="chapter" data-level="9.4.5" data-path="dates-time-time-span.html"><a href="dates-time-time-span.html#연습문제-15"><i class="fa fa-check"></i><b>9.4.5</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="dates-and-time.html"><a href="dates-and-time.html#dates_time_EST"><i class="fa fa-check"></i><b>9.5</b> 시간대</a></li>
-<li class="chapter" data-level="" data-path="dates-and-time.html"><a href="dates-and-time.html#references-2"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="9.5" data-path="dates-time-EST.html"><a href="dates-time-EST.html"><i class="fa fa-check"></i><b>9.5</b> 시간대</a></li>
+<li class="chapter" data-level="" data-path="references-2.html"><a href="references-2.html"><i class="fa fa-check"></i>References</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>10</b> Strings</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="strings.html"><a href="strings.html#strings_intro"><i class="fa fa-check"></i><b>10.1</b> 들어가기</a>
+<li class="chapter" data-level="10.1" data-path="strings-intro.html"><a href="strings-intro.html"><i class="fa fa-check"></i><b>10.1</b> 들어가기</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="strings.html"><a href="strings.html#준비하기-3"><i class="fa fa-check"></i><b>10.1.1</b> 준비하기</a></li>
+<li class="chapter" data-level="10.1.1" data-path="strings-intro.html"><a href="strings-intro.html#준비하기-2"><i class="fa fa-check"></i><b>10.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="strings.html"><a href="strings.html#strings_basic"><i class="fa fa-check"></i><b>10.2</b> 문자열 기초</a>
+<li class="chapter" data-level="10.2" data-path="strings-basic.html"><a href="strings-basic.html"><i class="fa fa-check"></i><b>10.2</b> 문자열 기초</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="strings.html"><a href="strings.html#문자열-길이"><i class="fa fa-check"></i><b>10.2.1</b> 문자열 길이</a></li>
-<li class="chapter" data-level="10.2.2" data-path="strings.html"><a href="strings.html#문자열-결합"><i class="fa fa-check"></i><b>10.2.2</b> 문자열 결합</a></li>
-<li class="chapter" data-level="10.2.3" data-path="strings.html"><a href="strings.html#문자열-서브셋하기"><i class="fa fa-check"></i><b>10.2.3</b> 문자열 서브셋하기</a></li>
-<li class="chapter" data-level="10.2.4" data-path="strings.html"><a href="strings.html#로케일"><i class="fa fa-check"></i><b>10.2.4</b> 로케일</a></li>
-<li class="chapter" data-level="10.2.5" data-path="strings.html"><a href="strings.html#연습문제-15"><i class="fa fa-check"></i><b>10.2.5</b> 연습문제</a></li>
+<li class="chapter" data-level="10.2.1" data-path="strings-basic.html"><a href="strings-basic.html#문자열-길이"><i class="fa fa-check"></i><b>10.2.1</b> 문자열 길이</a></li>
+<li class="chapter" data-level="10.2.2" data-path="strings-basic.html"><a href="strings-basic.html#문자열-결합"><i class="fa fa-check"></i><b>10.2.2</b> 문자열 결합</a></li>
+<li class="chapter" data-level="10.2.3" data-path="strings-basic.html"><a href="strings-basic.html#문자열-서브셋하기"><i class="fa fa-check"></i><b>10.2.3</b> 문자열 서브셋하기</a></li>
+<li class="chapter" data-level="10.2.4" data-path="strings-basic.html"><a href="strings-basic.html#로케일"><i class="fa fa-check"></i><b>10.2.4</b> 로케일</a></li>
+<li class="chapter" data-level="10.2.5" data-path="strings-basic.html"><a href="strings-basic.html#연습문제-16"><i class="fa fa-check"></i><b>10.2.5</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="strings.html"><a href="strings.html#pattern_matching"><i class="fa fa-check"></i><b>10.3</b> 정규표현식을 이용한 패턴 매칭</a>
+<li class="chapter" data-level="10.3" data-path="pattern-matching.html"><a href="pattern-matching.html"><i class="fa fa-check"></i><b>10.3</b> 정규표현식을 이용한 패턴 매칭</a>
 <ul>
-<li class="chapter" data-level="10.3.1" data-path="strings.html"><a href="strings.html#기본-매칭"><i class="fa fa-check"></i><b>10.3.1</b> 기본 매칭</a></li>
-<li class="chapter" data-level="10.3.2" data-path="strings.html"><a href="strings.html#앵커"><i class="fa fa-check"></i><b>10.3.2</b> 앵커</a></li>
-<li class="chapter" data-level="10.3.3" data-path="strings.html"><a href="strings.html#문자-클래스와-대체구문"><i class="fa fa-check"></i><b>10.3.3</b> 문자 클래스와 대체구문</a></li>
-<li class="chapter" data-level="10.3.4" data-path="strings.html"><a href="strings.html#반복"><i class="fa fa-check"></i><b>10.3.4</b> 반복</a></li>
-<li class="chapter" data-level="10.3.5" data-path="strings.html"><a href="strings.html#그룹화와-역참조"><i class="fa fa-check"></i><b>10.3.5</b> 그룹화와 역참조</a></li>
+<li class="chapter" data-level="10.3.1" data-path="pattern-matching.html"><a href="pattern-matching.html#기본-매칭"><i class="fa fa-check"></i><b>10.3.1</b> 기본 매칭</a></li>
+<li class="chapter" data-level="10.3.2" data-path="pattern-matching.html"><a href="pattern-matching.html#앵커"><i class="fa fa-check"></i><b>10.3.2</b> 앵커</a></li>
+<li class="chapter" data-level="10.3.3" data-path="pattern-matching.html"><a href="pattern-matching.html#문자-클래스와-대체구문"><i class="fa fa-check"></i><b>10.3.3</b> 문자 클래스와 대체구문</a></li>
+<li class="chapter" data-level="10.3.4" data-path="pattern-matching.html"><a href="pattern-matching.html#반복"><i class="fa fa-check"></i><b>10.3.4</b> 반복</a></li>
+<li class="chapter" data-level="10.3.5" data-path="pattern-matching.html"><a href="pattern-matching.html#그룹화와-역참조"><i class="fa fa-check"></i><b>10.3.5</b> 그룹화와 역참조</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="strings.html"><a href="strings.html#tools"><i class="fa fa-check"></i><b>10.4</b> 패턴 매칭</a>
+<li class="chapter" data-level="10.4" data-path="tools.html"><a href="tools.html"><i class="fa fa-check"></i><b>10.4</b> 패턴 매칭</a>
 <ul>
-<li class="chapter" data-level="10.4.1" data-path="strings.html"><a href="strings.html#매칭-탐지"><i class="fa fa-check"></i><b>10.4.1</b> 매칭 탐지</a></li>
-<li class="chapter" data-level="10.4.2" data-path="strings.html"><a href="strings.html#매칭-추출"><i class="fa fa-check"></i><b>10.4.2</b> 매칭 추출</a></li>
-<li class="chapter" data-level="10.4.3" data-path="strings.html"><a href="strings.html#그룹화-매칭"><i class="fa fa-check"></i><b>10.4.3</b> 그룹화 매칭</a></li>
-<li class="chapter" data-level="10.4.4" data-path="strings.html"><a href="strings.html#매칭-치환"><i class="fa fa-check"></i><b>10.4.4</b> 매칭 치환</a></li>
-<li class="chapter" data-level="10.4.5" data-path="strings.html"><a href="strings.html#문자열-분할"><i class="fa fa-check"></i><b>10.4.5</b> 문자열 분할</a></li>
-<li class="chapter" data-level="10.4.6" data-path="strings.html"><a href="strings.html#매치-찾기"><i class="fa fa-check"></i><b>10.4.6</b> 매치 찾기</a></li>
+<li class="chapter" data-level="10.4.1" data-path="tools.html"><a href="tools.html#매칭-탐지"><i class="fa fa-check"></i><b>10.4.1</b> 매칭 탐지</a></li>
+<li class="chapter" data-level="10.4.2" data-path="tools.html"><a href="tools.html#매칭-추출"><i class="fa fa-check"></i><b>10.4.2</b> 매칭 추출</a></li>
+<li class="chapter" data-level="10.4.3" data-path="tools.html"><a href="tools.html#그룹화-매칭"><i class="fa fa-check"></i><b>10.4.3</b> 그룹화 매칭</a></li>
+<li class="chapter" data-level="10.4.4" data-path="tools.html"><a href="tools.html#매칭-치환"><i class="fa fa-check"></i><b>10.4.4</b> 매칭 치환</a></li>
+<li class="chapter" data-level="10.4.5" data-path="tools.html"><a href="tools.html#문자열-분할"><i class="fa fa-check"></i><b>10.4.5</b> 문자열 분할</a></li>
+<li class="chapter" data-level="10.4.6" data-path="tools.html"><a href="tools.html#매치-찾기"><i class="fa fa-check"></i><b>10.4.6</b> 매치 찾기</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="strings.html"><a href="strings.html#other_patterns"><i class="fa fa-check"></i><b>10.5</b> 기타 패턴 유형</a>
+<li class="chapter" data-level="10.5" data-path="other-patterns.html"><a href="other-patterns.html"><i class="fa fa-check"></i><b>10.5</b> 기타 패턴 유형</a>
 <ul>
-<li class="chapter" data-level="10.5.1" data-path="strings.html"><a href="strings.html#연습문제-26"><i class="fa fa-check"></i><b>10.5.1</b> 연습문제</a></li>
+<li class="chapter" data-level="10.5.1" data-path="other-patterns.html"><a href="other-patterns.html#연습문제-27"><i class="fa fa-check"></i><b>10.5.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="strings.html"><a href="strings.html#reg_other_usage"><i class="fa fa-check"></i><b>10.6</b> 정규 표현식의 기타 용도</a></li>
-<li class="chapter" data-level="10.7" data-path="strings.html"><a href="strings.html#stringi"><i class="fa fa-check"></i><b>10.7</b> <code>stringi</code></a>
+<li class="chapter" data-level="10.6" data-path="reg-other-usage.html"><a href="reg-other-usage.html"><i class="fa fa-check"></i><b>10.6</b> 정규 표현식의 기타 용도</a></li>
+<li class="chapter" data-level="10.7" data-path="stringi.html"><a href="stringi.html"><i class="fa fa-check"></i><b>10.7</b> <code>stringi</code></a>
 <ul>
-<li class="chapter" data-level="10.7.1" data-path="strings.html"><a href="strings.html#연습문제-27"><i class="fa fa-check"></i><b>10.7.1</b> 연습문제</a></li>
+<li class="chapter" data-level="10.7.1" data-path="stringi.html"><a href="stringi.html#연습문제-28"><i class="fa fa-check"></i><b>10.7.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="strings.html"><a href="strings.html#reference-5"><i class="fa fa-check"></i>Reference</a></li>
+<li class="chapter" data-level="" data-path="reference-5.html"><a href="reference-5.html"><i class="fa fa-check"></i>Reference</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="Using-RegEx.html"><a href="Using-RegEx.html"><i class="fa fa-check"></i><b>11</b> 정규 표현식의 활용</a>
 <ul>
-<li class="chapter" data-level="" data-path="Using-RegEx.html"><a href="Using-RegEx.html#패키지-불러오기"><i class="fa fa-check"></i>패키지 불러오기</a></li>
-<li class="chapter" data-level="11.1" data-path="Using-RegEx.html"><a href="Using-RegEx.html#패턴-찾기-함수"><i class="fa fa-check"></i><b>11.1</b> 패턴 찾기 함수</a>
+<li class="chapter" data-level="" data-path="패키지-불러오기-1.html"><a href="패키지-불러오기-1.html"><i class="fa fa-check"></i>패키지 불러오기</a></li>
+<li class="chapter" data-level="11.1" data-path="패턴-찾기-함수.html"><a href="패턴-찾기-함수.html"><i class="fa fa-check"></i><b>11.1</b> 패턴 찾기 함수</a>
 <ul>
-<li class="chapter" data-level="11.1.1" data-path="Using-RegEx.html"><a href="Using-RegEx.html#grep-함수"><i class="fa fa-check"></i><b>11.1.1</b> <code>grep()</code> 함수</a></li>
-<li class="chapter" data-level="11.1.2" data-path="Using-RegEx.html"><a href="Using-RegEx.html#grepl-함수"><i class="fa fa-check"></i><b>11.1.2</b> <code>grepl()</code> 함수</a></li>
-<li class="chapter" data-level="11.1.3" data-path="Using-RegEx.html"><a href="Using-RegEx.html#regexpr-함수"><i class="fa fa-check"></i><b>11.1.3</b> <code>regexpr()</code> 함수</a></li>
-<li class="chapter" data-level="11.1.4" data-path="Using-RegEx.html"><a href="Using-RegEx.html#gregexpr-함수"><i class="fa fa-check"></i><b>11.1.4</b> <code>gregexpr()</code> 함수</a></li>
-<li class="chapter" data-level="11.1.5" data-path="Using-RegEx.html"><a href="Using-RegEx.html#regexec-함수"><i class="fa fa-check"></i><b>11.1.5</b> <code>regexec()</code> 함수</a></li>
+<li class="chapter" data-level="11.1.1" data-path="패턴-찾기-함수.html"><a href="패턴-찾기-함수.html#grep-함수"><i class="fa fa-check"></i><b>11.1.1</b> <code>grep()</code> 함수</a></li>
+<li class="chapter" data-level="11.1.2" data-path="패턴-찾기-함수.html"><a href="패턴-찾기-함수.html#grepl-함수"><i class="fa fa-check"></i><b>11.1.2</b> <code>grepl()</code> 함수</a></li>
+<li class="chapter" data-level="11.1.3" data-path="패턴-찾기-함수.html"><a href="패턴-찾기-함수.html#regexpr-함수"><i class="fa fa-check"></i><b>11.1.3</b> <code>regexpr()</code> 함수</a></li>
+<li class="chapter" data-level="11.1.4" data-path="패턴-찾기-함수.html"><a href="패턴-찾기-함수.html#gregexpr-함수"><i class="fa fa-check"></i><b>11.1.4</b> <code>gregexpr()</code> 함수</a></li>
+<li class="chapter" data-level="11.1.5" data-path="패턴-찾기-함수.html"><a href="패턴-찾기-함수.html#regexec-함수"><i class="fa fa-check"></i><b>11.1.5</b> <code>regexec()</code> 함수</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="Using-RegEx.html"><a href="Using-RegEx.html#패턴-대체-함수"><i class="fa fa-check"></i><b>11.2</b> 패턴 대체 함수</a>
+<li class="chapter" data-level="11.2" data-path="패턴-대체-함수.html"><a href="패턴-대체-함수.html"><i class="fa fa-check"></i><b>11.2</b> 패턴 대체 함수</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="Using-RegEx.html"><a href="Using-RegEx.html#sub-함수를-이용한-첫-번째-일치의-대체"><i class="fa fa-check"></i><b>11.2.1</b> <code>sub()</code> 함수를 이용한 첫 번째 일치의 대체</a></li>
-<li class="chapter" data-level="11.2.2" data-path="Using-RegEx.html"><a href="Using-RegEx.html#gsub-함수를-이용한-모든-일치-대체"><i class="fa fa-check"></i><b>11.2.2</b> <code>gsub()</code> 함수를 이용한 모든 일치 대체</a></li>
+<li class="chapter" data-level="11.2.1" data-path="패턴-대체-함수.html"><a href="패턴-대체-함수.html#sub-함수를-이용한-첫-번째-일치의-대체"><i class="fa fa-check"></i><b>11.2.1</b> <code>sub()</code> 함수를 이용한 첫 번째 일치의 대체</a></li>
+<li class="chapter" data-level="11.2.2" data-path="패턴-대체-함수.html"><a href="패턴-대체-함수.html#gsub-함수를-이용한-모든-일치-대체"><i class="fa fa-check"></i><b>11.2.2</b> <code>gsub()</code> 함수를 이용한 모든 일치 대체</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="Using-RegEx.html"><a href="Using-RegEx.html#문자-벡터의-분할"><i class="fa fa-check"></i><b>11.3</b> 문자 벡터의 분할</a></li>
-<li class="chapter" data-level="11.4" data-path="Using-RegEx.html"><a href="Using-RegEx.html#stringr-패키지-함수"><i class="fa fa-check"></i><b>11.4</b> <code>stringr</code> 패키지 함수</a>
+<li class="chapter" data-level="11.3" data-path="문자-벡터의-분할.html"><a href="문자-벡터의-분할.html"><i class="fa fa-check"></i><b>11.3</b> 문자 벡터의 분할</a></li>
+<li class="chapter" data-level="11.4" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html"><i class="fa fa-check"></i><b>11.4</b> <code>stringr</code> 패키지 함수</a>
 <ul>
-<li class="chapter" data-level="11.4.1" data-path="Using-RegEx.html"><a href="Using-RegEx.html#str_detect-함수를-이용한-패턴의-발견"><i class="fa fa-check"></i><b>11.4.1</b> <code>str_detect()</code> 함수를 이용한 패턴의 발견</a></li>
-<li class="chapter" data-level="11.4.2" data-path="Using-RegEx.html"><a href="Using-RegEx.html#str_extract-함수를-이용한-첫-번째-일치-추출"><i class="fa fa-check"></i><b>11.4.2</b> <code>str_extract()</code> 함수를 이용한 첫 번째 일치 추출</a></li>
-<li class="chapter" data-level="11.4.3" data-path="Using-RegEx.html"><a href="Using-RegEx.html#str_extract_all-함수를-이용한-모든-일치-추출"><i class="fa fa-check"></i><b>11.4.3</b> <code>str_extract_all()</code> 함수를 이용한 모든 일치 추출</a></li>
-<li class="chapter" data-level="11.4.4" data-path="Using-RegEx.html"><a href="Using-RegEx.html#str_match-함수를-이용한-첫-번째-일치-추출"><i class="fa fa-check"></i><b>11.4.4</b> <code>str_match()</code> 함수를 이용한 첫 번째 일치 추출</a></li>
-<li class="chapter" data-level="11.4.5" data-path="Using-RegEx.html"><a href="Using-RegEx.html#str_match_all-함수를-이용한-모든-일치-추출"><i class="fa fa-check"></i><b>11.4.5</b> <code>str_match_all()</code> 함수를 이용한 모든 일치 추출</a></li>
-<li class="chapter" data-level="11.4.6" data-path="Using-RegEx.html"><a href="Using-RegEx.html#str_locate-함수를-이용한-첫-번째-일치-위치-확인"><i class="fa fa-check"></i><b>11.4.6</b> <code>str_locate()</code> 함수를 이용한 첫 번째 일치 위치 확인</a></li>
-<li class="chapter" data-level="11.4.7" data-path="Using-RegEx.html"><a href="Using-RegEx.html#str_locate_all-함수를-이용한-모든-일치-위치-확인"><i class="fa fa-check"></i><b>11.4.7</b> <code>str_locate_all()</code> 함수를 이용한 모든 일치 위치 확인</a></li>
-<li class="chapter" data-level="11.4.8" data-path="Using-RegEx.html"><a href="Using-RegEx.html#str_replace-함수를-이용한-첫-번째-일치-대체"><i class="fa fa-check"></i><b>11.4.8</b> <code>str_replace()</code> 함수를 이용한 첫 번째 일치 대체</a></li>
-<li class="chapter" data-level="11.4.9" data-path="Using-RegEx.html"><a href="Using-RegEx.html#str_replace_all-함수를-이용한-모든-일치-대체"><i class="fa fa-check"></i><b>11.4.9</b> <code>str_replace_all()</code> 함수를 이용한 모든 일치 대체</a></li>
-<li class="chapter" data-level="11.4.10" data-path="Using-RegEx.html"><a href="Using-RegEx.html#str_split-함수를-이용한-문자열-분할"><i class="fa fa-check"></i><b>11.4.10</b> <code>str_split()</code> 함수를 이용한 문자열 분할</a></li>
-<li class="chapter" data-level="11.4.11" data-path="Using-RegEx.html"><a href="Using-RegEx.html#str_split_fixed-함수를-이용한-문자열-분할"><i class="fa fa-check"></i><b>11.4.11</b> <code>str_split_fixed()</code> 함수를 이용한 문자열 분할</a></li>
+<li class="chapter" data-level="11.4.1" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_detect-함수를-이용한-패턴의-발견"><i class="fa fa-check"></i><b>11.4.1</b> <code>str_detect()</code> 함수를 이용한 패턴의 발견</a></li>
+<li class="chapter" data-level="11.4.2" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_extract-함수를-이용한-첫-번째-일치-추출"><i class="fa fa-check"></i><b>11.4.2</b> <code>str_extract()</code> 함수를 이용한 첫 번째 일치 추출</a></li>
+<li class="chapter" data-level="11.4.3" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_extract_all-함수를-이용한-모든-일치-추출"><i class="fa fa-check"></i><b>11.4.3</b> <code>str_extract_all()</code> 함수를 이용한 모든 일치 추출</a></li>
+<li class="chapter" data-level="11.4.4" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_match-함수를-이용한-첫-번째-일치-추출"><i class="fa fa-check"></i><b>11.4.4</b> <code>str_match()</code> 함수를 이용한 첫 번째 일치 추출</a></li>
+<li class="chapter" data-level="11.4.5" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_match_all-함수를-이용한-모든-일치-추출"><i class="fa fa-check"></i><b>11.4.5</b> <code>str_match_all()</code> 함수를 이용한 모든 일치 추출</a></li>
+<li class="chapter" data-level="11.4.6" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_locate-함수를-이용한-첫-번째-일치-위치-확인"><i class="fa fa-check"></i><b>11.4.6</b> <code>str_locate()</code> 함수를 이용한 첫 번째 일치 위치 확인</a></li>
+<li class="chapter" data-level="11.4.7" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_locate_all-함수를-이용한-모든-일치-위치-확인"><i class="fa fa-check"></i><b>11.4.7</b> <code>str_locate_all()</code> 함수를 이용한 모든 일치 위치 확인</a></li>
+<li class="chapter" data-level="11.4.8" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_replace-함수를-이용한-첫-번째-일치-대체"><i class="fa fa-check"></i><b>11.4.8</b> <code>str_replace()</code> 함수를 이용한 첫 번째 일치 대체</a></li>
+<li class="chapter" data-level="11.4.9" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_replace_all-함수를-이용한-모든-일치-대체"><i class="fa fa-check"></i><b>11.4.9</b> <code>str_replace_all()</code> 함수를 이용한 모든 일치 대체</a></li>
+<li class="chapter" data-level="11.4.10" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_split-함수를-이용한-문자열-분할"><i class="fa fa-check"></i><b>11.4.10</b> <code>str_split()</code> 함수를 이용한 문자열 분할</a></li>
+<li class="chapter" data-level="11.4.11" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_split_fixed-함수를-이용한-문자열-분할"><i class="fa fa-check"></i><b>11.4.11</b> <code>str_split_fixed()</code> 함수를 이용한 문자열 분할</a></li>
 </ul></li>
 </ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
       </nav>
@@ -555,7 +584,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Management with R</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">tidyverse를 이용한 데이터 관리</a>
           </h1>
         </div>
 
@@ -565,486 +594,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="dates_and_time" class="section level1" number="9">
 <h1><span class="header-section-number">Chapter 9</span> Dates and Times</h1>
-<div id="dates_time_intro" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> 들어가기</h2>
-<p>이 장에서는 R 에서 날짜와 시간을 다루는 법을 볼 것이다. 언뜻 생각하면 날짜와 시간은 간단해 보인다. 일상 생활에서 늘 사용하고 있으며 복잡할 것이 없을 것 같다. 그러나 날짜와 시간에 대해 배울수록 더 복잡해 보일 것이다. 몸풀기로, 간단해 보이는 다음 세 문제를 보자.</p>
-<ul>
-<li>1년은 항상 365일인가?</li>
-<li>1일은 항상 24시인가?</li>
-<li>1분은 항상 60초인가?</li>
-</ul>
-<p>1년이 항상 365일은 아니라는 걸 대부분 알고 있을 것이다. 하지만 한 해가 윤년인지를 결정하는 규칙을 완벽하게 알고 있는가?(세 파트가 있다.) 세계 많은 곳에서 일광절약제(daylight saving time, DST)를 이용하고 있고, 따라서 어떤 날은 23시이고, 다른 날은 25시라는 것을 기억하는 사람도 있을 것이다. 지구 자전이 점차 느려지기 때문에 윤초가 추가되어 가끔씩 1분이 61초가 된다는 것을 아는 사람은 많지 않을 것이다.</p>
-<p>날짜와 시간은 두 가지 물리 현상(지구 자전과 공전)과 월, 시간대, 일광절약제를 포함한 많은 지정학적 현상을 조화시켜야 하기 때문에 쉬운 문제가 아니다. 이 장에서는 날짜와 시간에 대해 세부 사항을 속속들이 배우지는 않겠지만 일반적인 데이터 분석 문제에 이용할 수 있는 기술들을 탄탄히 배울 것이다.</p>
-<div id="준비하기-2" class="section level3" number="9.1.1">
-<h3><span class="header-section-number">9.1.1</span> 준비하기</h3>
-<p>이 장에서는 <strong><code>lubridate</code></strong> 패키지를 주로 살펴볼 것인데, 이 패키지를 쓰면 R에서 날짜와 시간을 다룰 수 있다. <strong>lubridate</strong> 는 날짜/시간 작업을 할 때만 필요하기 때문에, 핵심 <code>tidyverse</code> 에 포함되어 있지 않다. 실습데이터로 이용할 <strong>nycflights13</strong> 도 필요하다.</p>
-<div class="sourceCode" id="cb1448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1448-1"><a href="dates-and-time.html#cb1448-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1448-2"><a href="dates-and-time.html#cb1448-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb1448-3"><a href="dates-and-time.html#cb1448-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span></code></pre></div>
-</div>
-</div>
-<div id="dates_time_create" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> 날짜/시간 생성하기</h2>
-<p>시각을 나타내는 날짜/시간의 세 가지 유형이 있다.</p>
-<ul>
-<li><strong>날짜형 (date)</strong> : 날짜. 티블에서 <code>&lt;date&gt;</code> 로 출력한다.</li>
-<li><strong>시간형 (time)</strong> : 하루 중 시간. 티블에서 <code>&lt;time&gt;</code> 으로 출력한다.</li>
-<li><strong>날짜-시간형 (date-time)</strong> : 날짜 더하기 시간. 시점을 고유하게 (일반적으로 가장 가까운 초로) 식별한다. 티블에서 <code>&lt;dttm&gt;</code> 으로 출력한다. R의 다른 부분에서는 <code>POSIXct</code> 라고 부른다.</li>
-</ul>
-<p>R에는 시간 저장을 위한 네이티브 클래스가 없기 때문에 이 장에서는 데이트형과 데이트-타임형에만 집중할 것이다. 네이티브 클래스가 필요하다면 <strong><code>hms</code></strong> 패키지를 이용해보라.</p>
-<p>사용자 요구를 충족하는 데이터 유형 중, 가능한 한 가장 간단한 것을 사용해야 한다. 즉 데이트-타임형 대신 데이트형을 써도 된다면 그래야 한다는 말이다. 데이트-타임형은 시간대를 다루기 때문에 훨씬 더 복잡한데 이 장의 끝에서 살펴볼 것이다.</p>
-<p>현재 날짜 또는 데이트-타임을 얻으려면 <code>today()</code> 또는 <code>now()</code> 를 사용하면 된다. (Sys.date())</p>
-<div class="sourceCode" id="cb1449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1449-1"><a href="dates-and-time.html#cb1449-1" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;2020-12-06&quot;</code></pre>
-<div class="sourceCode" id="cb1451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1451-1"><a href="dates-and-time.html#cb1451-1" aria-hidden="true" tabindex="-1"></a><span class="fu">now</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;2020-12-06 22:12:44 KST&quot;</code></pre>
-<p>이 외에 날짜/시간을 생성하는 세 가지 방법이 있다.</p>
-<ul>
-<li>문자열로부터</li>
-<li>개별 데이트-타임형 구성요소로부터</li>
-<li>기존의 날짜/시간 객체로부터</li>
-</ul>
-<p>이들의 작동 방식을 살펴보자.</p>
-<div id="문자열에서-생성" class="section level3" number="9.2.1">
-<h3><span class="header-section-number">9.2.1</span> 문자열에서 생성</h3>
-<p>날짜/시간 데이터는 종종 문자열로 주어진다. 우리는 이미 <a href="https://sulgik.github.io/r4ds/data-import.html#readr-datetimes">date-times</a> 에서 문자열을 데이트-타임형으로 파싱하는 법을 보았다. 다른 방법은 <strong>lubridate</strong> 에서 제공하는 도우미를 사용하는 것이다. 구성요소의 순서만 지정하면 자동으로 형식을 맞춘다. 도우미를 이용하는 법은 주어진 날짜에 나타난 연, 월, 일의 순서를 확인한 후, <code>“y”, “m”, “d”</code> 를 같은 순서로 배치하는 것이다. 이것이 바로 <strong>lubridate</strong> 함수의 이름이 되고 주어진 날짜를 파싱한다. 예를 들면</p>
-<div class="sourceCode" id="cb1453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1453-1"><a href="dates-and-time.html#cb1453-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&quot;2017-01-31&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2017-01-31&quot;</code></pre>
-<div class="sourceCode" id="cb1455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1455-1"><a href="dates-and-time.html#cb1455-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mdy</span>(<span class="st">&quot;January 31st, 2017&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2017-03-01&quot;</code></pre>
-<div class="sourceCode" id="cb1457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1457-1"><a href="dates-and-time.html#cb1457-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dmy</span>(<span class="st">&quot;31-Jan-2017&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2017-01-31&quot;</code></pre>
-<p>이 함수들은 따옴표로 둘러싸이지 않은 숫자도 받아들인다. 이는 단일 날짜/시간 객체를 생성하는 방법들 중 가장 간결한 방법인데, 날짜/시간 데이터를 필터링할 때 사용할 수 있다. <code>ymd()</code> 는 간결하고 모호하지 않다.</p>
-<div class="sourceCode" id="cb1459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1459-1"><a href="dates-and-time.html#cb1459-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="dv">20170131</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2017-01-31&quot;</code></pre>
-<p><code>ymd()</code> 와 같은 함수들은 데이트형을 생성한다. 데이트-타임형을 생성하려면 파싱 함수 이름에 언더스코어와 “h,” “m,” “s” 중 하나 이상을 추가해야 한다.</p>
-<div class="sourceCode" id="cb1461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1461-1"><a href="dates-and-time.html#cb1461-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd_hms</span>(<span class="st">&quot;2017-01-31 20:11:59&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2017-01-31 20:11:59 UTC&quot;</code></pre>
-<div class="sourceCode" id="cb1463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1463-1"><a href="dates-and-time.html#cb1463-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mdy_hm</span>(<span class="st">&quot;01/31/2017 08:01&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2017-01-31 08:01:00 UTC&quot;</code></pre>
-<p>시간대를 제공하여 날짜로부터 데이트-타임형을 강제 생성할 수도 있다.</p>
-<div class="sourceCode" id="cb1465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1465-1"><a href="dates-and-time.html#cb1465-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="dv">20170131</span>, <span class="at">tz =</span> <span class="st">&quot;UTC&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2017-01-31 UTC&quot;</code></pre>
-</div>
-<div id="개별-구성요소로-생성" class="section level3" number="9.2.2">
-<h3><span class="header-section-number">9.2.2</span> 개별 구성요소로 생성</h3>
-<p>때로는 문자열이 아니라 데이트-타임형의 개별 구성요소들이 여러 열에 걸쳐 있는 경우가 있을 것이다. <strong>flights</strong> 데이터에 있는 것이 그렇다.</p>
-<div class="sourceCode" id="cb1467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1467-1"><a href="dates-and-time.html#cb1467-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> </span>
-<span id="cb1467-2"><a href="dates-and-time.html#cb1467-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, month, day, hour, minute)</span></code></pre></div>
-<pre><code>## # A tibble: 336,776 x 5
-##    year month   day  hour minute
-##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;
-## 1  2013     1     1     5     15
-## 2  2013     1     1     5     29
-## 3  2013     1     1     5     40
-## # ... with 336,773 more rows</code></pre>
-<p>이러한 입력으로 날짜/시간을 생성하려면 데이트형은 <code>make_date()</code> 를, 데이트-타임형은 <code>make_datetime()</code> 를 쓰면 된다.</p>
-<div class="sourceCode" id="cb1469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1469-1"><a href="dates-and-time.html#cb1469-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> </span>
-<span id="cb1469-2"><a href="dates-and-time.html#cb1469-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, month, day, hour, minute) <span class="sc">%&gt;%</span> </span>
-<span id="cb1469-3"><a href="dates-and-time.html#cb1469-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">departure =</span> <span class="fu">make_datetime</span>(year, month, day, hour, minute))</span></code></pre></div>
-<pre><code>## # A tibble: 336,776 x 6
-##    year month   day  hour minute departure          
-##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dttm&gt;             
-## 1  2013     1     1     5     15 2013-01-01 05:15:00
-## 2  2013     1     1     5     29 2013-01-01 05:29:00
-## 3  2013     1     1     5     40 2013-01-01 05:40:00
-## # ... with 336,773 more rows</code></pre>
-<p>‘flights’ 네 개의 시간 열 각각에 대해 같은 작업을 하자. 시간이 약간 이상한 형식으로 표시되었으므로, 나머지 연산으로 시와 분 구성요소를 추출한다. 이제 데이트-타임형 변수를 생성했으니 이 장의 나머지 부분에서는 이 변수들을 탐색해 볼 것이다.</p>
-<div class="sourceCode" id="cb1471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1471-1"><a href="dates-and-time.html#cb1471-1" aria-hidden="true" tabindex="-1"></a>make_datetime_100 <span class="ot">&lt;-</span> <span class="cf">function</span>(year, month, day, time) {</span>
-<span id="cb1471-2"><a href="dates-and-time.html#cb1471-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">make_datetime</span>(year, month, day, time <span class="sc">%/%</span> <span class="dv">100</span>, time <span class="sc">%%</span> <span class="dv">100</span>)</span>
-<span id="cb1471-3"><a href="dates-and-time.html#cb1471-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1471-4"><a href="dates-and-time.html#cb1471-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1471-5"><a href="dates-and-time.html#cb1471-5" aria-hidden="true" tabindex="-1"></a>flights_dt <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb1471-6"><a href="dates-and-time.html#cb1471-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_time), <span class="sc">!</span><span class="fu">is.na</span>(arr_time)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1471-7"><a href="dates-and-time.html#cb1471-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb1471-8"><a href="dates-and-time.html#cb1471-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">dep_time =</span> <span class="fu">make_datetime_100</span>(year, month, day, dep_time),</span>
-<span id="cb1471-9"><a href="dates-and-time.html#cb1471-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">arr_time =</span> <span class="fu">make_datetime_100</span>(year, month, day, arr_time),</span>
-<span id="cb1471-10"><a href="dates-and-time.html#cb1471-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">sched_dep_time =</span> <span class="fu">make_datetime_100</span>(year, month, day, sched_dep_time),</span>
-<span id="cb1471-11"><a href="dates-and-time.html#cb1471-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">sched_arr_time =</span> <span class="fu">make_datetime_100</span>(year, month, day, sched_arr_time)</span>
-<span id="cb1471-12"><a href="dates-and-time.html#cb1471-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb1471-13"><a href="dates-and-time.html#cb1471-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(origin, dest, <span class="fu">ends_with</span>(<span class="st">&quot;delay&quot;</span>), <span class="fu">ends_with</span>(<span class="st">&quot;time&quot;</span>))</span>
-<span id="cb1471-14"><a href="dates-and-time.html#cb1471-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1471-15"><a href="dates-and-time.html#cb1471-15" aria-hidden="true" tabindex="-1"></a>flights_dt</span></code></pre></div>
-<pre><code>## # A tibble: 328,063 x 9
-##   origin dest  dep_delay arr_delay dep_time            sched_dep_time     
-##   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dttm&gt;              &lt;dttm&gt;             
-## 1 EWR    IAH           2        11 2013-01-01 05:17:00 2013-01-01 05:15:00
-## 2 LGA    IAH           4        20 2013-01-01 05:33:00 2013-01-01 05:29:00
-## 3 JFK    MIA           2        33 2013-01-01 05:42:00 2013-01-01 05:40:00
-## # ... with 328,060 more rows, and 3 more variables: arr_time &lt;dttm&gt;,
-## #   sched_arr_time &lt;dttm&gt;, air_time &lt;dbl&gt;</code></pre>
-<p>이 데이터로 한 해에 걸친 출발 시간의 분포를 시각화할 수 있다.</p>
-<div class="sourceCode" id="cb1473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1473-1"><a href="dates-and-time.html#cb1473-1" aria-hidden="true" tabindex="-1"></a>flights_dt <span class="sc">%&gt;%</span> </span>
-<span id="cb1473-2"><a href="dates-and-time.html#cb1473-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(dep_time)) <span class="sc">+</span> </span>
-<span id="cb1473-3"><a href="dates-and-time.html#cb1473-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_freqpoly</span>(<span class="at">binwidth =</span> <span class="dv">86400</span>) <span class="co"># 86400 seconds = 1 day</span></span></code></pre></div>
-<p><img src="Data-Management_files/figure-html/unnamed-chunk-487-1.png" width="672" /></p>
-<p>하루 내에서의 분포로 보려면</p>
-<div class="sourceCode" id="cb1474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1474-1"><a href="dates-and-time.html#cb1474-1" aria-hidden="true" tabindex="-1"></a>flights_dt <span class="sc">%&gt;%</span> </span>
-<span id="cb1474-2"><a href="dates-and-time.html#cb1474-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dep_time <span class="sc">&lt;</span> <span class="fu">ymd</span>(<span class="dv">20130102</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1474-3"><a href="dates-and-time.html#cb1474-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(dep_time)) <span class="sc">+</span> </span>
-<span id="cb1474-4"><a href="dates-and-time.html#cb1474-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_freqpoly</span>(<span class="at">binwidth =</span> <span class="dv">600</span>) <span class="co"># 600 s = 10 minutes</span></span></code></pre></div>
-<p><img src="Data-Management_files/figure-html/unnamed-chunk-488-1.png" width="672" /></p>
-<p>수치형 맥락에서 데이트-타임형을 사용할 경우(히스토그램에서와 같이) 1은 1초를 의미하고, 따라서 86400 빈너비(binwidth)는 하루를 의미한다는 것을 주목하라. 데이트형에서는 1은 1일을 의미한다.</p>
-</div>
-<div id="기타-유형에서-생성" class="section level3" number="9.2.3">
-<h3><span class="header-section-number">9.2.3</span> 기타 유형에서 생성</h3>
-<p>데이트-타임형과 데이트형 사이를 상호 전환하고 싶을 때도 있을 것이다. <code>as_datetime()</code> 과 <code>as_date()</code> 가 바로 이를 수행한다.</p>
-<div class="sourceCode" id="cb1475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1475-1"><a href="dates-and-time.html#cb1475-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_datetime</span>(<span class="fu">today</span>())</span></code></pre></div>
-<pre><code>## [1] &quot;2020-12-06 UTC&quot;</code></pre>
-<div class="sourceCode" id="cb1477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1477-1"><a href="dates-and-time.html#cb1477-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_date</span>(<span class="fu">now</span>())</span></code></pre></div>
-<pre><code>## [1] &quot;2020-12-06&quot;</code></pre>
-<p>때로 날짜/시간을 ‘유닉스 신기원(Unix Epoch)’인 1970-01-01에서 수치형 오프셋으로 가지고 있을 수 있다. 오프셋이 초 단위인 경우엔 <code>as_datetime()</code> , 일 단위인 경우엔 <code>as_date()</code> 을 사용한다.</p>
-<div class="sourceCode" id="cb1479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1479-1"><a href="dates-and-time.html#cb1479-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_datetime</span>(<span class="dv">60</span> <span class="sc">*</span> <span class="dv">60</span> <span class="sc">*</span> <span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;1970-01-01 10:00:00 UTC&quot;</code></pre>
-<div class="sourceCode" id="cb1481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1481-1"><a href="dates-and-time.html#cb1481-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_date</span>(<span class="dv">365</span> <span class="sc">*</span> <span class="dv">10</span> <span class="sc">+</span> <span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;1980-01-01&quot;</code></pre>
-</div>
-<div id="연습문제-12" class="section level3" number="9.2.4">
-<h3><span class="header-section-number">9.2.4</span> 연습문제</h3>
-<ol style="list-style-type: decimal">
-<li><p>유효하지 않은 날짜를 포함한 문자열을 파싱하면 어떻게 되는가?</p>
-<div class="sourceCode" id="cb1483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1483-1"><a href="dates-and-time.html#cb1483-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="fu">c</span>(<span class="st">&quot;2010-10-10&quot;</span>, <span class="st">&quot;bananas&quot;</span>))</span></code></pre></div>
-<pre><code>## Warning: 1 failed to parse.</code></pre>
-<pre><code>## [1] &quot;2010-10-10&quot; NA</code></pre></li>
-<li><p><code>today()</code> 의 <code>tzone</code> 인수의 역할은 무엇인가? 이 인수는 왜 중요한가?</p></li>
-<li><p>적절한 <strong>lubridate</strong> 함수를 이용하여, 다음 날짜를 각각 파싱하라.</p>
-<div class="sourceCode" id="cb1486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1486-1"><a href="dates-and-time.html#cb1486-1" aria-hidden="true" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="st">&quot;January 1, 2010&quot;</span></span>
-<span id="cb1486-2"><a href="dates-and-time.html#cb1486-2" aria-hidden="true" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="st">&quot;2015-Mar-07&quot;</span></span>
-<span id="cb1486-3"><a href="dates-and-time.html#cb1486-3" aria-hidden="true" tabindex="-1"></a>d3 <span class="ot">&lt;-</span> <span class="st">&quot;06-Jun-2017&quot;</span></span>
-<span id="cb1486-4"><a href="dates-and-time.html#cb1486-4" aria-hidden="true" tabindex="-1"></a>d4 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;August 19 (2015)&quot;</span>, <span class="st">&quot;July 1 (2015)&quot;</span>)</span>
-<span id="cb1486-5"><a href="dates-and-time.html#cb1486-5" aria-hidden="true" tabindex="-1"></a>d5 <span class="ot">&lt;-</span> <span class="st">&quot;12/30/14&quot;</span> <span class="co"># Dec 30, 2014</span></span></code></pre></div></li>
-</ol>
-</div>
-</div>
-<div id="dates_time_arguments" class="section level2" number="9.3">
-<h2><span class="header-section-number">9.3</span> 데이트-타임형 구성요소</h2>
-<p>날짜/시간 데이터를 R의 데이트-타임형 데이터 구조로 얻는 방법을 이제 알았으니 이를 이용해 할 수 있는 것을 탐색해보자. 이 절에서는 개별 구성요소를 얻고 설정하는 설정 함수(accessor function)에 초점을 맞출 것이다. 다음 절에서는 산술연산이 데이트-타임형에 어떻게 동작하는지 살펴 볼 것이다.</p>
-<div id="구성요소-가져오기" class="section level3" number="9.3.1">
-<h3><span class="header-section-number">9.3.1</span> 구성요소 가져오기</h3>
-<p>다음 설정 함수로 데이트형의 개별 부분을 가져올 수 있다. <code>year(), month(), mday()</code> (한 달에서 일), <code>yday()</code> (한 해에서 일), <code>wday</code> (한 주 중 일), <code>hour(), minute(), second()</code> .</p>
-<div class="sourceCode" id="cb1487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1487-1"><a href="dates-and-time.html#cb1487-1" aria-hidden="true" tabindex="-1"></a>datetime <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">&quot;2016-07-08 12:34:56&quot;</span>)</span>
-<span id="cb1487-2"><a href="dates-and-time.html#cb1487-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1487-3"><a href="dates-and-time.html#cb1487-3" aria-hidden="true" tabindex="-1"></a><span class="fu">year</span>(datetime)</span></code></pre></div>
-<pre><code>## [1] 2016</code></pre>
-<div class="sourceCode" id="cb1489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1489-1"><a href="dates-and-time.html#cb1489-1" aria-hidden="true" tabindex="-1"></a><span class="fu">month</span>(datetime)</span></code></pre></div>
-<pre><code>## [1] 7</code></pre>
-<div class="sourceCode" id="cb1491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1491-1"><a href="dates-and-time.html#cb1491-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mday</span>(datetime)</span></code></pre></div>
-<pre><code>## [1] 8</code></pre>
-<div class="sourceCode" id="cb1493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1493-1"><a href="dates-and-time.html#cb1493-1" aria-hidden="true" tabindex="-1"></a><span class="fu">yday</span>(datetime)</span></code></pre></div>
-<pre><code>## [1] 190</code></pre>
-<div class="sourceCode" id="cb1495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1495-1"><a href="dates-and-time.html#cb1495-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wday</span>(datetime)</span></code></pre></div>
-<pre><code>## [1] 6</code></pre>
-<p><code>month()</code> 와 <code>wday()</code> 에서 <code>label = TRUE</code> 를 설정하여 월이나 일의 약식 이름을 반환할 수 있다. <code>abbr = FALSE</code> 를 설정하면 이름 전체를 반환할 수 있다.</p>
-<div class="sourceCode" id="cb1497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1497-1"><a href="dates-and-time.html#cb1497-1" aria-hidden="true" tabindex="-1"></a><span class="fu">month</span>(datetime, <span class="at">label =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## [1] 7
-## Levels: 1 &lt; 2 &lt; 3 &lt; 4 &lt; 5 &lt; 6 &lt; 7 &lt; 8 &lt; 9 &lt; 10 &lt; 11 &lt; 12</code></pre>
-<div class="sourceCode" id="cb1499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1499-1"><a href="dates-and-time.html#cb1499-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wday</span>(datetime, <span class="at">label =</span> <span class="cn">TRUE</span>, <span class="at">abbr =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<pre><code>## [1] 금요일
-## Levels: 일요일 &lt; 월요일 &lt; 화요일 &lt; 수요일 &lt; 목요일 &lt; 금요일 &lt; 토요일</code></pre>
-<p><code>wday()</code> 를 사용하여 주말보다 평일에 출발하는 항공편이 더 많다는 것을 확인할 수 있다.</p>
-<div class="sourceCode" id="cb1501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1501-1"><a href="dates-and-time.html#cb1501-1" aria-hidden="true" tabindex="-1"></a>flights_dt <span class="sc">%&gt;%</span> </span>
-<span id="cb1501-2"><a href="dates-and-time.html#cb1501-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wday =</span> <span class="fu">wday</span>(dep_time, <span class="at">label =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1501-3"><a href="dates-and-time.html#cb1501-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> wday)) <span class="sc">+</span></span>
-<span id="cb1501-4"><a href="dates-and-time.html#cb1501-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="Data-Management_files/figure-html/unnamed-chunk-495-1.png" width="672" /></p>
-<p>출발 지연시간 평균을 매 시의 각 분(0~59 분)에 대해서 살펴보면 흥미로운 패턴이 있다. 20~30분과 50~60분에 출발하는 항공편은 나머지 시간보다 훨씬 덜 지연되는 것으로 보인다.</p>
-<div class="sourceCode" id="cb1502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1502-1"><a href="dates-and-time.html#cb1502-1" aria-hidden="true" tabindex="-1"></a>flights_dt <span class="sc">%&gt;%</span> </span>
-<span id="cb1502-2"><a href="dates-and-time.html#cb1502-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">minute =</span> <span class="fu">minute</span>(dep_time)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1502-3"><a href="dates-and-time.html#cb1502-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(minute) <span class="sc">%&gt;%</span> </span>
-<span id="cb1502-4"><a href="dates-and-time.html#cb1502-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb1502-5"><a href="dates-and-time.html#cb1502-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb1502-6"><a href="dates-and-time.html#cb1502-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb1502-7"><a href="dates-and-time.html#cb1502-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(minute, avg_delay)) <span class="sc">+</span></span>
-<span id="cb1502-8"><a href="dates-and-time.html#cb1502-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
-<p><img src="Data-Management_files/figure-html/unnamed-chunk-496-1.png" width="672" /></p>
-<p>흥미롭게도 예정된 출발시간으로 보면 이러한 강한 패턴을 볼 수 없다.</p>
-<div class="sourceCode" id="cb1504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1504-1"><a href="dates-and-time.html#cb1504-1" aria-hidden="true" tabindex="-1"></a>sched_dep <span class="ot">&lt;-</span> flights_dt <span class="sc">%&gt;%</span> </span>
-<span id="cb1504-2"><a href="dates-and-time.html#cb1504-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">minute =</span> <span class="fu">minute</span>(sched_dep_time)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1504-3"><a href="dates-and-time.html#cb1504-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(minute) <span class="sc">%&gt;%</span> </span>
-<span id="cb1504-4"><a href="dates-and-time.html#cb1504-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb1504-5"><a href="dates-and-time.html#cb1504-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb1504-6"><a href="dates-and-time.html#cb1504-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
-<div class="sourceCode" id="cb1506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1506-1"><a href="dates-and-time.html#cb1506-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sched_dep, <span class="fu">aes</span>(minute, avg_delay)) <span class="sc">+</span></span>
-<span id="cb1506-2"><a href="dates-and-time.html#cb1506-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
-<p><img src="Data-Management_files/figure-html/unnamed-chunk-497-1.png" width="672" /></p>
-<p>그러면 왜 실제 출발시간에는 그 패턴이 있는가? 사람에 의해 수집된 많은 데이터가 그런 것처럼, ’좋은‘ 출발시간에 떠나는 항공편 방향으로 편향(bias)이 강하게 존재한다. 인간의 판단이 관여된 데이터로 작업할 때마다 이런 종류의 패턴을 항상 유의해야 한다.</p>
-<div class="sourceCode" id="cb1507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1507-1"><a href="dates-and-time.html#cb1507-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sched_dep, <span class="fu">aes</span>(minute, n)) <span class="sc">+</span></span>
-<span id="cb1507-2"><a href="dates-and-time.html#cb1507-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
-<p><img src="Data-Management_files/figure-html/unnamed-chunk-498-1.png" width="672" /></p>
-</div>
-<div id="반올림" class="section level3" number="9.3.2">
-<h3><span class="header-section-number">9.3.2</span> 반올림</h3>
-<p>개별 구성요소를 플롯하는 또 다른 방법은 <code>floor_date()</code> , <code>round_date()</code> , <code>ceiling_date()</code> 로 인근 시간 단위로 날짜를 반올림하는 것이다. 각 <code>ceiling_date()</code> 함수의 입력값으로는, 조정할 날짜 벡터와, 내림(floor), 올림(ceiling), 혹은 반올림(round)해서 맞출 단위의 이름이다. 예를 들어 주당 항공편 수를 플롯할 수 있다.</p>
-<div class="sourceCode" id="cb1508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1508-1"><a href="dates-and-time.html#cb1508-1" aria-hidden="true" tabindex="-1"></a>flights_dt <span class="sc">%&gt;%</span> </span>
-<span id="cb1508-2"><a href="dates-and-time.html#cb1508-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="at">week =</span> <span class="fu">floor_date</span>(dep_time, <span class="st">&quot;week&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1508-3"><a href="dates-and-time.html#cb1508-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(week, n)) <span class="sc">+</span></span>
-<span id="cb1508-4"><a href="dates-and-time.html#cb1508-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
-<p><img src="Data-Management_files/figure-html/unnamed-chunk-499-1.png" width="672" /></p>
-<p>날짜 반올림 전후 차이를 계산하는 것은 특히 유용할 수 있다.</p>
-</div>
-<div id="구성요소-설정" class="section level3" number="9.3.3">
-<h3><span class="header-section-number">9.3.3</span> 구성요소 설정</h3>
-<p>설정 함수를 사용하여 날짜/시간의 구성 요소를 설정할 수 있다.</p>
-<div class="sourceCode" id="cb1509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1509-1"><a href="dates-and-time.html#cb1509-1" aria-hidden="true" tabindex="-1"></a>(datetime <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">&quot;2016-07-08 12:34:56&quot;</span>))</span></code></pre></div>
-<pre><code>## [1] &quot;2016-07-08 12:34:56 UTC&quot;</code></pre>
-<div class="sourceCode" id="cb1511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1511-1"><a href="dates-and-time.html#cb1511-1" aria-hidden="true" tabindex="-1"></a><span class="fu">year</span>(datetime) <span class="ot">&lt;-</span> <span class="dv">2020</span></span>
-<span id="cb1511-2"><a href="dates-and-time.html#cb1511-2" aria-hidden="true" tabindex="-1"></a>datetime</span></code></pre></div>
-<pre><code>## [1] &quot;2020-07-08 12:34:56 UTC&quot;</code></pre>
-<div class="sourceCode" id="cb1513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1513-1"><a href="dates-and-time.html#cb1513-1" aria-hidden="true" tabindex="-1"></a><span class="fu">month</span>(datetime) <span class="ot">&lt;-</span> <span class="dv">01</span></span>
-<span id="cb1513-2"><a href="dates-and-time.html#cb1513-2" aria-hidden="true" tabindex="-1"></a>datetime</span></code></pre></div>
-<pre><code>## [1] &quot;2020-01-08 12:34:56 UTC&quot;</code></pre>
-<div class="sourceCode" id="cb1515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1515-1"><a href="dates-and-time.html#cb1515-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hour</span>(datetime) <span class="ot">&lt;-</span> <span class="fu">hour</span>(datetime) <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb1515-2"><a href="dates-and-time.html#cb1515-2" aria-hidden="true" tabindex="-1"></a>datetime</span></code></pre></div>
-<pre><code>## [1] &quot;2020-01-08 13:34:56 UTC&quot;</code></pre>
-<p>수정하는 대신, <code>update()</code> 로 새로운 데이트-타임형을 생성할 수도 있다. 이 방법을 사용하여 여러 개의 값을 한 번에 설정할 수도 있다.</p>
-<div class="sourceCode" id="cb1517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1517-1"><a href="dates-and-time.html#cb1517-1" aria-hidden="true" tabindex="-1"></a><span class="fu">update</span>(datetime, <span class="at">year =</span> <span class="dv">2020</span>, <span class="at">month =</span> <span class="dv">2</span>, <span class="at">mday =</span> <span class="dv">2</span>, <span class="at">hour =</span> <span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2020-02-02 02:34:56 UTC&quot;</code></pre>
-<p>값이 너무 큰 경우에는 이월된다.</p>
-<div class="sourceCode" id="cb1519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1519-1"><a href="dates-and-time.html#cb1519-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&quot;2015-02-01&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1519-2"><a href="dates-and-time.html#cb1519-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">update</span>(<span class="at">mday =</span> <span class="dv">30</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2015-03-02&quot;</code></pre>
-<div class="sourceCode" id="cb1521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1521-1"><a href="dates-and-time.html#cb1521-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&quot;2015-02-01&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1521-2"><a href="dates-and-time.html#cb1521-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">update</span>(<span class="at">hour =</span> <span class="dv">400</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2015-02-17 16:00:00 UTC&quot;</code></pre>
-<p><code>update()</code> 를 사용하여 관심있는 해의 하루 동안 항공편의 분포를 볼 수 있다.</p>
-<div class="sourceCode" id="cb1523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1523-1"><a href="dates-and-time.html#cb1523-1" aria-hidden="true" tabindex="-1"></a>flights_dt <span class="sc">%&gt;%</span> </span>
-<span id="cb1523-2"><a href="dates-and-time.html#cb1523-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dep_hour =</span> <span class="fu">update</span>(dep_time, <span class="at">yday =</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1523-3"><a href="dates-and-time.html#cb1523-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(dep_hour)) <span class="sc">+</span></span>
-<span id="cb1523-4"><a href="dates-and-time.html#cb1523-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_freqpoly</span>(<span class="at">binwidth =</span> <span class="dv">300</span>)</span></code></pre></div>
-<p><img src="Data-Management_files/figure-html/unnamed-chunk-503-1.png" width="672" /></p>
-<p>날짜의 상위 구성 요소를 상수로 설정하면, 하위 구성 요소의 패턴을 탐색할 수 있어서 매우 유용한 방법이다</p>
-</div>
-<div id="연습문제-13" class="section level3" number="9.3.4">
-<h3><span class="header-section-number">9.3.4</span> 연습문제</h3>
-<ol style="list-style-type: decimal">
-<li>하루 동안 비행시간의 분포는 한 해 동안 어떻게 변화했는가?</li>
-<li><code>dep_time, sched_dep_time, dep_delay</code> 를 비교하라. 이들은 일관성이 있는가? 무엇을 발견했는지 설명하라.</li>
-<li>출발, 도착 사이의 시간과 <code>air_time</code> 을 비교하라. 무엇을 발견했는지 설명하라. (힌트: 공항의 위치를 살펴보라.)</li>
-<li>하루 동안 평균 지연시간은 어떻게 변화하는가? <code>dep_time</code> 또는 <code>sched_dep_time</code> 를 사용해야 하는가? 이유는 무엇인가?</li>
-<li>지연 가능성을 최소화하려면 한 주 중 어느 요일에 떠나야 하는가?</li>
-<li>왜 <code>diamonds$carat</code> 과 <code>flights$sched_dep_time</code> 분포가 비슷한가?</li>
-<li>20-30분과 50-60분에서 출발이 빠른 것은 일찍 출발하도록 계획된 항공편 때문이라는 우리의 가설을 확인하라. 힌트: 항공편이 지연되었는지 여부를 알려주는 이진 변수를 생성하라.</li>
-</ol>
-</div>
-</div>
-<div id="dates_time_time_span" class="section level2" number="9.4">
-<h2><span class="header-section-number">9.4</span> 시간 범위</h2>
-<p>다음으로 뺄셈, 덧셈, 나눗셈 같은 산술연산이 데이트형에 어떻게 동작하는지 알아보자. 여기에서는 시간 범위(time span)를 대표하는 중요한 클래스 세 가지를 배우게 된다.</p>
-<ul>
-<li><strong>듀레이션형</strong> (duration): 정확한 초를 나타냄.</li>
-<li><strong>피리어드형</strong> (period): 주와 월과 같은 인간의 단위를 나타냄.</li>
-<li><strong>인터벌형</strong> (interval): 시점과 종점을 나타냄.</li>
-</ul>
-<div id="듀레이션형" class="section level3" number="9.4.1">
-<h3><span class="header-section-number">9.4.1</span> 듀레이션형</h3>
-<p>R에서 두 데이트형 뺄셈을 하면 difftime형 객체가 생긴다.</p>
-<div class="sourceCode" id="cb1524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1524-1"><a href="dates-and-time.html#cb1524-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 해들리의 나이는?</span></span>
-<span id="cb1524-2"><a href="dates-and-time.html#cb1524-2" aria-hidden="true" tabindex="-1"></a>h_age <span class="ot">&lt;-</span> <span class="fu">today</span>() <span class="sc">-</span> <span class="fu">ymd</span>(<span class="dv">19791014</span>)</span>
-<span id="cb1524-3"><a href="dates-and-time.html#cb1524-3" aria-hidden="true" tabindex="-1"></a>h_age</span></code></pre></div>
-<pre><code>## Time difference of 15029 days</code></pre>
-<p>difftime 클래스 객체는 초, 분, 시, 일 또는 주의 시간 범위를 기록한다. 이러한 애매함 때문에 difftime형으로 작업하는 것이 약간 고통스러울 수 있다. 따라서 <strong>lubridate</strong> 는 항상 초를 사용하는 대안 클래스, <strong>듀레이션형</strong> 을 제공한다.</p>
-<div class="sourceCode" id="cb1526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1526-1"><a href="dates-and-time.html#cb1526-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.duration</span>(h_age)</span></code></pre></div>
-<pre><code>## [1] &quot;1298505600s (~41.15 years)&quot;</code></pre>
-<p>듀레이션형에는 편리한 생성자가 많다.</p>
-<div class="sourceCode" id="cb1528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1528-1"><a href="dates-and-time.html#cb1528-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dseconds</span>(<span class="dv">15</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;15s&quot;</code></pre>
-<div class="sourceCode" id="cb1530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1530-1"><a href="dates-and-time.html#cb1530-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dminutes</span>(<span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;600s (~10 minutes)&quot;</code></pre>
-<div class="sourceCode" id="cb1532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1532-1"><a href="dates-and-time.html#cb1532-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhours</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">24</span>))</span></code></pre></div>
-<pre><code>## [1] &quot;43200s (~12 hours)&quot; &quot;86400s (~1 days)&quot;</code></pre>
-<div class="sourceCode" id="cb1534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1534-1"><a href="dates-and-time.html#cb1534-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ddays</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;0s&quot;                &quot;86400s (~1 days)&quot;  &quot;172800s (~2 days)&quot;
-## [4] &quot;259200s (~3 days)&quot; &quot;345600s (~4 days)&quot; &quot;432000s (~5 days)&quot;</code></pre>
-<div class="sourceCode" id="cb1536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1536-1"><a href="dates-and-time.html#cb1536-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dweeks</span>(<span class="dv">3</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;1814400s (~3 weeks)&quot;</code></pre>
-<div class="sourceCode" id="cb1538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1538-1"><a href="dates-and-time.html#cb1538-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dyears</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;31557600s (~1 years)&quot;</code></pre>
-<p>듀레이션형은 항상 초 단위로 시간 범위를 기록한다. 이보다 큰 단위를 생성하려면 분, 시, 일, 주, 연을 표준비율로 변환해야 한다(분당 60초, 시당 60분, 일당 24시, 주당 7일, 연당 365일).</p>
-<p>듀레이션형을 더하거나 곱할 수 있다.</p>
-<div class="sourceCode" id="cb1540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1540-1"><a href="dates-and-time.html#cb1540-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">dyears</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;63115200s (~2 years)&quot;</code></pre>
-<div class="sourceCode" id="cb1542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1542-1"><a href="dates-and-time.html#cb1542-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dyears</span>(<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">dweeks</span>(<span class="dv">12</span>) <span class="sc">+</span> <span class="fu">dhours</span>(<span class="dv">15</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;38869200s (~1.23 years)&quot;</code></pre>
-<p>일(day)에서 듀레이션형을 더하고 뺄 수 있다.{r}</p>
-<div class="sourceCode" id="cb1544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1544-1"><a href="dates-and-time.html#cb1544-1" aria-hidden="true" tabindex="-1"></a>tomorrow <span class="ot">&lt;-</span> <span class="fu">today</span>() <span class="sc">+</span> <span class="fu">ddays</span>(<span class="dv">1</span>)</span>
-<span id="cb1544-2"><a href="dates-and-time.html#cb1544-2" aria-hidden="true" tabindex="-1"></a>last_year <span class="ot">&lt;-</span> <span class="fu">today</span>() <span class="sc">-</span> <span class="fu">dyears</span>(<span class="dv">1</span>)</span></code></pre></div>
-<p>그러나 듀레이션형은 정확한 초 개수로 표시하므로 때로는 예상치 못한 결과를 얻을 수도 있다.</p>
-<div class="sourceCode" id="cb1545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1545-1"><a href="dates-and-time.html#cb1545-1" aria-hidden="true" tabindex="-1"></a>one_pm <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">&quot;2016-03-12 13:00:00&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;America/New_York&quot;</span>)</span>
-<span id="cb1545-2"><a href="dates-and-time.html#cb1545-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1545-3"><a href="dates-and-time.html#cb1545-3" aria-hidden="true" tabindex="-1"></a>one_pm</span></code></pre></div>
-<pre><code>## [1] &quot;2016-03-12 13:00:00 EST&quot;</code></pre>
-<div class="sourceCode" id="cb1547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1547-1"><a href="dates-and-time.html#cb1547-1" aria-hidden="true" tabindex="-1"></a>one_pm <span class="sc">+</span> <span class="fu">ddays</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2016-03-13 14:00:00 EDT&quot;</code></pre>
-<p>3월 12일 오후 1시의 1일 후가 왜 3월 13일 오후 2시인가? 날짜를 주의 깊게 보면 시간대가 바뀌어 있다. 일광절약제 때문에 3월 12일에는 23시만 있다. 따라서 하루에 해당하는 초를 더하면 다른 시간을 갖게 된다.</p>
-</div>
-<div id="피리어드형" class="section level3" number="9.4.2">
-<h3><span class="header-section-number">9.4.2</span> 피리어드형</h3>
-<p>이 문제를 해결하기 위해 <strong>lubridate</strong> 는 **피리어드형을 제공한다. 피리어드형은 시간 범위이지만 정해진 초 길이가 없다. 대신 일과 월과 같은 ’사람의‘ 시간으로 동작한다. 따라서 작동 방식이 보다 직관적이다.</p>
-<div class="sourceCode" id="cb1549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1549-1"><a href="dates-and-time.html#cb1549-1" aria-hidden="true" tabindex="-1"></a>one_pm</span></code></pre></div>
-<pre><code>## [1] &quot;2016-03-12 13:00:00 EST&quot;</code></pre>
-<div class="sourceCode" id="cb1551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1551-1"><a href="dates-and-time.html#cb1551-1" aria-hidden="true" tabindex="-1"></a>one_pm <span class="sc">+</span> <span class="fu">days</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2016-03-13 13:00:00 EDT&quot;</code></pre>
-<p>듀레이션형과 마찬가지로 피리어드형은 다수의 생성 함수로 편리하게 생성할 수 있다.</p>
-<div class="sourceCode" id="cb1553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1553-1"><a href="dates-and-time.html#cb1553-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seconds</span>(<span class="dv">15</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;15S&quot;</code></pre>
-<div class="sourceCode" id="cb1555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1555-1"><a href="dates-and-time.html#cb1555-1" aria-hidden="true" tabindex="-1"></a><span class="fu">minutes</span>(<span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;10M 0S&quot;</code></pre>
-<div class="sourceCode" id="cb1557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1557-1"><a href="dates-and-time.html#cb1557-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hours</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">24</span>))</span></code></pre></div>
-<pre><code>## [1] &quot;12H 0M 0S&quot; &quot;24H 0M 0S&quot;</code></pre>
-<div class="sourceCode" id="cb1559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1559-1"><a href="dates-and-time.html#cb1559-1" aria-hidden="true" tabindex="-1"></a><span class="fu">days</span>(<span class="dv">7</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;7d 0H 0M 0S&quot;</code></pre>
-<div class="sourceCode" id="cb1561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1561-1"><a href="dates-and-time.html#cb1561-1" aria-hidden="true" tabindex="-1"></a><span class="fu">months</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;1m 0d 0H 0M 0S&quot; &quot;2m 0d 0H 0M 0S&quot; &quot;3m 0d 0H 0M 0S&quot; &quot;4m 0d 0H 0M 0S&quot;
-## [5] &quot;5m 0d 0H 0M 0S&quot; &quot;6m 0d 0H 0M 0S&quot;</code></pre>
-<div class="sourceCode" id="cb1563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1563-1"><a href="dates-and-time.html#cb1563-1" aria-hidden="true" tabindex="-1"></a><span class="fu">weeks</span>(<span class="dv">3</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;21d 0H 0M 0S&quot;</code></pre>
-<div class="sourceCode" id="cb1565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1565-1"><a href="dates-and-time.html#cb1565-1" aria-hidden="true" tabindex="-1"></a><span class="fu">years</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;1y 0m 0d 0H 0M 0S&quot;</code></pre>
-<p>피리어드형을 더하거나 곱할 수 있다.</p>
-<div class="sourceCode" id="cb1567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1567-1"><a href="dates-and-time.html#cb1567-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">*</span> (<span class="fu">months</span>(<span class="dv">6</span>) <span class="sc">+</span> <span class="fu">days</span>(<span class="dv">1</span>))</span></code></pre></div>
-<pre><code>## [1] &quot;60m 10d 0H 0M 0S&quot;</code></pre>
-<div class="sourceCode" id="cb1569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1569-1"><a href="dates-and-time.html#cb1569-1" aria-hidden="true" tabindex="-1"></a><span class="fu">days</span>(<span class="dv">50</span>) <span class="sc">+</span> <span class="fu">hours</span>(<span class="dv">25</span>) <span class="sc">+</span> <span class="fu">minutes</span>(<span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;50d 25H 2M 0S&quot;</code></pre>
-<p>그리고 물론, 데이트형에 더해진다. 듀레이션형과 달리 피리어드형은 의도한 대로 동작한다.</p>
-<div class="sourceCode" id="cb1571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1571-1"><a href="dates-and-time.html#cb1571-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 윤년</span></span>
-<span id="cb1571-2"><a href="dates-and-time.html#cb1571-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&quot;2016-01-01&quot;</span>) <span class="sc">+</span> <span class="fu">dyears</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2016-12-31 06:00:00 UTC&quot;</code></pre>
-<div class="sourceCode" id="cb1573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1573-1"><a href="dates-and-time.html#cb1573-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&quot;2016-01-01&quot;</span>) <span class="sc">+</span> <span class="fu">years</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2017-01-01&quot;</code></pre>
-<div class="sourceCode" id="cb1575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1575-1"><a href="dates-and-time.html#cb1575-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 일광절약제</span></span>
-<span id="cb1575-2"><a href="dates-and-time.html#cb1575-2" aria-hidden="true" tabindex="-1"></a>one_pm <span class="sc">+</span> <span class="fu">ddays</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2016-03-13 14:00:00 EDT&quot;</code></pre>
-<div class="sourceCode" id="cb1577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1577-1"><a href="dates-and-time.html#cb1577-1" aria-hidden="true" tabindex="-1"></a>one_pm <span class="sc">+</span> <span class="fu">days</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2016-03-13 13:00:00 EDT&quot;</code></pre>
-<p>이제 피리어드형을 사용해서 비행 날짜에 관련된 문제를 해결해보자. 일부 항공편은 뉴욕시에서 출발하기 전에 목적지에 도착한 것으로 보여진다.</p>
-<div class="sourceCode" id="cb1579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1579-1"><a href="dates-and-time.html#cb1579-1" aria-hidden="true" tabindex="-1"></a>flights_dt <span class="sc">%&gt;%</span> </span>
-<span id="cb1579-2"><a href="dates-and-time.html#cb1579-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(arr_time <span class="sc">&lt;</span> dep_time) </span></code></pre></div>
-<pre><code>## # A tibble: 10,633 x 9
-##   origin dest  dep_delay arr_delay dep_time            sched_dep_time     
-##   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dttm&gt;              &lt;dttm&gt;             
-## 1 EWR    BQN           9        -4 2013-01-01 19:29:00 2013-01-01 19:20:00
-## 2 JFK    DFW          59        NA 2013-01-01 19:39:00 2013-01-01 18:40:00
-## 3 EWR    TPA          -2         9 2013-01-01 20:58:00 2013-01-01 21:00:00
-## # ... with 10,630 more rows, and 3 more variables: arr_time &lt;dttm&gt;,
-## #   sched_arr_time &lt;dttm&gt;, air_time &lt;dbl&gt;</code></pre>
-<p>이들은 심야 항공편이다. 우리는 출발과 도착시간 모두에 같은 날짜 정보를 사용했었지만, 이 항공편들은 도착시간이 다음날이다. 심야 항공편의 도착시간에 <code>days(1)</code> 을 더해서 문제를 해결할 수 있다.</p>
-<div class="sourceCode" id="cb1581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1581-1"><a href="dates-and-time.html#cb1581-1" aria-hidden="true" tabindex="-1"></a>flights_dt <span class="ot">&lt;-</span> flights_dt <span class="sc">%&gt;%</span> </span>
-<span id="cb1581-2"><a href="dates-and-time.html#cb1581-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb1581-3"><a href="dates-and-time.html#cb1581-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">overnight =</span> arr_time <span class="sc">&lt;</span> dep_time,</span>
-<span id="cb1581-4"><a href="dates-and-time.html#cb1581-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">arr_time =</span> arr_time <span class="sc">+</span> <span class="fu">days</span>(overnight <span class="sc">*</span> <span class="dv">1</span>),</span>
-<span id="cb1581-5"><a href="dates-and-time.html#cb1581-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sched_arr_time =</span> sched_arr_time <span class="sc">+</span> <span class="fu">days</span>(overnight <span class="sc">*</span> <span class="dv">1</span>)</span>
-<span id="cb1581-6"><a href="dates-and-time.html#cb1581-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<p>이제 모든 항공편이 물리학의 법칙을 벗어나지 않는다.</p>
-<div class="sourceCode" id="cb1582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1582-1"><a href="dates-and-time.html#cb1582-1" aria-hidden="true" tabindex="-1"></a>flights_dt <span class="sc">%&gt;%</span> </span>
-<span id="cb1582-2"><a href="dates-and-time.html#cb1582-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(overnight, arr_time <span class="sc">&lt;</span> dep_time) </span></code></pre></div>
-<pre><code>## # A tibble: 0 x 10
-## # ... with 10 variables: origin &lt;chr&gt;, dest &lt;chr&gt;, dep_delay &lt;dbl&gt;,
-## #   arr_delay &lt;dbl&gt;, dep_time &lt;dttm&gt;, sched_dep_time &lt;dttm&gt;, arr_time &lt;dttm&gt;,
-## #   sched_arr_time &lt;dttm&gt;, air_time &lt;dbl&gt;, overnight &lt;lgl&gt;</code></pre>
-</div>
-<div id="인터벌형" class="section level3" number="9.4.3">
-<h3><span class="header-section-number">9.4.3</span> 인터벌형</h3>
-<p><code>dyears(1) / ddays(365)</code> 가 반환해야 하는 값은 명백하다. 바로 1인데 왜냐하면, 듀레이션형은 항상 초 단위로 표현하며 듀레이션형 1년은 365일에 해당하는 초로 정의되기 때문이다.</p>
-<p><code>years(1) / days(1)</code> 이 반환해야 하는 값은 무엇인가? 음… 2015년이라면 365를 반환해야하지만 2016년이면 366을 반환해야 한다! <strong>lubridate</strong> 가 하나의 명확한 답을 주기에 충분한 정보가 없다. 대신 경고와 함께 예측값을 준다.</p>
-<div class="sourceCode" id="cb1584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1584-1"><a href="dates-and-time.html#cb1584-1" aria-hidden="true" tabindex="-1"></a><span class="fu">years</span>(<span class="dv">1</span>) <span class="sc">/</span> <span class="fu">days</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] 365.25</code></pre>
-<p>더 정확한 값을 원한다면 <strong>인터벌형</strong> 을 사용해야 한다. 인터벌형은 시작점이 있는 듀레이션형이어서 기간이 정확히 얼마인지 확인할 수 있도록 만든다.</p>
-<div class="sourceCode" id="cb1586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1586-1"><a href="dates-and-time.html#cb1586-1" aria-hidden="true" tabindex="-1"></a>next_year <span class="ot">&lt;-</span> <span class="fu">today</span>() <span class="sc">+</span> <span class="fu">years</span>(<span class="dv">1</span>)</span>
-<span id="cb1586-2"><a href="dates-and-time.html#cb1586-2" aria-hidden="true" tabindex="-1"></a>(<span class="fu">today</span>() <span class="sc">%--%</span> next_year) <span class="sc">/</span> <span class="fu">ddays</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] 365</code></pre>
-<p>한 인터벌형이 피리어드형 얼마에 해당하는지 확인하려면 정수 나누기를 사용해야 한다.</p>
-<div class="sourceCode" id="cb1588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1588-1"><a href="dates-and-time.html#cb1588-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">today</span>() <span class="sc">%--%</span> next_year) <span class="sc">%/%</span> <span class="fu">days</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] 365</code></pre>
-</div>
-<div id="요약" class="section level3" number="9.4.4">
-<h3><span class="header-section-number">9.4.4</span> 요약</h3>
-<p>듀레이션형, 피리어드형, 인터벌형 중에서 선택은 어떻게 해야 하는가? 언제나 그렇듯이 주어진 문제를 해결하는 가장 간단한 데이터 구조를 선택하라. 단지 물리적인 시간만 고려하는 경우에는 듀레이션형을 사용하라. 사람의 시간을 추가해야 하는 경우에는 피리어드형을 사용하라. 사람이 사용하는 시간단위로 파악해야 하는 경우에는 인터벌형을 사용하라.</p>
-<p>Figure <a href="https://sulgik.github.io/r4ds/dates-and-times.html#fig:dt-algebra">9.1</a> 은 다른 데이터 유형 사이에 허용된 산술연산을 요약한 것이다.</p>
-<p><img src="images/datetimes-arithmetic.png" alt="The allowed arithmetic operations between pairs of date/time classes." style="zoom: 33%;" /></p>
-<p>Figure 9.1: The allowed arithmetic operations between pairs of date/time classes.</p>
-</div>
-<div id="연습문제-14" class="section level3" number="9.4.5">
-<h3><span class="header-section-number">9.4.5</span> 연습문제</h3>
-<ol style="list-style-type: decimal">
-<li>왜 <code>months()</code> 는 있고 <code>dmonths()</code> 는 없는가?</li>
-<li>R을 막 배우기 시작한 사람에게 <code>days(overnight * 1)</code> 을 설명하라. 어떻게 동작하는가?</li>
-<li>2015년 매월 첫 날짜를 주는 데이트형 벡터를 생성하라. 현재 연도의 매월 첫 날짜를 주는 데이트형 벡터를 생성하라.</li>
-<li>여러분의 생일이 (데이트형으로) 주어질 때, 나이를 연으로 반환하는 함수를 작성하라.</li>
-<li>왜 다음은 작동하지 않는가? <code>(today() %--% (today() + years(1)) / months(1)</code></li>
-</ol>
-</div>
-</div>
-<div id="dates_time_EST" class="section level2" number="9.5">
-<h2><span class="header-section-number">9.5</span> 시간대</h2>
-<p>시간대는 엄청나게 복잡한 주제인데, 지정학적 요소들과 상호작용이 있기 때문이다. 다행히 데이터 분석을 할 때 시간대가 항상 중요하지는 않기 때문에 세부사항을 모두 파고들지 않아도 되지만, 정면으로 맞서야 하는 문제가 몇 개 있다.</p>
-<p>첫 번째 문제는 일상적인 시간대 이름은 모호하다는 것이다. 예를 들어 여러분이 미국인이라면 아마 EST, 즉 동부 표준시가 익숙할 것이다. 그러나 호주와 캐나다에도 EST가 있다! 혼란을 방지하기 위해, R은 국제 표준 IANA 시간대를 사용한다. 이는 일반적으로 ’<대륙>/<도시>’ 형태로 ’/’를 쓰는 일관된 명명 체계를 사용한다 (모든 국가가 대륙에 위치하는 것은 아니기 때문에 몇 가지 예외도 있다). 예를 들면 ’America/New_York‘, ’Europe/Paris‘와 ’Pacific/Auckland‘ 등이 있다.</p>
-<p>시간대가 국가, 혹은 국가 내 지역과 관련되었다고 일반적으로 생각하면 왜 시간대가 도시를 사용하는지 궁금할 것이다. 이는 IANA 데이터베이스가 시간대 규칙을 수십 년 분량이나 기록해야 하기 때문이다. 수십 년 사이에 국가 이름은 꽤 자주 변경(또는 분리)되지만, 도시의 이름은 유지되는 편이다. 또 다른 문제는 이름은 현재의 행동뿐만 아니라 전체 역사를 반영해야 한다는 것이다. 예를 들어 ’America/New_York‘과 ’America/Detroit‘ 시간대가 있다. 두 도시는 현재 모두 동부 표준시간을 사용하지만 (디트로이트가 위치한) 미시간주는 1969-1972’에, 일광절약제를 따르지 않았기 때문에 이름이 따로 필요한 것이다. 이러한 이야기들이 있는 원시 시간대 데이터베이스(<a href="http://www.iana.org/time-zones)를" class="uri">http://www.iana.org/time-zones)를</a> 읽어볼 만하다!</p>
-<p><code>Sys.timezone()</code> 를 사용해서 현재 R이 인식하고 있는 시간대를 알아볼 수 있다. (우리나라 시간대는 “Asia/Seoul”이다.)</p>
-<div class="sourceCode" id="cb1590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1590-1"><a href="dates-and-time.html#cb1590-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.timezone</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;Asia/Seoul&quot;</code></pre>
-<p>(R이 모르는 경우 <code>NA</code> 가 나올 것이다.)</p>
-<p>그리고 <code>OlsonNames()</code> 를 사용해서 모든 시간대 이름의 전체 목록을 볼 수 있다.</p>
-<div class="sourceCode" id="cb1592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1592-1"><a href="dates-and-time.html#cb1592-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">OlsonNames</span>())</span></code></pre></div>
-<pre><code>## [1] 594</code></pre>
-<div class="sourceCode" id="cb1594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1594-1"><a href="dates-and-time.html#cb1594-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">OlsonNames</span>())</span></code></pre></div>
-<pre><code>## [1] &quot;Africa/Abidjan&quot;     &quot;Africa/Accra&quot;       &quot;Africa/Addis_Ababa&quot;
-## [4] &quot;Africa/Algiers&quot;     &quot;Africa/Asmara&quot;      &quot;Africa/Asmera&quot;</code></pre>
-<p>R에 있어서, 시간대는 출력 제어만 하는 데이트-타임형의 한 속성이다. 예를 들어 이 세 가지 객체는 같은 시점을 나타낸다.</p>
-<div class="sourceCode" id="cb1596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1596-1"><a href="dates-and-time.html#cb1596-1" aria-hidden="true" tabindex="-1"></a>(x1 <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">&quot;2015-06-01 12:00:00&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;America/New_York&quot;</span>))</span></code></pre></div>
-<pre><code>## [1] &quot;2015-06-01 12:00:00 EDT&quot;</code></pre>
-<div class="sourceCode" id="cb1598"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1598-1"><a href="dates-and-time.html#cb1598-1" aria-hidden="true" tabindex="-1"></a>(x2 <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">&quot;2015-06-01 18:00:00&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;Europe/Copenhagen&quot;</span>))</span></code></pre></div>
-<pre><code>## [1] &quot;2015-06-01 18:00:00 CEST&quot;</code></pre>
-<div class="sourceCode" id="cb1600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1600-1"><a href="dates-and-time.html#cb1600-1" aria-hidden="true" tabindex="-1"></a>(x3 <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">&quot;2015-06-02 04:00:00&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;Pacific/Auckland&quot;</span>))</span></code></pre></div>
-<pre><code>## [1] &quot;2015-06-02 04:00:00 NZST&quot;</code></pre>
-<p>이들이 같은 시점이라는 것을 뺄셈을 사용하여 확인할 수 있다.</p>
-<div class="sourceCode" id="cb1602"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1602-1"><a href="dates-and-time.html#cb1602-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="sc">-</span> x2</span></code></pre></div>
-<pre><code>## Time difference of 0 secs</code></pre>
-<div class="sourceCode" id="cb1604"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1604-1"><a href="dates-and-time.html#cb1604-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="sc">-</span> x3</span></code></pre></div>
-<pre><code>## Time difference of 0 secs</code></pre>
-<p>별도 명시가 없는 한, <strong>lubridate</strong> 는 항상 UTC를 사용한다. UTC(Coordinated Universal Time)는 과학계에서 사용하는 표준 시간대이며 그 전신인 GMT(그리니치 표준시)와 거의 같다. UTC는 DST가 없는데, 이로 인해 계산에 용이한 표현 방법이 된다. <code>c()</code> 와 같이 데이트-타임형을 조합하는 연산은 종종 시간대를 제거한다. 이 경우 데이트-타임형은 현지 시간대로 표시된다.</p>
-<div class="sourceCode" id="cb1606"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1606-1"><a href="dates-and-time.html#cb1606-1" aria-hidden="true" tabindex="-1"></a>x4 <span class="ot">&lt;-</span> <span class="fu">c</span>(x1, x2, x3)</span>
-<span id="cb1606-2"><a href="dates-and-time.html#cb1606-2" aria-hidden="true" tabindex="-1"></a>x4</span></code></pre></div>
-<pre><code>## [1] &quot;2015-06-01 12:00:00 EDT&quot; &quot;2015-06-01 12:00:00 EDT&quot;
-## [3] &quot;2015-06-01 12:00:00 EDT&quot;</code></pre>
-<p>두 가지 방법으로 시간대를 변경할 수 있다.</p>
-<ul>
-<li><p>시각을 유지하고 표시 방법을 변경한다. 시각은 맞지만 더 자연스러운 표시를 원한다면 이 방법을 써라.</p>
-<div class="sourceCode" id="cb1608"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1608-1"><a href="dates-and-time.html#cb1608-1" aria-hidden="true" tabindex="-1"></a>x4a <span class="ot">&lt;-</span> <span class="fu">with_tz</span>(x4, <span class="at">tzone =</span> <span class="st">&quot;Australia/Lord_Howe&quot;</span>)</span>
-<span id="cb1608-2"><a href="dates-and-time.html#cb1608-2" aria-hidden="true" tabindex="-1"></a>x4a</span></code></pre></div>
-<pre><code>## [1] &quot;2015-06-02 02:30:00 +1030&quot; &quot;2015-06-02 02:30:00 +1030&quot;
-## [3] &quot;2015-06-02 02:30:00 +1030&quot;</code></pre>
-<div class="sourceCode" id="cb1610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1610-1"><a href="dates-and-time.html#cb1610-1" aria-hidden="true" tabindex="-1"></a>x4a <span class="sc">-</span> x4</span></code></pre></div>
-<pre><code>## Time differences in secs
-## [1] 0 0 0</code></pre>
-<p>(이 예시는 시간대의 다른 어려운 점을 보여준다. 시간대 오프셋이 모두 정수-시 (integer hour) 인 것은 아니다!)</p></li>
-<li><p>기본 시각을 변경한다. 시각에 잘못된 시간대가 붙어 있어서 이를 수정해야 한다면 이 방법을 사용하라.</p>
-<div class="sourceCode" id="cb1612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1612-1"><a href="dates-and-time.html#cb1612-1" aria-hidden="true" tabindex="-1"></a>x4b <span class="ot">&lt;-</span> <span class="fu">force_tz</span>(x4, <span class="at">tzone =</span> <span class="st">&quot;Australia/Lord_Howe&quot;</span>)</span>
-<span id="cb1612-2"><a href="dates-and-time.html#cb1612-2" aria-hidden="true" tabindex="-1"></a>x4b</span></code></pre></div>
-<pre><code>## [1] &quot;2015-06-01 12:00:00 +1030&quot; &quot;2015-06-01 12:00:00 +1030&quot;
-## [3] &quot;2015-06-01 12:00:00 +1030&quot;</code></pre>
-<div class="sourceCode" id="cb1614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1614-1"><a href="dates-and-time.html#cb1614-1" aria-hidden="true" tabindex="-1"></a>x4b <span class="sc">-</span> x4</span></code></pre></div>
-<pre><code>## Time differences in hours
-## [1] -14.5 -14.5 -14.5</code></pre></li>
-</ul>
-</div>
-<div id="references-2" class="section level2 unnumbered">
-<h2>References</h2>
-<ul>
-<li><a href="https://www.cyclismo.org/tutorial/R/time.html">Time Data Types</a></li>
-<li><a href="https://sulgik.github.io/r4ds/dates-and-times.html" class="uri">https://sulgik.github.io/r4ds/dates-and-times.html</a></li>
-</ul>
-
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="dates.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="strings.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="dates-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dates-time-intro.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -1088,26 +645,13 @@ gitbook.start({
 },
 "download": null,
 "toc": {
-"collapse": "subsection"
+"collapse": "section",
+"scroll_highlight": true
 }
 });
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

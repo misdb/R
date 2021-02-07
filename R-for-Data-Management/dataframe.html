@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.1 데이터 프레임 | tidyverse를 이용한 데이터 관리</title>
+  <meta name="description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.1 데이터 프레임 | tidyverse를 이용한 데이터 관리" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.1 데이터 프레임 | tidyverse를 이용한 데이터 관리" />
+  
+  <meta name="twitter:description" content="The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Dae Ho Kim" />
+
+
+<meta name="date" content="2021-02-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="df-tibble-factor.html"/>
+<link rel="next" href="tibble.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.17/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
+<script src="libs/str_view-binding-1.4.0/str_view.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="/">Home</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>tidyverse를 이용한 데이터 관리</a></li>
+<li class="chapter" data-level="" data-path="서론.html"><a href="서론.html"><i class="fa fa-check"></i>서론</a></li>
+<li class="chapter" data-level="1" data-path="data-import-export.html"><a href="data-import-export.html"><i class="fa fa-check"></i><b>1</b> 데이터 불러오기와 저장하기</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="패키지-설치하고-불러오기.html"><a href="패키지-설치하고-불러오기.html"><i class="fa fa-check"></i><b>1.1</b> 패키지 설치하고 불러오기</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="패키지-설치하고-불러오기.html"><a href="패키지-설치하고-불러오기.html#패키지-설치하기"><i class="fa fa-check"></i><b>1.1.1</b> 패키지 설치하기</a></li>
+<li class="chapter" data-level="1.1.2" data-path="패키지-설치하고-불러오기.html"><a href="패키지-설치하고-불러오기.html#패키지-불러오기"><i class="fa fa-check"></i><b>1.1.2</b> 패키지 불러오기</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html"><i class="fa fa-check"></i><b>1.2</b> 데이터 불러오기</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#관련-함수"><i class="fa fa-check"></i><b>1.2.1</b> 관련 함수</a></li>
+<li class="chapter" data-level="1.2.2" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#파일-경로-지정"><i class="fa fa-check"></i><b>1.2.2</b> 파일 경로 지정</a></li>
+<li class="chapter" data-level="1.2.3" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#다른-인수들"><i class="fa fa-check"></i><b>1.2.3</b> 다른 인수들</a></li>
+<li class="chapter" data-level="1.2.4" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#read_csv의-예"><i class="fa fa-check"></i><b>1.2.4</b> <code>read_csv()</code>의 예</a></li>
+<li class="chapter" data-level="1.2.5" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#read_csv2의-예"><i class="fa fa-check"></i><b>1.2.5</b> <code>read_csv2()</code>의 예</a></li>
+<li class="chapter" data-level="1.2.6" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#read_delim의-예"><i class="fa fa-check"></i><b>1.2.6</b> <code>read_delim()</code>의 예</a></li>
+<li class="chapter" data-level="1.2.7" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#read_fwf의-예"><i class="fa fa-check"></i><b>1.2.7</b> <code>read_fwf()</code>의 예</a></li>
+<li class="chapter" data-level="1.2.8" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#read_tsv의-예"><i class="fa fa-check"></i><b>1.2.8</b> read_tsv()의 예</a></li>
+<li class="chapter" data-level="1.2.9" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#한글-파일-불러오기"><i class="fa fa-check"></i><b>1.2.9</b> 한글 파일 불러오기</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="벡터-파싱.html"><a href="벡터-파싱.html"><i class="fa fa-check"></i><b>1.3</b> 벡터 파싱</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="벡터-파싱.html"><a href="벡터-파싱.html#파싱-함수"><i class="fa fa-check"></i><b>1.3.1</b> 파싱 함수</a></li>
+<li class="chapter" data-level="1.3.2" data-path="벡터-파싱.html"><a href="벡터-파싱.html#문자형-벡터의-변환"><i class="fa fa-check"></i><b>1.3.2</b> 문자형 벡터의 변환</a></li>
+<li class="chapter" data-level="1.3.3" data-path="벡터-파싱.html"><a href="벡터-파싱.html#팩터형-변환"><i class="fa fa-check"></i><b>1.3.3</b> 팩터형 변환</a></li>
+<li class="chapter" data-level="1.3.4" data-path="벡터-파싱.html"><a href="벡터-파싱.html#날짜형-날짜-시간형-시간형-파싱"><i class="fa fa-check"></i><b>1.3.4</b> 날짜형, 날짜-시간형, 시간형 파싱</a></li>
+<li class="chapter" data-level="1.3.5" data-path="벡터-파싱.html"><a href="벡터-파싱.html#숫자형-벡터의-변환"><i class="fa fa-check"></i><b>1.3.5</b> 숫자형 벡터의 변환</a></li>
+<li class="chapter" data-level="" data-path="벡터-파싱.html"><a href="벡터-파싱.html#연습문제-2"><i class="fa fa-check"></i>연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="파일-파싱하기.html"><a href="파일-파싱하기.html"><i class="fa fa-check"></i><b>1.4</b> 파일 파싱하기</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="파일-파싱하기.html"><a href="파일-파싱하기.html#전략"><i class="fa fa-check"></i><b>1.4.1</b> 전략</a></li>
+<li class="chapter" data-level="1.4.2" data-path="파일-파싱하기.html"><a href="파일-파싱하기.html#문제점"><i class="fa fa-check"></i><b>1.4.2</b> 문제점</a></li>
+<li class="chapter" data-level="1.4.3" data-path="파일-파싱하기.html"><a href="파일-파싱하기.html#문제-해결-전략"><i class="fa fa-check"></i><b>1.4.3</b> 문제 해결 전략</a></li>
+<li class="chapter" data-level="1.4.4" data-path="파일-파싱하기.html"><a href="파일-파싱하기.html#기타-전략"><i class="fa fa-check"></i><b>1.4.4</b> 기타 전략</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="data-export.html"><a href="data-export.html"><i class="fa fa-check"></i><b>1.5</b> 데이터 저장하기</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="data-export.html"><a href="data-export.html#write_csv"><i class="fa fa-check"></i><b>1.5.1</b> <code>write_csv()</code></a></li>
+<li class="chapter" data-level="1.5.2" data-path="data-export.html"><a href="data-export.html#write_rds"><i class="fa fa-check"></i><b>1.5.2</b> <code>write_rds()</code></a></li>
+<li class="chapter" data-level="1.5.3" data-path="data-export.html"><a href="data-export.html#write_feather"><i class="fa fa-check"></i><b>1.5.3</b> <code>write_feather()</code></a></li>
+<li class="chapter" data-level="1.5.4" data-path="data-export.html"><a href="data-export.html#read_csv와-read_rds의-비교"><i class="fa fa-check"></i><b>1.5.4</b> <code>read_csv()</code>와 <code>read_rds()</code>의 비교</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="df-tibble-factor.html"><a href="df-tibble-factor.html"><i class="fa fa-check"></i><b>2</b> 데이터 프레임, 티블 그리고 팩터</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="dataframe.html"><a href="dataframe.html"><i class="fa fa-check"></i><b>2.1</b> 데이터 프레임</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임의-생성"><i class="fa fa-check"></i><b>2.1.1</b> 데이터 프레임의 생성</a></li>
+<li class="chapter" data-level="2.1.2" data-path="dataframe.html"><a href="dataframe.html#행열-결합에-의한-데이터-프레임-생성하기"><i class="fa fa-check"></i><b>2.1.2</b> 행/열 결합에 의한 데이터 프레임 생성하기</a></li>
+<li class="chapter" data-level="2.1.3" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임의-구조-확인"><i class="fa fa-check"></i><b>2.1.3</b> 데이터 프레임의 구조 확인</a></li>
+<li class="chapter" data-level="2.1.4" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임의-데이터-확인"><i class="fa fa-check"></i><b>2.1.4</b> 데이터 프레임의 데이터 확인</a></li>
+<li class="chapter" data-level="2.1.5" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임의-통계적-요약-정보"><i class="fa fa-check"></i><b>2.1.5</b> 데이터 프레임의 통계적 요약 정보</a></li>
+<li class="chapter" data-level="2.1.6" data-path="dataframe.html"><a href="dataframe.html#iris-데이터-세트의-예"><i class="fa fa-check"></i><b>2.1.6</b> <code>iris</code> 데이터 세트의 예</a></li>
+<li class="chapter" data-level="2.1.7" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임의-행열의-이름-지정하기"><i class="fa fa-check"></i><b>2.1.7</b> 데이터 프레임의 행/열의 이름 지정하기</a></li>
+<li class="chapter" data-level="2.1.8" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임의-데이터에-접근하기"><i class="fa fa-check"></i><b>2.1.8</b> 데이터 프레임의 데이터에 접근하기</a></li>
+<li class="chapter" data-level="" data-path="dataframe.html"><a href="dataframe.html#연습문제-3"><i class="fa fa-check"></i>연습문제</a></li>
+<li class="chapter" data-level="2.1.9" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임에-행열-추가하기"><i class="fa fa-check"></i><b>2.1.9</b> 데이터 프레임에 행/열 추가하기</a></li>
+<li class="chapter" data-level="2.1.10" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임의-행열-삭제"><i class="fa fa-check"></i><b>2.1.10</b> 데이터 프레임의 행/열 삭제</a></li>
+<li class="chapter" data-level="2.1.11" data-path="dataframe.html"><a href="dataframe.html#데이터-프레임-컬럼의-데이터-타입-변환"><i class="fa fa-check"></i><b>2.1.11</b> 데이터 프레임 컬럼의 데이터 타입 변환</a></li>
+<li class="chapter" data-level="2.1.12" data-path="dataframe.html"><a href="dataframe.html#연습문제-4"><i class="fa fa-check"></i><b>2.1.12</b> 연습문제</a></li>
+<li class="chapter" data-level="2.1.13" data-path="dataframe.html"><a href="dataframe.html#실습-과제"><i class="fa fa-check"></i><b>2.1.13</b> 실습 과제</a></li>
+<li class="chapter" data-level="2.1.14" data-path="dataframe.html"><a href="dataframe.html#apply-함수-이해하기"><i class="fa fa-check"></i><b>2.1.14</b> <code>apply()</code> 함수 이해하기</a></li>
+<li class="chapter" data-level="2.1.15" data-path="dataframe.html"><a href="dataframe.html#연습문제-5"><i class="fa fa-check"></i><b>2.1.15</b> 연습문제</a></li>
+<li class="chapter" data-level="2.1.16" data-path="dataframe.html"><a href="dataframe.html#연습문제-6"><i class="fa fa-check"></i><b>2.1.16</b> 연습문제</a></li>
+<li class="chapter" data-level="2.1.17" data-path="dataframe.html"><a href="dataframe.html#apply-함수의-사촌들"><i class="fa fa-check"></i><b>2.1.17</b> <code>apply()</code> 함수의 사촌들</a></li>
+<li class="chapter" data-level="2.1.18" data-path="dataframe.html"><a href="dataframe.html#연습문제-7"><i class="fa fa-check"></i><b>2.1.18</b> 연습문제</a></li>
+<li class="chapter" data-level="" data-path="dataframe.html"><a href="dataframe.html#참고-sampling"><i class="fa fa-check"></i>[참고 : Sampling]</a></li>
+<li class="chapter" data-level="" data-path="dataframe.html"><a href="dataframe.html#reference"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="tibble.html"><a href="tibble.html"><i class="fa fa-check"></i><b>2.2</b> 티블</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="tibble.html"><a href="tibble.html#참고자료"><i class="fa fa-check"></i><b>2.2.1</b> 참고자료</a></li>
+<li class="chapter" data-level="2.2.2" data-path="tibble.html"><a href="tibble.html#티블의-생성"><i class="fa fa-check"></i><b>2.2.2</b> 티블의 생성</a></li>
+<li class="chapter" data-level="2.2.3" data-path="tibble.html"><a href="tibble.html#강제변환coercion"><i class="fa fa-check"></i><b>2.2.3</b> 강제변환(Coercion)</a></li>
+<li class="chapter" data-level="2.2.4" data-path="tibble.html"><a href="tibble.html#티블과-데이터-프레임의-비교"><i class="fa fa-check"></i><b>2.2.4</b> 티블과 데이터 프레임의 비교</a></li>
+<li class="chapter" data-level="2.2.5" data-path="tibble.html"><a href="tibble.html#이전-코드와-상호작용"><i class="fa fa-check"></i><b>2.2.5</b> 이전 코드와 상호작용</a></li>
+<li class="chapter" data-level="2.2.6" data-path="tibble.html"><a href="tibble.html#외부-데이터-가져오기-importing"><i class="fa fa-check"></i><b>2.2.6</b> 외부 데이터 가져오기 (importing)</a></li>
+<li class="chapter" data-level="2.2.7" data-path="tibble.html"><a href="tibble.html#연습문제-8"><i class="fa fa-check"></i><b>2.2.7</b> 연습문제</a></li>
+<li class="chapter" data-level="" data-path="tibble.html"><a href="tibble.html#references"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="factor.html"><a href="factor.html"><i class="fa fa-check"></i><b>2.3</b> Factor</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="factor.html"><a href="factor.html#범주형-자료"><i class="fa fa-check"></i><b>2.3.1</b> 범주형 자료</a></li>
+<li class="chapter" data-level="2.3.2" data-path="factor.html"><a href="factor.html#factor의-요소-및-특징"><i class="fa fa-check"></i><b>2.3.2</b> Factor의 요소 및 특징</a></li>
+<li class="chapter" data-level="2.3.3" data-path="factor.html"><a href="factor.html#factor-함수의-형식"><i class="fa fa-check"></i><b>2.3.3</b> <code>factor()</code> 함수의 형식</a></li>
+<li class="chapter" data-level="2.3.4" data-path="factor.html"><a href="factor.html#factor-생성"><i class="fa fa-check"></i><b>2.3.4</b> factor 생성</a></li>
+<li class="chapter" data-level="" data-path="factor.html"><a href="factor.html#reference-1"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-cleansing.html"><a href="data-cleansing.html"><i class="fa fa-check"></i><b>3</b> Data Cleansing</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html"><i class="fa fa-check"></i><b>3.1</b> Data Cleansing</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#변수-요약"><i class="fa fa-check"></i><b>3.1.1</b> 변수 요약</a></li>
+<li class="chapter" data-level="3.1.2" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#데이터-세트-3"><i class="fa fa-check"></i><b>3.1.2</b> 데이터 세트</a></li>
+<li class="chapter" data-level="3.1.3" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#데이터-세트의-통계적-요약-정보"><i class="fa fa-check"></i><b>3.1.3</b> 데이터 세트의 통계적 요약 정보</a></li>
+<li class="chapter" data-level="3.1.4" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#data_cleansing_describe"><i class="fa fa-check"></i><b>3.1.4</b> <code>Hmisc</code> 패키지의 <code>describe()</code> 함수</a></li>
+<li class="chapter" data-level="3.1.5" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#의심스러운-값"><i class="fa fa-check"></i><b>3.1.5</b> 의심스러운 값</a></li>
+<li class="chapter" data-level="3.1.6" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#describe함수의-결과의-시각화"><i class="fa fa-check"></i><b>3.1.6</b> <code>describe()</code>함수의 결과의 시각화</a></li>
+<li class="chapter" data-level="3.1.7" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#의심스러운-값을-결측치로-바꾸기"><i class="fa fa-check"></i><b>3.1.7</b> 의심스러운 값을 결측치로 바꾸기</a></li>
+<li class="chapter" data-level="3.1.8" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#data_cleansing_Complete_cases"><i class="fa fa-check"></i><b>3.1.8</b> <code>NA</code>가 없는 완전한 데이터</a></li>
+<li class="chapter" data-level="3.1.9" data-path="data-cleansing-summary.html"><a href="data-cleansing-summary.html#data_cleansing_after_cleansing"><i class="fa fa-check"></i><b>3.1.9</b> 데이터 정제 후의 <code>describe()</code>함수 결과 그림</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-cleansing-missing-value.html"><a href="data-cleansing-missing-value.html"><i class="fa fa-check"></i><b>3.2</b> 결측치(Missing Values) 처리</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="data-cleansing-missing-value.html"><a href="data-cleansing-missing-value.html#결측값이-포함되어-있는지-확인하는-방법-is.na"><i class="fa fa-check"></i><b>3.2.1</b> 결측값이 포함되어 있는지 확인하는 방법: <code>is.na()</code></a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-cleansing-missing-value.html"><a href="data-cleansing-missing-value.html#결측치-갯수-sumis.na"><i class="fa fa-check"></i><b>3.2.2</b> 결측치 갯수: <code>sum(is.na())</code></a></li>
+<li class="chapter" data-level="3.2.3" data-path="data-cleansing-missing-value.html"><a href="data-cleansing-missing-value.html#결측치를-통계-분석시-제외시키기-na.rm-true"><i class="fa fa-check"></i><b>3.2.3</b> 결측치를 통계 분석시 제외시키기 : <code>na.rm = TRUE</code></a></li>
+<li class="chapter" data-level="3.2.4" data-path="data-cleansing-missing-value.html"><a href="data-cleansing-missing-value.html#결측치가-있는-행-제거-na.omit"><i class="fa fa-check"></i><b>3.2.4</b> 결측치가 있는 행 제거: <code>na.omit()</code></a></li>
+<li class="chapter" data-level="3.2.5" data-path="data-cleansing-missing-value.html"><a href="data-cleansing-missing-value.html#결측치를-다른-값으로-대체"><i class="fa fa-check"></i><b>3.2.5</b> 결측치를 다른 값으로 대체</a></li>
+<li class="chapter" data-level="" data-path="data-cleansing-missing-value.html"><a href="data-cleansing-missing-value.html#reference-2"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-cleansing-outlier.html"><a href="data-cleansing-outlier.html"><i class="fa fa-check"></i><b>3.3</b> 이상치(Outlier) 처리 {#outlier}</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="data-cleansing-outlier.html"><a href="data-cleansing-outlier.html#표준값-z를-이용한-이상치-확인-및-처리"><i class="fa fa-check"></i><b>3.3.1</b> 표준값 Z를 이용한 이상치 확인 및 처리</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data-cleansing-outlier.html"><a href="data-cleansing-outlier.html#수정된-표준값을-이용한-이상치-확인-및-처리"><i class="fa fa-check"></i><b>3.3.2</b> 수정된 표준값을 이용한 이상치 확인 및 처리</a></li>
+<li class="chapter" data-level="3.3.3" data-path="data-cleansing-outlier.html"><a href="data-cleansing-outlier.html#사분위수를-이용한-이상치-확인-및-처리"><i class="fa fa-check"></i><b>3.3.3</b> 사분위수를 이용한 이상치 확인 및 처리</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="preprocessing.html"><a href="preprocessing.html"><i class="fa fa-check"></i><b>4</b> Data Preprocessing</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="들어가는-말.html"><a href="들어가는-말.html"><i class="fa fa-check"></i><b>4.1</b> 들어가는 말</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="들어가는-말.html"><a href="들어가는-말.html#데이터-전처리란"><i class="fa fa-check"></i><b>4.1.1</b> 데이터 전처리란?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="들어가는-말.html"><a href="들어가는-말.html#왜-dplyr-패키지-인가"><i class="fa fa-check"></i><b>4.1.2</b> 왜 <code>dplyr</code> 패키지 인가?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="dplyr-패키지에-있는-함수들.html"><a href="dplyr-패키지에-있는-함수들.html"><i class="fa fa-check"></i><b>4.2</b> <code>dplyr</code> 패키지에 있는 함수들</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="dplyr-패키지에-있는-함수들.html"><a href="dplyr-패키지에-있는-함수들.html#패키지-설치"><i class="fa fa-check"></i><b>4.2.1</b> 패키지 설치</a></li>
+<li class="chapter" data-level="4.2.2" data-path="dplyr-패키지에-있는-함수들.html"><a href="dplyr-패키지에-있는-함수들.html#예제-데이터-확인"><i class="fa fa-check"></i><b>4.2.2</b> 예제 데이터 확인</a></li>
+<li class="chapter" data-level="4.2.3" data-path="dplyr-패키지에-있는-함수들.html"><a href="dplyr-패키지에-있는-함수들.html#dplyr-패키지의-주요-함수-목록"><i class="fa fa-check"></i><b>4.2.3</b> <code>dplyr</code> 패키지의 주요 함수 목록</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html"><i class="fa fa-check"></i><b>4.3</b> 데이터 프레임의 컬럼 선택: <code>select()</code></a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#select-함수의-기본-형식"><i class="fa fa-check"></i><b>4.3.1</b> <code>select()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.3.2" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#a번째-부터-n번째의-연속적-컬럼-선택"><i class="fa fa-check"></i><b>4.3.2</b> a번째 부터 n번째의 연속적 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.3" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#a번째-부터-n번째의-연속적-컬럼을-제외한-선택"><i class="fa fa-check"></i><b>4.3.3</b> <code>a</code>번째 부터 <code>n</code>번째의 연속적 컬럼을 제외한 선택</a></li>
+<li class="chapter" data-level="4.3.4" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#컬럼-이름의-앞-부분을-지정하여-선택"><i class="fa fa-check"></i><b>4.3.4</b> 컬럼 이름의 ’앞 부분’을 지정하여 선택</a></li>
+<li class="chapter" data-level="4.3.5" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#컬럼-이름의-끝-부분을-지정하여-선택"><i class="fa fa-check"></i><b>4.3.5</b> 컬럼 이름의 ’끝 부분’을 지정하여 선택</a></li>
+<li class="chapter" data-level="4.3.6" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#컬럼-이름의-일부를-포함하는-컬럼-선택"><i class="fa fa-check"></i><b>4.3.6</b> 컬럼 이름의 일부를 포함하는 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.7" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#정규-표현식과-일치하는-문자열을-포함하는-컬럼-선택"><i class="fa fa-check"></i><b>4.3.7</b> 정규 표현식과 일치하는 문자열을 포함하는 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.8" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#원하는-컬럼-명의-그룹에-포함된-컬럼-선택"><i class="fa fa-check"></i><b>4.3.8</b> 원하는 컬럼 명의 그룹에 포함된 컬럼 선택</a></li>
+<li class="chapter" data-level="4.3.9" data-path="데이터-프레임의-컬럼-선택-select.html"><a href="데이터-프레임의-컬럼-선택-select.html#컬럼-이름의-접두사와-숫자-범위를-조합하여-컬럼-선택"><i class="fa fa-check"></i><b>4.3.9</b> 컬럼 이름의 접두사와 숫자 범위를 조합하여 컬럼 선택</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="filter-함수를-이용한-행의-선택.html"><a href="filter-함수를-이용한-행의-선택.html"><i class="fa fa-check"></i><b>4.4</b> <code>filter()</code> 함수를 이용한 행의 선택</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="filter-함수를-이용한-행의-선택.html"><a href="filter-함수를-이용한-행의-선택.html#filter-함수의-기본-형식"><i class="fa fa-check"></i><b>4.4.1</b> <code>filter()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.4.2" data-path="filter-함수를-이용한-행의-선택.html"><a href="filter-함수를-이용한-행의-선택.html#단일-조건에-의한-행의-선택"><i class="fa fa-check"></i><b>4.4.2</b> 단일 조건에 의한 행의 선택</a></li>
+<li class="chapter" data-level="4.4.3" data-path="filter-함수를-이용한-행의-선택.html"><a href="filter-함수를-이용한-행의-선택.html#복수-조건을-and로-결합한-행의-선택"><i class="fa fa-check"></i><b>4.4.3</b> 복수 조건을 AND(<code>,</code>)로 결합한 행의 선택</a></li>
+<li class="chapter" data-level="4.4.4" data-path="filter-함수를-이용한-행의-선택.html"><a href="filter-함수를-이용한-행의-선택.html#복수-조건을-or로-결합한-행의-선택"><i class="fa fa-check"></i><b>4.4.4</b> 복수 조건을 OR(<code>|</code>)로 결합한 행의 선택</a></li>
+<li class="chapter" data-level="4.4.5" data-path="filter-함수를-이용한-행의-선택.html"><a href="filter-함수를-이용한-행의-선택.html#행의-위치를-지정해서-행의-데이터-부분집합-선택"><i class="fa fa-check"></i><b>4.4.5</b> 행의 위치를 지정해서 행의 데이터 부분집합 선택</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="arrange-함수를-이용한-행의-정렬.html"><a href="arrange-함수를-이용한-행의-정렬.html"><i class="fa fa-check"></i><b>4.5</b> <code>arrange()</code> 함수를 이용한 행의 정렬</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="arrange-함수를-이용한-행의-정렬.html"><a href="arrange-함수를-이용한-행의-정렬.html#arrange-함수의-기본-형식"><i class="fa fa-check"></i><b>4.5.1</b> <code>arrange()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.5.2" data-path="arrange-함수를-이용한-행의-정렬.html"><a href="arrange-함수를-이용한-행의-정렬.html#복수-개의-정렬-기준으로-행을-정렬하기"><i class="fa fa-check"></i><b>4.5.2</b> 복수 개의 정렬 기준으로 행을 정렬하기</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="preprocessing-rename.html"><a href="preprocessing-rename.html"><i class="fa fa-check"></i><b>4.6</b> <code>rename()</code> 함수를 이용한 데이터 프레임의 컬럼 이름 변경</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="preprocessing-rename.html"><a href="preprocessing-rename.html#rename-함수의-기본-형식"><i class="fa fa-check"></i><b>4.6.1</b> <code>rename()</code> 함수의 기본 형식</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="distinct-함수를-이용한-유일한-값-추출.html"><a href="distinct-함수를-이용한-유일한-값-추출.html"><i class="fa fa-check"></i><b>4.7</b> <code>distinct()</code> 함수를 이용한 유일한 값 추출</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="distinct-함수를-이용한-유일한-값-추출.html"><a href="distinct-함수를-이용한-유일한-값-추출.html#distinct-함수의-기본-형식"><i class="fa fa-check"></i><b>4.7.1</b> <code>distinct()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.7.2" data-path="distinct-함수를-이용한-유일한-값-추출.html"><a href="distinct-함수를-이용한-유일한-값-추출.html#단일-기준에-의한-유일-값-추출"><i class="fa fa-check"></i><b>4.7.2</b> 단일 기준에 의한 유일 값 추출</a></li>
+<li class="chapter" data-level="4.7.3" data-path="distinct-함수를-이용한-유일한-값-추출.html"><a href="distinct-함수를-이용한-유일한-값-추출.html#복수-기준에-의한-유일-값-추출"><i class="fa fa-check"></i><b>4.7.3</b> 복수 기준에 의한 유일 값 추출</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="무작위-표본-추출.html"><a href="무작위-표본-추출.html"><i class="fa fa-check"></i><b>4.8</b> 무작위 표본 추출</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="무작위-표본-추출.html"><a href="무작위-표본-추출.html#정해진-갯수-만큼의-표본-무작위-추출"><i class="fa fa-check"></i><b>4.8.1</b> 정해진 갯수 만큼의 표본 무작위 추출</a></li>
+<li class="chapter" data-level="4.8.2" data-path="무작위-표본-추출.html"><a href="무작위-표본-추출.html#정해진-비율로-표본-무작위-추출"><i class="fa fa-check"></i><b>4.8.2</b> 정해진 비율로 표본 무작위 추출</a></li>
+<li class="chapter" data-level="4.8.3" data-path="무작위-표본-추출.html"><a href="무작위-표본-추출.html#정해진-갯수-만큼의-표본-복원-추출"><i class="fa fa-check"></i><b>4.8.3</b> 정해진 갯수 만큼의 표본 복원 추출</a></li>
+<li class="chapter" data-level="4.8.4" data-path="무작위-표본-추출.html"><a href="무작위-표본-추출.html#집단별-층화-표본-추출"><i class="fa fa-check"></i><b>4.8.4</b> 집단별 층화 표본 추출</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html"><i class="fa fa-check"></i><b>4.9</b> <code>mutate()</code> 함수를 이용한 새로운 컬럼 생성</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html#mutate-함수의-기본-형식"><i class="fa fa-check"></i><b>4.9.1</b> <code>mutate()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.9.2" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html#새로운-컬럼-생성-예"><i class="fa fa-check"></i><b>4.9.2</b> 새로운 컬럼 생성 예</a></li>
+<li class="chapter" data-level="4.9.3" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html#새로운-만든-컬럼변수를-이용하여-또-다른-컬럼-생성하기"><i class="fa fa-check"></i><b>4.9.3</b> 새로운 만든 컬럼(변수)를 이용하여 또 다른 컬럼 생성하기</a></li>
+<li class="chapter" data-level="4.9.4" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html#컬럼의-값을-새로운-값으로-변경하기"><i class="fa fa-check"></i><b>4.9.4</b> 컬럼의 값을 새로운 값으로 변경하기</a></li>
+<li class="chapter" data-level="4.9.5" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html#keep-인수의-사용-예"><i class="fa fa-check"></i><b>4.9.5</b> <code>.keep</code> 인수의 사용 예</a></li>
+<li class="chapter" data-level="4.9.6" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html#after와-.before-인수의-사용-예"><i class="fa fa-check"></i><b>4.9.6</b> <code>.after</code>와 <code>.before</code> 인수의 사용 예</a></li>
+<li class="chapter" data-level="4.9.7" data-path="mutate-함수를-이용한-새로운-컬럼-생성.html"><a href="mutate-함수를-이용한-새로운-컬럼-생성.html#transmute-함수를-이용한-새로운-컬럼-생성"><i class="fa fa-check"></i><b>4.9.7</b> <code>transmute()</code> 함수를 이용한 새로운 컬럼 생성</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="preprocessing-summarise.html"><a href="preprocessing-summarise.html"><i class="fa fa-check"></i><b>4.10</b> <code>summarise()</code>함수를 이용한 요약 통계량 계산</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="preprocessing-summarise.html"><a href="preprocessing-summarise.html#summarise-함수의-기본-형식"><i class="fa fa-check"></i><b>4.10.1</b> <code>summarise()</code> 함수의 기본 형식</a></li>
+<li class="chapter" data-level="4.10.2" data-path="preprocessing-summarise.html"><a href="preprocessing-summarise.html#summarise-함수를-이용한-요약-통계-계산"><i class="fa fa-check"></i><b>4.10.2</b> <code>summarise()</code> 함수를 이용한 요약 통계 계산</a></li>
+<li class="chapter" data-level="4.10.3" data-path="preprocessing-summarise.html"><a href="preprocessing-summarise.html#summarise를-이용한-관측치의-갯수-및-색인-찾기"><i class="fa fa-check"></i><b>4.10.3</b> <code>summarise()</code>를 이용한 관측치의 갯수 및 색인 찾기</a></li>
+<li class="chapter" data-level="4.10.4" data-path="preprocessing-summarise.html"><a href="preprocessing-summarise.html#summarise-함수를-이용한-그룹별-요약-통계량-계산"><i class="fa fa-check"></i><b>4.10.4</b> <code>summarise()</code> 함수를 이용한 그룹별 요약 통계량 계산</a></li>
+<li class="chapter" data-level="4.10.5" data-path="preprocessing-summarise.html"><a href="preprocessing-summarise.html#복수-개의-변수에-동일한-summarise-함수-적용하기"><i class="fa fa-check"></i><b>4.10.5</b> 복수 개의 변수에 동일한 <code>summarise()</code> 함수 적용하기</a></li>
+<li class="chapter" data-level="" data-path="preprocessing-summarise.html"><a href="preprocessing-summarise.html#reference-3"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="piping-operator.html"><a href="piping-operator.html"><i class="fa fa-check"></i><b>5</b> Pipe Operator</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="파이프-연산자.html"><a href="파이프-연산자.html"><i class="fa fa-check"></i><b>5.1</b> 파이프 연산자 : <code>%&gt;%</code></a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="파이프-연산자.html"><a href="파이프-연산자.html#파이프-연산자의-사용-예"><i class="fa fa-check"></i><b>5.1.1</b> 파이프 연산자의 사용 예</a></li>
+<li class="chapter" data-level="5.1.2" data-path="파이프-연산자.html"><a href="파이프-연산자.html#또-다른-예"><i class="fa fa-check"></i><b>5.1.2</b> 또 다른 예</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="piping-point-usage.html"><a href="piping-point-usage.html"><i class="fa fa-check"></i><b>5.2</b> 파이프된 명령어에 <code>‘.’</code> 사용하기</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="relational-data-top.html"><a href="relational-data-top.html"><i class="fa fa-check"></i><b>6</b> Relational Data</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="결합append.html"><a href="결합append.html"><i class="fa fa-check"></i><b>6.1</b> 결합(Append)</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="결합append.html"><a href="결합append.html#데이터-프레임의-결합append"><i class="fa fa-check"></i><b>6.1.1</b> 데이터 프레임의 결합(append)</a></li>
+<li class="chapter" data-level="6.1.2" data-path="결합append.html"><a href="결합append.html#결합의-두-가지-방법-rbind-함수와-bind_rows함수"><i class="fa fa-check"></i><b>6.1.2</b> 결합의 두 가지 방법 : <code>rbind()</code> 함수와 <code>bind_rows()</code>함수</a></li>
+<li class="chapter" data-level="6.1.3" data-path="결합append.html"><a href="결합append.html#데이터-세트-결합의-예대응되지-않는-컬럼이-있는-경우"><i class="fa fa-check"></i><b>6.1.3</b> 데이터 세트 결합의 예(대응되지 않는 컬럼이 있는 경우)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="데이터-세트의-병합merge.html"><a href="데이터-세트의-병합merge.html"><i class="fa fa-check"></i><b>6.2</b> 데이터 세트의 병합(Merge)</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="데이터-세트의-병합merge.html"><a href="데이터-세트의-병합merge.html#join-함수를-이용한-병합-예"><i class="fa fa-check"></i><b>6.2.1</b> join 함수를 이용한 병합 예</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="relational-data.html"><a href="relational-data.html"><i class="fa fa-check"></i><b>6.3</b> Relational Data</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="relational-data.html"><a href="relational-data.html#들어가기"><i class="fa fa-check"></i><b>6.3.1</b> 들어가기</a></li>
+<li class="chapter" data-level="6.3.2" data-path="relational-data.html"><a href="relational-data.html#준비하기"><i class="fa fa-check"></i><b>6.3.2</b> 준비하기</a></li>
+<li class="chapter" data-level="6.3.3" data-path="relational-data.html"><a href="relational-data.html#nycflights13-패키지-내의-데이터-세트"><i class="fa fa-check"></i><b>6.3.3</b> <code>nycflights13</code> 패키지 내의 데이터 세트</a></li>
+<li class="chapter" data-level="6.3.4" data-path="relational-data.html"><a href="relational-data.html#연습문제-9"><i class="fa fa-check"></i><b>6.3.4</b> 연습문제</a></li>
+<li class="chapter" data-level="6.3.5" data-path="relational-data.html"><a href="relational-data.html#키key"><i class="fa fa-check"></i><b>6.3.5</b> 키(Key)</a></li>
+<li class="chapter" data-level="6.3.6" data-path="relational-data.html"><a href="relational-data.html#연습문제-10"><i class="fa fa-check"></i><b>6.3.6</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html"><i class="fa fa-check"></i><b>6.4</b> 변환 조인(Mutating Join)</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html#조인-이해하기"><i class="fa fa-check"></i><b>6.4.1</b> 조인 이해하기</a></li>
+<li class="chapter" data-level="6.4.2" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html#내부-조인-inner-join"><i class="fa fa-check"></i><b>6.4.2</b> 내부 조인 (inner join)</a></li>
+<li class="chapter" data-level="6.4.3" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html#외부-조인-outer-join"><i class="fa fa-check"></i><b>6.4.3</b> 외부 조인 (outer join)</a></li>
+<li class="chapter" data-level="6.4.4" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html#중복키"><i class="fa fa-check"></i><b>6.4.4</b> 중복키</a></li>
+<li class="chapter" data-level="6.4.5" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html#키열-정의하기"><i class="fa fa-check"></i><b>6.4.5</b> 키열 정의하기</a></li>
+<li class="chapter" data-level="6.4.6" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html#연습문제-11"><i class="fa fa-check"></i><b>6.4.6</b> 연습문제</a></li>
+<li class="chapter" data-level="6.4.7" data-path="변환-조인mutating-join.html"><a href="변환-조인mutating-join.html#기타-구현"><i class="fa fa-check"></i><b>6.4.7</b> 기타 구현</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="필터링-조인.html"><a href="필터링-조인.html"><i class="fa fa-check"></i><b>6.5</b> 필터링 조인</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="필터링-조인.html"><a href="필터링-조인.html#연습문제-12"><i class="fa fa-check"></i><b>6.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="조인-문제.html"><a href="조인-문제.html"><i class="fa fa-check"></i><b>6.6</b> 조인 문제</a></li>
+<li class="chapter" data-level="6.7" data-path="집합-연산.html"><a href="집합-연산.html"><i class="fa fa-check"></i><b>6.7</b> 집합 연산</a>
+<ul>
+<li class="chapter" data-level="" data-path="집합-연산.html"><a href="집합-연산.html#reference-4"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="join-exercises.html"><a href="join-exercises.html"><i class="fa fa-check"></i><b>6.8</b> Join Exercises</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="join-exercises.html"><a href="join-exercises.html#예제-데이터의-생성-1"><i class="fa fa-check"></i><b>6.8.1</b> 예제 데이터의 생성</a></li>
+<li class="chapter" data-level="6.8.2" data-path="join-exercises.html"><a href="join-exercises.html#예제-1-inner_join"><i class="fa fa-check"></i><b>6.8.2</b> 예제 1: <code>inner_join()</code></a></li>
+<li class="chapter" data-level="6.8.3" data-path="join-exercises.html"><a href="join-exercises.html#예제-2-left_join"><i class="fa fa-check"></i><b>6.8.3</b> 예제 2: <code>left_join()</code></a></li>
+<li class="chapter" data-level="6.8.4" data-path="join-exercises.html"><a href="join-exercises.html#예제-3-right_join"><i class="fa fa-check"></i><b>6.8.4</b> 예제 3: <code>right_join()</code></a></li>
+<li class="chapter" data-level="6.8.5" data-path="join-exercises.html"><a href="join-exercises.html#예제-4-full_join"><i class="fa fa-check"></i><b>6.8.5</b> 예제 4: <code>full_join()</code></a></li>
+<li class="chapter" data-level="6.8.6" data-path="join-exercises.html"><a href="join-exercises.html#예제-5-semi_join"><i class="fa fa-check"></i><b>6.8.6</b> 예제 5: <code>semi_join()</code></a></li>
+<li class="chapter" data-level="6.8.7" data-path="join-exercises.html"><a href="join-exercises.html#예제-6-anti_join"><i class="fa fa-check"></i><b>6.8.7</b> 예제 6 : <code>anti_join()</code></a></li>
+<li class="chapter" data-level="6.8.8" data-path="join-exercises.html"><a href="join-exercises.html#예제-7-복수-개의-데이터-프레임-조인"><i class="fa fa-check"></i><b>6.8.8</b> 예제 7: 복수 개의 데이터 프레임 조인</a></li>
+<li class="chapter" data-level="6.8.9" data-path="join-exercises.html"><a href="join-exercises.html#예제-8-복수-컬럼에-의한-조인"><i class="fa fa-check"></i><b>6.8.9</b> 예제 8: 복수 컬럼에 의한 조인</a></li>
+<li class="chapter" data-level="6.8.10" data-path="join-exercises.html"><a href="join-exercises.html#예제-9-데이터-조인과-id-삭제"><i class="fa fa-check"></i><b>6.8.10</b> 예제 9: 데이터 조인과 ID 삭제</a></li>
+<li class="chapter" data-level="" data-path="join-exercises.html"><a href="join-exercises.html#further-reading"><i class="fa fa-check"></i>Further Reading</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>7</b> Tidy Data</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="tidy-data-philosophy.html"><a href="tidy-data-philosophy.html"><i class="fa fa-check"></i><b>7.1</b> 타이디 데이터 철학</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="tidy-data-philosophy.html"><a href="tidy-data-philosophy.html#분석의-단위"><i class="fa fa-check"></i><b>7.1.1</b> 분석의 단위</a></li>
+<li class="chapter" data-level="7.1.2" data-path="tidy-data-philosophy.html"><a href="tidy-data-philosophy.html#데이터-세트-4"><i class="fa fa-check"></i><b>7.1.2</b> 데이터 세트</a></li>
+<li class="chapter" data-level="7.1.3" data-path="tidy-data-philosophy.html"><a href="tidy-data-philosophy.html#docid-별-그루핑"><i class="fa fa-check"></i><b>7.1.3</b> <code>docid</code> 별 그루핑</a></li>
+<li class="chapter" data-level="7.1.4" data-path="tidy-data-philosophy.html"><a href="tidy-data-philosophy.html#요약-정보-확인"><i class="fa fa-check"></i><b>7.1.4</b> 요약 정보 확인</a></li>
+<li class="chapter" data-level="7.1.5" data-path="tidy-data-philosophy.html"><a href="tidy-data-philosophy.html#다중-레벨-데이터-확인"><i class="fa fa-check"></i><b>7.1.5</b> 다중 레벨 데이터 확인</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="tidy-data-untidy.html"><a href="tidy-data-untidy.html"><i class="fa fa-check"></i><b>7.2</b> Untidy data</a></li>
+<li class="chapter" data-level="7.3" data-path="컬럼-제목들이-변수-명이-아니고-값들인-경우.html"><a href="컬럼-제목들이-변수-명이-아니고-값들인-경우.html"><i class="fa fa-check"></i><b>7.3</b> 컬럼 제목들이 변수 명이 아니고 값들인 경우</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="컬럼-제목들이-변수-명이-아니고-값들인-경우.html"><a href="컬럼-제목들이-변수-명이-아니고-값들인-경우.html#데이터-세트-5"><i class="fa fa-check"></i><b>7.3.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="7.3.2" data-path="컬럼-제목들이-변수-명이-아니고-값들인-경우.html"><a href="컬럼-제목들이-변수-명이-아니고-값들인-경우.html#tidy_data_functions"><i class="fa fa-check"></i><b>7.3.2</b> 사용할 수 있는 함수의 종류</a></li>
+<li class="chapter" data-level="7.3.3" data-path="컬럼-제목들이-변수-명이-아니고-값들인-경우.html"><a href="컬럼-제목들이-변수-명이-아니고-값들인-경우.html#pivot_longer-함수"><i class="fa fa-check"></i><b>7.3.3</b> <code>pivot_longer()</code> 함수</a></li>
+<li class="chapter" data-level="7.3.4" data-path="컬럼-제목들이-변수-명이-아니고-값들인-경우.html"><a href="컬럼-제목들이-변수-명이-아니고-값들인-경우.html#gather-함수"><i class="fa fa-check"></i><b>7.3.4</b> <code>gather()</code> 함수</a></li>
+<li class="chapter" data-level="7.3.5" data-path="컬럼-제목들이-변수-명이-아니고-값들인-경우.html"><a href="컬럼-제목들이-변수-명이-아니고-값들인-경우.html#melt-함수"><i class="fa fa-check"></i><b>7.3.5</b> <code>melt()</code> 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="tidy-data-one-column.html"><a href="tidy-data-one-column.html"><i class="fa fa-check"></i><b>7.4</b> 하나의 컬럼에 복수 개의 변수들이 있는 경우</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="tidy-data-one-column.html"><a href="tidy-data-one-column.html#데이터-세트-6"><i class="fa fa-check"></i><b>7.4.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="7.4.2" data-path="tidy-data-one-column.html"><a href="tidy-data-one-column.html#사용할-수-있는-함수의-종류"><i class="fa fa-check"></i><b>7.4.2</b> 사용할 수 있는 함수의 종류</a></li>
+<li class="chapter" data-level="7.4.3" data-path="tidy-data-one-column.html"><a href="tidy-data-one-column.html#pivot_wider-함수"><i class="fa fa-check"></i><b>7.4.3</b> <code>pivot_wider()</code> 함수</a></li>
+<li class="chapter" data-level="7.4.4" data-path="tidy-data-one-column.html"><a href="tidy-data-one-column.html#spread-함수"><i class="fa fa-check"></i><b>7.4.4</b> <code>spread()</code> 함수</a></li>
+<li class="chapter" data-level="7.4.5" data-path="tidy-data-one-column.html"><a href="tidy-data-one-column.html#dcast-함수"><i class="fa fa-check"></i><b>7.4.5</b> <code>dcast()</code> 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="tidy-data-one-cell.html"><a href="tidy-data-one-cell.html"><i class="fa fa-check"></i><b>7.5</b> 하나의 셀에 저장된 여러 변수 또는 여러 셀에 흩어져 있는 한 변수</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="tidy-data-one-cell.html"><a href="tidy-data-one-cell.html#데이터-세트-7"><i class="fa fa-check"></i><b>7.5.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="" data-path="tidy-data-one-cell.html"><a href="tidy-data-one-cell.html#data-wrangling-with-dplyr-and-tidyr"><i class="fa fa-check"></i>Data Wrangling with dplyr and tidyr</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="separate-함수와-unite-함수.html"><a href="separate-함수와-unite-함수.html"><i class="fa fa-check"></i><b>7.6</b> <code>separate()</code> 함수와 <code>unite()</code> 함수</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="separate-함수와-unite-함수.html"><a href="separate-함수와-unite-함수.html#separate-함수"><i class="fa fa-check"></i><b>7.6.1</b> <code>separate()</code> 함수</a></li>
+<li class="chapter" data-level="7.6.2" data-path="separate-함수와-unite-함수.html"><a href="separate-함수와-unite-함수.html#unite-함수"><i class="fa fa-check"></i><b>7.6.2</b> <code>unite()</code> 함수</a></li>
+<li class="chapter" data-level="7.6.3" data-path="separate-함수와-unite-함수.html"><a href="separate-함수와-unite-함수.html#separate-함수와-unite-함수의-예"><i class="fa fa-check"></i><b>7.6.3</b> <code>separate()</code> 함수와 <code>unite()</code> 함수의 예</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="tidy-data-reference-table.html"><a href="tidy-data-reference-table.html"><i class="fa fa-check"></i><b>7.7</b> <code>tidyverse</code> 참조표</a></li>
+<li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>8</b> Dates</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="dates-in-R.html"><a href="dates-in-R.html"><i class="fa fa-check"></i><b>8.1</b> R에서의 날짜 데이터</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="dates-in-R.html"><a href="dates-in-R.html#as.date-함수"><i class="fa fa-check"></i><b>8.1.1</b> <code>as.Date()</code> 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="dates-lubridate.html"><a href="dates-lubridate.html"><i class="fa fa-check"></i><b>8.2</b> <code>lubridate</code> 패키지</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="dates-lubridate.html"><a href="dates-lubridate.html#lubridate-패키지의-활용"><i class="fa fa-check"></i><b>8.2.1</b> <code>lubridate</code> 패키지의 활용</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="dates-variables.html"><a href="dates-variables.html"><i class="fa fa-check"></i><b>8.3</b> 날짜-시간 변수</a></li>
+<li class="chapter" data-level="8.4" data-path="dates-elements.html"><a href="dates-elements.html"><i class="fa fa-check"></i><b>8.4</b> <code>Date</code> 변수에서 정보 추출하기</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="dates-elements.html"><a href="dates-elements.html#관련-함수-1"><i class="fa fa-check"></i><b>8.4.1</b> 관련 함수</a></li>
+<li class="chapter" data-level="8.4.2" data-path="dates-elements.html"><a href="dates-elements.html#date-변수의-정보-추출-예"><i class="fa fa-check"></i><b>8.4.2</b> <code>Date</code> 변수의 정보 추출 예</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="dates-POSIXct.html"><a href="dates-POSIXct.html"><i class="fa fa-check"></i><b>8.5</b> 날짜-시간(<code>POSIXct</code>) 변수에서 정보 추출하기</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="dates-POSIXct.html"><a href="dates-POSIXct.html#관련-함수-2"><i class="fa fa-check"></i><b>8.5.1</b> 관련 함수</a></li>
+<li class="chapter" data-level="8.5.2" data-path="dates-POSIXct.html"><a href="dates-POSIXct.html#posixct-변수에서-정보-추출-예"><i class="fa fa-check"></i><b>8.5.2</b> <code>POSIXct</code> 변수에서 정보 추출 예</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="dates-functions.html"><a href="dates-functions.html"><i class="fa fa-check"></i><b>8.6</b> 날짜-시간 산술연산을 위한 두 종류의 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="dates-and-time.html"><a href="dates-and-time.html"><i class="fa fa-check"></i><b>9</b> Dates and Times</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="dates-time-intro.html"><a href="dates-time-intro.html"><i class="fa fa-check"></i><b>9.1</b> 들어가기</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="dates-time-intro.html"><a href="dates-time-intro.html#준비하기-1"><i class="fa fa-check"></i><b>9.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="dates-time-create.html"><a href="dates-time-create.html"><i class="fa fa-check"></i><b>9.2</b> 날짜/시간 생성하기</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="dates-time-create.html"><a href="dates-time-create.html#문자열에서-생성"><i class="fa fa-check"></i><b>9.2.1</b> 문자열에서 생성</a></li>
+<li class="chapter" data-level="9.2.2" data-path="dates-time-create.html"><a href="dates-time-create.html#개별-구성요소로-생성"><i class="fa fa-check"></i><b>9.2.2</b> 개별 구성요소로 생성</a></li>
+<li class="chapter" data-level="9.2.3" data-path="dates-time-create.html"><a href="dates-time-create.html#기타-유형에서-생성"><i class="fa fa-check"></i><b>9.2.3</b> 기타 유형에서 생성</a></li>
+<li class="chapter" data-level="9.2.4" data-path="dates-time-create.html"><a href="dates-time-create.html#연습문제-13"><i class="fa fa-check"></i><b>9.2.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="dates-time-arguments.html"><a href="dates-time-arguments.html"><i class="fa fa-check"></i><b>9.3</b> 데이트-타임형 구성요소</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="dates-time-arguments.html"><a href="dates-time-arguments.html#구성요소-가져오기"><i class="fa fa-check"></i><b>9.3.1</b> 구성요소 가져오기</a></li>
+<li class="chapter" data-level="9.3.2" data-path="dates-time-arguments.html"><a href="dates-time-arguments.html#반올림"><i class="fa fa-check"></i><b>9.3.2</b> 반올림</a></li>
+<li class="chapter" data-level="9.3.3" data-path="dates-time-arguments.html"><a href="dates-time-arguments.html#구성요소-설정"><i class="fa fa-check"></i><b>9.3.3</b> 구성요소 설정</a></li>
+<li class="chapter" data-level="9.3.4" data-path="dates-time-arguments.html"><a href="dates-time-arguments.html#연습문제-14"><i class="fa fa-check"></i><b>9.3.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="dates-time-time-span.html"><a href="dates-time-time-span.html"><i class="fa fa-check"></i><b>9.4</b> 시간 범위</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="dates-time-time-span.html"><a href="dates-time-time-span.html#듀레이션형"><i class="fa fa-check"></i><b>9.4.1</b> 듀레이션형</a></li>
+<li class="chapter" data-level="9.4.2" data-path="dates-time-time-span.html"><a href="dates-time-time-span.html#피리어드형"><i class="fa fa-check"></i><b>9.4.2</b> 피리어드형</a></li>
+<li class="chapter" data-level="9.4.3" data-path="dates-time-time-span.html"><a href="dates-time-time-span.html#인터벌형"><i class="fa fa-check"></i><b>9.4.3</b> 인터벌형</a></li>
+<li class="chapter" data-level="9.4.4" data-path="dates-time-time-span.html"><a href="dates-time-time-span.html#요약"><i class="fa fa-check"></i><b>9.4.4</b> 요약</a></li>
+<li class="chapter" data-level="9.4.5" data-path="dates-time-time-span.html"><a href="dates-time-time-span.html#연습문제-15"><i class="fa fa-check"></i><b>9.4.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="dates-time-EST.html"><a href="dates-time-EST.html"><i class="fa fa-check"></i><b>9.5</b> 시간대</a></li>
+<li class="chapter" data-level="" data-path="references-2.html"><a href="references-2.html"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>10</b> Strings</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="strings-intro.html"><a href="strings-intro.html"><i class="fa fa-check"></i><b>10.1</b> 들어가기</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="strings-intro.html"><a href="strings-intro.html#준비하기-2"><i class="fa fa-check"></i><b>10.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="strings-basic.html"><a href="strings-basic.html"><i class="fa fa-check"></i><b>10.2</b> 문자열 기초</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="strings-basic.html"><a href="strings-basic.html#문자열-길이"><i class="fa fa-check"></i><b>10.2.1</b> 문자열 길이</a></li>
+<li class="chapter" data-level="10.2.2" data-path="strings-basic.html"><a href="strings-basic.html#문자열-결합"><i class="fa fa-check"></i><b>10.2.2</b> 문자열 결합</a></li>
+<li class="chapter" data-level="10.2.3" data-path="strings-basic.html"><a href="strings-basic.html#문자열-서브셋하기"><i class="fa fa-check"></i><b>10.2.3</b> 문자열 서브셋하기</a></li>
+<li class="chapter" data-level="10.2.4" data-path="strings-basic.html"><a href="strings-basic.html#로케일"><i class="fa fa-check"></i><b>10.2.4</b> 로케일</a></li>
+<li class="chapter" data-level="10.2.5" data-path="strings-basic.html"><a href="strings-basic.html#연습문제-16"><i class="fa fa-check"></i><b>10.2.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="pattern-matching.html"><a href="pattern-matching.html"><i class="fa fa-check"></i><b>10.3</b> 정규표현식을 이용한 패턴 매칭</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="pattern-matching.html"><a href="pattern-matching.html#기본-매칭"><i class="fa fa-check"></i><b>10.3.1</b> 기본 매칭</a></li>
+<li class="chapter" data-level="10.3.2" data-path="pattern-matching.html"><a href="pattern-matching.html#앵커"><i class="fa fa-check"></i><b>10.3.2</b> 앵커</a></li>
+<li class="chapter" data-level="10.3.3" data-path="pattern-matching.html"><a href="pattern-matching.html#문자-클래스와-대체구문"><i class="fa fa-check"></i><b>10.3.3</b> 문자 클래스와 대체구문</a></li>
+<li class="chapter" data-level="10.3.4" data-path="pattern-matching.html"><a href="pattern-matching.html#반복"><i class="fa fa-check"></i><b>10.3.4</b> 반복</a></li>
+<li class="chapter" data-level="10.3.5" data-path="pattern-matching.html"><a href="pattern-matching.html#그룹화와-역참조"><i class="fa fa-check"></i><b>10.3.5</b> 그룹화와 역참조</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="tools.html"><a href="tools.html"><i class="fa fa-check"></i><b>10.4</b> 패턴 매칭</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="tools.html"><a href="tools.html#매칭-탐지"><i class="fa fa-check"></i><b>10.4.1</b> 매칭 탐지</a></li>
+<li class="chapter" data-level="10.4.2" data-path="tools.html"><a href="tools.html#매칭-추출"><i class="fa fa-check"></i><b>10.4.2</b> 매칭 추출</a></li>
+<li class="chapter" data-level="10.4.3" data-path="tools.html"><a href="tools.html#그룹화-매칭"><i class="fa fa-check"></i><b>10.4.3</b> 그룹화 매칭</a></li>
+<li class="chapter" data-level="10.4.4" data-path="tools.html"><a href="tools.html#매칭-치환"><i class="fa fa-check"></i><b>10.4.4</b> 매칭 치환</a></li>
+<li class="chapter" data-level="10.4.5" data-path="tools.html"><a href="tools.html#문자열-분할"><i class="fa fa-check"></i><b>10.4.5</b> 문자열 분할</a></li>
+<li class="chapter" data-level="10.4.6" data-path="tools.html"><a href="tools.html#매치-찾기"><i class="fa fa-check"></i><b>10.4.6</b> 매치 찾기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="other-patterns.html"><a href="other-patterns.html"><i class="fa fa-check"></i><b>10.5</b> 기타 패턴 유형</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="other-patterns.html"><a href="other-patterns.html#연습문제-27"><i class="fa fa-check"></i><b>10.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="reg-other-usage.html"><a href="reg-other-usage.html"><i class="fa fa-check"></i><b>10.6</b> 정규 표현식의 기타 용도</a></li>
+<li class="chapter" data-level="10.7" data-path="stringi.html"><a href="stringi.html"><i class="fa fa-check"></i><b>10.7</b> <code>stringi</code></a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="stringi.html"><a href="stringi.html#연습문제-28"><i class="fa fa-check"></i><b>10.7.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-5.html"><a href="reference-5.html"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="Using-RegEx.html"><a href="Using-RegEx.html"><i class="fa fa-check"></i><b>11</b> 정규 표현식의 활용</a>
+<ul>
+<li class="chapter" data-level="" data-path="패키지-불러오기-1.html"><a href="패키지-불러오기-1.html"><i class="fa fa-check"></i>패키지 불러오기</a></li>
+<li class="chapter" data-level="11.1" data-path="패턴-찾기-함수.html"><a href="패턴-찾기-함수.html"><i class="fa fa-check"></i><b>11.1</b> 패턴 찾기 함수</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="패턴-찾기-함수.html"><a href="패턴-찾기-함수.html#grep-함수"><i class="fa fa-check"></i><b>11.1.1</b> <code>grep()</code> 함수</a></li>
+<li class="chapter" data-level="11.1.2" data-path="패턴-찾기-함수.html"><a href="패턴-찾기-함수.html#grepl-함수"><i class="fa fa-check"></i><b>11.1.2</b> <code>grepl()</code> 함수</a></li>
+<li class="chapter" data-level="11.1.3" data-path="패턴-찾기-함수.html"><a href="패턴-찾기-함수.html#regexpr-함수"><i class="fa fa-check"></i><b>11.1.3</b> <code>regexpr()</code> 함수</a></li>
+<li class="chapter" data-level="11.1.4" data-path="패턴-찾기-함수.html"><a href="패턴-찾기-함수.html#gregexpr-함수"><i class="fa fa-check"></i><b>11.1.4</b> <code>gregexpr()</code> 함수</a></li>
+<li class="chapter" data-level="11.1.5" data-path="패턴-찾기-함수.html"><a href="패턴-찾기-함수.html#regexec-함수"><i class="fa fa-check"></i><b>11.1.5</b> <code>regexec()</code> 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="패턴-대체-함수.html"><a href="패턴-대체-함수.html"><i class="fa fa-check"></i><b>11.2</b> 패턴 대체 함수</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="패턴-대체-함수.html"><a href="패턴-대체-함수.html#sub-함수를-이용한-첫-번째-일치의-대체"><i class="fa fa-check"></i><b>11.2.1</b> <code>sub()</code> 함수를 이용한 첫 번째 일치의 대체</a></li>
+<li class="chapter" data-level="11.2.2" data-path="패턴-대체-함수.html"><a href="패턴-대체-함수.html#gsub-함수를-이용한-모든-일치-대체"><i class="fa fa-check"></i><b>11.2.2</b> <code>gsub()</code> 함수를 이용한 모든 일치 대체</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="문자-벡터의-분할.html"><a href="문자-벡터의-분할.html"><i class="fa fa-check"></i><b>11.3</b> 문자 벡터의 분할</a></li>
+<li class="chapter" data-level="11.4" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html"><i class="fa fa-check"></i><b>11.4</b> <code>stringr</code> 패키지 함수</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_detect-함수를-이용한-패턴의-발견"><i class="fa fa-check"></i><b>11.4.1</b> <code>str_detect()</code> 함수를 이용한 패턴의 발견</a></li>
+<li class="chapter" data-level="11.4.2" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_extract-함수를-이용한-첫-번째-일치-추출"><i class="fa fa-check"></i><b>11.4.2</b> <code>str_extract()</code> 함수를 이용한 첫 번째 일치 추출</a></li>
+<li class="chapter" data-level="11.4.3" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_extract_all-함수를-이용한-모든-일치-추출"><i class="fa fa-check"></i><b>11.4.3</b> <code>str_extract_all()</code> 함수를 이용한 모든 일치 추출</a></li>
+<li class="chapter" data-level="11.4.4" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_match-함수를-이용한-첫-번째-일치-추출"><i class="fa fa-check"></i><b>11.4.4</b> <code>str_match()</code> 함수를 이용한 첫 번째 일치 추출</a></li>
+<li class="chapter" data-level="11.4.5" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_match_all-함수를-이용한-모든-일치-추출"><i class="fa fa-check"></i><b>11.4.5</b> <code>str_match_all()</code> 함수를 이용한 모든 일치 추출</a></li>
+<li class="chapter" data-level="11.4.6" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_locate-함수를-이용한-첫-번째-일치-위치-확인"><i class="fa fa-check"></i><b>11.4.6</b> <code>str_locate()</code> 함수를 이용한 첫 번째 일치 위치 확인</a></li>
+<li class="chapter" data-level="11.4.7" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_locate_all-함수를-이용한-모든-일치-위치-확인"><i class="fa fa-check"></i><b>11.4.7</b> <code>str_locate_all()</code> 함수를 이용한 모든 일치 위치 확인</a></li>
+<li class="chapter" data-level="11.4.8" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_replace-함수를-이용한-첫-번째-일치-대체"><i class="fa fa-check"></i><b>11.4.8</b> <code>str_replace()</code> 함수를 이용한 첫 번째 일치 대체</a></li>
+<li class="chapter" data-level="11.4.9" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_replace_all-함수를-이용한-모든-일치-대체"><i class="fa fa-check"></i><b>11.4.9</b> <code>str_replace_all()</code> 함수를 이용한 모든 일치 대체</a></li>
+<li class="chapter" data-level="11.4.10" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_split-함수를-이용한-문자열-분할"><i class="fa fa-check"></i><b>11.4.10</b> <code>str_split()</code> 함수를 이용한 문자열 분할</a></li>
+<li class="chapter" data-level="11.4.11" data-path="stringr-패키지-함수.html"><a href="stringr-패키지-함수.html#str_split_fixed-함수를-이용한-문자열-분할"><i class="fa fa-check"></i><b>11.4.11</b> <code>str_split_fixed()</code> 함수를 이용한 문자열 분할</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">tidyverse를 이용한 데이터 관리</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="dataframe" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> 데이터 프레임</h2>
+<p><strong>데이터 프레임</strong>은 R의 핵심적인 자료구조이다. 이는 엑셀과 같이 숫자, 문자 등 다양한 데이터를 하나의 테이블에 담을 수 있는 자료구조이다. 이를 잘 활용하면 엑셀의 기능들을 R에서도 자유자재로 사용할 수 있다.</p>
+<div id="데이터-프레임의-생성" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> 데이터 프레임의 생성</h3>
+<p>먼저 데이터 데이터 프레임을 <strong>생성</strong>하는 방법은 다음과 같다.</p>
+<p>이러한 데이터 프레임의 생성은 <code>data.frame()</code> 함수를 이용하여 생성할 수 있다.</p>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="dataframe.html#cb347-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">col1=</span><span class="fu">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>), </span>
+<span id="cb347-2"><a href="dataframe.html#cb347-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col2=</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>))</span>
+<span id="cb347-3"><a href="dataframe.html#cb347-3" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>##   col1 col2
+## 1    a    2
+## 2    b    4
+## 3    c    6
+## 4    d    8
+## 5    e   10</code></pre>
+<ul>
+<li>data.frame() 함수의 인수는 엑셀 시트의 각 컬럼을 나타낸다.</li>
+<li>각 컬럼의 이름을 각 인수의 이름으로 지정할 수 있다.</li>
+</ul>
+<div id="data.frame-함수의-형식" class="section level4" number="2.1.1.1">
+<h4><span class="header-section-number">2.1.1.1</span> <code>data.frame()</code> 함수의 형식</h4>
+<pre><code>data.frame(..., 
+            row.names = NULL, 
+            check.rows = FALSE,
+            check.names = TRUE, 
+            fix.empty.names = TRUE,
+            stringsAsFactors = default.stringsAsFactors())`</code></pre>
+<p><strong>주요 인수 :</strong></p>
+<ul>
+<li><strong><code>...</code></strong> : 이 인수는 폼 값이나 <code>tag = value</code> 형태이다. 구성 요소명(컬럼 명)은 tag 이름으로 또는 deparsed 인수 자체로 생성된다.</li>
+<li><code>row.names =</code> : <code>NULL</code>, 단일 정수, 또는 행 이름으로 사용될 컬럼을 지정하는 문자열, 또는 데이터 프레임을 위한 행 이름을 주는 문자 또는 정수 벡터</li>
+<li><code>check.rows =</code> : <code>FALSE</code> 값이 디폴트 값. <code>TRUE</code>이면, 행들에 대한 길이와 이름에 대한 일관성 검토하고 위배되면 데이터 프레임을 생성하지 않는다.</li>
+<li><code>check.names =</code> : 논리값. <code>TRUE</code>이면 데이터 프레임에 있는 변수 이름들이 문법적으로 타당하고 증복이 없는 변수 이름들인지 검토한다. 필요하면 (<code>make.names</code>에 의해) 조정된다.</li>
+<li><code>fix.empty.names =</code> : 논리값 이름이 붙여지지 않은 컬럼(<code>someName = arg</code> 형태로 지정되지 않으면)이 자동으로 생성된 이름이나 <code>name”.”</code>을 가지고 있는지를 나타내는 논리값. “” 이름이 유지되어야 하지만 check.names가 false일 때에도 FALSE로 설정되어야 한다.</li>
+<li><code>stringsAsFactors = default.stringsAsFactors()</code> : 버전 4.0.0 이후로 기능이 없어짐. 이전 버전의 경우, 디폴트로 문자 벡터 컬럼의 경우 factor 형으로 생성되었음.</li>
+</ul>
+</div>
+<div id="컬럼명을-지정하지-않은-경우" class="section level4" number="2.1.1.2">
+<h4><span class="header-section-number">2.1.1.2</span> 컬럼명을 지정하지 않은 경우</h4>
+<p><code>data.frame()</code> 함수의 인수에 이름을 지정하지 않고 데이터 프레임을 생성하는 다음과 같은 경우를 생각해 보자.</p>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="dataframe.html#cb350-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span>
+<span id="cb350-2"><a href="dataframe.html#cb350-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df1)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    5 obs. of  2 variables:
+##  $ X1.5        : int  1 2 3 4 5
+##  $ letters.1.5.: chr  &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; ...</code></pre>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="dataframe.html#cb352-1" aria-hidden="true" tabindex="-1"></a>df1</span></code></pre></div>
+<pre><code>##   X1.5 letters.1.5.
+## 1    1            a
+## 2    2            b
+## 3    3            c
+## 4    4            d
+## 5    5            e</code></pre>
+<ul>
+<li><code>df1</code>의 첫 번째 컬럼의 값은 <code>1:5</code>, 두 번째 컬럼의 값은 <code>letters[1:5]</code>으로 지정하고 있으나, 컬럼명을 지정하지 않음.</li>
+<li>자동으로 첫 번째 컬럼명은 <code>x1.5</code>으로 그리고 두 번째 컬럼명은 <code>letters.1.5</code>으로 자동생성된다.</li>
+</ul>
+<p>데이터 프레임을 생성하면서 컬럼 이름을 생성하고 싶지 않은 경우는 <code>fix.empty.names = FALSE</code> 인수를 사용한다. 그러면 생성되는 데이터 프레임의 컬럼 이름이 생성되지 않는다.</p>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="dataframe.html#cb354-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">fix.empty.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb354-2"><a href="dataframe.html#cb354-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df2)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    5 obs. of  2 variables:
+##  $ : int  1 2 3 4 5
+##  $ : chr  &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; ...</code></pre>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="dataframe.html#cb356-1" aria-hidden="true" tabindex="-1"></a>df2</span></code></pre></div>
+<pre><code>##      
+## 1 1 a
+## 2 2 b
+## 3 3 c
+## 4 4 d
+## 5 5 e</code></pre>
+<ul>
+<li><code>fix.empty.names = FALSE</code> 옵션을 설정하면, 컬럼명이 자동생성되지 않고 <strong>공란(<code>“”</code>)</strong>으로 남는다.</li>
+</ul>
+</div>
+<div id="컬럼명을-지정한-경우" class="section level4" number="2.1.1.3">
+<h4><span class="header-section-number">2.1.1.3</span> 컬럼명을 지정한 경우</h4>
+<p>데이터 프레임을 생성할 때 각 컬럼의 이름을 지정하고 싶은 경우는 다음과 같이 각 요소에 이름을 지정해 주면 된다.</p>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="dataframe.html#cb358-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])  </span>
+<span id="cb358-2"><a href="dataframe.html#cb358-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df3)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    5 obs. of  2 variables:
+##  $ a: int  1 2 3 4 5
+##  $ b: chr  &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; ...</code></pre>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="dataframe.html#cb360-1" aria-hidden="true" tabindex="-1"></a>df3</span></code></pre></div>
+<pre><code>##   a b
+## 1 1 a
+## 2 2 b
+## 3 3 c
+## 4 4 d
+## 5 5 e</code></pre>
+<ul>
+<li><code>df3</code>는 데이터 값과 더불어 각 컬럼의 이름(<code>a</code>와 <code>b</code>)을 가지고 있다.</li>
+</ul>
+</div>
+<div id="row.names을-a로-지정한-경우" class="section level4" number="2.1.1.4">
+<h4><span class="header-section-number">2.1.1.4</span> <code>row.names</code>을 <code>a</code>로 지정한 경우</h4>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="dataframe.html#cb362-1" aria-hidden="true" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">row.names =</span> <span class="st">&quot;a&quot;</span>)  </span>
+<span id="cb362-2"><a href="dataframe.html#cb362-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df4)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    5 obs. of  1 variable:
+##  $ b: chr  &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; ...</code></pre>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="dataframe.html#cb364-1" aria-hidden="true" tabindex="-1"></a>df4</span></code></pre></div>
+<pre><code>##   b
+## 1 a
+## 2 b
+## 3 c
+## 4 d
+## 5 e</code></pre>
+<ul>
+<li><code>df4</code>는 <code>row.names = “a”</code>로 지정함으로써, 벡터 <code>a = 1:5</code>가 <code>df4</code>의 행 이름이 된다.</li>
+<li>즉, <code>df4</code>는 <code>b</code> 컬럼 만을 갖는 데이터 프레임이다.</li>
+</ul>
+</div>
+<div id="row.names-을-b로-지정한-경우" class="section level4" number="2.1.1.5">
+<h4><span class="header-section-number">2.1.1.5</span> <code>row.names =</code>을 <code>b</code>로 지정한 경우</h4>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="dataframe.html#cb366-1" aria-hidden="true" tabindex="-1"></a>df5 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">row.names =</span> <span class="st">&quot;b&quot;</span>)  </span>
+<span id="cb366-2"><a href="dataframe.html#cb366-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df5)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    5 obs. of  1 variable:
+##  $ a: int  1 2 3 4 5</code></pre>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="dataframe.html#cb368-1" aria-hidden="true" tabindex="-1"></a>df5</span></code></pre></div>
+<pre><code>##   a
+## a 1
+## b 2
+## c 3
+## d 4
+## e 5</code></pre>
+<ul>
+<li><code>df5</code>는 <code>row.names = “b”</code>를 지정함으로써 <code>b</code>의 값들(<code>letters[1:5]</code>)이 <code>df5</code>의 행 이름이 된다.</li>
+<li>즉, <code>df5</code>는 <code>a</code> 컬럼 하나만 있는 데이터 프레임이다.</li>
+</ul>
+</div>
+<div id="각-컬럼의-행의-길이가-다른-경우" class="section level4" number="2.1.1.6">
+<h4><span class="header-section-number">2.1.1.6</span> 각 컬럼의 행의 길이가 다른 경우</h4>
+<p>데이터 프레임은 데이터 프레임을 구성하고 있는 각 컬럼에 대하여 동일한 수의 행을 가져야 한다. 특정 컬럼의 행의 갯수가 다른 컬럼의 행의 갯수와 다르게 지정되면 데이터 프레임은 생성되지 않는다.
+별로의 행의 갯수가 모두 같아야 한다.</p>
+<p>다음과 같이 <code>a</code> 컬럼은 요소가 6개, <code>b</code>컬럼은 요소가 5개로 지정되는 경우 에러 메시지가 나타나고 데이터 프레임은 생성되지 않는다.</p>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="dataframe.html#cb370-1" aria-hidden="true" tabindex="-1"></a>df6 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">b =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code></pre></div>
+<pre><code>## Error in data.frame(a = 1:6, b = letters[1:5]): arguments imply differing number of rows: 6, 5</code></pre>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="dataframe.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df6)</span></code></pre></div>
+<pre><code>## Error in str(df6): 객체 &#39;df6&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="dataframe.html#cb374-1" aria-hidden="true" tabindex="-1"></a>df6                 </span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): 객체 &#39;df6&#39;를 찾을 수 없습니다</code></pre>
+<p>만일 각 컬럼의 행의 갯수가 다른 데이터 구조를 만들고 싶으면 <strong>리스트(list)</strong> 구조를 이용해야 한다.</p>
+</div>
+<div id="컬럼명이-같은-경우-check.names-인수의-사용" class="section level4" number="2.1.1.7">
+<h4><span class="header-section-number">2.1.1.7</span> 컬럼명이 같은 경우 : <code>check.names =</code> 인수의 사용</h4>
+<p><strong><code>check.names = TRUE</code></strong> 인수를 사용하는 경우,</p>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="dataframe.html#cb376-1" aria-hidden="true" tabindex="-1"></a>df7 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">a =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">check.names =</span> <span class="cn">TRUE</span>)  </span>
+<span id="cb376-2"><a href="dataframe.html#cb376-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df7)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    5 obs. of  2 variables:
+##  $ a  : int  1 2 3 4 5
+##  $ a.1: chr  &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; ...</code></pre>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="dataframe.html#cb378-1" aria-hidden="true" tabindex="-1"></a>df7</span></code></pre></div>
+<pre><code>##   a a.1
+## 1 1   a
+## 2 2   b
+## 3 3   c
+## 4 4   d
+## 5 5   e</code></pre>
+<ul>
+<li>두 개의 컬럼명이 모두 <code>a</code>로 되어 있다.</li>
+<li><code>df7</code>의 경우는 <code>check.names = TRUE</code>로 옵션을 설정하여, 컬럼명이 자동 조정되었다.</li>
+</ul>
+<p><strong><code>check.names = FALSE</code></strong> 인수를 사용하는 경우에는 다음과 같이 두 개의 컬럼 이름이 같게 된다.</p>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="dataframe.html#cb380-1" aria-hidden="true" tabindex="-1"></a>df8 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">a =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">check.names =</span> <span class="cn">FALSE</span>)  </span>
+<span id="cb380-2"><a href="dataframe.html#cb380-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df8)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    5 obs. of  2 variables:
+##  $ a: int  1 2 3 4 5
+##  $ a: chr  &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; ...</code></pre>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="dataframe.html#cb382-1" aria-hidden="true" tabindex="-1"></a>df8</span></code></pre></div>
+<pre><code>##   a a
+## 1 1 a
+## 2 2 b
+## 3 3 c
+## 4 4 d
+## 5 5 e</code></pre>
+<ul>
+<li>두 개의 컬럼명이 모두 <code>a</code>로 되어 있다.</li>
+<li><code>df8</code>의 경우는 <code>check.names = FASLE</code>로 옵션을 설정하여, 컬럼명이 조정되지 않았다.</li>
+<li>이런 경우는 데이터 관리상 바람직하지 않다.</li>
+</ul>
+</div>
+</div>
+<div id="행열-결합에-의한-데이터-프레임-생성하기" class="section level3" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> 행/열 결합에 의한 데이터 프레임 생성하기</h3>
+<p>데이터 프레임은 열을 우선적으로 하는 데이터 구조로 본다면, 각 열들은 개별적인 벡터 형태를 갖는다. 반면에, 데이터 프레임을 행을 중심으로 데이터 구조를 본다면, 각 행들은 각각의 요소가 서로 다른 데이터 유형을 갖는 리스트 구조를 갖는다.</p>
+<p>따라서 요소의 갯수가 같은 여러 개의 벡터들은 열 결합으로 데이터 프레임을 생성할 수 있고, 요소의 갯수가 같고, 각 요소 별로 동일한 데이터 유형을 갖는 여러 개의 리스틀들은 행 결합으로 데이터 프레임을 생성할 수 있다.</p>
+<div id="열-결합으로-데이터-프레임-생성하기" class="section level4" number="2.1.2.1">
+<h4><span class="header-section-number">2.1.2.1</span> 열 결합으로 데이터 프레임 생성하기</h4>
+<p>다음과 같이 <code>vec1</code>과 <code>vec2</code> 등 두 개의 벡터가 있다고 가정하자.</p>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="dataframe.html#cb384-1" aria-hidden="true" tabindex="-1"></a>vec1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;one&#39;</span>,<span class="st">&#39;two&#39;</span>,<span class="st">&#39;three&#39;</span>); vec1</span></code></pre></div>
+<pre><code>## [1] &quot;one&quot;   &quot;two&quot;   &quot;three&quot;</code></pre>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="dataframe.html#cb386-1" aria-hidden="true" tabindex="-1"></a>vec2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>); vec2</span></code></pre></div>
+<pre><code>## [1] 1 2 3</code></pre>
+<p>이 두 개의 벡터는 요소의 갯수가 모두 3개로 같다. 따라서 이 벡터를 열로 결합하여 데이티 프레임을 생성할 수 있는데, 이 때에도 <code>data.frame()</code> 함수를 이용하는 것이 좋다.</p>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="dataframe.html#cb388-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(vec1, vec2)</span>
+<span id="cb388-2"><a href="dataframe.html#cb388-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(vec)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    3 obs. of  2 variables:
+##  $ vec1: chr  &quot;one&quot; &quot;two&quot; &quot;three&quot;
+##  $ vec2: num  1 2 3</code></pre>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="dataframe.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(vec)</span></code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<ul>
+<li>각 컬럼의 데이터 유형이 그대로 유지되었음을 알 수 있다.</li>
+<li>클래스는 <code>data.frame</code>이다.</li>
+</ul>
+<blockquote>
+<p>문자형 컬럼을 <code>factor</code> 형으로 만들고 싶은 경우에는 <strong><code>stringsAsFactors = T</code></strong>를 인수로 이용한다.</p>
+</blockquote>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="dataframe.html#cb392-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(vec1, vec2, <span class="at">stringsAsFactors =</span> T)</span>
+<span id="cb392-2"><a href="dataframe.html#cb392-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(vec)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    3 obs. of  2 variables:
+##  $ vec1: Factor w/ 3 levels &quot;one&quot;,&quot;three&quot;,..: 1 3 2
+##  $ vec2: num  1 2 3</code></pre>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="dataframe.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(vec)</span></code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<ul>
+<li><code>vec1</code> 컬럼이 <code>factor</code> 형임을 알 수 있다.</li>
+</ul>
+</div>
+<div id="행-결합으로-데이터-프레임-생성하기" class="section level4" number="2.1.2.2">
+<h4><span class="header-section-number">2.1.2.2</span> 행 결합으로 데이터 프레임 생성하기</h4>
+<p>반면에 리스트 구조의 경우는 각 요소별로 데이터 유형을 달리할 수 있는 데이터 구조이다.</p>
+<p>예를 들어, 다음과 같은 세 개의 리스트가 있다고 가정하자.</p>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="dataframe.html#cb396-1" aria-hidden="true" tabindex="-1"></a>list1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&#39;one&#39;</span>, <span class="dv">1</span>)</span>
+<span id="cb396-2"><a href="dataframe.html#cb396-2" aria-hidden="true" tabindex="-1"></a>list2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&#39;two&#39;</span>, <span class="dv">2</span>)</span>
+<span id="cb396-3"><a href="dataframe.html#cb396-3" aria-hidden="true" tabindex="-1"></a>list3 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&#39;three&#39;</span>, <span class="dv">3</span>)</span></code></pre></div>
+<p>이제 이 3개의 리스트를 행을 결합해서 데이터 프레임을 만들기 위해서는 rbind() 함수와 data.frame() 함수를 함께 사용해야 한다.</p>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="dataframe.html#cb397-1" aria-hidden="true" tabindex="-1"></a>df_list <span class="ot">&lt;-</span> <span class="fu">rbind</span>(list1, list2, list3)</span>
+<span id="cb397-2"><a href="dataframe.html#cb397-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df_list)</span></code></pre></div>
+<pre><code>## [1] &quot;matrix&quot; &quot;array&quot;</code></pre>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="dataframe.html#cb399-1" aria-hidden="true" tabindex="-1"></a>df_list <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(df_list)</span>
+<span id="cb399-2"><a href="dataframe.html#cb399-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df_list)</span></code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<ul>
+<li><code>rbind()</code>로 결합한 데이터는 <code>"matrix" "array"</code> 클래스이다.</li>
+<li>이를 data.frame() 함수를 이용하면 <code>"data.frame"</code> 클래스를 갖게 된다.</li>
+</ul>
+<blockquote>
+<p>여러 개의 벡터를 열 결합하여 데이터 프레임을 생성하는 경우에도 <code>cbind()</code>를 사용할 수 있는데, 이 때에도 <code>data.frame()</code> 함수를 이용해야 하므로, 결국 <code>cbind()</code> 함수를 이용한 열의 결합은 불필요하다.</p>
+</blockquote>
+</div>
+</div>
+<div id="데이터-프레임의-구조-확인" class="section level3" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> 데이터 프레임의 구조 확인</h3>
+<p>데이터 프레임은 컬럼의 집합으로 구성된 데이터 구조이다. 이러한 데이터 프레임의 각 컬럼들의 데이터 타입이 어떻게 구성되는지를 파악하는 것은 매우 중요한 데, 데이터 프레임의 <strong>구조(structure, 컬럼의 구성)</strong>는 <strong><code>str()</code></strong> 함수로 확인할 수 있다.</p>
+<div id="str-함수" class="section level4 unnumbered">
+<h4><code>str()</code> 함수</h4>
+<p><code>str()</code> 함수의 도움말은 다른 함수의 도움말을 보는 것과 마찬가지로 <code>?</code>를 이용하여 확인할 수 있다.</p>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="dataframe.html#cb401-1" aria-hidden="true" tabindex="-1"></a>? <span class="fu">str</span>()</span></code></pre></div>
+<pre><code>## starting httpd help server ... done</code></pre>
+<p>이제 <code>df1</code>의 데이터 구조는 다음과 같이 확인할 수 있다.</p>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="dataframe.html#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df1)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    5 obs. of  2 variables:
+##  $ X1.5        : int  1 2 3 4 5
+##  $ letters.1.5.: chr  &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; ...</code></pre>
+<ul>
+<li><code>'data.frame':    5 obs. of  2 variables:</code> : 데이터 프레임 구조로 2개의 컬럼으로 구성되며 각 컬럼에 5개의 행이 있음을 알려 준다.</li>
+<li><code>$ X1.5        : int  1 2 3 4 5</code> : 첫번째 컬럼의 이름과 데이터 유형, 그리고 데이터 값들을 보여 준다</li>
+<li><code>$ letters.1.5.: chr  "a" "b" "c" "d" ...</code> : 두번째 컬럼의 이름과 데이터 유형, 그리고 데이터 값들을 보여 준다</li>
+</ul>
+</div>
+</div>
+<div id="데이터-프레임의-데이터-확인" class="section level3" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> 데이터 프레임의 데이터 확인</h3>
+<p>데이터 프레임의 데이터를 확인하는 방법은 다음과 같다.</p>
+<pre><code>1) 데이터 프레임 개체 이름을 입력하는 방법 : head()나 tail() 함수 함께 사용
+2) R Studio의 Global Environment의 Data에서 마우스로 df를 클릭하는 방법. 이는 `base` R의 `View()` 함수를 사용하는 것과 같다.
+3) `tibble` 패키지 또는 `dplyr` 패키지의 `glimpse()` 함수 사용</code></pre>
+<p>앞에서 생성한 <code>df1</code> 데이터를 보기 위한 첫번째 방법은 단순히 개체이름을 입력하는 것이다. 이때 행의 갯수가 많은 경우는 <strong><code>head()</code></strong> 또는 <strong><code>tail()</code></strong> 함수를 이용한다.</p>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="dataframe.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df1)</span></code></pre></div>
+<pre><code>##   X1.5 letters.1.5.
+## 1    1            a
+## 2    2            b
+## 3    3            c
+## 4    4            d
+## 5    5            e</code></pre>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="dataframe.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(df1)</span>
+<span id="cb408-2"><a href="dataframe.html#cb408-2" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">glimpse</span>(df1)</span></code></pre></div>
+<pre><code>## Rows: 5
+## Columns: 2
+## $ X1.5         &lt;int&gt; 1, 2, 3, 4, 5
+## $ letters.1.5. &lt;chr&gt; &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;</code></pre>
+<ul>
+<li><code>View()</code> 함수를 사용하면 RStudio에서는 별도의 탭 화면이 생기면서 데이터 내용이 출력된다.</li>
+</ul>
+</div>
+<div id="데이터-프레임의-통계적-요약-정보" class="section level3" number="2.1.5">
+<h3><span class="header-section-number">2.1.5</span> 데이터 프레임의 통계적 요약 정보</h3>
+<p>데이터 프레임의 경우 summary() 함수를 이용하여 다음과 같이 각 컬럼별 통계적 요약 정보를 확인할 수 있다.</p>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="dataframe.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df1)</span></code></pre></div>
+<pre><code>##       X1.5   letters.1.5.      
+##  Min.   :1   Length:5          
+##  1st Qu.:2   Class :character  
+##  Median :3   Mode  :character  
+##  Mean   :3                     
+##  3rd Qu.:4                     
+##  Max.   :5</code></pre>
+<ul>
+<li><code>숫자형 컬럼</code>의 경우는 최댓값, 최솟값, 4분위수, 중앙값과 평균값 등이 출력된다.</li>
+<li><code>문자형 컬럼</code>의 경우는 행의 갯수와 컬럼의 Class와 Mode가 출력된다.</li>
+</ul>
+</div>
+<div id="iris-데이터-세트의-예" class="section level3" number="2.1.6">
+<h3><span class="header-section-number">2.1.6</span> <code>iris</code> 데이터 세트의 예</h3>
+<p>R에 내장되어 있는 <code>iris</code> 데이터 세트는 데이터 프레임 구조를 갖고 있다.</p>
+<div id="iris의-데이터-구조" class="section level4" number="2.1.6.1">
+<h4><span class="header-section-number">2.1.6.1</span> <code>iris</code>의 데이터 구조</h4>
+<p><code>iris</code>의 데이터 구조를 확인해 보자.</p>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="dataframe.html#cb412-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(iris)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
+##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<ul>
+<li><code>'data.frame':    150 obs. of  5 variables:</code> : 5개의 열과 150개의 행으로 구성된 데이터 프레임 구조.</li>
+<li>각각의 컬럼에 대하여 <code>$</code>로 구분되는 컬럼의 이름, 데이터 유형, 그리고 데이터 예를 보여주고 있다.</li>
+</ul>
+</div>
+<div id="iris의-데이터-내용" class="section level4" number="2.1.6.2">
+<h4><span class="header-section-number">2.1.6.2</span> <code>iris</code>의 데이터 내용</h4>
+<p><code>iris</code> 데이터 세트의 데이터 내용을 확인해 보자. 행의 갯수가 150개 이므로 첫 6개의 행을 보기 위해 <code>head()</code> 함수를 사용한다.</p>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="dataframe.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<p>참고로 <code>head()</code> 함수와 <code>tail()</code> 함수의 사용에 대하여 간단히 소개한다.</p>
+<ul>
+<li><code>head(iris, n=10)</code> : <code>iris</code> 데이터 세트의 첫 10개 행을 볼 수 있다. <code>n =</code> 인수로 행의 갯수를 조절할 수 있다.</li>
+<li><code>tail(iris, n=10)</code> : <code>iris</code> 데이터 세트의 마지막 10개 행을 볼 수 있다. <code>n =</code> 인수로 행의 갯수를 조절할 수 있다.</li>
+</ul>
+</div>
+<div id="iris의-통계적-요약-정보" class="section level4" number="2.1.6.3">
+<h4><span class="header-section-number">2.1.6.3</span> <code>iris</code>의 통계적 요약 정보</h4>
+<p><code>summary()</code> 함수를 이용하여 <code>iris</code> 데이터 세트에 대한 통계적 요약 정보를 확인해 보자.</p>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="dataframe.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(iris)</span></code></pre></div>
+<pre><code>##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
+##  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+##  Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+##  Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
+##  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+##  Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+##        Species  
+##  setosa    :50  
+##  versicolor:50  
+##  virginica :50  
+##                 
+##                 
+## </code></pre>
+<ul>
+<li>4개의 숫자형 컬럼들은 통계적 요약 정보로 min, 1st Qu., Median, Mean, 3rd Qu., Max. 등의 요약 정보를 출력한다.</li>
+<li>문자형 컬럼이 <code>Species</code> 컬럼의 경우는 컬럼이 갖는 값의 종류별 데이터의 갯수를 보여준다.</li>
+</ul>
+</div>
+</div>
+<div id="데이터-프레임의-행열의-이름-지정하기" class="section level3" number="2.1.7">
+<h3><span class="header-section-number">2.1.7</span> 데이터 프레임의 행/열의 이름 지정하기</h3>
+<p>데이터 프레임의 각 컬럼과 행에 대하여 이름을 지정하고 수정할 수 있다.</p>
+<div id="데이터-세트" class="section level4" number="2.1.7.1">
+<h4><span class="header-section-number">2.1.7.1</span> 데이터 세트</h4>
+<p>다음과 같은 예제 데이터를 가지고 데이터 프레임의 행/열의 이름을 지정하고 수정하는 방법에 대해 학습하기로 한다.</p>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="dataframe.html#cb418-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">b=</span>letters[<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>], <span class="at">c=</span><span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>); df1</span></code></pre></div>
+<pre><code>##   a b c
+## 1 1 d 7
+## 2 2 e 8
+## 3 3 f 9</code></pre>
+</div>
+<div id="컬럼-이름-확인과-수정" class="section level4" number="2.1.7.2">
+<h4><span class="header-section-number">2.1.7.2</span> 컬럼 이름 확인과 수정</h4>
+<p>데이터 프레임의 컬럼 이름을 확인하고 수정하는 데에는 <strong><code>colnames()</code></strong> 함수를 사용한다.</p>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="dataframe.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df1)                               <span class="co"># df1의 컬럼 이름 확인</span></span></code></pre></div>
+<pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="dataframe.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df1) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1열&quot;</span>, <span class="st">&quot;2열&quot;</span>, <span class="st">&quot;3열&quot;</span>)     <span class="co"># df1의 컬럼 이름 수정</span></span>
+<span id="cb422-2"><a href="dataframe.html#cb422-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df1)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    3 obs. of  3 variables:
+##  $ 1열: int  1 2 3
+##  $ 2열: chr  &quot;d&quot; &quot;e&quot; &quot;f&quot;
+##  $ 3열: int  7 8 9</code></pre>
+<ul>
+<li><code>colnames(df1)</code> : <code>df1</code>의 컬럼 이름이 <code>a</code>, <code>b</code>, <code>c</code> 임을 확인할 수 있다.</li>
+<li><code>colnames(df1) &lt;- c("1열", "2열", "3열")</code> : df1의 컬럼 이름을 <code>("1열", "2열", "3열")</code>로 수정한다.</li>
+</ul>
+</div>
+<div id="행-이름-확인과-수정" class="section level4" number="2.1.7.3">
+<h4><span class="header-section-number">2.1.7.3</span> 행 이름 확인과 수정</h4>
+<p>데이터 프레임의 행 이름을 확인하고 수정하는 데에는 <strong><code>rownames()</code></strong> 함수를 사용한다.</p>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="dataframe.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(df1)                                <span class="co"># df1의 행 이름 확인</span></span></code></pre></div>
+<pre><code>## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot;</code></pre>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="dataframe.html#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(df1) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;행1&#39;</span>,<span class="st">&#39;행2&#39;</span>,<span class="st">&#39;행3&#39;</span>)        <span class="co"># df1의 행 이름 변경</span></span>
+<span id="cb426-2"><a href="dataframe.html#cb426-2" aria-hidden="true" tabindex="-1"></a>df1</span></code></pre></div>
+<pre><code>##     1열 2열 3열
+## 행1   1   d   7
+## 행2   2   e   8
+## 행3   3   f   9</code></pre>
+</div>
+</div>
+<div id="데이터-프레임의-데이터에-접근하기" class="section level3" number="2.1.8">
+<h3><span class="header-section-number">2.1.8</span> 데이터 프레임의 데이터에 접근하기</h3>
+<p>데이터 프레임은 행과 열과 구성되는 표의 구조를 갖는다. 이러한 데이터 프레임의 데이터에 대한 접근은 다음과 같은 세 가지 방법으로 접근할 수 있다.</p>
+<ul>
+<li>한 셀에 위치한 특정 요소 값 접근</li>
+<li>행 전체 접근</li>
+<li>열 전체 접근</li>
+</ul>
+<p>한편, 이러한 데이터를 참조할 때는 또한 다음과 같은 방법으로 참조할 수 있다.
+- 행과 열의 위치(색인) 번호
+- 행과 열의 이름
+- 조건에 의한 참조 : 행과 열의 논리형 벡터</p>
+<p>따라서 아래에서는 이러한 두 가지 참조 방법으로 각각의 데이터에 접근해 보기로 한다.</p>
+<div id="예제-데이터-세트" class="section level4" number="2.1.8.1">
+<h4><span class="header-section-number">2.1.8.1</span> 예제 데이터 세트</h4>
+<p>데이터 프레임의 데이터에 대한 접근을 위해 다음과 같은 데이터 세트를 예로 만든다.</p>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="dataframe.html#cb428-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">col1 =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],</span>
+<span id="cb428-2"><a href="dataframe.html#cb428-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col2 =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>),</span>
+<span id="cb428-3"><a href="dataframe.html#cb428-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col3 =</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb428-4"><a href="dataframe.html#cb428-4" aria-hidden="true" tabindex="-1"></a>                 )</span>
+<span id="cb428-5"><a href="dataframe.html#cb428-5" aria-hidden="true" tabindex="-1"></a>df2</span></code></pre></div>
+<pre><code>##   col1 col2 col3
+## 1    a    2    A
+## 2    b    4    B
+## 3    c    6    C
+## 4    d    8    D
+## 5    e   10    E</code></pre>
+</div>
+<div id="색인-번호-참조" class="section level4" number="2.1.8.2">
+<h4><span class="header-section-number">2.1.8.2</span> 색인 번호 참조</h4>
+<p>색인 번호를 참조한 데이터의 접근을 인덱싱(indexing) 이라고 한다.</p>
+<p>데이터 프레임은 행과 열로 구성되는데, 각 열과 행은 기본적으로 1부터 N까지의 번호가 자동으로 부여된다.</p>
+<p>그리고 이러한 행과 열에 대하여 <code>df2[m, n]</code>과 같이 행렬 형식으로 데이터 프레임의 <code>m</code> 행, <code>n</code> 열의 요소 값에 접근할 수 있다.</p>
+<div id="행-번호-접근" class="section level5" number="2.1.8.2.1">
+<h5><span class="header-section-number">2.1.8.2.1</span> 행 번호 접근</h5>
+<p>예제 데이터 <code>df2</code>에 대해 행 데이터는 다음과 같이 접근할 수 있다.</p>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="dataframe.html#cb430-1" aria-hidden="true" tabindex="-1"></a>df2[<span class="dv">2</span>, ]                <span class="co"># 2번쨰 행</span></span></code></pre></div>
+<pre><code>##   col1 col2 col3
+## 2    b    4    B</code></pre>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="dataframe.html#cb432-1" aria-hidden="true" tabindex="-1"></a>df2[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), ]           <span class="co"># 1, 3번째 행</span></span></code></pre></div>
+<pre><code>##   col1 col2 col3
+## 1    a    2    A
+## 3    c    6    C</code></pre>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="dataframe.html#cb434-1" aria-hidden="true" tabindex="-1"></a>df2[<span class="sc">-</span><span class="dv">2</span>, ]               <span class="co"># 2번째 행 제외</span></span></code></pre></div>
+<pre><code>##   col1 col2 col3
+## 1    a    2    A
+## 3    c    6    C
+## 4    d    8    D
+## 5    e   10    E</code></pre>
+<ul>
+<li><code>[행 번호,열 번호]</code>로 구성되는 대괄호 안에 <code>열 번호</code>를 생략하면 모든 열을 표시</li>
+<li><code>df2[c(1, 3), ]</code> : 동시에 여러 행을 지정하기</li>
+<li><code>df2[-2, ]</code> : <code>-</code> 기호로 행을 제외할 수 있다.</li>
+</ul>
+</div>
+<div id="열-번호-접근" class="section level5" number="2.1.8.2.2">
+<h5><span class="header-section-number">2.1.8.2.2</span> 열 번호 접근</h5>
+<p>예제 데이터 <code>df2</code>에 대한 열 데이터는 다음과 같이 접근할 수 있다.</p>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="dataframe.html#cb436-1" aria-hidden="true" tabindex="-1"></a>df2[  , <span class="dv">2</span>]                <span class="co"># 2번쨰 열</span></span></code></pre></div>
+<pre><code>## [1]  2  4  6  8 10</code></pre>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="dataframe.html#cb438-1" aria-hidden="true" tabindex="-1"></a>df2[ ,  <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]           <span class="co"># 1, 3번째 열</span></span></code></pre></div>
+<pre><code>##   col1 col3
+## 1    a    A
+## 2    b    B
+## 3    c    C
+## 4    d    D
+## 5    e    E</code></pre>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="dataframe.html#cb440-1" aria-hidden="true" tabindex="-1"></a>df2[ , <span class="sc">-</span><span class="dv">2</span>]                <span class="co"># 2번째 열 제외</span></span></code></pre></div>
+<pre><code>##   col1 col3
+## 1    a    A
+## 2    b    B
+## 3    c    C
+## 4    d    D
+## 5    e    E</code></pre>
+<ul>
+<li><code>[행 번호,열 번호]</code>로 구성되는 대괄호 안에서 <code>행 번호</code>를 생략하면 모든 행을 표시한다.</li>
+<li><code>df2[  , 2]</code> : 두 번째 열을 표시하는데, 벡터 형식임을 주목하라.</li>
+<li><code>df2[ ,  c(1,3)]</code> : 1, 3번째 열의 데이터에 접근한다.</li>
+<li><code>df2[ , -2]</code> : 2번째 열을 제외한 나머지 열의 데이터에 접근한다</li>
+</ul>
+</div>
+<div id="특정-셀의-데이터-접근" class="section level5" number="2.1.8.2.3">
+<h5><span class="header-section-number">2.1.8.2.3</span> 특정 셀의 데이터 접근</h5>
+<p>특정 열의 특정 행의 값을 접근하기 위해서는 다음과 같이 행의 번호와 열의 번호를 지정하면 된다.</p>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="dataframe.html#cb442-1" aria-hidden="true" tabindex="-1"></a>df2[<span class="dv">1</span>, <span class="dv">3</span>]                <span class="co"># 1행, 3열의 값</span></span></code></pre></div>
+<pre><code>## [1] &quot;A&quot;</code></pre>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="dataframe.html#cb444-1" aria-hidden="true" tabindex="-1"></a>df2[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)]    <span class="co"># (1, 3) 행에 대해 (1, 2)열의 값</span></span></code></pre></div>
+<pre><code>##   col1 col2
+## 1    a    2
+## 3    c    6</code></pre>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="dataframe.html#cb446-1" aria-hidden="true" tabindex="-1"></a>df2[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>), <span class="sc">-</span><span class="dv">3</span>]              <span class="co"># 위의 두 번째와 같음</span></span></code></pre></div>
+<pre><code>##   col1 col2
+## 1    a    2
+## 3    c    6</code></pre>
+</div>
+</div>
+<div id="컬럼-이름으로-접근하기" class="section level4" number="2.1.8.3">
+<h4><span class="header-section-number">2.1.8.3</span> 컬럼 이름으로 접근하기</h4>
+<p>데이터 프레임의 각 컬럼은 <code>df2$컬럼명</code>과 같이 <code>$</code>기호를 이용하여 참조할 수 있고, 다음과 같이 색인 번호 대신에 컬럼명을 기입해서 참조할 수도 있다.</p>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="dataframe.html#cb448-1" aria-hidden="true" tabindex="-1"></a>df2<span class="sc">$</span>col1                                 <span class="co"># column이름으로 접근하기</span></span></code></pre></div>
+<pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot;</code></pre>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="dataframe.html#cb450-1" aria-hidden="true" tabindex="-1"></a>df2[ , <span class="st">&quot;col1&quot;</span>]                           <span class="co"># [  ]안에 컬럼 이름을 기입해서 접근하기</span></span></code></pre></div>
+<pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot;</code></pre>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="dataframe.html#cb452-1" aria-hidden="true" tabindex="-1"></a>df2[ , <span class="fu">c</span>(<span class="st">&quot;col1&quot;</span>, <span class="st">&quot;col3&quot;</span>)]</span></code></pre></div>
+<pre><code>##   col1 col3
+## 1    a    A
+## 2    b    B
+## 3    c    C
+## 4    d    D
+## 5    e    E</code></pre>
+</div>
+<div id="조건에-의한-행의-접근" class="section level4" number="2.1.8.4">
+<h4><span class="header-section-number">2.1.8.4</span> 조건에 의한 행의 접근</h4>
+<p>각 컬럼과 행에 대하여 조건을 적용하여 접근하는 것은 뒤에서 학습하는 <code>filter()</code> 함수를 이용할 때 적용되는 접근방법이다.</p>
+<p>여기서는 <code>filter()</code> 함수와 같이 작용하는 조건에 의한 행의 접근에 대하여 알아보가로 한다.</p>
+<p>예를 들어, <code>df2</code>의 <code>col2</code> 값이 <code>5보다 큰</code> 행만 출력하고 싶다면, 다음과 같이 하면 된다.</p>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="dataframe.html#cb454-1" aria-hidden="true" tabindex="-1"></a>cond <span class="ot">&lt;-</span> df2<span class="sc">$</span>col2 <span class="sc">&gt;</span> <span class="dv">5</span>      <span class="co"># df의 col2의 요소 값 각각에 대해 그 값이 5보다 큰지 확인한다.</span></span>
+<span id="cb454-2"><a href="dataframe.html#cb454-2" aria-hidden="true" tabindex="-1"></a>cond</span></code></pre></div>
+<pre><code>## [1] FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="dataframe.html#cb456-1" aria-hidden="true" tabindex="-1"></a>df2[cond, ]               <span class="co"># 논리형 벡터 cond를 행의 요소로 해서 df의 모든 열을 출력한다.</span></span></code></pre></div>
+<pre><code>##   col1 col2 col3
+## 3    c    6    C
+## 4    d    8    D
+## 5    e   10    E</code></pre>
+<ul>
+<li><code>cond</code>를 출력해 보면, <code>df2$col2</code>의 값이 5보다 큰 경우에만 <code>TRUE</code>값을 갖는다.</li>
+<li><code>df2[cond, ]</code> : 논리형 벡터 <code>cond</code>에서 TRUE이 요소만 <code>df2</code>의 모든 열을 출력한다.</li>
+</ul>
+<p>또한 위의 스크립트는 다음과 같이 간단하게 한 줄로 표현할 수도 있다.</p>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="dataframe.html#cb458-1" aria-hidden="true" tabindex="-1"></a>df2[df2<span class="sc">$</span>col2 <span class="sc">&gt;</span> <span class="dv">5</span>, ] </span></code></pre></div>
+<pre><code>##   col1 col2 col3
+## 3    c    6    C
+## 4    d    8    D
+## 5    e   10    E</code></pre>
+</div>
+</div>
+<div id="연습문제-3" class="section level3 unnumbered">
+<h3>연습문제</h3>
+<p><strong>R에 기본 내장되어 있는 <code>iris</code> 데이터를 활용하여 아래 질문에 답하시오.</strong></p>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="dataframe.html#cb460-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<ol style="list-style-type: decimal">
+<li><strong>첫번째, 3번째 컬럼을 선택하시오.</strong></li>
+</ol>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="dataframe.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris[, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)])</span></code></pre></div>
+<pre><code>##   Sepal.Length Petal.Length
+## 1          5.1          1.4
+## 2          4.9          1.4
+## 3          4.7          1.3
+## 4          4.6          1.5
+## 5          5.0          1.4
+## 6          5.4          1.7</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>3번째 컬럼을 빼고 선택하시오.</strong></li>
+</ol>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="dataframe.html#cb464-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris[, <span class="sc">-</span><span class="dv">3</span>])</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Width Species
+## 1          5.1         3.5         0.2  setosa
+## 2          4.9         3.0         0.2  setosa
+## 3          4.7         3.2         0.2  setosa
+## 4          4.6         3.1         0.2  setosa
+## 5          5.0         3.6         0.2  setosa
+## 6          5.4         3.9         0.4  setosa</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>각 row의 <code>Sepal.Length</code>와 <code>Sepal.Width</code>의 값을 더하여 <code>Sepal.Sum</code>이라는 컬럼을 추가하시오.</strong></li>
+</ol>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="dataframe.html#cb466-1" aria-hidden="true" tabindex="-1"></a>Sepal.Sum <span class="ot">&lt;-</span> iris<span class="sc">$</span>Sepal.Length <span class="sc">+</span> iris<span class="sc">$</span>Sepal.Width</span>
+<span id="cb466-2"><a href="dataframe.html#cb466-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">cbind</span>(iris[, <span class="sc">-</span><span class="dv">3</span>], Sepal.Sum))</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Width Species Sepal.Sum
+## 1          5.1         3.5         0.2  setosa       8.6
+## 2          4.9         3.0         0.2  setosa       7.9
+## 3          4.7         3.2         0.2  setosa       7.9
+## 4          4.6         3.1         0.2  setosa       7.7
+## 5          5.0         3.6         0.2  setosa       8.6
+## 6          5.4         3.9         0.4  setosa       9.3</code></pre>
+<p><strong>참고) <code>iris[1, ]</code> 과 <code>iris[1, ,drop=T]</code>의 차이는?</strong></p>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="dataframe.html#cb468-1" aria-hidden="true" tabindex="-1"></a>iris[<span class="dv">1</span>,]</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa</code></pre>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="dataframe.html#cb470-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(iris[<span class="dv">1</span>,])</span></code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<ul>
+<li><code>iris[1,]</code> : <code>df</code>의 첫 번째 행을 출력. 그 결과는 데이터 프레임</li>
+</ul>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="dataframe.html#cb472-1" aria-hidden="true" tabindex="-1"></a>iris[<span class="dv">1</span>, ,drop<span class="ot">=</span>T]</span></code></pre></div>
+<pre><code>## $Sepal.Length
+## [1] 5.1
+## 
+## $Sepal.Width
+## [1] 3.5
+## 
+## $Petal.Length
+## [1] 1.4
+## 
+## $Petal.Width
+## [1] 0.2
+## 
+## $Species
+## [1] setosa
+## Levels: setosa versicolor virginica</code></pre>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="dataframe.html#cb474-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(iris[<span class="dv">1</span>, ,<span class="at">drop=</span>T])</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<ul>
+<li><code>df[1, , drop=T]</code> : <code>df</code>의 첫 번째 행을 출력하되, <code>drop=T</code>에 의해 그 결과를 list로 출력함.</li>
+</ul>
+</div>
+<div id="데이터-프레임에-행열-추가하기" class="section level3" number="2.1.9">
+<h3><span class="header-section-number">2.1.9</span> 데이터 프레임에 행/열 추가하기</h3>
+<p>데이터 프레임에 새로운 행과 열을 추가하기 위해서는 데이터 프레임의 행과 열의 특성을 이해할 필요가 있다.</p>
+<p>데이터 프레임의 각 열이 갖는 구조는 벡터구조이다. 반면에 각 행의 구조는 리스트 구조이다. 따라서 추가하려는 행의 데이터는 리스트 구조여야 하며, 또한 추가하려는 열의 구조는 벡터 구조가 되어야 한다.</p>
+<p>다음과 같이 <code>vec</code> 데이터 프레임을 생성한다.</p>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="dataframe.html#cb476-1" aria-hidden="true" tabindex="-1"></a>vec1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;one&#39;</span>,<span class="st">&#39;two&#39;</span>,<span class="st">&#39;three&#39;</span>); vec1</span></code></pre></div>
+<pre><code>## [1] &quot;one&quot;   &quot;two&quot;   &quot;three&quot;</code></pre>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="dataframe.html#cb478-1" aria-hidden="true" tabindex="-1"></a>vec2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>); vec2</span></code></pre></div>
+<pre><code>## [1] 1 2 3</code></pre>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="dataframe.html#cb480-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(vec1, vec2)</span></code></pre></div>
+<div id="데이터-프레임에-열-추가하기" class="section level4" number="2.1.9.1">
+<h4><span class="header-section-number">2.1.9.1</span> 데이터 프레임에 열 추가하기</h4>
+<p>데이터 프레임에 열을 추가하기 위한 전제 조건이 있다. 그것은 추가하려는 열의 데이터 구조가 벡터여야 하며, 그 벡터의 요소 갯수가 데이터 프리엠의 행의 갯수와 같아야 한다는 것이다.</p>
+<p>데이터 프레임에 새로운 열을 추가하는 방법은 다양하다.</p>
+<ul>
+<li><code>cbind()</code> 함수 또는 <code>data.frame()</code> 함수를 이용하는 방법</li>
+<li>치환 연산자 <code>&lt;-</code> 를 이용하는 방법</li>
+</ul>
+<div id="함수를-이용하는-방법" class="section level5" number="2.1.9.1.1">
+<h5><span class="header-section-number">2.1.9.1.1</span> 함수를 이용하는 방법</h5>
+<p>앞의 예에서 <code>vec</code> 데이터 프레임에 <code>vec3</code>와 같은 (논리형) 벡터를 새로운 열로 추가하려면 다음과 같이 <code>cbind()</code> 함수를 이용할 수 있다.</p>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="dataframe.html#cb481-1" aria-hidden="true" tabindex="-1"></a>vec3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb481-2"><a href="dataframe.html#cb481-2" aria-hidden="true" tabindex="-1"></a>new_vec <span class="ot">&lt;-</span>  <span class="fu">cbind</span>(vec, vec3)</span>
+<span id="cb481-3"><a href="dataframe.html#cb481-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(new_vec)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    3 obs. of  3 variables:
+##  $ vec1: chr  &quot;one&quot; &quot;two&quot; &quot;three&quot;
+##  $ vec2: num  1 2 3
+##  $ vec3: logi  TRUE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="dataframe.html#cb483-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(new_vec)</span></code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<ul>
+<li>세번째 컬럼으로 논리형 <code>vec3</code>가 추가되었다.</li>
+</ul>
+</div>
+<div id="치환-연산자를-이용하는-방법" class="section level5" number="2.1.9.1.2">
+<h5><span class="header-section-number">2.1.9.1.2</span> 치환 연산자를 이용하는 방법</h5>
+<p>앞의 예는 다음과 같이 해도 결과는 똑 같다.</p>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="dataframe.html#cb485-1" aria-hidden="true" tabindex="-1"></a>vec3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb485-2"><a href="dataframe.html#cb485-2" aria-hidden="true" tabindex="-1"></a>new_df <span class="ot">&lt;-</span> vec                           <span class="co"># vec와 똑 같은 new_df 생서</span></span>
+<span id="cb485-3"><a href="dataframe.html#cb485-3" aria-hidden="true" tabindex="-1"></a>new_df<span class="sc">$</span>vec3 <span class="ot">&lt;-</span>  vec3                    <span class="co"># new_df에 vec3 컬럼을 새로 만들고, vec3 벡터 값을 대입</span></span>
+<span id="cb485-4"><a href="dataframe.html#cb485-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(new_df)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    3 obs. of  3 variables:
+##  $ vec1: chr  &quot;one&quot; &quot;two&quot; &quot;three&quot;
+##  $ vec2: num  1 2 3
+##  $ vec3: logi  TRUE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="dataframe.html#cb487-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(new_df)</span></code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<ul>
+<li>새로 삽입되는 <code>new_df$vec3</code> 컬럼은 <code>new_df</code>의 세 번쨰 컬럼이므로 <code>new_df[ , 3]</code>와 같이 해도 된다.</li>
+</ul>
+</div>
+</div>
+<div id="데이터-프레임에-새로운-행-추가" class="section level4" number="2.1.9.2">
+<h4><span class="header-section-number">2.1.9.2</span> 데이터 프레임에 새로운 행 추가</h4>
+<p>데이터 프레임에 새로운 행을 추가할 수 있다. 다만, 데이터 프레임의 행은 <strong>리스트 구조</strong>이기 때문에 추가하려는 행도 데이터 프레임의 각 열의 데이터 유형과 일치하는 리스트 구조여야 한다는 전제가 있다</p>
+<p>앞의 예에서 new_df에 새로운 행을 추가하는 것을 다음과 같다. 다만, 새로 추가되는 행의 리스트 구조로, new_df에 있는 컬럼들의 데이터 유형과 같아야 한다.</p>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="dataframe.html#cb489-1" aria-hidden="true" tabindex="-1"></a>new_row <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;four&quot;</span>, <span class="dv">4</span>, <span class="cn">TRUE</span>)     <span class="co"># 또는 list(vec1 = &quot;four&quot;, vec2 = 4, vec3 = TRUE)</span></span>
+<span id="cb489-2"><a href="dataframe.html#cb489-2" aria-hidden="true" tabindex="-1"></a>new_df1 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(new_df, new_row)</span>
+<span id="cb489-3"><a href="dataframe.html#cb489-3" aria-hidden="true" tabindex="-1"></a>new_df1</span></code></pre></div>
+<pre><code>##    vec1 vec2  vec3
+## 1   one    1  TRUE
+## 2   two    2 FALSE
+## 3 three    3 FALSE
+## 4  four    4  TRUE</code></pre>
+</div>
+</div>
+<div id="데이터-프레임의-행열-삭제" class="section level3" number="2.1.10">
+<h3><span class="header-section-number">2.1.10</span> 데이터 프레임의 행/열 삭제</h3>
+<p>다음과 같이 <code>new_df1</code>의 <code>vec3</code>의 컬럼을 제거할 수 있다.</p>
+<ul>
+<li>치환 연산자 <code>&lt;-</code>를 이용하여 특정 컬럼에 <code>NULL</code> 값을 대입하는 방법</li>
+<li>특정 컬럼의 색인 번호에 (<code>-</code>)를 적용하여 컬럼을 제거하는 방법</li>
+</ul>
+<p>다음의 스크립트는 위의 두 가지 방법에 대한 스크립의 예를 보여주고 있다. 여기서 <code>new_df2</code>와 <code>new_df1</code>은 같은 결과를 보여준다.</p>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="dataframe.html#cb491-1" aria-hidden="true" tabindex="-1"></a>new_df2 <span class="ot">&lt;-</span> new_df1[ , <span class="sc">-</span><span class="dv">3</span>]               <span class="co"># 색인 번호 이용</span></span>
+<span id="cb491-2"><a href="dataframe.html#cb491-2" aria-hidden="true" tabindex="-1"></a>new_df2</span></code></pre></div>
+<pre><code>##    vec1 vec2
+## 1   one    1
+## 2   two    2
+## 3 three    3
+## 4  four    4</code></pre>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="dataframe.html#cb493-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 또는</span></span>
+<span id="cb493-2"><a href="dataframe.html#cb493-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb493-3"><a href="dataframe.html#cb493-3" aria-hidden="true" tabindex="-1"></a>new_df1<span class="sc">$</span>vec3 <span class="ot">&lt;-</span> <span class="cn">NULL</span>                    <span class="co"># 컬럼에 NULL 값을 대입</span></span>
+<span id="cb493-4"><a href="dataframe.html#cb493-4" aria-hidden="true" tabindex="-1"></a>new_df1</span></code></pre></div>
+<pre><code>##    vec1 vec2
+## 1   one    1
+## 2   two    2
+## 3 three    3
+## 4  four    4</code></pre>
+<ul>
+<li>제거하고자 하는 컬럼의 색인 번호를 <code>-</code> 기호로 제거한다.</li>
+<li>제거하고자 하는 컬럼에 <code>NULL</code>값을 대입한다.</li>
+</ul>
+</div>
+<div id="데이터-프레임-컬럼의-데이터-타입-변환" class="section level3" number="2.1.11">
+<h3><span class="header-section-number">2.1.11</span> 데이터 프레임 컬럼의 데이터 타입 변환</h3>
+<div id="데이터-타입만-알고-싶을때-class-함수" class="section level4" number="2.1.11.1">
+<h4><span class="header-section-number">2.1.11.1</span> 데이터 타입‘만’ 알고 싶을때 : <code>class()</code> 함수</h4>
+<p>데이터 타입은 <code>class()</code> 함수로 확인할 수 있다.</p>
+<p><strong>숫자형 벡터</strong></p>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="dataframe.html#cb495-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<p><strong>문자형 벡터</strong></p>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="dataframe.html#cb497-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p><strong>논리형 벡터</strong></p>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="dataframe.html#cb499-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(T, <span class="cn">FALSE</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<p><strong>날짜형 벡터</strong></p>
+<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="dataframe.html#cb501-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;2020-09-01&quot;</span>, <span class="st">&quot;2020-09-31&quot;</span>)))</span></code></pre></div>
+<pre><code>## [1] &quot;Date&quot;</code></pre>
+<ul>
+<li>문자형의 날짜를 as.Date() 함수를 이용하여 날짜형(Date)로 변경해야 함.</li>
+</ul>
+<p><strong>행렬</strong></p>
+<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="dataframe.html#cb503-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)))</span></code></pre></div>
+<pre><code>## [1] &quot;matrix&quot; &quot;array&quot;</code></pre>
+<ul>
+<li>행렬은 배열의 특수한 형태임.</li>
+</ul>
+<p><strong>리스트</strong></p>
+<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="dataframe.html#cb505-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<ul>
+<li>list() 함수에 의해 데이터 구조가 리스트로 지정됨.</li>
+</ul>
+<p><strong>데이터 프레임</strong></p>
+<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="dataframe.html#cb507-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">data.frame</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+</div>
+<div id="데이터-타입과-데이터-모양에-대한-추가정보까지-str-함수" class="section level4" number="2.1.11.2">
+<h4><span class="header-section-number">2.1.11.2</span> 데이터 타입과 데이터 모양에 대한 추가정보까지 : <code>str()</code> 함수</h4>
+<p><strong><code>str()</code></strong> 함수는 데이터의 구조에 대한 요약 정보를 보여준다.</p>
+<div id="숫자형-벡터" class="section level5" number="2.1.11.2.1">
+<h5><span class="header-section-number">2.1.11.2.1</span> 숫자형 벡터</h5>
+<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="dataframe.html#cb509-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span></code></pre></div>
+<pre><code>##  num [1:2] 1 2</code></pre>
+<ul>
+<li>데이터 유형(<code>num</code>)과 요소의 갯수(<code>[1:2]</code>), 그리고 데이터 값( <code>1  2</code> ) 등을 확인할 수 있다.</li>
+</ul>
+</div>
+<div id="행렬" class="section level5" number="2.1.11.2.2">
+<h5><span class="header-section-number">2.1.11.2.2</span> 행렬</h5>
+<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="dataframe.html#cb511-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)))</span></code></pre></div>
+<pre><code>##  num [1:2, 1] 1 2</code></pre>
+<ul>
+<li>데이터 유형(<code>num</code>), 요소의 갯수(<code>[1:2, 1]</code>), 여기서 행의 갯수는 <code>[1:2]</code>, 열의 갯수가 <code>1</code>개 임., 그리고 데이터 값( <code>1  2</code> ) 등을 확인할 수 있다.</li>
+</ul>
+</div>
+<div id="리스트" class="section level5" number="2.1.11.2.3">
+<h5><span class="header-section-number">2.1.11.2.3</span> 리스트</h5>
+<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="dataframe.html#cb513-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)))</span></code></pre></div>
+<pre><code>## List of 1
+##  $ : num [1:2] 1 2</code></pre>
+<ul>
+<li><code>List of 1</code> : 데이터 구조가 <code>List'형,  컬럼의 갯수는</code>1`개</li>
+<li><code>$ : num [1:2] 1 2</code> : 컬럼 명이 지정되어 있지 않으며(<code>$</code> 다음에 컬럼 이름이 표시됨), 데이터 유형은 num, 요소의 갯수는 [1:2], 실제 데이터는 <code>1 2</code></li>
+</ul>
+</div>
+<div id="데이터-프레임" class="section level5" number="2.1.11.2.4">
+<h5><span class="header-section-number">2.1.11.2.4</span> 데이터 프레임</h5>
+<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="dataframe.html#cb515-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">data.frame</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    1 obs. of  2 variables:
+##  $ X1: num 1
+##  $ X2: num 2</code></pre>
+<ul>
+<li><code>'data.frame':    1 obs. of  2 variables:</code> : 데이터 구조는 <code>data.frame</code>, 행의 갯수는 1개(<code>1 obs.</code>), 열의 갯수는 2개(<code>2 variables</code>)</li>
+<li><code>$ X1: num 1</code> : 첫 번째 열은 <code>X1</code>(<code>$ X1</code>), 이 열의 데이터 유형은 숫자형(num), 값은 <code>1</code></li>
+<li><code>$ X2: num 2</code> : 두 번째 열은 <code>X2</code>(<code>$ X2</code>), 이 열의 데이터 유형은 숫자형(num), 값은 <code>2</code></li>
+</ul>
+</div>
+</div>
+<div id="데이터-유형만-확인" class="section level4" number="2.1.11.3">
+<h4><span class="header-section-number">2.1.11.3</span> 데이터 유형만 확인</h4>
+<div id="숫자형-확인-is.numeric-함수" class="section level5" number="2.1.11.3.1">
+<h5><span class="header-section-number">2.1.11.3.1</span> 숫자형 확인 : <code>is.numeric()</code> 함수</h5>
+<p>숫사형 벡터의 확인</p>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="dataframe.html#cb517-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>문자형 벡터의 확인</p>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="dataframe.html#cb519-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(<span class="fu">c</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>,<span class="st">&#39;c&#39;</span>))</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+</div>
+<div id="행렬-확인-is.matrix-함수" class="section level5" number="2.1.11.3.2">
+<h5><span class="header-section-number">2.1.11.3.2</span> 행렬 확인 : <code>is.matrix()</code> 함수</h5>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="dataframe.html#cb521-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.matrix</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)))</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="관련-함수들" class="section level5" number="2.1.11.3.3">
+<h5><span class="header-section-number">2.1.11.3.3</span> 관련 함수들</h5>
+<p>다음 함수들을 사용하여 데이터 타입을 손쉽게 판단할 수 있다.</p>
+<table>
+<thead>
+<tr class="header">
+<th>함수</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>is.factor(x)</code></td>
+<td>주어진 객체 <code>x</code>가 팩터인가</td>
+</tr>
+<tr class="even">
+<td><code>is.numeric(x)</code></td>
+<td>주어진 객체 <code>x</code>가 숫자를 저장한 벡터인가</td>
+</tr>
+<tr class="odd">
+<td><code>is.character(x)</code></td>
+<td>주어진 객체 <code>x</code>가 문자열을 저장한 벡터인가</td>
+</tr>
+<tr class="even">
+<td><code>is.matrix(x)</code></td>
+<td>주어진 객체 <code>x</code>가 행렬인가</td>
+</tr>
+<tr class="odd">
+<td><code>is.array(x)</code></td>
+<td>주어진 객체 <code>x</code>가 배열인가</td>
+</tr>
+<tr class="even">
+<td><code>is.data.frame(x)</code></td>
+<td>주어진 객체 <code>x</code>가 데이터 프레임인가</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="데이터-구조간의-변환" class="section level4" number="2.1.11.4">
+<h4><span class="header-section-number">2.1.11.4</span> 데이터 구조간의 변환</h4>
+<div id="list를-vector로" class="section level5" number="2.1.11.4.1">
+<h5><span class="header-section-number">2.1.11.4.1</span> list를 vector로</h5>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="dataframe.html#cb523-1" aria-hidden="true" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb523-2"><a href="dataframe.html#cb523-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unlist</span>(lst)</span></code></pre></div>
+<pre><code>## [1] 1 2 3 4</code></pre>
+</div>
+<div id="list를-dataframe으로" class="section level5" number="2.1.11.4.2">
+<h5><span class="header-section-number">2.1.11.4.2</span> list를 dataframe으로</h5>
+<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="dataframe.html#cb525-1" aria-hidden="true" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="at">y=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>))</span>
+<span id="cb525-2"><a href="dataframe.html#cb525-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(lst)</span></code></pre></div>
+<pre><code>##   x y
+## 1 1 3
+## 2 2 4</code></pre>
+</div>
+<div id="matrix를-데이터-프레임으로" class="section level5" number="2.1.11.4.3">
+<h5><span class="header-section-number">2.1.11.4.3</span> matrix를 데이터 프레임으로</h5>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="dataframe.html#cb527-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="at">ncol=</span><span class="dv">2</span>)</span>
+<span id="cb527-2"><a href="dataframe.html#cb527-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(mat)</span></code></pre></div>
+<pre><code>##   X1 X2
+## 1  1  3
+## 2  2  4</code></pre>
+</div>
+<div id="벡터를-factor로-factor를-벡터" class="section level5" number="2.1.11.4.4">
+<h5><span class="header-section-number">2.1.11.4.4</span> 벡터를 factor로, factor를 벡터</h5>
+<p>문자열을 Factor로</p>
+<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="dataframe.html#cb529-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;m&quot;</span>,<span class="st">&quot;f&quot;</span>)</span>
+<span id="cb529-2"><a href="dataframe.html#cb529-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.factor</span>(x)</span></code></pre></div>
+<pre><code>## [1] m f
+## Levels: f m</code></pre>
+<ul>
+<li><code>Levels</code> 로 Factor임을 확인함.</li>
+</ul>
+<p>Factor를 다시 숫자형으로</p>
+<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="dataframe.html#cb531-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">as.factor</span>(x))</span></code></pre></div>
+<pre><code>## [1] 2 1</code></pre>
+<p>타입을 <strong>강제로 변환(Coercing)</strong>하고자 할 때도 있을 것이다.
+문자열 벡터를 팩터로 변환하는 경우 등이 그 예다.
+이러한 변환을 하는 한 가지 방법은 타입 이름이 ‘<code>typename</code>’이라 할 때 ‘<code>as.typename( )</code>’이라는 함수를 사용하는 것이다.</p>
+</div>
+<div id="관련-함수-목록" class="section level5" number="2.1.11.4.5">
+<h5><span class="header-section-number">2.1.11.4.5</span> 관련 함수 목록</h5>
+<p>다음에 관련 함수의 목록을 보였다.</p>
+<table>
+<thead>
+<tr class="header">
+<th>함수</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>as.factor(x)</code></td>
+<td>주어진 객체 <code>x</code>를 팩터로 변환</td>
+</tr>
+<tr class="even">
+<td><code>as.numeric(x)</code></td>
+<td>주어진 객체 <code>x</code>를 숫자를 저장한 벡터로 변환</td>
+</tr>
+<tr class="odd">
+<td><code>as.character(x)</code></td>
+<td>주어진 객체 <code>x</code>를 문자열을 저장한 벡터로 변환</td>
+</tr>
+<tr class="even">
+<td><code>as.matrix(x)</code></td>
+<td>주어진 객체 <code>x</code>를 행렬로 변환</td>
+</tr>
+<tr class="odd">
+<td><code>as.array(x)</code></td>
+<td>주어진 객체 <code>x</code>를 배열로 변환</td>
+</tr>
+<tr class="even">
+<td><code>as.data.frame(x)</code></td>
+<td>주어진 객체 <code>x</code>를 데이터 프레임으로 변환</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="연습문제-4" class="section level3" number="2.1.12">
+<h3><span class="header-section-number">2.1.12</span> 연습문제</h3>
+<ol style="list-style-type: decimal">
+<li><strong><code>남</code>, <code>여</code>를 <code>1</code>,<code>2</code> 로 바꿔보자</strong></li>
+</ol>
+<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="dataframe.html#cb533-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;남&#39;</span>,<span class="st">&#39;여&#39;</span>,<span class="st">&#39;남&#39;</span>,<span class="st">&#39;남&#39;</span>,<span class="st">&#39;여&#39;</span>)</span>
+<span id="cb533-2"><a href="dataframe.html#cb533-2" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(vec <span class="sc">==</span> <span class="st">&quot;남&quot;</span>, <span class="st">&quot;여&quot;</span>, <span class="st">&quot;남&quot;</span>); vec</span></code></pre></div>
+<pre><code>## [1] &quot;여&quot; &quot;남&quot; &quot;여&quot; &quot;여&quot; &quot;남&quot;</code></pre>
+<p>참고 : <strong><code>남</code>, <code>여</code>를 <code>2</code>, <code>1</code> 로 바꾸면?</strong></p>
+<div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="dataframe.html#cb535-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;남&#39;</span>,<span class="st">&#39;여&#39;</span>,<span class="st">&#39;남&#39;</span>,<span class="st">&#39;남&#39;</span>,<span class="st">&#39;여&#39;</span>)</span>
+<span id="cb535-2"><a href="dataframe.html#cb535-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">factor</span>(vec, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">&#39;여&#39;</span>,<span class="st">&#39;남&#39;</span>)))</span></code></pre></div>
+<pre><code>## [1] 2 1 2 2 1</code></pre>
+</div>
+<div id="실습-과제" class="section level3" number="2.1.13">
+<h3><span class="header-section-number">2.1.13</span> 실습 과제</h3>
+<p><strong>첨부한 파일을 다운 받고 R에서 변수 <code>data</code>로 불러들여라</strong>.</p>
+<p><a href="https://insightteller.tistory.com/attachment/cfile2.uf@99A3723359F55A7E16D9D1.csv">toyota_sample.csv</a></p>
+<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="dataframe.html#cb537-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://insightteller.tistory.com/attachment/cfile2.uf@99A3723359F55A7E16D9D1.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   Id = col_double(),
+##   Model = col_character(),
+##   Price = col_double(),
+##   Age = col_double(),
+##   Mfg_Month = col_double(),
+##   Mfg_Year = col_double(),
+##   KM = col_double(),
+##   Fuel_Type = col_character()
+## )</code></pre>
+<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="dataframe.html#cb539-1" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div>
+<pre><code>## # A tibble: 7 x 8
+##      Id Model                     Price   Age Mfg_Month Mfg_Year    KM Fuel_Type
+##   &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    
+## 1     1 TOYOTA Corolla 2.0 D4D H~ 13500    23        10     2002 46986 Diesel   
+## 2     2 TOYOTA Corolla 2.0 D4D H~ 13750    23        10     2002 72937 Diesel   
+## 3     3 TOYOTA Corolla 2.0 D4D H~ 13950    24         9     2002 41711 Diesel   
+## 4     4 TOYOTA Corolla 2.0 D4D H~ 14950    26         7     2002 48000 Diesel   
+## 5     5 TOYOTA Corolla 2.0 D4D H~ 13750    30         3     2002 38500 Diesel   
+## 6     6 TOYOTA Corolla 2.0 D4D H~ 12950    32         1     2002 61000 Diesel   
+## 7     7 ?TOYOTA Corolla 2.0 D4D ~ 16900    27         6     2002 94612 Diesel</code></pre>
+</div>
+<div id="apply-함수-이해하기" class="section level3" number="2.1.14">
+<h3><span class="header-section-number">2.1.14</span> <code>apply()</code> 함수 이해하기</h3>
+<ul>
+<li>행렬 혹은 data.frame에서 각 row, column에 대해 평균을 계산한다든지, 특정 함수를 적용하고 싶을 때가 있다.</li>
+<li>이럴 때, 가장 기본적으로 생각하는 게 <code>for()</code> loop를 활용하여 각 row(혹은 column) 별로 함수를 적용하는 것이다.</li>
+</ul>
+<p>예를 들어,</p>
+<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="dataframe.html#cb541-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>), <span class="at">nrow=</span><span class="dv">3</span>)</span>
+<span id="cb541-2"><a href="dataframe.html#cb541-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 각 row의 평균을 계산하고 싶다면</span></span>
+<span id="cb541-3"><a href="dataframe.html#cb541-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(mat))){</span>
+<span id="cb541-4"><a href="dataframe.html#cb541-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">mean</span>(mat[i,]))</span>
+<span id="cb541-5"><a href="dataframe.html#cb541-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 4
+## [1] 5
+## [1] 6</code></pre>
+<p>그런데 <strong>많은 양의 데이터를 <code>for()</code> loop 하는 것은 비효율적</strong>이다.</p>
+<ul>
+<li>매번 <code>for()</code> loop를 돌 때마다 함수를 불러와야 하기 때문이다.</li>
+<li>따라서 최대한 <code>for()</code> loop를 줄이는 것이 중요하다!!</li>
+<li>그 때 사용하는 함수가 바로 <strong><code>apply()</code></strong> 함수이다.</li>
+<li><code>apply()</code> 함수는 한 번만 함수를 불러와서 모든 데이터에 적용하기 때문에 훨씬 시간을 줄일 수 있다.</li>
+</ul>
+<div id="데이터-세트-1" class="section level4" number="2.1.14.1">
+<h4><span class="header-section-number">2.1.14.1</span> 데이터 세트</h4>
+<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="dataframe.html#cb543-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>), <span class="at">nrow=</span><span class="dv">3</span>)</span></code></pre></div>
+</div>
+<div id="행별로-함수-적용-margin-1" class="section level4" number="2.1.14.2">
+<h4><span class="header-section-number">2.1.14.2</span> 행별로 함수 적용 : <code>margin = 1</code></h4>
+<p><code>mat</code> 데이터 세트의 행별(<code>1</code>) 평균값(<code>mean</code>) 산출</p>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="dataframe.html#cb544-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(mat, <span class="dv">1</span>, mean)             <span class="co"># mean이라는 함수를 row(1)로 적용</span></span></code></pre></div>
+<pre><code>## [1] 4 5 6</code></pre>
+<p><code>mat</code> 데이터 세트의 행별(<code>1</code>) 범위(<code>range</code>) 산출</p>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="dataframe.html#cb546-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(mat, <span class="dv">1</span>, range)            <span class="co"># range 함수는 각행의 최소, 최댓값 2개를 반환함</span></span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    7    8    9</code></pre>
+</div>
+<div id="열별로-함수-적용-margin-2" class="section level4" number="2.1.14.3">
+<h4><span class="header-section-number">2.1.14.3</span> 열별로 함수 적용 : <code>margin = 2</code></h4>
+<p><code>mat</code> 데이터 세트의 열별(<code>2</code>) 평균값(<code>mean</code>) 산출</p>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="dataframe.html#cb548-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(mat, <span class="dv">2</span>, mean)             <span class="co"># mean이라는 함수를 column(2) 별로 적용</span></span></code></pre></div>
+<pre><code>## [1] 2 5 8</code></pre>
+</div>
+</div>
+<div id="연습문제-5" class="section level3" number="2.1.15">
+<h3><span class="header-section-number">2.1.15</span> 연습문제</h3>
+<p><code>iris</code> 데이터 세트에 적용해보자</p>
+<ol style="list-style-type: decimal">
+<li><strong><code>apply()</code> 함수를 활용하여 <code>iris</code>의 <code>Species</code>를 제외한 4개 변수에 대해 평균을 아래와 같이 계산하라.</strong></li>
+</ol>
+<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="dataframe.html#cb550-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(iris[, <span class="sc">-</span><span class="dv">5</span>], <span class="dv">2</span>, mean)</span></code></pre></div>
+<pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+##     5.843333     3.057333     3.758000     1.199333</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><strong><code>apply()</code> 함수를 활용하여 <code>Sepal.Length</code>, <code>Sepal.Width</code>의 최소, 최대값을 아래와 같이 구하라. (최소, 최댓값을 구하는 함수는 <code>range</code>)</strong></li>
+</ol>
+<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="dataframe.html#cb552-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(iris[, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)], <span class="dv">2</span>, range)</span></code></pre></div>
+<pre><code>##      Sepal.Length Sepal.Width
+## [1,]          4.3         2.0
+## [2,]          7.9         4.4</code></pre>
+<div id="list-벡터에-대한-for-loop-계산" class="section level4" number="2.1.15.1">
+<h4><span class="header-section-number">2.1.15.1</span> list, 벡터에 대한 for loop 계산</h4>
+<ul>
+<li>데이터 프레임과 마찬가지로 list, vector에 대해서도 <code>for()</code> loop를 최소화 하는 것이 좋다.</li>
+<li>대신, <code>apply()</code>와 비슷하게 <strong><code>lapply()</code></strong>, <strong><code>sapply()</code></strong>를 사용한다.</li>
+<li>좀 더 구체적으로 예를 들어보면, <code>list(1,2,3)</code>을 제곱한 값을 반환하고 싶다고 하자.</li>
+<li>그런데 아래와 같이 계산하면 실행이 안 된다. list는 vector처럼 연산 함수가 적용되지 않기 떄문이다.</li>
+</ul>
+</div>
+<div id="lapply-함수와-sapply-함수" class="section level4" number="2.1.15.2">
+<h4><span class="header-section-number">2.1.15.2</span> <code>lapply()</code> 함수와 <code>sapply()</code> 함수</h4>
+<p>이럴 때, <code>for()</code> loop이 아닌 <code>lapply()</code> 함수 또는 <code>sapply()</code>함수를 사용한다.</p>
+<pre><code>`lapply(벡터 혹은 리스트, 함수)`
+`sapply(벡터 혹은 리스트, 함수)`</code></pre>
+<div id="lapply-함수" class="section level5" number="2.1.15.2.1">
+<h5><span class="header-section-number">2.1.15.2.1</span> <code>lapply()</code> 함수</h5>
+<p>앞에 예를 들었듯이, <code>list(1,2,3)</code>을 제곱하고 싶다면,</p>
+<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="dataframe.html#cb555-1" aria-hidden="true" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb555-2"><a href="dataframe.html#cb555-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(lst, <span class="cf">function</span>(x){x<span class="sc">^</span><span class="dv">2</span>})</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] 4
+## 
+## [[3]]
+## [1] 9</code></pre>
+</div>
+<div id="sapply-함수" class="section level5" number="2.1.15.2.2">
+<h5><span class="header-section-number">2.1.15.2.2</span> <code>sapply()</code> 함수</h5>
+<p>그런데 <code>lapply()</code>의 결과는 list로 나오기 때문에, 벡터로 나오게 하고 싶다면 <code>sapply()</code>를 이용한다.</p>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="dataframe.html#cb557-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(lst, <span class="cf">function</span>(x){x<span class="sc">^</span><span class="dv">2</span>})</span></code></pre></div>
+<pre><code>## [1] 1 4 9</code></pre>
+</div>
+<div id="iris-데이터-세트의-예-1" class="section level5" number="2.1.15.2.3">
+<h5><span class="header-section-number">2.1.15.2.3</span> <code>iris</code> 데이터 세트의 예</h5>
+<p><strong><code>lapply()</code></strong> 함수를 이용하여, 모든 행에 대하여 <code>1:4</code>열의 합계(<code>sum</code>)를 구한다.</p>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="dataframe.html#cb559-1" aria-hidden="true" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">lapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], sum)</span>
+<span id="cb559-2"><a href="dataframe.html#cb559-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(lst)</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<p><strong><code>sapply()</code></strong> 함수를 이용하여, 모든 행에 대하여 <code>1:4</code>열의 합계(<code>sum</code>)를 구한다.</p>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="dataframe.html#cb561-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">sapply</span>(iris[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], sum)</span>
+<span id="cb561-2"><a href="dataframe.html#cb561-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(vec)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<ul>
+<li><code>lapply()</code>, <code>sapply()</code>도 data.frame 에 적용할 수 있는데,</li>
+<li><code>apply()</code>는 결과값이 <em>data.frame</em>인 반면,</li>
+<li><code>lapply()</code>, <code>sapply()</code>는 결과값이 각각 <em>list</em>, <em>vector</em> 라는 차이가 있다.</li>
+<li>그리고 기본적으로 <strong>각 column</strong>에 대해 함수가 적용된다.</li>
+</ul>
+<p>좀 더 예를 들면,</p>
+<p><code>iris</code> 데이터 세트의 <strong>각 열의 데이터 타입</strong>을 보고 싶다면?</p>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="dataframe.html#cb563-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(iris, class)</span></code></pre></div>
+<pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species 
+##    &quot;numeric&quot;    &quot;numeric&quot;    &quot;numeric&quot;    &quot;numeric&quot;     &quot;factor&quot;</code></pre>
+<p>3보다 큰 값을 갖는지 확인</p>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="dataframe.html#cb565-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">sapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="cf">function</span>(x){ x <span class="sc">&gt;</span> <span class="dv">3</span> })</span>
+<span id="cb565-2"><a href="dataframe.html#cb565-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(y)</span></code></pre></div>
+<pre><code>##      Sepal.Length Sepal.Width Petal.Length Petal.Width
+## [1,]         TRUE        TRUE        FALSE       FALSE
+## [2,]         TRUE       FALSE        FALSE       FALSE
+## [3,]         TRUE        TRUE        FALSE       FALSE
+## [4,]         TRUE        TRUE        FALSE       FALSE
+## [5,]         TRUE        TRUE        FALSE       FALSE
+## [6,]         TRUE        TRUE        FALSE       FALSE</code></pre>
+</div>
+</div>
+</div>
+<div id="연습문제-6" class="section level3" number="2.1.16">
+<h3><span class="header-section-number">2.1.16</span> 연습문제</h3>
+<ol style="list-style-type: decimal">
+<li><strong>iris 데이터를 0~1 사이 값으로 바꿔라.</strong></li>
+</ol>
+<p><strong>hint</strong>: 서로 다른 변수의 데이터가 scale이 다를 경우(어떤 변수는 -10~0 사이인데, 다른 변수는 10~1000인 경우), 정규분포를 활용한 정규화 뿐만 아니라, min, max를 활용하여 0~1사이로 바꾸는 방법도 있다. 즉, 다음 함수를 각 row에 적용하면 된다. <code>(x−min(x)) / (max(x)−min(x))</code></p>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="dataframe.html#cb567-1" aria-hidden="true" tabindex="-1"></a>min <span class="ot">&lt;-</span> <span class="fu">sapply</span>(iris[, <span class="sc">-</span><span class="dv">5</span>], min); min</span></code></pre></div>
+<pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+##          4.3          2.0          1.0          0.1</code></pre>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="dataframe.html#cb569-1" aria-hidden="true" tabindex="-1"></a>max <span class="ot">&lt;-</span> <span class="fu">sapply</span>(iris[, <span class="sc">-</span><span class="dv">5</span>], max); max</span></code></pre></div>
+<pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+##          7.9          4.4          6.9          2.5</code></pre>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="dataframe.html#cb571-1" aria-hidden="true" tabindex="-1"></a>ran <span class="ot">&lt;-</span> max <span class="sc">-</span> min; ran</span></code></pre></div>
+<pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+##          3.6          2.4          5.9          2.4</code></pre>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="dataframe.html#cb573-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">apply</span>(iris[, <span class="sc">-</span><span class="dv">5</span>], <span class="dv">1</span>, <span class="cf">function</span>(x) {(x <span class="sc">-</span> min) <span class="sc">/</span> ran})</span>
+<span id="cb573-2"><a href="dataframe.html#cb573-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">t</span>(x))</span></code></pre></div>
+<pre><code>##      Sepal.Length Sepal.Width Petal.Length Petal.Width
+## [1,]   0.22222222   0.6250000   0.06779661  0.04166667
+## [2,]   0.16666667   0.4166667   0.06779661  0.04166667
+## [3,]   0.11111111   0.5000000   0.05084746  0.04166667
+## [4,]   0.08333333   0.4583333   0.08474576  0.04166667
+## [5,]   0.19444444   0.6666667   0.06779661  0.04166667
+## [6,]   0.30555556   0.7916667   0.11864407  0.12500000</code></pre>
+</div>
+<div id="apply-함수의-사촌들" class="section level3" number="2.1.17">
+<h3><span class="header-section-number">2.1.17</span> <code>apply()</code> 함수의 사촌들</h3>
+<p>이제부터는 <code>apply()</code> 함수와 비슷한 원리지만, 각 상황에 맞게 <code>tapply()</code>, <code>mapply()</code> 가 있는데, 자주 사용되지는 않지만, 간단히 살펴보기로 한다.</p>
+<div id="tapply" class="section level4" number="2.1.17.1">
+<h4><span class="header-section-number">2.1.17.1</span> <code>tapply()</code></h4>
+<p><code>tapply()</code> : 각 집단에 따라 데이터를 처리하고 싶을때</p>
+<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="dataframe.html#cb575-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(iris)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
+##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="dataframe.html#cb577-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Species, mean)</span></code></pre></div>
+<pre><code>##     setosa versicolor  virginica 
+##      5.006      5.936      6.588</code></pre>
+</div>
+</div>
+<div id="연습문제-7" class="section level3" number="2.1.18">
+<h3><span class="header-section-number">2.1.18</span> 연습문제</h3>
+<ol style="list-style-type: decimal">
+<li><strong><code>Species</code> 별 <code>Sepal.Width</code> 의 분산은?</strong></li>
+</ol>
+<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="dataframe.html#cb579-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(iris<span class="sc">$</span>Sepal.Width, iris<span class="sc">$</span>Species, var)</span></code></pre></div>
+<pre><code>##     setosa versicolor  virginica 
+## 0.14368980 0.09846939 0.10400408</code></pre>
+<div id="mapply" class="section level4" number="2.1.18.1">
+<h4><span class="header-section-number">2.1.18.1</span> <code>mapply()</code></h4>
+<p>여러 벡터에 동일한 함수를 적용하고 싶을때 사용한다. 아래와 같이 최대공약수를 구하는 함수 <code>gcd()</code>가 있다고 하자.</p>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="dataframe.html#cb581-1" aria-hidden="true" tabindex="-1"></a>gcd <span class="ot">&lt;-</span> <span class="cf">function</span>(a,b) {</span>
+<span id="cb581-2"><a href="dataframe.html#cb581-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (b<span class="sc">==</span><span class="dv">0</span>) <span class="fu">return</span>(a)</span>
+<span id="cb581-3"><a href="dataframe.html#cb581-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> <span class="fu">return</span>(<span class="fu">gcd</span>(b, a<span class="sc">%%</span>b))</span>
+<span id="cb581-4"><a href="dataframe.html#cb581-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb581-5"><a href="dataframe.html#cb581-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb581-6"><a href="dataframe.html#cb581-6" aria-hidden="true" tabindex="-1"></a><span class="fu">gcd</span>(<span class="dv">6</span>,<span class="dv">4</span>)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>그러나, 아래와 같이 두 벡터의 각 원소간 값을 input으로 하고 싶을때 아래와 같은 문법은 오류가 발생합니다.</p>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="dataframe.html#cb583-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gcd</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">9</span>), <span class="fu">c</span>(<span class="dv">12</span>,<span class="dv">15</span>,<span class="dv">18</span>))</span></code></pre></div>
+<pre><code>## Warning in if (b == 0) return(a) else return(gcd(b, a%%b)): length &gt; 1 이라는 조
+## 건이 있고, 첫번째 요소만이 사용될 것입니다
+
+## Warning in if (b == 0) return(a) else return(gcd(b, a%%b)): length &gt; 1 이라는 조
+## 건이 있고, 첫번째 요소만이 사용될 것입니다
+
+## Warning in if (b == 0) return(a) else return(gcd(b, a%%b)): length &gt; 1 이라는 조
+## 건이 있고, 첫번째 요소만이 사용될 것입니다</code></pre>
+<pre><code>## [1] 3 6 9</code></pre>
+<p>이 경우 <code>mapply()</code> 함수 활용</p>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="dataframe.html#cb586-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mapply</span>(gcd, <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">9</span>), <span class="fu">c</span>(<span class="dv">12</span>,<span class="dv">15</span>,<span class="dv">18</span>))</span></code></pre></div>
+<pre><code>## [1] 3 3 9</code></pre>
+<pre><code>**최대공약수 함수** : 여기서 중요한 부분은 “**유클리드 호제법**”이다.
+
+간단히 말하자면, &quot;**두 양의 정수 A &gt;= B에 대해, A가 B의 배수인 경우에 최대공약수는 B이며, 그렇지 않은 경우에는 최대공약수는 B와 A%%B (A를 B로 나눈 나머지)의 최대공약수이다.**&quot;라고 할 수 있습니다.
+
+이를 코드로 표현하면 다음과 같다.</code></pre>
+<pre><code>gcd &lt;- function(a,b) {
+  if (b==0) return(a)
+  else return(gcd(b, a%%b))
+}</code></pre>
+<p>출처: <a href="https://kjwsx23.tistory.com/259" class="uri">https://kjwsx23.tistory.com/259</a> [香格里拉]</p>
+<hr />
+</div>
+</div>
+<div id="참고-sampling" class="section level3 unnumbered">
+<h3>[참고 : Sampling]</h3>
+<p>기계학습 모델링을 사용하다 보면, 무작위로 데이터를 추출해야 할 경우가 생긴다. 이럴 때 <code>sample()</code> 함수를 사용한다.</p>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="dataframe.html#cb590-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1~10에서 무작위로 5개 추출</span></span>
+<span id="cb590-2"><a href="dataframe.html#cb590-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">5</span>)                     <span class="co"># 중복 허락 하지 않고.</span></span></code></pre></div>
+<pre><code>## [1] 10  9  3  2  8</code></pre>
+<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="dataframe.html#cb592-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">5</span>, <span class="at">replace=</span>T)          <span class="co"># 중복을 허락해서 추출</span></span></code></pre></div>
+<pre><code>## [1]  4 10  2  1  6</code></pre>
+<p><code>iris</code> 데이터에서 임의로 전체의 15% 데이터 추출하기</p>
+<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="dataframe.html#cb594-1" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(iris)               <span class="co"># 1부터 iris 행의 개수</span></span>
+<span id="cb594-2"><a href="dataframe.html#cb594-2" aria-hidden="true" tabindex="-1"></a>train_idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(index, <span class="fu">round</span>(<span class="fu">nrow</span>(iris)<span class="sc">*</span><span class="fl">0.15</span>))</span>
+<span id="cb594-3"><a href="dataframe.html#cb594-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris[train_idx,])</span></code></pre></div>
+<pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+## 104          6.3         2.9          5.6         1.8  virginica
+## 57           6.3         3.3          4.7         1.6 versicolor
+## 132          7.9         3.8          6.4         2.0  virginica
+## 125          6.7         3.3          5.7         2.1  virginica
+## 47           5.1         3.8          1.6         0.2     setosa
+## 127          6.2         2.8          4.8         1.8  virginica</code></pre>
+<p>출처: <a href="https://insightteller.tistory.com/entry/R-기초-실습-3-dataframe?category=628138" class="uri">https://insightteller.tistory.com/entry/R-기초-실습-3-dataframe?category=628138</a> [Be a Insight teller]</p>
+</div>
+<div id="reference" class="section level3 unnumbered">
+<h3>Reference</h3>
+<ul>
+<li><a href="https://rfriend.tistory.com/225">Concatenating a list of data frames</a></li>
+</ul>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="df-tibble-factor.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tibble.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>
