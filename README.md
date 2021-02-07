@@ -6,7 +6,7 @@
 
 ### R Studio
 
-- [R Studio 활용](http://misdb.github.ioR/R-Studio/index.html)
+- [R Studio 활용](http://misdb.github.io/R/R-Studio/index.html)
 - [Bookdown Authoring Tool](http://misdb.github.io/R/Bookdown-Authoring-Tool/index.html)
 
 ### Tidyverse
