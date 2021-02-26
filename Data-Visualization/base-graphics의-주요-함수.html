@@ -181,12 +181,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.1" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#막대-그래프"><i class="fa fa-check"></i><b>4.3.1</b> 막대 그래프</a></li>
 <li class="chapter" data-level="4.3.2" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#클리브랜드-점-그래프"><i class="fa fa-check"></i><b>4.3.2</b> 클리브랜드 점 그래프</a></li>
 <li class="chapter" data-level="4.3.3" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#파이-차트"><i class="fa fa-check"></i><b>4.3.3</b> 파이 차트</a></li>
-<li class="chapter" data-level="4.3.4" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#산포도"><i class="fa fa-check"></i><b>4.3.4</b> 산포도</a></li>
-<li class="chapter" data-level="4.3.5" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#산포도-행렬"><i class="fa fa-check"></i><b>4.3.5</b> 산포도 행렬</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.4</b> 이변량 범주형 데이터 그래프</a>
+<li class="chapter" data-level="4.4" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.4</b> 이변량 연속형 데이터 그래프</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html#모자이크-그래프"><i class="fa fa-check"></i><b>4.4.1</b> 모자이크 그래프</a></li>
+<li class="chapter" data-level="4.4.1" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html#산포도"><i class="fa fa-check"></i><b>4.4.1</b> 산포도</a></li>
+<li class="chapter" data-level="4.4.2" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html#산포도-행렬"><i class="fa fa-check"></i><b>4.4.2</b> 산포도 행렬</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.5</b> 이변량 범주형 데이터 그래프</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html#모자이크-그래프"><i class="fa fa-check"></i><b>4.5.1</b> 모자이크 그래프</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="그래프-모수.html"><a href="그래프-모수.html"><i class="fa fa-check"></i><b>5</b> 그래프 모수</a>
@@ -539,28 +542,6 @@ Figure 3.3: R 스크립트의 그래프 구성 요소
 </p>
 </div>
 <p>주요한 <strong>높은 수준의 그래프 함수 (High Level Graphics facilities)</strong> 들을 표로 정리해보면 아래의 표 <a href="base-graphics의-주요-함수.html#tab:HighLevelGraphFun">3.1</a>와 같습니다.</p>
-<pre><code>## # A tibble: 15 x 2
-##    그래프                         `높은 수준의 그래프 함수`
-##    &lt;chr&gt;                          &lt;chr&gt;                    
-##  1 &quot;Histogram&quot;                    hist()                   
-##  2 &quot;Box-and-Whiskers Plot&quot;        boxplot()                
-##  3 &quot;Stem and Leaf Plot&quot;           stem()                   
-##  4 &quot;Bar Plot&quot;                     barplot()                
-##  5 &quot;Cleveland Dot Plot&quot;           dotchart()               
-##  6 &quot;Pie Plot&quot;                     pie()                    
-##  7 &quot;Scatter Plot&quot;                 plot()                   
-##  8 &quot;Scatter Plot Matrix&quot;          plot()                   
-##  9 &quot; \&quot; &quot;                         scatterplotMatrix()      
-## 10 &quot;Line Plot&quot;                    plot(x, y, type = &#39;l&#39;)   
-## 11 &quot;Hige Density Needle Plot&quot;     plot(x, y, type = &#39;h&#39;)   
-## 12 &quot;Both Dot and Line Plot&quot;       plot(x, y, type = &#39;b&#39;)   
-## 13 &quot;Overlapped Dot and Line Plot&quot; plot(x, y, type = &#39;o&#39;)   
-## 14 &quot;Step Plot&quot;                    plot(x, y, type = &#39;s&#39;)   
-## 15 &quot;Empty Plot&quot;                   plot(x, y, type = &#39;n&#39;)</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="base-graphics의-주요-함수.html#cb34-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb34-2"><a href="base-graphics의-주요-함수.html#cb34-2" aria-hidden="true" tabindex="-1"></a>  hlgf, <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb34-3"><a href="base-graphics의-주요-함수.html#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&#39;높은 수준의 그래프 함수&#39;</span></span>
-<span id="cb34-4"><a href="base-graphics의-주요-함수.html#cb34-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <table>
 <caption><span id="tab:HighLevelGraphFun">Table 3.1: </span>높은 수준의 그래프 함수</caption>
 <thead>

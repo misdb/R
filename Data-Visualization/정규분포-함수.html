@@ -181,12 +181,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.1" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#막대-그래프"><i class="fa fa-check"></i><b>4.3.1</b> 막대 그래프</a></li>
 <li class="chapter" data-level="4.3.2" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#클리브랜드-점-그래프"><i class="fa fa-check"></i><b>4.3.2</b> 클리브랜드 점 그래프</a></li>
 <li class="chapter" data-level="4.3.3" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#파이-차트"><i class="fa fa-check"></i><b>4.3.3</b> 파이 차트</a></li>
-<li class="chapter" data-level="4.3.4" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#산포도"><i class="fa fa-check"></i><b>4.3.4</b> 산포도</a></li>
-<li class="chapter" data-level="4.3.5" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#산포도-행렬"><i class="fa fa-check"></i><b>4.3.5</b> 산포도 행렬</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.4</b> 이변량 범주형 데이터 그래프</a>
+<li class="chapter" data-level="4.4" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.4</b> 이변량 연속형 데이터 그래프</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html#모자이크-그래프"><i class="fa fa-check"></i><b>4.4.1</b> 모자이크 그래프</a></li>
+<li class="chapter" data-level="4.4.1" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html#산포도"><i class="fa fa-check"></i><b>4.4.1</b> 산포도</a></li>
+<li class="chapter" data-level="4.4.2" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html#산포도-행렬"><i class="fa fa-check"></i><b>4.4.2</b> 산포도 행렬</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.5</b> 이변량 범주형 데이터 그래프</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html#모자이크-그래프"><i class="fa fa-check"></i><b>4.5.1</b> 모자이크 그래프</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="그래프-모수.html"><a href="그래프-모수.html"><i class="fa fa-check"></i><b>5</b> 그래프 모수</a>
@@ -489,7 +492,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb615-2"><a href="정규분포-함수.html#cb615-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span></span>
 <span id="cb615-3"><a href="정규분포-함수.html#cb615-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_function</span>(<span class="at">fun=</span>dnorm, <span class="at">colour=</span><span class="st">&quot;blue&quot;</span>, <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb615-4"><a href="정규분포-함수.html#cb615-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Normal Distribution&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
 </div>
 <div id="정규분포의-특정-구간에만-색깔-넣기" class="section level3" number="12.2.2">
 <h3><span class="header-section-number">12.2.2</span> 정규분포의 특정 구간에만 색깔 넣기</h3>
@@ -504,7 +507,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb616-9"><a href="정규분포-함수.html#cb616-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_function</span>(<span class="at">fun=</span>dnorm, <span class="at">colour=</span><span class="st">&quot;blue&quot;</span>, <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb616-10"><a href="정규분포-함수.html#cb616-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_function</span>(<span class="at">fun=</span>dnorm_range, <span class="at">geom=</span><span class="st">&quot;area&quot;</span>, <span class="at">fill=</span><span class="st">&quot;grey&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
 <span id="cb616-11"><a href="정규분포-함수.html#cb616-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Normal Distribution of x~N(0,1) with colour from -1 to 2&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
 </div>
 <div id="누적정규분포-cummulative-normal-distribution-stat_functionfun-pnorm" class="section level3" number="12.2.3">
 <h3><span class="header-section-number">12.2.3</span> 누적정규분포 (Cummulative Normal Distribution) : stat_function(fun = pnorm)</h3>
@@ -512,7 +515,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb617-2"><a href="정규분포-함수.html#cb617-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span></span>
 <span id="cb617-3"><a href="정규분포-함수.html#cb617-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_function</span>(<span class="at">fun=</span>pnorm, <span class="at">colour=</span><span class="st">&quot;black&quot;</span>, <span class="at">size=</span><span class="fl">1.5</span>) <span class="sc">+</span></span>
 <span id="cb617-4"><a href="정규분포-함수.html#cb617-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Cumulative Normal Distribution of x~N(0,1)&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-117-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
 </div>
 <div id="정규분포-평균과-분산-지정" class="section level3" number="12.2.4">
 <h3><span class="header-section-number">12.2.4</span> 정규분포 : 평균과 분산 지정</h3>
@@ -524,7 +527,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb618-6"><a href="정규분포-함수.html#cb618-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>, <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span>                <span class="co"># 평균에 세로 직선 추가</span></span>
 <span id="cb618-7"><a href="정규분포-함수.html#cb618-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_text</span>(<span class="at">x=</span><span class="dv">0</span>, <span class="at">y=</span><span class="fl">0.3</span>, <span class="at">label=</span><span class="st">&quot;x = N(2, 1)&quot;</span>) <span class="sc">+</span></span>
 <span id="cb618-8"><a href="정규분포-함수.html#cb618-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Normal Distribution of x~N(2,1)&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-118-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
 </div>
 </div>
             </section>

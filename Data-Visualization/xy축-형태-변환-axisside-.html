@@ -181,12 +181,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.1" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#막대-그래프"><i class="fa fa-check"></i><b>4.3.1</b> 막대 그래프</a></li>
 <li class="chapter" data-level="4.3.2" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#클리브랜드-점-그래프"><i class="fa fa-check"></i><b>4.3.2</b> 클리브랜드 점 그래프</a></li>
 <li class="chapter" data-level="4.3.3" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#파이-차트"><i class="fa fa-check"></i><b>4.3.3</b> 파이 차트</a></li>
-<li class="chapter" data-level="4.3.4" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#산포도"><i class="fa fa-check"></i><b>4.3.4</b> 산포도</a></li>
-<li class="chapter" data-level="4.3.5" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#산포도-행렬"><i class="fa fa-check"></i><b>4.3.5</b> 산포도 행렬</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.4</b> 이변량 범주형 데이터 그래프</a>
+<li class="chapter" data-level="4.4" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.4</b> 이변량 연속형 데이터 그래프</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html#모자이크-그래프"><i class="fa fa-check"></i><b>4.4.1</b> 모자이크 그래프</a></li>
+<li class="chapter" data-level="4.4.1" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html#산포도"><i class="fa fa-check"></i><b>4.4.1</b> 산포도</a></li>
+<li class="chapter" data-level="4.4.2" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html#산포도-행렬"><i class="fa fa-check"></i><b>4.4.2</b> 산포도 행렬</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.5</b> 이변량 범주형 데이터 그래프</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html#모자이크-그래프"><i class="fa fa-check"></i><b>4.5.1</b> 모자이크 그래프</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="그래프-모수.html"><a href="그래프-모수.html"><i class="fa fa-check"></i><b>5</b> 그래프 모수</a>
@@ -559,72 +562,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">6.2.0.1</span> X축과 Y축의 제거</h4>
 <p>X축과 Y축을 변경하기 전에 먼저 “<strong><code>axes = FALSE</code></strong>” 옵션을 사용해서 <strong>X축과 Y축을 제거</strong>해야 합니다. <strong>X축</strong>만 선별적으로 제거하려면 <code>xaxt = "n"</code>, Y축만 선별적으로 제거하려면 <code>yaxt = "n"</code> 옵션을 사용하면 되겠습니다.</p>
 <p>아래에 각각의 예를 들어보았습니다.</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="xy축-형태-변환-axisside-.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb143-2"><a href="xy축-형태-변환-axisside-.html#cb143-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-3"><a href="xy축-형태-변환-axisside-.html#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="do">##--------------------------------------------- </span></span>
-<span id="cb143-4"><a href="xy축-형태-변환-axisside-.html#cb143-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 낮은 수준의 그래픽 함수 : axis(side, ...) </span></span>
-<span id="cb143-5"><a href="xy축-형태-변환-axisside-.html#cb143-5" aria-hidden="true" tabindex="-1"></a><span class="do">##--------------------------------------------- </span></span>
-<span id="cb143-6"><a href="xy축-형태-변환-axisside-.html#cb143-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-7"><a href="xy축-형태-변환-axisside-.html#cb143-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 par 설정값을 저장합니다.</span></span>
-<span id="cb143-8"><a href="xy축-형태-변환-axisside-.html#cb143-8" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb143-9"><a href="xy축-형태-변환-axisside-.html#cb143-9" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb143-10"><a href="xy축-형태-변환-axisside-.html#cb143-10" aria-hidden="true" tabindex="-1"></a><span class="co"># par() 함수의 옵션을 변경합니다.</span></span>
-<span id="cb143-11"><a href="xy축-형태-변환-axisside-.html#cb143-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))                                  <span class="co"># 프레임을 2행 2열로 분할합니다.</span></span>
-<span id="cb143-12"><a href="xy축-형태-변환-axisside-.html#cb143-12" aria-hidden="true" tabindex="-1"></a>     </span>
-<span id="cb143-13"><a href="xy축-형태-변환-axisside-.html#cb143-13" aria-hidden="true" tabindex="-1"></a><span class="co"># X와 Y축을 플롯합니다.</span></span>
-<span id="cb143-14"><a href="xy축-형태-변환-axisside-.html#cb143-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">main =</span> <span class="st">&quot;plot with X and Y axis&quot;</span>) </span>
-<span id="cb143-15"><a href="xy축-형태-변환-axisside-.html#cb143-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb143-16"><a href="xy축-형태-변환-axisside-.html#cb143-16" aria-hidden="true" tabindex="-1"></a><span class="co"># X와 Y축을 제거합니다. : axes = FALSE </span></span>
-<span id="cb143-17"><a href="xy축-형태-변환-axisside-.html#cb143-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">axes =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> <span class="st">&quot;axes = FALSE&quot;</span>)  </span>
-<span id="cb143-18"><a href="xy축-형태-변환-axisside-.html#cb143-18" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb143-19"><a href="xy축-형태-변환-axisside-.html#cb143-19" aria-hidden="true" tabindex="-1"></a><span class="co"># X 축만 제거합니다 : xaxt = &quot;n&quot; </span></span>
-<span id="cb143-20"><a href="xy축-형태-변환-axisside-.html#cb143-20" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="at">main =</span> <span class="st">&quot;xaxt = n&quot;</span>)  </span>
-<span id="cb143-21"><a href="xy축-형태-변환-axisside-.html#cb143-21" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb143-22"><a href="xy축-형태-변환-axisside-.html#cb143-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Y 축만 제거합니다 : yaxt = &quot;n&quot; </span></span>
-<span id="cb143-23"><a href="xy축-형태-변환-axisside-.html#cb143-23" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">yaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="at">main =</span> <span class="st">&quot;yaxt = n&quot;</span>)  </span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="xy축-형태-변환-axisside-.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 원래의 par 기본 값을 불러옵니다.</span></span>
-<span id="cb144-2"><a href="xy축-형태-변환-axisside-.html#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="xy축-형태-변환-axisside-.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb142-2"><a href="xy축-형태-변환-axisside-.html#cb142-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb142-3"><a href="xy축-형태-변환-axisside-.html#cb142-3" aria-hidden="true" tabindex="-1"></a><span class="do">##--------------------------------------------- </span></span>
+<span id="cb142-4"><a href="xy축-형태-변환-axisside-.html#cb142-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 낮은 수준의 그래픽 함수 : axis(side, ...) </span></span>
+<span id="cb142-5"><a href="xy축-형태-변환-axisside-.html#cb142-5" aria-hidden="true" tabindex="-1"></a><span class="do">##--------------------------------------------- </span></span>
+<span id="cb142-6"><a href="xy축-형태-변환-axisside-.html#cb142-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb142-7"><a href="xy축-형태-변환-axisside-.html#cb142-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 par 설정값을 저장합니다.</span></span>
+<span id="cb142-8"><a href="xy축-형태-변환-axisside-.html#cb142-8" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb142-9"><a href="xy축-형태-변환-axisside-.html#cb142-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb142-10"><a href="xy축-형태-변환-axisside-.html#cb142-10" aria-hidden="true" tabindex="-1"></a><span class="co"># par() 함수의 옵션을 변경합니다.</span></span>
+<span id="cb142-11"><a href="xy축-형태-변환-axisside-.html#cb142-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))                                  <span class="co"># 프레임을 2행 2열로 분할합니다.</span></span>
+<span id="cb142-12"><a href="xy축-형태-변환-axisside-.html#cb142-12" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb142-13"><a href="xy축-형태-변환-axisside-.html#cb142-13" aria-hidden="true" tabindex="-1"></a><span class="co"># X와 Y축을 플롯합니다.</span></span>
+<span id="cb142-14"><a href="xy축-형태-변환-axisside-.html#cb142-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">main =</span> <span class="st">&quot;plot with X and Y axis&quot;</span>) </span>
+<span id="cb142-15"><a href="xy축-형태-변환-axisside-.html#cb142-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb142-16"><a href="xy축-형태-변환-axisside-.html#cb142-16" aria-hidden="true" tabindex="-1"></a><span class="co"># X와 Y축을 제거합니다. : axes = FALSE </span></span>
+<span id="cb142-17"><a href="xy축-형태-변환-axisside-.html#cb142-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">axes =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> <span class="st">&quot;axes = FALSE&quot;</span>)  </span>
+<span id="cb142-18"><a href="xy축-형태-변환-axisside-.html#cb142-18" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb142-19"><a href="xy축-형태-변환-axisside-.html#cb142-19" aria-hidden="true" tabindex="-1"></a><span class="co"># X 축만 제거합니다 : xaxt = &quot;n&quot; </span></span>
+<span id="cb142-20"><a href="xy축-형태-변환-axisside-.html#cb142-20" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="at">main =</span> <span class="st">&quot;xaxt = n&quot;</span>)  </span>
+<span id="cb142-21"><a href="xy축-형태-변환-axisside-.html#cb142-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb142-22"><a href="xy축-형태-변환-axisside-.html#cb142-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Y 축만 제거합니다 : yaxt = &quot;n&quot; </span></span>
+<span id="cb142-23"><a href="xy축-형태-변환-axisside-.html#cb142-23" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">yaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="at">main =</span> <span class="st">&quot;yaxt = n&quot;</span>)  </span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="xy축-형태-변환-axisside-.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 원래의 par 기본 값을 불러옵니다.</span></span>
+<span id="cb143-2"><a href="xy축-형태-변환-axisside-.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
 </div>
 <div id="x축과-y축의-눈금-간격-변경" class="section level4" number="6.2.0.2">
 <h4><span class="header-section-number">6.2.0.2</span> X축과 Y축의 눈금 간격 변경</h4>
 <p><strong>X축과 Y축의 범위</strong>를 알아보기 위해 <code>summary()</code> 함수로 기술통계량을 알아보겠습니다.</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="xy축-형태-변환-axisside-.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb145-2"><a href="xy축-형태-변환-axisside-.html#cb145-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb145-3"><a href="xy축-형태-변환-axisside-.html#cb145-3" aria-hidden="true" tabindex="-1"></a><span class="co"># x축과 y축의 통계 요약 정보를 확인합니다.</span></span>
-<span id="cb145-4"><a href="xy축-형태-변환-axisside-.html#cb145-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Cars93<span class="sc">$</span>Weight)                             <span class="co"># X 축</span></span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="xy축-형태-변환-axisside-.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb144-2"><a href="xy축-형태-변환-axisside-.html#cb144-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-3"><a href="xy축-형태-변환-axisside-.html#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="co"># x축과 y축의 통계 요약 정보를 확인합니다.</span></span>
+<span id="cb144-4"><a href="xy축-형태-변환-axisside-.html#cb144-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Cars93<span class="sc">$</span>Weight)                             <span class="co"># X 축</span></span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    1695    2620    3040    3073    3525    4105</code></pre>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="xy축-형태-변환-axisside-.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Cars93<span class="sc">$</span>MPG.highway)                        <span class="co"># Y 축</span></span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="xy축-형태-변환-axisside-.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Cars93<span class="sc">$</span>MPG.highway)                        <span class="co"># Y 축</span></span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##      20      26      28      29      31      50</code></pre>
 <p>X축으로 <code>Weight</code> (차의 무게)를, Y축으로는 <code>MPG.highway</code>(고속도로 연비)로 하는 산점도를 그렸을 때, <code>X</code>축은 1600~4200까지의 범위로 100씩 증가하는 눈금을, <code>Y</code>축은 18~52까지의 범위로 2씩 증가하는 눈금으로 그려보겠습니다.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="xy축-형태-변환-axisside-.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="co"># X 축의 범위 (1600 ~ 4200, by 100) </span></span>
-<span id="cb149-2"><a href="xy축-형태-변환-axisside-.html#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Y 축의 범위 (18 ~ 52, by 2) </span></span>
-<span id="cb149-3"><a href="xy축-형태-변환-axisside-.html#cb149-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-4"><a href="xy축-형태-변환-axisside-.html#cb149-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) X축과 Y축이 없는 산점도를 그립니다.</span></span>
-<span id="cb149-5"><a href="xy축-형태-변환-axisside-.html#cb149-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">axes =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb149-6"><a href="xy축-형태-변환-axisside-.html#cb149-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">1600</span>, <span class="dv">4200</span>),       </span>
-<span id="cb149-7"><a href="xy축-형태-변환-axisside-.html#cb149-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">52</span>),     </span>
-<span id="cb149-8"><a href="xy축-형태-변환-axisside-.html#cb149-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Weight와 MPG.highway의 산점도&quot;</span>)  </span>
-<span id="cb149-9"><a href="xy축-형태-변환-axisside-.html#cb149-9" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb149-10"><a href="xy축-형태-변환-axisside-.html#cb149-10" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1600</span>, <span class="dv">4200</span>, <span class="at">by =</span> <span class="dv">100</span>)        <span class="co"># x 축의 눈금 설정</span></span>
-<span id="cb149-11"><a href="xy축-형태-변환-axisside-.html#cb149-11" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">18</span>, <span class="dv">52</span>, <span class="at">by =</span> <span class="dv">2</span>)              <span class="co"># y 축의 눈금 설정</span></span>
-<span id="cb149-12"><a href="xy축-형태-변환-axisside-.html#cb149-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-13"><a href="xy축-형태-변환-axisside-.html#cb149-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) X축의 눈금을 그립니다.</span></span>
-<span id="cb149-14"><a href="xy축-형태-변환-axisside-.html#cb149-14" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>,                        <span class="co"># bottom side</span></span>
-<span id="cb149-15"><a href="xy축-형태-변환-axisside-.html#cb149-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">at =</span> x,   </span>
-<span id="cb149-16"><a href="xy축-형태-변환-axisside-.html#cb149-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb149-17"><a href="xy축-형태-변환-axisside-.html#cb149-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">18</span>,                        <span class="co"># X 축의 시작점 좌표.</span></span>
-<span id="cb149-18"><a href="xy축-형태-변환-axisside-.html#cb149-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">tck =</span> <span class="fl">0.02</span>)                      <span class="co"># 0.02 길이로 수직 방향의 틱 마크 표시</span></span>
-<span id="cb149-19"><a href="xy축-형태-변환-axisside-.html#cb149-19" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb149-20"><a href="xy축-형태-변환-axisside-.html#cb149-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) Y축의 눈금을 그립니다.</span></span>
-<span id="cb149-21"><a href="xy축-형태-변환-axisside-.html#cb149-21" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">2</span>,                        <span class="co"># left side +      </span></span>
-<span id="cb149-22"><a href="xy축-형태-변환-axisside-.html#cb149-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">at =</span> y,      </span>
-<span id="cb149-23"><a href="xy축-형태-변환-axisside-.html#cb149-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb149-24"><a href="xy축-형태-변환-axisside-.html#cb149-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">1600</span>,                      <span class="co"># Y 축의 시작점 좌표    </span></span>
-<span id="cb149-25"><a href="xy축-형태-변환-axisside-.html#cb149-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">tck =</span> <span class="sc">-</span><span class="fl">0.02</span>)                     <span class="co"># 0.02 길이로 수평 방향의 틱 마크 표시</span></span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="xy축-형태-변환-axisside-.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="co"># X 축의 범위 (1600 ~ 4200, by 100) </span></span>
+<span id="cb148-2"><a href="xy축-형태-변환-axisside-.html#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Y 축의 범위 (18 ~ 52, by 2) </span></span>
+<span id="cb148-3"><a href="xy축-형태-변환-axisside-.html#cb148-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-4"><a href="xy축-형태-변환-axisside-.html#cb148-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) X축과 Y축이 없는 산점도를 그립니다.</span></span>
+<span id="cb148-5"><a href="xy축-형태-변환-axisside-.html#cb148-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">axes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb148-6"><a href="xy축-형태-변환-axisside-.html#cb148-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">1600</span>, <span class="dv">4200</span>),       </span>
+<span id="cb148-7"><a href="xy축-형태-변환-axisside-.html#cb148-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">52</span>),     </span>
+<span id="cb148-8"><a href="xy축-형태-변환-axisside-.html#cb148-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Weight와 MPG.highway의 산점도&quot;</span>)  </span>
+<span id="cb148-9"><a href="xy축-형태-변환-axisside-.html#cb148-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb148-10"><a href="xy축-형태-변환-axisside-.html#cb148-10" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1600</span>, <span class="dv">4200</span>, <span class="at">by =</span> <span class="dv">100</span>)        <span class="co"># x 축의 눈금 설정</span></span>
+<span id="cb148-11"><a href="xy축-형태-변환-axisside-.html#cb148-11" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">18</span>, <span class="dv">52</span>, <span class="at">by =</span> <span class="dv">2</span>)              <span class="co"># y 축의 눈금 설정</span></span>
+<span id="cb148-12"><a href="xy축-형태-변환-axisside-.html#cb148-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-13"><a href="xy축-형태-변환-axisside-.html#cb148-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) X축의 눈금을 그립니다.</span></span>
+<span id="cb148-14"><a href="xy축-형태-변환-axisside-.html#cb148-14" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>,                        <span class="co"># bottom side</span></span>
+<span id="cb148-15"><a href="xy축-형태-변환-axisside-.html#cb148-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">at =</span> x,   </span>
+<span id="cb148-16"><a href="xy축-형태-변환-axisside-.html#cb148-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb148-17"><a href="xy축-형태-변환-axisside-.html#cb148-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">18</span>,                        <span class="co"># X 축의 시작점 좌표.</span></span>
+<span id="cb148-18"><a href="xy축-형태-변환-axisside-.html#cb148-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">tck =</span> <span class="fl">0.02</span>)                      <span class="co"># 0.02 길이로 수직 방향의 틱 마크 표시</span></span>
+<span id="cb148-19"><a href="xy축-형태-변환-axisside-.html#cb148-19" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb148-20"><a href="xy축-형태-변환-axisside-.html#cb148-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) Y축의 눈금을 그립니다.</span></span>
+<span id="cb148-21"><a href="xy축-형태-변환-axisside-.html#cb148-21" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">2</span>,                        <span class="co"># left side +      </span></span>
+<span id="cb148-22"><a href="xy축-형태-변환-axisside-.html#cb148-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">at =</span> y,      </span>
+<span id="cb148-23"><a href="xy축-형태-변환-axisside-.html#cb148-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb148-24"><a href="xy축-형태-변환-axisside-.html#cb148-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">1600</span>,                      <span class="co"># Y 축의 시작점 좌표    </span></span>
+<span id="cb148-25"><a href="xy축-형태-변환-axisside-.html#cb148-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">tck =</span> <span class="sc">-</span><span class="fl">0.02</span>)                     <span class="co"># 0.02 길이로 수평 방향의 틱 마크 표시</span></span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 </div>
             </section>

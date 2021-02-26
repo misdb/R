@@ -181,12 +181,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.1" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#막대-그래프"><i class="fa fa-check"></i><b>4.3.1</b> 막대 그래프</a></li>
 <li class="chapter" data-level="4.3.2" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#클리브랜드-점-그래프"><i class="fa fa-check"></i><b>4.3.2</b> 클리브랜드 점 그래프</a></li>
 <li class="chapter" data-level="4.3.3" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#파이-차트"><i class="fa fa-check"></i><b>4.3.3</b> 파이 차트</a></li>
-<li class="chapter" data-level="4.3.4" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#산포도"><i class="fa fa-check"></i><b>4.3.4</b> 산포도</a></li>
-<li class="chapter" data-level="4.3.5" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#산포도-행렬"><i class="fa fa-check"></i><b>4.3.5</b> 산포도 행렬</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.4</b> 이변량 범주형 데이터 그래프</a>
+<li class="chapter" data-level="4.4" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.4</b> 이변량 연속형 데이터 그래프</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html#모자이크-그래프"><i class="fa fa-check"></i><b>4.4.1</b> 모자이크 그래프</a></li>
+<li class="chapter" data-level="4.4.1" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html#산포도"><i class="fa fa-check"></i><b>4.4.1</b> 산포도</a></li>
+<li class="chapter" data-level="4.4.2" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html#산포도-행렬"><i class="fa fa-check"></i><b>4.4.2</b> 산포도 행렬</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.5</b> 이변량 범주형 데이터 그래프</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html#모자이크-그래프"><i class="fa fa-check"></i><b>4.5.1</b> 모자이크 그래프</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="그래프-모수.html"><a href="그래프-모수.html"><i class="fa fa-check"></i><b>5</b> 그래프 모수</a>
@@ -562,7 +565,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb207-14"><a href="다각형-추가-polygonx-y.html#cb207-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">lwd =</span> <span class="dv">2</span>,</span>
 <span id="cb207-15"><a href="다각형-추가-polygonx-y.html#cb207-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">lty =</span> <span class="fu">c</span>(<span class="st">&quot;dotted&quot;</span>, <span class="st">&quot;solid&quot;</span>)) </span>
 <span id="cb207-16"><a href="다각형-추가-polygonx-y.html#cb207-16" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;NA 값을 갖는 복수 개의 다각형&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/ScatPlotLegendNAPoligon-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>아래의 다각형은 위의 예와 거의 비슷합니다. 단 한가지 차이점이라면 <strong>x, y의 좌표값에 “<code>NA</code>”가 없다</strong>는 점입니다. “<code>NA</code>” 가 없다보니 중간에 다각형을 분리하지를 못하고, 그냥 하나의 색깔, 선 유형, 다각형 채우는 색을 계속 사용하고 있습니다.</p>
 <div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="다각형-추가-polygonx-y.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="do">## NA가 없는 경우의 복수 개의 다각형</span></span>
 <span id="cb208-2"><a href="다각형-추가-polygonx-y.html#cb208-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="fl">3.5</span>, <span class="fl">3.5</span>), <span class="at">type =</span> <span class="st">&quot;n&quot;</span>) </span>
@@ -576,7 +579,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb208-10"><a href="다각형-추가-polygonx-y.html#cb208-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">lwd =</span> <span class="dv">2</span>,</span>
 <span id="cb208-11"><a href="다각형-추가-polygonx-y.html#cb208-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">lty =</span> <span class="fu">c</span>(<span class="st">&quot;dotted&quot;</span>, <span class="st">&quot;solid&quot;</span>)) </span>
 <span id="cb208-12"><a href="다각형-추가-polygonx-y.html#cb208-12" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;NA가 없는 경우의 복수 개의 다각형&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/ScatPlotLegendPoligon-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>이번에는 <strong>다각형 안의 음영을 선으로 채우는 방법</strong>을 소개하겠습니다. <code>density</code> 로 <strong>선의 밀도</strong>(숫자가 클 수록 촘촘해짐)를 지정하고, <code>angle</code> 로 <strong>선의 각도</strong>(수평선을 기준으로 반시계방향)를 지정하면 됩니다.</p>
 <div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="다각형-추가-polygonx-y.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 선이 추가된 다각형</span></span>
 <span id="cb209-2"><a href="다각형-추가-polygonx-y.html#cb209-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="fl">3.5</span>, <span class="fl">3.5</span>), <span class="at">type =</span> <span class="st">&quot;n&quot;</span>) </span>
@@ -590,7 +593,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb209-10"><a href="다각형-추가-polygonx-y.html#cb209-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">density =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>),</span>
 <span id="cb209-11"><a href="다각형-추가-polygonx-y.html#cb209-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">angle =</span> <span class="fu">c</span>(<span class="dv">45</span>, <span class="sc">-</span><span class="dv">45</span>)) </span>
 <span id="cb209-12"><a href="다각형-추가-polygonx-y.html#cb209-12" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;선이 추가된 다각형&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/ScatPlotLegendLinePoligon-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>아래 다각형은 <code>x</code>, <code>y</code> 좌표값이 위의 예와는 좀 다릅니다. 두 좌표 값들 간의 거리에 색깔을 채워넣은 형태의 그래프인데요, <code>polygon()</code> 함수로 이런 그래프도 그릴 수 있다는 예시로 보면 좋겠다 싶어서 <a href="http://www.math.cula.edu/">www.math.cula.edu</a> 사이트에서 참조하였습니다.</p>
 <div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="다각형-추가-polygonx-y.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 색칠된 다각형 </span></span>
 <span id="cb210-2"><a href="다각형-추가-polygonx-y.html#cb210-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 출처 : http://www.math.ucla.edu/~anderson/rw1001/library/base/html/polygon.html </span></span>
@@ -601,7 +604,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb210-7"><a href="다각형-추가-polygonx-y.html#cb210-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(xx, yy, <span class="at">type=</span><span class="st">&quot;n&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Time&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Distance&quot;</span>) </span>
 <span id="cb210-8"><a href="다각형-추가-polygonx-y.html#cb210-8" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(xx, yy, <span class="at">col=</span><span class="st">&quot;green&quot;</span>, <span class="at">border =</span> <span class="st">&quot;red&quot;</span>) </span>
 <span id="cb210-9"><a href="다각형-추가-polygonx-y.html#cb210-9" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;색칠된 다각형&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/ScatPlotLegendColPoligon-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div id="참고자료-2" class="section level3 unnumbered">
 <h3>참고자료</h3>
 <ul>
@@ -620,7 +623,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<p>변수의 개수와 변수의 형태별 그래프의 유형을 요약하면 표 <a href="#tab:Ggplot2OneCont"><strong>??</strong></a> 와 같습니다.</p>
+<p>변수의 개수와 변수의 형태별 그래프의 유형을 요약하면 그림 <a href="#fig:Ggplot2OneCont"><strong>??</strong></a> 와 같습니다.</p>
 <p><img src="images/223D90375684E35338.png" width="80%" /></p>
 </div>
             </section>

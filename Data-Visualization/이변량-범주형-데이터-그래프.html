@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.4 이변량 범주형 데이터 그래프 | Data Visualization with R</title>
+  <title>4.5 이변량 범주형 데이터 그래프 | Data Visualization with R</title>
   <meta name="description" content="The output format for book is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.4 이변량 범주형 데이터 그래프 | Data Visualization with R" />
+  <meta property="og:title" content="4.5 이변량 범주형 데이터 그래프 | Data Visualization with R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.4 이변량 범주형 데이터 그래프 | Data Visualization with R" />
+  <meta name="twitter:title" content="4.5 이변량 범주형 데이터 그래프 | Data Visualization with R" />
   
   <meta name="twitter:description" content="The output format for book is bookdown::gitbook." />
   
@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="일변량-범주형-데이타-그래프.html"/>
+<link rel="prev" href="이변량-연속형-데이터-그래프.html"/>
 <link rel="next" href="그래프-모수.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
@@ -181,12 +181,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.1" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#막대-그래프"><i class="fa fa-check"></i><b>4.3.1</b> 막대 그래프</a></li>
 <li class="chapter" data-level="4.3.2" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#클리브랜드-점-그래프"><i class="fa fa-check"></i><b>4.3.2</b> 클리브랜드 점 그래프</a></li>
 <li class="chapter" data-level="4.3.3" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#파이-차트"><i class="fa fa-check"></i><b>4.3.3</b> 파이 차트</a></li>
-<li class="chapter" data-level="4.3.4" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#산포도"><i class="fa fa-check"></i><b>4.3.4</b> 산포도</a></li>
-<li class="chapter" data-level="4.3.5" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#산포도-행렬"><i class="fa fa-check"></i><b>4.3.5</b> 산포도 행렬</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.4</b> 이변량 범주형 데이터 그래프</a>
+<li class="chapter" data-level="4.4" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.4</b> 이변량 연속형 데이터 그래프</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html#모자이크-그래프"><i class="fa fa-check"></i><b>4.4.1</b> 모자이크 그래프</a></li>
+<li class="chapter" data-level="4.4.1" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html#산포도"><i class="fa fa-check"></i><b>4.4.1</b> 산포도</a></li>
+<li class="chapter" data-level="4.4.2" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html#산포도-행렬"><i class="fa fa-check"></i><b>4.4.2</b> 산포도 행렬</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.5</b> 이변량 범주형 데이터 그래프</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html#모자이크-그래프"><i class="fa fa-check"></i><b>4.5.1</b> 모자이크 그래프</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="그래프-모수.html"><a href="그래프-모수.html"><i class="fa fa-check"></i><b>5</b> 그래프 모수</a>
@@ -481,31 +484,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="이변량-범주형-데이터-그래프" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> 이변량 범주형 데이터 그래프</h2>
+<div id="이변량-범주형-데이터-그래프" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> 이변량 범주형 데이터 그래프</h2>
 <p><strong>범주형 변수 2개</strong>를 그래프로 표시해 보겠습니다.</p>
 <p>사용하는 변수는 <code>Cars93$Origin</code> 컬럼과 <code>Cars93$AirBags</code> 컬럼 등 2개(<strong>이변량</strong>)로, 이 두 변수 모두 <code>factor</code> 형의 <strong>범주형 변수</strong>임을 알 수 있습니다.</p>
 <p>이 절에서의 이변량 범주형 데이터에 대하여 다음의 그래프를 그려 보기로 한다.</p>
 <ul>
 <li><a href="이변량-범주형-데이터-그래프.html#모자이크-그래프">모자이크 그래프</a></li>
 </ul>
-<div id="모자이크-그래프" class="section level3" number="4.4.1">
-<h3><span class="header-section-number">4.4.1</span> 모자이크 그래프</h3>
+<div id="모자이크-그래프" class="section level3" number="4.5.1">
+<h3><span class="header-section-number">4.5.1</span> 모자이크 그래프</h3>
 <p><strong>모자이크 플랏(mosaic plot)</strong>은 2원, 3원 교차표를 시각화한 그래프입니다. 모자이크 플랏에는 사각형들이 그래프에 나열되고 <strong>각 사각형의 넓이</strong>는 <em>각 범주에 속한 데이터의 수</em> 또는 상대적인 크기를 의미합니다. 따라서 x축과 y축의 제목을 보고 데이터를 추론할 수 있습니다.</p>
-<div id="base-graphics-패키지" class="section level4" number="4.4.1.1">
-<h4><span class="header-section-number">4.4.1.1</span> <code>Base Graphics</code> 패키지</h4>
+<div id="base-graphics-패키지" class="section level4" number="4.5.1.1">
+<h4><span class="header-section-number">4.5.1.1</span> <code>Base Graphics</code> 패키지</h4>
 <p>R의 <code>Base Graphics</code> 패키지에 모자이크 플랏을 그리는 함수는 <code>mosaicplot()</code> 함수입니다.</p>
 <ul>
 <li>첫 번쨰 인수인 <code>formula =</code>는 범주형 변수들의 분할표를 구하는 변수의 목록입니다.</li>
 <li>두 번째 인수인 <code>data =</code>는 데이터 세트를 지정해야 합니다. 이 두 개의 인수는 기본적으로 지정이 되어야 합니다.</li>
 </ul>
 <p>사용할 <code>data =</code>는 <code>MASS</code> 패키지가 제공하는 <code>Cars93</code>으로 다음은 자동차 생산국을 나타내는 <code>Origin</code>과 생산국가별 에어백의 설치(<code>AirBags</code>)와 관련한 모자이크 그래프를 보여 주고 있습니다.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="이변량-범주형-데이터-그래프.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb74-2"><a href="이변량-범주형-데이터-그래프.html#cb74-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-3"><a href="이변량-범주형-데이터-그래프.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(<span class="at">formula =</span> <span class="sc">~</span> Origin <span class="sc">+</span> AirBags, </span>
-<span id="cb74-4"><a href="이변량-범주형-데이터-그래프.html#cb74-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> Cars93, </span>
-<span id="cb74-5"><a href="이변량-범주형-데이터-그래프.html#cb74-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> <span class="fu">c</span>(<span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;red&quot;</span>), </span>
-<span id="cb74-6"><a href="이변량-범주형-데이터-그래프.html#cb74-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">cex =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="이변량-범주형-데이터-그래프.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb72-2"><a href="이변량-범주형-데이터-그래프.html#cb72-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-3"><a href="이변량-범주형-데이터-그래프.html#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(<span class="at">formula =</span> <span class="sc">~</span> Origin <span class="sc">+</span> AirBags, </span>
+<span id="cb72-4"><a href="이변량-범주형-데이터-그래프.html#cb72-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> Cars93, </span>
+<span id="cb72-5"><a href="이변량-범주형-데이터-그래프.html#cb72-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> <span class="fu">c</span>(<span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;red&quot;</span>), </span>
+<span id="cb72-6"><a href="이변량-범주형-데이터-그래프.html#cb72-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">cex =</span> <span class="fl">0.8</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-mosaic-1"></span>
 <img src="bookdown_files/figure-html/fig-mosaic-1-1.png" alt="이변량 연속형 데이터 그래프 : 모자이크 그래프" width="672" />
 <p class="caption">
@@ -521,15 +524,15 @@ Figure 4.22: 이변량 연속형 데이터 그래프 : 모자이크 그래프
 <p><code>Cars93</code>의 <code>Origin</code> 변수와 <code>AirBags</code> 변수의 <strong>분할표(Cross Tables)</strong>는 <code>table()</code> 함수로 구할 수 있습니다. 그리고 <strong>분할표의 상대적 비율</strong>은 <code>prop.table()</code> 함수로 구할 수 있습니다.</p>
 </blockquote>
 <p>두 범주형 변수 간의 <strong>분할표</strong>를 구해 보겠습니다.</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="이변량-범주형-데이터-그래프.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb75-2"><a href="이변량-범주형-데이터-그래프.html#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-3"><a href="이변량-범주형-데이터-그래프.html#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Crosstabs of Orgin and AirBags</span></span>
-<span id="cb75-4"><a href="이변량-범주형-데이터-그래프.html#cb75-4" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(Cars93<span class="sc">$</span>Origin, Cars93<span class="sc">$</span>AirBags); tab                <span class="co"># 분할표 생성</span></span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="이변량-범주형-데이터-그래프.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb73-2"><a href="이변량-범주형-데이터-그래프.html#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="이변량-범주형-데이터-그래프.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Crosstabs of Orgin and AirBags</span></span>
+<span id="cb73-4"><a href="이변량-범주형-데이터-그래프.html#cb73-4" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(Cars93<span class="sc">$</span>Origin, Cars93<span class="sc">$</span>AirBags); tab                <span class="co"># 분할표 생성</span></span></code></pre></div>
 <pre><code>##          
 ##           Driver &amp; Passenger Driver only None
 ##   USA                      9          23   16
 ##   non-USA                  7          20   18</code></pre>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="이변량-범주형-데이터-그래프.html#cb77-1" aria-hidden="true" tabindex="-1"></a>tab1 <span class="ot">&lt;-</span> <span class="fu">proportions</span>(tab, <span class="at">margin =</span> <span class="dv">1</span>) ; tab1                     <span class="co"># 비율분할표 생성 (1 = 행 단위, 2 = 열 단위)</span></span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="이변량-범주형-데이터-그래프.html#cb75-1" aria-hidden="true" tabindex="-1"></a>tab1 <span class="ot">&lt;-</span> <span class="fu">proportions</span>(tab, <span class="at">margin =</span> <span class="dv">1</span>) ; tab1                     <span class="co"># 비율분할표 생성 (1 = 행 단위, 2 = 열 단위)</span></span></code></pre></div>
 <pre><code>##          
 ##           Driver &amp; Passenger Driver only None
 ##   USA                   0.19        0.48 0.33
@@ -542,10 +545,10 @@ Figure 4.22: 이변량 연속형 데이터 그래프 : 모자이크 그래프
 <blockquote>
 <p><code>Titanic</code> 데이터 세트는 2,201 승객을 4개의 범주형 변수(<code>Class</code>, <code>Sex</code>, <code>Age</code>, <code>Survived</code> 등)로 분할하여 정리해 놓은 4차원 배열형태의 분할표입니다. (<code>? Titanic</code>으로 데이터 세트에 대한 내용을 확인해 보기 바랍니다.)</p>
 </blockquote>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="이변량-범주형-데이터-그래프.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(Titanic,                              <span class="co"># 데이터 입력</span></span>
-<span id="cb79-2"><a href="이변량-범주형-데이터-그래프.html#cb79-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">main =</span> <span class="st">&quot;Survival on the Titanic&quot;</span>,    <span class="co"># 제목 설정</span></span>
-<span id="cb79-3"><a href="이변량-범주형-데이터-그래프.html#cb79-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;green&quot;</span>),            <span class="co"># 색 지정</span></span>
-<span id="cb79-4"><a href="이변량-범주형-데이터-그래프.html#cb79-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">off =</span> <span class="dv">1</span>)                             <span class="co"># 블럭들 사이의 간격 지정</span></span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="이변량-범주형-데이터-그래프.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(Titanic,                              <span class="co"># 데이터 입력</span></span>
+<span id="cb77-2"><a href="이변량-범주형-데이터-그래프.html#cb77-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">main =</span> <span class="st">&quot;Survival on the Titanic&quot;</span>,    <span class="co"># 제목 설정</span></span>
+<span id="cb77-3"><a href="이변량-범주형-데이터-그래프.html#cb77-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;green&quot;</span>),            <span class="co"># 색 지정</span></span>
+<span id="cb77-4"><a href="이변량-범주형-데이터-그래프.html#cb77-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">off =</span> <span class="dv">1</span>)                             <span class="co"># 블럭들 사이의 간격 지정</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-mosaic-2"></span>
 <img src="bookdown_files/figure-html/fig-mosaic-2-1.png" alt="이변량 연속형 데이터 그래프 : 모자이크 그래프 - Titanic" width="672" />
 <p class="caption">
@@ -554,14 +557,14 @@ Figure 4.23: 이변량 연속형 데이터 그래프 : 모자이크 그래프 - 
 </div>
 <p><a href="이변량-범주형-데이터-그래프.html#이변량-범주형-데이터-그래프">Go Top</a></p>
 </div>
-<div id="vcd-패키지" class="section level4" number="4.4.1.2">
-<h4><span class="header-section-number">4.4.1.2</span> <code>vcd</code> 패키지</h4>
+<div id="vcd-패키지" class="section level4" number="4.5.1.2">
+<h4><span class="header-section-number">4.5.1.2</span> <code>vcd</code> 패키지</h4>
 <p>한편 <code>vcd</code> 패키지가 제공하는 <code>mosaic()</code> 함수를 이용해서도 모자이크 그래프를 그릴 수 있으며, 또한 <code>labelling = labelling_values</code> 인수를 지정해서 사각형에 데이터 레이블을 표시할 수 있습니다.</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="이변량-범주형-데이터-그래프.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="이변량-범주형-데이터-그래프.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span></code></pre></div>
 <pre><code>## Loading required package: grid</code></pre>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="이변량-범주형-데이터-그래프.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb82-2"><a href="이변량-범주형-데이터-그래프.html#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;Titanic&quot;</span>)</span>
-<span id="cb82-3"><a href="이변량-범주형-데이터-그래프.html#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>(Titanic, <span class="at">labeling =</span> labeling_values)</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="이변량-범주형-데이터-그래프.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb80-2"><a href="이변량-범주형-데이터-그래프.html#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;Titanic&quot;</span>)</span>
+<span id="cb80-3"><a href="이변량-범주형-데이터-그래프.html#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>(Titanic, <span class="at">labeling =</span> labeling_values)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-mosaic-3"></span>
 <img src="bookdown_files/figure-html/fig-mosaic-3-1.png" alt="모자이크 그래프 - 데이터 레이블링 1" width="672" />
 <p class="caption">
@@ -569,10 +572,10 @@ Figure 4.24: 모자이크 그래프 - 데이터 레이블링 1
 </p>
 </div>
 <p>좀 더 깔끔하게 <em>데이터 레이블링</em>을 해 보겠습니다.</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="이변량-범주형-데이터-그래프.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span>
-<span id="cb83-2"><a href="이변량-범주형-데이터-그래프.html#cb83-2" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(Titanic <span class="sc">&lt;</span> <span class="dv">6</span>, <span class="cn">NA</span>, Titanic)           <span class="co"># 데이터 수정 : 6보다 작으면 `NA`처리</span></span>
-<span id="cb83-3"><a href="이변량-범주형-데이터-그래프.html#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>(Titanic, <span class="at">pop =</span> <span class="cn">FALSE</span>)                      <span class="co"># 모자이크 그래프 그리기</span></span>
-<span id="cb83-4"><a href="이변량-범주형-데이터-그래프.html#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="fu">labeling_cells</span>(<span class="at">text =</span> tab, <span class="at">margin =</span> <span class="dv">0</span>)(Titanic)   <span class="co"># 데이터 레이블 표시하기</span></span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="이변량-범주형-데이터-그래프.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span>
+<span id="cb81-2"><a href="이변량-범주형-데이터-그래프.html#cb81-2" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(Titanic <span class="sc">&lt;</span> <span class="dv">6</span>, <span class="cn">NA</span>, Titanic)           <span class="co"># 데이터 수정 : 6보다 작으면 `NA`처리</span></span>
+<span id="cb81-3"><a href="이변량-범주형-데이터-그래프.html#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>(Titanic, <span class="at">pop =</span> <span class="cn">FALSE</span>)                      <span class="co"># 모자이크 그래프 그리기</span></span>
+<span id="cb81-4"><a href="이변량-범주형-데이터-그래프.html#cb81-4" aria-hidden="true" tabindex="-1"></a><span class="fu">labeling_cells</span>(<span class="at">text =</span> tab, <span class="at">margin =</span> <span class="dv">0</span>)(Titanic)   <span class="co"># 데이터 레이블 표시하기</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-mosaic-4"></span>
 <img src="bookdown_files/figure-html/fig-mosaic-4-1.png" alt="모자이크 그래프 - 데이터 레이블링 2" width="672" />
 <p class="caption">
@@ -580,9 +583,9 @@ Figure 4.25: 모자이크 그래프 - 데이터 레이블링 2
 </p>
 </div>
 <p>상대적 비율의 모자이크 그래프를 그려 보겠습니다.</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="이변량-범주형-데이터-그래프.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>(Titanic, <span class="at">pop =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb84-2"><a href="이변량-범주형-데이터-그래프.html#cb84-2" aria-hidden="true" tabindex="-1"></a>labs <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">prop.table</span>(Titanic), <span class="dv">2</span>)             <span class="co"># 상대적 비율로 데이터 레이블링</span></span>
-<span id="cb84-3"><a href="이변량-범주형-데이터-그래프.html#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="fu">labeling_cells</span>(<span class="at">text =</span> labs, <span class="at">margin =</span> <span class="dv">0</span>, <span class="at">cex =</span> <span class="fl">0.6</span>)(Titanic)      <span class="co"># 상대적 비율 표시</span></span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="이변량-범주형-데이터-그래프.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>(Titanic, <span class="at">pop =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb82-2"><a href="이변량-범주형-데이터-그래프.html#cb82-2" aria-hidden="true" tabindex="-1"></a>labs <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">prop.table</span>(Titanic), <span class="dv">2</span>)             <span class="co"># 상대적 비율로 데이터 레이블링</span></span>
+<span id="cb82-3"><a href="이변량-범주형-데이터-그래프.html#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="fu">labeling_cells</span>(<span class="at">text =</span> labs, <span class="at">margin =</span> <span class="dv">0</span>, <span class="at">cex =</span> <span class="fl">0.6</span>)(Titanic)      <span class="co"># 상대적 비율 표시</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-mosaic-5"></span>
 <img src="bookdown_files/figure-html/fig-mosaic-5-1.png" alt="모자이크 그래프 - 데이터 레이블링 3" width="672" />
 <p class="caption">
@@ -599,7 +602,7 @@ Figure 4.26: 모자이크 그래프 - 데이터 레이블링 3
           </div>
         </div>
       </div>
-<a href="일변량-범주형-데이타-그래프.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="이변량-연속형-데이터-그래프.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="그래프-모수.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

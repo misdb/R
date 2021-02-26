@@ -181,12 +181,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.1" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#막대-그래프"><i class="fa fa-check"></i><b>4.3.1</b> 막대 그래프</a></li>
 <li class="chapter" data-level="4.3.2" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#클리브랜드-점-그래프"><i class="fa fa-check"></i><b>4.3.2</b> 클리브랜드 점 그래프</a></li>
 <li class="chapter" data-level="4.3.3" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#파이-차트"><i class="fa fa-check"></i><b>4.3.3</b> 파이 차트</a></li>
-<li class="chapter" data-level="4.3.4" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#산포도"><i class="fa fa-check"></i><b>4.3.4</b> 산포도</a></li>
-<li class="chapter" data-level="4.3.5" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#산포도-행렬"><i class="fa fa-check"></i><b>4.3.5</b> 산포도 행렬</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.4</b> 이변량 범주형 데이터 그래프</a>
+<li class="chapter" data-level="4.4" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.4</b> 이변량 연속형 데이터 그래프</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html#모자이크-그래프"><i class="fa fa-check"></i><b>4.4.1</b> 모자이크 그래프</a></li>
+<li class="chapter" data-level="4.4.1" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html#산포도"><i class="fa fa-check"></i><b>4.4.1</b> 산포도</a></li>
+<li class="chapter" data-level="4.4.2" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html#산포도-행렬"><i class="fa fa-check"></i><b>4.4.2</b> 산포도 행렬</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.5</b> 이변량 범주형 데이터 그래프</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html#모자이크-그래프"><i class="fa fa-check"></i><b>4.5.1</b> 모자이크 그래프</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="그래프-모수.html"><a href="그래프-모수.html"><i class="fa fa-check"></i><b>5</b> 그래프 모수</a>
@@ -484,8 +487,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="그래프-영역" class="section level2" number="5.4">
 <h2><span class="header-section-number">5.4</span> 그래프 영역</h2>
 <p>그래프 영역은 크게 <strong>(1) 플롯 영역 (plot area)</strong>, <strong>(2) 내부 마진 영역 (inner margin area)</strong>, <strong>(3) 외부 마진 영역(outer margin area)</strong> 로 구분할 수 있습니다. 아래 그림 <a href="그래프-영역.html#fig:GraphArea">5.26</a> 은 각 영역의 위치를 보여 주고 있습니다.</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="그래프-영역.html#cb116-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;images/2257663E5681563F04.png&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GraphArea"></span>
-<img src="images/223D90375684E35338.png" alt="그래프 영역의 구성" width="80%" />
+<img src="images/2257663E5681563F04.png" alt="그래프 영역의 구성" width="312" />
 <p class="caption">
 Figure 5.26: 그래프 영역의 구성
 </p>
@@ -496,25 +500,30 @@ Figure 5.26: 그래프 영역의 구성
 <li><p><strong>플롯 영역 (plot area)</strong>은 점이든 선이든 기호가 그려지는 영역입니다.</p></li>
 <li><p><strong>내부 마진 영역 (inner margin area)</strong>는 플롯 영역을 감싸고 있는 4개 모서리 부분의 마진입니다. 하단 부분이 1번, 왼쪽 부분이 2번, 상단부분이 3번, 오른쪽 부분이 4번이며, 순서대로 내부 마진 영역의 디폴트 값은 <code>c(5.1, 4.1, 4.1, 2.1)</code> 입니다. 하단은 <code>x</code>축 레이블, 왼쪽은 <code>y</code>축 레이블, 상단은 제목이 들어가는 영역입니다. 그래서 기본 값의 마진 숫자가 큰 반면에, 오른쪽은 보통은 레이블이 없으므로 디폴트 마진 값이 타 영역의 반밖에 되지 않습니다.</p></li>
 </ol>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="그래프-영역.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="do">##------------------------------------------- </span></span>
-<span id="cb118-2"><a href="그래프-영역.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 그래프 영역과 내부/외부 마진</span></span>
-<span id="cb118-3"><a href="그래프-영역.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="do">##------------------------------------------- </span></span>
-<span id="cb118-4"><a href="그래프-영역.html#cb118-4" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb118-5"><a href="그래프-영역.html#cb118-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
-<span id="cb118-6"><a href="그래프-영역.html#cb118-6" aria-hidden="true" tabindex="-1"></a><span class="co"># to use Cars93 dataframe </span></span>
-<span id="cb118-7"><a href="그래프-영역.html#cb118-7" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb118-8"><a href="그래프-영역.html#cb118-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 플롯 영역과 내부 마진 영역의 기본값으로 설정되어 있는대로 그래프를 작성합니다.</span></span>
-<span id="cb118-9"><a href="그래프-영역.html#cb118-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 값 내부 마진 영역 : c(5.1, 4.1, 4.1, 2.1)</span></span>
-<span id="cb118-10"><a href="그래프-영역.html#cb118-10" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb118-11"><a href="그래프-영역.html#cb118-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, </span>
-<span id="cb118-12"><a href="그래프-영역.html#cb118-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Inner Margin Area 1&quot;</span>, </span>
-<span id="cb118-13"><a href="그래프-영역.html#cb118-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Inner Margin Area 2&quot;</span>,      </span>
-<span id="cb118-14"><a href="그래프-영역.html#cb118-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Inner Margin Area 3&quot;</span>) </span>
-<span id="cb118-15"><a href="그래프-영역.html#cb118-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-16"><a href="그래프-영역.html#cb118-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 저수준 함수들을 이용하여 영역을 표시해 줍니다.</span></span>
-<span id="cb118-17"><a href="그래프-영역.html#cb118-17" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;내부 마진 영역 4&quot;</span>, <span class="at">side =</span> <span class="dv">4</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>) </span>
-<span id="cb118-18"><a href="그래프-영역.html#cb118-18" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">3000</span>, <span class="dv">35</span>, <span class="at">cex =</span> <span class="dv">3</span>, <span class="at">labels =</span> <span class="st">&quot;플롯 영역&quot;</span>, <span class="at">pos =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="그래프-영역.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="do">##------------------------------------------- </span></span>
+<span id="cb117-2"><a href="그래프-영역.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 그래프 영역과 내부/외부 마진</span></span>
+<span id="cb117-3"><a href="그래프-영역.html#cb117-3" aria-hidden="true" tabindex="-1"></a><span class="do">##------------------------------------------- </span></span>
+<span id="cb117-4"><a href="그래프-영역.html#cb117-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb117-5"><a href="그래프-영역.html#cb117-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
+<span id="cb117-6"><a href="그래프-영역.html#cb117-6" aria-hidden="true" tabindex="-1"></a><span class="co"># to use Cars93 dataframe </span></span>
+<span id="cb117-7"><a href="그래프-영역.html#cb117-7" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb117-8"><a href="그래프-영역.html#cb117-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 플롯 영역과 내부 마진 영역의 기본값으로 설정되어 있는대로 그래프를 작성합니다.</span></span>
+<span id="cb117-9"><a href="그래프-영역.html#cb117-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 값 내부 마진 영역 : c(5.1, 4.1, 4.1, 2.1)</span></span>
+<span id="cb117-10"><a href="그래프-영역.html#cb117-10" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb117-11"><a href="그래프-영역.html#cb117-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, </span>
+<span id="cb117-12"><a href="그래프-영역.html#cb117-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Inner Margin Area 1&quot;</span>, </span>
+<span id="cb117-13"><a href="그래프-영역.html#cb117-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Inner Margin Area 2&quot;</span>,      </span>
+<span id="cb117-14"><a href="그래프-영역.html#cb117-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Inner Margin Area 3&quot;</span>) </span>
+<span id="cb117-15"><a href="그래프-영역.html#cb117-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-16"><a href="그래프-영역.html#cb117-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 저수준 함수들을 이용하여 영역을 표시해 줍니다.</span></span>
+<span id="cb117-17"><a href="그래프-영역.html#cb117-17" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;내부 마진 영역 4&quot;</span>, <span class="at">side =</span> <span class="dv">4</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>) </span>
+<span id="cb117-18"><a href="그래프-영역.html#cb117-18" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">3000</span>, <span class="dv">35</span>, <span class="at">cex =</span> <span class="dv">3</span>, <span class="at">labels =</span> <span class="st">&quot;플롯 영역&quot;</span>, <span class="at">pos =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:GraphAreaInnMar"></span>
+<img src="bookdown_files/figure-html/GraphAreaInnMar-1.png" alt="4 개의 내부 마진 영역" width="672" />
+<p class="caption">
+Figure 5.27: 4 개의 내부 마진 영역
+</p>
+</div>
 <p><a href="그래프-영역.html#그래프-영역">Go Top</a></p>
 </div>
 <div id="외부-마진-영역-outer-margin-area" class="section level3" number="5.4.2">
@@ -523,31 +532,36 @@ Figure 5.26: 그래프 영역의 구성
 <p>외부 마진 영역은 위의 예처럼 1개짜리 그래프에서는 별 쓸모가 없습니다만 (그냥 내부 마진 영역으로 cover 되기 때문입니다), 그래프 영역을 분할해서 2개 이상의 그래프를 하나의 그래프에 결합할 경우 유용하게 사용할 수 있습니다. 개별 그래프에서는 내부 마진 영역에 제목, <code>x</code>축 레이블, <code>y</code>축 레이블을 적고, 2개 이상의 개별 그래프들을 모두 포괄하는 대제목 (mega title)을 적고자 할 때 외부 마진 영역에 적으면 딱 좋습니다.</p>
 <p>아래에 1개의 행, 2개의 열로 영역을 분할(<code>mfrow =</code> )한 경우 <strong>외부 마진 영역 설정</strong>(<code>oma =</code> ), <strong>내부 마진 영역 설정</strong>(<code>mar =</code> ) 함수의 예를 들어보겠습니다. 외부 마진 부분은 파란색으로 알아보기 쉽게 위치 표시를 했습니다.</p>
 <p>참고로, <code>op &lt;- par(no.readonly = TRUE)</code>로 디폴트 <code>par</code> 값을 미리 할당해 두면, 나중에 <code>par</code>값 조정 다 끝나고 원래의 디폴트 값으로 되돌아오고자 할 때 <code>par(op)</code>를 실행시키면 되므로 매우 편리합니다.</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="그래프-영역.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb119-2"><a href="그래프-영역.html#cb119-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-3"><a href="그래프-영역.html#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 내부 마진 영역과 외부 마진 영역</span></span>
-<span id="cb119-4"><a href="그래프-영역.html#cb119-4" aria-hidden="true" tabindex="-1"></a><span class="co"># par의 기본 설정 값을 저장합니다.</span></span>
-<span id="cb119-5"><a href="그래프-영역.html#cb119-5" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb119-6"><a href="그래프-영역.html#cb119-6" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb119-7"><a href="그래프-영역.html#cb119-7" aria-hidden="true" tabindex="-1"></a><span class="co"># par() 함수 옵션을 변경합니다.</span></span>
-<span id="cb119-8"><a href="그래프-영역.html#cb119-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),                       <span class="co"># 1행 2열로 프레임을 분할합니다.</span></span>
-<span id="cb119-9"><a href="그래프-영역.html#cb119-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>),                  <span class="co"># 내부 마진을 설정합니다.</span></span>
-<span id="cb119-10"><a href="그래프-영역.html#cb119-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">oma =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dv">2</span>, <span class="fl">0.5</span>))            <span class="co"># 외부 마진을 설정합니다.</span></span>
-<span id="cb119-11"><a href="그래프-영역.html#cb119-11" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb119-12"><a href="그래프-영역.html#cb119-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 플롯 영역, 내부 마진 영역, 외부 마진 영역</span></span>
-<span id="cb119-13"><a href="그래프-영역.html#cb119-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>,</span>
-<span id="cb119-14"><a href="그래프-영역.html#cb119-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Inner Margin Area&quot;</span>,</span>
-<span id="cb119-15"><a href="그래프-영역.html#cb119-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Inner Margin Area&quot;</span>) </span>
-<span id="cb119-16"><a href="그래프-영역.html#cb119-16" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb119-17"><a href="그래프-영역.html#cb119-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Horsepower, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>,</span>
-<span id="cb119-18"><a href="그래프-영역.html#cb119-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Inner Margin Area&quot;</span>,</span>
-<span id="cb119-19"><a href="그래프-영역.html#cb119-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Inner Margin Area&quot;</span>) </span>
-<span id="cb119-20"><a href="그래프-영역.html#cb119-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-21"><a href="그래프-영역.html#cb119-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 저수준 함수로 텍스트를 표시합니다.</span></span>
-<span id="cb119-22"><a href="그래프-영역.html#cb119-22" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;Outer Margin Area&quot;</span>, <span class="at">outer =</span> <span class="cn">TRUE</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)   <span class="co"># outer = TRUE : 외부 마진 영역</span></span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="그래프-영역.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par를 초기 설정값으로 환원합니다.</span></span>
-<span id="cb120-2"><a href="그래프-영역.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="그래프-영역.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb118-2"><a href="그래프-영역.html#cb118-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-3"><a href="그래프-영역.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 내부 마진 영역과 외부 마진 영역</span></span>
+<span id="cb118-4"><a href="그래프-영역.html#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="co"># par의 기본 설정 값을 저장합니다.</span></span>
+<span id="cb118-5"><a href="그래프-영역.html#cb118-5" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb118-6"><a href="그래프-영역.html#cb118-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb118-7"><a href="그래프-영역.html#cb118-7" aria-hidden="true" tabindex="-1"></a><span class="co"># par() 함수 옵션을 변경합니다.</span></span>
+<span id="cb118-8"><a href="그래프-영역.html#cb118-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),                       <span class="co"># 1행 2열로 프레임을 분할합니다.</span></span>
+<span id="cb118-9"><a href="그래프-영역.html#cb118-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>),                  <span class="co"># 내부 마진을 설정합니다.</span></span>
+<span id="cb118-10"><a href="그래프-영역.html#cb118-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">oma =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dv">2</span>, <span class="fl">0.5</span>))            <span class="co"># 외부 마진을 설정합니다.</span></span>
+<span id="cb118-11"><a href="그래프-영역.html#cb118-11" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb118-12"><a href="그래프-영역.html#cb118-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 플롯 영역, 내부 마진 영역, 외부 마진 영역</span></span>
+<span id="cb118-13"><a href="그래프-영역.html#cb118-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>,</span>
+<span id="cb118-14"><a href="그래프-영역.html#cb118-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Inner Margin Area&quot;</span>,</span>
+<span id="cb118-15"><a href="그래프-영역.html#cb118-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Inner Margin Area&quot;</span>) </span>
+<span id="cb118-16"><a href="그래프-영역.html#cb118-16" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb118-17"><a href="그래프-영역.html#cb118-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Horsepower, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>,</span>
+<span id="cb118-18"><a href="그래프-영역.html#cb118-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Inner Margin Area&quot;</span>,</span>
+<span id="cb118-19"><a href="그래프-영역.html#cb118-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Inner Margin Area&quot;</span>) </span>
+<span id="cb118-20"><a href="그래프-영역.html#cb118-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-21"><a href="그래프-영역.html#cb118-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 저수준 함수로 텍스트를 표시합니다.</span></span>
+<span id="cb118-22"><a href="그래프-영역.html#cb118-22" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;Outer Margin Area&quot;</span>, <span class="at">outer =</span> <span class="cn">TRUE</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)   <span class="co"># outer = TRUE : 외부 마진 영역</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:GraphAreaOutMar"></span>
+<img src="bookdown_files/figure-html/GraphAreaOutMar-1.png" alt="외부 마진 영역" width="672" />
+<p class="caption">
+Figure 5.28: 외부 마진 영역
+</p>
+</div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="그래프-영역.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par를 초기 설정값으로 환원합니다.</span></span>
+<span id="cb119-2"><a href="그래프-영역.html#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
 <p><a href="그래프-영역.html#그래프-영역">Go Top</a></p>
 </div>
 <div id="영역-분할결합-방법-1" class="section level3" number="5.4.3">
@@ -560,53 +574,63 @@ Figure 5.26: 그래프 영역의 구성
 </ul>
 <p><code>par(mfrow = c(4, 2))</code> 은 복수의 플롯 작성할 때 프레임을 4행 2열로 분할하여 한 프레임에 표시하라는 의미입니다.</p>
 <p>그래프가 그려지는 순서를 화살표로 표시를 해두었는데요, 상단 왼쪽에서 시작해서 오른쪽으로 지그재그로 하단으로 내려가면서 그래프가 순차적으로 그려집니다.</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="그래프-영역.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb121-2"><a href="그래프-영역.html#cb121-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-3"><a href="그래프-영역.html#cb121-3" aria-hidden="true" tabindex="-1"></a><span class="co"># par의 기본 설정 값을 저장합니다.</span></span>
-<span id="cb121-4"><a href="그래프-영역.html#cb121-4" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb121-5"><a href="그래프-영역.html#cb121-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-6"><a href="그래프-영역.html#cb121-6" aria-hidden="true" tabindex="-1"></a><span class="do">##-- par(mfrow = ): 행 우선의 복수 플롯의 수</span></span>
-<span id="cb121-7"><a href="그래프-영역.html#cb121-7" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>),                             <span class="co"># 4행 2열로 프레임을 분할합니다</span></span>
-<span id="cb121-8"><a href="그래프-영역.html#cb121-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>),                         <span class="co"># 내부 마진을 설정합니다.</span></span>
-<span id="cb121-9"><a href="그래프-영역.html#cb121-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">oma =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dv">2</span>, <span class="fl">0.5</span>))                   <span class="co"># 외부 마진을 설정합니다.</span></span>
-<span id="cb121-10"><a href="그래프-영역.html#cb121-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-11"><a href="그래프-영역.html#cb121-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 1&quot;</span>) </span>
-<span id="cb121-12"><a href="그래프-영역.html#cb121-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 2&quot;</span>) </span>
-<span id="cb121-13"><a href="그래프-영역.html#cb121-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 3&quot;</span>) </span>
-<span id="cb121-14"><a href="그래프-영역.html#cb121-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 4&quot;</span>) </span>
-<span id="cb121-15"><a href="그래프-영역.html#cb121-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 5&quot;</span>) </span>
-<span id="cb121-16"><a href="그래프-영역.html#cb121-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 6&quot;</span>) </span>
-<span id="cb121-17"><a href="그래프-영역.html#cb121-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 7&quot;</span>) </span>
-<span id="cb121-18"><a href="그래프-영역.html#cb121-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 8&quot;</span>) </span>
-<span id="cb121-19"><a href="그래프-영역.html#cb121-19" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb121-20"><a href="그래프-영역.html#cb121-20" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;par(mfrow = c(4, 2)&quot;</span>, <span class="at">outer =</span> <span class="cn">TRUE</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="그래프-영역.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par를 초기 설정값으로 환원합니다.</span></span>
-<span id="cb122-2"><a href="그래프-영역.html#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="그래프-영역.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb120-2"><a href="그래프-영역.html#cb120-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-3"><a href="그래프-영역.html#cb120-3" aria-hidden="true" tabindex="-1"></a><span class="co"># par의 기본 설정 값을 저장합니다.</span></span>
+<span id="cb120-4"><a href="그래프-영역.html#cb120-4" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb120-5"><a href="그래프-영역.html#cb120-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-6"><a href="그래프-영역.html#cb120-6" aria-hidden="true" tabindex="-1"></a><span class="do">##-- par(mfrow = ): 행 우선의 복수 플롯의 수</span></span>
+<span id="cb120-7"><a href="그래프-영역.html#cb120-7" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>),                             <span class="co"># 4행 2열로 프레임을 분할합니다</span></span>
+<span id="cb120-8"><a href="그래프-영역.html#cb120-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>),                         <span class="co"># 내부 마진을 설정합니다.</span></span>
+<span id="cb120-9"><a href="그래프-영역.html#cb120-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">oma =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dv">2</span>, <span class="fl">0.5</span>))                   <span class="co"># 외부 마진을 설정합니다.</span></span>
+<span id="cb120-10"><a href="그래프-영역.html#cb120-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-11"><a href="그래프-영역.html#cb120-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 1&quot;</span>) </span>
+<span id="cb120-12"><a href="그래프-영역.html#cb120-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 2&quot;</span>) </span>
+<span id="cb120-13"><a href="그래프-영역.html#cb120-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 3&quot;</span>) </span>
+<span id="cb120-14"><a href="그래프-영역.html#cb120-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 4&quot;</span>) </span>
+<span id="cb120-15"><a href="그래프-영역.html#cb120-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 5&quot;</span>) </span>
+<span id="cb120-16"><a href="그래프-영역.html#cb120-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 6&quot;</span>) </span>
+<span id="cb120-17"><a href="그래프-영역.html#cb120-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 7&quot;</span>) </span>
+<span id="cb120-18"><a href="그래프-영역.html#cb120-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 8&quot;</span>) </span>
+<span id="cb120-19"><a href="그래프-영역.html#cb120-19" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb120-20"><a href="그래프-영역.html#cb120-20" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;par(mfrow = c(4, 2)&quot;</span>, <span class="at">outer =</span> <span class="cn">TRUE</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:ParMfrow"></span>
+<img src="bookdown_files/figure-html/ParMfrow-1.png" alt="par(mfrow = ): 행 우선의 복수 플롯의 수" width="672" />
+<p class="caption">
+Figure 5.29: par(mfrow = ): 행 우선의 복수 플롯의 수
+</p>
+</div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="그래프-영역.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par를 초기 설정값으로 환원합니다.</span></span>
+<span id="cb121-2"><a href="그래프-영역.html#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
 <p>한편, <code>par(mfcol = c(4, 2))</code> 은 프레임을 4행 2열로 분할하되, 플롯은 열 우선 순서로 표시가 되는 것입니다. 다음의 예에서 플롯이 그려지는 순서를 잘 살펴보기 바랍니다.</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="그래프-영역.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb123-2"><a href="그래프-영역.html#cb123-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-3"><a href="그래프-영역.html#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="co"># par의 기본 설정 값을 저장합니다.</span></span>
-<span id="cb123-4"><a href="그래프-영역.html#cb123-4" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb123-5"><a href="그래프-영역.html#cb123-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-6"><a href="그래프-영역.html#cb123-6" aria-hidden="true" tabindex="-1"></a><span class="do">##-- par(mfcol = ) : 열 우선의 복수 플롯의 수</span></span>
-<span id="cb123-7"><a href="그래프-영역.html#cb123-7" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfcol =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>),                 <span class="co"># 프레임을 4행 2열로 분할합니다.</span></span>
-<span id="cb123-8"><a href="그래프-영역.html#cb123-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>),             <span class="co"># 내부 마진을 설정합니다.</span></span>
-<span id="cb123-9"><a href="그래프-영역.html#cb123-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">oma =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dv">2</span>, <span class="fl">0.5</span>))       <span class="co"># 외부 마진을 설정합니다.</span></span>
-<span id="cb123-10"><a href="그래프-영역.html#cb123-10" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb123-11"><a href="그래프-영역.html#cb123-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 1&quot;</span>) </span>
-<span id="cb123-12"><a href="그래프-영역.html#cb123-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 2&quot;</span>) </span>
-<span id="cb123-13"><a href="그래프-영역.html#cb123-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 3&quot;</span>)</span>
-<span id="cb123-14"><a href="그래프-영역.html#cb123-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 4&quot;</span>)</span>
-<span id="cb123-15"><a href="그래프-영역.html#cb123-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 5&quot;</span>) </span>
-<span id="cb123-16"><a href="그래프-영역.html#cb123-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 6&quot;</span>) </span>
-<span id="cb123-17"><a href="그래프-영역.html#cb123-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 7&quot;</span>) </span>
-<span id="cb123-18"><a href="그래프-영역.html#cb123-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 8&quot;</span>) </span>
-<span id="cb123-19"><a href="그래프-영역.html#cb123-19" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb123-20"><a href="그래프-영역.html#cb123-20" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;par(mfcol = c(4, 2)&quot;</span>, <span class="at">outer =</span> <span class="cn">TRUE</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="그래프-영역.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par를 초기 설정값으로 환원합니다.</span></span>
-<span id="cb124-2"><a href="그래프-영역.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="그래프-영역.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb122-2"><a href="그래프-영역.html#cb122-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-3"><a href="그래프-영역.html#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="co"># par의 기본 설정 값을 저장합니다.</span></span>
+<span id="cb122-4"><a href="그래프-영역.html#cb122-4" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb122-5"><a href="그래프-영역.html#cb122-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-6"><a href="그래프-영역.html#cb122-6" aria-hidden="true" tabindex="-1"></a><span class="do">##-- par(mfcol = ) : 열 우선의 복수 플롯의 수</span></span>
+<span id="cb122-7"><a href="그래프-영역.html#cb122-7" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfcol =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>),                 <span class="co"># 프레임을 4행 2열로 분할합니다.</span></span>
+<span id="cb122-8"><a href="그래프-영역.html#cb122-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>),             <span class="co"># 내부 마진을 설정합니다.</span></span>
+<span id="cb122-9"><a href="그래프-영역.html#cb122-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">oma =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dv">2</span>, <span class="fl">0.5</span>))       <span class="co"># 외부 마진을 설정합니다.</span></span>
+<span id="cb122-10"><a href="그래프-영역.html#cb122-10" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb122-11"><a href="그래프-영역.html#cb122-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 1&quot;</span>) </span>
+<span id="cb122-12"><a href="그래프-영역.html#cb122-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 2&quot;</span>) </span>
+<span id="cb122-13"><a href="그래프-영역.html#cb122-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 3&quot;</span>)</span>
+<span id="cb122-14"><a href="그래프-영역.html#cb122-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 4&quot;</span>)</span>
+<span id="cb122-15"><a href="그래프-영역.html#cb122-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 5&quot;</span>) </span>
+<span id="cb122-16"><a href="그래프-영역.html#cb122-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 6&quot;</span>) </span>
+<span id="cb122-17"><a href="그래프-영역.html#cb122-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 7&quot;</span>) </span>
+<span id="cb122-18"><a href="그래프-영역.html#cb122-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 8&quot;</span>) </span>
+<span id="cb122-19"><a href="그래프-영역.html#cb122-19" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb122-20"><a href="그래프-영역.html#cb122-20" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;par(mfcol = c(4, 2)&quot;</span>, <span class="at">outer =</span> <span class="cn">TRUE</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:ParMfcol"></span>
+<img src="bookdown_files/figure-html/ParMfcol-1.png" alt="par(mfcol = ) : 열 우선의 복수 플롯의 수" width="672" />
+<p class="caption">
+Figure 5.30: par(mfcol = ) : 열 우선의 복수 플롯의 수
+</p>
+</div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="그래프-영역.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par를 초기 설정값으로 환원합니다.</span></span>
+<span id="cb123-2"><a href="그래프-영역.html#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
 <p><a href="그래프-영역.html#그래프-영역">Go Top</a></p>
 </div>
 <div id="영역-분할결합-방법-2-layout" class="section level3" number="5.4.4">
@@ -615,83 +639,130 @@ Figure 5.26: 그래프 영역의 구성
 <p><code>layout()</code> 함수는 <code>par(mfrow = )</code>나 <code>par(mfcol = )</code> 함수와는 병행해서 사용할 수 없으므로 그래프 분석을 시작하기 전에 무슨 함수를 사용할 것인지 결정을 하고 하나를 선택해야만 합니다.</p>
 <p><code>layout.show(n)</code>은 현재의 레이 아웃에 대한 외곽선을 n 만큼의 그래프 갯수만큼 볼 수 있게 해주는 함수입니다.</p>
 <p>아래에 <code>layout()</code>과 <code>layout.show(n)</code> 함수 예를 하나 들어보겠습니다. <code>matrix()</code> 인수 안의 숫자가 그래프가 그려지는 순서입니다. <code>byrow=TRUE</code> 로 설정했으므로 행 우선 순서로 4개의 그래프를 그릴 수 있는 영역에 플롯이 채워지게 됩니다. <code>byrow= FALSE</code> 로 지정하면 열 우선 순서로 그래프가 생성됩니다.</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="그래프-영역.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb125-2"><a href="그래프-영역.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="do">##----------------------------------- </span></span>
-<span id="cb125-3"><a href="그래프-영역.html#cb125-3" aria-hidden="true" tabindex="-1"></a><span class="do">## layout </span></span>
-<span id="cb125-4"><a href="그래프-영역.html#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="do">##----------------------------------- </span></span>
-<span id="cb125-5"><a href="그래프-영역.html#cb125-5" aria-hidden="true" tabindex="-1"></a><span class="co"># par의 기본 설정 값을 저장합니다.</span></span>
-<span id="cb125-6"><a href="그래프-영역.html#cb125-6" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb125-7"><a href="그래프-영역.html#cb125-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb125-8"><a href="그래프-영역.html#cb125-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 프레임을 2행 2열로 분할합니다.</span></span>
-<span id="cb125-9"><a href="그래프-영역.html#cb125-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 행 우선 순서로 1, 2, 3, 4가 왼쪽으로 오른쪽 하단으로 할당됩니다.</span></span>
-<span id="cb125-10"><a href="그래프-영역.html#cb125-10" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="dv">2</span>, <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb125-11"><a href="그래프-영역.html#cb125-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb125-12"><a href="그래프-영역.html#cb125-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 1&quot;</span>) </span>
-<span id="cb125-13"><a href="그래프-영역.html#cb125-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 2&quot;</span>) </span>
-<span id="cb125-14"><a href="그래프-영역.html#cb125-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 3&quot;</span>)</span>
-<span id="cb125-15"><a href="그래프-영역.html#cb125-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 4&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="그래프-영역.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show the current layout </span></span>
-<span id="cb126-2"><a href="그래프-영역.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="fu">layout.show</span>(<span class="dv">4</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="그래프-영역.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb124-2"><a href="그래프-영역.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="do">##----------------------------------- </span></span>
+<span id="cb124-3"><a href="그래프-영역.html#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="do">## layout </span></span>
+<span id="cb124-4"><a href="그래프-영역.html#cb124-4" aria-hidden="true" tabindex="-1"></a><span class="do">##----------------------------------- </span></span>
+<span id="cb124-5"><a href="그래프-영역.html#cb124-5" aria-hidden="true" tabindex="-1"></a><span class="co"># par의 기본 설정 값을 저장합니다.</span></span>
+<span id="cb124-6"><a href="그래프-영역.html#cb124-6" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb124-7"><a href="그래프-영역.html#cb124-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb124-8"><a href="그래프-영역.html#cb124-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 프레임을 2행 2열로 분할합니다.</span></span>
+<span id="cb124-9"><a href="그래프-영역.html#cb124-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 행 우선 순서로 1, 2, 3, 4가 왼쪽으로 오른쪽 하단으로 할당됩니다.</span></span>
+<span id="cb124-10"><a href="그래프-영역.html#cb124-10" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="dv">2</span>, <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb124-11"><a href="그래프-영역.html#cb124-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-12"><a href="그래프-영역.html#cb124-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 1&quot;</span>) </span>
+<span id="cb124-13"><a href="그래프-영역.html#cb124-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 2&quot;</span>) </span>
+<span id="cb124-14"><a href="그래프-영역.html#cb124-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 3&quot;</span>)</span>
+<span id="cb124-15"><a href="그래프-영역.html#cb124-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 4&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:ParMf2R2C"></span>
+<img src="bookdown_files/figure-html/ParMf2R2C-1.png" alt="프레임을 2행 2열로 분할" width="672" />
+<p class="caption">
+Figure 5.31: 프레임을 2행 2열로 분할
+</p>
+</div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="그래프-영역.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show the current layout </span></span>
+<span id="cb125-2"><a href="그래프-영역.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="fu">layout.show</span>(<span class="dv">4</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/Layout41-1.png" width="672" style="display: block; margin: auto;" /><img src="bookdown_files/figure-html/Layout41-2.png" width="672" style="display: block; margin: auto;" /><img src="bookdown_files/figure-html/Layout41-3.png" width="672" style="display: block; margin: auto;" /><img src="bookdown_files/figure-html/Layout41-4.png" width="672" style="display: block; margin: auto;" /></p>
 <p><code>layout()</code> 함수를 활용하면 그래프 영역을 합칠 수도 있습니다. 이러한 기능은 <code>par(mfrow = )</code>나 <code>par(mfcol = )</code> 와 비교해서 매우 유용한 기능 중의 하나입니다. 2행 2열로 나눈 영역에서 1행 1열에만 그래프 영역 1개를 남겨놓고, 2행의 1열과 2행의 2열을합쳐보겠습니다.</p>
 <p>숫자 ’<code>0</code>’은 비어있는 그래프 영역이 되며, 동일한 숫자를 행렬(matrix) 안에 나란히 입력하면 그 영역을 합쳐지게 됩니다.</p>
 <p>아래 예에서는 1행2열에 ‘<code>0</code>’이 입력되었으므로 비어 있고, 2행1열과 2행 2열에는’<code>2</code>’가 입력되어 있으므로, 2행은 1개의 그래프 영역으로 표시가 되게 됩니다.</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="그래프-영역.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb127-2"><a href="그래프-영역.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 2행 2열 영역으로 분할합니다.</span></span>
-<span id="cb127-3"><a href="그래프-영역.html#cb127-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 1행 1열의 요소로 그림 1을 할당합니다.</span></span>
-<span id="cb127-4"><a href="그래프-영역.html#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 그림 2은 2행 전체에 할당합니다.</span></span>
-<span id="cb127-5"><a href="그래프-영역.html#cb127-5" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="dv">2</span>, <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)) </span>
-<span id="cb127-6"><a href="그래프-영역.html#cb127-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-7"><a href="그래프-영역.html#cb127-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 1&quot;</span>) </span>
-<span id="cb127-8"><a href="그래프-영역.html#cb127-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 2&quot;</span>) </span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="그래프-영역.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="do">## show the current layout </span></span>
-<span id="cb128-2"><a href="그래프-영역.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="fu">layout.show</span>(<span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="그래프-영역.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb126-2"><a href="그래프-영역.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 2행 2열 영역으로 분할합니다.</span></span>
+<span id="cb126-3"><a href="그래프-영역.html#cb126-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 1행 1열의 요소로 그림 1을 할당합니다.</span></span>
+<span id="cb126-4"><a href="그래프-영역.html#cb126-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 그림 2은 2행 전체에 할당합니다.</span></span>
+<span id="cb126-5"><a href="그래프-영역.html#cb126-5" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="dv">2</span>, <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)) </span>
+<span id="cb126-6"><a href="그래프-영역.html#cb126-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-7"><a href="그래프-영역.html#cb126-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 1&quot;</span>) </span>
+<span id="cb126-8"><a href="그래프-영역.html#cb126-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 2&quot;</span>) </span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:ParMf2R2C12"></span>
+<img src="bookdown_files/figure-html/ParMf2R2C12-1.png" alt="2행 2열 프레임 : 1행 2열로 공란" width="672" />
+<p class="caption">
+Figure 5.32: 2행 2열 프레임 : 1행 2열로 공란
+</p>
+</div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="그래프-영역.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="do">## show the current layout </span></span>
+<span id="cb127-2"><a href="그래프-영역.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="fu">layout.show</span>(<span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/Layout4-1.png" width="672" style="display: block; margin: auto;" /><img src="bookdown_files/figure-html/Layout4-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p>이해를 돕기위해서 이번에는 1행 1열과 1행 2열을 하나로 합치고, 2행 1열은 비워놓고 2행2열만 남겨놓는 layout을 만들어보는 예제를 아래에 들어보겠습니다.</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="그래프-영역.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 2행 2열 영역으로 분할합니다.</span></span>
-<span id="cb129-2"><a href="그래프-영역.html#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 그림 1을 1행 전체에 할당합니다.</span></span>
-<span id="cb129-3"><a href="그래프-영역.html#cb129-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 그림 2은 2행의 2열에 할당합니다.</span></span>
-<span id="cb129-4"><a href="그래프-영역.html#cb129-4" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="dv">2</span>, <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)) </span>
-<span id="cb129-5"><a href="그래프-영역.html#cb129-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb129-6"><a href="그래프-영역.html#cb129-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 1&quot;</span>) </span>
-<span id="cb129-7"><a href="그래프-영역.html#cb129-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 2&quot;</span>) </span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="그래프-영역.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="do">## show the current layout </span></span>
-<span id="cb130-2"><a href="그래프-영역.html#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="fu">layout.show</span>(<span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="그래프-영역.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 2행 2열 영역으로 분할합니다.</span></span>
+<span id="cb128-2"><a href="그래프-영역.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 그림 1을 1행 전체에 할당합니다.</span></span>
+<span id="cb128-3"><a href="그래프-영역.html#cb128-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 그림 2은 2행의 2열에 할당합니다.</span></span>
+<span id="cb128-4"><a href="그래프-영역.html#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="dv">2</span>, <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)) </span>
+<span id="cb128-5"><a href="그래프-영역.html#cb128-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-6"><a href="그래프-영역.html#cb128-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 1&quot;</span>) </span>
+<span id="cb128-7"><a href="그래프-영역.html#cb128-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 2&quot;</span>) </span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:ParMf2R2C11"></span>
+<img src="bookdown_files/figure-html/ParMf2R2C11-1.png" alt="2행 2열 프레임 : 1행 전체 그림" width="672" />
+<p class="caption">
+Figure 5.33: 2행 2열 프레임 : 1행 전체 그림
+</p>
+</div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="그래프-영역.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="do">## show the current layout </span></span>
+<span id="cb129-2"><a href="그래프-영역.html#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="fu">layout.show</span>(<span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/Layout22-1.png" width="672" style="display: block; margin: auto;" /><img src="bookdown_files/figure-html/Layout22-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p>이번에는 10cm x 10cm 정사각형 모양의 그래프 영역을 생성해 보겠습니다. <strong>폭</strong>은 <code>widths = lcm()</code> 으로, <strong>높이</strong>는 <code>heights = lcm()</code> 으로 설정을 해주면 됩니다.</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="그래프-영역.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 cm x 10 cm 넓이의 그래프를 작성합니다.</span></span>
-<span id="cb131-2"><a href="그래프-영역.html#cb131-2" aria-hidden="true" tabindex="-1"></a>layout<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="dv">1</span>),                                   <span class="co"># 요소가 1개인 행렬입니다.</span></span>
-<span id="cb131-3"><a href="그래프-영역.html#cb131-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">widths =</span> <span class="fu">lcm</span>(<span class="dv">10</span>),                            <span class="co"># 폭이 10cm</span></span>
-<span id="cb131-4"><a href="그래프-영역.html#cb131-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">heights =</span> <span class="fu">lcm</span>(<span class="dv">10</span>))                           <span class="co"># 높이가 10cm</span></span>
-<span id="cb131-5"><a href="그래프-영역.html#cb131-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb131-6"><a href="그래프-영역.html#cb131-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 1&quot;</span>) </span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="그래프-영역.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layout.show</span>(layout<span class="fl">.1</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-11-2.png" width="672" /></p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="그래프-영역.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 cm x 10 cm 넓이의 그래프를 작성합니다.</span></span>
+<span id="cb130-2"><a href="그래프-영역.html#cb130-2" aria-hidden="true" tabindex="-1"></a>layout<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="dv">1</span>),                                   <span class="co"># 요소가 1개인 행렬입니다.</span></span>
+<span id="cb130-3"><a href="그래프-영역.html#cb130-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">widths =</span> <span class="fu">lcm</span>(<span class="dv">10</span>),                            <span class="co"># 폭이 10cm</span></span>
+<span id="cb130-4"><a href="그래프-영역.html#cb130-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">heights =</span> <span class="fu">lcm</span>(<span class="dv">10</span>))                           <span class="co"># 높이가 10cm</span></span>
+<span id="cb130-5"><a href="그래프-영역.html#cb130-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb130-6"><a href="그래프-영역.html#cb130-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 1&quot;</span>) </span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:LayoutWidthPlot"></span>
+<img src="bookdown_files/figure-html/LayoutWidthPlot-1.png" alt="정사각형 모향의 레이아웃의 플롯" width="672" />
+<p class="caption">
+Figure 5.34: 정사각형 모향의 레이아웃의 플롯
+</p>
+</div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="그래프-영역.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layout.show</span>(layout<span class="fl">.1</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:LayoutWidth"></span>
+<img src="bookdown_files/figure-html/LayoutWidth-1.png" alt="정사각형 모향의 레이아웃" width="672" />
+<p class="caption">
+Figure 5.35: 정사각형 모향의 레이아웃
+</p>
+</div>
 <p>이번에는 <strong>그래프 생성 순서(sequence)</strong>의 위, 아래를 바꾸어 보고, <strong>그래프의 넓이(widths)와 높이(heights)를 서로 다르게</strong> 하는 그래프 영역을 만들어보겠습니다.</p>
 <p>가운데에 <strong>산점도</strong>를 그려놓고 상단과 우측에 작은 크기의 <strong>히스토그램</strong>이나 <strong>박스플롯</strong>을 병행해서 그릴 때 유용하게 사용할 수 있습니다.</p>
 <p>참고로, <code>respect = TRUE</code> 는 가로 넓이와 세로 높이의 비율을 고려해서 그래프 영역을 설정하라는 옵션입니다.</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="그래프-영역.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 다음의 행렬에 있는 요소가 표시되는 그림의 번호입니다.</span></span>
-<span id="cb133-2"><a href="그래프-영역.html#cb133-2" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>), <span class="dv">2</span>, <span class="dv">2</span>,<span class="at">byrow =</span> <span class="cn">TRUE</span>); l</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="그래프-영역.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 다음의 행렬에 있는 요소가 표시되는 그림의 번호입니다.</span></span>
+<span id="cb132-2"><a href="그래프-영역.html#cb132-2" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>), <span class="dv">2</span>, <span class="dv">2</span>,<span class="at">byrow =</span> <span class="cn">TRUE</span>); l</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    2    0
 ## [2,]    1    3</code></pre>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="그래프-영역.html#cb135-1" aria-hidden="true" tabindex="-1"></a>layout<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>), <span class="dv">2</span>, <span class="dv">2</span>,<span class="at">byrow =</span> <span class="cn">TRUE</span>),    <span class="co"># 그림의 위치를 지정합니다.     </span></span>
-<span id="cb135-2"><a href="그래프-영역.html#cb135-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">widths =</span> <span class="fu">lcm</span>(<span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>)),         <span class="co"># 두 열의 넓이가 각각 6Cm와 4Cm로 설정됩니다.</span></span>
-<span id="cb135-3"><a href="그래프-영역.html#cb135-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">heights =</span> <span class="fu">lcm</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">6</span>)),        <span class="co"># 두 행의 높이가 각각 4Cm와 6Cm로 설정됩니다.              </span></span>
-<span id="cb135-4"><a href="그래프-영역.html#cb135-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">respect =</span> <span class="cn">TRUE</span>)                <span class="co"># 가로의 넓이와 세로의 높이의 비율을 고려합니다.</span></span>
-<span id="cb135-5"><a href="그래프-영역.html#cb135-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb135-6"><a href="그래프-영역.html#cb135-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 1&quot;</span>) </span>
-<span id="cb135-7"><a href="그래프-영역.html#cb135-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 2&quot;</span>) </span>
-<span id="cb135-8"><a href="그래프-영역.html#cb135-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 3&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="그래프-영역.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layout.show</span>(layout<span class="fl">.2</span>) </span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-12-2.png" width="672" /></p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="그래프-영역.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset par to the default values at startup </span></span>
-<span id="cb137-2"><a href="그래프-영역.html#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="그래프-영역.html#cb134-1" aria-hidden="true" tabindex="-1"></a>layout<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>), <span class="dv">2</span>, <span class="dv">2</span>,<span class="at">byrow =</span> <span class="cn">TRUE</span>),    <span class="co"># 그림의 위치를 지정합니다.     </span></span>
+<span id="cb134-2"><a href="그래프-영역.html#cb134-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">widths =</span> <span class="fu">lcm</span>(<span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>)),         <span class="co"># 두 열의 넓이가 각각 6Cm와 4Cm로 설정됩니다.</span></span>
+<span id="cb134-3"><a href="그래프-영역.html#cb134-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">heights =</span> <span class="fu">lcm</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">6</span>)),        <span class="co"># 두 행의 높이가 각각 4Cm와 6Cm로 설정됩니다.              </span></span>
+<span id="cb134-4"><a href="그래프-영역.html#cb134-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">respect =</span> <span class="cn">TRUE</span>)                <span class="co"># 가로의 넓이와 세로의 높이의 비율을 고려합니다.</span></span>
+<span id="cb134-5"><a href="그래프-영역.html#cb134-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-6"><a href="그래프-영역.html#cb134-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 1&quot;</span>) </span>
+<span id="cb134-7"><a href="그래프-영역.html#cb134-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 2&quot;</span>) </span>
+<span id="cb134-8"><a href="그래프-영역.html#cb134-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 3&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:LayoutOrderPlot"></span>
+<img src="bookdown_files/figure-html/LayoutOrderPlot-1.png" alt="행렬의 요소를 그림의 번호로 지정" width="672" />
+<p class="caption">
+Figure 5.36: 행렬의 요소를 그림의 번호로 지정
+</p>
+</div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="그래프-영역.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layout.show</span>(layout<span class="fl">.2</span>) </span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:LayoutOrder-1"></span>
+<img src="bookdown_files/figure-html/LayoutOrder-1.png" alt="행렬의 요소를 레이아웃" width="672" />
+<p class="caption">
+Figure 5.37: 행렬의 요소를 레이아웃
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:LayoutOrder-2"></span>
+<img src="bookdown_files/figure-html/LayoutOrder-2.png" alt="행렬의 요소를 레이아웃" width="672" />
+<p class="caption">
+Figure 5.38: 행렬의 요소를 레이아웃
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:LayoutOrder-3"></span>
+<img src="bookdown_files/figure-html/LayoutOrder-3.png" alt="행렬의 요소를 레이아웃" width="672" />
+<p class="caption">
+Figure 5.39: 행렬의 요소를 레이아웃
+</p>
+</div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="그래프-영역.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset par to the default values at startup </span></span>
+<span id="cb136-2"><a href="그래프-영역.html#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
 <p><a href="그래프-영역.html#그래프-영역">Go Top</a></p>
 </div>
 <div id="참고자료-1" class="section level3 unnumbered">

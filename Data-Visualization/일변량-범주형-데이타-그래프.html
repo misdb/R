@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="일변량-연속형-데이터-그래프.html"/>
-<link rel="next" href="이변량-범주형-데이터-그래프.html"/>
+<link rel="next" href="이변량-연속형-데이터-그래프.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -181,12 +181,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.1" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#막대-그래프"><i class="fa fa-check"></i><b>4.3.1</b> 막대 그래프</a></li>
 <li class="chapter" data-level="4.3.2" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#클리브랜드-점-그래프"><i class="fa fa-check"></i><b>4.3.2</b> 클리브랜드 점 그래프</a></li>
 <li class="chapter" data-level="4.3.3" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#파이-차트"><i class="fa fa-check"></i><b>4.3.3</b> 파이 차트</a></li>
-<li class="chapter" data-level="4.3.4" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#산포도"><i class="fa fa-check"></i><b>4.3.4</b> 산포도</a></li>
-<li class="chapter" data-level="4.3.5" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#산포도-행렬"><i class="fa fa-check"></i><b>4.3.5</b> 산포도 행렬</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.4</b> 이변량 범주형 데이터 그래프</a>
+<li class="chapter" data-level="4.4" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.4</b> 이변량 연속형 데이터 그래프</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html#모자이크-그래프"><i class="fa fa-check"></i><b>4.4.1</b> 모자이크 그래프</a></li>
+<li class="chapter" data-level="4.4.1" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html#산포도"><i class="fa fa-check"></i><b>4.4.1</b> 산포도</a></li>
+<li class="chapter" data-level="4.4.2" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html#산포도-행렬"><i class="fa fa-check"></i><b>4.4.2</b> 산포도 행렬</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.5</b> 이변량 범주형 데이터 그래프</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html#모자이크-그래프"><i class="fa fa-check"></i><b>4.5.1</b> 모자이크 그래프</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="그래프-모수.html"><a href="그래프-모수.html"><i class="fa fa-check"></i><b>5</b> 그래프 모수</a>
@@ -499,12 +502,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>막대 그래프(bar graph)</strong>는 <strong>바 차트(bar chart)</strong>, <strong>바 그래프(bar graph)</strong> 등으로도 불리며, <code>barplot()</code> 함수를 이용하여 막대 그래프를 그릴 수 있습니다.</p>
 <p>막대 그래프는 명목형 변수 X를 전체 데이터의 값에 비례하여 <em>높이</em>와 <em>갯수</em>를 나타내는 직사각형의 막대로 표현하는 차트나 그래프를 말합니다. 막대는 수직 또는 수평으로 그릴 수 있습니다.</p>
 <p><code>barplot()</code> 함수의 첫 번째 인수는 명목형 변수의 <strong>도수분포표</strong>입니다. 변수의 도수분포표는 <strong><code>table()</code></strong> 함수로 구할 수 있습니다.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="일변량-범주형-데이타-그래프.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb60-2"><a href="일변량-범주형-데이타-그래프.html#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-3"><a href="일변량-범주형-데이타-그래프.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="do">##-------- plot for one variable, categorical data </span></span>
-<span id="cb60-4"><a href="일변량-범주형-데이타-그래프.html#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="co"># bar plot : barplot() </span></span>
-<span id="cb60-5"><a href="일변량-범주형-데이타-그래프.html#cb60-5" aria-hidden="true" tabindex="-1"></a>table_cyl <span class="ot">&lt;-</span> <span class="fu">table</span>(Cars93<span class="sc">$</span>Cylinders)                <span class="co"># Cylinder 컬럼의 도수분포료</span></span>
-<span id="cb60-6"><a href="일변량-범주형-데이타-그래프.html#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(table_cyl, <span class="at">main =</span> <span class="st">&quot;bar plot : barplot()&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="일변량-범주형-데이타-그래프.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb58-2"><a href="일변량-범주형-데이타-그래프.html#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-3"><a href="일변량-범주형-데이타-그래프.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="do">##-------- plot for one variable, categorical data </span></span>
+<span id="cb58-4"><a href="일변량-범주형-데이타-그래프.html#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co"># bar plot : barplot() </span></span>
+<span id="cb58-5"><a href="일변량-범주형-데이타-그래프.html#cb58-5" aria-hidden="true" tabindex="-1"></a>table_cyl <span class="ot">&lt;-</span> <span class="fu">table</span>(Cars93<span class="sc">$</span>Cylinders)                <span class="co"># Cylinder 컬럼의 도수분포료</span></span>
+<span id="cb58-6"><a href="일변량-범주형-데이타-그래프.html#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(table_cyl, <span class="at">main =</span> <span class="st">&quot;bar plot : barplot()&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-bar"></span>
 <img src="bookdown_files/figure-html/fig-bar-1.png" alt="일변량 범주형 데이터 그래프 : 막대 그래프" width="672" />
 <p class="caption">
@@ -520,18 +523,18 @@ Figure 4.13: 일변량 범주형 데이터 그래프 : 막대 그래프
 <p>이 그래프는 x축을 <strong>연속형 변수</strong>로, 그리고 y축을 <strong>명목형 변수</strong>로 표현한다. 그런데, 이 그래프에서 주요 변수는 Y축을 이루는 명목형 변수입니다.</p>
 <p>앞에서 살펴본 막대 그래프의 X축과 Y축을 바꿔 놓고, 그림을 막대가 아닌 점으로 표현한 것이 클리브랜드 점 그래프입니다.</p>
 <p>Y축의 변수를 <code>reorder()</code> 함수 또는 <code>sort()</code> 함수를 이용하여 발생도수의 오름차순/내림차순으로 정렬할 수 있습니다.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="일변량-범주형-데이타-그래프.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb61-2"><a href="일변량-범주형-데이타-그래프.html#cb61-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-3"><a href="일변량-범주형-데이타-그래프.html#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cleveland dot plot : dotchart() </span></span>
-<span id="cb61-4"><a href="일변량-범주형-데이타-그래프.html#cb61-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-5"><a href="일변량-범주형-데이타-그래프.html#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="co"># frequency table </span></span>
-<span id="cb61-6"><a href="일변량-범주형-데이타-그래프.html#cb61-6" aria-hidden="true" tabindex="-1"></a>table_cyl <span class="ot">&lt;-</span> <span class="fu">table</span>(Cars93<span class="sc">$</span>Cylinders) </span>
-<span id="cb61-7"><a href="일변량-범주형-데이타-그래프.html#cb61-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-8"><a href="일변량-범주형-데이타-그래프.html#cb61-8" aria-hidden="true" tabindex="-1"></a><span class="co"># names for label </span></span>
-<span id="cb61-9"><a href="일변량-범주형-데이타-그래프.html#cb61-9" aria-hidden="true" tabindex="-1"></a>Cylinders <span class="ot">&lt;-</span> <span class="fu">names</span>(table_cyl)</span>
-<span id="cb61-10"><a href="일변량-범주형-데이타-그래프.html#cb61-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-11"><a href="일변량-범주형-데이타-그래프.html#cb61-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dotchart</span>(<span class="fu">as.numeric</span>(table_cyl), </span>
-<span id="cb61-12"><a href="일변량-범주형-데이타-그래프.html#cb61-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">labels =</span> Cylinders, <span class="at">main =</span> <span class="st">&quot;cleveland dot plot&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="일변량-범주형-데이타-그래프.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb59-2"><a href="일변량-범주형-데이타-그래프.html#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-3"><a href="일변량-범주형-데이타-그래프.html#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cleveland dot plot : dotchart() </span></span>
+<span id="cb59-4"><a href="일변량-범주형-데이타-그래프.html#cb59-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-5"><a href="일변량-범주형-데이타-그래프.html#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="co"># frequency table </span></span>
+<span id="cb59-6"><a href="일변량-범주형-데이타-그래프.html#cb59-6" aria-hidden="true" tabindex="-1"></a>table_cyl <span class="ot">&lt;-</span> <span class="fu">table</span>(Cars93<span class="sc">$</span>Cylinders) </span>
+<span id="cb59-7"><a href="일변량-범주형-데이타-그래프.html#cb59-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-8"><a href="일변량-범주형-데이타-그래프.html#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="co"># names for label </span></span>
+<span id="cb59-9"><a href="일변량-범주형-데이타-그래프.html#cb59-9" aria-hidden="true" tabindex="-1"></a>Cylinders <span class="ot">&lt;-</span> <span class="fu">names</span>(table_cyl)</span>
+<span id="cb59-10"><a href="일변량-범주형-데이타-그래프.html#cb59-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-11"><a href="일변량-범주형-데이타-그래프.html#cb59-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dotchart</span>(<span class="fu">as.numeric</span>(table_cyl), </span>
+<span id="cb59-12"><a href="일변량-범주형-데이타-그래프.html#cb59-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">labels =</span> Cylinders, <span class="at">main =</span> <span class="st">&quot;cleveland dot plot&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-cleveland"></span>
 <img src="bookdown_files/figure-html/fig-cleveland-1.png" alt="일변량 범주형 데이터 그래프 : 클리브랜드 점 그래프" width="672" />
 <p class="caption">
@@ -543,18 +546,18 @@ Figure 4.14: 일변량 범주형 데이터 그래프 : 클리브랜드 점 그�
 </ul>
 <p><strong>[참고사항]</strong></p>
 <p><code>Cars93$Cylinders</code> 컬럼의 도수분포표를 <code>sort()</code> 함수를 이용하여 발생 도수를 오름차순으로 정렬하고, 이를 인수로 하여 클리브랜드 점 그래프를 그려 보겠습니다.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="일변량-범주형-데이타-그래프.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb62-2"><a href="일변량-범주형-데이타-그래프.html#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-3"><a href="일변량-범주형-데이타-그래프.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cleveland dot plot : dotchart() </span></span>
-<span id="cb62-4"><a href="일변량-범주형-데이타-그래프.html#cb62-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-5"><a href="일변량-범주형-데이타-그래프.html#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="co"># frequency table </span></span>
-<span id="cb62-6"><a href="일변량-범주형-데이타-그래프.html#cb62-6" aria-hidden="true" tabindex="-1"></a>table_cyl_inc <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">table</span>(Cars93<span class="sc">$</span>Cylinders))   <span class="co"># 발생 도수의 오름차순 정렬</span></span>
-<span id="cb62-7"><a href="일변량-범주형-데이타-그래프.html#cb62-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-8"><a href="일변량-범주형-데이타-그래프.html#cb62-8" aria-hidden="true" tabindex="-1"></a><span class="co"># names for label </span></span>
-<span id="cb62-9"><a href="일변량-범주형-데이타-그래프.html#cb62-9" aria-hidden="true" tabindex="-1"></a>Cylinders <span class="ot">&lt;-</span> <span class="fu">names</span>(table_cyl_inc)</span>
-<span id="cb62-10"><a href="일변량-범주형-데이타-그래프.html#cb62-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-11"><a href="일변량-범주형-데이타-그래프.html#cb62-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dotchart</span>(<span class="fu">as.numeric</span>(table_cyl_inc), </span>
-<span id="cb62-12"><a href="일변량-범주형-데이타-그래프.html#cb62-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">labels =</span> Cylinders, <span class="at">main =</span> <span class="st">&quot;cleveland dot plot&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="일변량-범주형-데이타-그래프.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb60-2"><a href="일변량-범주형-데이타-그래프.html#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="일변량-범주형-데이타-그래프.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cleveland dot plot : dotchart() </span></span>
+<span id="cb60-4"><a href="일변량-범주형-데이타-그래프.html#cb60-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-5"><a href="일변량-범주형-데이타-그래프.html#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="co"># frequency table </span></span>
+<span id="cb60-6"><a href="일변량-범주형-데이타-그래프.html#cb60-6" aria-hidden="true" tabindex="-1"></a>table_cyl_inc <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">table</span>(Cars93<span class="sc">$</span>Cylinders))   <span class="co"># 발생 도수의 오름차순 정렬</span></span>
+<span id="cb60-7"><a href="일변량-범주형-데이타-그래프.html#cb60-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-8"><a href="일변량-범주형-데이타-그래프.html#cb60-8" aria-hidden="true" tabindex="-1"></a><span class="co"># names for label </span></span>
+<span id="cb60-9"><a href="일변량-범주형-데이타-그래프.html#cb60-9" aria-hidden="true" tabindex="-1"></a>Cylinders <span class="ot">&lt;-</span> <span class="fu">names</span>(table_cyl_inc)</span>
+<span id="cb60-10"><a href="일변량-범주형-데이타-그래프.html#cb60-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-11"><a href="일변량-범주형-데이타-그래프.html#cb60-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dotchart</span>(<span class="fu">as.numeric</span>(table_cyl_inc), </span>
+<span id="cb60-12"><a href="일변량-범주형-데이타-그래프.html#cb60-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">labels =</span> Cylinders, <span class="at">main =</span> <span class="st">&quot;cleveland dot plot&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-cleveland-1"></span>
 <img src="bookdown_files/figure-html/fig-cleveland-1-1.png" alt="일변량 범주형 데이터 그래프 : 클리브랜드 점 그래프 (Sort)" width="672" />
 <p class="caption">
@@ -571,15 +574,15 @@ Figure 4.15: 일변량 범주형 데이터 그래프 : 클리브랜드 점 그�
 <h3><span class="header-section-number">4.3.3</span> 파이 차트</h3>
 <p>파이 차트는 도수분포표를 비율로 나타낼 때 사용합니다. 전체를 100%라고 했을 때, 각각이 차지하는 비율을 한 눈에 볼 수 있게 시각화하는 것입니다.</p>
 <p>역시 이 파이 차트를 그릴 떄도 기본적으로 범주형 변수를 인수로 하여 <code>table()</code> 함수로 구한 도수분포표가 됩니다.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="일변량-범주형-데이타-그래프.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb63-2"><a href="일변량-범주형-데이타-그래프.html#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-3"><a href="일변량-범주형-데이타-그래프.html#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co"># pie chart : pie() </span></span>
-<span id="cb63-4"><a href="일변량-범주형-데이타-그래프.html#cb63-4" aria-hidden="true" tabindex="-1"></a>table_cyl <span class="ot">&lt;-</span> <span class="fu">table</span>(Cars93<span class="sc">$</span>Cylinders) </span>
-<span id="cb63-5"><a href="일변량-범주형-데이타-그래프.html#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="co"># frequency table </span></span>
-<span id="cb63-6"><a href="일변량-범주형-데이타-그래프.html#cb63-6" aria-hidden="true" tabindex="-1"></a>Cylinders <span class="ot">&lt;-</span> <span class="fu">names</span>(table_cyl) </span>
-<span id="cb63-7"><a href="일변량-범주형-데이타-그래프.html#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="co"># names for label </span></span>
-<span id="cb63-8"><a href="일변량-범주형-데이타-그래프.html#cb63-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb63-9"><a href="일변량-범주형-데이타-그래프.html#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(table_cyl, <span class="at">labels =</span> Cylinders, <span class="at">main =</span> <span class="st">&quot;pie chart&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="일변량-범주형-데이타-그래프.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb61-2"><a href="일변량-범주형-데이타-그래프.html#cb61-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-3"><a href="일변량-범주형-데이타-그래프.html#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="co"># pie chart : pie() </span></span>
+<span id="cb61-4"><a href="일변량-범주형-데이타-그래프.html#cb61-4" aria-hidden="true" tabindex="-1"></a>table_cyl <span class="ot">&lt;-</span> <span class="fu">table</span>(Cars93<span class="sc">$</span>Cylinders) </span>
+<span id="cb61-5"><a href="일변량-범주형-데이타-그래프.html#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="co"># frequency table </span></span>
+<span id="cb61-6"><a href="일변량-범주형-데이타-그래프.html#cb61-6" aria-hidden="true" tabindex="-1"></a>Cylinders <span class="ot">&lt;-</span> <span class="fu">names</span>(table_cyl) </span>
+<span id="cb61-7"><a href="일변량-범주형-데이타-그래프.html#cb61-7" aria-hidden="true" tabindex="-1"></a><span class="co"># names for label </span></span>
+<span id="cb61-8"><a href="일변량-범주형-데이타-그래프.html#cb61-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb61-9"><a href="일변량-범주형-데이타-그래프.html#cb61-9" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(table_cyl, <span class="at">labels =</span> Cylinders, <span class="at">main =</span> <span class="st">&quot;pie chart&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-pie"></span>
 <img src="bookdown_files/figure-html/fig-pie-1.png" alt="일변량 범주형 데이터 그래프 : 파이 차트" width="672" />
 <p class="caption">
@@ -587,112 +590,7 @@ Figure 4.16: 일변량 범주형 데이터 그래프 : 파이 차트
 </p>
 </div>
 <p>자세한 사용방법은 <code>? pie</code>로 확인할 수 있습니다. [참고 : <a href="https://misdb.github.io/R/R-for-BigData-Analysis/ch_05_Chart.html#2-%ED%8C%8C%EC%9D%B4%EC%B0%A8%ED%8A%B8">파이차트</a>]</p>
-<p><a href="일변량-범주형-데이타-그래프.html#일변량-범주형-데이타-그래프">Go Top</a>
-f
-## 이변량 연속형 데이터 그래프</p>
-<p><strong>연속형 변수 2개</strong>를 그래프로 표시해 보겠습니다.</p>
-<p>사용하는 변수는 <code>Cars93$Weight</code> 컬럼과 <code>Cars93$MPG.highway</code> 컬럼 등 2(<strong>이변량</strong>)개로, 이 두 변수 모두 <code>int</code> 형의 <strong>연속형 변수</strong>임을 알 수 있습니다.</p>
-<p>이 절에서의 이변량 연속형 데이터에 대하여 다음의 그래프를 그려 보기로 한다.</p>
-<ul>
-<li><a href="산포도-1.html#산포도-1">산포도</a></li>
-<li><a href="산포도-1.html#산포도-행렬-2">산포도 행렬</a></li>
-</ul>
-</div>
-<div id="산포도" class="section level3" number="4.3.4">
-<h3><span class="header-section-number">4.3.4</span> 산포도</h3>
-<p><strong>산포도</strong>(scatter plot) 또는 <strong>산점도</strong>라고도 합니다. 산포도는 <code>x</code>축과 <code>y</code>축으로 이루어진 그래프에 두 변수의 값을 <strong>점</strong>으로 나타낸 그래프입니다.</p>
-<p>산포도를 이용하면 <em>두 변수의 관계를 파악</em>하는데 용이합니다.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="일변량-범주형-데이타-그래프.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb64-2"><a href="일변량-범주형-데이타-그래프.html#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-3"><a href="일변량-범주형-데이타-그래프.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="do">##----- plot for 2 variables, continuous data </span></span>
-<span id="cb64-4"><a href="일변량-범주형-데이타-그래프.html#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot : plot(x, y) </span></span>
-<span id="cb64-5"><a href="일변량-범주형-데이타-그래프.html#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(Cars93, </span>
-<span id="cb64-6"><a href="일변량-범주형-데이타-그래프.html#cb64-6" aria-hidden="true" tabindex="-1"></a>     <span class="fu">plot</span>(Weight, MPG.highway, <span class="at">main =</span> <span class="st">&quot;scatter plot : plot(x, y)&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:figScatter1"></span>
-<img src="bookdown_files/figure-html/figScatter1-1.png" alt="이변량 연속형 데이터 그래프 : 산포도" width="672" />
-<p class="caption">
-Figure 4.17: 이변량 연속형 데이터 그래프 : 산포도
-</p>
-</div>
-<p><strong>[참고 : <a href="https://misdb.github.io/R/R-for-BigData-Analysis/ch_05_Chart.html#X-Y%20%ED%94%8C%EB%A1%9C%ED%8C%85">X-Y 플로팅</a>]</strong></p>
-<p>[Go Top][이변량 연속형 데이터 그래프]</p>
-</div>
-<div id="산포도-행렬" class="section level3" number="4.3.5">
-<h3><span class="header-section-number">4.3.5</span> 산포도 행렬</h3>
-<p><strong>산포도 행렬</strong>은 <strong><em>3개 이상의 변수</em>들간의 관계를 행렬 형태의 그래프로 시각화</strong>하는 것입니다.</p>
-<p>아래의 예는 <code>Cars93</code> 데이터 세트 중 <strong>4개의 변수 간의 산포도</strong>를 <strong>행렬 형태</strong>로 보여주고 있습니다.</p>
-<p><code>Base Graphics</code> 패키지의 <code>plot()</code> 함수와 <code>car</code> 패키지의 <code>scatterplotMatrix()</code> 함수의 사용을 예로 들어 보겠습니다.</p>
-<p>먼저 <code>Base Graphics</code> 패키지의 <code>plot()</code> 함수를 이용한 4개 변수 간의 <strong>산포도 행렬</strong>을 작성하면 다음과 같습니다.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="일변량-범주형-데이타-그래프.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb65-2"><a href="일변량-범주형-데이타-그래프.html#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-3"><a href="일변량-범주형-데이타-그래프.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot matrix : plot(dataframe)</span></span>
-<span id="cb65-4"><a href="일변량-범주형-데이타-그래프.html#cb65-4" aria-hidden="true" tabindex="-1"></a>Cars93_subset <span class="ot">&lt;-</span> Cars93[,<span class="fu">c</span>(<span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Horsepower&quot;</span>, <span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;MPG.city&quot;</span>)] </span>
-<span id="cb65-5"><a href="일변량-범주형-데이타-그래프.html#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Cars93_subset, <span class="at">main =</span> <span class="st">&quot;scatter plot matrix : plot(dataframe)&quot;</span>) </span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:figScatter2"></span>
-<img src="bookdown_files/figure-html/figScatter2-1.png" alt="다변량 연속형 데이터 그래프 : 산포도 행렬" width="672" />
-<p class="caption">
-Figure 4.18: 다변량 연속형 데이터 그래프 : 산포도 행렬
-</p>
-</div>
-<p>또한 <code>car</code> 패키지의 <code>scatterplotMatrix()</code> 함수를 이용하면 다음과 같습니다.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="일변량-범주형-데이타-그래프.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot matrix : scatterplotMatrix(dataframe)</span></span>
-<span id="cb66-2"><a href="일변량-범주형-데이타-그래프.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;car&quot;)</span></span>
-<span id="cb66-3"><a href="일변량-범주형-데이타-그래프.html#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car) </span></code></pre></div>
-<pre><code>## Loading required package: carData</code></pre>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="일변량-범주형-데이타-그래프.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scatterplotMatrix</span>(Cars93_subset, </span>
-<span id="cb68-2"><a href="일변량-범주형-데이타-그래프.html#cb68-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">main =</span> <span class="st">&quot;scatter plot matrix : scatterplotMatrx(dataframe)&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:figScatter3"></span>
-<img src="bookdown_files/figure-html/figScatter3-1.png" alt="다변량 연속형 데이터 그래프 : 산포도 행렬" width="672" />
-<p class="caption">
-Figure 4.19: 다변량 연속형 데이터 그래프 : 산포도 행렬
-</p>
-</div>
-<p>자세한 사항은 <code>? scatterplotMatrix</code>로 확인할 수 있습니다.</p>
-<p>[Go Top][이변량 연속형 데이터 그래프]</p>
-<div id="그래프-위의-데이터-모양-변경" class="section level4" number="4.3.5.1">
-<h4><span class="header-section-number">4.3.5.1</span> 그래프 위의 데이터 모양 변경</h4>
-<p>그런데 <code>plot()</code> 함수는 기본적으로 데이터를 <strong>점(<code>type = "p"</code>)</strong>으로 표현합니다. <a href="그래프-모수.html#그래프-모수">다음 장</a>에서 이들 모수에 대하여 자세히 살펴 볼 것입니다. 여기서는 여러 모수 중에서 <code>type =</code> 모수 부분를 변경하면서 그래프로 시각화해 보면 다음과 같습니다.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="일변량-범주형-데이타-그래프.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb69-2"><a href="일변량-범주형-데이타-그래프.html#cb69-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-3"><a href="일변량-범주형-데이타-그래프.html#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="do">##-------- </span></span>
-<span id="cb69-4"><a href="일변량-범주형-데이타-그래프.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot by various type : l, h, b, o, s, n </span></span>
-<span id="cb69-5"><a href="일변량-범주형-데이타-그래프.html#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="co"># order by Weight </span></span>
-<span id="cb69-6"><a href="일변량-범주형-데이타-그래프.html#cb69-6" aria-hidden="true" tabindex="-1"></a>Cars93_1 <span class="ot">&lt;-</span> Cars93[<span class="fu">order</span>(Cars93<span class="sc">$</span>Weight),] </span>
-<span id="cb69-7"><a href="일변량-범주형-데이타-그래프.html#cb69-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-8"><a href="일변량-범주형-데이타-그래프.html#cb69-8" aria-hidden="true" tabindex="-1"></a><span class="co"># dividing window frame </span></span>
-<span id="cb69-9"><a href="일변량-범주형-데이타-그래프.html#cb69-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-10"><a href="일변량-범주형-데이타-그래프.html#cb69-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plots by type </span></span>
-<span id="cb69-11"><a href="일변량-범주형-데이타-그래프.html#cb69-11" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Cars93_1)</span></code></pre></div>
-<pre><code>## The following object is masked _by_ .GlobalEnv:
-## 
-##     Cylinders</code></pre>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="일변량-범주형-데이타-그래프.html#cb71-1" aria-hidden="true" tabindex="-1"></a>types <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;p&quot;</span>, <span class="st">&quot;l&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;h&quot;</span>, <span class="st">&quot;s&quot;</span>, <span class="st">&quot;S&quot;</span>, <span class="st">&quot;n&quot;</span>)            <span class="co"># 다양한 type 옵션들</span></span>
-<span id="cb71-2"><a href="일변량-범주형-데이타-그래프.html#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-3"><a href="일변량-범주형-데이타-그래프.html#cb71-3" aria-hidden="true" tabindex="-1"></a>titles <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;type = &#39;p&#39;&quot;</span>, <span class="st">&quot;type = &#39;l&#39;&quot;</span>, <span class="st">&quot;type = &#39;b&#39;&quot;</span>, <span class="st">&quot;type = &#39;c&#39;&quot;</span>, <span class="st">&quot;type = &#39;o&#39;&quot;</span>, </span>
-<span id="cb71-4"><a href="일변량-범주형-데이타-그래프.html#cb71-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;type = &#39;h&#39;&quot;</span>, <span class="st">&quot;type = &#39;s&#39;&quot;</span>, <span class="st">&quot;type = &#39;S&#39;&quot;</span>, <span class="st">&quot;type = &#39;n&#39; : Empty Graph&quot;</span>)</span>
-<span id="cb71-5"><a href="일변량-범주형-데이타-그래프.html#cb71-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-6"><a href="일변량-범주형-데이타-그래프.html#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">main =</span> <span class="st">&quot;Default Type&quot;</span>)              <span class="co"># type을 지정하지 않은 경우의 기본 모양</span></span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:fig-scatter-3-1"></span>
-<img src="bookdown_files/figure-html/fig-scatter-3-1.png" alt="이변량 연속형 데이터 그래프 : 산포도 - 모양 변경" width="672" />
-<p class="caption">
-Figure 4.20: 이변량 연속형 데이터 그래프 : 산포도 - 모양 변경
-</p>
-</div>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="일변량-범주형-데이타-그래프.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>)) </span>
-<span id="cb72-2"><a href="일변량-범주형-데이타-그래프.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>) {</span>
-<span id="cb72-3"><a href="일변량-범주형-데이타-그래프.html#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">type =</span> types[i], <span class="at">main =</span> titles[i]) </span>
-<span id="cb72-4"><a href="일변량-범주형-데이타-그래프.html#cb72-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:fig-scatter-3-2"></span>
-<img src="bookdown_files/figure-html/fig-scatter-3-2.png" alt="이변량 연속형 데이터 그래프 : 산포도 - 모양 변경" width="672" />
-<p class="caption">
-Figure 4.21: 이변량 연속형 데이터 그래프 : 산포도 - 모양 변경
-</p>
-</div>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="일변량-범주형-데이타-그래프.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93_1)</span>
-<span id="cb73-2"><a href="일변량-범주형-데이타-그래프.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)) </span></code></pre></div>
-<p>이러한 높은 수준의 그래프 함수를 이용하여 바탕이 되는 그래프를 시각화해 줍니다. 그리고 높은 수준의 그래프 함수들은 <a href="그래프-모수.html#그래프-모수">공통의 모수와 고유한 모수를 이용</a>하여 표현 형식을 설정할 수 있습니다. 또한 <a href="낮은-수준의-그래프-함수.html#낮은-수준의-그래프-함수">낮은 수준의 그래프 함수</a>를 이용하여 그래프 위에 좀 더 다양한 정보를 표시할 수 있습니다.</p>
-<p>[Go Top][이변량 연속형 데이터 그래프]</p>
-</div>
+<p><a href="일변량-범주형-데이타-그래프.html#일변량-범주형-데이타-그래프">Go Top</a></p>
 </div>
 </div>
             </section>
@@ -701,7 +599,7 @@ Figure 4.21: 이변량 연속형 데이터 그래프 : 산포도 - 모양 변경
         </div>
       </div>
 <a href="일변량-연속형-데이터-그래프.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="이변량-범주형-데이터-그래프.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="이변량-연속형-데이터-그래프.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

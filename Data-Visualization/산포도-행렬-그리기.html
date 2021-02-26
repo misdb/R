@@ -181,12 +181,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.1" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#막대-그래프"><i class="fa fa-check"></i><b>4.3.1</b> 막대 그래프</a></li>
 <li class="chapter" data-level="4.3.2" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#클리브랜드-점-그래프"><i class="fa fa-check"></i><b>4.3.2</b> 클리브랜드 점 그래프</a></li>
 <li class="chapter" data-level="4.3.3" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#파이-차트"><i class="fa fa-check"></i><b>4.3.3</b> 파이 차트</a></li>
-<li class="chapter" data-level="4.3.4" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#산포도"><i class="fa fa-check"></i><b>4.3.4</b> 산포도</a></li>
-<li class="chapter" data-level="4.3.5" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#산포도-행렬"><i class="fa fa-check"></i><b>4.3.5</b> 산포도 행렬</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.4</b> 이변량 범주형 데이터 그래프</a>
+<li class="chapter" data-level="4.4" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.4</b> 이변량 연속형 데이터 그래프</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html#모자이크-그래프"><i class="fa fa-check"></i><b>4.4.1</b> 모자이크 그래프</a></li>
+<li class="chapter" data-level="4.4.1" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html#산포도"><i class="fa fa-check"></i><b>4.4.1</b> 산포도</a></li>
+<li class="chapter" data-level="4.4.2" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html#산포도-행렬"><i class="fa fa-check"></i><b>4.4.2</b> 산포도 행렬</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.5</b> 이변량 범주형 데이터 그래프</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html#모자이크-그래프"><i class="fa fa-check"></i><b>4.5.1</b> 모자이크 그래프</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="그래프-모수.html"><a href="그래프-모수.html"><i class="fa fa-check"></i><b>5</b> 그래프 모수</a>
@@ -608,14 +611,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb535-6"><a href="산포도-행렬-그리기.html#cb535-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">pch=</span><span class="st">&quot;*&quot;</span>,  <span class="co"># 점 모양은 * 로</span></span>
 <span id="cb535-7"><a href="산포도-행렬-그리기.html#cb535-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">&quot;scatter-plot matrix, correlation coef., histogram&quot;</span></span>
 <span id="cb535-8"><a href="산포도-행렬-그리기.html#cb535-8" aria-hidden="true" tabindex="-1"></a>      )</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
 <div id="그룹별로-점의-색깔-달리하기" class="section level4" number="10.8.3.1">
 <h4><span class="header-section-number">10.8.3.1</span> 그룹별로 점의 색깔 달리하기</h4>
 <p>보너스로, <code>pairs()</code> 함수를 사용해서 <strong>범주(그룹)별로 점의 색깔</strong>을 달리하는 방법도 소개하겠습니다. 이 역시 <code>pairs()</code> 함수 도움말(help)에 있는 R script 를 가져왔습니다. 도움말(help)이 정말 도움이 많이 됩니다. ^^ 사용한 데이터는 그 유명한 <code>Iris</code> 데이터가 되겠습니다.</p>
 <div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="산포도-행렬-그리기.html#cb536-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 범주(그룹)을 색깔로 구분하여 산포도 행렬 그리기</span></span>
 <span id="cb536-2"><a href="산포도-행렬-그리기.html#cb536-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(iris[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">main =</span> <span class="st">&quot;Anderson&#39;s Iris Data -- 3 species&quot;</span>,</span>
 <span id="cb536-3"><a href="산포도-행렬-그리기.html#cb536-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">pch =</span> <span class="dv">21</span>, <span class="at">bg =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green3&quot;</span>, <span class="st">&quot;blue&quot;</span>)[<span class="fu">unclass</span>(iris<span class="sc">$</span>Species)])</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
 <p>* R script source : <code>help(pairs)</code></p>
 <p><a href="산포도-행렬-그리기.html#산포도-행렬-그리기-1">Go Top</a></p>
 </div>

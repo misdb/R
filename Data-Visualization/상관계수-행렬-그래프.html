@@ -181,12 +181,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.1" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#막대-그래프"><i class="fa fa-check"></i><b>4.3.1</b> 막대 그래프</a></li>
 <li class="chapter" data-level="4.3.2" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#클리브랜드-점-그래프"><i class="fa fa-check"></i><b>4.3.2</b> 클리브랜드 점 그래프</a></li>
 <li class="chapter" data-level="4.3.3" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#파이-차트"><i class="fa fa-check"></i><b>4.3.3</b> 파이 차트</a></li>
-<li class="chapter" data-level="4.3.4" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#산포도"><i class="fa fa-check"></i><b>4.3.4</b> 산포도</a></li>
-<li class="chapter" data-level="4.3.5" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#산포도-행렬"><i class="fa fa-check"></i><b>4.3.5</b> 산포도 행렬</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.4</b> 이변량 범주형 데이터 그래프</a>
+<li class="chapter" data-level="4.4" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.4</b> 이변량 연속형 데이터 그래프</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html#모자이크-그래프"><i class="fa fa-check"></i><b>4.4.1</b> 모자이크 그래프</a></li>
+<li class="chapter" data-level="4.4.1" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html#산포도"><i class="fa fa-check"></i><b>4.4.1</b> 산포도</a></li>
+<li class="chapter" data-level="4.4.2" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html#산포도-행렬"><i class="fa fa-check"></i><b>4.4.2</b> 산포도 행렬</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.5</b> 이변량 범주형 데이터 그래프</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html#모자이크-그래프"><i class="fa fa-check"></i><b>4.5.1</b> 모자이크 그래프</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="그래프-모수.html"><a href="그래프-모수.html"><i class="fa fa-check"></i><b>5</b> 그래프 모수</a>
@@ -564,7 +567,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>산포도 행렬 그림 (scatter matrix plot)을 복습해보자면 아래와 같습니다.</p>
 <div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="상관계수-행렬-그래프.html#cb503-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot matrix </span></span>
 <span id="cb503-2"><a href="상관계수-행렬-그래프.html#cb503-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(airquality_2)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
 </div>
 <div id="상관계수-행렬-그리기-1" class="section level4" number="10.7.2.2">
 <h4><span class="header-section-number">10.7.2.2</span> 상관계수 행렬 그리기</h4>
@@ -572,37 +575,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="methodcircle" class="section level5" number="10.7.2.2.1">
 <h5><span class="header-section-number">10.7.2.2.1</span> <code>method="circle"</code></h5>
 <div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="상관계수-행렬-그래프.html#cb504-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(airquality_cor, <span class="at">method=</span><span class="st">&quot;circle&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
 </div>
 <div id="methodsquare" class="section level5" number="10.7.2.2.2">
 <h5><span class="header-section-number">10.7.2.2.2</span> <code>method="square"</code></h5>
 <div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="상관계수-행렬-그래프.html#cb505-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(airquality_cor, <span class="at">method=</span><span class="st">&quot;square&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
 </div>
 <div id="methodellipse" class="section level5" number="10.7.2.2.3">
 <h5><span class="header-section-number">10.7.2.2.3</span> <code>method="ellipse"</code></h5>
 <div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="상관계수-행렬-그래프.html#cb506-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(airquality_cor, <span class="at">method=</span><span class="st">&quot;ellipse&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
 </div>
 <div id="methodnumber" class="section level5" number="10.7.2.2.4">
 <h5><span class="header-section-number">10.7.2.2.4</span> <code>method="number"</code></h5>
 <div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="상관계수-행렬-그래프.html#cb507-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(airquality_cor, <span class="at">method=</span><span class="st">&quot;number&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
 </div>
 <div id="methodshade" class="section level5" number="10.7.2.2.5">
 <h5><span class="header-section-number">10.7.2.2.5</span> <code>method="shade"</code></h5>
 <div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="상관계수-행렬-그래프.html#cb508-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(airquality_cor, <span class="at">method=</span><span class="st">&quot;shade&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
 </div>
 <div id="methodcolor" class="section level5" number="10.7.2.2.6">
 <h5><span class="header-section-number">10.7.2.2.6</span> <code>method="color"</code></h5>
 <div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="상관계수-행렬-그래프.html#cb509-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(airquality_cor, <span class="at">method=</span><span class="st">&quot;color&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
 </div>
 <div id="methodpie" class="section level5" number="10.7.2.2.7">
 <h5><span class="header-section-number">10.7.2.2.7</span> <code>method="pie"</code></h5>
 <div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="상관계수-행렬-그래프.html#cb510-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(airquality_cor, <span class="at">method=</span><span class="st">&quot;pie&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
 <p>마지막으로 <code>method="shade"</code>, <strong>상관관계 방향성 제시, 대각선 값 미제시, 상관계수 숫지 검정색</strong>으로 해서 추가해서 corrplot을 그려보겠습니다. <code>order</code> 는 <strong>FPC(First Principle Component), hclust(hierarchical clustering)</strong>, <strong>AOE(Angular Order of Engenvectors)</strong> 등이 있으며, 정렬 기준을 지정해주면 같은 색깔 끼리 뭉쳐서 보일 수 있도록 정렬을 시켜줘서 보기에, 해석하기에 더 좋게 보여줍니다.</p>
 <div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="상관계수-행렬-그래프.html#cb511-1" aria-hidden="true" tabindex="-1"></a><span class="co"># corrplot</span></span>
 <span id="cb511-2"><a href="상관계수-행렬-그래프.html#cb511-2" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(airquality_cor, </span>
@@ -617,7 +620,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb511-11"><a href="상관계수-행렬-그래프.html#cb511-11" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># &quot;hclust&quot; : hierarchical clustering</span></span>
 <span id="cb511-12"><a href="상관계수-행렬-그래프.html#cb511-12" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># &quot;AOE&quot; : Angular Order of Eigenvectors</span></span>
 <span id="cb511-13"><a href="상관계수-행렬-그래프.html#cb511-13" aria-hidden="true" tabindex="-1"></a>          )</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 <p><a href="상관계수-행렬-그래프.html#상관계수-행렬-그래프">Go Top</a></p>
 </div>
 </div>
