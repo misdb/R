@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10.2 버블 그래프 | Data Visualization with R</title>
+  <meta name="description" content="The output format for book is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10.2 버블 그래프 | Data Visualization with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The output format for book is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10.2 버블 그래프 | Data Visualization with R" />
+  
+  <meta name="twitter:description" content="The output format for book is bookdown::gitbook." />
+  
+
+<meta name="author" content="Dae Ho Kim" />
+
+
+<meta name="date" content="2021-02-26" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="산포도-1.html"/>
+<link rel="next" href="선-그래프와-시계열-그래프.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.17/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="/">Home</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>서문</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="데이터-시각화.html"><a href="데이터-시각화.html"><i class="fa fa-check"></i><b>0.1</b> 데이터 시각화</a>
+<ul>
+<li class="chapter" data-level="0.1.1" data-path="데이터-시각화.html"><a href="데이터-시각화.html#강의-소개"><i class="fa fa-check"></i><b>0.1.1</b> 강의 소개</a></li>
+<li class="chapter" data-level="0.1.2" data-path="데이터-시각화.html"><a href="데이터-시각화.html#강의-일정"><i class="fa fa-check"></i><b>0.1.2</b> 강의 일정</a></li>
+<li class="chapter" data-level="0.1.3" data-path="데이터-시각화.html"><a href="데이터-시각화.html#강의평가-방법"><i class="fa fa-check"></i><b>0.1.3</b> 강의평가 방법</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>I 서론</b></span></li>
+<li class="chapter" data-level="1" data-path="r-왜-그래프시각화인가-why-graphsvisualization.html"><a href="r-왜-그래프시각화인가-why-graphsvisualization.html"><i class="fa fa-check"></i><b>1</b> R 왜 그래프/시각화인가? (Why Graphs/Visualization?)</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="왜-그래프시각화가-중요할까요.html"><a href="왜-그래프시각화가-중요할까요.html"><i class="fa fa-check"></i><b>1.1</b> 왜 그래프/시각화가 중요할까요?</a></li>
+<li class="chapter" data-level="1.2" data-path="그래프-분석의-예.html"><a href="그래프-분석의-예.html"><i class="fa fa-check"></i><b>1.2</b> 그래프 분석의 예</a></li>
+<li class="chapter" data-level="1.3" data-path="한스-로즐링의-dynamic-visualization.html"><a href="한스-로즐링의-dynamic-visualization.html"><i class="fa fa-check"></i><b>1.3</b> 한스 로즐링의 Dynamic Visualization</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-그래프-패키지-소개-graphics-lattice-ggplot2.html"><a href="r-그래프-패키지-소개-graphics-lattice-ggplot2.html"><i class="fa fa-check"></i><b>2</b> R 그래프 패키지 소개 (Graphics, Lattice, ggplot2)</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="주요-그래프용-패키지.html"><a href="주요-그래프용-패키지.html"><i class="fa fa-check"></i><b>2.1</b> 주요 그래프용 패키지</a></li>
+<li class="chapter" data-level="2.2" data-path="패키지의-설치.html"><a href="패키지의-설치.html"><i class="fa fa-check"></i><b>2.2</b> 패키지의 설치</a>
+<ul>
+<li class="chapter" data-level="" data-path="패키지의-설치.html"><a href="패키지의-설치.html#참고자료"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Base Graphics</b></span></li>
+<li class="chapter" data-level="3" data-path="base-graphics의-주요-함수.html"><a href="base-graphics의-주요-함수.html"><i class="fa fa-check"></i><b>3</b> <code>Base Graphics</code>의 주요 함수</a></li>
+<li class="chapter" data-level="4" data-path="높은-수준의-그래프-함수.html"><a href="높은-수준의-그래프-함수.html"><i class="fa fa-check"></i><b>4</b> 높은 수준의 그래프 함수</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="데이터-세트-cars93.html"><a href="데이터-세트-cars93.html"><i class="fa fa-check"></i><b>4.1</b> 데이터 세트 : <code class="unnumbered">Cars93</code></a></li>
+<li class="chapter" data-level="4.2" data-path="일변량-연속형-데이터-그래프.html"><a href="일변량-연속형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.2</b> 일변량 연속형 데이터 그래프</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="일변량-연속형-데이터-그래프.html"><a href="일변량-연속형-데이터-그래프.html#히스토그램"><i class="fa fa-check"></i><b>4.2.1</b> 히스토그램</a></li>
+<li class="chapter" data-level="4.2.2" data-path="일변량-연속형-데이터-그래프.html"><a href="일변량-연속형-데이터-그래프.html#박스-플롯"><i class="fa fa-check"></i><b>4.2.2</b> 박스 플롯</a></li>
+<li class="chapter" data-level="4.2.3" data-path="일변량-연속형-데이터-그래프.html"><a href="일변량-연속형-데이터-그래프.html#줄기-잎-그래프"><i class="fa fa-check"></i><b>4.2.3</b> 줄기 잎 그래프</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html"><i class="fa fa-check"></i><b>4.3</b> 일변량 범주형 데이타 그래프</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#막대-그래프"><i class="fa fa-check"></i><b>4.3.1</b> 막대 그래프</a></li>
+<li class="chapter" data-level="4.3.2" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#클리브랜드-점-그래프"><i class="fa fa-check"></i><b>4.3.2</b> 클리브랜드 점 그래프</a></li>
+<li class="chapter" data-level="4.3.3" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#파이-차트"><i class="fa fa-check"></i><b>4.3.3</b> 파이 차트</a></li>
+<li class="chapter" data-level="4.3.4" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#산포도"><i class="fa fa-check"></i><b>4.3.4</b> 산포도</a></li>
+<li class="chapter" data-level="4.3.5" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#산포도-행렬"><i class="fa fa-check"></i><b>4.3.5</b> 산포도 행렬</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.4</b> 이변량 범주형 데이터 그래프</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html#모자이크-그래프"><i class="fa fa-check"></i><b>4.4.1</b> 모자이크 그래프</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="그래프-모수.html"><a href="그래프-모수.html"><i class="fa fa-check"></i><b>5</b> 그래프 모수</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="그래프-모수를-설정하는-2가지-방법.html"><a href="그래프-모수를-설정하는-2가지-방법.html"><i class="fa fa-check"></i><b>5.1</b> 그래프 모수를 설정하는 2가지 방법</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="그래프-모수를-설정하는-2가지-방법.html"><a href="그래프-모수를-설정하는-2가지-방법.html#글로벌-환경-설정"><i class="fa fa-check"></i><b>5.1.1</b> 글로벌 환경 설정</a></li>
+<li class="chapter" data-level="5.1.2" data-path="그래프-모수를-설정하는-2가지-방법.html"><a href="그래프-모수를-설정하는-2가지-방법.html#로컬-환경-설정"><i class="fa fa-check"></i><b>5.1.2</b> 로컬 환경 설정</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="기호-모양-크기-선-유형-선-두께.html"><a href="기호-모양-크기-선-유형-선-두께.html"><i class="fa fa-check"></i><b>5.2</b> 기호 모양, 크기, 선 유형, 선 두께</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="기호-모양-크기-선-유형-선-두께.html"><a href="기호-모양-크기-선-유형-선-두께.html#기호-모양"><i class="fa fa-check"></i><b>5.2.1</b> 기호 모양</a></li>
+<li class="chapter" data-level="5.2.2" data-path="기호-모양-크기-선-유형-선-두께.html"><a href="기호-모양-크기-선-유형-선-두께.html#기호-직접-입력"><i class="fa fa-check"></i><b>5.2.2</b> 기호 직접 입력</a></li>
+<li class="chapter" data-level="5.2.3" data-path="기호-모양-크기-선-유형-선-두께.html"><a href="기호-모양-크기-선-유형-선-두께.html#기호-크기"><i class="fa fa-check"></i><b>5.2.3</b> 기호 크기</a></li>
+<li class="chapter" data-level="5.2.4" data-path="기호-모양-크기-선-유형-선-두께.html"><a href="기호-모양-크기-선-유형-선-두께.html#선-유형"><i class="fa fa-check"></i><b>5.2.4</b> 선 유형</a></li>
+<li class="chapter" data-level="5.2.5" data-path="기호-모양-크기-선-유형-선-두께.html"><a href="기호-모양-크기-선-유형-선-두께.html#선-두께"><i class="fa fa-check"></i><b>5.2.5</b> 선 두께</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="색-지정.html"><a href="색-지정.html"><i class="fa fa-check"></i><b>5.3</b> 색 지정</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="색-지정.html"><a href="색-지정.html#기호-선-문자-등의-디폴트-색-지정"><i class="fa fa-check"></i><b>5.3.1</b> 기호, 선, 문자 등의 디폴트 색 지정</a></li>
+<li class="chapter" data-level="5.3.2" data-path="색-지정.html"><a href="색-지정.html#축-색-지정"><i class="fa fa-check"></i><b>5.3.2</b> 축 색 지정</a></li>
+<li class="chapter" data-level="5.3.3" data-path="색-지정.html"><a href="색-지정.html#x축과-y축의-레이블-색-지정"><i class="fa fa-check"></i><b>5.3.3</b> x축과 y축의 레이블 색 지정</a></li>
+<li class="chapter" data-level="5.3.4" data-path="색-지정.html"><a href="색-지정.html#제목-색-지정"><i class="fa fa-check"></i><b>5.3.4</b> 제목 색 지정</a></li>
+<li class="chapter" data-level="5.3.5" data-path="색-지정.html"><a href="색-지정.html#부제목-색-지정"><i class="fa fa-check"></i><b>5.3.5</b> 부제목 색 지정</a></li>
+<li class="chapter" data-level="5.3.6" data-path="색-지정.html"><a href="색-지정.html#그래프-전경-색-지정"><i class="fa fa-check"></i><b>5.3.6</b> 그래프 전경 색 지정</a></li>
+<li class="chapter" data-level="5.3.7" data-path="색-지정.html"><a href="색-지정.html#그래프-배경-색-지정"><i class="fa fa-check"></i><b>5.3.7</b> 그래프 배경 색 지정</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="그래프-영역.html"><a href="그래프-영역.html"><i class="fa fa-check"></i><b>5.4</b> 그래프 영역</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="그래프-영역.html"><a href="그래프-영역.html#플롯-영역-plot-area-내부-마진-영역-inner-margin-area"><i class="fa fa-check"></i><b>5.4.1</b> 플롯 영역 (plot area), 내부 마진 영역 (inner margin area)</a></li>
+<li class="chapter" data-level="5.4.2" data-path="그래프-영역.html"><a href="그래프-영역.html#외부-마진-영역-outer-margin-area"><i class="fa fa-check"></i><b>5.4.2</b> 외부 마진 영역 (outer margin area)</a></li>
+<li class="chapter" data-level="5.4.3" data-path="그래프-영역.html"><a href="그래프-영역.html#영역-분할결합-방법-1"><i class="fa fa-check"></i><b>5.4.3</b> 영역 분할/결합 방법 1</a></li>
+<li class="chapter" data-level="5.4.4" data-path="그래프-영역.html"><a href="그래프-영역.html#영역-분할결합-방법-2-layout"><i class="fa fa-check"></i><b>5.4.4</b> 영역 분할/결합 방법 2 : <code>layout()</code></a></li>
+<li class="chapter" data-level="" data-path="그래프-영역.html"><a href="그래프-영역.html#참고자료-1"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="낮은-수준의-그래프-함수.html"><a href="낮은-수준의-그래프-함수.html"><i class="fa fa-check"></i><b>6</b> 낮은 수준의 그래프 함수</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="제목과-xy축-레이블-추가하기.html"><a href="제목과-xy축-레이블-추가하기.html"><i class="fa fa-check"></i><b>6.1</b> 제목과 XY축 레이블 추가하기</a></li>
+<li class="chapter" data-level="6.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html"><i class="fa fa-check"></i><b>6.2</b> XY축 형태 변환 : <code>axis(side, ...)</code></a></li>
+<li class="chapter" data-level="6.3" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html"><i class="fa fa-check"></i><b>6.3</b> 직선의 연결과 추가</a></li>
+<li class="chapter" data-level="6.4" data-path="점-추가-pointsx-y.html"><a href="점-추가-pointsx-y.html"><i class="fa fa-check"></i><b>6.4</b> 점 추가 : <code>points(x, y)</code></a></li>
+<li class="chapter" data-level="6.5" data-path="문자열-추가.html"><a href="문자열-추가.html"><i class="fa fa-check"></i><b>6.5</b> 문자열 추가</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="문자열-추가.html"><a href="문자열-추가.html#text-함수의-사용"><i class="fa fa-check"></i><b>6.5.1</b> <code>text()</code> 함수의 사용</a></li>
+<li class="chapter" data-level="6.5.2" data-path="문자열-추가.html"><a href="문자열-추가.html#mtext-함수의-사용"><i class="fa fa-check"></i><b>6.5.2</b> <code>mtext()</code> 함수의 사용</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="범례-추가-legendx-y-legend-.html"><a href="범례-추가-legendx-y-legend-.html"><i class="fa fa-check"></i><b>6.6</b> 범례 추가 : <code>legend(x, y, legend, ...)</code></a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="범례-추가-legendx-y-legend-.html"><a href="범례-추가-legendx-y-legend-.html#x-y-좌표를-직접-입력하여-범례-위치-설정"><i class="fa fa-check"></i><b>6.6.1</b> <code>x</code>, <code>y</code> 좌표를 직접 입력하여 범례 위치 설정</a></li>
+<li class="chapter" data-level="6.6.2" data-path="범례-추가-legendx-y-legend-.html"><a href="범례-추가-legendx-y-legend-.html#범례의-위치를-문자열로-지정하기"><i class="fa fa-check"></i><b>6.6.2</b> 범례의 위치를 문자열로 지정하기</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="다각형-추가-polygonx-y.html"><a href="다각형-추가-polygonx-y.html"><i class="fa fa-check"></i><b>6.7</b> 다각형 추가 : polygon(x, y, …)</a>
+<ul>
+<li class="chapter" data-level="" data-path="다각형-추가-polygonx-y.html"><a href="다각형-추가-polygonx-y.html#참고자료-2"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III <code>ggplot2</code></b></span></li>
+<li class="chapter" data-level="7" data-path="일변량-변수-연속형-데이터.html"><a href="일변량-변수-연속형-데이터.html"><i class="fa fa-check"></i><b>7</b> 일변량 변수 - 연속형 데이터</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="히스토그램-1.html"><a href="히스토그램-1.html"><i class="fa fa-check"></i><b>7.1</b> 히스토그램</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="히스토그램-1.html"><a href="히스토그램-1.html#데이터-세트-1"><i class="fa fa-check"></i><b>7.1.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="7.1.2" data-path="히스토그램-1.html"><a href="히스토그램-1.html#기본-히스토그램"><i class="fa fa-check"></i><b>7.1.2</b> 기본 히스토그램</a></li>
+<li class="chapter" data-level="7.1.3" data-path="히스토그램-1.html"><a href="히스토그램-1.html#구간-폭의-기본값"><i class="fa fa-check"></i><b>7.1.3</b> 구간 폭의 기본값</a></li>
+<li class="chapter" data-level="7.1.4" data-path="히스토그램-1.html"><a href="히스토그램-1.html#구간의-폭-조정"><i class="fa fa-check"></i><b>7.1.4</b> 구간의 폭 조정</a></li>
+<li class="chapter" data-level="7.1.5" data-path="히스토그램-1.html"><a href="히스토그램-1.html#구간의-수-조정"><i class="fa fa-check"></i><b>7.1.5</b> 구간의 수 조정</a></li>
+<li class="chapter" data-level="7.1.6" data-path="히스토그램-1.html"><a href="히스토그램-1.html#색-지정-1"><i class="fa fa-check"></i><b>7.1.6</b> 색 지정</a></li>
+<li class="chapter" data-level="7.1.7" data-path="히스토그램-1.html"><a href="히스토그램-1.html#그룹별-히스토그램"><i class="fa fa-check"></i><b>7.1.7</b> 그룹별 히스토그램</a></li>
+<li class="chapter" data-level="7.1.8" data-path="히스토그램-1.html"><a href="히스토그램-1.html#UsignThemes"><i class="fa fa-check"></i><b>7.1.8</b> Theme의 사용</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="커널-밀도-곡선.html"><a href="커널-밀도-곡선.html"><i class="fa fa-check"></i><b>7.2</b> 커널 밀도 곡선</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="커널-밀도-곡선.html"><a href="커널-밀도-곡선.html#기본-커널-밀도-곡선"><i class="fa fa-check"></i><b>7.2.1</b> 기본 커널 밀도 곡선</a></li>
+<li class="chapter" data-level="7.2.2" data-path="커널-밀도-곡선.html"><a href="커널-밀도-곡선.html#색의-지정과-곡선-추가하기"><i class="fa fa-check"></i><b>7.2.2</b> 색의 지정과 곡선 추가하기</a></li>
+<li class="chapter" data-level="7.2.3" data-path="커널-밀도-곡선.html"><a href="커널-밀도-곡선.html#그룹별-커널-밀도-곡선"><i class="fa fa-check"></i><b>7.2.3</b> 그룹별 커널 밀도 곡선</a></li>
+<li class="chapter" data-level="7.2.4" data-path="커널-밀도-곡선.html"><a href="커널-밀도-곡선.html#커널-밀도-곡선의-최정점-표시하기"><i class="fa fa-check"></i><b>7.2.4</b> 커널 밀도 곡선의 최정점 표시하기</a></li>
+<li class="chapter" data-level="7.2.5" data-path="커널-밀도-곡선.html"><a href="커널-밀도-곡선.html#히스토그램과-커널-밀도-곡선-겹쳐-그리기"><i class="fa fa-check"></i><b>7.2.5</b> 히스토그램과 커널 밀도 곡선 겹쳐 그리기</a></li>
+<li class="chapter" data-level="7.2.6" data-path="커널-밀도-곡선.html"><a href="커널-밀도-곡선.html#theme의-사용"><i class="fa fa-check"></i><b>7.2.6</b> Theme의 사용</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="박스-그래프.html"><a href="박스-그래프.html"><i class="fa fa-check"></i><b>7.3</b> 박스 그래프</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="박스-그래프.html"><a href="박스-그래프.html#데이터-세트-2"><i class="fa fa-check"></i><b>7.3.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="7.3.2" data-path="박스-그래프.html"><a href="박스-그래프.html#기본-박스-그래프"><i class="fa fa-check"></i><b>7.3.2</b> 기본 박스 그래프</a></li>
+<li class="chapter" data-level="7.3.3" data-path="박스-그래프.html"><a href="박스-그래프.html#x축의-이름과-척도-없애기"><i class="fa fa-check"></i><b>7.3.3</b> X축의 이름과 척도 없애기</a></li>
+<li class="chapter" data-level="7.3.4" data-path="박스-그래프.html"><a href="박스-그래프.html#이상값의-표현"><i class="fa fa-check"></i><b>7.3.4</b> 이상값의 표현</a></li>
+<li class="chapter" data-level="7.3.5" data-path="박스-그래프.html"><a href="박스-그래프.html#박스-그래프에-데이터를-점으로-표시하기"><i class="fa fa-check"></i><b>7.3.5</b> 박스 그래프에 데이터를 점으로 표시하기</a></li>
+<li class="chapter" data-level="7.3.6" data-path="박스-그래프.html"><a href="박스-그래프.html#수평-박스-그래프"><i class="fa fa-check"></i><b>7.3.6</b> 수평 박스 그래프</a></li>
+<li class="chapter" data-level="7.3.7" data-path="박스-그래프.html"><a href="박스-그래프.html#노치-박스-그래프"><i class="fa fa-check"></i><b>7.3.7</b> 노치 박스 그래프</a></li>
+<li class="chapter" data-level="7.3.8" data-path="박스-그래프.html"><a href="박스-그래프.html#박스-그래프의-색-지정하기"><i class="fa fa-check"></i><b>7.3.8</b> 박스 그래프의 색 지정하기</a></li>
+<li class="chapter" data-level="7.3.9" data-path="박스-그래프.html"><a href="박스-그래프.html#박스-그래프에-평균-추가하기"><i class="fa fa-check"></i><b>7.3.9</b> 박스 그래프에 평균 추가하기</a></li>
+<li class="chapter" data-level="7.3.10" data-path="박스-그래프.html"><a href="박스-그래프.html#그룹별-박스-그래프"><i class="fa fa-check"></i><b>7.3.10</b> 그룹별 박스 그래프</a></li>
+<li class="chapter" data-level="7.3.11" data-path="박스-그래프.html"><a href="박스-그래프.html#두-개의-요인형-변수를-고려한-박스-그래프"><i class="fa fa-check"></i><b>7.3.11</b> 두 개의 요인형 변수를 고려한 박스 그래프</a></li>
+<li class="chapter" data-level="7.3.12" data-path="박스-그래프.html"><a href="박스-그래프.html#theme의-사용-1"><i class="fa fa-check"></i><b>7.3.12</b> Theme의 사용</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html"><i class="fa fa-check"></i><b>7.4</b> 바이올린 그래프</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#데이터-세트-3"><i class="fa fa-check"></i><b>7.4.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="7.4.2" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#기본-바이올린-그래프"><i class="fa fa-check"></i><b>7.4.2</b> 기본 바이올린 그래프</a></li>
+<li class="chapter" data-level="7.4.3" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#바이올린-그래프와-박스-그래프-겹쳐-그리기"><i class="fa fa-check"></i><b>7.4.3</b> 바이올린 그래프와 박스 그래프 겹쳐 그리기</a></li>
+<li class="chapter" data-level="7.4.4" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#x축의-이름과-척도-없애기-1"><i class="fa fa-check"></i><b>7.4.4</b> X축의 이름과 척도 없애기</a></li>
+<li class="chapter" data-level="7.4.5" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#이상값의-표현-1"><i class="fa fa-check"></i><b>7.4.5</b> 이상값의 표현</a></li>
+<li class="chapter" data-level="7.4.6" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#바이올린-그래프에-데이터를-점으로-표시하기"><i class="fa fa-check"></i><b>7.4.6</b> 바이올린 그래프에 데이터를 점으로 표시하기</a></li>
+<li class="chapter" data-level="7.4.7" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#수평-바이올린-그래프"><i class="fa fa-check"></i><b>7.4.7</b> 수평 바이올린 그래프</a></li>
+<li class="chapter" data-level="7.4.8" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#바이올린-그래프의-색-지정하기"><i class="fa fa-check"></i><b>7.4.8</b> 바이올린 그래프의 색 지정하기</a></li>
+<li class="chapter" data-level="7.4.9" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#바이올린-그래프에-평균-추가하기"><i class="fa fa-check"></i><b>7.4.9</b> 바이올린 그래프에 평균 추가하기</a></li>
+<li class="chapter" data-level="7.4.10" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#그룹별-바이올린-그래프"><i class="fa fa-check"></i><b>7.4.10</b> 그룹별 바이올린 그래프</a></li>
+<li class="chapter" data-level="7.4.11" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#두-개의-요인형-변수를-고려한-바이올린-그래프"><i class="fa fa-check"></i><b>7.4.11</b> 두 개의 요인형 변수를 고려한 바이올린 그래프</a></li>
+<li class="chapter" data-level="7.4.12" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#theme의-사용-2"><i class="fa fa-check"></i><b>7.4.12</b> Theme의 사용</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="범주형-데이터요인의-수준-순서-바꾸기.html"><a href="범주형-데이터요인의-수준-순서-바꾸기.html"><i class="fa fa-check"></i><b>7.5</b> 범주형 데이터(요인)의 수준 순서 바꾸기</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="일변량-변수-범주형-데이터.html"><a href="일변량-변수-범주형-데이터.html"><i class="fa fa-check"></i><b>8</b> 일변량 변수 - 범주형 데이터</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html"><i class="fa fa-check"></i><b>8.1</b> 막대 그래프</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#데이터-세트-4"><i class="fa fa-check"></i><b>8.1.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="8.1.2" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#기본-막대-그래프"><i class="fa fa-check"></i><b>8.1.2</b> 기본 막대 그래프</a></li>
+<li class="chapter" data-level="8.1.3" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#도수를-y축으로-지정하기"><i class="fa fa-check"></i><b>8.1.3</b> 도수를 Y축으로 지정하기</a></li>
+<li class="chapter" data-level="8.1.4" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#그룹별-막대-그래프"><i class="fa fa-check"></i><b>8.1.4</b> 그룹별 막대 그래프</a></li>
+<li class="chapter" data-level="8.1.5" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#UsignThemesInBarPlot"><i class="fa fa-check"></i><b>8.1.5</b> Theme의 사용</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="파이-차트-1.html"><a href="파이-차트-1.html"><i class="fa fa-check"></i><b>8.2</b> 파이 차트</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="파이-차트-1.html"><a href="파이-차트-1.html#데이터-세트-5"><i class="fa fa-check"></i><b>8.2.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="8.2.2" data-path="파이-차트-1.html"><a href="파이-차트-1.html#기본-파이-차트"><i class="fa fa-check"></i><b>8.2.2</b> 기본 파이 차트</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="다변량-범주형-데이터.html"><a href="다변량-범주형-데이터.html"><i class="fa fa-check"></i><b>9</b> 다변량 - 범주형 데이터</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="모자이크-그림.html"><a href="모자이크-그림.html"><i class="fa fa-check"></i><b>9.1</b> 모자이크 그림</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="모자이크-그림.html"><a href="모자이크-그림.html#데이터-세트와-패키지"><i class="fa fa-check"></i><b>9.1.1</b> 데이터 세트와 패키지</a></li>
+<li class="chapter" data-level="9.1.2" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림-그리기"><i class="fa fa-check"></i><b>9.1.2</b> 모자이크 그림 그리기</a></li>
+<li class="chapter" data-level="9.1.3" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림에-라벨-추가하기"><i class="fa fa-check"></i><b>9.1.3</b> 모자이크 그림에 라벨 추가하기</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="다변량-변수-연속형-데이터.html"><a href="다변량-변수-연속형-데이터.html"><i class="fa fa-check"></i><b>10</b> 다변량 변수 - 연속형 데이터</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="산포도-1.html"><a href="산포도-1.html"><i class="fa fa-check"></i><b>10.1</b> 산포도</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="산포도-1.html"><a href="산포도-1.html#데이터-세트-6"><i class="fa fa-check"></i><b>10.1.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="10.1.2" data-path="산포도-1.html"><a href="산포도-1.html#변수들-간의-상관계수"><i class="fa fa-check"></i><b>10.1.2</b> 변수들 간의 상관계수</a></li>
+<li class="chapter" data-level="10.1.3" data-path="산포도-1.html"><a href="산포도-1.html#산포도-행렬-1"><i class="fa fa-check"></i><b>10.1.3</b> 산포도 행렬</a></li>
+<li class="chapter" data-level="10.1.4" data-path="산포도-1.html"><a href="산포도-1.html#산포도에-레이블-달기"><i class="fa fa-check"></i><b>10.1.4</b> 산포도에 레이블 달기</a></li>
+<li class="chapter" data-level="10.1.5" data-path="산포도-1.html"><a href="산포도-1.html#그룹별-산포도-그리기"><i class="fa fa-check"></i><b>10.1.5</b> 그룹별 산포도 그리기</a></li>
+<li class="chapter" data-level="10.1.6" data-path="산포도-1.html"><a href="산포도-1.html#theme의-사용-3"><i class="fa fa-check"></i><b>10.1.6</b> Theme의 사용</a></li>
+<li class="chapter" data-level="10.1.7" data-path="산포도-1.html"><a href="산포도-1.html#회귀선의-표시"><i class="fa fa-check"></i><b>10.1.7</b> 회귀선의 표시</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="버블-그래프.html"><a href="버블-그래프.html"><i class="fa fa-check"></i><b>10.2</b> 버블 그래프</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="버블-그래프.html"><a href="버블-그래프.html#데이터-세트-7"><i class="fa fa-check"></i><b>10.2.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="10.2.2" data-path="버블-그래프.html"><a href="버블-그래프.html#기본-버블-그래프"><i class="fa fa-check"></i><b>10.2.2</b> 기본 버블 그래프</a></li>
+<li class="chapter" data-level="10.2.3" data-path="버블-그래프.html"><a href="버블-그래프.html#텍스트-레이블-추가"><i class="fa fa-check"></i><b>10.2.3</b> 텍스트 레이블 추가</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html"><i class="fa fa-check"></i><b>10.3</b> 선 그래프와 시계열 그래프</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#데이터-세트-8"><i class="fa fa-check"></i><b>10.3.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="10.3.2" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#기본-선-그래프-그리기"><i class="fa fa-check"></i><b>10.3.2</b> 기본 선 그래프 그리기</a></li>
+<li class="chapter" data-level="10.3.3" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#시계열-그래프의-옵션-설정하기"><i class="fa fa-check"></i><b>10.3.3</b> 시계열 그래프의 옵션 설정하기</a></li>
+<li class="chapter" data-level="10.3.4" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#그룹별-시계열-그래프-그리기"><i class="fa fa-check"></i><b>10.3.4</b> 그룹별 시계열 그래프 그리기</a></li>
+<li class="chapter" data-level="10.3.5" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#theme의-사용-4"><i class="fa fa-check"></i><b>10.3.5</b> Theme의 사용</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html"><i class="fa fa-check"></i><b>10.4</b> 이차원 밀도 그래프</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#데이터-세트-9"><i class="fa fa-check"></i><b>10.4.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="10.4.2" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#aes에-범주형-변수-지정하기"><i class="fa fa-check"></i><b>10.4.2</b> <code>aes()</code>에 범주형 변수 지정하기</a></li>
+<li class="chapter" data-level="10.4.3" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#커널-밀도-추정치-계산"><i class="fa fa-check"></i><b>10.4.3</b> 커널 밀도 추정치 계산</a></li>
+<li class="chapter" data-level="10.4.4" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#라벨-추가"><i class="fa fa-check"></i><b>10.4.4</b> 라벨 추가</a></li>
+<li class="chapter" data-level="10.4.5" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#등고선-효과-추가하기"><i class="fa fa-check"></i><b>10.4.5</b> 등고선 효과 추가하기</a></li>
+<li class="chapter" data-level="10.4.6" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#facet_wrap-함수-이용-6"><i class="fa fa-check"></i><b>10.4.6</b> <code>facet_wrap()</code> 함수 이용</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="클리브랜드-점-그래프-1.html"><a href="클리브랜드-점-그래프-1.html"><i class="fa fa-check"></i><b>10.5</b> 클리브랜드 점 그래프</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="클리브랜드-점-그래프-1.html"><a href="클리브랜드-점-그래프-1.html#데이터-세트-10"><i class="fa fa-check"></i><b>10.5.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="10.5.2" data-path="클리브랜드-점-그래프-1.html"><a href="클리브랜드-점-그래프-1.html#클리브랜드-점-그래프-그리기"><i class="fa fa-check"></i><b>10.5.2</b> 클리브랜드 점 그래프 그리기</a></li>
+<li class="chapter" data-level="10.5.3" data-path="클리브랜드-점-그래프-1.html"><a href="클리브랜드-점-그래프-1.html#facet_grid-함수-이용-6"><i class="fa fa-check"></i><b>10.5.3</b> <code>facet_grid()</code> 함수 이용</a></li>
+<li class="chapter" data-level="10.5.4" data-path="클리브랜드-점-그래프-1.html"><a href="클리브랜드-점-그래프-1.html#변수의-추가와-모양-변경하기"><i class="fa fa-check"></i><b>10.5.4</b> 변수의 추가와 모양 변경하기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="누적-영역-그래프.html"><a href="누적-영역-그래프.html"><i class="fa fa-check"></i><b>10.6</b> 누적 영역 그래프</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="누적-영역-그래프.html"><a href="누적-영역-그래프.html#데이터-전처리"><i class="fa fa-check"></i><b>10.6.1</b> 데이터 전처리</a></li>
+<li class="chapter" data-level="10.6.2" data-path="누적-영역-그래프.html"><a href="누적-영역-그래프.html#누적영역-그래프-그리기"><i class="fa fa-check"></i><b>10.6.2</b> 누적영역 그래프 그리기</a></li>
+<li class="chapter" data-level="10.6.3" data-path="누적-영역-그래프.html"><a href="누적-영역-그래프.html#누적영역-순서-바꾸기"><i class="fa fa-check"></i><b>10.6.3</b> 누적영역 순서 바꾸기</a></li>
+<li class="chapter" data-level="10.6.4" data-path="누적-영역-그래프.html"><a href="누적-영역-그래프.html#비율-기준의-누적영역-그래프"><i class="fa fa-check"></i><b>10.6.4</b> 비율 기준의 누적영역 그래프</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="상관계수-행렬-그래프.html"><a href="상관계수-행렬-그래프.html"><i class="fa fa-check"></i><b>10.7</b> 상관계수 행렬 그래프</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="상관계수-행렬-그래프.html"><a href="상관계수-행렬-그래프.html#데이터-세트-11"><i class="fa fa-check"></i><b>10.7.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="10.7.2" data-path="상관계수-행렬-그래프.html"><a href="상관계수-행렬-그래프.html#상관계수-행렬-그리기"><i class="fa fa-check"></i><b>10.7.2</b> 상관계수 행렬 그리기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="산포도-행렬-그리기.html"><a href="산포도-행렬-그리기.html"><i class="fa fa-check"></i><b>10.8</b> 산포도 행렬 그리기</a>
+<ul>
+<li class="chapter" data-level="10.8.1" data-path="산포도-행렬-그리기.html"><a href="산포도-행렬-그리기.html#데이터-세트-12"><i class="fa fa-check"></i><b>10.8.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="10.8.2" data-path="산포도-행렬-그리기.html"><a href="산포도-행렬-그리기.html#사용자-정의-함수-만들기"><i class="fa fa-check"></i><b>10.8.2</b> 사용자 정의 함수 만들기</a></li>
+<li class="chapter" data-level="10.8.3" data-path="산포도-행렬-그리기.html"><a href="산포도-행렬-그리기.html#산포도-행렬-그리기-1"><i class="fa fa-check"></i><b>10.8.3</b> 산포도 행렬 그리기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.9" data-path="히트맵.html"><a href="히트맵.html"><i class="fa fa-check"></i><b>10.9</b> 히트맵</a>
+<ul>
+<li class="chapter" data-level="10.9.1" data-path="히트맵.html"><a href="히트맵.html#히드맵의-예"><i class="fa fa-check"></i><b>10.9.1</b> 히드맵의 예</a></li>
+<li class="chapter" data-level="10.9.2" data-path="히트맵.html"><a href="히트맵.html#데이터-세트-13"><i class="fa fa-check"></i><b>10.9.2</b> 데이터 세트</a></li>
+<li class="chapter" data-level="10.9.3" data-path="히트맵.html"><a href="히트맵.html#히트맵-그리기"><i class="fa fa-check"></i><b>10.9.3</b> 히트맵 그리기</a></li>
+<li class="chapter" data-level="" data-path="히트맵.html"><a href="히트맵.html#참고자료-3"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV Others</b></span></li>
+<li class="chapter" data-level="11" data-path="개-이상-변수의-다변량-그래프.html"><a href="개-이상-변수의-다변량-그래프.html"><i class="fa fa-check"></i><b>11</b> 3개 이상 변수의 다변량 그래프</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="레이더-차트radar-chart-or-거미줄-그림spider-plot.html"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html"><i class="fa fa-check"></i><b>11.1</b> 레이더 차트(radar chart), or 거미줄 그림(spider plot)</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="레이더-차트radar-chart-or-거미줄-그림spider-plot.html"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#데이터-세트-14"><i class="fa fa-check"></i><b>11.1.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="11.1.2" data-path="레이더-차트radar-chart-or-거미줄-그림spider-plot.html"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#데이터-전처리-1"><i class="fa fa-check"></i><b>11.1.2</b> 데이터 전처리</a></li>
+<li class="chapter" data-level="11.1.3" data-path="레이더-차트radar-chart-or-거미줄-그림spider-plot.html"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#레이더-차트-그리기"><i class="fa fa-check"></i><b>11.1.3</b> 레이더 차트 그리기</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="별-그래프-star-graph-segment-diagrams.html"><a href="별-그래프-star-graph-segment-diagrams.html"><i class="fa fa-check"></i><b>11.2</b> 별 그래프 (star graph, segment diagrams)</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="별-그래프-star-graph-segment-diagrams.html"><a href="별-그래프-star-graph-segment-diagrams.html#데이터-세트-15"><i class="fa fa-check"></i><b>11.2.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="11.2.2" data-path="별-그래프-star-graph-segment-diagrams.html"><a href="별-그래프-star-graph-segment-diagrams.html#데이터-처리"><i class="fa fa-check"></i><b>11.2.2</b> 데이터 처리</a></li>
+<li class="chapter" data-level="11.2.3" data-path="별-그래프-star-graph-segment-diagrams.html"><a href="별-그래프-star-graph-segment-diagrams.html#별-그래프-그리기"><i class="fa fa-check"></i><b>11.2.3</b> 별 그래프 그리기</a></li>
+<li class="chapter" data-level="11.2.4" data-path="별-그래프-star-graph-segment-diagrams.html"><a href="별-그래프-star-graph-segment-diagrams.html#나이팅게일-차트"><i class="fa fa-check"></i><b>11.2.4</b> 나이팅게일 차트</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="평행-좌표-그림-parallel-coordinate-plot-parcoord.html"><a href="평행-좌표-그림-parallel-coordinate-plot-parcoord.html"><i class="fa fa-check"></i><b>11.3</b> 평행 좌표 그림 (parallel coordinate plot) : <code>parcoord()</code></a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="평행-좌표-그림-parallel-coordinate-plot-parcoord.html"><a href="평행-좌표-그림-parallel-coordinate-plot-parcoord.html#데이터-세트-16"><i class="fa fa-check"></i><b>11.3.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="11.3.2" data-path="평행-좌표-그림-parallel-coordinate-plot-parcoord.html"><a href="평행-좌표-그림-parallel-coordinate-plot-parcoord.html#데이터-전처리-3"><i class="fa fa-check"></i><b>11.3.2</b> 데이터 전처리</a></li>
+<li class="chapter" data-level="11.3.3" data-path="평행-좌표-그림-parallel-coordinate-plot-parcoord.html"><a href="평행-좌표-그림-parallel-coordinate-plot-parcoord.html#평행-좌표-그림-그리기"><i class="fa fa-check"></i><b>11.3.3</b> 평행 좌표 그림 그리기</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html"><a href="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html"><i class="fa fa-check"></i><b>11.4</b> 3차원 산포도 (3 dimensional scatter plot) : <code>scatterplot3d()</code></a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html"><a href="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html#데이터-세트-17"><i class="fa fa-check"></i><b>11.4.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="11.4.2" data-path="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html"><a href="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html#차원-산포도"><i class="fa fa-check"></i><b>11.4.2</b> 3차원 산포도</a></li>
+<li class="chapter" data-level="11.4.3" data-path="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html"><a href="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html#영화-minority-report"><i class="fa fa-check"></i><b>11.4.3</b> 영화 Minority Report</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html"><i class="fa fa-check"></i><b>11.5</b> 체르노프 얼굴그림 (Chernoff faces) : <code>aplpack</code> package, <code>faces()</code> 함수</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#데이터-세트-18"><i class="fa fa-check"></i><b>11.5.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="11.5.2" data-path="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#체로노프-얼굴그림-그리기"><i class="fa fa-check"></i><b>11.5.2</b> 체로노프 얼굴그림 그리기</a></li>
+<li class="chapter" data-level="11.5.3" data-path="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#산포도에-체르노프-얼굴그림-겹쳐-그르기"><i class="fa fa-check"></i><b>11.5.3</b> 산포도에 체르노프 얼굴그림 겹쳐 그르기</a></li>
+<li class="chapter" data-level="11.5.4" data-path="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#pairs-함수를-사용한-산포도-행렬-그리기"><i class="fa fa-check"></i><b>11.5.4</b> <code>pairs()</code> 함수를 사용한 산포도 행렬 그리기</a></li>
+<li class="chapter" data-level="11.5.5" data-path="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#r-모자이크-그림-vcd패키지-mosaic-함수"><i class="fa fa-check"></i><b>11.5.5</b> R 모자이크 그림: <code>vcd</code>패키지 <code>mosaic()</code> 함수</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="연속확률분포-곡선.html"><a href="연속확률분포-곡선.html"><i class="fa fa-check"></i><b>12</b> 연속확률분포 곡선</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="연속확률분포-함수.html"><a href="연속확률분포-함수.html"><i class="fa fa-check"></i><b>12.1</b> 연속확률분포 함수</a></li>
+<li class="chapter" data-level="" data-path="패키지-불러오기-2.html"><a href="패키지-불러오기-2.html"><i class="fa fa-check"></i>패키지 불러오기</a></li>
+<li class="chapter" data-level="12.2" data-path="정규분포-함수.html"><a href="정규분포-함수.html"><i class="fa fa-check"></i><b>12.2</b> 정규분포 함수</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="정규분포-함수.html"><a href="정규분포-함수.html#정규분포-확률밀도곡선-stat_functionfun-dnorm"><i class="fa fa-check"></i><b>12.2.1</b> 정규분포 확률밀도곡선 : <code>stat_function(fun = dnorm)</code></a></li>
+<li class="chapter" data-level="12.2.2" data-path="정규분포-함수.html"><a href="정규분포-함수.html#정규분포의-특정-구간에만-색깔-넣기"><i class="fa fa-check"></i><b>12.2.2</b> 정규분포의 특정 구간에만 색깔 넣기</a></li>
+<li class="chapter" data-level="12.2.3" data-path="정규분포-함수.html"><a href="정규분포-함수.html#누적정규분포-cummulative-normal-distribution-stat_functionfun-pnorm"><i class="fa fa-check"></i><b>12.2.3</b> 누적정규분포 (Cummulative Normal Distribution) : stat_function(fun = pnorm)</a></li>
+<li class="chapter" data-level="12.2.4" data-path="정규분포-함수.html"><a href="정규분포-함수.html#정규분포-평균과-분산-지정"><i class="fa fa-check"></i><b>12.2.4</b> 정규분포 : 평균과 분산 지정</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="t-분포-t-distribution-stat-functionfun-dt.html"><a href="t-분포-t-distribution-stat-functionfun-dt.html"><i class="fa fa-check"></i><b>12.3</b> t-분포 (t-Distribution) : <code>stat_function(fun = dt)</code></a></li>
+<li class="chapter" data-level="12.4" data-path="카이제곱분포-확률밀도곡선-stat-functionfun-dchisq.html"><a href="카이제곱분포-확률밀도곡선-stat-functionfun-dchisq.html"><i class="fa fa-check"></i><b>12.4</b> 카이제곱분포 확률밀도곡선 : <code>stat_function(fun = dchisq)</code></a></li>
+<li class="chapter" data-level="12.5" data-path="지수분포-exponential-distribution-stat-functionfun-dexp.html"><a href="지수분포-exponential-distribution-stat-functionfun-dexp.html"><i class="fa fa-check"></i><b>12.5</b> 지수분포 (Exponential Distribution) : <code>stat_function(fun = dexp)</code></a></li>
+<li class="chapter" data-level="12.6" data-path="f-분포-f-distribution-stat-functionfun-df.html"><a href="f-분포-f-distribution-stat-functionfun-df.html"><i class="fa fa-check"></i><b>12.6</b> F 분포 (F Distribution) : <code>stat_function(fun = df)</code></a></li>
+<li class="chapter" data-level="12.7" data-path="감마-분포-gamma-distribution-stat-functionfun-dgamma.html"><a href="감마-분포-gamma-distribution-stat-functionfun-dgamma.html"><i class="fa fa-check"></i><b>12.7</b> 감마 분포 (Gamma Distribution) : <code>stat_function(fun = dgamma)</code></a></li>
+<li class="chapter" data-level="12.8" data-path="일양-분포-uniform-distribution-stat-functionfun-dunif.html"><a href="일양-분포-uniform-distribution-stat-functionfun-dunif.html"><i class="fa fa-check"></i><b>12.8</b> 일양 분포 (Uniform Distribution) :<code>stat_function(fun = dunif)</code></a></li>
+<li class="chapter" data-level="12.9" data-path="상용로그-분포-common-logarithm-distribution-stat-functionfun-log10.html"><a href="상용로그-분포-common-logarithm-distribution-stat-functionfun-log10.html"><i class="fa fa-check"></i><b>12.9</b> 상용로그 분포 (Common Logarithm Distribution) : <code>stat_function(fun = log10)</code></a></li>
+<li class="chapter" data-level="12.10" data-path="사인-함수-곡선sine-function-curve-코사인-함수-곡선cosine-function-curve-stat-functionfun-sin-stat-fuctionfun-cos.html"><a href="사인-함수-곡선sine-function-curve-코사인-함수-곡선cosine-function-curve-stat-functionfun-sin-stat-fuctionfun-cos.html"><i class="fa fa-check"></i><b>12.10</b> 사인 함수 곡선(Sine Function Curve), 코사인 함수 곡선(Cosine Function Curve) : <code>stat_function(fun = sin), stat_fuction(fun = cos)</code></a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="동적-그래프.html"><a href="동적-그래프.html"><i class="fa fa-check"></i><b>13</b> 동적 그래프</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="데이터-세트-19.html"><a href="데이터-세트-19.html"><i class="fa fa-check"></i><b>13.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="13.2" data-path="패키지-불러오기-3.html"><a href="패키지-불러오기-3.html"><i class="fa fa-check"></i><b>13.2</b> 패키지 불러오기</a></li>
+<li class="chapter" data-level="13.3" data-path="slider-control.html"><a href="slider-control.html"><i class="fa fa-check"></i><b>13.3</b> Slider Control</a></li>
+<li class="chapter" data-level="13.4" data-path="picker-control.html"><a href="picker-control.html"><i class="fa fa-check"></i><b>13.4</b> Picker Control</a></li>
+<li class="chapter" data-level="13.5" data-path="checkbox-control.html"><a href="checkbox-control.html"><i class="fa fa-check"></i><b>13.5</b> Checkbox Control</a></li>
+<li class="chapter" data-level="13.6" data-path="combining-controls.html"><a href="combining-controls.html"><i class="fa fa-check"></i><b>13.6</b> Combining Controls</a>
+<ul>
+<li class="chapter" data-level="" data-path="combining-controls.html"><a href="combining-controls.html#참고자료-4"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Visualization with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="버블-그래프" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> 버블 그래프</h2>
+<p>이전 절에서 <a href="http://rfriend.tistory.com/72"><strong>x축과 y축의 값에 따라</strong></a><a href="산포도-1.html#산포도-1"><strong>산포도</strong> 그리는 방법</a>을 알아보았습니다.</p>
+<p>이번 절에서는 <code>z</code>라는 <strong>제 3의 변수(보통 요인형 변수)</strong>에 비례해서 점의 크기를 변화시켜 시각화한 <strong>버블 그래프 (Bubble Chart)</strong> 에 대하여 학습하겠습니다.</p>
+<p><strong>산포도</strong>가 2차원의 그래프(단, <strong>색깔</strong>이나 모양 조건을 추가하면 3차원 정보 제공 가능)라면, <strong>버블 그래프 (Bubble Chart)는 3차원의 그래프</strong>가 되어 지면에 보다 많은 정보량을 제공할 수 있는 장점이 있습니다.</p>
+<p><code>ggplot2</code>에서는 산포도를 작성하는 <strong><code>geom_point()</code> 함수</strong>와 함께 <strong><code>scale_size_area()</code> 함수</strong>를 같이 사용하면 <strong>버블 그래프 (Bubble Chart)</strong>를 그릴 수가 있습니다. 따라서, 버블 그래프도 산포도의 일종인 것입니다.</p>
+<div id="데이터-세트-7" class="section level3" number="10.2.1">
+<h3><span class="header-section-number">10.2.1</span> 데이터 세트</h3>
+<p><code>MASS</code> 패키지의 <code>Cars93</code> 데이터 프레임 내에 <code>차 모델명(Model)</code>, <code>차종(Type)</code>, <code>무게(Weight)</code>, <code>고속도로연비(MPG.highway)</code>, <code>가격(Price)</code>의 5개 변수를 사용하여 <strong>버블 그래프</strong>를 그려보겠습니다.</p>
+<p>데이터가 너무 많으면 버블 그래프를 그릴 때 겹쳐 보여서 보기 싫으므로 <code>차종(Type)</code>에서 “<code>compact</code>”와 “<code>large</code>”의 두 종만 선별해서 예를 들어보겠습니다.</p>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="버블-그래프.html#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 버블 그래프 : 데이터 세트</span></span>
+<span id="cb385-2"><a href="버블-그래프.html#cb385-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
+<span id="cb385-3"><a href="버블-그래프.html#cb385-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb385-4"><a href="버블-그래프.html#cb385-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    93 obs. of  27 variables:
+##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
+##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
+##  $ Type              : Factor w/ 6 levels &quot;Compact&quot;,&quot;Large&quot;,..: 4 3 1 3 3 3 2 2 3 2 ...
+##  $ Min.Price         : num  12.9 29.2 25.9 30.8 23.7 14.2 19.9 22.6 26.3 33 ...
+##  $ Price             : num  15.9 33.9 29.1 37.7 30 15.7 20.8 23.7 26.3 34.7 ...
+##  $ Max.Price         : num  18.8 38.7 32.3 44.6 36.2 17.3 21.7 24.9 26.3 36.3 ...
+##  $ MPG.city          : int  25 18 20 19 22 22 19 16 19 16 ...
+##  $ MPG.highway       : int  31 25 26 26 30 31 28 25 27 25 ...
+##  $ AirBags           : Factor w/ 3 levels &quot;Driver &amp; Passenger&quot;,..: 3 1 2 1 2 2 2 2 2 2 ...
+##  $ DriveTrain        : Factor w/ 3 levels &quot;4WD&quot;,&quot;Front&quot;,..: 2 2 2 2 3 2 2 3 2 2 ...
+##  $ Cylinders         : Factor w/ 6 levels &quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,..: 2 4 4 4 2 2 4 4 4 5 ...
+##  $ EngineSize        : num  1.8 3.2 2.8 2.8 3.5 2.2 3.8 5.7 3.8 4.9 ...
+##  $ Horsepower        : int  140 200 172 172 208 110 170 180 170 200 ...
+##  $ RPM               : int  6300 5500 5500 5500 5700 5200 4800 4000 4800 4100 ...
+##  $ Rev.per.mile      : int  2890 2335 2280 2535 2545 2565 1570 1320 1690 1510 ...
+##  $ Man.trans.avail   : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 1 1 1 1 1 ...
+##  $ Fuel.tank.capacity: num  13.2 18 16.9 21.1 21.1 16.4 18 23 18.8 18 ...
+##  $ Passengers        : int  5 5 5 6 4 6 6 6 5 6 ...
+##  $ Length            : int  177 195 180 193 186 189 200 216 198 206 ...
+##  $ Wheelbase         : int  102 115 102 106 109 105 111 116 108 114 ...
+##  $ Width             : int  68 71 67 70 69 69 74 78 73 73 ...
+##  $ Turn.circle       : int  37 38 37 37 39 41 42 45 41 43 ...
+##  $ Rear.seat.room    : num  26.5 30 28 31 27 28 30.5 30.5 26.5 35 ...
+##  $ Luggage.room      : int  11 15 14 17 13 16 17 21 14 18 ...
+##  $ Weight            : int  2705 3560 3375 3405 3640 2880 3470 4105 3495 3620 ...
+##  $ Origin            : Factor w/ 2 levels &quot;USA&quot;,&quot;non-USA&quot;: 2 2 2 2 2 1 1 1 1 1 ...
+##  $ Make              : Factor w/ 93 levels &quot;Acura Integra&quot;,..: 1 2 4 3 5 6 7 9 8 10 ...</code></pre>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="버블-그래프.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(Cars93<span class="sc">$</span>Type)</span></code></pre></div>
+<pre><code>## [1] &quot;Compact&quot; &quot;Large&quot;   &quot;Midsize&quot; &quot;Small&quot;   &quot;Sporty&quot;  &quot;Van&quot;</code></pre>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="버블-그래프.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Cars93<span class="sc">$</span>Type)</span></code></pre></div>
+<pre><code>## 
+## Compact   Large Midsize   Small  Sporty     Van 
+##      16      11      22      21      14       9</code></pre>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="버블-그래프.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5개의 변수 선택과 </span></span>
+<span id="cb391-2"><a href="버블-그래프.html#cb391-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Type 변수 중 Compact와 Large만 선택</span></span>
+<span id="cb391-3"><a href="버블-그래프.html#cb391-3" aria-hidden="true" tabindex="-1"></a>Cars93_sample <span class="ot">&lt;-</span> <span class="fu">subset</span>(Cars93, </span>
+<span id="cb391-4"><a href="버블-그래프.html#cb391-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">select =</span> <span class="fu">c</span>(<span class="st">&quot;Model&quot;</span>, <span class="st">&quot;Type&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Price&quot;</span>), </span>
+<span id="cb391-5"><a href="버블-그래프.html#cb391-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">subset =</span> (Type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Large&quot;</span>)))</span>
+<span id="cb391-6"><a href="버블-그래프.html#cb391-6" aria-hidden="true" tabindex="-1"></a>Cars93_sample</span></code></pre></div>
+<pre><code>##             Model    Type Weight MPG.highway Price
+## 3              90 Compact   3375          26    29
+## 7         LeSabre   Large   3470          28    21
+## 8      Roadmaster   Large   4105          25    24
+## 10        DeVille   Large   3620          25    35
+## 12       Cavalier Compact   2490          36    13
+## 13        Corsica Compact   2785          34    11
+## 18        Caprice   Large   3910          26    19
+## 20       Concorde   Large   3515          28    18
+## 21        LeBaron Compact   3085          28    16
+## 22       Imperial   Large   3570          26    30
+## 25         Spirit Compact   2970          27    13
+## 30         Vision   Large   3490          28    19
+## 33          Tempo Compact   2690          27    11
+## 38 Crown_Victoria   Large   3950          26    21
+## 43         Accord Compact   3040          31    18
+## 52       Town_Car   Large   4055          26    36
+## 55            626 Compact   2970          34    16
+## 58           190E Compact   2920          29    32
+## 65         Altima Compact   3050          30    16
+## 68        Achieva Compact   2910          31    14
+## 71   Eighty-Eight   Large   3470          28    21
+## 74        Sunbird Compact   2575          31    11
+## 77     Bonneville   Large   3495          28    24
+## 78            900 Compact   2775          26    29
+## 82         Legacy Compact   3085          30    20
+## 90         Passat Compact   2985          30    20
+## 92            240 Compact   2985          28    23</code></pre>
+<p><a href="버블-그래프.html#버블-그래프">Go Top</a></p>
+</div>
+<div id="기본-버블-그래프" class="section level3" number="10.2.2">
+<h3><span class="header-section-number">10.2.2</span> 기본 버블 그래프</h3>
+<p><code>ggplot2</code>의 <code>geom_point()</code>와 <code>scale_size_area()</code> 함수를 사용하여 버블 그래프 (bubble chart)를 그려보겠습니다.</p>
+<p>이때 <code>geom_point()</code> 함수에도 <code>aes()</code> 함수를 추가하고 있으며, <code>size</code> 모수에 <code>Price</code> 변수를 설정하고 있음에 주목하기 바랍니다.</p>
+<p>버블 그래프의 구성 요소별로 정리를 해 보면 다음과 같습니다.</p>
+<ul>
+<li><p><code>ggplot()</code> : <strong><code>x</code>축</strong>에 <code>무게(Weight)</code>를, <strong><code>y</code>축</strong>에는 <code>고속도로연비(MPG.highway)</code> 이터를 표시하고,</p></li>
+<li><p><code>geom_point()</code> : <strong>점의 크기(<code>size</code>)</strong>는 <code>Price</code> 변수 값에 따라 정하고(<code>aes(size = Price</code>), <strong>점의 모양</strong>(<code>shpae</code>)을 <strong>원(21번)으로 표시</strong>하고,<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> 점의 테두리 색(<code>colour</code>)은 <code>“blue”</code>, 점의 채우기 색(<code>fill</code>)은 <code>“green”</code>, 그리고 채우기 색의 투명도(<code>alpha</code>)는 <code>50%</code>로 설정하겠습니다.</p></li>
+<li><p><code>scale_size_area()</code> : 점의 최대 크기(<code>max_size</code>)를 15로 설정하겠습니다.<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></p></li>
+</ul>
+<p>이제 이러한 사항을 반영하여 버블 그래프를 그리면 다음과 같습니다.</p>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="버블-그래프.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 버블 그래프</span></span>
+<span id="cb393-2"><a href="버블-그래프.html#cb393-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93_sample,                          <span class="co"># 데이터 세트를 지정합니다.</span></span>
+<span id="cb393-3"><a href="버블-그래프.html#cb393-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Weight,                         <span class="co"># x축을 Weight 변수로 지정합니다.</span></span>
+<span id="cb393-4"><a href="버블-그래프.html#cb393-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway)) <span class="sc">+</span>                 <span class="co"># y축을 MPG.highway 변수로 지정합니다.</span></span>
+<span id="cb393-5"><a href="버블-그래프.html#cb393-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> Price),           <span class="co"># 점의 크기를 Price 변수로 지정합닏.</span></span>
+<span id="cb393-6"><a href="버블-그래프.html#cb393-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">shape=</span><span class="dv">21</span>,                    <span class="co"># 점의 모양 ; 21</span></span>
+<span id="cb393-7"><a href="버블-그래프.html#cb393-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">colour=</span><span class="st">&quot;blue&quot;</span>,               <span class="co"># 점의 테두리 색</span></span>
+<span id="cb393-8"><a href="버블-그래프.html#cb393-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">fill=</span><span class="st">&quot;green&quot;</span>,                <span class="co"># 점의 채우기 색</span></span>
+<span id="cb393-9"><a href="버블-그래프.html#cb393-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span>                 <span class="co"># 점의 투명도 : 50%</span></span>
+<span id="cb393-10"><a href="버블-그래프.html#cb393-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_size_area</span>(<span class="at">max_size =</span> <span class="dv">15</span>) <span class="sc">+</span>            <span class="co"># 최대 점의 크기 : 15</span></span>
+<span id="cb393-11"><a href="버블-그래프.html#cb393-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;기본 버블 그래프&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/GGBuble-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><a href="버블-그래프.html#버블-그래프">Go Top</a></p>
+<p>참고로 R 에서의 선의 모양은 그림 <a href="#fig:RLineType"><strong>??</strong></a> 과 같으며, 점의 모양은 그림 <a href="#fig:RPointType"><strong>??</strong></a> 과 같습니다.</p>
+<p><img src="images/2774114A55D883A238.png" width="238" style="display: block; margin: auto;" /><img src="images/2774114A55D883A238.png" width="238" style="display: block; margin: auto;" /><img src="images/2774114A55D883A238.png" width="238" style="display: block; margin: auto;" /></p>
+<p><img src="images/2611E34855D883B51F.png" width="90" style="display: block; margin: auto;" /><img src="images/2611E34855D883B51F.png" width="90" style="display: block; margin: auto;" /><img src="images/2611E34855D883B51F.png" width="90" style="display: block; margin: auto;" /></p>
+</div>
+<div id="텍스트-레이블-추가" class="section level3" number="10.2.3">
+<h3><span class="header-section-number">10.2.3</span> 텍스트 레이블 추가</h3>
+<p>이 버블 그래프에서 <code>geom_text()</code> 함수를 활용해서 각 점이 나타내는 자동차 모델 명(<code>Model</code>)이 무엇인지를 레이블로 표시해 보겠습니다.</p>
+<p><code>geom_text()</code> 함수의 사용을 위해 고려해야 할 사항 중 중요한 부분만 설정하겠습니다.</p>
+<ul>
+<li>먼저 <strong><code>aes()</code> 함수의 모수를 설정</strong>합니다.
+<ul>
+<li>레이블이 출력될 <code>Y</code>축의 위치를 지정합니다. 여기서는 <code>Y</code>축이 <code>MPG.highway</code> 변수이므로 <code>aes()</code> 함수에 <code>y = MPG.highway</code> 모수를 추가해 줍니다.<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></li>
+<li>먼저 레이블로 표시할 변수 <code>Model</code>을 지정합니다. 즉, <code>aes()</code> 함수의 모수로<code>label = Model</code>을 추가합니다.</li>
+</ul></li>
+<li><strong>기타 모수들을 설정</strong>합니다.
+<ul>
+<li>우선 기준이 되는 축을 설정합니다. <code>vjust = 1</code> 모수를 설정하여 x축을 기준 축으로 정하겠습니다.</li>
+<li>레이블의 색을 지정합니다. <code>colour = “blue”</code>으로 해서 검정색으로 설정하겠습니다.</li>
+<li>레이블 글자의 크기를 지정합니다. <code>size = 3</code>으로 설정하겠습니다.</li>
+</ul></li>
+</ul>
+<p>이러한 고려 사항들을 반영하여 버블 그래프에 텍스트 레이브을 추가해 보겠습니다.</p>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="버블-그래프.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 버블 그래프에 모델명을 레이블로 추가하기</span></span>
+<span id="cb394-2"><a href="버블-그래프.html#cb394-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93_sample,                        </span>
+<span id="cb394-3"><a href="버블-그래프.html#cb394-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Weight,                       </span>
+<span id="cb394-4"><a href="버블-그래프.html#cb394-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway)) <span class="sc">+</span>               </span>
+<span id="cb394-5"><a href="버블-그래프.html#cb394-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> Price),           </span>
+<span id="cb394-6"><a href="버블-그래프.html#cb394-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">shape=</span><span class="dv">21</span>,                    </span>
+<span id="cb394-7"><a href="버블-그래프.html#cb394-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">colour=</span><span class="st">&quot;blue&quot;</span>,               </span>
+<span id="cb394-8"><a href="버블-그래프.html#cb394-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill=</span><span class="st">&quot;green&quot;</span>,                </span>
+<span id="cb394-9"><a href="버블-그래프.html#cb394-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span>                 </span>
+<span id="cb394-10"><a href="버블-그래프.html#cb394-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size_area</span>(<span class="at">max_size =</span> <span class="dv">15</span>,</span>
+<span id="cb394-11"><a href="버블-그래프.html#cb394-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">guide =</span> <span class="cn">FALSE</span>) <span class="sc">+</span>         <span class="co"># 범례를 없앨 수도 있습니다.</span></span>
+<span id="cb394-12"><a href="버블-그래프.html#cb394-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb394-13"><a href="버블-그래프.html#cb394-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 모델명을 레이블로 추가하기  </span></span>
+<span id="cb394-14"><a href="버블-그래프.html#cb394-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">y =</span> MPG.highway <span class="sc">+</span> <span class="fl">0.2</span>,     <span class="co"># 레이블이 출력될 Y축의 위치</span></span>
+<span id="cb394-15"><a href="버블-그래프.html#cb394-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">label =</span> Model),            <span class="co"># 출력될 레이블 변수</span></span>
+<span id="cb394-16"><a href="버블-그래프.html#cb394-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">vjust =</span> <span class="dv">1</span>,                     <span class="co"># 기준 축 : 1은 X축</span></span>
+<span id="cb394-17"><a href="버블-그래프.html#cb394-17" aria-hidden="true" tabindex="-1"></a>            <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>,               <span class="co"># 레이블의 색</span></span>
+<span id="cb394-18"><a href="버블-그래프.html#cb394-18" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span>                    <span class="co"># 레이블 글자 크기</span></span>
+<span id="cb394-19"><a href="버블-그래프.html#cb394-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;버블 그래프 : 모델 레이블 추가&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/GGBubleText-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><a href="버블-그래프.html#버블-그래프">Go Top</a></p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="7">
+<li id="fn7"><p><code>자세한 사항은 ?shape</code>으로 확인할 수 있습니다.<a href="버블-그래프.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>범례는 guide = FALSE 모수를 추가해서 제거할 수 있습니다. 그림 <a href="#fig:GGBuble"><strong>??</strong></a>을 참고하기 바랍니다.<a href="버블-그래프.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>레이블을 그래프에 표시해 보고 위치를 조정해 줍니다. 이 예에서는 <code>y = MPG.highway + 0.2</code>로 조정했습니다.<a href="버블-그래프.html#fnref9" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="산포도-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="선-그래프와-시계열-그래프.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>
