@@ -490,9 +490,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="데이터-세트-5" class="section level3" number="8.2.1">
 <h3><span class="header-section-number">8.2.1</span> 데이터 세트</h3>
 <p>데이터는 <code>MASS</code> 패키지에 들어있는 <code>Cars93</code> 데이터 프레임의 차종(<code>Type</code>)과 제조국(<code>Origin</code>) 데이터를 활용해서 차종별 제조국별 도수를 구한 후에, 원그림을 그려보겠습니다.</p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="파이-차트-1.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb335-2"><a href="파이-차트-1.html#cb335-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb335-3"><a href="파이-차트-1.html#cb335-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="파이-차트-1.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb331-2"><a href="파이-차트-1.html#cb331-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb331-3"><a href="파이-차트-1.html#cb331-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    93 obs. of  27 variables:
 ##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
 ##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
@@ -526,16 +526,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">8.2.2</span> 기본 파이 차트</h3>
 <p>파이 차트는 누적(stacked) 막대 그래프를 먼저 <code>geom_bar()</code>함수를 이용하여 그린 다음, <code>coord_polar("y")</code>함수를 이용하여 <strong>원형(polar coordinates)으로 변경하는 절차</strong>를 따릅니다.</p>
 <p><strong>(절차 1) 바로 아래에 있는 그래프가 누적 막대그림 (stacked bar chart) 을 그립니다.</strong></p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="파이-차트-1.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 파이 차트(Pie Chart)</span></span>
-<span id="cb337-2"><a href="파이-차트-1.html#cb337-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 막대그림 먼저 그린다.</span></span>
-<span id="cb337-3"><a href="파이-차트-1.html#cb337-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sqldf)</span>
-<span id="cb337-4"><a href="파이-차트-1.html#cb337-4" aria-hidden="true" tabindex="-1"></a>Car_Type_Origin_cnt <span class="ot">&lt;-</span> <span class="fu">sqldf</span>( <span class="st">&#39;select Type, Origin, count(*) as Type_Origin_cnt</span></span>
-<span id="cb337-5"><a href="파이-차트-1.html#cb337-5" aria-hidden="true" tabindex="-1"></a><span class="st">                               from Cars93</span></span>
-<span id="cb337-6"><a href="파이-차트-1.html#cb337-6" aria-hidden="true" tabindex="-1"></a><span class="st">                               group by Type, Origin</span></span>
-<span id="cb337-7"><a href="파이-차트-1.html#cb337-7" aria-hidden="true" tabindex="-1"></a><span class="st">                               order by Type, Origin</span></span>
-<span id="cb337-8"><a href="파이-차트-1.html#cb337-8" aria-hidden="true" tabindex="-1"></a><span class="st">                               &#39;</span>)</span>
-<span id="cb337-9"><a href="파이-차트-1.html#cb337-9" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb337-10"><a href="파이-차트-1.html#cb337-10" aria-hidden="true" tabindex="-1"></a>Car_Type_Origin_cnt</span></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="파이-차트-1.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 파이 차트(Pie Chart)</span></span>
+<span id="cb333-2"><a href="파이-차트-1.html#cb333-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 막대그림 먼저 그린다.</span></span>
+<span id="cb333-3"><a href="파이-차트-1.html#cb333-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sqldf)</span>
+<span id="cb333-4"><a href="파이-차트-1.html#cb333-4" aria-hidden="true" tabindex="-1"></a>Car_Type_Origin_cnt <span class="ot">&lt;-</span> <span class="fu">sqldf</span>( <span class="st">&#39;select Type, Origin, count(*) as Type_Origin_cnt</span></span>
+<span id="cb333-5"><a href="파이-차트-1.html#cb333-5" aria-hidden="true" tabindex="-1"></a><span class="st">                               from Cars93</span></span>
+<span id="cb333-6"><a href="파이-차트-1.html#cb333-6" aria-hidden="true" tabindex="-1"></a><span class="st">                               group by Type, Origin</span></span>
+<span id="cb333-7"><a href="파이-차트-1.html#cb333-7" aria-hidden="true" tabindex="-1"></a><span class="st">                               order by Type, Origin</span></span>
+<span id="cb333-8"><a href="파이-차트-1.html#cb333-8" aria-hidden="true" tabindex="-1"></a><span class="st">                               &#39;</span>)</span>
+<span id="cb333-9"><a href="파이-차트-1.html#cb333-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb333-10"><a href="파이-차트-1.html#cb333-10" aria-hidden="true" tabindex="-1"></a>Car_Type_Origin_cnt</span></code></pre></div>
 <pre><code>##       Type  Origin Type_Origin_cnt
 ## 1  Compact     USA               7
 ## 2  Compact non-USA               9
@@ -548,40 +548,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 9   Sporty non-USA               6
 ## 10     Van     USA               5
 ## 11     Van non-USA               4</code></pre>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="파이-차트-1.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(Car_Type_Origin_cnt, class)</span></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="파이-차트-1.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(Car_Type_Origin_cnt, class)</span></code></pre></div>
 <pre><code>##            Type          Origin Type_Origin_cnt 
 ##        &quot;factor&quot;        &quot;factor&quot;       &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="파이-차트-1.html#cb341-1" aria-hidden="true" tabindex="-1"></a>bar <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> Car_Type_Origin_cnt, </span>
-<span id="cb341-2"><a href="파이-차트-1.html#cb341-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> Type_Origin_cnt, </span>
-<span id="cb341-3"><a href="파이-차트-1.html#cb341-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill=</span>Type)) <span class="sc">+</span></span>
-<span id="cb341-4"><a href="파이-차트-1.html#cb341-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">facet_grid</span>(<span class="at">facets =</span> . <span class="sc">~</span> Origin) <span class="sc">+</span> </span>
-<span id="cb341-5"><a href="파이-차트-1.html#cb341-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb341-6"><a href="파이-차트-1.html#cb341-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 제조국별 누적 도수 분포도&quot;</span>)</span>
-<span id="cb341-7"><a href="파이-차트-1.html#cb341-7" aria-hidden="true" tabindex="-1"></a>bar</span></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="파이-차트-1.html#cb337-1" aria-hidden="true" tabindex="-1"></a>bar <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> Car_Type_Origin_cnt, </span>
+<span id="cb337-2"><a href="파이-차트-1.html#cb337-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> Type_Origin_cnt, </span>
+<span id="cb337-3"><a href="파이-차트-1.html#cb337-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill=</span>Type)) <span class="sc">+</span></span>
+<span id="cb337-4"><a href="파이-차트-1.html#cb337-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">facet_grid</span>(<span class="at">facets =</span> . <span class="sc">~</span> Origin) <span class="sc">+</span> </span>
+<span id="cb337-5"><a href="파이-차트-1.html#cb337-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb337-6"><a href="파이-차트-1.html#cb337-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 제조국별 누적 도수 분포도&quot;</span>)</span>
+<span id="cb337-7"><a href="파이-차트-1.html#cb337-7" aria-hidden="true" tabindex="-1"></a>bar</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/GGPPieChartBar-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><strong>(절차 2) 그 다음 표현형식을 <code>coord_polar("y")</code> 를 써서 원형으로 바꾸어 본 것이 아래 script 가 되겠습니다.</strong></p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="파이-차트-1.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 파이 차트(Pie Chart) : geom_bar() + coord_ploar(theta=&quot;y&quot;)</span></span>
-<span id="cb342-2"><a href="파이-차트-1.html#cb342-2" aria-hidden="true" tabindex="-1"></a>pie <span class="ot">&lt;-</span> bar <span class="sc">+</span> </span>
-<span id="cb342-3"><a href="파이-차트-1.html#cb342-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">coord_polar</span>(<span class="at">theta=</span><span class="st">&quot;y&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb342-4"><a href="파이-차트-1.html#cb342-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 제조국별 파이 차트&quot;</span>)</span>
-<span id="cb342-5"><a href="파이-차트-1.html#cb342-5" aria-hidden="true" tabindex="-1"></a>pie</span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="파이-차트-1.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 파이 차트(Pie Chart) : geom_bar() + coord_ploar(theta=&quot;y&quot;)</span></span>
+<span id="cb338-2"><a href="파이-차트-1.html#cb338-2" aria-hidden="true" tabindex="-1"></a>pie <span class="ot">&lt;-</span> bar <span class="sc">+</span> </span>
+<span id="cb338-3"><a href="파이-차트-1.html#cb338-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">coord_polar</span>(<span class="at">theta=</span><span class="st">&quot;y&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb338-4"><a href="파이-차트-1.html#cb338-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 제조국별 파이 차트&quot;</span>)</span>
+<span id="cb338-5"><a href="파이-차트-1.html#cb338-5" aria-hidden="true" tabindex="-1"></a>pie</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/GGPPieChart-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><a href="파이-차트-1.html#파이-차트-1">Go Top</a></p>
 <p>이번 절에서 파이 차트를 소개하기는 했습니다만, 저는 원그림은 그다지 추천하지 않습니다. 일단 눈으로 보고 해석하기에, 범주간 비교하기에 그다지 용이하지가 않습니다.</p>
 <p>막대그림으로 높이를 비교하는 것이 범주 간 차이를 단박에 보여주는 것과 비교하면 원그림은 그래프를 봐야하는 이에게는 불친절한 그래프입니다.</p>
 <p>(단, 두 집단(가령 <code>USA</code>, <code>non-USA</code>) 간에 과반을 넘는 특정 segment를 비교해서 강조하고 싶은 경우는 원그림이 효과적일 수 있습니다.)</p>
 <p>참고용으로, 막대그림으로 나타내면 아래와 같은데요, 위의 원그림과 비교해보시기 바랍니다. 뭐가 더 쉽고 해석하기 편한지요.</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="파이-차트-1.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 파이 차트와 막대 그래프의 비교</span></span>
-<span id="cb343-2"><a href="파이-차트-1.html#cb343-2" aria-hidden="true" tabindex="-1"></a>pie</span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="파이-차트-1.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 파이 차트와 막대 그래프의 비교</span></span>
+<span id="cb339-2"><a href="파이-차트-1.html#cb339-2" aria-hidden="true" tabindex="-1"></a>pie</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/GGPPieChartVSBar-1.png" width="50%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="파이-차트-1.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Car_Type_Origin_cnt, </span>
-<span id="cb344-2"><a href="파이-차트-1.html#cb344-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type, <span class="at">y =</span> Type_Origin_cnt)) <span class="sc">+</span></span>
-<span id="cb344-3"><a href="파이-차트-1.html#cb344-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">facet_grid</span>(<span class="at">facets =</span> . <span class="sc">~</span> Origin) <span class="sc">+</span> </span>
-<span id="cb344-4"><a href="파이-차트-1.html#cb344-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, </span>
-<span id="cb344-5"><a href="파이-차트-1.html#cb344-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">width =</span> <span class="dv">1</span>, </span>
-<span id="cb344-6"><a href="파이-차트-1.html#cb344-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">&quot;white&quot;</span>, </span>
-<span id="cb344-7"><a href="파이-차트-1.html#cb344-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb344-8"><a href="파이-차트-1.html#cb344-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 제조국별 막대 그래프&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="파이-차트-1.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Car_Type_Origin_cnt, </span>
+<span id="cb340-2"><a href="파이-차트-1.html#cb340-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type, <span class="at">y =</span> Type_Origin_cnt)) <span class="sc">+</span></span>
+<span id="cb340-3"><a href="파이-차트-1.html#cb340-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">facet_grid</span>(<span class="at">facets =</span> . <span class="sc">~</span> Origin) <span class="sc">+</span> </span>
+<span id="cb340-4"><a href="파이-차트-1.html#cb340-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, </span>
+<span id="cb340-5"><a href="파이-차트-1.html#cb340-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">width =</span> <span class="dv">1</span>, </span>
+<span id="cb340-6"><a href="파이-차트-1.html#cb340-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">&quot;white&quot;</span>, </span>
+<span id="cb340-7"><a href="파이-차트-1.html#cb340-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb340-8"><a href="파이-차트-1.html#cb340-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 제조국별 막대 그래프&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/GGPPieChartVSBar-2.png" width="50%" style="display: block; margin: auto;" /></p>
 <p><a href="파이-차트-1.html#파이-차트-1">Go Top</a></p>
 </div>

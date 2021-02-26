@@ -577,17 +577,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">6.5.1</span> <code>text()</code> 함수의 사용</h3>
 <p>먼저 <strong><code>text()</code></strong> 함수를 사용하여 <strong>그래프 내에 문자열을 추가</strong>하는 방법을 살펴보도록 하겠습니다.</p>
 <p><code>MASS</code> 패키지에 내장되어있는 <code>Cars93</code> 데이터프레임의 차 무게 (<code>Weight)</code>, 고속도로 연비 <code>(MPG.highway</code>) 변수를 활용해서 산점도를 그리고, 각 점에 해당하는 모델명을 모델명(<code>Model</code>) 변수의 텍스트로 추가해 보겠습니다.</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="문자열-추가.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
-<span id="cb185-2"><a href="문자열-추가.html#cb185-2" aria-hidden="true" tabindex="-1"></a><span class="do">##-------------------------------------------</span></span>
-<span id="cb185-3"><a href="문자열-추가.html#cb185-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 플롯에 문자열 추가 : text(), mtext() </span></span>
-<span id="cb185-4"><a href="문자열-추가.html#cb185-4" aria-hidden="true" tabindex="-1"></a><span class="do">##------------------------------------------- </span></span></code></pre></div>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="문자열-추가.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 플롯에 문자열 추가 : text() </span></span>
-<span id="cb186-2"><a href="문자열-추가.html#cb186-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Cars93) </span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="문자열-추가.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
+<span id="cb181-2"><a href="문자열-추가.html#cb181-2" aria-hidden="true" tabindex="-1"></a><span class="do">##-------------------------------------------</span></span>
+<span id="cb181-3"><a href="문자열-추가.html#cb181-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 플롯에 문자열 추가 : text(), mtext() </span></span>
+<span id="cb181-4"><a href="문자열-추가.html#cb181-4" aria-hidden="true" tabindex="-1"></a><span class="do">##------------------------------------------- </span></span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="문자열-추가.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 플롯에 문자열 추가 : text() </span></span>
+<span id="cb182-2"><a href="문자열-추가.html#cb182-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Cars93) </span></code></pre></div>
 <pre><code>## The following object is masked _by_ .GlobalEnv:
 ## 
 ##     Cylinders</code></pre>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="문자열-추가.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Weight, MPG.highway, <span class="at">main =</span> <span class="st">&quot;MPG.highway ~ Weight의 산점도&quot;</span>) </span>
-<span id="cb188-2"><a href="문자열-추가.html#cb188-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> Weight, <span class="at">y =</span> MPG.highway, <span class="at">labels =</span> Model, <span class="at">pos =</span> <span class="dv">3</span>, <span class="at">cex =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="문자열-추가.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Weight, MPG.highway, <span class="at">main =</span> <span class="st">&quot;MPG.highway ~ Weight의 산점도&quot;</span>) </span>
+<span id="cb184-2"><a href="문자열-추가.html#cb184-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> Weight, <span class="at">y =</span> MPG.highway, <span class="at">labels =</span> Model, <span class="at">pos =</span> <span class="dv">3</span>, <span class="at">cex =</span> <span class="fl">0.5</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/ScatPlot-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><code>text(x, y, )</code> 좌표 대신에 <strong><code>text(locator(1), )</code></strong> 옵션을 사용하면 대화방식으로 플롯 화면 상에 문자가 들어갈 위치를 마우스로 클릭해서 지정할 수 있습니다.</p>
 <p>재현 가능성(reproducible research) 관점에서 보면 추천할 만한 방법은 아닙니다. 그러나, <code>x</code>, <code>y</code> 좌표를 정확히 모르거나, 한번만 간편하게 그래프를 그려볼 목적이라면 큰 문제는 없습니다.</p>
@@ -599,17 +599,17 @@ detach(Cars93)</code></pre>
 <h3><span class="header-section-number">6.5.2</span> <code>mtext()</code> 함수의 사용</h3>
 <p>다음으로 <code>mtext()</code> 를 사용해서 <strong>그래프 외부 마진 영역에 문자열을 추가</strong>해보는 예제입니다.</p>
 <p><code>title()</code> 함수로 제목을 추가하는 것과 유사한 측면이 있습니다. <code>mtext()</code>의 경우 <strong>여러 개의 그래프를 결합</strong>했을 때 외부마진에 <strong>그래프 전체의 제목을 자유롭게 추가</strong>할 수 있다는 유용한 장점이 있습니다.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="문자열-추가.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb190-2"><a href="문자열-추가.html#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 4개의 마진 중 한 곳에 문자열 추가하기 : mtext() </span></span>
-<span id="cb190-3"><a href="문자열-추가.html#cb190-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb190-4"><a href="문자열-추가.html#cb190-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 par 설정 값을 저장합니다.</span></span>
-<span id="cb190-5"><a href="문자열-추가.html#cb190-5" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb190-6"><a href="문자열-추가.html#cb190-6" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb190-7"><a href="문자열-추가.html#cb190-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1개 행에 2개의 그래프를 배치합니다.</span></span>
-<span id="cb190-8"><a href="문자열-추가.html#cb190-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),                                      <span class="co"># 1행 2개 플롯</span></span>
-<span id="cb190-9"><a href="문자열-추가.html#cb190-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">oma =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">1</span>))                                 <span class="co"># 외부 마진</span></span>
-<span id="cb190-10"><a href="문자열-추가.html#cb190-10" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb190-11"><a href="문자열-추가.html#cb190-11" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="문자열-추가.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb186-2"><a href="문자열-추가.html#cb186-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 4개의 마진 중 한 곳에 문자열 추가하기 : mtext() </span></span>
+<span id="cb186-3"><a href="문자열-추가.html#cb186-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb186-4"><a href="문자열-추가.html#cb186-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 par 설정 값을 저장합니다.</span></span>
+<span id="cb186-5"><a href="문자열-추가.html#cb186-5" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb186-6"><a href="문자열-추가.html#cb186-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb186-7"><a href="문자열-추가.html#cb186-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1개 행에 2개의 그래프를 배치합니다.</span></span>
+<span id="cb186-8"><a href="문자열-추가.html#cb186-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),                                      <span class="co"># 1행 2개 플롯</span></span>
+<span id="cb186-9"><a href="문자열-추가.html#cb186-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">oma =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">1</span>))                                 <span class="co"># 외부 마진</span></span>
+<span id="cb186-10"><a href="문자열-추가.html#cb186-10" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb186-11"><a href="문자열-추가.html#cb186-11" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Cars93)</span></code></pre></div>
 <pre><code>## The following object is masked _by_ .GlobalEnv:
 ## 
 ##     Cylinders</code></pre>
@@ -620,20 +620,20 @@ detach(Cars93)</code></pre>
 ##     Manufacturer, Max.Price, Min.Price, Model, MPG.city, MPG.highway,
 ##     Origin, Passengers, Price, Rear.seat.room, Rev.per.mile, RPM,
 ##     Turn.circle, Type, Weight, Wheelbase, Width</code></pre>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="문자열-추가.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Weight, MPG.highway, <span class="at">main =</span> <span class="st">&quot;MPG.highway ~ Weight&quot;</span>)               <span class="co"># 그림 1 </span></span>
-<span id="cb193-2"><a href="문자열-추가.html#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Horsepower, MPG.highway, <span class="at">main =</span> <span class="st">&quot;MPG.highway ~ Horsepower&quot;</span>)       <span class="co"># 그림 2 </span></span>
-<span id="cb193-3"><a href="문자열-추가.html#cb193-3" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb193-4"><a href="문자열-추가.html#cb193-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;Weight, Horsepower와 MPG.Highway&quot;</span>,   </span>
-<span id="cb193-5"><a href="문자열-추가.html#cb193-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">side =</span> <span class="dv">3</span>,                               <span class="co"># 문자열 위치 : 3 = 상단부</span></span>
-<span id="cb193-6"><a href="문자열-추가.html#cb193-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">line =</span> <span class="dv">1</span>,                               <span class="co"># 그래프와 문자열의 마진 거리 (0부터 시작)</span></span>
-<span id="cb193-7"><a href="문자열-추가.html#cb193-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">adj =</span> <span class="dv">2</span>,                                <span class="co"># 문자열 정렬 위치 : 가운데 정렬</span></span>
-<span id="cb193-8"><a href="문자열-추가.html#cb193-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">cex =</span> <span class="dv">2</span>,                                <span class="co"># 폰트 크기</span></span>
-<span id="cb193-9"><a href="문자열-추가.html#cb193-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">outer =</span> <span class="cn">TRUE</span>)                           <span class="co"># TRUE : 외부 마진에 문자열 위치</span></span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="문자열-추가.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Weight, MPG.highway, <span class="at">main =</span> <span class="st">&quot;MPG.highway ~ Weight&quot;</span>)               <span class="co"># 그림 1 </span></span>
+<span id="cb189-2"><a href="문자열-추가.html#cb189-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Horsepower, MPG.highway, <span class="at">main =</span> <span class="st">&quot;MPG.highway ~ Horsepower&quot;</span>)       <span class="co"># 그림 2 </span></span>
+<span id="cb189-3"><a href="문자열-추가.html#cb189-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb189-4"><a href="문자열-추가.html#cb189-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;Weight, Horsepower와 MPG.Highway&quot;</span>,   </span>
+<span id="cb189-5"><a href="문자열-추가.html#cb189-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">side =</span> <span class="dv">3</span>,                               <span class="co"># 문자열 위치 : 3 = 상단부</span></span>
+<span id="cb189-6"><a href="문자열-추가.html#cb189-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">line =</span> <span class="dv">1</span>,                               <span class="co"># 그래프와 문자열의 마진 거리 (0부터 시작)</span></span>
+<span id="cb189-7"><a href="문자열-추가.html#cb189-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">adj =</span> <span class="dv">2</span>,                                <span class="co"># 문자열 정렬 위치 : 가운데 정렬</span></span>
+<span id="cb189-8"><a href="문자열-추가.html#cb189-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">cex =</span> <span class="dv">2</span>,                                <span class="co"># 폰트 크기</span></span>
+<span id="cb189-9"><a href="문자열-추가.html#cb189-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">outer =</span> <span class="cn">TRUE</span>)                           <span class="co"># TRUE : 외부 마진에 문자열 위치</span></span></code></pre></div>
 <p><img src="bookdown_files/figure-html/ScatPlot1-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="문자열-추가.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93) </span>
-<span id="cb194-2"><a href="문자열-추가.html#cb194-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb194-3"><a href="문자열-추가.html#cb194-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 원래의 par 설정값으로 환원</span></span>
-<span id="cb194-4"><a href="문자열-추가.html#cb194-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="문자열-추가.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93) </span>
+<span id="cb190-2"><a href="문자열-추가.html#cb190-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb190-3"><a href="문자열-추가.html#cb190-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 원래의 par 설정값으로 환원</span></span>
+<span id="cb190-4"><a href="문자열-추가.html#cb190-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
 <p>위의 예에서 <code>mtext()</code> 함수 내의 <code>side</code>, <code>line</code>, <code>adj</code>, <code>cex</code>, <code>outer</code> 등의 설정값을 하나씩 수정하면서 연습해 보면 옵션 설정을 이해하는데 도움이 될 것입니다.</p>
 </div>
 </div>
