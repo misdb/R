@@ -24,7 +24,7 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2021-02-26" />
+<meta name="date" content="2021-03-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -486,7 +486,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="그래프-분석의-예" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> 그래프 분석의 예</h2>
-<p>영국의 통계학자 Francis Anscombe 가 <a href="http://www.sjsu.edu/faculty/gerstman/StatPrimer/anscombe1973.pdf">“Graphs in Statistical Analysis”(1973년)라는 논문 (링크를 클릭하면 pdf 다운로드 가능)</a>에서 왜 통계분석을 할 때 반드시 <strong>통계량</strong> 뿐 만 아니라 <strong>그래프 분석</strong>을 병행해야 하는지를 보여주는 데이터 예를 듭니다. (x1, y1), (x2, y2), (x3, y3), (x4, y4) 변수들로 구성된 4개 그룹이 있는데요, x1~x4, y1~y4 끼리 평균, 표준편차가 같고, (x1, y1), (x2, y2), (x3, y3), (x4, y4) 변수들 간의 상관계수와 회귀모형이 같습니다. 이정도면 같은 모집단에서 뽑은 같은 성격/특징/형태를 보이는 4개의 표본이라고 지레짐작하기 쉬운데요, 그래프를 그려보면 4개의 표본이 날라도 너무 달라서 깜짝 놀라게 됩니다.</p>
+<p>영국의 통계학자 Francis Anscombe 가 <a href="http://www.sjsu.edu/faculty/gerstman/StatPrimer/anscombe1973.pdf">“Graphs in Statistical Analysis”(1973년)라는 논문 (링크를 클릭하면 pdf 다운로드 가능)</a>에서 왜 통계분석을 할 때 반드시 <strong>통계치</strong> 뿐 만 아니라 <strong>그래프 분석</strong>을 병행해야 하는지를 보여주는 데이터 예를 듭니다. (x1, y1), (x2, y2), (x3, y3), (x4, y4) 변수들로 구성된 4개 그룹이 있는데요, x1~x4, y1~y4 끼리 평균, 표준편차가 같고, (x1, y1), (x2, y2), (x3, y3), (x4, y4) 변수들 간의 상관계수와 회귀모형이 같습니다. 이정도면 같은 모집단에서 뽑은 같은 성격/특징/형태를 보이는 4개의 표본이라고 지레짐작하기 쉬운데요, 그래프를 그려보면 4개의 표본이 날라도 너무 달라서 깜짝 놀라게 됩니다.</p>
 <table>
 <colgroup>
 <col width="85%" />
@@ -525,9 +525,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>관측치가 11개 밖에 안되므로 모두 불러와 보면 아래와 같습니다. 이처럼 <em>숫자만 봐서는 데이터 분포, 특성, 변수간 관계가 어떠한 지 한눈에 안들어오고 이해가 잘 안되지요?</em></p>
 <pre><code># 데이터 View
 View(anscombe)</code></pre>
-<div id="htmlwidget-35d39fb0a7e5f28cd1a2" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-35d39fb0a7e5f28cd1a2">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11"],[10,8,13,9,11,14,6,4,12,7,5],[10,8,13,9,11,14,6,4,12,7,5],[10,8,13,9,11,14,6,4,12,7,5],[8,8,8,8,8,8,8,19,8,8,8],[8.04,6.95,7.58,8.81,8.33,9.96,7.24,4.26,10.84,4.82,5.68],[9.14,8.14,8.74,8.77,9.26,8.1,6.13,3.1,9.13,7.26,4.74],[7.46,6.77,12.74,7.11,7.81,8.84,6.08,5.39,8.15,6.42,5.73],[6.58,5.76,7.71,8.84,8.47,7.04,5.25,12.5,5.56,7.91,6.89]],"container":"<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>x1<\/th>\n      <th>x2<\/th>\n      <th>x3<\/th>\n      <th>x4<\/th>\n      <th>y1<\/th>\n      <th>y2<\/th>\n      <th>y3<\/th>\n      <th>y4<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
-<p>이럴 때 보통 기술통계량을 보곤 하지요. <strong>중심화 경향</strong>을 나타내는 <em>평균</em>과 <strong>퍼짐 정도</strong>를 나타내는 <em>표준편차</em>를 살펴보겠습니다. <code>x1</code>~<code>x4</code> 의 평균과 표준편차가 같고, <code>y1</code>~<code>y4</code>의 평균과 표준편차가 같게 나왔습니다.</p>
+<div id="htmlwidget-6fa50ab4f05ed05f8845" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6fa50ab4f05ed05f8845">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11"],[10,8,13,9,11,14,6,4,12,7,5],[10,8,13,9,11,14,6,4,12,7,5],[10,8,13,9,11,14,6,4,12,7,5],[8,8,8,8,8,8,8,19,8,8,8],[8.04,6.95,7.58,8.81,8.33,9.96,7.24,4.26,10.84,4.82,5.68],[9.14,8.14,8.74,8.77,9.26,8.1,6.13,3.1,9.13,7.26,4.74],[7.46,6.77,12.74,7.11,7.81,8.84,6.08,5.39,8.15,6.42,5.73],[6.58,5.76,7.71,8.84,8.47,7.04,5.25,12.5,5.56,7.91,6.89]],"container":"<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>x1<\/th>\n      <th>x2<\/th>\n      <th>x3<\/th>\n      <th>x4<\/th>\n      <th>y1<\/th>\n      <th>y2<\/th>\n      <th>y3<\/th>\n      <th>y4<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p>이럴 때 보통 기술 통계치을 보곤 하지요. <strong>중심화 경향</strong>을 나타내는 <em>평균</em>과 <strong>퍼짐 정도</strong>를 나타내는 <em>표준편차</em>를 살펴보겠습니다. <code>x1</code>~<code>x4</code> 의 평균과 표준편차가 같고, <code>y1</code>~<code>y4</code>의 평균과 표준편차가 같게 나왔습니다.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="그래프-분석의-예.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 변수별 평균, 표준편차 </span></span>
 <span id="cb4-2"><a href="그래프-분석의-예.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">2</span>)                               <span class="co"># 소수점 자리 설정 </span></span>
 <span id="cb4-3"><a href="그래프-분석의-예.html#cb4-3" aria-hidden="true" tabindex="-1"></a> </span>
@@ -616,7 +616,7 @@ Figure 1.1: anscombe 데이터 세트의 산포도 비교
 </p>
 </div>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="그래프-분석의-예.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(anscombe)</span></code></pre></div>
-<p><em>그래프를 그려서 눈으로 보니 4개 집단이 다르지요?</em> 통계량들은 이 4개의 집단이 같다고 말하고 있지만, 그래프는 이 4개 집단이 다르다고 말하고 있습니다. 이래서 서양 표현에 <strong>“One Look Is Worth A Thousand Words”</strong> 말이 있는 거지요.</p>
+<p><em>그래프를 그려서 눈으로 보니 4개 집단이 다르지요?</em> 통계치들은 이 4개의 집단이 같다고 말하고 있지만, 그래프는 이 4개 집단이 다르다고 말하고 있습니다. 이래서 서양 표현에 <strong>“One Look Is Worth A Thousand Words”</strong> 말이 있는 거지요.</p>
 </div>
             </section>
 
