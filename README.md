@@ -2,7 +2,7 @@
 
 ### R
 
-- [R Programming][./R/R-Programming/index.html]
+- [R Programming](./R/R-Programming/index.html)
 - [R-Tutorial](http://misdb.github.io/R/R-Tutorial/index.html)
 
 ### R Studio
