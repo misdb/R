@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.2 R 패키지란 무엇입니까? | R 프로그래밍</title>
+  <meta name="description" content="2.2 R 패키지란 무엇입니까? | R 프로그래밍" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.2 R 패키지란 무엇입니까? | R 프로그래밍" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="Network-Analysis" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.2 R 패키지란 무엇입니까? | R 프로그래밍" />
+  
+  
+  
+
+<meta name="author" content="Dae Ho Kim, Mokwon University" />
+
+
+<meta name="date" content="2021-02-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="r에서-어떻게-코딩하나요.html"/>
+<link rel="next" href="r-마크다운.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="/">Home</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>저작권</a></li>
+<li class="part"><span><b>I 서론</b></span></li>
+<li class="chapter" data-level="1" data-path="r과-r-studio.html"><a href="r과-r-studio.html"><i class="fa fa-check"></i><b>1</b> R과 R Studio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="r을-배우는-이유는-무엇입니까.html"><a href="r을-배우는-이유는-무엇입니까.html"><i class="fa fa-check"></i><b>1.1</b> R을 배우는 이유는 무엇입니까?</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="r을-배우는-이유는-무엇입니까.html"><a href="r을-배우는-이유는-무엇입니까.html#r은-지시와-클릭을-포함하지-않습니다.-그것은-좋은-것입니다."><i class="fa fa-check"></i><b>1.1.1</b> R은 지시와 클릭을 포함하지 않습니다. 그것은 좋은 것입니다.</a></li>
+<li class="chapter" data-level="1.1.2" data-path="r을-배우는-이유는-무엇입니까.html"><a href="r을-배우는-이유는-무엇입니까.html#r-코드는-재현성에-좋습니다"><i class="fa fa-check"></i><b>1.1.2</b> R 코드는 재현성에 좋습니다</a></li>
+<li class="chapter" data-level="1.1.3" data-path="r을-배우는-이유는-무엇입니까.html"><a href="r을-배우는-이유는-무엇입니까.html#r은-학제적이고-확장-가능합니다."><i class="fa fa-check"></i><b>1.1.3</b> R은 학제적이고 확장 가능합니다.</a></li>
+<li class="chapter" data-level="1.1.4" data-path="r을-배우는-이유는-무엇입니까.html"><a href="r을-배우는-이유는-무엇입니까.html#r은-모든-형태와-규모의-데이터에서-작동합니다."><i class="fa fa-check"></i><b>1.1.4</b> R은 모든 형태와 규모의 데이터에서 작동합니다.</a></li>
+<li class="chapter" data-level="1.1.5" data-path="r을-배우는-이유는-무엇입니까.html"><a href="r을-배우는-이유는-무엇입니까.html#r은-고품질-그래픽을-생성합니다."><i class="fa fa-check"></i><b>1.1.5</b> R은 고품질 그래픽을 생성합니다.</a></li>
+<li class="chapter" data-level="1.1.6" data-path="r을-배우는-이유는-무엇입니까.html"><a href="r을-배우는-이유는-무엇입니까.html#r에는-커뮤니티가-있습니다."><i class="fa fa-check"></i><b>1.1.6</b> R에는 커뮤니티가 있습니다.</a></li>
+<li class="chapter" data-level="1.1.7" data-path="r을-배우는-이유는-무엇입니까.html"><a href="r을-배우는-이유는-무엇입니까.html#r은-무료-일뿐만-아니라-오픈-소스-및-크로스-플랫폼입니다."><i class="fa fa-check"></i><b>1.1.7</b> R은 무료 일뿐만 아니라 오픈 소스 및 크로스 플랫폼입니다.</a></li>
+<li class="chapter" data-level="1.1.8" data-path="r을-배우는-이유는-무엇입니까.html"><a href="r을-배우는-이유는-무엇입니까.html#r을-배우면-취업-가능성이-높아집니다."><i class="fa fa-check"></i><b>1.1.8</b> R을 배우면 취업 가능성이 높아집니다.</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="r-프로그래밍은-배우기-쉬운-언어입니까.html"><a href="r-프로그래밍은-배우기-쉬운-언어입니까.html"><i class="fa fa-check"></i><b>1.2</b> R 프로그래밍은 배우기 쉬운 언어입니까?</a></li>
+<li class="chapter" data-level="1.3" data-path="실무에서의-r-프로그램-응용.html"><a href="실무에서의-r-프로그램-응용.html"><i class="fa fa-check"></i><b>1.3</b> 실무에서의 R 프로그램 응용</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="실무에서의-r-프로그램-응용.html"><a href="실무에서의-r-프로그램-응용.html#데이터-과학"><i class="fa fa-check"></i><b>1.3.1</b> 데이터 과학</a></li>
+<li class="chapter" data-level="1.3.2" data-path="실무에서의-r-프로그램-응용.html"><a href="실무에서의-r-프로그램-응용.html#통계-컴퓨팅"><i class="fa fa-check"></i><b>1.3.2</b> 통계 컴퓨팅</a></li>
+<li class="chapter" data-level="1.3.3" data-path="실무에서의-r-프로그램-응용.html"><a href="실무에서의-r-프로그램-응용.html#기계-학습"><i class="fa fa-check"></i><b>1.3.3</b> 기계 학습</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="r은-무엇입니까-rstudio-란-무엇입니까.html"><a href="r은-무엇입니까-rstudio-란-무엇입니까.html"><i class="fa fa-check"></i><b>1.4</b> R은 무엇입니까? RStudio 란 무엇입니까?</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="r은-무엇입니까-rstudio-란-무엇입니까.html"><a href="r은-무엇입니까-rstudio-란-무엇입니까.html#r은-무엇입니까"><i class="fa fa-check"></i><b>1.4.1</b> R은 무엇입니까?</a></li>
+<li class="chapter" data-level="1.4.2" data-path="r은-무엇입니까-rstudio-란-무엇입니까.html"><a href="r은-무엇입니까-rstudio-란-무엇입니까.html#rstudio-란-무엇입니까"><i class="fa fa-check"></i><b>1.4.2</b> RStudio 란 무엇입니까?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="r과-r-studio의-설치-그리고-r-studio의-실행.html"><a href="r과-r-studio의-설치-그리고-r-studio의-실행.html"><i class="fa fa-check"></i><b>1.5</b> R과 R Studio의 설치 그리고 R Studio의 실행</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="r과-r-studio의-설치-그리고-r-studio의-실행.html"><a href="r과-r-studio의-설치-그리고-r-studio의-실행.html#r-설치"><i class="fa fa-check"></i><b>1.5.1</b> R 설치</a></li>
+<li class="chapter" data-level="1.5.2" data-path="r과-r-studio의-설치-그리고-r-studio의-실행.html"><a href="r과-r-studio의-설치-그리고-r-studio의-실행.html#rstudio-설치"><i class="fa fa-check"></i><b>1.5.2</b> RStudio 설치</a></li>
+<li class="chapter" data-level="1.5.3" data-path="r과-r-studio의-설치-그리고-r-studio의-실행.html"><a href="r과-r-studio의-설치-그리고-r-studio의-실행.html#rstudio-실행"><i class="fa fa-check"></i><b>1.5.3</b> RStudio 실행</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="rstudio-둘러보기.html"><a href="rstudio-둘러보기.html"><i class="fa fa-check"></i><b>1.6</b> RStudio 둘러보기</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="rstudio-둘러보기.html"><a href="rstudio-둘러보기.html#코드-편집-창"><i class="fa fa-check"></i><b>1.6.1</b> 코드 편집 창</a></li>
+<li class="chapter" data-level="1.6.2" data-path="rstudio-둘러보기.html"><a href="rstudio-둘러보기.html#환경과-기록-창"><i class="fa fa-check"></i><b>1.6.2</b> 환경과 기록 창</a></li>
+<li class="chapter" data-level="1.6.3" data-path="rstudio-둘러보기.html"><a href="rstudio-둘러보기.html#콘솔-창"><i class="fa fa-check"></i><b>1.6.3</b> 콘솔 창</a></li>
+<li class="chapter" data-level="1.6.4" data-path="rstudio-둘러보기.html"><a href="rstudio-둘러보기.html#오른쪽-아래-창-파일-플롯-패키지-도움말"><i class="fa fa-check"></i><b>1.6.4</b> 오른쪽 아래 창 : 파일, 플롯, 패키지, 도움말</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="작업-디렉토리-구성.html"><a href="작업-디렉토리-구성.html"><i class="fa fa-check"></i><b>1.7</b> 작업 디렉토리 구성</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="작업-디렉토리-구성.html"><a href="작업-디렉토리-구성.html#작업-디렉토리"><i class="fa fa-check"></i><b>1.7.1</b> 작업 디렉토리</a></li>
+<li class="chapter" data-level="1.7.2" data-path="작업-디렉토리-구성.html"><a href="작업-디렉토리-구성.html#데이터-다운로드-및-설정"><i class="fa fa-check"></i><b>1.7.2</b> 데이터 다운로드 및 설정</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="r과-상호-작용.html"><a href="r과-상호-작용.html"><i class="fa fa-check"></i><b>1.8</b> R과 상호 작용</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-코딩과-r-패키지.html"><a href="r-코딩과-r-패키지.html"><i class="fa fa-check"></i><b>2</b> R 코딩과 R 패키지</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="r에서-어떻게-코딩하나요.html"><a href="r에서-어떻게-코딩하나요.html"><i class="fa fa-check"></i><b>2.1</b> R에서 어떻게 코딩하나요?</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="r에서-어떻게-코딩하나요.html"><a href="r에서-어떻게-코딩하나요.html#기본-프로그래밍-개념-및-용어"><i class="fa fa-check"></i><b>2.1.1</b> 기본 프로그래밍 개념 및 용어</a></li>
+<li class="chapter" data-level="2.1.2" data-path="r에서-어떻게-코딩하나요.html"><a href="r에서-어떻게-코딩하나요.html#오류-경고-및-메시지"><i class="fa fa-check"></i><b>2.1.2</b> 오류, 경고 및 메시지</a></li>
+<li class="chapter" data-level="2.1.3" data-path="r에서-어떻게-코딩하나요.html"><a href="r에서-어떻게-코딩하나요.html#코딩-학습-팁"><i class="fa fa-check"></i><b>2.1.3</b> 코딩 학습 팁</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="r-패키지란-무엇입니까.html"><a href="r-패키지란-무엇입니까.html"><i class="fa fa-check"></i><b>2.2</b> R 패키지란 무엇입니까?</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="r-패키지란-무엇입니까.html"><a href="r-패키지란-무엇입니까.html#r과-r-패키지"><i class="fa fa-check"></i><b>2.2.1</b> R과 R 패키지</a></li>
+<li class="chapter" data-level="2.2.2" data-path="r-패키지란-무엇입니까.html"><a href="r-패키지란-무엇입니까.html#패키지-설치"><i class="fa fa-check"></i><b>2.2.2</b> 패키지 설치</a></li>
+<li class="chapter" data-level="2.2.3" data-path="r-패키지란-무엇입니까.html"><a href="r-패키지란-무엇입니까.html#패키지-로딩"><i class="fa fa-check"></i><b>2.2.3</b> 패키지 로딩</a></li>
+<li class="chapter" data-level="2.2.4" data-path="r-패키지란-무엇입니까.html"><a href="r-패키지란-무엇입니까.html#패키지-사용"><i class="fa fa-check"></i><b>2.2.4</b> 패키지 사용</a></li>
+<li class="chapter" data-level="2.2.5" data-path="r-패키지란-무엇입니까.html"><a href="r-패키지란-무엇입니까.html#참고-문헌"><i class="fa fa-check"></i><b>2.2.5</b> 참고 문헌</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="r-마크다운.html"><a href="r-마크다운.html"><i class="fa fa-check"></i><b>3</b> R 마크다운</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="r-마크다운의-작동-원리.html"><a href="r-마크다운의-작동-원리.html"><i class="fa fa-check"></i><b>3.1</b> R 마크다운의 작동 원리</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="r-마크다운의-작동-원리.html"><a href="r-마크다운의-작동-원리.html#개요"><i class="fa fa-check"></i><b>3.1.1</b> 개요</a></li>
+<li class="chapter" data-level="3.1.2" data-path="r-마크다운의-작동-원리.html"><a href="r-마크다운의-작동-원리.html#설치"><i class="fa fa-check"></i><b>3.1.2</b> 설치</a></li>
+<li class="chapter" data-level="3.1.3" data-path="r-마크다운의-작동-원리.html"><a href="r-마크다운의-작동-원리.html#시작하다"><i class="fa fa-check"></i><b>3.1.3</b> 시작하다</a></li>
+<li class="chapter" data-level="3.1.4" data-path="r-마크다운의-작동-원리.html"><a href="r-마크다운의-작동-원리.html#작동-원리"><i class="fa fa-check"></i><b>3.1.4</b> 작동 원리</a></li>
+<li class="chapter" data-level="3.1.5" data-path="r-마크다운의-작동-원리.html"><a href="r-마크다운의-작동-원리.html#작동-원리-1"><i class="fa fa-check"></i><b>3.1.5</b> 작동 원리</a></li>
+<li class="chapter" data-level="3.1.6" data-path="r-마크다운의-작동-원리.html"><a href="r-마크다운의-작동-원리.html#코드-청크"><i class="fa fa-check"></i><b>3.1.6</b> 코드 청크</a></li>
+<li class="chapter" data-level="3.1.7" data-path="r-마크다운의-작동-원리.html"><a href="r-마크다운의-작동-원리.html#인라인-코드"><i class="fa fa-check"></i><b>3.1.7</b> 인라인 코드</a></li>
+<li class="chapter" data-level="3.1.8" data-path="r-마크다운의-작동-원리.html"><a href="r-마크다운의-작동-원리.html#코드-언어"><i class="fa fa-check"></i><b>3.1.8</b> 코드 언어</a></li>
+<li class="chapter" data-level="3.1.9" data-path="r-마크다운의-작동-원리.html"><a href="r-마크다운의-작동-원리.html#매개-변수"><i class="fa fa-check"></i><b>3.1.9</b> 매개 변수</a></li>
+<li class="chapter" data-level="3.1.10" data-path="r-마크다운의-작동-원리.html"><a href="r-마크다운의-작동-원리.html#테이블"><i class="fa fa-check"></i><b>3.1.10</b> 테이블</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="r-마크다운-문서-작성.html"><a href="r-마크다운-문서-작성.html"><i class="fa fa-check"></i><b>3.2</b> R 마크다운 문서 작성</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="r-마크다운-문서-작성.html"><a href="r-마크다운-문서-작성.html#r-markdown-파일의-오류-수정"><i class="fa fa-check"></i><b>3.2.1</b> R Markdown 파일의 오류 수정</a></li>
+<li class="chapter" data-level="3.2.2" data-path="r-마크다운-문서-작성.html"><a href="r-마크다운-문서-작성.html#r-markdown-파일의-구성-요소"><i class="fa fa-check"></i><b>3.2.2</b> R Markdown 파일의 구성 요소</a></li>
+<li class="chapter" data-level="3.2.3" data-path="r-마크다운-문서-작성.html"><a href="r-마크다운-문서-작성.html#r-마크-다운-청크-옵션"><i class="fa fa-check"></i><b>3.2.3</b> R 마크 다운 청크 옵션</a></li>
+<li class="chapter" data-level="3.2.4" data-path="r-마크다운-문서-작성.html"><a href="r-마크다운-문서-작성.html#r-markdown-파일-작성을위한-일반-지침"><i class="fa fa-check"></i><b>3.2.4</b> R Markdown 파일 작성을위한 일반 지침</a></li>
+<li class="chapter" data-level="3.2.5" data-path="r-마크다운-문서-작성.html"><a href="r-마크다운-문서-작성.html#도움말--치트-시트"><i class="fa fa-check"></i><b>3.2.5</b> 도움말-&gt; 치트 시트</a></li>
+<li class="chapter" data-level="3.2.6" data-path="r-마크다운-문서-작성.html"><a href="r-마크다운-문서-작성.html#맞춤법-검사"><i class="fa fa-check"></i><b>3.2.6</b> 맞춤법 검사</a></li>
+<li class="chapter" data-level="" data-path="r-마크다운-문서-작성.html"><a href="r-마크다운-문서-작성.html#참고-문헌-1"><i class="fa fa-check"></i>참고 문헌</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II 데이터 타입</b></span></li>
+<li class="chapter" data-level="4" data-path="변수와-데이터-타입.html"><a href="변수와-데이터-타입.html"><i class="fa fa-check"></i><b>4</b> 변수와 데이터 타입</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="명령어-프롬프트.html"><a href="명령어-프롬프트.html"><i class="fa fa-check"></i><b>4.1</b> 명령어 프롬프트</a></li>
+<li class="chapter" data-level="4.2" data-path="r-스크립트-파일.html"><a href="r-스크립트-파일.html"><i class="fa fa-check"></i><b>4.2</b> R 스크립트 파일</a></li>
+<li class="chapter" data-level="4.3" data-path="설명문.html"><a href="설명문.html"><i class="fa fa-check"></i><b>4.3</b> 설명문</a></li>
+<li class="chapter" data-level="4.4" data-path="데이터-유형.html"><a href="데이터-유형.html"><i class="fa fa-check"></i><b>4.4</b> 데이터 유형</a></li>
+<li class="chapter" data-level="4.5" data-path="예약어.html"><a href="예약어.html"><i class="fa fa-check"></i><b>4.5</b> 예약어</a></li>
+<li class="chapter" data-level="4.6" data-path="변수.html"><a href="변수.html"><i class="fa fa-check"></i><b>4.6</b> 변수</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="변수.html"><a href="변수.html#r의-변수"><i class="fa fa-check"></i><b>4.6.1</b> R의 변수</a></li>
+<li class="chapter" data-level="4.6.2" data-path="변수.html"><a href="변수.html#r에서-식별자-작성-규칙"><i class="fa fa-check"></i><b>4.6.2</b> R에서 식별자 작성 규칙</a></li>
+<li class="chapter" data-level="4.6.3" data-path="변수.html"><a href="변수.html#r의-유효한-식별자-예"><i class="fa fa-check"></i><b>4.6.3</b> R의 유효한 식별자 예</a></li>
+<li class="chapter" data-level="4.6.4" data-path="변수.html"><a href="변수.html#r의-잘못된-식별자"><i class="fa fa-check"></i><b>4.6.4</b> R의 잘못된 식별자</a></li>
+<li class="chapter" data-level="4.6.5" data-path="변수.html"><a href="변수.html#모범-사례"><i class="fa fa-check"></i><b>4.6.5</b> 모범 사례</a></li>
+<li class="chapter" data-level="4.6.6" data-path="변수.html"><a href="변수.html#변수-할당과-출력"><i class="fa fa-check"></i><b>4.6.6</b> 변수 할당과 출력</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="상수.html"><a href="상수.html"><i class="fa fa-check"></i><b>4.7</b> 상수</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="상수.html"><a href="상수.html#문자형-상수"><i class="fa fa-check"></i><b>4.7.1</b> 문자형 상수</a></li>
+<li class="chapter" data-level="4.7.2" data-path="상수.html"><a href="상수.html#내장-상수"><i class="fa fa-check"></i><b>4.7.2</b> 내장 상수</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="연산자.html"><a href="연산자.html"><i class="fa fa-check"></i><b>4.8</b> 연산자</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="연산자.html"><a href="연산자.html#산술-연산자"><i class="fa fa-check"></i><b>4.8.1</b> 산술 연산자</a></li>
+<li class="chapter" data-level="4.8.2" data-path="연산자.html"><a href="연산자.html#관계-연산자"><i class="fa fa-check"></i><b>4.8.2</b> 관계 연산자</a></li>
+<li class="chapter" data-level="4.8.3" data-path="연산자.html"><a href="연산자.html#벡터-연산"><i class="fa fa-check"></i><b>4.8.3</b> 벡터 연산</a></li>
+<li class="chapter" data-level="4.8.4" data-path="연산자.html"><a href="연산자.html#논리-연산자"><i class="fa fa-check"></i><b>4.8.4</b> 논리 연산자</a></li>
+<li class="chapter" data-level="4.8.5" data-path="연산자.html"><a href="연산자.html#할당-연산자"><i class="fa fa-check"></i><b>4.8.5</b> 할당 연산자</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="연산자-우선-순위와-결합.html"><a href="연산자-우선-순위와-결합.html"><i class="fa fa-check"></i><b>4.9</b> 연산자 우선 순위와 결합</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="연산자-우선-순위와-결합.html"><a href="연산자-우선-순위와-결합.html#연산자-우선-순위"><i class="fa fa-check"></i><b>4.9.1</b> 연산자 우선 순위</a></li>
+<li class="chapter" data-level="4.9.2" data-path="연산자-우선-순위와-결합.html"><a href="연산자-우선-순위와-결합.html#연산자-결합"><i class="fa fa-check"></i><b>4.9.2</b> 연산자 결합</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="개체와-클래스.html"><a href="개체와-클래스.html"><i class="fa fa-check"></i><b>4.10</b> 개체와 클래스</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="개체와-클래스.html"><a href="개체와-클래스.html#개체와-클래스-1"><i class="fa fa-check"></i><b>4.10.1</b> 개체와 클래스</a></li>
+<li class="chapter" data-level="4.10.2" data-path="개체와-클래스.html"><a href="개체와-클래스.html#클래스의-속성"><i class="fa fa-check"></i><b>4.10.2</b> 클래스의 속성</a></li>
+<li class="chapter" data-level="4.10.3" data-path="개체와-클래스.html"><a href="개체와-클래스.html#names-속성-만들기"><i class="fa fa-check"></i><b>4.10.3</b> <code>names</code> 속성 만들기</a></li>
+<li class="chapter" data-level="" data-path="개체와-클래스.html"><a href="개체와-클래스.html#참고자료"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="벡터vector.html"><a href="벡터vector.html"><i class="fa fa-check"></i><b>5</b> 벡터(vector)</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="벡터-만들기.html"><a href="벡터-만들기.html"><i class="fa fa-check"></i><b>5.1</b> 벡터 만들기</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="벡터-만들기.html"><a href="벡터-만들기.html#벡터의-생성"><i class="fa fa-check"></i><b>5.1.1</b> 벡터의 생성</a></li>
+<li class="chapter" data-level="5.1.2" data-path="벡터-만들기.html"><a href="벡터-만들기.html#벡터-원소가-하나일-때"><i class="fa fa-check"></i><b>5.1.2</b> 벡터 원소가 하나일 때</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="벡터의-유형.html"><a href="벡터의-유형.html"><i class="fa fa-check"></i><b>5.2</b> 벡터의 유형</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="벡터의-유형.html"><a href="벡터의-유형.html#벡터-유형의-종류"><i class="fa fa-check"></i><b>5.2.1</b> 벡터 유형의 종류</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="벡터의-유형-확인.html"><a href="벡터의-유형-확인.html"><i class="fa fa-check"></i><b>5.3</b> 벡터의 유형 확인</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="벡터의-유형-확인.html"><a href="벡터의-유형-확인.html#벡터-요소의-갯수-확인"><i class="fa fa-check"></i><b>5.3.1</b> 벡터 요소의 갯수 확인</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="변수-값의-확인.html"><a href="변수-값의-확인.html"><i class="fa fa-check"></i><b>5.4</b> 변수 값의 확인</a></li>
+<li class="chapter" data-level="5.5" data-path="반복값을-갖는-벡터-만들기-rep-함수.html"><a href="반복값을-갖는-벡터-만들기-rep-함수.html"><i class="fa fa-check"></i><b>5.5</b> 반복값을 갖는 벡터 만들기 : <code>rep()</code> 함수</a></li>
+<li class="chapter" data-level="5.6" data-path="연속-값들의-벡터-만들기-seq-함수와-세미콜론.html"><a href="연속-값들의-벡터-만들기-seq-함수와-세미콜론.html"><i class="fa fa-check"></i><b>5.6</b> 연속 값들의 벡터 만들기 : <strong><code>seq()</code></strong> 함수와 세미콜론(<strong><code>;</code></strong>)</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="연속-값들의-벡터-만들기-seq-함수와-세미콜론.html"><a href="연속-값들의-벡터-만들기-seq-함수와-세미콜론.html#를-이용한-벡터-생성"><i class="fa fa-check"></i><b>5.6.1</b> <code>:</code> 를 이용한 벡터 생성</a></li>
+<li class="chapter" data-level="5.6.2" data-path="연속-값들의-벡터-만들기-seq-함수와-세미콜론.html"><a href="연속-값들의-벡터-만들기-seq-함수와-세미콜론.html#seq-함수를-이용한-벡터-생성"><i class="fa fa-check"></i><b>5.6.2</b> <code>seq()</code> 함수를 이용한 벡터 생성</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="벡터-유형의-강제-변환coercion.html"><a href="벡터-유형의-강제-변환coercion.html"><i class="fa fa-check"></i><b>5.7</b> 벡터 유형의 강제 변환(Coercion)</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="벡터-유형의-강제-변환coercion.html"><a href="벡터-유형의-강제-변환coercion.html#암묵적-강제-변환"><i class="fa fa-check"></i><b>5.7.1</b> 암묵적 강제 변환</a></li>
+<li class="chapter" data-level="5.7.2" data-path="벡터-유형의-강제-변환coercion.html"><a href="벡터-유형의-강제-변환coercion.html#명시적-강제-변환"><i class="fa fa-check"></i><b>5.7.2</b> 명시적 강제 변환</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="스칼라-및-자동반복-규칙.html"><a href="스칼라-및-자동반복-규칙.html"><i class="fa fa-check"></i><b>5.8</b> 스칼라 및 자동반복 규칙</a>
+<ul>
+<li class="chapter" data-level="5.8.1" data-path="스칼라-및-자동반복-규칙.html"><a href="스칼라-및-자동반복-규칙.html#스칼라scalar"><i class="fa fa-check"></i><b>5.8.1</b> 스칼라(scalar)</a></li>
+<li class="chapter" data-level="5.8.2" data-path="스칼라-및-자동반복-규칙.html"><a href="스칼라-및-자동반복-규칙.html#자동-반복recycling"><i class="fa fa-check"></i><b>5.8.2</b> 자동 반복(recycling)</a></li>
+<li class="chapter" data-level="5.8.3" data-path="스칼라-및-자동반복-규칙.html"><a href="스칼라-및-자동반복-규칙.html#길이가-다른-두-벡터-연산"><i class="fa fa-check"></i><b>5.8.3</b> 길이가 다른 두 벡터 연산</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="벡터요소들에-이름-붙이기.html"><a href="벡터요소들에-이름-붙이기.html"><i class="fa fa-check"></i><b>5.9</b> 벡터(요소들)에 이름 붙이기</a></li>
+<li class="chapter" data-level="5.10" data-path="벡터-요소에-접근하기.html"><a href="벡터-요소에-접근하기.html"><i class="fa fa-check"></i><b>5.10</b> 벡터 요소에 접근하기</a>
+<ul>
+<li class="chapter" data-level="5.10.1" data-path="벡터-요소에-접근하기.html"><a href="벡터-요소에-접근하기.html#정수형-벡터를-인덱스로-사용하기"><i class="fa fa-check"></i><b>5.10.1</b> 정수형 벡터를 인덱스로 사용하기</a></li>
+<li class="chapter" data-level="5.10.2" data-path="벡터-요소에-접근하기.html"><a href="벡터-요소에-접근하기.html#논리형-벡터를-인덱스로-사용하기"><i class="fa fa-check"></i><b>5.10.2</b> 논리형 벡터를 인덱스로 사용하기</a></li>
+<li class="chapter" data-level="5.10.3" data-path="벡터-요소에-접근하기.html"><a href="벡터-요소에-접근하기.html#문자형-벡터를-색인으로-사용하기"><i class="fa fa-check"></i><b>5.10.3</b> 문자형 벡터를 색인으로 사용하기</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="벡터의-결합-벡터-요소의-삽입.html"><a href="벡터의-결합-벡터-요소의-삽입.html"><i class="fa fa-check"></i><b>5.11</b> 벡터의 결합, 벡터 요소의 삽입</a>
+<ul>
+<li class="chapter" data-level="5.11.1" data-path="벡터의-결합-벡터-요소의-삽입.html"><a href="벡터의-결합-벡터-요소의-삽입.html#문자열의-결합-함수-paste-함수와-paste0-함수"><i class="fa fa-check"></i><b>5.11.1</b> 문자열의 결합 함수 : <code>paste()</code> 함수와 <code>paste0()</code> 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="5.12" data-path="벡터의-연산.html"><a href="벡터의-연산.html"><i class="fa fa-check"></i><b>5.12</b> 벡터의 연산</a>
+<ul>
+<li class="chapter" data-level="5.12.1" data-path="벡터의-연산.html"><a href="벡터의-연산.html#산술연산"><i class="fa fa-check"></i><b>5.12.1</b> 산술연산</a></li>
+<li class="chapter" data-level="5.12.2" data-path="벡터의-연산.html"><a href="벡터의-연산.html#비교-연산"><i class="fa fa-check"></i><b>5.12.2</b> 비교 연산</a></li>
+<li class="chapter" data-level="5.12.3" data-path="벡터의-연산.html"><a href="벡터의-연산.html#논리-연산"><i class="fa fa-check"></i><b>5.12.3</b> 논리 연산 : <code>|</code>, <code>&amp;</code>, <code>!</code>, <code>||</code>, <code>&amp;&amp;</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.13" data-path="원소-값의-수정.html"><a href="원소-값의-수정.html"><i class="fa fa-check"></i><b>5.13</b> 원소 값의 수정</a></li>
+<li class="chapter" data-level="5.14" data-path="벡터의-서브세팅.html"><a href="벡터의-서브세팅.html"><i class="fa fa-check"></i><b>5.14</b> 벡터의 서브세팅</a></li>
+<li class="chapter" data-level="5.15" data-path="벡터의-연산-함수의-예.html"><a href="벡터의-연산-함수의-예.html"><i class="fa fa-check"></i><b>5.15</b> 벡터의 연산 함수의 예</a></li>
+<li class="chapter" data-level="5.16" data-path="특수-상수.html"><a href="특수-상수.html"><i class="fa fa-check"></i><b>5.16</b> 특수 상수</a>
+<ul>
+<li class="chapter" data-level="5.16.1" data-path="특수-상수.html"><a href="특수-상수.html#결측치-null-na"><i class="fa fa-check"></i><b>5.16.1</b> 결측치 : <code>NULL</code>, <code>NA</code></a></li>
+<li class="chapter" data-level="5.16.2" data-path="특수-상수.html"><a href="특수-상수.html#inf--inf-nan"><i class="fa fa-check"></i><b>5.16.2</b> <code>Inf</code>, <code>-Inf</code>, <code>NaN</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="요인factor.html"><a href="요인factor.html"><i class="fa fa-check"></i><b>6</b> 요인(factor)</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="요인-변수의-생성.html"><a href="요인-변수의-생성.html"><i class="fa fa-check"></i><b>6.1</b> 요인 변수의 생성</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="요인-변수의-생성.html"><a href="요인-변수의-생성.html#factor-함수를-이용한-요인-생성"><i class="fa fa-check"></i><b>6.1.1</b> <code>factor()</code> 함수를 이용한 요인 생성</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="요인의-요소에-접근하기.html"><a href="요인의-요소에-접근하기.html"><i class="fa fa-check"></i><b>6.2</b> 요인의 요소에 접근하기</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="요인의-요소에-접근하기.html"><a href="요인의-요소에-접근하기.html#요인형-변수에-데이터-추가하기"><i class="fa fa-check"></i><b>6.2.1</b> 요인형 변수에 데이터 추가하기</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="요인-데이터의-저장-방식.html"><a href="요인-데이터의-저장-방식.html"><i class="fa fa-check"></i><b>6.3</b> 요인 데이터의 저장 방식</a></li>
+<li class="chapter" data-level="6.4" data-path="요인의-수준.html"><a href="요인의-수준.html"><i class="fa fa-check"></i><b>6.4</b> 요인의 수준</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="요인의-수준.html"><a href="요인의-수준.html#요인-수준의-확인"><i class="fa fa-check"></i><b>6.4.1</b> 요인 수준의 확인</a></li>
+<li class="chapter" data-level="6.4.2" data-path="요인의-수준.html"><a href="요인의-수준.html#수준의-순서-지정"><i class="fa fa-check"></i><b>6.4.2</b> 수준의 순서 지정</a></li>
+<li class="chapter" data-level="6.4.3" data-path="요인의-수준.html"><a href="요인의-수준.html#수준-이름의-변경"><i class="fa fa-check"></i><b>6.4.3</b> 수준 이름의 변경</a></li>
+<li class="chapter" data-level="6.4.4" data-path="요인의-수준.html"><a href="요인의-수준.html#수준의-서열화"><i class="fa fa-check"></i><b>6.4.4</b> 수준의 서열화</a></li>
+<li class="chapter" data-level="6.4.5" data-path="요인의-수준.html"><a href="요인의-수준.html#ordered-함수를-이용한-서열형-요인-변수의-생성"><i class="fa fa-check"></i><b>6.4.5</b> <code>ordered()</code> 함수를 이용한 서열형 요인 변수의 생성</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="데이터-유형-강제-변환.html"><a href="데이터-유형-강제-변환.html"><i class="fa fa-check"></i><b>6.5</b> 데이터 유형 강제 변환</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="데이터-유형-강제-변환.html"><a href="데이터-유형-강제-변환.html#요인형으로의-변환하기"><i class="fa fa-check"></i><b>6.5.1</b> 요인형으로의 변환하기</a></li>
+<li class="chapter" data-level="6.5.2" data-path="데이터-유형-강제-변환.html"><a href="데이터-유형-강제-변환.html#요인을-다른-유형으로-강제-변환하기"><i class="fa fa-check"></i><b>6.5.2</b> 요인을 다른 유형으로 강제 변환하기</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="gl-함수를-이용한-요인의-생성.html"><a href="gl-함수를-이용한-요인의-생성.html"><i class="fa fa-check"></i><b>6.6</b> <code>gl()</code> 함수를 이용한 요인의 생성</a></li>
+<li class="chapter" data-level="6.7" data-path="요인의-서브-세팅.html"><a href="요인의-서브-세팅.html"><i class="fa fa-check"></i><b>6.7</b> 요인의 서브 세팅</a></li>
+<li class="chapter" data-level="6.8" data-path="요인의-발생빈도-계산.html"><a href="요인의-발생빈도-계산.html"><i class="fa fa-check"></i><b>6.8</b> 요인의 발생빈도 계산</a></li>
+<li class="chapter" data-level="6.9" data-path="요인-변수의-할용-예.html"><a href="요인-변수의-할용-예.html"><i class="fa fa-check"></i><b>6.9</b> 요인 변수의 할용 예</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="행렬matrix.html"><a href="행렬matrix.html"><i class="fa fa-check"></i><b>7</b> 행렬(matrix)</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="행렬-만들기-matrix-함수이용.html"><a href="행렬-만들기-matrix-함수이용.html"><i class="fa fa-check"></i><b>7.1</b> 행렬 만들기 : <code>matrix()</code> 함수이용</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="행렬-만들기-matrix-함수이용.html"><a href="행렬-만들기-matrix-함수이용.html#행렬-만들기"><i class="fa fa-check"></i><b>7.1.1</b> 행렬 만들기</a></li>
+<li class="chapter" data-level="7.1.2" data-path="행렬-만들기-matrix-함수이용.html"><a href="행렬-만들기-matrix-함수이용.html#행-우선으로-채우기"><i class="fa fa-check"></i><b>7.1.2</b> 행 우선으로 채우기</a></li>
+<li class="chapter" data-level="7.1.3" data-path="행렬-만들기-matrix-함수이용.html"><a href="행렬-만들기-matrix-함수이용.html#차원에-이름-붙이기"><i class="fa fa-check"></i><b>7.1.3</b> 차원에 이름 붙이기</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="벡터-결합에-의한-행렬-만들기.html"><a href="벡터-결합에-의한-행렬-만들기.html"><i class="fa fa-check"></i><b>7.2</b> 벡터 결합에 의한 행렬 만들기</a></li>
+<li class="chapter" data-level="7.3" data-path="행렬의-차원-확인.html"><a href="행렬의-차원-확인.html"><i class="fa fa-check"></i><b>7.3</b> 행렬의 차원 확인</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="행렬의-차원-확인.html"><a href="행렬의-차원-확인.html#행렬의-생성"><i class="fa fa-check"></i><b>7.3.1</b> 행렬의 생성</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="차원의-이름-수정하기.html"><a href="차원의-이름-수정하기.html"><i class="fa fa-check"></i><b>7.4</b> 차원의 이름 수정하기</a></li>
+<li class="chapter" data-level="7.5" data-path="행렬-요소에-접근하기.html"><a href="행렬-요소에-접근하기.html"><i class="fa fa-check"></i><b>7.5</b> 행렬 요소에 접근하기</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="행렬-요소에-접근하기.html"><a href="행렬-요소에-접근하기.html#행과-열의-인덱싱에-의한-접근"><i class="fa fa-check"></i><b>7.5.1</b> 행과 열의 인덱싱에 의한 접근</a></li>
+<li class="chapter" data-level="7.5.2" data-path="행렬-요소에-접근하기.html"><a href="행렬-요소에-접근하기.html#벡터-형태의-접근"><i class="fa fa-check"></i><b>7.5.2</b> 벡터 형태의 접근</a></li>
+<li class="chapter" data-level="7.5.3" data-path="행렬-요소에-접근하기.html"><a href="행렬-요소에-접근하기.html#행과-열에-조건식을-입력하여-접근하기"><i class="fa fa-check"></i><b>7.5.3</b> 행과 열에 조건식을 입력하여 접근하기</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="행렬의-수정.html"><a href="행렬의-수정.html"><i class="fa fa-check"></i><b>7.6</b> 행렬의 수정</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="행렬의-수정.html"><a href="행렬의-수정.html#행렬의-수정-1"><i class="fa fa-check"></i><b>7.6.1</b> 행렬의 수정</a></li>
+<li class="chapter" data-level="7.6.2" data-path="행렬의-수정.html"><a href="행렬의-수정.html#행과-열의-추가"><i class="fa fa-check"></i><b>7.6.2</b> 행과 열의 추가</a></li>
+<li class="chapter" data-level="7.6.3" data-path="행렬의-수정.html"><a href="행렬의-수정.html#행렬의-서브세팅"><i class="fa fa-check"></i><b>7.6.3</b> 행렬의 서브세팅</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="행렬의-연산-함수.html"><a href="행렬의-연산-함수.html"><i class="fa fa-check"></i><b>7.7</b> 행렬의 연산 함수</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="행렬의-연산-함수.html"><a href="행렬의-연산-함수.html#행렬의-연산"><i class="fa fa-check"></i><b>7.7.1</b> 행렬의 연산</a></li>
+<li class="chapter" data-level="7.7.2" data-path="행렬의-연산-함수.html"><a href="행렬의-연산-함수.html#행렬-곱하기"><i class="fa fa-check"></i><b>7.7.2</b> 행렬 곱하기</a></li>
+<li class="chapter" data-level="7.7.3" data-path="행렬의-연산-함수.html"><a href="행렬의-연산-함수.html#전치행렬-구하기"><i class="fa fa-check"></i><b>7.7.3</b> 전치행렬 구하기</a></li>
+<li class="chapter" data-level="7.7.4" data-path="행렬의-연산-함수.html"><a href="행렬의-연산-함수.html#역행렬"><i class="fa fa-check"></i><b>7.7.4</b> 역행렬</a></li>
+<li class="chapter" data-level="7.7.5" data-path="행렬의-연산-함수.html"><a href="행렬의-연산-함수.html#행렬식determinant"><i class="fa fa-check"></i><b>7.7.5</b> 행렬식(determinant)</a></li>
+<li class="chapter" data-level="7.7.6" data-path="행렬의-연산-함수.html"><a href="행렬의-연산-함수.html#대각행렬-만들기"><i class="fa fa-check"></i><b>7.7.6</b> 대각행렬 만들기</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="배열array.html"><a href="배열array.html"><i class="fa fa-check"></i><b>8</b> 배열(array)</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="배열의-생성.html"><a href="배열의-생성.html"><i class="fa fa-check"></i><b>8.1</b> 배열의 생성</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="배열의-생성.html"><a href="배열의-생성.html#차원의-이름-지정"><i class="fa fa-check"></i><b>8.1.1</b> 차원의 이름 지정</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="배열-요소-접근.html"><a href="배열-요소-접근.html"><i class="fa fa-check"></i><b>8.2</b> 배열 요소 접근</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="배열-요소-접근.html"><a href="배열-요소-접근.html#배열-요소의-서브-세팅과-수정"><i class="fa fa-check"></i><b>8.2.1</b> 배열 요소의 서브 세팅과 수정</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="다차원-배열의-변환과-요약.html"><a href="다차원-배열의-변환과-요약.html"><i class="fa fa-check"></i><b>8.3</b> 다차원 배열의 변환과 요약</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="다차원-배열의-변환과-요약.html"><a href="다차원-배열의-변환과-요약.html#차원의-순서-바꾸기-재배열"><i class="fa fa-check"></i><b>8.3.1</b> 차원의 순서 바꾸기 (재배열)</a></li>
+<li class="chapter" data-level="8.3.2" data-path="다차원-배열의-변환과-요약.html"><a href="다차원-배열의-변환과-요약.html#큰-표로-만들기"><i class="fa fa-check"></i><b>8.3.2</b> 큰 표로 만들기</a></li>
+<li class="chapter" data-level="8.3.3" data-path="다차원-배열의-변환과-요약.html"><a href="다차원-배열의-변환과-요약.html#배열의-요약-정보"><i class="fa fa-check"></i><b>8.3.3</b> 배열의 요약 정보</a></li>
+<li class="chapter" data-level="8.3.4" data-path="다차원-배열의-변환과-요약.html"><a href="다차원-배열의-변환과-요약.html#배열을-데이터-프레임으로-변환하기"><i class="fa fa-check"></i><b>8.3.4</b> 배열을 데이터 프레임으로 변환하기</a></li>
+<li class="chapter" data-level="" data-path="다차원-배열의-변환과-요약.html"><a href="다차원-배열의-변환과-요약.html#참고문헌"><i class="fa fa-check"></i>참고문헌</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="리스트list.html"><a href="리스트list.html"><i class="fa fa-check"></i><b>9</b> 리스트(list)</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="리스트의-생성.html"><a href="리스트의-생성.html"><i class="fa fa-check"></i><b>9.1</b> 리스트의 생성</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="리스트의-생성.html"><a href="리스트의-생성.html#키워드가-없는-리스트의-생성"><i class="fa fa-check"></i><b>9.1.1</b> 키워드가 없는 리스트의 생성</a></li>
+<li class="chapter" data-level="9.1.2" data-path="리스트의-생성.html"><a href="리스트의-생성.html#키워드가-있는-리스트의-생성"><i class="fa fa-check"></i><b>9.1.2</b> 키워드가 있는 리스트의 생성</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="리스트에-이름-붙이기.html"><a href="리스트에-이름-붙이기.html"><i class="fa fa-check"></i><b>9.2</b> 리스트에 이름 붙이기</a></li>
+<li class="chapter" data-level="9.3" data-path="리스트의-구조-확인.html"><a href="리스트의-구조-확인.html"><i class="fa fa-check"></i><b>9.3</b> 리스트의 구조 확인</a></li>
+<li class="chapter" data-level="9.4" data-path="리스트의-길이-확인-length.html"><a href="리스트의-길이-확인-length.html"><i class="fa fa-check"></i><b>9.4</b> 리스트의 길이 확인 : length()</a></li>
+<li class="chapter" data-level="9.5" data-path="리스트-요소-접근.html"><a href="리스트-요소-접근.html"><i class="fa fa-check"></i><b>9.5</b> 리스트 요소 접근</a></li>
+<li class="chapter" data-level="9.6" data-path="리스트의-조작.html"><a href="리스트의-조작.html"><i class="fa fa-check"></i><b>9.6</b> 리스트의 조작</a></li>
+<li class="chapter" data-level="9.7" data-path="리스트의-결합.html"><a href="리스트의-결합.html"><i class="fa fa-check"></i><b>9.7</b> 리스트의 결합</a></li>
+<li class="chapter" data-level="9.8" data-path="리스트의-벡터-변환.html"><a href="리스트의-벡터-변환.html"><i class="fa fa-check"></i><b>9.8</b> 리스트의 벡터 변환</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="데이터-프레임.html"><a href="데이터-프레임.html"><i class="fa fa-check"></i><b>10</b> 데이터 프레임</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="데이터-프레임의-생성.html"><a href="데이터-프레임의-생성.html"><i class="fa fa-check"></i><b>10.1</b> 데이터 프레임의 생성</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="데이터-프레임의-생성.html"><a href="데이터-프레임의-생성.html#열-이름을-지정하지-않으면"><i class="fa fa-check"></i><b>10.1.1</b> 열 이름을 지정하지 않으면</a></li>
+<li class="chapter" data-level="10.1.2" data-path="데이터-프레임의-생성.html"><a href="데이터-프레임의-생성.html#같은-컬럼명이-있는-경우"><i class="fa fa-check"></i><b>10.1.2</b> 같은 컬럼명이 있는 경우</a></li>
+<li class="chapter" data-level="10.1.3" data-path="데이터-프레임의-생성.html"><a href="데이터-프레임의-생성.html#행의-이름을-지정하기"><i class="fa fa-check"></i><b>10.1.3</b> 행의 이름을 지정하기</a></li>
+<li class="chapter" data-level="10.1.4" data-path="데이터-프레임의-생성.html"><a href="데이터-프레임의-생성.html#컬럼의-길이가-다른-경우"><i class="fa fa-check"></i><b>10.1.4</b> 컬럼의 길이가 다른 경우</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="데이터-프레임의-구조.html"><a href="데이터-프레임의-구조.html"><i class="fa fa-check"></i><b>10.2</b> 데이터 프레임의 구조</a></li>
+<li class="chapter" data-level="10.3" data-path="데이터-프레임의-통계적-요약-정보.html"><a href="데이터-프레임의-통계적-요약-정보.html"><i class="fa fa-check"></i><b>10.3</b> 데이터 프레임의 통계적 요약 정보</a></li>
+<li class="chapter" data-level="10.4" data-path="데이터-프레임의-구성요소에-접근하기.html"><a href="데이터-프레임의-구성요소에-접근하기.html"><i class="fa fa-check"></i><b>10.4</b> 데이터 프레임의 구성요소에 접근하기</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="데이터-프레임의-구성요소에-접근하기.html"><a href="데이터-프레임의-구성요소에-접근하기.html#리스트-접근"><i class="fa fa-check"></i><b>10.4.1</b> 리스트 접근</a></li>
+<li class="chapter" data-level="10.4.2" data-path="데이터-프레임의-구성요소에-접근하기.html"><a href="데이터-프레임의-구성요소에-접근하기.html#행렬-접근"><i class="fa fa-check"></i><b>10.4.2</b> 행렬 접근</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="데이터-프레임의-서브-세팅.html"><a href="데이터-프레임의-서브-세팅.html"><i class="fa fa-check"></i><b>10.5</b> 데이터 프레임의 서브 세팅</a></li>
+<li class="chapter" data-level="10.6" data-path="데이터-프레임에-행열의-확장.html"><a href="데이터-프레임에-행열의-확장.html"><i class="fa fa-check"></i><b>10.6</b> 데이터 프레임에 행/열의 확장</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="데이터-프레임에-행열의-확장.html"><a href="데이터-프레임에-행열의-확장.html#열-추가"><i class="fa fa-check"></i><b>10.6.1</b> 열 추가</a></li>
+<li class="chapter" data-level="10.6.2" data-path="데이터-프레임에-행열의-확장.html"><a href="데이터-프레임에-행열의-확장.html#행-추가"><i class="fa fa-check"></i><b>10.6.2</b> 행 추가</a></li>
+<li class="chapter" data-level="10.6.3" data-path="데이터-프레임에-행열의-확장.html"><a href="데이터-프레임에-행열의-확장.html#열과-행의-삭제"><i class="fa fa-check"></i><b>10.6.3</b> 열과 행의 삭제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="데이터-프레임의-행과-열의-이름-확인변경하기.html"><a href="데이터-프레임의-행과-열의-이름-확인변경하기.html"><i class="fa fa-check"></i><b>10.7</b> 데이터 프레임의 행과 열의 이름 확인/변경하기</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="데이터-프레임의-행과-열의-이름-확인변경하기.html"><a href="데이터-프레임의-행과-열의-이름-확인변경하기.html#열-이름-확인변경하기"><i class="fa fa-check"></i><b>10.7.1</b> 열 이름 확인/변경하기</a></li>
+<li class="chapter" data-level="10.7.2" data-path="데이터-프레임의-행과-열의-이름-확인변경하기.html"><a href="데이터-프레임의-행과-열의-이름-확인변경하기.html#행-이름-확인변경하기"><i class="fa fa-check"></i><b>10.7.2</b> 행 이름 확인/변경하기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="컬럼의-데이터-타입-변환.html"><a href="컬럼의-데이터-타입-변환.html"><i class="fa fa-check"></i><b>10.8</b> 컬럼의 데이터 타입 변환</a>
+<ul>
+<li class="chapter" data-level="10.8.1" data-path="컬럼의-데이터-타입-변환.html"><a href="컬럼의-데이터-타입-변환.html#컬럼의-데이터-타입-확인"><i class="fa fa-check"></i><b>10.8.1</b> 컬럼의 데이터 타입 확인</a></li>
+<li class="chapter" data-level="10.8.2" data-path="컬럼의-데이터-타입-변환.html"><a href="컬럼의-데이터-타입-변환.html#데이터-구조의-변환"><i class="fa fa-check"></i><b>10.8.2</b> 데이터 구조의 변환</a></li>
+<li class="chapter" data-level="10.8.3" data-path="컬럼의-데이터-타입-변환.html"><a href="컬럼의-데이터-타입-변환.html#열의-데이터-구조-변환"><i class="fa fa-check"></i><b>10.8.3</b> 열의 데이터 구조 변환</a></li>
+<li class="chapter" data-level="10.8.4" data-path="컬럼의-데이터-타입-변환.html"><a href="컬럼의-데이터-타입-변환.html#데이터-구조의-변환-함수"><i class="fa fa-check"></i><b>10.8.4</b> 데이터 구조의 변환 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="10.9" data-path="데이터-프레임의-재구성.html"><a href="데이터-프레임의-재구성.html"><i class="fa fa-check"></i><b>10.9</b> 데이터 프레임의 재구성</a>
+<ul>
+<li class="chapter" data-level="10.9.1" data-path="데이터-프레임의-재구성.html"><a href="데이터-프레임의-재구성.html#데이터-프레임의-열과-행의-결합"><i class="fa fa-check"></i><b>10.9.1</b> 데이터 프레임의 열과 행의 결합</a></li>
+<li class="chapter" data-level="10.9.2" data-path="데이터-프레임의-재구성.html"><a href="데이터-프레임의-재구성.html#데이터-프레임의-병합"><i class="fa fa-check"></i><b>10.9.2</b> 데이터 프레임의 병합</a></li>
+<li class="chapter" data-level="10.9.3" data-path="데이터-프레임의-재구성.html"><a href="데이터-프레임의-재구성.html#melting과-casting"><i class="fa fa-check"></i><b>10.9.3</b> Melting과 Casting</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="티블.html"><a href="티블.html"><i class="fa fa-check"></i><b>11</b> 티블</a>
+<ul>
+<li class="chapter" data-level="11.0.1" data-path="티블.html"><a href="티블.html#패키지-불러오기"><i class="fa fa-check"></i><b>11.0.1</b> 패키지 불러오기</a></li>
+<li class="chapter" data-level="11.1" data-path="티블-생성.html"><a href="티블-생성.html"><i class="fa fa-check"></i><b>11.1</b> 티블 생성</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="티블-생성.html"><a href="티블-생성.html#데이터-프레임을-티블로-변환하기"><i class="fa fa-check"></i><b>11.1.1</b> 데이터 프레임을 티블로 변환하기</a></li>
+<li class="chapter" data-level="11.1.2" data-path="티블-생성.html"><a href="티블-생성.html#tibble-함수"><i class="fa fa-check"></i><b>11.1.2</b> tibble() 함수</a></li>
+<li class="chapter" data-level="11.1.3" data-path="티블-생성.html"><a href="티블-생성.html#tribble-함수"><i class="fa fa-check"></i><b>11.1.3</b> tribble() 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="데이터-프레임과-티블의-비교.html"><a href="데이터-프레임과-티블의-비교.html"><i class="fa fa-check"></i><b>11.2</b> 데이터 프레임과 티블의 비교</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="데이터-프레임과-티블의-비교.html"><a href="데이터-프레임과-티블의-비교.html#화면-출력"><i class="fa fa-check"></i><b>11.2.1</b> 화면 출력</a></li>
+<li class="chapter" data-level="11.2.2" data-path="데이터-프레임과-티블의-비교.html"><a href="데이터-프레임과-티블의-비교.html#서브-세팅"><i class="fa fa-check"></i><b>11.2.2</b> 서브 세팅</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>11.3</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#참고-자료"><i class="fa fa-check"></i>참고 자료</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="레이블과-결측치-처리.html"><a href="레이블과-결측치-처리.html"><i class="fa fa-check"></i><b>12</b> 레이블과 결측치 처리</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="변수-레이블.html"><a href="변수-레이블.html"><i class="fa fa-check"></i><b>12.1</b> 변수 레이블</a></li>
+<li class="chapter" data-level="12.2" data-path="값-레이블.html"><a href="값-레이블.html"><i class="fa fa-check"></i><b>12.2</b> 값 레이블</a></li>
+<li class="chapter" data-level="12.3" data-path="결측치의-처리.html"><a href="결측치의-처리.html"><i class="fa fa-check"></i><b>12.3</b> 결측치의 처리</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="결측치의-처리.html"><a href="결측치의-처리.html#결측치-확인"><i class="fa fa-check"></i><b>12.3.1</b> 결측치 확인</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="날짜-데이터.html"><a href="날짜-데이터.html"><i class="fa fa-check"></i><b>12.4</b> 날짜 데이터</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="날짜-데이터.html"><a href="날짜-데이터.html#날짜-형식의-지정"><i class="fa fa-check"></i><b>12.4.1</b> 날짜 형식의 지정</a></li>
+<li class="chapter" data-level="12.4.2" data-path="날짜-데이터.html"><a href="날짜-데이터.html#날짜형-변환"><i class="fa fa-check"></i><b>12.4.2</b> 날짜형 변환</a></li>
+<li class="chapter" data-level="" data-path="날짜-데이터.html"><a href="날짜-데이터.html#참고자료-1"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III 프로그래밍</b></span></li>
+<li class="chapter" data-level="13" data-path="데이터-불러오기와-저장하기.html"><a href="데이터-불러오기와-저장하기.html"><i class="fa fa-check"></i><b>13</b> 데이터 불러오기와 저장하기</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html"><i class="fa fa-check"></i><b>13.1</b> 데이터 불러오기</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#쉼표로-구분된-텍스트-파일"><i class="fa fa-check"></i><b>13.1.1</b> 쉼표로 구분된 텍스트 파일</a></li>
+<li class="chapter" data-level="13.1.2" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#csv-파일-불러오기"><i class="fa fa-check"></i><b>13.1.2</b> CSV 파일 불러오기</a></li>
+<li class="chapter" data-level="13.1.3" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#구분자를-포함한-파일-불러오기"><i class="fa fa-check"></i><b>13.1.3</b> 구분자를 포함한 파일 불러오기</a></li>
+<li class="chapter" data-level="13.1.4" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#엑셀-파일-불러오기"><i class="fa fa-check"></i><b>13.1.4</b> 엑셀 파일 불러오기</a></li>
+<li class="chapter" data-level="13.1.5" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#r-형식의-파일-불러오기"><i class="fa fa-check"></i><b>13.1.5</b> R 형식의 파일 불러오기</a></li>
+<li class="chapter" data-level="13.1.6" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#키보드-입력"><i class="fa fa-check"></i><b>13.1.6</b> 키보드 입력</a></li>
+<li class="chapter" data-level="13.1.7" data-path="데이터-불러오기.html"><a href="데이터-불러오기.html#dbms에-접속하기-odbc-인터페이스-이용하기"><i class="fa fa-check"></i><b>13.1.7</b> DBMS에 접속하기 : ODBC 인터페이스 이용하기</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="데이터-저장하기.html"><a href="데이터-저장하기.html"><i class="fa fa-check"></i><b>13.2</b> 데이터 저장하기</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="데이터-저장하기.html"><a href="데이터-저장하기.html#r-형식으로-저장하기"><i class="fa fa-check"></i><b>13.2.1</b> R 형식으로 저장하기</a></li>
+<li class="chapter" data-level="13.2.2" data-path="데이터-저장하기.html"><a href="데이터-저장하기.html#csv로-저장하기"><i class="fa fa-check"></i><b>13.2.2</b> CSV로 저장하기</a></li>
+<li class="chapter" data-level="13.2.3" data-path="데이터-저장하기.html"><a href="데이터-저장하기.html#엑셀-시트로-저장하기"><i class="fa fa-check"></i><b>13.2.3</b> 엑셀 시트로 저장하기</a></li>
+<li class="chapter" data-level="13.2.4" data-path="데이터-저장하기.html"><a href="데이터-저장하기.html#기타-형식으로-저장하기"><i class="fa fa-check"></i><b>13.2.4</b> 기타 형식으로 저장하기</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="데이터-확인하기.html"><a href="데이터-확인하기.html"><i class="fa fa-check"></i><b>13.3</b> 데이터 확인하기</a>
+<ul>
+<li class="chapter" data-level="" data-path="데이터-확인하기.html"><a href="데이터-확인하기.html#참고자료-2"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="조건문.html"><a href="조건문.html"><i class="fa fa-check"></i><b>14</b> 조건문</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="if-조건문.html"><a href="if-조건문.html"><i class="fa fa-check"></i><b>14.1</b> <code>if</code> 조건문</a></li>
+<li class="chapter" data-level="14.2" data-path="if-else-조건문.html"><a href="if-else-조건문.html"><i class="fa fa-check"></i><b>14.2</b> <code>if...else</code> 조건문</a></li>
+<li class="chapter" data-level="14.3" data-path="ifelse-함수.html"><a href="ifelse-함수.html"><i class="fa fa-check"></i><b>14.3</b> <code>ifelse()</code> 함수</a></li>
+<li class="chapter" data-level="14.4" data-path="중청된-if-else-조건문.html"><a href="중청된-if-else-조건문.html"><i class="fa fa-check"></i><b>14.4</b> 중청된 <code>if … else</code> 조건문</a></li>
+<li class="chapter" data-level="14.5" data-path="switch-함수.html"><a href="switch-함수.html"><i class="fa fa-check"></i><b>14.5</b> <code>switch()</code> 함수</a>
+<ul>
+<li class="chapter" data-level="" data-path="switch-함수.html"><a href="switch-함수.html#참고자료-3"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="반복구문.html"><a href="반복구문.html"><i class="fa fa-check"></i><b>15</b> 반복구문</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="for-반복문.html"><a href="for-반복문.html"><i class="fa fa-check"></i><b>15.1</b> <code>for</code> 반복문</a></li>
+<li class="chapter" data-level="15.2" data-path="while-반복구문.html"><a href="while-반복구문.html"><i class="fa fa-check"></i><b>15.2</b> <code>while</code> 반복구문</a></li>
+<li class="chapter" data-level="15.3" data-path="repeat-반복구문.html"><a href="repeat-반복구문.html"><i class="fa fa-check"></i><b>15.3</b> <code>repeat</code> 반복구문</a></li>
+<li class="chapter" data-level="15.4" data-path="breaknext-arguments.html"><a href="breaknext-arguments.html"><i class="fa fa-check"></i><b>15.4</b> <code>break</code>/<code>next</code> arguments</a>
+<ul>
+<li class="chapter" data-level="" data-path="breaknext-arguments.html"><a href="breaknext-arguments.html#참고자료-4"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="사용자-정의-함수.html"><a href="사용자-정의-함수.html"><i class="fa fa-check"></i><b>16</b> 사용자 정의 함수</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="함수-정의.html"><a href="함수-정의.html"><i class="fa fa-check"></i><b>16.1</b> 함수 정의</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="함수-정의.html"><a href="함수-정의.html#명명된-인수"><i class="fa fa-check"></i><b>16.1.1</b> 명명된 인수</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="인수에-기본-값-지정하기.html"><a href="인수에-기본-값-지정하기.html"><i class="fa fa-check"></i><b>16.2</b> 인수에 기본 값 지정하기</a></li>
+<li class="chapter" data-level="16.3" data-path="함수의-반환-값.html"><a href="함수의-반환-값.html"><i class="fa fa-check"></i><b>16.3</b> 함수의 반환 값</a>
+<ul>
+<li class="chapter" data-level="16.3.1" data-path="함수의-반환-값.html"><a href="함수의-반환-값.html#return-함수를-이용한-함수-값의-반환"><i class="fa fa-check"></i><b>16.3.1</b> <code>return()</code> 함수를 이용한 함수 값의 반환</a></li>
+<li class="chapter" data-level="16.3.2" data-path="함수의-반환-값.html"><a href="함수의-반환-값.html#return-함수가-없는-함수"><i class="fa fa-check"></i><b>16.3.2</b> <code>return()</code> 함수가 없는 함수</a></li>
+<li class="chapter" data-level="16.3.3" data-path="함수의-반환-값.html"><a href="함수의-반환-값.html#다중값-반환"><i class="fa fa-check"></i><b>16.3.3</b> 다중값 반환</a></li>
+</ul></li>
+<li class="chapter" data-level="16.4" data-path="r-환경과-범위.html"><a href="r-환경과-범위.html"><i class="fa fa-check"></i><b>16.4</b> R 환경과 범위</a>
+<ul>
+<li class="chapter" data-level="16.4.1" data-path="r-환경과-범위.html"><a href="r-환경과-범위.html#r-프로그래밍-환경"><i class="fa fa-check"></i><b>16.4.1</b> R 프로그래밍 환경</a></li>
+<li class="chapter" data-level="16.4.2" data-path="r-환경과-범위.html"><a href="r-환경과-범위.html#단계적-환경의-예"><i class="fa fa-check"></i><b>16.4.2</b> 단계적 환경의 예</a></li>
+<li class="chapter" data-level="16.4.3" data-path="r-환경과-범위.html"><a href="r-환경과-범위.html#r-프로그래밍-범위"><i class="fa fa-check"></i><b>16.4.3</b> R 프로그래밍 범위</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="r-재귀-함수.html"><a href="r-재귀-함수.html"><i class="fa fa-check"></i><b>16.5</b> R 재귀 함수</a>
+<ul>
+<li class="chapter" data-level="16.5.1" data-path="r-재귀-함수.html"><a href="r-재귀-함수.html#재귀-함수-예"><i class="fa fa-check"></i><b>16.5.1</b> 재귀 함수 예</a></li>
+<li class="chapter" data-level="" data-path="r-재귀-함수.html"><a href="r-재귀-함수.html#연습문제"><i class="fa fa-check"></i>연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="16.6" data-path="r의-infix-연산자.html"><a href="r의-infix-연산자.html"><i class="fa fa-check"></i><b>16.6</b> R의 Infix 연산자</a>
+<ul>
+<li class="chapter" data-level="16.6.1" data-path="r의-infix-연산자.html"><a href="r의-infix-연산자.html#infix-연산자의-작동-예"><i class="fa fa-check"></i><b>16.6.1</b> infix 연산자의 작동 예</a></li>
+<li class="chapter" data-level="16.6.2" data-path="r의-infix-연산자.html"><a href="r의-infix-연산자.html#사용자-정의-infix-연산자의-예"><i class="fa fa-check"></i><b>16.6.2</b> 사용자 정의 infix 연산자의 예</a></li>
+<li class="chapter" data-level="16.6.3" data-path="r의-infix-연산자.html"><a href="r의-infix-연산자.html#r에-미리-정의되어-있는-infix-연산자"><i class="fa fa-check"></i><b>16.6.3</b> R에 미리 정의되어 있는 infix 연산자</a></li>
+</ul></li>
+<li class="chapter" data-level="16.7" data-path="잘못된-인수-처리.html"><a href="잘못된-인수-처리.html"><i class="fa fa-check"></i><b>16.7</b> 잘못된 인수 처리</a></li>
+<li class="chapter" data-level="16.8" data-path="함수의-저장과-소싱.html"><a href="함수의-저장과-소싱.html"><i class="fa fa-check"></i><b>16.8</b> 함수의 저장과 소싱</a></li>
+<li class="chapter" data-level="" data-path="추가-자료.html"><a href="추가-자료.html"><i class="fa fa-check"></i>추가 자료</a>
+<ul>
+<li class="chapter" data-level="" data-path="추가-자료.html"><a href="추가-자료.html#참고자료-5"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="개체와-클래스-2.html"><a href="개체와-클래스-2.html"><i class="fa fa-check"></i><b>17</b> 개체와 클래스</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="s3-클래스-1.html"><a href="s3-클래스-1.html"><i class="fa fa-check"></i><b>17.1</b> <code>S3</code> 클래스</a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="s3-클래스-1.html"><a href="s3-클래스-1.html#s3-클래스를-정의하고-s3-개체를-생성하는-방법"><i class="fa fa-check"></i><b>17.1.1</b> <code>S3</code> 클래스를 정의하고 <code>S3</code> 개체를 생성하는 방법</a></li>
+<li class="chapter" data-level="17.1.2" data-path="s3-클래스-1.html"><a href="s3-클래스-1.html#생성자를-사용하여-개체를-만드는-방법"><i class="fa fa-check"></i><b>17.1.2</b> 생성자를 사용하여 개체를 만드는 방법</a></li>
+<li class="chapter" data-level="17.1.3" data-path="s3-클래스-1.html"><a href="s3-클래스-1.html#메소드와-일반-함수"><i class="fa fa-check"></i><b>17.1.3</b> 메소드와 일반 함수</a></li>
+<li class="chapter" data-level="17.1.4" data-path="s3-클래스-1.html"><a href="s3-클래스-1.html#자신의-메소드를-작성하는-방법"><i class="fa fa-check"></i><b>17.1.4</b> 자신의 메소드를 작성하는 방법</a></li>
+<li class="chapter" data-level="17.1.5" data-path="s3-클래스-1.html"><a href="s3-클래스-1.html#자신-만의-일반-함수-작성"><i class="fa fa-check"></i><b>17.1.5</b> 자신 만의 일반 함수 작성</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="s4-클래스-1.html"><a href="s4-클래스-1.html"><i class="fa fa-check"></i><b>17.2</b> S4 클래스</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="s4-클래스-1.html"><a href="s4-클래스-1.html#s4-클래스를-정의하는-방법"><i class="fa fa-check"></i><b>17.2.1</b> S4 클래스를 정의하는 방법</a></li>
+<li class="chapter" data-level="17.2.2" data-path="s4-클래스-1.html"><a href="s4-클래스-1.html#s4-객체를-생성하는-방법"><i class="fa fa-check"></i><b>17.2.2</b> S4 객체를 생성하는 방법</a></li>
+<li class="chapter" data-level="17.2.3" data-path="s4-클래스-1.html"><a href="s4-클래스-1.html#슬롯에-액세스하고-수정하는-방법"><i class="fa fa-check"></i><b>17.2.3</b> 슬롯에 액세스하고 수정하는 방법</a></li>
+<li class="chapter" data-level="17.2.4" data-path="s4-클래스-1.html"><a href="s4-클래스-1.html#메소드와-일반-함수-1"><i class="fa fa-check"></i><b>17.2.4</b> 메소드와 일반 함수</a></li>
+<li class="chapter" data-level="17.2.5" data-path="s4-클래스-1.html"><a href="s4-클래스-1.html#메소드-작성-방법"><i class="fa fa-check"></i><b>17.2.5</b> 메소드 작성 방법</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="참조reference-클래스.html"><a href="참조reference-클래스.html"><i class="fa fa-check"></i><b>17.3</b> 참조(reference) 클래스</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="참조reference-클래스.html"><a href="참조reference-클래스.html#참조-클래스를-정의하는-방법"><i class="fa fa-check"></i><b>17.3.1</b> 참조 클래스를 정의하는 방법</a></li>
+<li class="chapter" data-level="17.3.2" data-path="참조reference-클래스.html"><a href="참조reference-클래스.html#참조-개체를-만드는-방법"><i class="fa fa-check"></i><b>17.3.2</b> 참조 개체를 만드는 방법</a></li>
+<li class="chapter" data-level="17.3.3" data-path="참조reference-클래스.html"><a href="참조reference-클래스.html#필드에-액세스하고-수정하는-방법"><i class="fa fa-check"></i><b>17.3.3</b> 필드에 액세스하고 수정하는 방법</a></li>
+<li class="chapter" data-level="17.3.4" data-path="참조reference-클래스.html"><a href="참조reference-클래스.html#참조-메소드"><i class="fa fa-check"></i><b>17.3.4</b> 참조 메소드</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="상속.html"><a href="상속.html"><i class="fa fa-check"></i><b>17.4</b> 상속</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="상속.html"><a href="상속.html#s3-클래스의-상속"><i class="fa fa-check"></i><b>17.4.1</b> <code>S3</code> 클래스의 상속</a></li>
+<li class="chapter" data-level="17.4.2" data-path="상속.html"><a href="상속.html#s4-클래스의-상속"><i class="fa fa-check"></i><b>17.4.2</b> <code>S4</code> 클래스의 상속</a></li>
+<li class="chapter" data-level="17.4.3" data-path="상속.html"><a href="상속.html#참조-클래스의-상속"><i class="fa fa-check"></i><b>17.4.3</b> 참조 클래스의 상속</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="apply-류의-함수를.html"><a href="apply-류의-함수를.html"><i class="fa fa-check"></i><b>18</b> <code>apply</code> 류의 함수를</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="apply-함수.html"><a href="apply-함수.html"><i class="fa fa-check"></i><b>18.1</b> <code>apply()</code> 함수</a></li>
+<li class="chapter" data-level="18.2" data-path="lapply-함수.html"><a href="lapply-함수.html"><i class="fa fa-check"></i><b>18.2</b> <code>lapply()</code> 함수</a></li>
+<li class="chapter" data-level="18.3" data-path="sapply-함수.html"><a href="sapply-함수.html"><i class="fa fa-check"></i><b>18.3</b> <code>sapply()</code> 함수</a></li>
+<li class="chapter" data-level="18.4" data-path="tapply-함수.html"><a href="tapply-함수.html"><i class="fa fa-check"></i><b>18.4</b> <code>tapply()</code> 함수</a></li>
+<li class="chapter" data-level="18.5" data-path="그-밖의-유용한-apply-류-함수들.html"><a href="그-밖의-유용한-apply-류-함수들.html"><i class="fa fa-check"></i><b>18.5</b> 그 밖의 유용한 <em>apply-류</em> 함수들</a>
+<ul>
+<li class="chapter" data-level="" data-path="그-밖의-유용한-apply-류-함수들.html"><a href="그-밖의-유용한-apply-류-함수들.html#참고-자료-1"><i class="fa fa-check"></i>참고 자료</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV 데이터 시각화</b></span></li>
+<li class="chapter" data-level="19" data-path="r의-plotting-system.html"><a href="r의-plotting-system.html"><i class="fa fa-check"></i><b>19</b> R의 Plotting System</a></li>
+<li class="chapter" data-level="20" data-path="높은-수준의-그래프-함수.html"><a href="높은-수준의-그래프-함수.html"><i class="fa fa-check"></i><b>20</b> 높은 수준의 그래프 함수</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="일변량-연속형-데이터-그래프.html"><a href="일변량-연속형-데이터-그래프.html"><i class="fa fa-check"></i><b>20.1</b> 일변량 연속형 데이터 그래프</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="일변량-연속형-데이터-그래프.html"><a href="일변량-연속형-데이터-그래프.html#히스토그램"><i class="fa fa-check"></i><b>20.1.1</b> 히스토그램</a></li>
+<li class="chapter" data-level="20.1.2" data-path="일변량-연속형-데이터-그래프.html"><a href="일변량-연속형-데이터-그래프.html#박스-플롯"><i class="fa fa-check"></i><b>20.1.2</b> 박스 플롯</a></li>
+<li class="chapter" data-level="20.1.3" data-path="일변량-연속형-데이터-그래프.html"><a href="일변량-연속형-데이터-그래프.html#줄기-잎-플롯"><i class="fa fa-check"></i><b>20.1.3</b> 줄기 잎 플롯</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="일변량-범주형-자료-그래프.html"><a href="일변량-범주형-자료-그래프.html"><i class="fa fa-check"></i><b>20.2</b> 일변량 범주형 자료 그래프</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="일변량-범주형-자료-그래프.html"><a href="일변량-범주형-자료-그래프.html#막대-그래프bar-plot"><i class="fa fa-check"></i><b>20.2.1</b> 막대 그래프(bar plot)</a></li>
+<li class="chapter" data-level="20.2.2" data-path="일변량-범주형-자료-그래프.html"><a href="일변량-범주형-자료-그래프.html#클리블랜드-점-플롯cleveland-dot-plot"><i class="fa fa-check"></i><b>20.2.2</b> 클리블랜드 점 플롯(Cleveland dot plot )</a></li>
+<li class="chapter" data-level="20.2.3" data-path="일변량-범주형-자료-그래프.html"><a href="일변량-범주형-자료-그래프.html#파이-차트"><i class="fa fa-check"></i><b>20.2.3</b> 파이 차트</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="이변량-연속형-변수-그래프.html"><a href="이변량-연속형-변수-그래프.html"><i class="fa fa-check"></i><b>20.3</b> 이변량 연속형 변수 그래프</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="이변량-연속형-변수-그래프.html"><a href="이변량-연속형-변수-그래프.html#산점도-scatter-plot"><i class="fa fa-check"></i><b>20.3.1</b> 산점도 (scatter plot)</a></li>
+<li class="chapter" data-level="20.3.2" data-path="이변량-연속형-변수-그래프.html"><a href="이변량-연속형-변수-그래프.html#산점도-행렬-plotdataframe-pairs-scatterplotmatrixdataframe"><i class="fa fa-check"></i><b>20.3.2</b> 산점도 행렬 : plot(dataframe), pairs(), scatterplotMatrix(dataframe)</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="이변량-범주형-변수-그래프.html"><a href="이변량-범주형-변수-그래프.html"><i class="fa fa-check"></i><b>20.4</b> 이변량 범주형 변수 그래프</a>
+<ul>
+<li class="chapter" data-level="" data-path="이변량-범주형-변수-그래프.html"><a href="이변량-범주형-변수-그래프.html#참고자료-7"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="그래프-모수-graphical-parameters.html"><a href="그래프-모수-graphical-parameters.html"><i class="fa fa-check"></i><b>21</b> 그래프 모수 (Graphical Parameters)</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="그래프-모수-설정하는-2가지-방법.html"><a href="그래프-모수-설정하는-2가지-방법.html"><i class="fa fa-check"></i><b>21.1</b> 그래프 모수 설정하는 2가지 방법</a>
+<ul>
+<li class="chapter" data-level="21.1.1" data-path="그래프-모수-설정하는-2가지-방법.html"><a href="그래프-모수-설정하는-2가지-방법.html#par-함수-설정"><i class="fa fa-check"></i><b>21.1.1</b> <code>par()</code> 함수 설정</a></li>
+<li class="chapter" data-level="21.1.2" data-path="그래프-모수-설정하는-2가지-방법.html"><a href="그래프-모수-설정하는-2가지-방법.html#행열-별로-표시할-그래프-수-지정"><i class="fa fa-check"></i><b>21.1.2</b> 행/열 별로 표시할 그래프 수 지정</a></li>
+<li class="chapter" data-level="21.1.3" data-path="그래프-모수-설정하는-2가지-방법.html"><a href="그래프-모수-설정하는-2가지-방법.html#개별-그래프-함수마다-그래프-모수를-설정하는-방법"><i class="fa fa-check"></i><b>21.1.3</b> 개별 그래프 함수마다 그래프 모수를 설정하는 방법</a></li>
+<li class="chapter" data-level="21.1.4" data-path="그래프-모수-설정하는-2가지-방법.html"><a href="그래프-모수-설정하는-2가지-방법.html#현재-그래프-모수-확인-checking-current-graphical-parameter-settings-par"><i class="fa fa-check"></i><b>21.1.4</b> 현재 그래프 모수 확인 (checking current graphical parameter settings) : <code>par()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="21.2" data-path="그래프-유형-type-기호-모양-pch-크기-cex-선-유형-lty-선-두께-lwd.html"><a href="그래프-유형-type-기호-모양-pch-크기-cex-선-유형-lty-선-두께-lwd.html"><i class="fa fa-check"></i><b>21.2</b> 그래프 유형 type, 기호 모양 pch, 크기 cex, 선 유형 lty, 선 두께 lwd</a>
+<ul>
+<li class="chapter" data-level="21.2.1" data-path="그래프-유형-type-기호-모양-pch-크기-cex-선-유형-lty-선-두께-lwd.html"><a href="그래프-유형-type-기호-모양-pch-크기-cex-선-유형-lty-선-두께-lwd.html#그래프-유형-type"><i class="fa fa-check"></i><b>21.2.1</b> 그래프 유형 (type)</a></li>
+<li class="chapter" data-level="21.2.2" data-path="그래프-유형-type-기호-모양-pch-크기-cex-선-유형-lty-선-두께-lwd.html"><a href="그래프-유형-type-기호-모양-pch-크기-cex-선-유형-lty-선-두께-lwd.html#기호-plotting-symbols-characters-pch"><i class="fa fa-check"></i><b>21.2.2</b> 기호 (plotting symbols, characters) : <code>pch =</code></a></li>
+<li class="chapter" data-level="21.2.3" data-path="그래프-유형-type-기호-모양-pch-크기-cex-선-유형-lty-선-두께-lwd.html"><a href="그래프-유형-type-기호-모양-pch-크기-cex-선-유형-lty-선-두께-lwd.html#기호의-크기-cex"><i class="fa fa-check"></i><b>21.2.3</b> 기호의 크기 : <code>cex</code></a></li>
+<li class="chapter" data-level="21.2.4" data-path="그래프-유형-type-기호-모양-pch-크기-cex-선-유형-lty-선-두께-lwd.html"><a href="그래프-유형-type-기호-모양-pch-크기-cex-선-유형-lty-선-두께-lwd.html#선-스타일-지정하기"><i class="fa fa-check"></i><b>21.2.4</b> 선 스타일 지정하기</a></li>
+</ul></li>
+<li class="chapter" data-level="21.3" data-path="색깔-colors-col-col-axis-col-lab-col-main-col-sub-fg-bg.html"><a href="색깔-colors-col-col-axis-col-lab-col-main-col-sub-fg-bg.html"><i class="fa fa-check"></i><b>21.3</b> 색깔 (colors) : <code>col</code>, <code>col.axis</code>, <code>col.lab</code>, <code>col.main</code>, <code>col.sub</code>, <code>fg</code>, <code>bg</code></a>
+<ul>
+<li class="chapter" data-level="21.3.1" data-path="색깔-colors-col-col-axis-col-lab-col-main-col-sub-fg-bg.html"><a href="색깔-colors-col-col-axis-col-lab-col-main-col-sub-fg-bg.html#기호-선-문자-등의-디폴트-색-지정-default-plotting-color-col"><i class="fa fa-check"></i><b>21.3.1</b> 기호, 선, 문자 등의 디폴트 색 지정 (default plotting color) : <code>col</code></a></li>
+<li class="chapter" data-level="21.3.2" data-path="색깔-colors-col-col-axis-col-lab-col-main-col-sub-fg-bg.html"><a href="색깔-colors-col-col-axis-col-lab-col-main-col-sub-fg-bg.html#축의-색-지정"><i class="fa fa-check"></i><b>21.3.2</b> 축의 색 지정</a></li>
+<li class="chapter" data-level="21.3.3" data-path="색깔-colors-col-col-axis-col-lab-col-main-col-sub-fg-bg.html"><a href="색깔-colors-col-col-axis-col-lab-col-main-col-sub-fg-bg.html#x축과-y축-레이블-색-지정"><i class="fa fa-check"></i><b>21.3.3</b> <code>x</code>축과 <code>y</code>축 레이블 색 지정</a></li>
+<li class="chapter" data-level="21.3.4" data-path="색깔-colors-col-col-axis-col-lab-col-main-col-sub-fg-bg.html"><a href="색깔-colors-col-col-axis-col-lab-col-main-col-sub-fg-bg.html#제목-색-지정"><i class="fa fa-check"></i><b>21.3.4</b> 제목 색 지정</a></li>
+<li class="chapter" data-level="21.3.5" data-path="색깔-colors-col-col-axis-col-lab-col-main-col-sub-fg-bg.html"><a href="색깔-colors-col-col-axis-col-lab-col-main-col-sub-fg-bg.html#부-제목-색-지정"><i class="fa fa-check"></i><b>21.3.5</b> 부 제목 색 지정</a></li>
+<li class="chapter" data-level="21.3.6" data-path="색깔-colors-col-col-axis-col-lab-col-main-col-sub-fg-bg.html"><a href="색깔-colors-col-col-axis-col-lab-col-main-col-sub-fg-bg.html#그래프-테두리-색-지정"><i class="fa fa-check"></i><b>21.3.6</b> 그래프 테두리 색 지정</a></li>
+<li class="chapter" data-level="21.3.7" data-path="색깔-colors-col-col-axis-col-lab-col-main-col-sub-fg-bg.html"><a href="색깔-colors-col-col-axis-col-lab-col-main-col-sub-fg-bg.html#그래프-기호의-배경-색-지정"><i class="fa fa-check"></i><b>21.3.7</b> 그래프 기호의 배경 색 지정</a></li>
+</ul></li>
+<li class="chapter" data-level="21.4" data-path="그래프-영역-mar-oma-mfrow-mfcol-layout.html"><a href="그래프-영역-mar-oma-mfrow-mfcol-layout.html"><i class="fa fa-check"></i><b>21.4</b> 그래프 영역 (<code>mar</code>, <code>oma</code>, , <code>mfrow</code>, <code>mfcol</code>, <code>layout</code>)</a>
+<ul>
+<li class="chapter" data-level="21.4.1" data-path="그래프-영역-mar-oma-mfrow-mfcol-layout.html"><a href="그래프-영역-mar-oma-mfrow-mfcol-layout.html#플롯-영역-plot-area-내부-마진-영역-inner-margin-area"><i class="fa fa-check"></i><b>21.4.1</b> 플롯 영역 (plot area), 내부 마진 영역 (inner margin area)</a></li>
+<li class="chapter" data-level="21.4.2" data-path="그래프-영역-mar-oma-mfrow-mfcol-layout.html"><a href="그래프-영역-mar-oma-mfrow-mfcol-layout.html#외부-마진-영역-outer-margin-area"><i class="fa fa-check"></i><b>21.4.2</b> 외부 마진 영역 (outer margin area)</a></li>
+<li class="chapter" data-level="21.4.3" data-path="그래프-영역-mar-oma-mfrow-mfcol-layout.html"><a href="그래프-영역-mar-oma-mfrow-mfcol-layout.html#영역-분할결합-방법-1"><i class="fa fa-check"></i><b>21.4.3</b> 영역 분할/결합 방법 1</a></li>
+<li class="chapter" data-level="21.4.4" data-path="그래프-영역-mar-oma-mfrow-mfcol-layout.html"><a href="그래프-영역-mar-oma-mfrow-mfcol-layout.html#영역-분할결합-방법-2-layout"><i class="fa fa-check"></i><b>21.4.4</b> 영역 분할/결합 방법 2 : <code>layout()</code></a></li>
+<li class="chapter" data-level="" data-path="그래프-영역-mar-oma-mfrow-mfcol-layout.html"><a href="그래프-영역-mar-oma-mfrow-mfcol-layout.html#참고자료-8"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="낮은-수준의-그래프-함수.html"><a href="낮은-수준의-그래프-함수.html"><i class="fa fa-check"></i><b>22</b> 낮은 수준의 그래프 함수</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="제목과-xy축-레이블-추가하기.html"><a href="제목과-xy축-레이블-추가하기.html"><i class="fa fa-check"></i><b>22.1</b> 제목과 XY축 레이블 추가하기</a></li>
+<li class="chapter" data-level="22.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html"><i class="fa fa-check"></i><b>22.2</b> XY축 형태 변환 : <code>axis(side, ...)</code></a></li>
+<li class="chapter" data-level="22.3" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html"><i class="fa fa-check"></i><b>22.3</b> 직선의 연결과 추가</a></li>
+<li class="chapter" data-level="22.4" data-path="점-추가-pointsx-y.html"><a href="점-추가-pointsx-y.html"><i class="fa fa-check"></i><b>22.4</b> 점 추가 : <code>points(x, y)</code></a></li>
+<li class="chapter" data-level="22.5" data-path="문자열-추가.html"><a href="문자열-추가.html"><i class="fa fa-check"></i><b>22.5</b> 문자열 추가</a>
+<ul>
+<li class="chapter" data-level="22.5.1" data-path="문자열-추가.html"><a href="문자열-추가.html#text-함수의-사용"><i class="fa fa-check"></i><b>22.5.1</b> <code>text()</code> 함수의 사용</a></li>
+<li class="chapter" data-level="22.5.2" data-path="문자열-추가.html"><a href="문자열-추가.html#mtext-함수의-사용"><i class="fa fa-check"></i><b>22.5.2</b> <code>mtext()</code> 함수의 사용</a></li>
+</ul></li>
+<li class="chapter" data-level="22.6" data-path="범례-추가-legendx-y-legend-.html"><a href="범례-추가-legendx-y-legend-.html"><i class="fa fa-check"></i><b>22.6</b> 범례 추가 : <code>legend(x, y, legend, ...)</code></a>
+<ul>
+<li class="chapter" data-level="22.6.1" data-path="범례-추가-legendx-y-legend-.html"><a href="범례-추가-legendx-y-legend-.html#x-y-좌표를-직접-입력하여-범례-위치-설정"><i class="fa fa-check"></i><b>22.6.1</b> <code>x</code>, <code>y</code> 좌표를 직접 입력하여 범례 위치 설정</a></li>
+<li class="chapter" data-level="22.6.2" data-path="범례-추가-legendx-y-legend-.html"><a href="범례-추가-legendx-y-legend-.html#범례의-위치를-문자열로-지정하기"><i class="fa fa-check"></i><b>22.6.2</b> 범례의 위치를 문자열로 지정하기</a></li>
+</ul></li>
+<li class="chapter" data-level="22.7" data-path="다각형-추가-polygonx-y.html"><a href="다각형-추가-polygonx-y.html"><i class="fa fa-check"></i><b>22.7</b> 다각형 추가 : polygon(x, y, …)</a>
+<ul>
+<li class="chapter" data-level="" data-path="다각형-추가-polygonx-y.html"><a href="다각형-추가-polygonx-y.html#참고자료-9"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 프로그래밍</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="r-패키지란-무엇입니까" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> R 패키지란 무엇입니까?</h2>
+<p>많은 새로운 R 사용자와 혼동되는 또 다른 점은 R 패키지의 아이디어입니다. R 패키지는 추가 기능, 데이터 및 문서를 제공하여 R의 기능을 확장합니다. R 사용자의 전 세계 커뮤니티에서 작성했으며 인터넷에서 무료로 다운로드 할 수 있습니다.</p>
+<p>예를 들어, 데이터 시각화를위한 <code>ggplot2</code>패키지 (Wickham, Chang, et al. <a href="https://moderndive.netlify.app/1-3-packages.html#ref-R-ggplot2">2020</a> ) , 데이터 랭글링을 위한 패키지 (Wickham, François, et al. <a href="https://moderndive.netlify.app/3-wrangling.html#wrangling">2020</a>), <a href="https://moderndive.netlify.app/1-3-packages.html#ref-R-dplyr">`<code>dplyr</code> 패키지</a>, <a href="https://moderndive.netlify.app/1-3-packages.html#ref-R-moderndive"><code>moderndive</code> 패키지</a> 등 16,000 개가 넘는 많은 패키지들이 있습니다.</p>
+<div id="r과-r-패키지" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> R과 R 패키지</h3>
+<p>R 패키지에 대한 좋은 비유는 휴대폰에 다운로드 할 수있는 앱과 같다는 것입니다.</p>
+<div class="figure">
+<img src="images/search_console/R_vs_R_packages.png" alt="" />
+<p class="caption">R 패키지와 R 패키지의 비유.</p>
+</div>
+<p>그림 1.4 : R 대 R 패키지의 유추.</p>
+<p>따라서 <strong>R</strong>은 새로운 <strong>휴대폰</strong>과 같습니다. 처음 사용할 때 특정 기능이 있지만 모든 기능이 있는 것은 아닙니다. <strong>R 패키지</strong>는 Apple의 App Store 또는 Android의 Google Play에서 휴대폰으로 다운로드 할 수있는 <strong>앱</strong>과 같습니다.</p>
+<p>사진 편집 및 공유를 위해 Instagram 앱을 고려하여이 비유를 계속해 보겠습니다. 새 휴대폰을 구입했고 방금 찍은 사진을 Instagram에서 친구들과 공유하고 싶다고 가정 해 보겠습니다. 다음을 수행해야 합니다.</p>
+<ol style="list-style-type: decimal">
+<li><em>앱 설치</em> : 휴대 전화가 새 휴대 전화이고 Instagram 앱이 포함되어 있지 않으므로 앱 스토어 또는 Google Play에서 앱을 다운로드해야합니다. 이 작업을 한 번 수행하면 설정됩니다. 나중에 앱 업데이트가 있을 때 이 작업을 다시 수행해야 할 수 있습니다.</li>
+<li><em>앱 열기</em> : 인스타그램을 설치 한 후 열어야합니다.</li>
+</ol>
+<p>휴대폰에서 Instagram이 열리면 계속해서 친구 및 가족과 사진을 공유할 수 있습니다. 프로세스는 R 패키지를 사용하는 것과 매우 유사합니다. 다음을 수행해야 합니다.</p>
+<ol style="list-style-type: decimal">
+<li><em>패키지 <strong>설치</strong></em> : 휴대 전화에 앱을 설치하는 것과 같습니다. 대부분의 패키지는 R 및 RStudio를 설치할 때 기본적으로 설치되지 않습니다. 따라서 처음으로 패키지를 사용하려면 먼저 패키지를 설치해야 합니다. 패키지를 설치한 후에는 최신 버전으로 업데이트하지 않는 한 다시 설치하지 않을 것입니다.</li>
+<li><em>패키지</em> “<strong><em>로드</em></strong>”: <em>패키지</em> “로드”는 휴대 전화에서 <strong>앱을 여는 것</strong>과 같습니다. 컴퓨터에서 RStudio를 시작할 때 기본적으로 패키지는 “로드”되지 않습니다. RStudio를 시작할 때마다 사용하려는 각 패키지를 “로드”해야 합니다.</li>
+</ol>
+<p>데이터 시각화를 위한 <code>ggplot2</code>패키지에 대해 이 두 단계를 수행해 보겠습니다 .</p>
+</div>
+<div id="패키지-설치" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> 패키지 설치</h3>
+<p>R 패키지를 설치하는 방법에는 <em>쉬운 방법</em>과 <em>고급 방법</em>의 두 가지가 있습니다. <code>ggplot2</code>먼저 패키지를 쉽게 설치해 보겠습니다 . RStudio의 <strong>파일</strong> 창에서 :</p>
+<ol style="list-style-type: decimal">
+<li>“<code>Package</code>” 탭을 클릭합니다.</li>
+<li>하단에 있는 “<code>Install</code>”을 클릭합니다.</li>
+<li>“<code>Packages (separe multiple with space or comma)</code>” 아래에 패키지 이름으로 <code>ggplot2</code>를 입력합니다.</li>
+<li>“Install” 버튼을 클릭하십시오.</li>
+</ol>
+<p><img src="../../../../../../../김대호/OneDrive - 목원대학교/Kim_DaeHo(insoo_notebook)/Lectures/R_for_Social_Scientist/R-2021/images/search_console/install_packages_easy_way.png" alt="쉬운 방법으로 R에 패키지를 설치합니다." style="zoom:50%;" /></p>
+<p>그림 1.5 : 쉬운 방법으로 R에서 패키지 설치.</p>
+<p>패키지를 설치하는 대안이지만 약간 덜 편리한 방법 <code>install.packages("ggplot2")</code>은 RStudio의 <strong>콘솔</strong> 창에 입력하고 키보드에서 Return / Enter를 누르는 것입니다. 패키지 이름 주위에 따옴표를 포함해야합니다.</p>
+<p>휴대폰의 앱과 마찬가지로 <strong>패키지를 한 번만 설치하면 됩니다</strong>. 그러나 이전에 설치한 패키지를 최신 버전으로 업데이트하려면 앞의 2.번 단계에서 “<strong>Update</strong>” 를 선택하여 다음 단계를 진행하면 됩니다.</p>
+</div>
+<div id="패키지-로딩" class="section level3" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> 패키지 로딩</h3>
+<p>패키지를 설치 한 후에는 “Load(로드)”해야 합니다. 즉, “열어야” 합니다. <code>library()</code>명령 을 사용하여 이를 수행합니다.</p>
+<p>예를 들어 <code>ggplot2</code>패키지를 로드하려면 <strong>콘솔</strong> 창에서 다음 코드를 실행합니다. “다음 코드 실행”이란 무엇을 의미합니까? 콘솔 창에 다음 코드를 <strong>입력하거나 복사하여 붙여 넣은</strong> 다음 Enter 키를 누릅니다.</p>
+<pre><code>library(ggplot2)</code></pre>
+<p>이전 코드를 실행한 후 깜박이는 커서가 <code>&gt;</code>“프롬프트”기호 옆으로 돌아오면 성공했으며, 이제 <code>ggplot2</code> 패키지가 로드되어 사용할 준비가 되었음을 의미합니다. 그러나 다음과 같은 빨간색 “오류 메시지”가 표시되면</p>
+<p><code>...</code></p>
+<pre><code>Error in library(ggplot2) : there is no package called ‘ggplot2’...</code></pre>
+<p><code>...</code></p>
+<p>성공적으로 설치하지 못했음을 의미합니다. 이것은 “오류 메시지”의 예입니다 . 이 오류 메시지가 표시되면 R 패키지 설치를 다시하고, 계속하기 전에 <code>ggplot2</code>패키지를 설치했는지 확인하십시오 .</p>
+</div>
+<div id="패키지-사용" class="section level3" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> 패키지 사용</h3>
+<p>새로운 R 사용자가 특정 패키지를 사용하려고 할 때 흔히 범하는 실수 중 하나는 방금 본 명령 <code>library()</code>를 사용하여 먼저 패키지를 “로드”하는 것을 잊는 것입니다. 기억하세요 : <em>RStudio를 시작할 때마다 사용하려는 각 패키지를 로드해야합니다.</em> 먼저 패키지를 “로드”하지 않고 해당 기능 중 하나를 사용하려고하면 다음과 유사한 오류 메시지가 표시됩니다.</p>
+<pre><code>Error: could not find function</code></pre>
+<p>이것은 아직 설치되지 않은 패키지에서 방금 본 것과 다른 오류 메시지입니다.</p>
+<p>R은 아직 “로드”되지 않은 패키지의 함수를 사용하려고 한다는 것을 알려줍니다. R은 사용중인 함수를 어디서 찾을 수 있는지 모릅니다. 거의 모든 신규 사용자는 시작할 때 이 작업을 잊어 버리고 익숙해지면 약간 짜증이 납니다. 그러나, 당신은 연습을 통해 기억할 것이고 얼마 후 그것은 당신에게 제 2의 천성이 될 것입니다.</p>
+</div>
+<div id="참고-문헌" class="section level3" number="2.2.5">
+<h3><span class="header-section-number">2.2.5</span> 참고 문헌</h3>
+<p>Bray, Andrew, Chester Ismay, Evgeni Chasnovski, Ben Baumer 및 Mine Cetinkaya-Rundel. 2020. <em>추론 : 깔끔한 통계 추론</em>.</p>
+<p>Kim, Albert Y., Chester Ismay. 2020. <em>Moderndive : Tidyverse-Friendly Introductory Linear Regression</em> . <a href="https://github.com/ModernDive/moderndive_package" class="uri">https://github.com/ModernDive/moderndive_package</a>.</p>
+<p>Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani 및 Dewey Dunnington. 2020. <em>Ggplot2 : 그래픽 문법을 사용하여 우아한 데이터 시각화 만들기</em> . <a href="https://cran.r-project.org/package=ggplot2">https://CRAN.R-project.org/package=ggplot2</a>.</p>
+<p>Wickham, Hadley, Romain François, Lionel Henry 및 Kirill Müller. 2020. <em>Dplyr : 데이터 조작의 문법</em> . <a href="https://cran.r-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a>.</p>
+
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="r에서-어떻게-코딩하나요.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-마크다운.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
