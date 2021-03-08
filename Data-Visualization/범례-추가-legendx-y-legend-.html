@@ -24,7 +24,7 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2021-03-01" />
+<meta name="date" content="2021-03-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -555,7 +555,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>MASS</code> 패키지에 내장된 <code>Cars93</code>데이터프레임의 차종(<code>Type</code>) 별로 차 무게(<code>Weight</code>)와 고속도로 연비 (<code>MPG.highway</code>) 변수를 사용해서 산점도를 그려보겠습니다. 그리고 <strong>차종(<code>Type</code>) 그룹에 대한 범례(legend)</strong>를 추가해보겠습니다.</p>
 <div id="x-y-좌표를-직접-입력하여-범례-위치-설정" class="section level3" number="6.6.1">
 <h3><span class="header-section-number">6.6.1</span> <code>x</code>, <code>y</code> 좌표를 직접 입력하여 범례 위치 설정</h3>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="범례-추가-legendx-y-legend-.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb192-1"><a href="범례-추가-legendx-y-legend-.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
 <span id="cb192-2"><a href="범례-추가-legendx-y-legend-.html#cb192-2" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb192-3"><a href="범례-추가-legendx-y-legend-.html#cb192-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 산점도를 먼저 그립니다.</span></span>
 <span id="cb192-4"><a href="범례-추가-legendx-y-legend-.html#cb192-4" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Cars93) </span></code></pre></div>
@@ -569,7 +569,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     Manufacturer, Max.Price, Min.Price, Model, MPG.city, MPG.highway,
 ##     Origin, Passengers, Price, Rear.seat.room, Rev.per.mile, RPM,
 ##     Turn.circle, Type, Weight, Wheelbase, Width</code></pre>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="범례-추가-legendx-y-legend-.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 빈 산점도를 그립니다. </span></span>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb195-1"><a href="범례-추가-legendx-y-legend-.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 빈 산점도를 그립니다. </span></span>
 <span id="cb195-2"><a href="범례-추가-legendx-y-legend-.html#cb195-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Weight, MPG.highway, <span class="at">type =</span> <span class="st">&#39;n&#39;</span>) <span class="co"># blank plot </span></span>
 <span id="cb195-3"><a href="범례-추가-legendx-y-legend-.html#cb195-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb195-4"><a href="범례-추가-legendx-y-legend-.html#cb195-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 자동차의 종류(Type) 별로 산점도에 점으로 표시될 기호와 색깔을 다르게 선택합니다.</span></span>
@@ -591,11 +591,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb195-20"><a href="범례-추가-legendx-y-legend-.html#cb195-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> pchs</span>
 <span id="cb195-21"><a href="범례-추가-legendx-y-legend-.html#cb195-21" aria-hidden="true" tabindex="-1"></a>) </span></code></pre></div>
 <p><img src="bookdown_files/figure-html/ScatPlotLegendPos-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="범례-추가-legendx-y-legend-.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb196-1"><a href="범례-추가-legendx-y-legend-.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93)</span></code></pre></div>
 </div>
 <div id="범례의-위치를-문자열로-지정하기" class="section level3" number="6.6.2">
 <h3><span class="header-section-number">6.6.2</span> 범례의 위치를 문자열로 지정하기</h3>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="범례-추가-legendx-y-legend-.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb197-1"><a href="범례-추가-legendx-y-legend-.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
 <span id="cb197-2"><a href="범례-추가-legendx-y-legend-.html#cb197-2" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb197-3"><a href="범례-추가-legendx-y-legend-.html#cb197-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 산점도를 먼저 그립니다.</span></span>
 <span id="cb197-4"><a href="범례-추가-legendx-y-legend-.html#cb197-4" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Cars93) </span></code></pre></div>
@@ -609,7 +609,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     Manufacturer, Max.Price, Min.Price, Model, MPG.city, MPG.highway,
 ##     Origin, Passengers, Price, Rear.seat.room, Rev.per.mile, RPM,
 ##     Turn.circle, Type, Weight, Wheelbase, Width</code></pre>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="범례-추가-legendx-y-legend-.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 빈 산점도를 그립니다. </span></span>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb200-1"><a href="범례-추가-legendx-y-legend-.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 빈 산점도를 그립니다. </span></span>
 <span id="cb200-2"><a href="범례-추가-legendx-y-legend-.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Weight, MPG.highway, <span class="at">type =</span> <span class="st">&#39;n&#39;</span>) <span class="co"># blank plot </span></span>
 <span id="cb200-3"><a href="범례-추가-legendx-y-legend-.html#cb200-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb200-4"><a href="범례-추가-legendx-y-legend-.html#cb200-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 범례가 표시될 위치를 문자열 키워드로 지정합니다.</span></span>
@@ -634,7 +634,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb200-23"><a href="범례-추가-legendx-y-legend-.html#cb200-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> pchs</span>
 <span id="cb200-24"><a href="범례-추가-legendx-y-legend-.html#cb200-24" aria-hidden="true" tabindex="-1"></a>) </span></code></pre></div>
 <p><img src="bookdown_files/figure-html/ScatPlotLegendPosStr-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="범례-추가-legendx-y-legend-.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb201-1"><a href="범례-추가-legendx-y-legend-.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93)</span></code></pre></div>
 <p>앞의 예에서 문자열의 위치를 <code>loc</code> 변수에 <code>“topright”</code>로 지정하고 있습니다. 이 값을 다른 값으로 수정해서 다시 그래프를 그려보기 바랍니다.</p>
 </div>
 </div>

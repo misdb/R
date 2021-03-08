@@ -24,7 +24,7 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2021-03-01" />
+<meta name="date" content="2021-03-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -499,7 +499,7 @@ Figure 5.26: 그래프 영역의 구성
 <li><p><strong>플롯 영역 (plot area)</strong>은 점이든 선이든 기호가 그려지는 영역입니다.</p></li>
 <li><p><strong>내부 마진 영역 (inner margin area)</strong>는 플롯 영역을 감싸고 있는 4개 모서리 부분의 마진입니다. 하단 부분이 1번, 왼쪽 부분이 2번, 상단부분이 3번, 오른쪽 부분이 4번이며, 순서대로 내부 마진 영역의 디폴트 값은 <code>c(5.1, 4.1, 4.1, 2.1)</code> 입니다. 하단은 <code>x</code>축 레이블, 왼쪽은 <code>y</code>축 레이블, 상단은 제목이 들어가는 영역입니다. 그래서 기본 값의 마진 숫자가 큰 반면에, 오른쪽은 보통은 레이블이 없으므로 디폴트 마진 값이 타 영역의 반밖에 되지 않습니다.</p></li>
 </ol>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="그래프-영역.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="do">##------------------------------------------- </span></span>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb113-1"><a href="그래프-영역.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="do">##------------------------------------------- </span></span>
 <span id="cb113-2"><a href="그래프-영역.html#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 그래프 영역과 내부/외부 마진</span></span>
 <span id="cb113-3"><a href="그래프-영역.html#cb113-3" aria-hidden="true" tabindex="-1"></a><span class="do">##------------------------------------------- </span></span>
 <span id="cb113-4"><a href="그래프-영역.html#cb113-4" aria-hidden="true" tabindex="-1"></a> </span>
@@ -531,7 +531,7 @@ Figure 5.27: 4 개의 내부 마진 영역
 <p>외부 마진 영역은 위의 예처럼 1개짜리 그래프에서는 별 쓸모가 없습니다만 (그냥 내부 마진 영역으로 cover 되기 때문입니다), 그래프 영역을 분할해서 2개 이상의 그래프를 하나의 그래프에 결합할 경우 유용하게 사용할 수 있습니다. 개별 그래프에서는 내부 마진 영역에 제목, <code>x</code>축 레이블, <code>y</code>축 레이블을 적고, 2개 이상의 개별 그래프들을 모두 포괄하는 대제목 (mega title)을 적고자 할 때 외부 마진 영역에 적으면 딱 좋습니다.</p>
 <p>아래에 1개의 행, 2개의 열로 영역을 분할(<code>mfrow =</code> )한 경우 <strong>외부 마진 영역 설정</strong>(<code>oma =</code> ), <strong>내부 마진 영역 설정</strong>(<code>mar =</code> ) 함수의 예를 들어보겠습니다. 외부 마진 부분은 파란색으로 알아보기 쉽게 위치 표시를 했습니다.</p>
 <p>참고로, <code>op &lt;- par(no.readonly = TRUE)</code>로 디폴트 <code>par</code> 값을 미리 할당해 두면, 나중에 <code>par</code>값 조정 다 끝나고 원래의 디폴트 값으로 되돌아오고자 할 때 <code>par(op)</code>를 실행시키면 되므로 매우 편리합니다.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="그래프-영역.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb114-1"><a href="그래프-영역.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb114-2"><a href="그래프-영역.html#cb114-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb114-3"><a href="그래프-영역.html#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 내부 마진 영역과 외부 마진 영역</span></span>
 <span id="cb114-4"><a href="그래프-영역.html#cb114-4" aria-hidden="true" tabindex="-1"></a><span class="co"># par의 기본 설정 값을 저장합니다.</span></span>
@@ -559,7 +559,7 @@ Figure 5.27: 4 개의 내부 마진 영역
 Figure 5.28: 외부 마진 영역
 </p>
 </div>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="그래프-영역.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par를 초기 설정값으로 환원합니다.</span></span>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb115-1"><a href="그래프-영역.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par를 초기 설정값으로 환원합니다.</span></span>
 <span id="cb115-2"><a href="그래프-영역.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
 <p><a href="그래프-영역.html#그래프-영역">Go Top</a></p>
 </div>
@@ -573,7 +573,7 @@ Figure 5.28: 외부 마진 영역
 </ul>
 <p><code>par(mfrow = c(4, 2))</code> 은 복수의 플롯 작성할 때 프레임을 4행 2열로 분할하여 한 프레임에 표시하라는 의미입니다.</p>
 <p>그래프가 그려지는 순서를 화살표로 표시를 해두었는데요, 상단 왼쪽에서 시작해서 오른쪽으로 지그재그로 하단으로 내려가면서 그래프가 순차적으로 그려집니다.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="그래프-영역.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb116-1"><a href="그래프-영역.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb116-2"><a href="그래프-영역.html#cb116-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb116-3"><a href="그래프-영역.html#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="co"># par의 기본 설정 값을 저장합니다.</span></span>
 <span id="cb116-4"><a href="그래프-영역.html#cb116-4" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>) </span>
@@ -599,10 +599,10 @@ Figure 5.28: 외부 마진 영역
 Figure 5.29: par(mfrow = ): 행 우선의 복수 플롯의 수
 </p>
 </div>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="그래프-영역.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par를 초기 설정값으로 환원합니다.</span></span>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb117-1"><a href="그래프-영역.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par를 초기 설정값으로 환원합니다.</span></span>
 <span id="cb117-2"><a href="그래프-영역.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
 <p>한편, <code>par(mfcol = c(4, 2))</code> 은 프레임을 4행 2열로 분할하되, 플롯은 열 우선 순서로 표시가 되는 것입니다. 다음의 예에서 플롯이 그려지는 순서를 잘 살펴보기 바랍니다.</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="그래프-영역.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb118-1"><a href="그래프-영역.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb118-2"><a href="그래프-영역.html#cb118-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb118-3"><a href="그래프-영역.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="co"># par의 기본 설정 값을 저장합니다.</span></span>
 <span id="cb118-4"><a href="그래프-영역.html#cb118-4" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>) </span>
@@ -628,7 +628,7 @@ Figure 5.29: par(mfrow = ): 행 우선의 복수 플롯의 수
 Figure 5.30: par(mfcol = ) : 열 우선의 복수 플롯의 수
 </p>
 </div>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="그래프-영역.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par를 초기 설정값으로 환원합니다.</span></span>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb119-1"><a href="그래프-영역.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par를 초기 설정값으로 환원합니다.</span></span>
 <span id="cb119-2"><a href="그래프-영역.html#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
 <p><a href="그래프-영역.html#그래프-영역">Go Top</a></p>
 </div>
@@ -638,7 +638,7 @@ Figure 5.30: par(mfcol = ) : 열 우선의 복수 플롯의 수
 <p><code>layout()</code> 함수는 <code>par(mfrow = )</code>나 <code>par(mfcol = )</code> 함수와는 병행해서 사용할 수 없으므로 그래프 분석을 시작하기 전에 무슨 함수를 사용할 것인지 결정을 하고 하나를 선택해야만 합니다.</p>
 <p><code>layout.show(n)</code>은 현재의 레이 아웃에 대한 외곽선을 n 만큼의 그래프 갯수만큼 볼 수 있게 해주는 함수입니다.</p>
 <p>아래에 <code>layout()</code>과 <code>layout.show(n)</code> 함수 예를 하나 들어보겠습니다. <code>matrix()</code> 인수 안의 숫자가 그래프가 그려지는 순서입니다. <code>byrow=TRUE</code> 로 설정했으므로 행 우선 순서로 4개의 그래프를 그릴 수 있는 영역에 플롯이 채워지게 됩니다. <code>byrow= FALSE</code> 로 지정하면 열 우선 순서로 그래프가 생성됩니다.</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="그래프-영역.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb120-1"><a href="그래프-영역.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb120-2"><a href="그래프-영역.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="do">##----------------------------------- </span></span>
 <span id="cb120-3"><a href="그래프-영역.html#cb120-3" aria-hidden="true" tabindex="-1"></a><span class="do">## layout </span></span>
 <span id="cb120-4"><a href="그래프-영역.html#cb120-4" aria-hidden="true" tabindex="-1"></a><span class="do">##----------------------------------- </span></span>
@@ -659,7 +659,7 @@ Figure 5.30: par(mfcol = ) : 열 우선의 복수 플롯의 수
 Figure 5.31: 프레임을 2행 2열로 분할
 </p>
 </div>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="그래프-영역.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show the current layout </span></span>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb121-1"><a href="그래프-영역.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show the current layout </span></span>
 <span id="cb121-2"><a href="그래프-영역.html#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="fu">layout.show</span>(<span class="dv">4</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:ParMf2R2C-2"></span>
 <img src="bookdown_files/figure-html/ParMf2R2C-2.png" alt="프레임을 2행 2열로 분할" width="672" />
@@ -670,7 +670,7 @@ Figure 5.32: 프레임을 2행 2열로 분할
 <p><code>layout()</code> 함수를 활용하면 그래프 영역을 합칠 수도 있습니다. 이러한 기능은 <code>par(mfrow = )</code>나 <code>par(mfcol = )</code> 와 비교해서 매우 유용한 기능 중의 하나입니다. 2행 2열로 나눈 영역에서 1행 1열에만 그래프 영역 1개를 남겨놓고, 2행의 1열과 2행의 2열을합쳐보겠습니다.</p>
 <p>숫자 ’<code>0</code>’은 비어있는 그래프 영역이 되며, 동일한 숫자를 행렬(matrix) 안에 나란히 입력하면 그 영역을 합쳐지게 됩니다.</p>
 <p>아래 예에서는 1행2열에 ‘<code>0</code>’이 입력되었으므로 비어 있고, 2행1열과 2행 2열에는’<code>2</code>’가 입력되어 있으므로, 2행은 1개의 그래프 영역으로 표시가 되게 됩니다.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="그래프-영역.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb122-1"><a href="그래프-영역.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb122-2"><a href="그래프-영역.html#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 2행 2열 영역으로 분할합니다.</span></span>
 <span id="cb122-3"><a href="그래프-영역.html#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 1행 1열의 요소로 그림 1을 할당합니다.</span></span>
 <span id="cb122-4"><a href="그래프-영역.html#cb122-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 그림 2은 2행 전체에 할당합니다.</span></span>
@@ -684,7 +684,7 @@ Figure 5.32: 프레임을 2행 2열로 분할
 Figure 5.33: 2행 2열 프레임 : 1행 2열로 공란
 </p>
 </div>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="그래프-영역.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="do">## show the current layout </span></span>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb123-1"><a href="그래프-영역.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="do">## show the current layout </span></span>
 <span id="cb123-2"><a href="그래프-영역.html#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="fu">layout.show</span>(<span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:ParMf2R2C12-2"></span>
 <img src="bookdown_files/figure-html/ParMf2R2C12-2.png" alt="2행 2열 프레임 : 1행 2열로 공란" width="672" />
@@ -693,7 +693,7 @@ Figure 5.34: 2행 2열 프레임 : 1행 2열로 공란
 </p>
 </div>
 <p>이해를 돕기위해서 이번에는 1행 1열과 1행 2열을 하나로 합치고, 2행 1열은 비워놓고 2행2열만 남겨놓는 layout을 만들어보는 예제를 아래에 들어보겠습니다.</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="그래프-영역.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 2행 2열 영역으로 분할합니다.</span></span>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb124-1"><a href="그래프-영역.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 2행 2열 영역으로 분할합니다.</span></span>
 <span id="cb124-2"><a href="그래프-영역.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 그림 1을 1행 전체에 할당합니다.</span></span>
 <span id="cb124-3"><a href="그래프-영역.html#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 그림 2은 2행의 2열에 할당합니다.</span></span>
 <span id="cb124-4"><a href="그래프-영역.html#cb124-4" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="dv">2</span>, <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)) </span>
@@ -706,7 +706,7 @@ Figure 5.34: 2행 2열 프레임 : 1행 2열로 공란
 Figure 5.35: 2행 2열 프레임 : 1행 전체 그림
 </p>
 </div>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="그래프-영역.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="do">## show the current layout </span></span>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb125-1"><a href="그래프-영역.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="do">## show the current layout </span></span>
 <span id="cb125-2"><a href="그래프-영역.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="fu">layout.show</span>(<span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:ParMf2R2C11-2"></span>
 <img src="bookdown_files/figure-html/ParMf2R2C11-2.png" alt="2행 2열 프레임 : 1행 전체 그림" width="672" />
@@ -715,7 +715,7 @@ Figure 5.36: 2행 2열 프레임 : 1행 전체 그림
 </p>
 </div>
 <p>이번에는 10cm x 10cm 정사각형 모양의 그래프 영역을 생성해 보겠습니다. <strong>폭</strong>은 <code>widths = lcm()</code> 으로, <strong>높이</strong>는 <code>heights = lcm()</code> 으로 설정을 해주면 됩니다.</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="그래프-영역.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 cm x 10 cm 넓이의 그래프를 작성합니다.</span></span>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb126-1"><a href="그래프-영역.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 cm x 10 cm 넓이의 그래프를 작성합니다.</span></span>
 <span id="cb126-2"><a href="그래프-영역.html#cb126-2" aria-hidden="true" tabindex="-1"></a>layout<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="dv">1</span>),                                   <span class="co"># 요소가 1개인 행렬입니다.</span></span>
 <span id="cb126-3"><a href="그래프-영역.html#cb126-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">widths =</span> <span class="fu">lcm</span>(<span class="dv">10</span>),                            <span class="co"># 폭이 10cm</span></span>
 <span id="cb126-4"><a href="그래프-영역.html#cb126-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">heights =</span> <span class="fu">lcm</span>(<span class="dv">10</span>))                           <span class="co"># 높이가 10cm</span></span>
@@ -727,7 +727,7 @@ Figure 5.36: 2행 2열 프레임 : 1행 전체 그림
 Figure 5.37: 정사각형 모향의 레이아웃의 플롯
 </p>
 </div>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="그래프-영역.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layout.show</span>(layout<span class="fl">.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb127-1"><a href="그래프-영역.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layout.show</span>(layout<span class="fl">.1</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:LayoutWidthPlot-2"></span>
 <img src="bookdown_files/figure-html/LayoutWidthPlot-2.png" alt="정사각형 모향의 레이아웃의 플롯" width="672" />
 <p class="caption">
@@ -737,12 +737,12 @@ Figure 5.38: 정사각형 모향의 레이아웃의 플롯
 <p>이번에는 <strong>그래프 생성 순서(sequence)</strong>의 위, 아래를 바꾸어 보고, <strong>그래프의 넓이(widths)와 높이(heights)를 서로 다르게</strong> 하는 그래프 영역을 만들어보겠습니다.</p>
 <p>가운데에 <strong>산점도</strong>를 그려놓고 상단과 우측에 작은 크기의 <strong>히스토그램</strong>이나 <strong>박스플롯</strong>을 병행해서 그릴 때 유용하게 사용할 수 있습니다.</p>
 <p>참고로, <code>respect = TRUE</code> 는 가로 넓이와 세로 높이의 비율을 고려해서 그래프 영역을 설정하라는 옵션입니다.</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="그래프-영역.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 다음의 행렬에 있는 요소가 표시되는 그림의 번호입니다.</span></span>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb128-1"><a href="그래프-영역.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 다음의 행렬에 있는 요소가 표시되는 그림의 번호입니다.</span></span>
 <span id="cb128-2"><a href="그래프-영역.html#cb128-2" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>), <span class="dv">2</span>, <span class="dv">2</span>,<span class="at">byrow =</span> <span class="cn">TRUE</span>); l</span></code></pre></div>
-<pre><code>##      [,1] [,2]
+<pre class="bg-warning"><code>##      [,1] [,2]
 ## [1,]    2    0
 ## [2,]    1    3</code></pre>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="그래프-영역.html#cb130-1" aria-hidden="true" tabindex="-1"></a>layout<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>), <span class="dv">2</span>, <span class="dv">2</span>,<span class="at">byrow =</span> <span class="cn">TRUE</span>),    <span class="co"># 그림의 위치를 지정합니다.     </span></span>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb130-1"><a href="그래프-영역.html#cb130-1" aria-hidden="true" tabindex="-1"></a>layout<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>), <span class="dv">2</span>, <span class="dv">2</span>,<span class="at">byrow =</span> <span class="cn">TRUE</span>),    <span class="co"># 그림의 위치를 지정합니다.     </span></span>
 <span id="cb130-2"><a href="그래프-영역.html#cb130-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">widths =</span> <span class="fu">lcm</span>(<span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>)),         <span class="co"># 두 열의 넓이가 각각 6Cm와 4Cm로 설정됩니다.</span></span>
 <span id="cb130-3"><a href="그래프-영역.html#cb130-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">heights =</span> <span class="fu">lcm</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">6</span>)),        <span class="co"># 두 행의 높이가 각각 4Cm와 6Cm로 설정됩니다.              </span></span>
 <span id="cb130-4"><a href="그래프-영역.html#cb130-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">respect =</span> <span class="cn">TRUE</span>)                <span class="co"># 가로의 넓이와 세로의 높이의 비율을 고려합니다.</span></span>
@@ -756,7 +756,7 @@ Figure 5.38: 정사각형 모향의 레이아웃의 플롯
 Figure 5.39: 행렬의 요소를 그림의 번호로 지정
 </p>
 </div>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="그래프-영역.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layout.show</span>(layout<span class="fl">.2</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb131-1"><a href="그래프-영역.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layout.show</span>(layout<span class="fl">.2</span>) </span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:LayoutOrder-1"></span>
 <img src="bookdown_files/figure-html/LayoutOrder-1.png" alt="행렬의 요소를 레이아웃" width="672" />
 <p class="caption">
@@ -775,7 +775,7 @@ Figure 5.41: 행렬의 요소를 레이아웃
 Figure 5.42: 행렬의 요소를 레이아웃
 </p>
 </div>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="그래프-영역.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset par to the default values at startup </span></span>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb132-1"><a href="그래프-영역.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset par to the default values at startup </span></span>
 <span id="cb132-2"><a href="그래프-영역.html#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
 <p><a href="그래프-영역.html#그래프-영역">Go Top</a></p>
 </div>

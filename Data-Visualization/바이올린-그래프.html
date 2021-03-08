@@ -24,7 +24,7 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2021-03-01" />
+<meta name="date" content="2021-03-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -492,11 +492,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="데이터-세트-3" class="section level3" number="7.4.1">
 <h3><span class="header-section-number">7.4.1</span> 데이터 세트</h3>
 <p>데이터는 <code>MASS</code> 패키지에 들어있는 <code>Cars93</code> 데이터 프레임 데이터 셋에서 가격<code>(Price</code>)과 자동차 유형(<code>Type</code>) 변수를 활용하여 바이올린 그래프를 그려보겠습니다.</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="바이올린-그래프.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb273-1"><a href="바이올린-그래프.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb273-2"><a href="바이올린-그래프.html#cb273-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Cars93 데이터 프레임</span></span>
 <span id="cb273-3"><a href="바이올린-그래프.html#cb273-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb273-4"><a href="바이올린-그래프.html#cb273-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    93 obs. of  27 variables:
+<pre class="bg-warning"><code>## &#39;data.frame&#39;:    93 obs. of  27 variables:
 ##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
 ##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
 ##  $ Type              : Factor w/ 6 levels &quot;Compact&quot;,&quot;Large&quot;,..: 4 3 1 3 3 3 2 2 3 2 ...
@@ -528,7 +528,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="기본-바이올린-그래프" class="section level3" number="7.4.2">
 <h3><span class="header-section-number">7.4.2</span> 기본 바이올린 그래프</h3>
 <p>그럼, 먼저 <code>Cars93</code> 데이터 프레임 내 가격(<code>Price</code>) 변수 하나를 가지고 <code>geom_violin()</code>을 사용하여 바이올린 그래프(Violin Plot)을 그려보겠습니다.</p>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="바이올린-그래프.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 바이올린 그래프 그리기</span></span>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb275-1"><a href="바이올린-그래프.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 바이올린 그래프 그리기</span></span>
 <span id="cb275-2"><a href="바이올린-그래프.html#cb275-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
 <span id="cb275-3"><a href="바이올린-그래프.html#cb275-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>,                         <span class="co"># 바이올린 그래프는 기본적으로 x = 1로 설정합니다.</span></span>
 <span id="cb275-4"><a href="바이올린-그래프.html#cb275-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price)) <span class="sc">+</span>                  <span class="co"># Y축의 변수로 Price를 설정합니다.</span></span>
@@ -540,7 +540,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="바이올린-그래프와-박스-그래프-겹쳐-그리기" class="section level3" number="7.4.3">
 <h3><span class="header-section-number">7.4.3</span> 바이올린 그래프와 박스 그래프 겹쳐 그리기</h3>
 <p>그런데 바이올린 그래프에 <code>geom_boxplot()</code> 함수를 추가하여 박스 그래프를 겹쳐 그릴 수 있습니다.</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="바이올린-그래프.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 바이올린 그래프 + 박스 그래프</span></span>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb276-1"><a href="바이올린-그래프.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 바이올린 그래프 + 박스 그래프</span></span>
 <span id="cb276-2"><a href="바이올린-그래프.html#cb276-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
 <span id="cb276-3"><a href="바이올린-그래프.html#cb276-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>,                         </span>
 <span id="cb276-4"><a href="바이올린-그래프.html#cb276-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price)) <span class="sc">+</span>                  </span>
@@ -552,7 +552,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="x축의-이름과-척도-없애기-1" class="section level3" number="7.4.4">
 <h3><span class="header-section-number">7.4.4</span> X축의 이름과 척도 없애기</h3>
 <p>기본 바이올린 그래프를 그려 보면 X 축에 의미가 없는 척도가 표시가 됩니다. <code>scale_x_continuous()</code> 함수의 모수에 <code>breaks = NULL</code>을 설정하여 X축의 이름을 없애고, <code>theme()</code> 함수의 모수에 <code>axis.title.x = element_blank()</code> 를 설정하여 X축의 척도를 생략할 수 있습니다.</p>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="바이올린-그래프.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="co"># X축의 이름과 척도 없애기</span></span>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb277-1"><a href="바이올린-그래프.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="co"># X축의 이름과 척도 없애기</span></span>
 <span id="cb277-2"><a href="바이올린-그래프.html#cb277-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> Price)) <span class="sc">+</span> </span>
 <span id="cb277-3"><a href="바이올린-그래프.html#cb277-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span> </span>
 <span id="cb277-4"><a href="바이올린-그래프.html#cb277-4" aria-hidden="true" tabindex="-1"></a><span class="co">#  geom_boxplot(width = 0.1) +          </span></span>
@@ -567,7 +567,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>앞에서의 바이올린 그래프의 윗 부분에 가격(<code>Price</code>) 데이터의 <code>이상치(outliers)</code>가 차지하고 있습니다. 그런데 이상치는 바이올린 그래프에서 표시하는 것보다는 박스 그래프에서 표시하는 것이 더 좋습니다.</p>
 <p>따라서, geom_boxplot() 함수를 이용하여 이상치를 표시하고, 크기는 <code>outlier.size</code> 모수에, 모양은 <code>outlier.shape</code> 모수에, 그리고 색은 <code>outlier.colour</code> 등의 모수에 지정해 줍니다.</p>
 <p>다음의 예는 이상치 데이터에 대하여 모양을 <code>13</code>번 모양<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>으로 하고, 그 크기는 <code>3</code>(기본 값은 1)으로 그리고 색은 <code>“red”</code>로 표시하는 예입니다.</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="바이올린-그래프.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 바이올린 플롯의 이상치 표시</span></span>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb278-1"><a href="바이올린-그래프.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 바이올린 플롯의 이상치 표시</span></span>
 <span id="cb278-2"><a href="바이올린-그래프.html#cb278-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> Price)) <span class="sc">+</span> </span>
 <span id="cb278-3"><a href="바이올린-그래프.html#cb278-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_violin</span>(<span class="at">outlier.size =</span> <span class="dv">3</span>,          <span class="co"># 이상치 데이터 기호의 크기를 3으로 설정합니다.</span></span>
 <span id="cb278-4"><a href="바이올린-그래프.html#cb278-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">outlier.shape =</span> <span class="dv">13</span>,       <span class="co"># 이상치 데이터 기호의 모양을 13으로 설정합니다.</span></span>
@@ -579,7 +579,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Warning: Ignoring unknown parameters: outlier.size, outlier.shape,
 ## outlier.colour</code></pre>
 <p><img src="bookdown_files/figure-html/GGPlot2ViolinPlotOutliers-1.png" width="50%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="바이올린-그래프.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 바이올린 플롯의 이상치 표시</span></span>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb280-1"><a href="바이올린-그래프.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 바이올린 플롯의 이상치 표시</span></span>
 <span id="cb280-2"><a href="바이올린-그래프.html#cb280-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> Price)) <span class="sc">+</span> </span>
 <span id="cb280-3"><a href="바이올린-그래프.html#cb280-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span>                            </span>
 <span id="cb280-4"><a href="바이올린-그래프.html#cb280-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.1</span>,</span>
@@ -596,7 +596,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">7.4.6</span> 바이올린 그래프에 데이터를 점으로 표시하기</h3>
 <p>바이올린 그래프에 데이터를 점으로 표시하는 것은 박스 그래프에서와 마찬가지로 <code>geom_jitter()</code> 함수를 이용헙니다.</p>
 <p>또한 <code>geom_jitter()</code> 함수 안의 <code>shape</code> 모수를 이용하여 점의 모양<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>을 그리고 <code>position</code> 모수를 이용하여 점의 위치를 설정할 수 있습니다.</p>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="바이올린-그래프.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  바이올린 그래프에 데이터를 점으로 표시하기</span></span>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb281-1"><a href="바이올린-그래프.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  바이올린 그래프에 데이터를 점으로 표시하기</span></span>
 <span id="cb281-2"><a href="바이올린-그래프.html#cb281-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> Price)) <span class="sc">+</span> </span>
 <span id="cb281-3"><a href="바이올린-그래프.html#cb281-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_violin</span>() <span class="sc">+</span>                </span>
 <span id="cb281-4"><a href="바이올린-그래프.html#cb281-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.1</span>,</span>
@@ -608,7 +608,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb281-10"><a href="바이올린-그래프.html#cb281-10" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_jitter</span>() <span class="sc">+</span>                        <span class="co"># 데이터를 점으로 표시합니다.</span></span>
 <span id="cb281-11"><a href="바이올린-그래프.html#cb281-11" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot; 바이올린 그래프에 데이터를 점으로 표시하기&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/GGPlot2ViolinPlotJitter-1.png" width="50%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="바이올린-그래프.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  바이올린 그래프에 데이터를 점으로 표시하기</span></span>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb282-1"><a href="바이올린-그래프.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  바이올린 그래프에 데이터를 점으로 표시하기</span></span>
 <span id="cb282-2"><a href="바이올린-그래프.html#cb282-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> Price)) <span class="sc">+</span> </span>
 <span id="cb282-3"><a href="바이올린-그래프.html#cb282-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_violin</span>() <span class="sc">+</span>                </span>
 <span id="cb282-4"><a href="바이올린-그래프.html#cb282-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.1</span>,</span>
@@ -631,7 +631,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="수평-바이올린-그래프" class="section level3" number="7.4.7">
 <h3><span class="header-section-number">7.4.7</span> 수평 바이올린 그래프</h3>
 <p><code>coord_flip()</code> 함수를 추가하여 바이올린 그래프를 수평으로 회전시킬 수 있습니다.</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="바이올린-그래프.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 수평 바이올린 그래프</span></span>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb284-1"><a href="바이올린-그래프.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 수평 바이올린 그래프</span></span>
 <span id="cb284-2"><a href="바이올린-그래프.html#cb284-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> Price)) <span class="sc">+</span> </span>
 <span id="cb284-3"><a href="바이올린-그래프.html#cb284-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span>                </span>
 <span id="cb284-4"><a href="바이올린-그래프.html#cb284-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.1</span>,</span>
@@ -651,7 +651,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="바이올린-그래프의-색-지정하기" class="section level3" number="7.4.8">
 <h3><span class="header-section-number">7.4.8</span> 바이올린 그래프의 색 지정하기</h3>
 <p>또한 <code>geom_violin()</code> 함수에 <code>fill</code> 모수를 추가하여 <strong>채우기 색</strong>을 그리고 <code>colour</code> 모수를 추가하여 바이올린 그래프의 <strong>테두리 색</strong>을 설정할 수 있습니다.</p>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="바이올린-그래프.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 바이올린 그래프의 색 지정하기</span></span>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb285-1"><a href="바이올린-그래프.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 바이올린 그래프의 색 지정하기</span></span>
 <span id="cb285-2"><a href="바이올린-그래프.html#cb285-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> Price)) <span class="sc">+</span> </span>
 <span id="cb285-3"><a href="바이올린-그래프.html#cb285-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">fill =</span> <span class="st">&quot;yellow&quot;</span>,                 <span class="co"># 채우기 색을 지정합니다.</span></span>
 <span id="cb285-4"><a href="바이올린-그래프.html#cb285-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span>                <span class="co"># 테두리 색을 지정합니다.</span></span>
@@ -668,7 +668,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>위의 차종(<code>Type</code>)별 바이올린 그림의 바이올린 가운데 선은 <strong>중앙값(Median)</strong>을 나타냅니다.</p>
 <p>이번에는 <strong>평균을 추가</strong>해 보도록 하겠습니다. 평균은 이상치에 민감하므로 아래 예제처럼 이상치가 있는 경우에는 중심화 경향을 나타내는 통계량으로 부적합하며, 바이올린 그림의 바이올린 가운데에 쳐진 선이 의미하는 중앙값(Median) 이 더 적합한 중심화 경향 지표라고 하겠습니다.</p>
 <p>평균을 추가하기 위해서는 <code>stat_summary()</code> 함수를 이용합니다. 그리고 <code>fun.y = “mean”</code> 모수를 추가해 줍니다. 다음의 예에서는 동시에 기호의 모양, 크기, 그리고 색도 지정하고 있습니다.</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="바이올린-그래프.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 바이올린 그래프에 평균 추가하기</span></span>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb286-1"><a href="바이올린-그래프.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 바이올린 그래프에 평균 추가하기</span></span>
 <span id="cb286-2"><a href="바이올린-그래프.html#cb286-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> Price)) <span class="sc">+</span> </span>
 <span id="cb286-3"><a href="바이올린-그래프.html#cb286-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
 <span id="cb286-4"><a href="바이올린-그래프.html#cb286-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.y =</span> <span class="st">&quot;mean&quot;</span>,                <span class="co"># Y축의 평균값을 산출합니다</span></span>
@@ -690,7 +690,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>여기서 주의할 점은 <strong>x 는 요인(factor)형 변수가 입력</strong>되어야 합니다. 차종(<code>Type</code>)은 이미 요인형 변수이므로 그대로 입력하면 됩니다. 만약 요인형 변수가 아니라면 <code>x=factor(variable name)</code> 이런 식으로 입력해주거나, 아니면 형 변환 함수인 <code>as.factor()</code> 함수를 이용하여 데이터 형태를 요인형 변수로 변경해도 좋습니다.</p>
 <p>한편 이러한 차종별(<code>Type</code>) 그룹별 바이올린 그래프의 <strong>테두리 색을 지정</strong>하고 싶다면, <code>aes()</code> 함수에 <code>colour = factor.variable</code>을 삽입해 주면 됩니다. 그리고 바이올린의 색을 채우고 싶다면 <code>aes()</code> 함수에 <code>fill = factor variable</code>를 추가해 주면 됩니다.</p>
 <p>그런데 <code>colour</code>와 <code>fill</code> 모수는 동시에 사용하기 보다는 둘 중의 하나를 선택하는 것이 좋을 것 같습니다.</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="바이올린-그래프.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 그룹별 바이올린 그래프 : aes() 모수 이용</span></span>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb288-1"><a href="바이올린-그래프.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 그룹별 바이올린 그래프 : aes() 모수 이용</span></span>
 <span id="cb288-2"><a href="바이올린-그래프.html#cb288-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 바이올린 그래프</span></span>
 <span id="cb288-3"><a href="바이올린-그래프.html#cb288-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
 <span id="cb288-4"><a href="바이올린-그래프.html#cb288-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                          <span class="co"># x 축에 요인형(그룹) 변수를 지정합니다.</span></span>
@@ -698,7 +698,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb288-6"><a href="바이올린-그래프.html#cb288-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_violin</span>(<span class="at">width=</span><span class="fl">0.8</span>) <span class="sc">+</span></span>
 <span id="cb288-7"><a href="바이올린-그래프.html#cb288-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 바이올린그래프&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/GGPlot2ViolinPlotByTypeColor-1.png" width="33%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="바이올린-그래프.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 바이올린 그래프 : 테두리 색 지정</span></span>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb289-1"><a href="바이올린-그래프.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 바이올린 그래프 : 테두리 색 지정</span></span>
 <span id="cb289-2"><a href="바이올린-그래프.html#cb289-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
 <span id="cb289-3"><a href="바이올린-그래프.html#cb289-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                     </span>
 <span id="cb289-4"><a href="바이올린-그래프.html#cb289-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price,                                 </span>
@@ -706,7 +706,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb289-6"><a href="바이올린-그래프.html#cb289-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_violin</span>(<span class="at">width=</span><span class="fl">0.8</span>) <span class="sc">+</span></span>
 <span id="cb289-7"><a href="바이올린-그래프.html#cb289-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 바이올린그래프 : 테두리 색 지정&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/GGPlot2ViolinPlotByTypeColor-2.png" width="33%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="바이올린-그래프.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 바이올린 그래프 : 색 채우기</span></span>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb290-1"><a href="바이올린-그래프.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 바이올린 그래프 : 색 채우기</span></span>
 <span id="cb290-2"><a href="바이올린-그래프.html#cb290-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
 <span id="cb290-3"><a href="바이올린-그래프.html#cb290-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                          </span>
 <span id="cb290-4"><a href="바이올린-그래프.html#cb290-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price,                                 </span>
@@ -719,7 +719,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="facet_grid-함수-이용-3" class="section level4" number="7.4.10.2">
 <h4><span class="header-section-number">7.4.10.2</span> <code>facet_grid()</code> 함수 이용</h4>
 <p><code>aes()</code> 함수에 <code>x = Type</code> 모수를 추가하고, <code>facet_grid( . ~ Type)</code>을 추가해 줍니다. (<code>facet_grid(vars(Type))</code> 또는 <code>facet_type(Type ~ .)</code> 등은 바람직 하지 않습니다.)</p>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="바이올린-그래프.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 그룹별 바이올린 그래프 : facet_grid() 함수 이용</span></span>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb291-1"><a href="바이올린-그래프.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 그룹별 바이올린 그래프 : facet_grid() 함수 이용</span></span>
 <span id="cb291-2"><a href="바이올린-그래프.html#cb291-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 바이올린그래프 </span></span>
 <span id="cb291-3"><a href="바이올린-그래프.html#cb291-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
 <span id="cb291-4"><a href="바이올린-그래프.html#cb291-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> Price)) <span class="sc">+</span>                             </span>
@@ -727,7 +727,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb291-6"><a href="바이올린-그래프.html#cb291-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>( . <span class="sc">~</span> Type) <span class="sc">+</span>                              <span class="co"># Type 별로 바이올린 그래프를 그립니다.</span></span>
 <span id="cb291-7"><a href="바이올린-그래프.html#cb291-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 바이올린그래프 : facet_grid() 함수&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/GGPlot2ViolinPlotByTypeFacetGrid-1.png" width="33%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="바이올린-그래프.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 바이올린그래프 : 색 지정하기 (테두리 선)</span></span>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb292-1"><a href="바이올린-그래프.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 바이올린그래프 : 색 지정하기 (테두리 선)</span></span>
 <span id="cb292-2"><a href="바이올린-그래프.html#cb292-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
 <span id="cb292-3"><a href="바이올린-그래프.html#cb292-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> Price,</span>
 <span id="cb292-4"><a href="바이올린-그래프.html#cb292-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type)) <span class="sc">+</span>                             </span>
@@ -735,7 +735,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb292-6"><a href="바이올린-그래프.html#cb292-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>( . <span class="sc">~</span> Type) <span class="sc">+</span>                              <span class="co"># Type 별로 바이올린 그래프를 그립니다.</span></span>
 <span id="cb292-7"><a href="바이올린-그래프.html#cb292-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 바이올린그래프 : facet_grid() 함수&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/GGPlot2ViolinPlotByTypeFacetGrid-2.png" width="33%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="바이올린-그래프.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 바이올린그래프 : 색 지정하기 (채우기)</span></span>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb293-1"><a href="바이올린-그래프.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 바이올린그래프 : 색 지정하기 (채우기)</span></span>
 <span id="cb293-2"><a href="바이올린-그래프.html#cb293-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
 <span id="cb293-3"><a href="바이올린-그래프.html#cb293-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> Price,</span>
 <span id="cb293-4"><a href="바이올린-그래프.html#cb293-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Type)) <span class="sc">+</span>                             </span>
@@ -747,21 +747,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="facet_wrap-함수-이용-3" class="section level4" number="7.4.10.3">
 <h4><span class="header-section-number">7.4.10.3</span> <code>facet_wrap()</code> 함수 이용</h4>
 <p><code>aes()</code> 함수에 <code>x = Type</code> 모수를 추가하고, <code>facet_wrap(~ Type, ncol = 3)</code>을 추가해 줍니다.</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="바이올린-그래프.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 그룹별 바이올린 그래프 : facet_wrap() 함수 이용</span></span>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb294-1"><a href="바이올린-그래프.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 그룹별 바이올린 그래프 : facet_wrap() 함수 이용</span></span>
 <span id="cb294-2"><a href="바이올린-그래프.html#cb294-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 바이올린그래프 </span></span>
 <span id="cb294-3"><a href="바이올린-그래프.html#cb294-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> Price)) <span class="sc">+</span>                             </span>
 <span id="cb294-4"><a href="바이올린-그래프.html#cb294-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">width=</span><span class="fl">0.8</span>) <span class="sc">+</span></span>
 <span id="cb294-5"><a href="바이올린-그래프.html#cb294-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span>              <span class="co"># Type 별로 바이올린 그래프를 3열로 그립니다.</span></span>
 <span id="cb294-6"><a href="바이올린-그래프.html#cb294-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 바이올린그래프 : facet_wrap() 함수&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/GGPlot2ViolinPlotByTypeFacetWrap-1.png" width="33%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="바이올린-그래프.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 바이올린그래프 : 테두리 선</span></span>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb295-1"><a href="바이올린-그래프.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 바이올린그래프 : 테두리 선</span></span>
 <span id="cb295-2"><a href="바이올린-그래프.html#cb295-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> Price,</span>
 <span id="cb295-3"><a href="바이올린-그래프.html#cb295-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">colour =</span> Type)) <span class="sc">+</span>                  <span class="co"># 테두리 선의 색을 지정합니다.</span></span>
 <span id="cb295-4"><a href="바이올린-그래프.html#cb295-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">width =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
 <span id="cb295-5"><a href="바이올린-그래프.html#cb295-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span>              <span class="co"># Type 별로 바이올린 그래프를 3열로 그립니다.</span></span>
 <span id="cb295-6"><a href="바이올린-그래프.html#cb295-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 바이올린그래프 : facet_wrap() 함수&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/GGPlot2ViolinPlotByTypeFacetWrap-2.png" width="33%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="바이올린-그래프.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 바이올린그래프 : 색 채우기</span></span>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb296-1"><a href="바이올린-그래프.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 바이올린그래프 : 색 채우기</span></span>
 <span id="cb296-2"><a href="바이올린-그래프.html#cb296-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> Price,</span>
 <span id="cb296-3"><a href="바이올린-그래프.html#cb296-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fill =</span> Type)) <span class="sc">+</span>                    <span class="co"># 채우기 색을 지정합니다.</span></span>
 <span id="cb296-4"><a href="바이올린-그래프.html#cb296-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">width=</span><span class="fl">0.8</span>) <span class="sc">+</span></span>
@@ -777,7 +777,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="aes-함수의-모수-이용-5" class="section level4" number="7.4.11.1">
 <h4><span class="header-section-number">7.4.11.1</span> <code>aes()</code> 함수의 모수 이용</h4>
 <p><code>aes(fill = Origin)</code> 또는 <code>aes(color = Origin)</code> 을 추가해 주면 됩니다.</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="바이올린-그래프.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 두 기준/그룹별 바이올린 그래프 그리기 : aes() 함수의 모수 이용</span></span>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb297-1"><a href="바이올린-그래프.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 두 기준/그룹별 바이올린 그래프 그리기 : aes() 함수의 모수 이용</span></span>
 <span id="cb297-2"><a href="바이올린-그래프.html#cb297-2" aria-hidden="true" tabindex="-1"></a><span class="co"># fill 모수 지정</span></span>
 <span id="cb297-3"><a href="바이올린-그래프.html#cb297-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
 <span id="cb297-4"><a href="바이올린-그래프.html#cb297-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                         <span class="co"># Type 변수를 X로 지정합니다.</span></span>
@@ -786,7 +786,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb297-7"><a href="바이올린-그래프.html#cb297-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_violin</span>(<span class="at">width=</span><span class="fl">0.8</span>) <span class="sc">+</span></span>
 <span id="cb297-8"><a href="바이올린-그래프.html#cb297-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종과 생산지 별 바이올린 그래프 : fill&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/GGPlot2ViolinPlotByTypeOriginAes-1.png" width="50%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="바이올린-그래프.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="co"># colour 모수 지정</span></span>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb298-1"><a href="바이올린-그래프.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="co"># colour 모수 지정</span></span>
 <span id="cb298-2"><a href="바이올린-그래프.html#cb298-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
 <span id="cb298-3"><a href="바이올린-그래프.html#cb298-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                         <span class="co"># Type 변수를 X로 지정합니다.</span></span>
 <span id="cb298-4"><a href="바이올린-그래프.html#cb298-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price, </span>
@@ -798,7 +798,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="facet_grid-함수의-이용-1" class="section level4" number="7.4.11.2">
 <h4><span class="header-section-number">7.4.11.2</span> <code>facet_grid()</code> 함수의 이용</h4>
 <p>첫 번째 기준으로 차종(<code>Type</code>)을 그리고 두 번째 기준으로 생산지(<code>Origin</code>)로 해서 바이올린 그래프를 그리고자 하는 경우, <code>facet_grid(Origin ~ Type)</code>으로 설정해 줍니다.</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="바이올린-그래프.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 두 기준/그룹별 바이올린 그래프 그리기 : facet_grid() 함수의 이용</span></span>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb299-1"><a href="바이올린-그래프.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 두 기준/그룹별 바이올린 그래프 그리기 : facet_grid() 함수의 이용</span></span>
 <span id="cb299-2"><a href="바이올린-그래프.html#cb299-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
 <span id="cb299-3"><a href="바이올린-그래프.html#cb299-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                         <span class="co"># Type 변수를 X로 지정합니다.</span></span>
 <span id="cb299-4"><a href="바이올린-그래프.html#cb299-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price, </span>
@@ -812,7 +812,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="facet_wrap-함수의-이용-1" class="section level4" number="7.4.11.3">
 <h4><span class="header-section-number">7.4.11.3</span> <code>facet_wrap()</code> 함수의 이용</h4>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="바이올린-그래프.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 두 기준/그룹별 바이올린 그래프 그리기 : facet_wrap() 함수의 이용</span></span>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb301-1"><a href="바이올린-그래프.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 두 기준/그룹별 바이올린 그래프 그리기 : facet_wrap() 함수의 이용</span></span>
 <span id="cb301-2"><a href="바이올린-그래프.html#cb301-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
 <span id="cb301-3"><a href="바이올린-그래프.html#cb301-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                         <span class="co"># Type 변수를 X로 지정합니다.</span></span>
 <span id="cb301-4"><a href="바이올린-그래프.html#cb301-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price, </span>
@@ -830,7 +830,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">7.4.12</span> Theme의 사용</h3>
 <p>히스토그램과 커널 밀도 곡선에서 Theme을 사용하였듯이, 바이올린 그래프에서도 Theme을 사용할 수 있습니다.</p>
 <p>앞의 예에서 <a href="바이올린-그래프.html#바이올린-그래프에-평균-추가하기">바이올린 그래프에 평균을 추가</a>한 그래프에 Theme을 사용해 보겠습니다. 이 예에서도 히스토그램에서 <a href="히스토그램-1.html#UsignThemes">Theme으로 사용</a>한 <code>ggplot2::theme_classic() +</code> 이하 부분을 <strong>복사해서 붙여 넣기</strong>한 것입니다.</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="바이올린-그래프.html#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 바이올린 그래프에 평균 추가하기 : theme_classic() 적용</span></span>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb303-1"><a href="바이올린-그래프.html#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 바이올린 그래프에 평균 추가하기 : theme_classic() 적용</span></span>
 <span id="cb303-2"><a href="바이올린-그래프.html#cb303-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> Price)) <span class="sc">+</span> </span>
 <span id="cb303-3"><a href="바이올린-그래프.html#cb303-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
 <span id="cb303-4"><a href="바이올린-그래프.html#cb303-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.y =</span> <span class="st">&quot;mean&quot;</span>,                <span class="co"># Y축의 평균값을 산출합니다</span></span>

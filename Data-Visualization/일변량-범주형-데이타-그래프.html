@@ -24,7 +24,7 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2021-03-01" />
+<meta name="date" content="2021-03-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -502,7 +502,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>막대 그래프(bar graph)</strong>는 <strong>바 차트(bar chart)</strong>, <strong>바 그래프(bar graph)</strong> 등으로도 불리며, <code>barplot()</code> 함수를 이용하여 막대 그래프를 그릴 수 있습니다.</p>
 <p>막대 그래프는 명목형 변수 X를 전체 데이터의 값에 비례하여 <em>높이</em>와 <em>갯수</em>를 나타내는 직사각형의 막대로 표현하는 차트나 그래프를 말합니다. 막대는 수직 또는 수평으로 그릴 수 있습니다.</p>
 <p><code>barplot()</code> 함수의 첫 번째 인수는 명목형 변수의 <strong>도수분포표</strong>입니다. 변수의 도수분포표는 <strong><code>table()</code></strong> 함수로 구할 수 있습니다.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="일변량-범주형-데이타-그래프.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb58-1"><a href="일변량-범주형-데이타-그래프.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb58-2"><a href="일변량-범주형-데이타-그래프.html#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb58-3"><a href="일변량-범주형-데이타-그래프.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="do">##-------- plot for one variable, categorical data </span></span>
 <span id="cb58-4"><a href="일변량-범주형-데이타-그래프.html#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co"># bar plot : barplot() </span></span>
@@ -523,7 +523,7 @@ Figure 4.13: 일변량 범주형 데이터 그래프 : 막대 그래프
 <p>이 그래프는 x축을 <strong>연속형 변수</strong>로, 그리고 y축을 <strong>명목형 변수</strong>로 표현한다. 그런데, 이 그래프에서 주요 변수는 Y축을 이루는 명목형 변수입니다.</p>
 <p>앞에서 살펴본 막대 그래프의 X축과 Y축을 바꿔 놓고, 그림을 막대가 아닌 점으로 표현한 것이 클리브랜드 점 그래프입니다.</p>
 <p>Y축의 변수를 <code>reorder()</code> 함수 또는 <code>sort()</code> 함수를 이용하여 발생도수의 오름차순/내림차순으로 정렬할 수 있습니다.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="일변량-범주형-데이타-그래프.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb59-1"><a href="일변량-범주형-데이타-그래프.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb59-2"><a href="일변량-범주형-데이타-그래프.html#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb59-3"><a href="일변량-범주형-데이타-그래프.html#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cleveland dot plot : dotchart() </span></span>
 <span id="cb59-4"><a href="일변량-범주형-데이타-그래프.html#cb59-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -546,7 +546,7 @@ Figure 4.14: 일변량 범주형 데이터 그래프 : 클리브랜드 점 그�
 </ul>
 <p><strong>[참고사항]</strong></p>
 <p><code>Cars93$Cylinders</code> 컬럼의 도수분포표를 <code>sort()</code> 함수를 이용하여 발생 도수를 오름차순으로 정렬하고, 이를 인수로 하여 클리브랜드 점 그래프를 그려 보겠습니다.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="일변량-범주형-데이타-그래프.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb60-1"><a href="일변량-범주형-데이타-그래프.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb60-2"><a href="일변량-범주형-데이타-그래프.html#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb60-3"><a href="일변량-범주형-데이타-그래프.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cleveland dot plot : dotchart() </span></span>
 <span id="cb60-4"><a href="일변량-범주형-데이타-그래프.html#cb60-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -574,7 +574,7 @@ Figure 4.15: 일변량 범주형 데이터 그래프 : 클리브랜드 점 그�
 <h3><span class="header-section-number">4.3.3</span> 파이 차트</h3>
 <p>파이 차트는 도수분포표를 비율로 나타낼 때 사용합니다. 전체를 100%라고 했을 때, 각각이 차지하는 비율을 한 눈에 볼 수 있게 시각화하는 것입니다.</p>
 <p>역시 이 파이 차트를 그릴 떄도 기본적으로 범주형 변수를 인수로 하여 <code>table()</code> 함수로 구한 도수분포표가 됩니다.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="일변량-범주형-데이타-그래프.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb61-1"><a href="일변량-범주형-데이타-그래프.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb61-2"><a href="일변량-범주형-데이타-그래프.html#cb61-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb61-3"><a href="일변량-범주형-데이타-그래프.html#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="co"># pie chart : pie() </span></span>
 <span id="cb61-4"><a href="일변량-범주형-데이타-그래프.html#cb61-4" aria-hidden="true" tabindex="-1"></a>table_cyl <span class="ot">&lt;-</span> <span class="fu">table</span>(Cars93<span class="sc">$</span>Cylinders) </span>

@@ -24,7 +24,7 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2021-03-01" />
+<meta name="date" content="2021-03-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -533,11 +533,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="기호-선-문자-등의-디폴트-색-지정" class="section level3" number="5.3.1">
 <h3><span class="header-section-number">5.3.1</span> 기호, 선, 문자 등의 디폴트 색 지정</h3>
 <p>R에서 지원하는 <strong>색의 종류에는 657</strong>개가 있습니다. <strong><code>colors()</code></strong> 함수를 사용하면 657개 전체 색 리스트를 볼 수 있습니다.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="색-지정.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="do">##-------------------------------</span></span>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb100-1"><a href="색-지정.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="do">##-------------------------------</span></span>
 <span id="cb100-2"><a href="색-지정.html#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Graphical parameters : color</span></span>
 <span id="cb100-3"><a href="색-지정.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="do">##-------------------------------</span></span>
 <span id="cb100-4"><a href="색-지정.html#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">colors</span>())</span></code></pre></div>
-<pre><code>## [1] 657</code></pre>
+<pre class="bg-warning"><code>## [1] 657</code></pre>
 <pre><code>colors()</code></pre>
 <p>위처럼 text로 색깔 이름만 있으면 알기 어려울 수도 있는데요, <a href="http://research.stowers-institute.org/efg/R/Color/Chart/index.htm">Earl F. Glynn</a> 가 657개 색을 각 숫자별로 그리드에 색을 보기에 좋도록 정리를 해놓았습니다.</p>
 <p><strong>[ Color Chart by Earl F. Glynn, Stowers Institute for Medical Research, 24 May 2005 ]</strong></p>
@@ -631,7 +631,7 @@ Figure 5.15: Earl F. Glynn의 색상 표
 </tbody>
 </table>
 <p>다음의 예는 원을 8 등분 또는 16 등분하여 각 조각의 색을 지정하기 위해 <code>col =</code> 모수를 사용하고, 조각의 색을 식별 숫자로 지정하는 파이 차트의 예를 보여 주고 있습니다.</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="색-지정.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># color by index 1~8 </span></span>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb103-1"><a href="색-지정.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># color by index 1~8 </span></span>
 <span id="cb103-2"><a href="색-지정.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) </span>
 <span id="cb103-3"><a href="색-지정.html#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">8</span>), <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>)                       <span class="co"># 1 ~ 8 번까지 지정합니다.</span></span>
 <span id="cb103-4"><a href="색-지정.html#cb103-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">16</span>), <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>)                     <span class="co"># 9 ~ 16 번까지의 색은 1 ~ 8 번의 색으로 지정됩니다.</span></span></code></pre></div>
@@ -653,7 +653,7 @@ Figure 5.17:  Earl F. Glynn가 작성한 색상표
 </div>
 <p>* 출처 : <a href="http://research.stowers-institute.org/efg/R/Color/Chart/ColorChart.pdf" class="uri">http://research.stowers-institute.org/efg/R/Color/Chart/ColorChart.pdf</a></p>
 <p><strong>파란색(blue)</strong>에 대해서 위의 4가지 방법, 즉 (1) 숫자 (index), (2) 색 이름 (color name), (3) 16진수 (hexadecimal), (4) RGB 색상표를 사용해서 R 함수 예를 들어보겠습니다. 파란색(blue)으로 모두 똑같은 결과가 나았습니다.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="색-지정.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb104-1"><a href="색-지정.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb104-2"><a href="색-지정.html#cb104-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb104-3"><a href="색-지정.html#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 methods of color &#39;blue&#39; exmaple : index, color name, hexadecimal, RGB </span></span>
 <span id="cb104-4"><a href="색-지정.html#cb104-4" aria-hidden="true" tabindex="-1"></a><span class="co"># to use Cars933 dataframe </span></span>
@@ -697,7 +697,7 @@ example(rainbow)</code></pre>
 <div id="축-색-지정" class="section level3" number="5.3.2">
 <h3><span class="header-section-number">5.3.2</span> 축 색 지정</h3>
 <p><code>x</code>축과 <code>y</code>축의 척도 표기 색상을 지정할 때 <code>col.axis</code> 모수 옵션을 사용합니다. 아래에 <code>x</code>축과 <code>y</code>축 척도 표기 색상으로 파랑색, 빨강색, 노랑색, 회색으로 바꿔가면서 그래프를 그려보았습니다.</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="색-지정.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="do">## color for axis annotation : col.axis</span></span>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb106-1"><a href="색-지정.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="do">## color for axis annotation : col.axis</span></span>
 <span id="cb106-2"><a href="색-지정.html#cb106-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb106-3"><a href="색-지정.html#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="co"># to use Cars93 dataframe </span></span>
 <span id="cb106-4"><a href="색-지정.html#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)) </span>
@@ -723,7 +723,7 @@ Figure 5.19: 색 지정 : 축 척도의 색
 <div id="x축과-y축의-레이블-색-지정" class="section level3" number="5.3.3">
 <h3><span class="header-section-number">5.3.3</span> x축과 y축의 레이블 색 지정</h3>
 <p>이번에는 x축과 y의 Lable 색을 지정하는 방법으로 <code>col.lab</code> 모수 옵션을 사용하면 됩니다. 파랑색, 빨강색, 노랑색, 회색으로 x축과 y축의 Lable 색을 설정하는 예를 들어보겠습니다.</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="색-지정.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="do">## color for x and y labels : col.lab </span></span>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb107-1"><a href="색-지정.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="do">## color for x and y labels : col.lab </span></span>
 <span id="cb107-2"><a href="색-지정.html#cb107-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb107-3"><a href="색-지정.html#cb107-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)) </span>
 <span id="cb107-4"><a href="색-지정.html#cb107-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,</span>
@@ -747,7 +747,7 @@ Figure 5.20: 색 지정 : x축과 y축의 레이블 색
 </div>
 <div id="제목-색-지정" class="section level3" number="5.3.4">
 <h3><span class="header-section-number">5.3.4</span> 제목 색 지정</h3>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="색-지정.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="do">## color for main title : col.main </span></span>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb108-1"><a href="색-지정.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="do">## color for main title : col.main </span></span>
 <span id="cb108-2"><a href="색-지정.html#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) </span>
 <span id="cb108-3"><a href="색-지정.html#cb108-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb108-4"><a href="색-지정.html#cb108-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
@@ -771,7 +771,7 @@ Figure 5.21: 색 지정 : 제목
 </div>
 <div id="부제목-색-지정" class="section level3" number="5.3.5">
 <h3><span class="header-section-number">5.3.5</span> 부제목 색 지정</h3>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="색-지정.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="do">## color for sub title : col.sub </span></span>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb109-1"><a href="색-지정.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="do">## color for sub title : col.sub </span></span>
 <span id="cb109-2"><a href="색-지정.html#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) </span>
 <span id="cb109-3"><a href="색-지정.html#cb109-3" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb109-4"><a href="색-지정.html#cb109-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,</span>
@@ -795,7 +795,7 @@ Figure 5.22: 색 지정 : 부제목 색
 </div>
 <div id="그래프-전경-색-지정" class="section level3" number="5.3.6">
 <h3><span class="header-section-number">5.3.6</span> 그래프 전경 색 지정</h3>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="색-지정.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="do">## color for foreground : fg </span></span>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb110-1"><a href="색-지정.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="do">## color for foreground : fg </span></span>
 <span id="cb110-2"><a href="색-지정.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) </span>
 <span id="cb110-3"><a href="색-지정.html#cb110-3" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb110-4"><a href="색-지정.html#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,  </span>
@@ -820,7 +820,7 @@ Figure 5.23: 색 지정 : 전경색
 <div id="그래프-배경-색-지정" class="section level3" number="5.3.7">
 <h3><span class="header-section-number">5.3.7</span> 그래프 배경 색 지정</h3>
 <p><code>bg</code>는 그래프 기호의 배경색을 채울 때 사용합니다. 아래에 기호 모양 21번 (원)에 파랑색, 빨강색, 노랑색, 회색을 채워보았습니다.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="색-지정.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="do">## color for background :bg </span></span>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb111-1"><a href="색-지정.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="do">## color for background :bg </span></span>
 <span id="cb111-2"><a href="색-지정.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) </span>
 <span id="cb111-3"><a href="색-지정.html#cb111-3" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb111-4"><a href="색-지정.html#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">21</span>,  </span>
@@ -842,7 +842,7 @@ Figure 5.24: 색 지정 : 배경색
 </div>
 <p><a href="색-지정.html#색-지정">Go Top</a></p>
 <p><code>bg (background color)</code>는 속이 비어있는 <code>pch 21</code>번부터 <code>25</code>번 까지만 사용가능하며, 그 외에는 적용이 안됩니다. 아래에 <code>pch =1</code> 일 때 <code>bg</code> 옵션이 적용이 안된 것을 확인할 수 있습니다.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="색-지정.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="do">## bg (background color) only works with pch from 21 to 25 </span></span>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb112-1"><a href="색-지정.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="do">## bg (background color) only works with pch from 21 to 25 </span></span>
 <span id="cb112-2"><a href="색-지정.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>)) </span>
 <span id="cb112-3"><a href="색-지정.html#cb112-3" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb112-4"><a href="색-지정.html#cb112-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">1</span>,  </span>

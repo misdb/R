@@ -24,7 +24,7 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2021-03-01" />
+<meta name="date" content="2021-03-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -514,7 +514,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>MASS</code> 패키지에 내장되어 있는 <code>Cars93</code> 데이터프레임의 차량 무게(<code>Weight</code>), 고속도로 연비 (<code>MPG.highway</code>), 차종 (<code>Type</code>) 변수를 사용해서 <strong>점을 추가하는 그래프</strong>를 실습해보겠습니다.</p>
 <p>높은 수준의 그래프 함수 중에서 <code>plot(x, y, type = 'p')</code> 로 하면 점 그래프 (points plot)을 그릴 수 있습니다.</p>
 <p><code>plot(x, y, type = 'p')</code>로 <strong>산점도</strong>를 그리고, 그 위에 <code>points(x, y)</code> 함수로 <strong>점을 추가하는</strong> 예를 살펴 보겠습니다. 정확히 두 개 그래프가 일치합니다.</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="점-추가-pointsx-y.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb166-1"><a href="점-추가-pointsx-y.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb166-2"><a href="점-추가-pointsx-y.html#cb166-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb166-3"><a href="점-추가-pointsx-y.html#cb166-3" aria-hidden="true" tabindex="-1"></a><span class="do">##----------------------------------------- </span></span>
 <span id="cb166-4"><a href="점-추가-pointsx-y.html#cb166-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 점 추가 : point(x, y) </span></span>
@@ -525,14 +525,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## The following object is masked _by_ .GlobalEnv:
 ## 
 ##     Cylinders</code></pre>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="점-추가-pointsx-y.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Weight, MPG.highway, <span class="at">type =</span> <span class="st">&#39;p&#39;</span>)                     <span class="co"># 점 플롯입니다.</span></span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb168-1"><a href="점-추가-pointsx-y.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Weight, MPG.highway, <span class="at">type =</span> <span class="st">&#39;p&#39;</span>)                     <span class="co"># 점 플롯입니다.</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:LowLevelGraphLowLevPoints-1"></span>
 <img src="bookdown_files/figure-html/LowLevelGraphLowLevPoints-1.png" alt="점의 추가 : 낮은 수준의 함수 points() 함수의 사용" width="672" />
 <p class="caption">
 Figure 6.12: 점의 추가 : 낮은 수준의 함수 points() 함수의 사용
 </p>
 </div>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="점-추가-pointsx-y.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 플롯 위에 낮은 수준의 함수 point() 를 이용하여 점을 추가합니다.</span></span>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb169-1"><a href="점-추가-pointsx-y.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 플롯 위에 낮은 수준의 함수 point() 를 이용하여 점을 추가합니다.</span></span>
 <span id="cb169-2"><a href="점-추가-pointsx-y.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Weight, MPG.highway, <span class="at">type =</span> <span class="st">&#39;n&#39;</span>)                     <span class="co"># 빈 플롯입니다.</span></span>
 <span id="cb169-3"><a href="점-추가-pointsx-y.html#cb169-3" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Weight, MPG.highway)                               <span class="co"># 위의 플롯과 정확히 똑 같습니다.</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:LowLevelGraphLowLevPoints-2"></span>
@@ -541,17 +541,17 @@ Figure 6.12: 점의 추가 : 낮은 수준의 함수 points() 함수의 사용
 Figure 6.13: 점의 추가 : 낮은 수준의 함수 points() 함수의 사용
 </p>
 </div>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="점-추가-pointsx-y.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb170-1"><a href="점-추가-pointsx-y.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93)</span></code></pre></div>
 <p>그러면 왜 굳이 <code>points()</code> 라는 낮은 수준의 함수를 가지고 점을 추가하려고 하는 것인지 의문이 들것입니다. 그 이유는 <code>points()</code> 함수를 가지고 필요에 따라서 순차적으로 점을 추가할 수 있고, 조건을 부여하고 그래프 모수 중에 색깔이나 기호 모양 등을 다르게 해서 탐색적 분석을 진행하는데 유용하기 때문입니다.</p>
 <p>물론 <code>plot(x, y, type = 'p')</code>로 원하는 그래프를 그릴 수 있다면 <code>points()</code>함수를 사용할 필요는 없겠지요. 아래에 <code>points()</code>의 몇 가지 사용 형태를 보시고 필요한 상황에 맞게 골라 쓰면 되겠습니다.</p>
 <p>아래에는 차종(<code>Type</code>)별로 기호 모양과 색깔을 달리하면서 무게(<code>Weight</code>)와 고속도로 연비(<code>MPG.highway</code>) 산점도를 그려보겠습니다. 2차원의 x, y 공간에 차종(<code>Type</code>)이라는 제3의 차원을 추가해서 볼 수 있는 매우 유용한 방법입니다.</p>
 <p>대신 Base Graphics 에서는 조건의 갯수만큼 손이 참 많이 가는 단점이 있습니다 (참고로, <code>ggplot2</code> plotting system을 사용하면 조건에 따른 색이나 기호를 달리하도록 지정하는게 한 줄이면 끝나고, 범례(legend)도 알아서 추가해주므로 편합니다).</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="점-추가-pointsx-y.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb171-1"><a href="점-추가-pointsx-y.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb171-2"><a href="점-추가-pointsx-y.html#cb171-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Cars93) </span></code></pre></div>
 <pre><code>## The following object is masked _by_ .GlobalEnv:
 ## 
 ##     Cylinders</code></pre>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="점-추가-pointsx-y.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  현재의 빈 플롯에 pch, col, cex 모수를 설정한 점을 추가합니다.</span></span>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb173-1"><a href="점-추가-pointsx-y.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  현재의 빈 플롯에 pch, col, cex 모수를 설정한 점을 추가합니다.</span></span>
 <span id="cb173-2"><a href="점-추가-pointsx-y.html#cb173-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Weight, MPG.highway, <span class="at">type =</span> <span class="st">&#39;n&#39;</span>)                          <span class="co"># 빈 플롯입니다.</span></span>
 <span id="cb173-3"><a href="점-추가-pointsx-y.html#cb173-3" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Weight, MPG.highway, <span class="at">pch =</span> <span class="dv">15</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">cex =</span> <span class="fl">1.5</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:LowLevelGraphLowLevPointsAtt"></span>
@@ -560,21 +560,21 @@ Figure 6.13: 점의 추가 : 낮은 수준의 함수 points() 함수의 사용
 Figure 6.14: 점의 속성 추가 : 낮은 수준의 함수 points() 함수의 사용
 </p>
 </div>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="점-추가-pointsx-y.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb174-1"><a href="점-추가-pointsx-y.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93)</span></code></pre></div>
 <p>산점도의 점들을 <strong>조건에 따라 상이한 문자의 점으로 추가</strong>할 수도 있습니다.</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="점-추가-pointsx-y.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb175-1"><a href="점-추가-pointsx-y.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb175-2"><a href="점-추가-pointsx-y.html#cb175-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Cars93)</span></code></pre></div>
 <pre><code>## The following object is masked _by_ .GlobalEnv:
 ## 
 ##     Cylinders</code></pre>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="점-추가-pointsx-y.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 조건에 따라 상이한 문자의 점을 추가합니다.</span></span>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb177-1"><a href="점-추가-pointsx-y.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 조건에 따라 상이한 문자의 점을 추가합니다.</span></span>
 <span id="cb177-2"><a href="점-추가-pointsx-y.html#cb177-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Weight, MPG.highway, <span class="at">type =</span> <span class="st">&#39;n&#39;</span>)                      <span class="co"># 빈 플롯을 그립니다.</span></span>
 <span id="cb177-3"><a href="점-추가-pointsx-y.html#cb177-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb177-4"><a href="점-추가-pointsx-y.html#cb177-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Cars93<span class="sc">$</span>Type) </span></code></pre></div>
-<pre><code>## 
+<pre class="bg-warning"><code>## 
 ## Compact   Large Midsize   Small  Sporty     Van 
 ##      16      11      22      21      14       9</code></pre>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="점-추가-pointsx-y.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Type = Compact 인 경우</span></span>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb179-1"><a href="점-추가-pointsx-y.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Type = Compact 인 경우</span></span>
 <span id="cb179-2"><a href="점-추가-pointsx-y.html#cb179-2" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Weight[Type <span class="sc">==</span> <span class="st">&quot;Compact&quot;</span>], MPG.highway[Type <span class="sc">==</span> <span class="st">&quot;Compact&quot;</span>], <span class="at">pch =</span> <span class="dv">0</span>) </span>
 <span id="cb179-3"><a href="점-추가-pointsx-y.html#cb179-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb179-4"><a href="점-추가-pointsx-y.html#cb179-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Type = Large 인 경우</span></span>
@@ -606,7 +606,7 @@ Figure 6.14: 점의 속성 추가 : 낮은 수준의 함수 points() 함수의 �
 Figure 6.15: 조건에 따른 상이한 속성의 점 추가 : 낮은 수준의 함수 points() 함수의 사용
 </p>
 </div>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="점-추가-pointsx-y.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb180-1"><a href="점-추가-pointsx-y.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93)</span></code></pre></div>
 </div>
             </section>
 

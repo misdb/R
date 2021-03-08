@@ -24,7 +24,7 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2021-03-01" />
+<meta name="date" content="2021-03-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -492,8 +492,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>lines(x, y = NULL, type = &quot;l&quot;, ...)</code></pre>
 <table>
 <colgroup>
-<col width="11%" />
-<col width="88%" />
+<col width="12%" />
+<col width="87%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -559,7 +559,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>* 출처 : <a href="http://sites.stat.psu.edu/~dhunter/R/html/graphics/html/abline.html" class="uri">http://sites.stat.psu.edu/~dhunter/R/html/graphics/html/abline.html</a></p>
 <p>먼저 회귀모형을 구하는 <code>lm()</code> 함수를 사용해서 <code>y = MPG.highway (고속도로 연비)</code>, <code>x = Weight (차의 무게)</code> 변수 간의 선형 회귀모형을 만들면 아래와 같습니다.</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="직선의-연결과-추가.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb147-1"><a href="직선의-연결과-추가.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb147-2"><a href="직선의-연결과-추가.html#cb147-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb147-3"><a href="직선의-연결과-추가.html#cb147-3" aria-hidden="true" tabindex="-1"></a><span class="do">##------------------------------------ </span></span>
 <span id="cb147-4"><a href="직선의-연결과-추가.html#cb147-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 플롯에 선을 추가합니다.</span></span>
@@ -567,7 +567,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb147-6"><a href="직선의-연결과-추가.html#cb147-6" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb147-7"><a href="직선의-연결과-추가.html#cb147-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 회귀 모형을 적용합니다.</span></span>
 <span id="cb147-8"><a href="직선의-연결과-추가.html#cb147-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    93 obs. of  27 variables:
+<pre class="bg-warning"><code>## &#39;data.frame&#39;:    93 obs. of  27 variables:
 ##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
 ##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
 ##  $ Type              : Factor w/ 6 levels &quot;Compact&quot;,&quot;Large&quot;,..: 4 3 1 3 3 3 2 2 3 2 ...
@@ -595,7 +595,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ Weight            : int  2705 3560 3375 3405 3640 2880 3470 4105 3495 3620 ...
 ##  $ Origin            : Factor w/ 2 levels &quot;USA&quot;,&quot;non-USA&quot;: 2 2 2 2 2 1 1 1 1 1 ...
 ##  $ Make              : Factor w/ 93 levels &quot;Acura Integra&quot;,..: 1 2 4 3 5 6 7 9 8 10 ...</code></pre>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="직선의-연결과-추가.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fitting regression model</span></span>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb149-1"><a href="직선의-연결과-추가.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fitting regression model</span></span>
 <span id="cb149-2"><a href="직선의-연결과-추가.html#cb149-2" aria-hidden="true" tabindex="-1"></a>fit<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93)</span></code></pre></div>
 <p>다음으로, <code>Weight (무게)</code>와 <code>MPG.highway (고속도로 연비)</code>의 두 변수 산포도를 그리고, 위에서 만든 선형 회귀선을 추가해보겠습니다.</p>
 <p>플롯에 선을 추가하는 데에는 세 가지 방법이 있습니다.</p>
@@ -605,7 +605,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>abline(a = coef[1], b = coef[2])</code>를 사용하는 방법 등입니다.</li>
 </ol>
 <p>참고로, 이렇게 추가되는 선에 대하여 <strong>그래프 모수(parameters)</strong>로서 <strong>색깔 지정</strong>은 <code>col</code>, <strong>선 유형</strong> 지정은 <code>lty</code>, 선 두께 지정은 <code>lwd</code> 를 사용하면 됩니다.</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="직선의-연결과-추가.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb150-1"><a href="직선의-연결과-추가.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb150-2"><a href="직선의-연결과-추가.html#cb150-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 현재의 플롯에 선을 추가하는 방법입니다.</span></span>
 <span id="cb150-3"><a href="직선의-연결과-추가.html#cb150-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb150-4"><a href="직선의-연결과-추가.html#cb150-4" aria-hidden="true" tabindex="-1"></a><span class="co"># (1) lines() 함수의 이용</span></span>
@@ -618,7 +618,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Figure 6.7: 선의 추가 : 낮은 수준의 함수 lines(), abline() 함수의 사용
 </p>
 </div>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="직선의-연결과-추가.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (2) abline(reg = regression_model) 함수의 이용</span></span>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb151-1"><a href="직선의-연결과-추가.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (2) abline(reg = regression_model) 함수의 이용</span></span>
 <span id="cb151-2"><a href="직선의-연결과-추가.html#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(Cars93, <span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight)) </span>
 <span id="cb151-3"><a href="직선의-연결과-추가.html#cb151-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">reg =</span> fit<span class="fl">.1</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">3</span>) </span>
 <span id="cb151-4"><a href="직선의-연결과-추가.html#cb151-4" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;회귀선의 추가 : abline(reg = )&quot;</span>)</span></code></pre></div>
@@ -628,7 +628,7 @@ Figure 6.7: 선의 추가 : 낮은 수준의 함수 lines(), abline() 함수의 
 Figure 6.8: 선의 추가 : 낮은 수준의 함수 lines(), abline() 함수의 사용
 </p>
 </div>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="직선의-연결과-추가.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (3) abline(a = fit.1$coef[1], b = fit.1$coef[2]) 함수의 이용</span></span>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb152-1"><a href="직선의-연결과-추가.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (3) abline(a = fit.1$coef[1], b = fit.1$coef[2]) 함수의 이용</span></span>
 <span id="cb152-2"><a href="직선의-연결과-추가.html#cb152-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(Cars93, <span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight)) </span>
 <span id="cb152-3"><a href="직선의-연결과-추가.html#cb152-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a =</span> fit<span class="fl">.1</span><span class="sc">$</span>coef[<span class="dv">1</span>], <span class="at">b =</span> fit<span class="fl">.1</span><span class="sc">$</span>coef[<span class="dv">2</span>], <span class="at">col =</span> <span class="st">&quot;black&quot;</span>, <span class="at">lwd =</span> <span class="dv">3</span>) </span>
 <span id="cb152-4"><a href="직선의-연결과-추가.html#cb152-4" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;회귀선의 추가 : abline(a = coef[1], b = coef[2])&quot;</span>)</span></code></pre></div>
@@ -638,29 +638,29 @@ Figure 6.8: 선의 추가 : 낮은 수준의 함수 lines(), abline() 함수의 
 Figure 6.9: 선의 추가 : 낮은 수준의 함수 lines(), abline() 함수의 사용
 </p>
 </div>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="직선의-연결과-추가.html#cb153-1" aria-hidden="true" tabindex="-1"></a>fit<span class="fl">.1</span><span class="sc">$</span>coef                <span class="co"># 회귀 모형의 계수(기울기와 절편)입니다.</span></span></code></pre></div>
-<pre><code>## (Intercept)      Weight 
+<div class="sourceCode" id="cb153"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb153-1"><a href="직선의-연결과-추가.html#cb153-1" aria-hidden="true" tabindex="-1"></a>fit<span class="fl">.1</span><span class="sc">$</span>coef                <span class="co"># 회귀 모형의 계수(기울기와 절편)입니다.</span></span></code></pre></div>
+<pre class="bg-warning"><code>## (Intercept)      Weight 
 ##     51.6014     -0.0073</code></pre>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="직선의-연결과-추가.html#cb155-1" aria-hidden="true" tabindex="-1"></a>fit<span class="fl">.1</span><span class="sc">$</span>coef[<span class="dv">1</span>]             <span class="co"># 절편입니다.</span></span></code></pre></div>
-<pre><code>## (Intercept) 
+<div class="sourceCode" id="cb155"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb155-1"><a href="직선의-연결과-추가.html#cb155-1" aria-hidden="true" tabindex="-1"></a>fit<span class="fl">.1</span><span class="sc">$</span>coef[<span class="dv">1</span>]             <span class="co"># 절편입니다.</span></span></code></pre></div>
+<pre class="bg-warning"><code>## (Intercept) 
 ##          52</code></pre>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="직선의-연결과-추가.html#cb157-1" aria-hidden="true" tabindex="-1"></a>fit<span class="fl">.1</span><span class="sc">$</span>coef[<span class="dv">2</span>]             <span class="co"># 기울기입니다.</span></span></code></pre></div>
-<pre><code>##  Weight 
+<div class="sourceCode" id="cb157"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb157-1"><a href="직선의-연결과-추가.html#cb157-1" aria-hidden="true" tabindex="-1"></a>fit<span class="fl">.1</span><span class="sc">$</span>coef[<span class="dv">2</span>]             <span class="co"># 기울기입니다.</span></span></code></pre></div>
+<pre class="bg-warning"><code>##  Weight 
 ## -0.0073</code></pre>
 <p>이번에는 <code>loess.smooth()</code> 함수로 <strong>비모수 회귀곡선</strong>을 적합시키고, <code>lines()</code> 함수로 <strong>평탄화된 회귀선(smoothed regression line)</strong>을 현재 그래프에 추가해보는 방법을 알아보겠습니다.</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="직선의-연결과-추가.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb159-1"><a href="직선의-연결과-추가.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb159-2"><a href="직선의-연결과-추가.html#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 현재의 플롯에 평탄화된 회귀선을 추가합니다.: lines(), loess.smooth() </span></span>
 <span id="cb159-3"><a href="직선의-연결과-추가.html#cb159-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb159-4"><a href="직선의-연결과-추가.html#cb159-4" aria-hidden="true" tabindex="-1"></a><span class="co"># (1) 비모수 회귀선 적합화</span></span>
 <span id="cb159-5"><a href="직선의-연결과-추가.html#cb159-5" aria-hidden="true" tabindex="-1"></a>fit<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">loess.smooth</span>(<span class="at">x =</span> Cars93<span class="sc">$</span>Weight, <span class="at">y =</span> Cars93<span class="sc">$</span>MPG.highway) </span>
 <span id="cb159-6"><a href="직선의-연결과-추가.html#cb159-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(fit<span class="fl">.2</span>) </span></code></pre></div>
-<pre><code>## [1] &quot;x&quot; &quot;y&quot;</code></pre>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="직선의-연결과-추가.html#cb161-1" aria-hidden="true" tabindex="-1"></a>fit<span class="fl">.2</span><span class="sc">$</span>x </span></code></pre></div>
-<pre><code>##  [1] 1695 1744 1793 1843 1892 1941 1990 2039 2088 2138 2187 2236 2285 2334 2384
+<pre class="bg-warning"><code>## [1] &quot;x&quot; &quot;y&quot;</code></pre>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb161-1"><a href="직선의-연결과-추가.html#cb161-1" aria-hidden="true" tabindex="-1"></a>fit<span class="fl">.2</span><span class="sc">$</span>x </span></code></pre></div>
+<pre class="bg-warning"><code>##  [1] 1695 1744 1793 1843 1892 1941 1990 2039 2088 2138 2187 2236 2285 2334 2384
 ## [16] 2433 2482 2531 2580 2629 2679 2728 2777 2826 2875 2925 2974 3023 3072 3121
 ## [31] 3171 3220 3269 3318 3367 3416 3466 3515 3564 3613 3662 3712 3761 3810 3859
 ## [46] 3908 3957 4007 4056 4105</code></pre>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="직선의-연결과-추가.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (2) 평탄화된 회귄서의 추가</span></span>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb163-1"><a href="직선의-연결과-추가.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (2) 평탄화된 회귄서의 추가</span></span>
 <span id="cb163-2"><a href="직선의-연결과-추가.html#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(Cars93, <span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight)) </span>
 <span id="cb163-3"><a href="직선의-연결과-추가.html#cb163-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(fit<span class="fl">.2</span><span class="sc">$</span>x, fit<span class="fl">.2</span><span class="sc">$</span>y, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">3</span>) </span>
 <span id="cb163-4"><a href="직선의-연결과-추가.html#cb163-4" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;평판화된 회귀선의 추가: lines(), loess.smooth()&quot;</span>)</span></code></pre></div>
@@ -671,7 +671,7 @@ Figure 6.10: 선형 회귀선의 추가 : 낮은 수준의 함수 lines(), ablin
 </p>
 </div>
 <p><code>abline()</code>함수를 이용하여 플롯에 <strong>수평선과 수직선을 추가</strong>할 수 있습니다.</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="직선의-연결과-추가.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb164-1"><a href="직선의-연결과-추가.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb164-2"><a href="직선의-연결과-추가.html#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 수평선과 수직선을 추가하기 : abline() </span></span>
 <span id="cb164-3"><a href="직선의-연결과-추가.html#cb164-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb164-4"><a href="직선의-연결과-추가.html#cb164-4" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(Cars93, <span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight)) </span>

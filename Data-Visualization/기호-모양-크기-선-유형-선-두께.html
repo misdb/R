@@ -24,7 +24,7 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2021-03-01" />
+<meta name="date" content="2021-03-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -500,7 +500,7 @@ Figure 5.8: 기호 모양
 </p>
 </div>
 <p><code>MASS</code> 패키지 내 <code>Cars93</code> 데이터프레임의 <code>차 무게(Weight)</code>와 <code>고속도로연비(MPG.highway)</code> 변수를 가지고 산포도 그래프를 아래와 같이 그려보았습니다. <code>pch=1</code> ~ <code>pch=6</code> 까지 6개만 예로 들어보았습니다.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="기호-모양-크기-선-유형-선-두께.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="do">## symbol and character of plotting : pch= </span></span>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb94-1"><a href="기호-모양-크기-선-유형-선-두께.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="do">## symbol and character of plotting : pch= </span></span>
 <span id="cb94-2"><a href="기호-모양-크기-선-유형-선-두께.html#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
 <span id="cb94-3"><a href="기호-모양-크기-선-유형-선-두께.html#cb94-3" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb94-4"><a href="기호-모양-크기-선-유형-선-두께.html#cb94-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>)) </span>
@@ -518,13 +518,13 @@ Figure 5.8: 기호 모양
 Figure 5.9: 그래프 모수의 설정 : 기호 모양 : pch
 </p>
 </div>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="기호-모양-크기-선-유형-선-두께.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb95-1"><a href="기호-모양-크기-선-유형-선-두께.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
 <p><a href="기호-모양-크기-선-유형-선-두께.html#기호-모양-크기-선-유형-선-두께">Go Top</a></p>
 </div>
 <div id="기호-직접-입력" class="section level3" number="5.2.2">
 <h3><span class="header-section-number">5.2.2</span> 기호 직접 입력</h3>
 <p><code>pch = 1</code> 처럼 숫자를 입력하는 방법 말고도 <code>pch = '$'</code>, <code>pch = '%'</code>, <code>pch = '*'</code>처럼 기호를 직접 <code>pch</code> 다음에 직접 입력해도 됩니다.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="기호-모양-크기-선-유형-선-두께.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="do">## specifying character directly </span></span>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb96-1"><a href="기호-모양-크기-선-유형-선-두께.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="do">## specifying character directly </span></span>
 <span id="cb96-2"><a href="기호-모양-크기-선-유형-선-두께.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
 <span id="cb96-3"><a href="기호-모양-크기-선-유형-선-두께.html#cb96-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb96-4"><a href="기호-모양-크기-선-유형-선-두께.html#cb96-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93, <span class="at">pch =</span> <span class="st">&#39;$&#39;</span>, <span class="at">main =</span> <span class="st">&quot;pch = &#39;$&#39; &quot;</span>) </span>
@@ -541,7 +541,7 @@ Figure 5.10: 그래프 모수의 설정 : 기호 모양 : 직접 지정
 <div id="기호-크기" class="section level3" number="5.2.3">
 <h3><span class="header-section-number">5.2.3</span> 기호 크기</h3>
 <p><code>cex</code>는 기호의 크기를 지정할 때 사용합니다. <code>cex=1</code> 이 디폴트 크기이며, <code>cex</code> 다음에 입력하는 숫자는 디폴트 대비 상대적인 크기를 나타냅니다.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="기호-모양-크기-선-유형-선-두께.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="do">## symbol size : cex </span></span>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb97-1"><a href="기호-모양-크기-선-유형-선-두께.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="do">## symbol size : cex </span></span>
 <span id="cb97-2"><a href="기호-모양-크기-선-유형-선-두께.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)) </span>
 <span id="cb97-3"><a href="기호-모양-크기-선-유형-선-두께.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plot display by 2 row and 3 column </span></span>
 <span id="cb97-4"><a href="기호-모양-크기-선-유형-선-두께.html#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> <span class="fl">0.5</span>, <span class="at">main =</span> <span class="st">&quot;cex = 0.5&quot;</span>) </span>
@@ -567,7 +567,7 @@ Figure 5.11: 그래프 모수의 설정 : 기호 크기 : cex
 Figure 5.12: 선 유형
 </p>
 </div>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="기호-모양-크기-선-유형-선-두께.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="do">## line types : lty </span></span>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb98-1"><a href="기호-모양-크기-선-유형-선-두께.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="do">## line types : lty </span></span>
 <span id="cb98-2"><a href="기호-모양-크기-선-유형-선-두께.html#cb98-2" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb98-3"><a href="기호-모양-크기-선-유형-선-두께.html#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ordering by Weight </span></span>
 <span id="cb98-4"><a href="기호-모양-크기-선-유형-선-두께.html#cb98-4" aria-hidden="true" tabindex="-1"></a>Cars93_order <span class="ot">&lt;-</span> Cars93[<span class="fu">order</span>(Cars93<span class="sc">$</span>Weight),] </span>
@@ -591,7 +591,7 @@ Figure 5.13: 그래프 모수의 설정 : 선 유형 : lty
 <div id="선-두께" class="section level3" number="5.2.5">
 <h3><span class="header-section-number">5.2.5</span> 선 두께</h3>
 <p>선 두께를 조절하는 그래프 모수는 <code>lwd</code> 입니다. <code>lwd = 1</code> 이 디폴트 값이며, 이 숫자를 기준으로 숫자만큼 선 두께가 배수가 됩니다. 아래에 <code>lwd = 0.5, 1, 2, 3, 4, 5</code> 별로 선 두께가 어떻게 변화하는지 예를 들어보았습니다. 참고로, <code>plot(x, y, dataset, **type = "l"**)</code> 로 하면 선 그래프 (line plot)를 그릴 수 있습니다.</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="기호-모양-크기-선-유형-선-두께.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="do">## line width : lwd </span></span>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb99-1"><a href="기호-모양-크기-선-유형-선-두께.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="do">## line width : lwd </span></span>
 <span id="cb99-2"><a href="기호-모양-크기-선-유형-선-두께.html#cb99-2" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb99-3"><a href="기호-모양-크기-선-유형-선-두께.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ordering by Weight </span></span>
 <span id="cb99-4"><a href="기호-모양-크기-선-유형-선-두께.html#cb99-4" aria-hidden="true" tabindex="-1"></a>Cars93_order <span class="ot">&lt;-</span> Cars93[<span class="fu">order</span>(Cars93<span class="sc">$</span>Weight),] </span>

@@ -24,7 +24,7 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2021-03-01" />
+<meta name="date" content="2021-03-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -494,7 +494,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
        ylab = &quot;y axis label&quot;)</code></pre>
 <p>높은 수준의 그래프 함수, 즉 <code>hist()</code>, <code>boxplot()</code>, <code>barplot()</code>, <code>plot()</code> 등의 함수 안에서도 주 제목, 부 제목, <code>X</code>축 레이블, Y축 레이블을 직접 지정할 수도 있습니다.</p>
 <p>다음의 예는 높은 수준의 그래프 함수로 이를 표시한 예입니다.</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="제목과-xy축-레이블-추가하기.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="do">##---------------------------------------------- </span></span>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb134-1"><a href="제목과-xy축-레이블-추가하기.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="do">##---------------------------------------------- </span></span>
 <span id="cb134-2"><a href="제목과-xy축-레이블-추가하기.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 제목, 부제목, X축과 Y축의 레이블 추가하기</span></span>
 <span id="cb134-3"><a href="제목과-xy축-레이블-추가하기.html#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="do">##---------------------------------------------- </span></span>
 <span id="cb134-4"><a href="제목과-xy축-레이블-추가하기.html#cb134-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
@@ -516,7 +516,7 @@ Figure 6.2: 제목과 XY축 레이블 추가
 <p>위의 그래프와 똑같은 그래프를 낮은 수준의 그래프 함수를 사용해서 그려보겠습니다.</p>
 <p>먼저 고급 수준의 함수 <code>plot()</code> 함수를 이용하여 플롯을 합니다. <code>plot()</code> 함수의 인수로 “<code>ann = FALSE</code>” 옵션을 추가해서 <strong>기본 플롯만 그립니다</strong>.</p>
 <p>그런 다음, 위의 기본 플롯에 낮은 수준의 그래프 함수(Low level graphic function) <code>title()</code> 함수를 사용해서 제목, 부제목, x 레이블, 그리고 y 레이블 등의 <strong>부가정보를 추가</strong>해 보겠습니다.</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="제목과-xy축-레이블-추가하기.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb135-1"><a href="제목과-xy축-레이블-추가하기.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb135-2"><a href="제목과-xy축-레이블-추가하기.html#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 방법 (2) : 낮은 수준의 함수 title() 함수의 사용 예</span></span>
 <span id="cb135-3"><a href="제목과-xy축-레이블-추가하기.html#cb135-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) 고급 수준의 함수 plot() 함수를 이용하여 기본 플롯을 작성합니다.</span></span>
 <span id="cb135-4"><a href="제목과-xy축-레이블-추가하기.html#cb135-4" aria-hidden="true" tabindex="-1"></a><span class="co"># X와 Y 레이블의 삭제 : ann = FALSE </span></span>
@@ -536,7 +536,7 @@ Figure 6.3: 제목과 XY축 레이블 추가 : 낮은 수준의 함수 title() �
 <p>높은 수준의 그래프 함수에서도 주 제목, 부 제목, XY축 Label 등을 설정할 수 있는데 왜 굳이 낮은 수준의 그래프 함수 <code>title()</code> 을 가지고 추가 정보를 입력하는지 의아할 수도 있겠습니다.</p>
 <p><strong>높은 수준의 그래프 함수 중에 부가정보를 입력할 수 없는 그래프 함수도 있으며</strong>, R의 장점 중에 하나가 <strong>대화형으로 그래프의 부가 정보를</strong> 추가하는 것을 직접 확인할 수 있습니다. 따라서 매우 <strong>직관적으로 탐색적 데이터 분석을 할 수 있다</strong>는 점입니다.</p>
 <p>참고로, 지난번 포스팅에서 소개한 <strong>그래프 모수 (graphics parameters)</strong> 중에서 기호의 크기를 설정하는 <strong>“<code>cex.main =</code>,” “<code>cex.sub =</code>,” “<code>cex.lab =</code>”</strong> 옵션을 사용해서 주 제목, 부 제목, XY축 레이블의 크기를 변경해보겠습니다.</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="제목과-xy축-레이블-추가하기.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb136-1"><a href="제목과-xy축-레이블-추가하기.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb136-2"><a href="제목과-xy축-레이블-추가하기.html#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 제목, 부제목, xy 레이블의 글자 크기를 수정하기</span></span>
 <span id="cb136-3"><a href="제목과-xy축-레이블-추가하기.html#cb136-3" aria-hidden="true" tabindex="-1"></a><span class="co"># X와 Y 레이블의 삭제 : ann = FALSE </span></span>
 <span id="cb136-4"><a href="제목과-xy축-레이블-추가하기.html#cb136-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">ann =</span> <span class="cn">FALSE</span>)</span>

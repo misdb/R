@@ -24,7 +24,7 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2021-03-01" />
+<meta name="date" content="2021-03-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -506,14 +506,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>R에 <code>base</code>패키지인 datasets 패키지에 ’<code>anscombe</code>’라는 데이터 프레임이 기본 탑재되어 있는 데이터 세트이어서 쉽게 불러다가 예시를 들어보겠습니다. <code>str()</code>함수로 데이터 구조를 보니 8개 변수에 11개 관측치로 구성되어 있는 데이터 프레임이고, <code>x1</code>, <code>x2</code>, <code>x3</code>, <code>x4</code>, <code>y1</code>, <code>y2</code>, <code>y3</code>, <code>y4</code> 모두 <em>숫자형(numeric) 변수</em>들이군요.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="그래프-분석의-예.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Anscombe&#39;s Quartet of ‘Identical’ Simple Linear Regressions </span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb1-1"><a href="그래프-분석의-예.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Anscombe&#39;s Quartet of ‘Identical’ Simple Linear Regressions </span></span>
 <span id="cb1-2"><a href="그래프-분석의-예.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Four x-y datasets which have the same traditional statistical properties </span></span>
 <span id="cb1-3"><a href="그래프-분석의-예.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (mean, variance, correlation, regression line, etc.), </span></span>
 <span id="cb1-4"><a href="그래프-분석의-예.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># yet are quite different. </span></span>
 <span id="cb1-5"><a href="그래프-분석의-예.html#cb1-5" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb1-6"><a href="그래프-분석의-예.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 구조 </span></span>
 <span id="cb1-7"><a href="그래프-분석의-예.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(anscombe)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    11 obs. of  8 variables:
+<pre class="bg-warning"><code>## &#39;data.frame&#39;:    11 obs. of  8 variables:
 ##  $ x1: num  10 8 13 9 11 14 6 4 12 7 ...
 ##  $ x2: num  10 8 13 9 11 14 6 4 12 7 ...
 ##  $ x3: num  10 8 13 9 11 14 6 4 12 7 ...
@@ -525,63 +525,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>관측치가 11개 밖에 안되므로 모두 불러와 보면 아래와 같습니다. 이처럼 <em>숫자만 봐서는 데이터 분포, 특성, 변수간 관계가 어떠한 지 한눈에 안들어오고 이해가 잘 안되지요?</em></p>
 <pre><code># 데이터 View
 View(anscombe)</code></pre>
-<div id="htmlwidget-6fa50ab4f05ed05f8845" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6fa50ab4f05ed05f8845">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11"],[10,8,13,9,11,14,6,4,12,7,5],[10,8,13,9,11,14,6,4,12,7,5],[10,8,13,9,11,14,6,4,12,7,5],[8,8,8,8,8,8,8,19,8,8,8],[8.04,6.95,7.58,8.81,8.33,9.96,7.24,4.26,10.84,4.82,5.68],[9.14,8.14,8.74,8.77,9.26,8.1,6.13,3.1,9.13,7.26,4.74],[7.46,6.77,12.74,7.11,7.81,8.84,6.08,5.39,8.15,6.42,5.73],[6.58,5.76,7.71,8.84,8.47,7.04,5.25,12.5,5.56,7.91,6.89]],"container":"<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>x1<\/th>\n      <th>x2<\/th>\n      <th>x3<\/th>\n      <th>x4<\/th>\n      <th>y1<\/th>\n      <th>y2<\/th>\n      <th>y3<\/th>\n      <th>y4<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-865a9431241cabf7b586" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-865a9431241cabf7b586">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11"],[10,8,13,9,11,14,6,4,12,7,5],[10,8,13,9,11,14,6,4,12,7,5],[10,8,13,9,11,14,6,4,12,7,5],[8,8,8,8,8,8,8,19,8,8,8],[8.04,6.95,7.58,8.81,8.33,9.96,7.24,4.26,10.84,4.82,5.68],[9.14,8.14,8.74,8.77,9.26,8.1,6.13,3.1,9.13,7.26,4.74],[7.46,6.77,12.74,7.11,7.81,8.84,6.08,5.39,8.15,6.42,5.73],[6.58,5.76,7.71,8.84,8.47,7.04,5.25,12.5,5.56,7.91,6.89]],"container":"<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>x1<\/th>\n      <th>x2<\/th>\n      <th>x3<\/th>\n      <th>x4<\/th>\n      <th>y1<\/th>\n      <th>y2<\/th>\n      <th>y3<\/th>\n      <th>y4<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <p>이럴 때 보통 기술 통계치을 보곤 하지요. <strong>중심화 경향</strong>을 나타내는 <em>평균</em>과 <strong>퍼짐 정도</strong>를 나타내는 <em>표준편차</em>를 살펴보겠습니다. <code>x1</code>~<code>x4</code> 의 평균과 표준편차가 같고, <code>y1</code>~<code>y4</code>의 평균과 표준편차가 같게 나왔습니다.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="그래프-분석의-예.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 변수별 평균, 표준편차 </span></span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb4-1"><a href="그래프-분석의-예.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 변수별 평균, 표준편차 </span></span>
 <span id="cb4-2"><a href="그래프-분석의-예.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">2</span>)                               <span class="co"># 소수점 자리 설정 </span></span>
 <span id="cb4-3"><a href="그래프-분석의-예.html#cb4-3" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb4-4"><a href="그래프-분석의-예.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(anscombe, mean)</span></code></pre></div>
-<pre><code>##  x1  x2  x3  x4  y1  y2  y3  y4 
+<pre class="bg-warning"><code>##  x1  x2  x3  x4  y1  y2  y3  y4 
 ## 9.0 9.0 9.0 9.0 7.5 7.5 7.5 7.5</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="그래프-분석의-예.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(anscombe, sd)</span></code></pre></div>
-<pre><code>##  x1  x2  x3  x4  y1  y2  y3  y4 
+<div class="sourceCode" id="cb6"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb6-1"><a href="그래프-분석의-예.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(anscombe, sd)</span></code></pre></div>
+<pre class="bg-warning"><code>##  x1  x2  x3  x4  y1  y2  y3  y4 
 ## 3.3 3.3 3.3 3.3 2.0 2.0 2.0 2.0</code></pre>
 <p>이번에는 <code>(x1, y1)</code>, <code>(x2, y2)</code>, <code>(x3, y3)</code>, <code>(x4, y4)</code>변수들 간의 <strong>상관계수</strong>를 살펴보겠습니다. 4개 집단 모두 상관계수가 <code>0.82</code>로 동일하게 나왔습니다.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="그래프-분석의-예.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x, y 상관계수 (x, y correlation) </span></span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb8-1"><a href="그래프-분석의-예.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x, y 상관계수 (x, y correlation) </span></span>
 <span id="cb8-2"><a href="그래프-분석의-예.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(anscombe) </span>
 <span id="cb8-3"><a href="그래프-분석의-예.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x1, y1) </span></code></pre></div>
-<pre><code>## [1] 0.82</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="그래프-분석의-예.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x2, y2) </span></code></pre></div>
-<pre><code>## [1] 0.82</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="그래프-분석의-예.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x3, y3) </span></code></pre></div>
-<pre><code>## [1] 0.82</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="그래프-분석의-예.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x4, y4) </span></code></pre></div>
-<pre><code>## [1] 0.82</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="그래프-분석의-예.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(anscombe) </span></code></pre></div>
+<pre class="bg-warning"><code>## [1] 0.82</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb10-1"><a href="그래프-분석의-예.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x2, y2) </span></code></pre></div>
+<pre class="bg-warning"><code>## [1] 0.82</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb12-1"><a href="그래프-분석의-예.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x3, y3) </span></code></pre></div>
+<pre class="bg-warning"><code>## [1] 0.82</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb14-1"><a href="그래프-분석의-예.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x4, y4) </span></code></pre></div>
+<pre class="bg-warning"><code>## [1] 0.82</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb16-1"><a href="그래프-분석의-예.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(anscombe) </span></code></pre></div>
 <p>다음으로 4개의 각 집단별로 종속변수 <code>y</code>, 독립변수 <code>x</code> 로 해서 <code>lm()</code> 함수를 이용하여 <strong>단순 회귀모형</strong>을 적합시켜보겠습니다.</p>
 <p>결과는 4개 집단 모두 <code>y = 3.0 + 0.5*x</code> 로 나왔습니다. (<code>y</code>절편 3.0, 변수 <code>x</code>의 계수 0.5)</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="그래프-분석의-예.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple Linear Regrassions by 4 groups `</span></span>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb17-1"><a href="그래프-분석의-예.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple Linear Regrassions by 4 groups `</span></span>
 <span id="cb17-2"><a href="그래프-분석의-예.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(anscombe)</span>
 <span id="cb17-3"><a href="그래프-분석의-예.html#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-4"><a href="그래프-분석의-예.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># The following objects are masked from anscombe (pos = 3):     </span></span>
 <span id="cb17-5"><a href="그래프-분석의-예.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># x1, x2, x3, x4, y1, y2, y3, y4 `</span></span>
 <span id="cb17-6"><a href="그래프-분석의-예.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y1 <span class="sc">~</span> x1)</span></code></pre></div>
-<pre><code>## 
+<pre class="bg-warning"><code>## 
 ## Call:
 ## lm(formula = y1 ~ x1)
 ## 
 ## Coefficients:
 ## (Intercept)           x1  
 ##         3.0          0.5</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="그래프-분석의-예.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y2 <span class="sc">~</span> x2)</span></code></pre></div>
-<pre><code>## 
+<div class="sourceCode" id="cb19"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb19-1"><a href="그래프-분석의-예.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y2 <span class="sc">~</span> x2)</span></code></pre></div>
+<pre class="bg-warning"><code>## 
 ## Call:
 ## lm(formula = y2 ~ x2)
 ## 
 ## Coefficients:
 ## (Intercept)           x2  
 ##         3.0          0.5</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="그래프-분석의-예.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y3 <span class="sc">~</span> x3)</span></code></pre></div>
-<pre><code>## 
+<div class="sourceCode" id="cb21"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb21-1"><a href="그래프-분석의-예.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y3 <span class="sc">~</span> x3)</span></code></pre></div>
+<pre class="bg-warning"><code>## 
 ## Call:
 ## lm(formula = y3 ~ x3)
 ## 
 ## Coefficients:
 ## (Intercept)           x3  
 ##         3.0          0.5</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="그래프-분석의-예.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y4 <span class="sc">~</span> x4)</span></code></pre></div>
-<pre><code>## 
+<div class="sourceCode" id="cb23"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb23-1"><a href="그래프-분석의-예.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y4 <span class="sc">~</span> x4)</span></code></pre></div>
+<pre class="bg-warning"><code>## 
 ## Call:
 ## lm(formula = y4 ~ x4)
 ## 
@@ -597,14 +597,14 @@ View(anscombe)</code></pre>
 <p><em>이쯤되면 4개 집단의 <code>x</code>, <code>y</code> 변수 데이트들이 동일한 모집단에서 랜덤하게 추출된 동일한 형태/분포/특성을 지닌 데이터라고 믿어도 되지않겠습니까?</em></p>
 <p>그런데, 그게 아닙니다.</p>
 <p>아래의 4개 그룹별 <code>x</code>변수, <code>y</code>변수 <strong>산포도</strong>를 살펴보시지요.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="그래프-분석의-예.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter Plot &amp; Simple Linear Regression Line </span></span>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb25-1"><a href="그래프-분석의-예.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter Plot &amp; Simple Linear Regression Line </span></span>
 <span id="cb25-2"><a href="그래프-분석의-예.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)) <span class="co"># 2 x 2 layout </span></span>
 <span id="cb25-3"><a href="그래프-분석의-예.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb25-4"><a href="그래프-분석의-예.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(anscombe) </span></code></pre></div>
 <pre><code>## The following objects are masked from anscombe (pos = 3):
 ## 
 ##     x1, x2, x3, x4, y1, y2, y3, y4</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="그래프-분석의-예.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The following objects are masked from anscombe (pos = 3):     x1, x2, x3, x4, y1, y2, y3, y4 </span></span>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb27-1"><a href="그래프-분석의-예.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The following objects are masked from anscombe (pos = 3):     x1, x2, x3, x4, y1, y2, y3, y4 </span></span>
 <span id="cb27-2"><a href="그래프-분석의-예.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x1, y1); <span class="fu">abline</span>(<span class="fu">lm</span>(y1<span class="sc">~</span>x1), <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>) </span>
 <span id="cb27-3"><a href="그래프-분석의-예.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x2, y2); <span class="fu">abline</span>(<span class="fu">lm</span>(y2<span class="sc">~</span>x2), <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>) </span>
 <span id="cb27-4"><a href="그래프-분석의-예.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x3, y3); <span class="fu">abline</span>(<span class="fu">lm</span>(y3<span class="sc">~</span>x3), <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>) </span>
@@ -615,7 +615,7 @@ View(anscombe)</code></pre>
 Figure 1.1: anscombe 데이터 세트의 산포도 비교
 </p>
 </div>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="그래프-분석의-예.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(anscombe)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb28-1"><a href="그래프-분석의-예.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(anscombe)</span></code></pre></div>
 <p><em>그래프를 그려서 눈으로 보니 4개 집단이 다르지요?</em> 통계치들은 이 4개의 집단이 같다고 말하고 있지만, 그래프는 이 4개 집단이 다르다고 말하고 있습니다. 이래서 서양 표현에 <strong>“One Look Is Worth A Thousand Words”</strong> 말이 있는 거지요.</p>
 </div>
             </section>

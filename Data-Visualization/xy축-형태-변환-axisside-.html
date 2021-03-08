@@ -24,7 +24,7 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2021-03-01" />
+<meta name="date" content="2021-03-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -562,7 +562,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">6.2.0.1</span> X축과 Y축의 제거</h4>
 <p>X축과 Y축을 변경하기 전에 먼저 “<strong><code>axes = FALSE</code></strong>” 옵션을 사용해서 <strong>X축과 Y축을 제거</strong>해야 합니다. <strong>X축</strong>만 선별적으로 제거하려면 <code>xaxt = "n"</code>, Y축만 선별적으로 제거하려면 <code>yaxt = "n"</code> 옵션을 사용하면 되겠습니다.</p>
 <p>아래에 각각의 예를 들어보았습니다.</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="xy축-형태-변환-axisside-.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb138-1"><a href="xy축-형태-변환-axisside-.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb138-2"><a href="xy축-형태-변환-axisside-.html#cb138-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb138-3"><a href="xy축-형태-변환-axisside-.html#cb138-3" aria-hidden="true" tabindex="-1"></a><span class="do">##--------------------------------------------- </span></span>
 <span id="cb138-4"><a href="xy축-형태-변환-axisside-.html#cb138-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 높은 수준의 함수 모수 : main, axes, xaxt, yaxt</span></span>
@@ -591,23 +591,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Figure 6.5: X축과 Y축의 제거 : 높은 수준의 함수 모수 이용
 </p>
 </div>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="xy축-형태-변환-axisside-.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 원래의 par 기본 값을 불러옵니다.</span></span>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb139-1"><a href="xy축-형태-변환-axisside-.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 원래의 par 기본 값을 불러옵니다.</span></span>
 <span id="cb139-2"><a href="xy축-형태-변환-axisside-.html#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
 </div>
 <div id="x축과-y축의-눈금-간격-변경" class="section level4" number="6.2.0.2">
 <h4><span class="header-section-number">6.2.0.2</span> X축과 Y축의 눈금 간격 변경</h4>
 <p><strong>X축과 Y축의 범위</strong>를 알아보기 위해 <code>summary()</code> 함수로 기술통계량을 알아보겠습니다.</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="xy축-형태-변환-axisside-.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb140-1"><a href="xy축-형태-변환-axisside-.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb140-2"><a href="xy축-형태-변환-axisside-.html#cb140-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb140-3"><a href="xy축-형태-변환-axisside-.html#cb140-3" aria-hidden="true" tabindex="-1"></a><span class="co"># x축과 y축의 통계 요약 정보를 확인합니다.</span></span>
 <span id="cb140-4"><a href="xy축-형태-변환-axisside-.html#cb140-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Cars93<span class="sc">$</span>Weight)                             <span class="co"># X 축</span></span></code></pre></div>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+<pre class="bg-warning"><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    1695    2620    3040    3073    3525    4105</code></pre>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="xy축-형태-변환-axisside-.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Cars93<span class="sc">$</span>MPG.highway)                        <span class="co"># Y 축</span></span></code></pre></div>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+<div class="sourceCode" id="cb142"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb142-1"><a href="xy축-형태-변환-axisside-.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Cars93<span class="sc">$</span>MPG.highway)                        <span class="co"># Y 축</span></span></code></pre></div>
+<pre class="bg-warning"><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##      20      26      28      29      31      50</code></pre>
 <p>X축으로 <code>Weight</code> (차의 무게)를, Y축으로는 <code>MPG.highway</code>(고속도로 연비)로 하는 산점도를 그렸을 때, <code>X</code>축은 1600~4200까지의 범위로 100씩 증가하는 눈금을, <code>Y</code>축은 18~52까지의 범위로 2씩 증가하는 눈금으로 그려보겠습니다.</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="xy축-형태-변환-axisside-.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="do">##--------------------------------------------- </span></span>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb144-1"><a href="xy축-형태-변환-axisside-.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="do">##--------------------------------------------- </span></span>
 <span id="cb144-2"><a href="xy축-형태-변환-axisside-.html#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 낮은 수준의 그래픽 함수 : axis(side, ...) </span></span>
 <span id="cb144-3"><a href="xy축-형태-변환-axisside-.html#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="do">##--------------------------------------------- </span></span>
 <span id="cb144-4"><a href="xy축-형태-변환-axisside-.html#cb144-4" aria-hidden="true" tabindex="-1"></a></span>

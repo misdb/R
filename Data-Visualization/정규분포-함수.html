@@ -24,7 +24,7 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2021-03-01" />
+<meta name="date" content="2021-03-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -488,7 +488,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">12.2</span> 정규분포 함수</h2>
 <div id="정규분포-확률밀도곡선-stat_functionfun-dnorm" class="section level3" number="12.2.1">
 <h3><span class="header-section-number">12.2.1</span> 정규분포 확률밀도곡선 : <code>stat_function(fun = dnorm)</code></h3>
-<div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb611-1"><a href="정규분포-함수.html#cb611-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 정규분포 : fun = dnorm</span></span>
+<div class="sourceCode" id="cb611"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb611-1"><a href="정규분포-함수.html#cb611-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 정규분포 : fun = dnorm</span></span>
 <span id="cb611-2"><a href="정규분포-함수.html#cb611-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span></span>
 <span id="cb611-3"><a href="정규분포-함수.html#cb611-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_function</span>(<span class="at">fun=</span>dnorm, <span class="at">colour=</span><span class="st">&quot;blue&quot;</span>, <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb611-4"><a href="정규분포-함수.html#cb611-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Normal Distribution&quot;</span>)</span></code></pre></div>
@@ -496,7 +496,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="정규분포의-특정-구간에만-색깔-넣기" class="section level3" number="12.2.2">
 <h3><span class="header-section-number">12.2.2</span> 정규분포의 특정 구간에만 색깔 넣기</h3>
-<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="정규분포-함수.html#cb612-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 함수 특정 구간에 색깔 넣기</span></span>
+<div class="sourceCode" id="cb612"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb612-1"><a href="정규분포-함수.html#cb612-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 함수 특정 구간에 색깔 넣기</span></span>
 <span id="cb612-2"><a href="정규분포-함수.html#cb612-2" aria-hidden="true" tabindex="-1"></a>dnorm_range <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
 <span id="cb612-3"><a href="정규분포-함수.html#cb612-3" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x) </span>
 <span id="cb612-4"><a href="정규분포-함수.html#cb612-4" aria-hidden="true" tabindex="-1"></a>    y[x <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">|</span> x <span class="sc">&gt;</span> <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span>  <span class="co"># 이 범위에는 색깔 없음</span></span>
@@ -511,7 +511,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="누적정규분포-cummulative-normal-distribution-stat_functionfun-pnorm" class="section level3" number="12.2.3">
 <h3><span class="header-section-number">12.2.3</span> 누적정규분포 (Cummulative Normal Distribution) : stat_function(fun = pnorm)</h3>
-<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb613-1"><a href="정규분포-함수.html#cb613-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 누적정규분포 : fun = pnorm</span></span>
+<div class="sourceCode" id="cb613"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb613-1"><a href="정규분포-함수.html#cb613-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 누적정규분포 : fun = pnorm</span></span>
 <span id="cb613-2"><a href="정규분포-함수.html#cb613-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span></span>
 <span id="cb613-3"><a href="정규분포-함수.html#cb613-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_function</span>(<span class="at">fun=</span>pnorm, <span class="at">colour=</span><span class="st">&quot;black&quot;</span>, <span class="at">size=</span><span class="fl">1.5</span>) <span class="sc">+</span></span>
 <span id="cb613-4"><a href="정규분포-함수.html#cb613-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Cumulative Normal Distribution of x~N(0,1)&quot;</span>)</span></code></pre></div>
@@ -519,7 +519,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="정규분포-평균과-분산-지정" class="section level3" number="12.2.4">
 <h3><span class="header-section-number">12.2.4</span> 정규분포 : 평균과 분산 지정</h3>
-<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="정규분포-함수.html#cb614-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 정규분포: 평균과 분산 지정</span></span>
+<div class="sourceCode" id="cb614"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb614-1"><a href="정규분포-함수.html#cb614-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 정규분포: 평균과 분산 지정</span></span>
 <span id="cb614-2"><a href="정규분포-함수.html#cb614-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span></span>
 <span id="cb614-3"><a href="정규분포-함수.html#cb614-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_function</span>(<span class="at">fun=</span>dnorm, </span>
 <span id="cb614-4"><a href="정규분포-함수.html#cb614-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">args=</span><span class="fu">list</span>(<span class="at">mean=</span><span class="dv">2</span>, <span class="at">sd=</span><span class="dv">1</span>), <span class="at">colour=</span><span class="st">&quot;black&quot;</span>, <span class="at">size=</span><span class="fl">1.5</span>) <span class="sc">+</span></span>

@@ -24,7 +24,7 @@
 <meta name="author" content="Dae Ho Kim" />
 
 
-<meta name="date" content="2021-03-01" />
+<meta name="date" content="2021-03-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -487,7 +487,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="picker-control" class="section level2" number="13.4">
 <h2><span class="header-section-number">13.4</span> Picker Control</h2>
 <p>히스토그램에 대상 변수를 선택할 수 있는 Picker Control 예제입니다.</p>
-<div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb630-1"><a href="picker-control.html#cb630-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Picker Control</span></span>
+<div class="sourceCode" id="cb630"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb630-1"><a href="picker-control.html#cb630-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Picker Control</span></span>
 <span id="cb630-2"><a href="picker-control.html#cb630-2" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
 <span id="cb630-3"><a href="picker-control.html#cb630-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(Cars93[, continuous_variable], </span>
 <span id="cb630-4"><a href="picker-control.html#cb630-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> continuous_variable),</span>
@@ -495,7 +495,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb630-6"><a href="picker-control.html#cb630-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">continuous_variable =</span> <span class="fu">picker</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Price&quot;</span>))</span></code></pre></div>
 <pre><code>## Error in manipulate(hist(Cars93[, continuous_variable], freq = FALSE, : The manipulate package must be run from within RStudio</code></pre>
 <p>산포도의 x축, <code>무게(Weight)</code>과 y축, <code>고속도로연비(MPG.highway)</code>은 정해져있고, <code>차종(Type)</code>별로 산포도를 보고 싶을 때 <code>차종(Type)</code>을 왼쪽의 Picker Control 상자로 만들어서 바로 바로 차종별로 선택해 가면서 산포도를 보는 프로그램 예제입니다.</p>
-<div class="sourceCode" id="cb632"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb632-1"><a href="picker-control.html#cb632-1" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
+<div class="sourceCode" id="cb632"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb632-1"><a href="picker-control.html#cb632-1" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
 <span id="cb632-2"><a href="picker-control.html#cb632-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data=</span>Cars93[Cars93<span class="sc">$</span>Type <span class="sc">==</span> Type,]),</span>
 <span id="cb632-3"><a href="picker-control.html#cb632-3" aria-hidden="true" tabindex="-1"></a>   </span>
 <span id="cb632-4"><a href="picker-control.html#cb632-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">Type =</span> <span class="fu">picker</span>(<span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Van&quot;</span>))</span></code></pre></div>
