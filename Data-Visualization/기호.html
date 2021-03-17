@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>13.5 지수분포 (Exponential Distribution) : stat_function(fun = dexp) | Data Visualization with R</title>
+  <title>5.2 기호 | Data Visualization with R</title>
   <meta name="description" content="The output format for book is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="13.5 지수분포 (Exponential Distribution) : stat_function(fun = dexp) | Data Visualization with R" />
+  <meta property="og:title" content="5.2 기호 | Data Visualization with R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="13.5 지수분포 (Exponential Distribution) : stat_function(fun = dexp) | Data Visualization with R" />
+  <meta name="twitter:title" content="5.2 기호 | Data Visualization with R" />
   
   <meta name="twitter:description" content="The output format for book is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="카이제곱분포-확률밀도곡선-stat-functionfun-dchisq.html"/>
-<link rel="next" href="f-분포-f-distribution-stat-functionfun-df.html"/>
+<link rel="prev" href="그래프-모수를-설정하는-2가지-방법.html"/>
+<link rel="next" href="선.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -489,21 +489,88 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="지수분포-exponential-distribution-stat_functionfun-dexp" class="section level2" number="13.5">
-<h2><span class="header-section-number">13.5</span> 지수분포 (Exponential Distribution) : <code>stat_function(fun = dexp)</code></h2>
-<div class="sourceCode" id="cb617"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb617-1"><a href="지수분포-exponential-distribution-stat-functionfun-dexp.html#cb617-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 지수분포 : fun = dexp</span></span>
-<span id="cb617-2"><a href="지수분포-exponential-distribution-stat-functionfun-dexp.html#cb617-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span></span>
-<span id="cb617-3"><a href="지수분포-exponential-distribution-stat-functionfun-dexp.html#cb617-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_function</span>(<span class="at">fun=</span>dexp, <span class="at">colour=</span><span class="st">&quot;brown&quot;</span>, <span class="at">size=</span><span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb617-4"><a href="지수분포-exponential-distribution-stat-functionfun-dexp.html#cb617-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Exponential Distribution&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-93-1.png" width="672" /></p>
+<div id="기호" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> 기호</h2>
+<p>지난번 절에서 R 그래프 모수 (Graphical Parameters)를 설정하는 2가지 방법<code>(par()</code>, arguments)에 대해서 소개하였습니다.</p>
+<p>이번 절에서는 기호와 관련한 설정에 대하여 하나씩 살펴 보겠습니다.</p>
+<p>그래프 모수가 70여 가지가 되므로 모두를 설명하기에는 무리가 있으며, 자주 사용하는 것들 위주로 선별해서 소개합니다.</p>
+<p><code>? par</code> 로 도움말을 찾아보시면 모든 그래프 모수에 대한 도움말을 검색할 수 있습니다.</p>
+<div id="기호-모양" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> 기호 모양</h3>
+<p>그래픽 모수 <code>pch</code> 를 사용해서 다양한 모양의 기호, 상징을 그릴 수 있습니다. 디폴트는 <code>pch=1</code> 로서 속이 빈 원 모양이며, 아래의 <code>pch</code> 그래픽 모수 숫자별 모양을 참고해서 원하는 모양의 숫자를 <code>pch = '숫자'</code> 로 입력하면 되겠습니다.</p>
+<div class="figure" style="text-align: center"><span id="fig:Graph-pch"></span>
+<img src="images/2652424F567E033A29.png" alt="기호 모양" width="100%" />
+<p class="caption">
+Figure 5.8: 기호 모양
+</p>
+</div>
+<p><code>MASS</code> 패키지 내 <code>Cars93</code> 데이터프레임의 <code>차 무게(Weight)</code>와 <code>고속도로연비(MPG.highway)</code> 변수를 가지고 산포도 그래프를 아래와 같이 그려보았습니다. <code>pch=1</code> ~ <code>pch=6</code> 까지 6개만 예로 들어보았습니다.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb94-1"><a href="기호.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="do">## symbol and character of plotting : pch= </span></span>
+<span id="cb94-2"><a href="기호.html#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
+<span id="cb94-3"><a href="기호.html#cb94-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb94-4"><a href="기호.html#cb94-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>)) </span>
+<span id="cb94-5"><a href="기호.html#cb94-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb94-6"><a href="기호.html#cb94-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb94-7"><a href="기호.html#cb94-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93, <span class="at">pch =</span> <span class="dv">1</span>, <span class="at">main =</span> <span class="st">&quot;pch = 1&quot;</span>) </span>
+<span id="cb94-8"><a href="기호.html#cb94-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93, <span class="at">pch =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;pch = 2&quot;</span>) </span>
+<span id="cb94-9"><a href="기호.html#cb94-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93, <span class="at">pch =</span> <span class="dv">3</span>, <span class="at">main =</span> <span class="st">&quot;pch = 3&quot;</span>) </span>
+<span id="cb94-10"><a href="기호.html#cb94-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93, <span class="at">pch =</span> <span class="dv">4</span>, <span class="at">main =</span> <span class="st">&quot;pch = 4&quot;</span>) </span>
+<span id="cb94-11"><a href="기호.html#cb94-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93, <span class="at">pch =</span> <span class="dv">5</span>, <span class="at">main =</span> <span class="st">&quot;pch = 5&quot;</span>) </span>
+<span id="cb94-12"><a href="기호.html#cb94-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93, <span class="at">pch =</span> <span class="dv">6</span>, <span class="at">main =</span> <span class="st">&quot;pch = 6&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-local-pch"></span>
+<img src="bookdown_files/figure-html/fig-local-pch-1.png" alt="그래프 모수의 설정 : 기호 모양 : pch" width="672" />
+<p class="caption">
+Figure 5.9: 그래프 모수의 설정 : 기호 모양 : pch
+</p>
+</div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb95-1"><a href="기호.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
+<p><a href="#기호-모양-크기-선-유형-선-두께">Go Top</a></p>
+</div>
+<div id="기호-직접-입력" class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> 기호 직접 입력</h3>
+<p><code>pch = 1</code> 처럼 숫자를 입력하는 방법 말고도 <code>pch = '$'</code>, <code>pch = '%'</code>, <code>pch = '*'</code>처럼 기호를 직접 <code>pch</code> 다음에 직접 입력해도 됩니다.</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb96-1"><a href="기호.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="do">## specifying character directly </span></span>
+<span id="cb96-2"><a href="기호.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb96-3"><a href="기호.html#cb96-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-4"><a href="기호.html#cb96-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93, <span class="at">pch =</span> <span class="st">&#39;$&#39;</span>, <span class="at">main =</span> <span class="st">&quot;pch = &#39;$&#39; &quot;</span>) </span>
+<span id="cb96-5"><a href="기호.html#cb96-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93, <span class="at">pch =</span> <span class="st">&#39;%&#39;</span>, <span class="at">main =</span> <span class="st">&quot;pch = &#39;%&#39; &quot;</span>) </span>
+<span id="cb96-6"><a href="기호.html#cb96-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93, <span class="at">pch =</span> <span class="st">&#39;*&#39;</span>, <span class="at">main =</span> <span class="st">&quot;pch = &#39;*&#39; &quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-local-pch-2"></span>
+<img src="bookdown_files/figure-html/fig-local-pch-2-1.png" alt="그래프 모수의 설정 : 기호 모양 : 직접 지정" width="672" />
+<p class="caption">
+Figure 5.10: 그래프 모수의 설정 : 기호 모양 : 직접 지정
+</p>
+</div>
+<p><a href="#기호-모양-크기-선-유형-선-두께">Go Top</a></p>
+</div>
+<div id="기호-크기" class="section level3" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> 기호 크기</h3>
+<p><code>cex</code>는 기호의 크기를 지정할 때 사용합니다. <code>cex=1</code> 이 디폴트 크기이며, <code>cex</code> 다음에 입력하는 숫자는 디폴트 대비 상대적인 크기를 나타냅니다.</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb97-1"><a href="기호.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="do">## symbol size : cex </span></span>
+<span id="cb97-2"><a href="기호.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)) </span>
+<span id="cb97-3"><a href="기호.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plot display by 2 row and 3 column </span></span>
+<span id="cb97-4"><a href="기호.html#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> <span class="fl">0.5</span>, <span class="at">main =</span> <span class="st">&quot;cex = 0.5&quot;</span>) </span>
+<span id="cb97-5"><a href="기호.html#cb97-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">main =</span> <span class="st">&quot;cex = 1 (default)&quot;</span>) </span>
+<span id="cb97-6"><a href="기호.html#cb97-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> <span class="fl">1.5</span>, <span class="at">main =</span> <span class="st">&quot;cex = 1.5&quot;</span>) </span>
+<span id="cb97-7"><a href="기호.html#cb97-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;cex = 2&quot;</span>) </span>
+<span id="cb97-8"><a href="기호.html#cb97-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> <span class="dv">3</span>, <span class="at">main =</span> <span class="st">&quot;cex = 3&quot;</span>) </span>
+<span id="cb97-9"><a href="기호.html#cb97-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> <span class="dv">4</span>, <span class="at">main =</span> <span class="st">&quot;cex = 4&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-local-cex"></span>
+<img src="bookdown_files/figure-html/fig-local-cex-1.png" alt="그래프 모수의 설정 : 기호 크기 : cex" width="672" />
+<p class="caption">
+Figure 5.11: 그래프 모수의 설정 : 기호 크기 : cex
+</p>
+</div>
+<p><a href="#기호-모양-크기-선-유형-선-두께">Go Top</a></p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="카이제곱분포-확률밀도곡선-stat-functionfun-dchisq.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="f-분포-f-distribution-stat-functionfun-df.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="그래프-모수를-설정하는-2가지-방법.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="선.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
