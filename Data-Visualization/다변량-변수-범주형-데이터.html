@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 높은 수준의 그래프 함수 | Data Visualization with R</title>
+  <title>10 다변량 변수 - 범주형 데이터 | Data Visualization with R</title>
   <meta name="description" content="The output format for book is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 높은 수준의 그래프 함수 | Data Visualization with R" />
+  <meta property="og:title" content="10 다변량 변수 - 범주형 데이터 | Data Visualization with R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 높은 수준의 그래프 함수 | Data Visualization with R" />
+  <meta name="twitter:title" content="10 다변량 변수 - 범주형 데이터 | Data Visualization with R" />
   
   <meta name="twitter:description" content="The output format for book is bookdown::gitbook." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="base-graphics의-주요-함수.html"/>
-<link rel="next" href="데이터-세트-cars93.html"/>
+<link rel="prev" href="파이-차트-1.html"/>
+<link rel="next" href="모자이크-그림.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -491,37 +491,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="높은-수준의-그래프-함수" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> 높은 수준의 그래프 함수</h1>
-<p><a href="그래프-모수.html#그래프-모수">그래프 모수</a>의 값들을 기본 값으로 하여 간단하게 그래프를 예로 들어보겠습니다.</p>
-<p>그런데, 그래프를 그리기 전에 먼저 그래프로 표현하고자 하는 <strong>변수의 갯수</strong>와 그 변수의 <strong>데이터 유형(Data Type)</strong>을 잘 확인해야 합니니다. 이러한 변수의 개수와 데이터 유형에 따라 사용할 수 있는 그래프의 형태가 달라질 수 있습니다 (그림 <a href="높은-수준의-그래프-함수.html#fig:graph-fn">4.1</a> 참고).</p>
+<div id="다변량-변수---범주형-데이터" class="section level1" number="10">
+<h1><span class="header-section-number">10</span> 다변량 변수 - 범주형 데이터</h1>
+<p>다변량 범주형 데이터의 시각화 방법으로는</p>
 <ul>
-<li><p>변수의 갯수</p>
-<ul>
-<li>1개 : 1변량</li>
-<li>2개 이상 : 다변량</li>
-</ul></li>
-<li><p>변수의 데이터 유형</p>
-<ul>
-<li>범주형(factor) : 명목 척도(Cannonical Scale)의 데이터를 담고 있는 변수인 경우. 예, 성별(<code>남</code>, <code>여</code>), 학년(<code>1학년</code>,<code>2학년</code>, <code>3학년</code>, <code>4학년</code>) 또는 서열 척도(Ordinal Scale)</li>
-<li>연속형(numeric) : 등간 척도(Interval Scale), 비율 척도(ratio scale) 등의 정수형, 실수형 변수</li>
-</ul></li>
+<li><a href="막대-그래프-1.html#막대-그래프-1">막대 그래프</a> (Bar Chart): geom_bar()</li>
+<li><strong><a href="모자이크-그림.html#모자이크-그림">모자이크 그림</a> (Mosaic Chart): vcd 패키지 mosaic()</strong></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:graph-fn"></span>
-<img src="images/23258B4A55D826F726.png" alt="변수의 갯수와 데이터 유형별 그래프 종류" width="100%" />
-<p class="caption">
-Figure 4.1: 변수의 갯수와 데이터 유형별 그래프 종류
-</p>
-</div>
-<p>위의 그림 <a href="높은-수준의-그래프-함수.html#fig:graph-fn">4.1</a> 에서 보듯이, <em>변수의 갯수</em>와 <em>변수의 데이터 타입</em>에 따라 적용하여 시각화할 수 있는 <strong>그래프의 형태가 달라짐</strong>을 알 수 있습니다.</p>
+<p>등을 사용할 수 있습니다. 그런데 막대 그래프의 경우는 <a href="막대-그래프-1.html#그룹별-막대-그래프">일변량 범주형 데이터에서 이미 설명</a>한 바 있습니다.</p>
+<p>따라서 이번 절에는 모자이크 그림을 중심으로 살펴 보겠습니다.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="base-graphics의-주요-함수.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="데이터-세트-cars93.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="파이-차트-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="모자이크-그림.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
