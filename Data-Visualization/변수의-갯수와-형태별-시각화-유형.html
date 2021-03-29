@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>13 3개 이상 변수의 다변량 그래프 | Data Visualization with R</title>
+  <title>8.2 변수의 갯수와 형태별 시각화 유형 | Data Visualization with R</title>
   <meta name="description" content="The output format for book is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="13 3개 이상 변수의 다변량 그래프 | Data Visualization with R" />
+  <meta property="og:title" content="8.2 변수의 갯수와 형태별 시각화 유형 | Data Visualization with R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="13 3개 이상 변수의 다변량 그래프 | Data Visualization with R" />
+  <meta name="twitter:title" content="8.2 변수의 갯수와 형태별 시각화 유형 | Data Visualization with R" />
   
   <meta name="twitter:description" content="The output format for book is bookdown::gitbook." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="히트맵.html"/>
-<link rel="next" href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html"/>
+<link rel="prev" href="ggplot2-문법.html"/>
+<link rel="next" href="일변량-변수-연속형-데이터.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -504,28 +504,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="개-이상-변수의-다변량-그래프" class="section level1" number="13">
-<h1><span class="header-section-number">13</span> 3개 이상 변수의 다변량 그래프</h1>
-<p>실전 업무에서는 <strong>다변량 데이터(multivariate data set)</strong>를 사용하는 경우가 다반사입니다. 그리고 분석업무 초반에 탐색적 분석을 수행할 때 시각화를 통해 변수들 간의 관계, 패턴을 탐색하는 분석 기법이 굉장히 유용합니다.</p>
-<p>하지만 다변량 데이터 중에서도 특히 <strong>3개 이상의 변수를 가지는 다변량 데이터</strong>의 경우 그동안 소개해드렸던 히스토그램, 막대그림, 박스 그림, 산포도, 선그림/시계열 그림 등을 활용해서 2차원 평면에 나타낼 수 없는 한계가 있습니다. (물론, 색깔이라든지 모양을 데이터 그룹 별로 달리하면 3차원, 4차원의 정보를 시각화할 수 있기는 합니다만…)</p>
-<p>변수 3개 이상의 다변량 데이터를 2차원 평면에 효과적으로 시각화할 수 있는 방법으로</p>
-<ol style="list-style-type: decimal">
-<li><p><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#레이더-차트radar-chart-or-거미줄-그림spider-plot">레이더 차트 (radar chart) or 거미줄 그림(spider plot)</a></p></li>
-<li><p><a href="별-그래프.html#별-그래프">별 그래프</a> (레이더 차트와 유사, 중심점 다름)</p></li>
-<li><p><a href="평행-좌표-그림-parallel-coordinate-plot.html#평행-좌표-그림-parallel-coordinate-plot">평행 좌표 그림 (parallel coordinate plot)</a></p></li>
-<li><p>[3차원 산포도 (3 dimensional scatter plot)]</p></li>
-<li><p>[체르노프 얼굴그림 (Chernoff faces)]</p></li>
-<li><p>[산포도 행렬(scatter plot matrix)]</p></li>
-<li><p>[모자이크 그림(mosaic plot)]</p></li>
-</ol>
+<div id="변수의-갯수와-형태별-시각화-유형" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> 변수의 갯수와 형태별 시각화 유형</h2>
+<p>데이터 세트를 받으면 제일 먼저 하는 일이 데이트의 구조를 파악하고, 변수명, 변수별 데이터 유형(숫자형, 문자형, 논리형), 결측값 여부, 이상치/영향치 여부, 데이터의 퍼진 정도/분포 모양 등을 탐색하게 됩니다.</p>
+<p>변수의 개수와 변수의 형태별 그래프의 유형을 요약하면 그림 <a href="변수의-갯수와-형태별-시각화-유형.html#fig:Ggplot2OneCont">8.1</a> 와 같습니다.</p>
+<div class="figure" style="text-align: center"><span id="fig:Ggplot2OneCont"></span>
+<img src="images/223D90375684E35338.png" alt="변량별 그래프 종류" width="80%" />
+<p class="caption">
+Figure 8.1: 변량별 그래프 종류
+</p>
 </div>
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="히트맵.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ggplot2-문법.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="일변량-변수-연속형-데이터.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -212,8 +212,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html"><i class="fa fa-check"></i><b>5.4</b> 색 지정</a>
 <ul>
 <li class="chapter" data-level="5.4.1" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#기호-선-문자-등의-디폴트-색-지정"><i class="fa fa-check"></i><b>5.4.1</b> 기호, 선, 문자 등의 디폴트 색 지정</a></li>
-<li class="chapter" data-level="5.4.2" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#축-색-지정"><i class="fa fa-check"></i><b>5.4.2</b> 축 색 지정</a></li>
-<li class="chapter" data-level="5.4.3" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#x축과-y축의-레이블-색-지정"><i class="fa fa-check"></i><b>5.4.3</b> x축과 y축의 레이블 색 지정</a></li>
+<li class="chapter" data-level="5.4.2" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#축의-척도-색-지정"><i class="fa fa-check"></i><b>5.4.2</b> 축의 척도 색 지정</a></li>
+<li class="chapter" data-level="5.4.3" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#x축과-y축의-제목-색-지정"><i class="fa fa-check"></i><b>5.4.3</b> x축과 y축의 제목 색 지정</a></li>
 <li class="chapter" data-level="5.4.4" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#제목-색-지정"><i class="fa fa-check"></i><b>5.4.4</b> 제목 색 지정</a></li>
 <li class="chapter" data-level="5.4.5" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#부제목-색-지정"><i class="fa fa-check"></i><b>5.4.5</b> 부제목 색 지정</a></li>
 <li class="chapter" data-level="5.4.6" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#그래프-전경-색-지정"><i class="fa fa-check"></i><b>5.4.6</b> 그래프 전경 색 지정</a></li>
@@ -260,7 +260,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III <code>ggplot2</code></b></span></li>
-<li class="chapter" data-level="8" data-path="ggplot-문법.html"><a href="ggplot-문법.html"><i class="fa fa-check"></i><b>8</b> ggplot 문법</a></li>
+<li class="chapter" data-level="8" data-path="ggplot-문법.html"><a href="ggplot-문법.html"><i class="fa fa-check"></i><b>8</b> ggplot 문법</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ggplot2-문법.html"><a href="ggplot2-문법.html"><i class="fa fa-check"></i><b>8.1</b> ggplot2 문법</a></li>
+<li class="chapter" data-level="8.2" data-path="변수의-갯수와-형태별-시각화-유형.html"><a href="변수의-갯수와-형태별-시각화-유형.html"><i class="fa fa-check"></i><b>8.2</b> 변수의 갯수와 형태별 시각화 유형</a></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="일변량-변수-연속형-데이터.html"><a href="일변량-변수-연속형-데이터.html"><i class="fa fa-check"></i><b>9</b> 일변량 변수 - 연속형 데이터</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="히스토그램-1.html"><a href="히스토그램-1.html"><i class="fa fa-check"></i><b>9.1</b> 히스토그램</a>
@@ -502,10 +506,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="지수분포-exponential-distribution-stat_functionfun-dexp" class="section level2" number="14.5">
 <h2><span class="header-section-number">14.5</span> 지수분포 (Exponential Distribution) : <code>stat_function(fun = dexp)</code></h2>
-<div class="sourceCode" id="cb618"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb618-1"><a href="지수분포-exponential-distribution-stat-functionfun-dexp.html#cb618-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 지수분포 : fun = dexp</span></span>
-<span id="cb618-2"><a href="지수분포-exponential-distribution-stat-functionfun-dexp.html#cb618-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span></span>
-<span id="cb618-3"><a href="지수분포-exponential-distribution-stat-functionfun-dexp.html#cb618-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_function</span>(<span class="at">fun=</span>dexp, <span class="at">colour=</span><span class="st">&quot;brown&quot;</span>, <span class="at">size=</span><span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb618-4"><a href="지수분포-exponential-distribution-stat-functionfun-dexp.html#cb618-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Exponential Distribution&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb622"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb622-1"><a href="지수분포-exponential-distribution-stat-functionfun-dexp.html#cb622-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 지수분포 : fun = dexp</span></span>
+<span id="cb622-2"><a href="지수분포-exponential-distribution-stat-functionfun-dexp.html#cb622-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span></span>
+<span id="cb622-3"><a href="지수분포-exponential-distribution-stat-functionfun-dexp.html#cb622-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_function</span>(<span class="at">fun=</span>dexp, <span class="at">colour=</span><span class="st">&quot;brown&quot;</span>, <span class="at">size=</span><span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb622-4"><a href="지수분포-exponential-distribution-stat-functionfun-dexp.html#cb622-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Exponential Distribution&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/unnamed-chunk-93-1.png" width="672" /></p>
 </div>
             </section>

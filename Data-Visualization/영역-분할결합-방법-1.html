@@ -212,8 +212,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html"><i class="fa fa-check"></i><b>5.4</b> 색 지정</a>
 <ul>
 <li class="chapter" data-level="5.4.1" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#기호-선-문자-등의-디폴트-색-지정"><i class="fa fa-check"></i><b>5.4.1</b> 기호, 선, 문자 등의 디폴트 색 지정</a></li>
-<li class="chapter" data-level="5.4.2" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#축-색-지정"><i class="fa fa-check"></i><b>5.4.2</b> 축 색 지정</a></li>
-<li class="chapter" data-level="5.4.3" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#x축과-y축의-레이블-색-지정"><i class="fa fa-check"></i><b>5.4.3</b> x축과 y축의 레이블 색 지정</a></li>
+<li class="chapter" data-level="5.4.2" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#축의-척도-색-지정"><i class="fa fa-check"></i><b>5.4.2</b> 축의 척도 색 지정</a></li>
+<li class="chapter" data-level="5.4.3" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#x축과-y축의-제목-색-지정"><i class="fa fa-check"></i><b>5.4.3</b> x축과 y축의 제목 색 지정</a></li>
 <li class="chapter" data-level="5.4.4" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#제목-색-지정"><i class="fa fa-check"></i><b>5.4.4</b> 제목 색 지정</a></li>
 <li class="chapter" data-level="5.4.5" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#부제목-색-지정"><i class="fa fa-check"></i><b>5.4.5</b> 부제목 색 지정</a></li>
 <li class="chapter" data-level="5.4.6" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#그래프-전경-색-지정"><i class="fa fa-check"></i><b>5.4.6</b> 그래프 전경 색 지정</a></li>
@@ -260,7 +260,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III <code>ggplot2</code></b></span></li>
-<li class="chapter" data-level="8" data-path="ggplot-문법.html"><a href="ggplot-문법.html"><i class="fa fa-check"></i><b>8</b> ggplot 문법</a></li>
+<li class="chapter" data-level="8" data-path="ggplot-문법.html"><a href="ggplot-문법.html"><i class="fa fa-check"></i><b>8</b> ggplot 문법</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ggplot2-문법.html"><a href="ggplot2-문법.html"><i class="fa fa-check"></i><b>8.1</b> ggplot2 문법</a></li>
+<li class="chapter" data-level="8.2" data-path="변수의-갯수와-형태별-시각화-유형.html"><a href="변수의-갯수와-형태별-시각화-유형.html"><i class="fa fa-check"></i><b>8.2</b> 변수의 갯수와 형태별 시각화 유형</a></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="일변량-변수-연속형-데이터.html"><a href="일변량-변수-연속형-데이터.html"><i class="fa fa-check"></i><b>9</b> 일변량 변수 - 연속형 데이터</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="히스토그램-1.html"><a href="히스토그램-1.html"><i class="fa fa-check"></i><b>9.1</b> 히스토그램</a>
@@ -510,63 +514,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p><code>par(mfrow = c(4, 2))</code> 은 복수의 플롯 작성할 때 프레임을 4행 2열로 분할하여 한 프레임에 표시하라는 의미입니다.</p>
 <p>그래프가 그려지는 순서를 화살표로 표시를 해두었는데요, 상단 왼쪽에서 시작해서 오른쪽으로 지그재그로 하단으로 내려가면서 그래프가 순차적으로 그려집니다.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb116-1"><a href="영역-분할결합-방법-1.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb116-2"><a href="영역-분할결합-방법-1.html#cb116-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb116-3"><a href="영역-분할결합-방법-1.html#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="co"># par의 기본 설정 값을 저장합니다.</span></span>
-<span id="cb116-4"><a href="영역-분할결합-방법-1.html#cb116-4" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb116-5"><a href="영역-분할결합-방법-1.html#cb116-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb116-6"><a href="영역-분할결합-방법-1.html#cb116-6" aria-hidden="true" tabindex="-1"></a><span class="do">##-- par(mfrow = ): 행 우선의 복수 플롯의 수</span></span>
-<span id="cb116-7"><a href="영역-분할결합-방법-1.html#cb116-7" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>),                             <span class="co"># 4행 2열로 프레임을 분할합니다</span></span>
-<span id="cb116-8"><a href="영역-분할결합-방법-1.html#cb116-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>),                         <span class="co"># 내부 마진을 설정합니다.</span></span>
-<span id="cb116-9"><a href="영역-분할결합-방법-1.html#cb116-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">oma =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dv">2</span>, <span class="fl">0.5</span>))                   <span class="co"># 외부 마진을 설정합니다.</span></span>
-<span id="cb116-10"><a href="영역-분할결합-방법-1.html#cb116-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb116-11"><a href="영역-분할결합-방법-1.html#cb116-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 1&quot;</span>) </span>
-<span id="cb116-12"><a href="영역-분할결합-방법-1.html#cb116-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 2&quot;</span>) </span>
-<span id="cb116-13"><a href="영역-분할결합-방법-1.html#cb116-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 3&quot;</span>) </span>
-<span id="cb116-14"><a href="영역-분할결합-방법-1.html#cb116-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 4&quot;</span>) </span>
-<span id="cb116-15"><a href="영역-분할결합-방법-1.html#cb116-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 5&quot;</span>) </span>
-<span id="cb116-16"><a href="영역-분할결합-방법-1.html#cb116-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 6&quot;</span>) </span>
-<span id="cb116-17"><a href="영역-분할결합-방법-1.html#cb116-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 7&quot;</span>) </span>
-<span id="cb116-18"><a href="영역-분할결합-방법-1.html#cb116-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 8&quot;</span>) </span>
-<span id="cb116-19"><a href="영역-분할결합-방법-1.html#cb116-19" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb116-20"><a href="영역-분할결합-방법-1.html#cb116-20" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;par(mfrow = c(4, 2)&quot;</span>, <span class="at">outer =</span> <span class="cn">TRUE</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb119-1"><a href="영역-분할결합-방법-1.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb119-2"><a href="영역-분할결합-방법-1.html#cb119-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-3"><a href="영역-분할결합-방법-1.html#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="co"># par의 기본 설정 값을 저장합니다.</span></span>
+<span id="cb119-4"><a href="영역-분할결합-방법-1.html#cb119-4" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb119-5"><a href="영역-분할결합-방법-1.html#cb119-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-6"><a href="영역-분할결합-방법-1.html#cb119-6" aria-hidden="true" tabindex="-1"></a><span class="do">##-- par(mfrow = ): 행 우선의 복수 플롯의 수</span></span>
+<span id="cb119-7"><a href="영역-분할결합-방법-1.html#cb119-7" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>),                             <span class="co"># 4행 2열로 프레임을 분할합니다</span></span>
+<span id="cb119-8"><a href="영역-분할결합-방법-1.html#cb119-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>),                         <span class="co"># 내부 마진을 설정합니다.</span></span>
+<span id="cb119-9"><a href="영역-분할결합-방법-1.html#cb119-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">oma =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dv">2</span>, <span class="fl">0.5</span>))                   <span class="co"># 외부 마진을 설정합니다.</span></span>
+<span id="cb119-10"><a href="영역-분할결합-방법-1.html#cb119-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-11"><a href="영역-분할결합-방법-1.html#cb119-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 1&quot;</span>) </span>
+<span id="cb119-12"><a href="영역-분할결합-방법-1.html#cb119-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 2&quot;</span>) </span>
+<span id="cb119-13"><a href="영역-분할결합-방법-1.html#cb119-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 3&quot;</span>) </span>
+<span id="cb119-14"><a href="영역-분할결합-방법-1.html#cb119-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 4&quot;</span>) </span>
+<span id="cb119-15"><a href="영역-분할결합-방법-1.html#cb119-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 5&quot;</span>) </span>
+<span id="cb119-16"><a href="영역-분할결합-방법-1.html#cb119-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 6&quot;</span>) </span>
+<span id="cb119-17"><a href="영역-분할결합-방법-1.html#cb119-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 7&quot;</span>) </span>
+<span id="cb119-18"><a href="영역-분할결합-방법-1.html#cb119-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 8&quot;</span>) </span>
+<span id="cb119-19"><a href="영역-분할결합-방법-1.html#cb119-19" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb119-20"><a href="영역-분할결합-방법-1.html#cb119-20" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;par(mfrow = c(4, 2)&quot;</span>, <span class="at">outer =</span> <span class="cn">TRUE</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:ParMfrow"></span>
 <img src="bookdown_files/figure-html/ParMfrow-1.png" alt="par(mfrow = ): 행 우선의 복수 플롯의 수" width="672" />
 <p class="caption">
 Figure 6.4: par(mfrow = ): 행 우선의 복수 플롯의 수
 </p>
 </div>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb117-1"><a href="영역-분할결합-방법-1.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par를 초기 설정값으로 환원합니다.</span></span>
-<span id="cb117-2"><a href="영역-분할결합-방법-1.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb120-1"><a href="영역-분할결합-방법-1.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par를 초기 설정값으로 환원합니다.</span></span>
+<span id="cb120-2"><a href="영역-분할결합-방법-1.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
 <p>한편, <code>par(mfcol = c(4, 2))</code> 은 프레임을 4행 2열로 분할하되, 플롯은 열 우선 순서로 표시가 되는 것입니다. 다음의 예에서 플롯이 그려지는 순서를 잘 살펴보기 바랍니다.</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb118-1"><a href="영역-분할결합-방법-1.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb118-2"><a href="영역-분할결합-방법-1.html#cb118-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-3"><a href="영역-분할결합-방법-1.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="co"># par의 기본 설정 값을 저장합니다.</span></span>
-<span id="cb118-4"><a href="영역-분할결합-방법-1.html#cb118-4" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb118-5"><a href="영역-분할결합-방법-1.html#cb118-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-6"><a href="영역-분할결합-방법-1.html#cb118-6" aria-hidden="true" tabindex="-1"></a><span class="do">##-- par(mfcol = ) : 열 우선의 복수 플롯의 수</span></span>
-<span id="cb118-7"><a href="영역-분할결합-방법-1.html#cb118-7" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfcol =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>),                 <span class="co"># 프레임을 4행 2열로 분할합니다.</span></span>
-<span id="cb118-8"><a href="영역-분할결합-방법-1.html#cb118-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>),             <span class="co"># 내부 마진을 설정합니다.</span></span>
-<span id="cb118-9"><a href="영역-분할결합-방법-1.html#cb118-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">oma =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dv">2</span>, <span class="fl">0.5</span>))       <span class="co"># 외부 마진을 설정합니다.</span></span>
-<span id="cb118-10"><a href="영역-분할결합-방법-1.html#cb118-10" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb118-11"><a href="영역-분할결합-방법-1.html#cb118-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 1&quot;</span>) </span>
-<span id="cb118-12"><a href="영역-분할결합-방법-1.html#cb118-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 2&quot;</span>) </span>
-<span id="cb118-13"><a href="영역-분할결합-방법-1.html#cb118-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 3&quot;</span>)</span>
-<span id="cb118-14"><a href="영역-분할결합-방법-1.html#cb118-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 4&quot;</span>)</span>
-<span id="cb118-15"><a href="영역-분할결합-방법-1.html#cb118-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 5&quot;</span>) </span>
-<span id="cb118-16"><a href="영역-분할결합-방법-1.html#cb118-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 6&quot;</span>) </span>
-<span id="cb118-17"><a href="영역-분할결합-방법-1.html#cb118-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 7&quot;</span>) </span>
-<span id="cb118-18"><a href="영역-분할결합-방법-1.html#cb118-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 8&quot;</span>) </span>
-<span id="cb118-19"><a href="영역-분할결합-방법-1.html#cb118-19" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb118-20"><a href="영역-분할결합-방법-1.html#cb118-20" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;par(mfcol = c(4, 2)&quot;</span>, <span class="at">outer =</span> <span class="cn">TRUE</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb121-1"><a href="영역-분할결합-방법-1.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb121-2"><a href="영역-분할결합-방법-1.html#cb121-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-3"><a href="영역-분할결합-방법-1.html#cb121-3" aria-hidden="true" tabindex="-1"></a><span class="co"># par의 기본 설정 값을 저장합니다.</span></span>
+<span id="cb121-4"><a href="영역-분할결합-방법-1.html#cb121-4" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb121-5"><a href="영역-분할결합-방법-1.html#cb121-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-6"><a href="영역-분할결합-방법-1.html#cb121-6" aria-hidden="true" tabindex="-1"></a><span class="do">##-- par(mfcol = ) : 열 우선의 복수 플롯의 수</span></span>
+<span id="cb121-7"><a href="영역-분할결합-방법-1.html#cb121-7" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfcol =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>),                 <span class="co"># 프레임을 4행 2열로 분할합니다.</span></span>
+<span id="cb121-8"><a href="영역-분할결합-방법-1.html#cb121-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>),             <span class="co"># 내부 마진을 설정합니다.</span></span>
+<span id="cb121-9"><a href="영역-분할결합-방법-1.html#cb121-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">oma =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dv">2</span>, <span class="fl">0.5</span>))       <span class="co"># 외부 마진을 설정합니다.</span></span>
+<span id="cb121-10"><a href="영역-분할결합-방법-1.html#cb121-10" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb121-11"><a href="영역-분할결합-방법-1.html#cb121-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 1&quot;</span>) </span>
+<span id="cb121-12"><a href="영역-분할결합-방법-1.html#cb121-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 2&quot;</span>) </span>
+<span id="cb121-13"><a href="영역-분할결합-방법-1.html#cb121-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 3&quot;</span>)</span>
+<span id="cb121-14"><a href="영역-분할결합-방법-1.html#cb121-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 4&quot;</span>)</span>
+<span id="cb121-15"><a href="영역-분할결합-방법-1.html#cb121-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 5&quot;</span>) </span>
+<span id="cb121-16"><a href="영역-분할결합-방법-1.html#cb121-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 6&quot;</span>) </span>
+<span id="cb121-17"><a href="영역-분할결합-방법-1.html#cb121-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 7&quot;</span>) </span>
+<span id="cb121-18"><a href="영역-분할결합-방법-1.html#cb121-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">main =</span> <span class="st">&quot;plot 8&quot;</span>) </span>
+<span id="cb121-19"><a href="영역-분할결합-방법-1.html#cb121-19" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb121-20"><a href="영역-분할결합-방법-1.html#cb121-20" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;par(mfcol = c(4, 2)&quot;</span>, <span class="at">outer =</span> <span class="cn">TRUE</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:ParMfcol"></span>
 <img src="bookdown_files/figure-html/ParMfcol-1.png" alt="par(mfcol = ) : 열 우선의 복수 플롯의 수" width="672" />
 <p class="caption">
 Figure 6.5: par(mfcol = ) : 열 우선의 복수 플롯의 수
 </p>
 </div>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb119-1"><a href="영역-분할결합-방법-1.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par를 초기 설정값으로 환원합니다.</span></span>
-<span id="cb119-2"><a href="영역-분할결합-방법-1.html#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb122-1"><a href="영역-분할결합-방법-1.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par를 초기 설정값으로 환원합니다.</span></span>
+<span id="cb122-2"><a href="영역-분할결합-방법-1.html#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
 <p><a href="그래프-영역.html#그래프-영역">Go Top</a></p>
 </div>
             </section>

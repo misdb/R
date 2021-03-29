@@ -212,8 +212,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html"><i class="fa fa-check"></i><b>5.4</b> 색 지정</a>
 <ul>
 <li class="chapter" data-level="5.4.1" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#기호-선-문자-등의-디폴트-색-지정"><i class="fa fa-check"></i><b>5.4.1</b> 기호, 선, 문자 등의 디폴트 색 지정</a></li>
-<li class="chapter" data-level="5.4.2" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#축-색-지정"><i class="fa fa-check"></i><b>5.4.2</b> 축 색 지정</a></li>
-<li class="chapter" data-level="5.4.3" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#x축과-y축의-레이블-색-지정"><i class="fa fa-check"></i><b>5.4.3</b> x축과 y축의 레이블 색 지정</a></li>
+<li class="chapter" data-level="5.4.2" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#축의-척도-색-지정"><i class="fa fa-check"></i><b>5.4.2</b> 축의 척도 색 지정</a></li>
+<li class="chapter" data-level="5.4.3" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#x축과-y축의-제목-색-지정"><i class="fa fa-check"></i><b>5.4.3</b> x축과 y축의 제목 색 지정</a></li>
 <li class="chapter" data-level="5.4.4" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#제목-색-지정"><i class="fa fa-check"></i><b>5.4.4</b> 제목 색 지정</a></li>
 <li class="chapter" data-level="5.4.5" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#부제목-색-지정"><i class="fa fa-check"></i><b>5.4.5</b> 부제목 색 지정</a></li>
 <li class="chapter" data-level="5.4.6" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#그래프-전경-색-지정"><i class="fa fa-check"></i><b>5.4.6</b> 그래프 전경 색 지정</a></li>
@@ -260,7 +260,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III <code>ggplot2</code></b></span></li>
-<li class="chapter" data-level="8" data-path="ggplot-문법.html"><a href="ggplot-문법.html"><i class="fa fa-check"></i><b>8</b> ggplot 문법</a></li>
+<li class="chapter" data-level="8" data-path="ggplot-문법.html"><a href="ggplot-문법.html"><i class="fa fa-check"></i><b>8</b> ggplot 문법</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ggplot2-문법.html"><a href="ggplot2-문법.html"><i class="fa fa-check"></i><b>8.1</b> ggplot2 문법</a></li>
+<li class="chapter" data-level="8.2" data-path="변수의-갯수와-형태별-시각화-유형.html"><a href="변수의-갯수와-형태별-시각화-유형.html"><i class="fa fa-check"></i><b>8.2</b> 변수의 갯수와 형태별 시각화 유형</a></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="일변량-변수-연속형-데이터.html"><a href="일변량-변수-연속형-데이터.html"><i class="fa fa-check"></i><b>9</b> 일변량 변수 - 연속형 데이터</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="히스토그램-1.html"><a href="히스토그램-1.html"><i class="fa fa-check"></i><b>9.1</b> 히스토그램</a>
@@ -506,36 +510,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>외부 마진 영역은 위의 예처럼 1개짜리 그래프에서는 별 쓸모가 없습니다만 (그냥 내부 마진 영역으로 cover 되기 때문입니다), 그래프 영역을 분할해서 2개 이상의 그래프를 하나의 그래프에 결합할 경우 유용하게 사용할 수 있습니다. 개별 그래프에서는 내부 마진 영역에 제목, <code>x</code>축 레이블, <code>y</code>축 레이블을 적고, 2개 이상의 개별 그래프들을 모두 포괄하는 대제목 (mega title)을 적고자 할 때 외부 마진 영역에 적으면 딱 좋습니다.</p>
 <p>아래에 1개의 행, 2개의 열로 영역을 분할(<code>mfrow =</code> )한 경우 <strong>외부 마진 영역 설정</strong>(<code>oma =</code> ), <strong>내부 마진 영역 설정</strong>(<code>mar =</code> ) 함수의 예를 들어보겠습니다. 외부 마진 부분은 파란색으로 알아보기 쉽게 위치 표시를 했습니다.</p>
 <p>참고로, <code>op &lt;- par(no.readonly = TRUE)</code>로 디폴트 <code>par</code> 값을 미리 할당해 두면, 나중에 <code>par</code>값 조정 다 끝나고 원래의 디폴트 값으로 되돌아오고자 할 때 <code>par(op)</code>를 실행시키면 되므로 매우 편리합니다.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb114-1"><a href="외부-마진-영역-outer-margin-area.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb114-2"><a href="외부-마진-영역-outer-margin-area.html#cb114-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb114-3"><a href="외부-마진-영역-outer-margin-area.html#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 내부 마진 영역과 외부 마진 영역</span></span>
-<span id="cb114-4"><a href="외부-마진-영역-outer-margin-area.html#cb114-4" aria-hidden="true" tabindex="-1"></a><span class="co"># par의 기본 설정 값을 저장합니다.</span></span>
-<span id="cb114-5"><a href="외부-마진-영역-outer-margin-area.html#cb114-5" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb114-6"><a href="외부-마진-영역-outer-margin-area.html#cb114-6" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb114-7"><a href="외부-마진-영역-outer-margin-area.html#cb114-7" aria-hidden="true" tabindex="-1"></a><span class="co"># par() 함수 옵션을 변경합니다.</span></span>
-<span id="cb114-8"><a href="외부-마진-영역-outer-margin-area.html#cb114-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),                       <span class="co"># 1행 2열로 프레임을 분할합니다.</span></span>
-<span id="cb114-9"><a href="외부-마진-영역-outer-margin-area.html#cb114-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>),                  <span class="co"># 내부 마진을 설정합니다.</span></span>
-<span id="cb114-10"><a href="외부-마진-영역-outer-margin-area.html#cb114-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">oma =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dv">2</span>, <span class="fl">0.5</span>))            <span class="co"># 외부 마진을 설정합니다.</span></span>
-<span id="cb114-11"><a href="외부-마진-영역-outer-margin-area.html#cb114-11" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb114-12"><a href="외부-마진-영역-outer-margin-area.html#cb114-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 플롯 영역, 내부 마진 영역, 외부 마진 영역</span></span>
-<span id="cb114-13"><a href="외부-마진-영역-outer-margin-area.html#cb114-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>,</span>
-<span id="cb114-14"><a href="외부-마진-영역-outer-margin-area.html#cb114-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Inner Margin Area&quot;</span>,</span>
-<span id="cb114-15"><a href="외부-마진-영역-outer-margin-area.html#cb114-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Inner Margin Area&quot;</span>) </span>
-<span id="cb114-16"><a href="외부-마진-영역-outer-margin-area.html#cb114-16" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb114-17"><a href="외부-마진-영역-outer-margin-area.html#cb114-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Horsepower, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>,</span>
-<span id="cb114-18"><a href="외부-마진-영역-outer-margin-area.html#cb114-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Inner Margin Area&quot;</span>,</span>
-<span id="cb114-19"><a href="외부-마진-영역-outer-margin-area.html#cb114-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Inner Margin Area&quot;</span>) </span>
-<span id="cb114-20"><a href="외부-마진-영역-outer-margin-area.html#cb114-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb114-21"><a href="외부-마진-영역-outer-margin-area.html#cb114-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 저수준 함수로 텍스트를 표시합니다.</span></span>
-<span id="cb114-22"><a href="외부-마진-영역-outer-margin-area.html#cb114-22" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;Outer Margin Area&quot;</span>, <span class="at">outer =</span> <span class="cn">TRUE</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)   <span class="co"># outer = TRUE : 외부 마진 영역</span></span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb117-1"><a href="외부-마진-영역-outer-margin-area.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb117-2"><a href="외부-마진-영역-outer-margin-area.html#cb117-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-3"><a href="외부-마진-영역-outer-margin-area.html#cb117-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 내부 마진 영역과 외부 마진 영역</span></span>
+<span id="cb117-4"><a href="외부-마진-영역-outer-margin-area.html#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="co"># par의 기본 설정 값을 저장합니다.</span></span>
+<span id="cb117-5"><a href="외부-마진-영역-outer-margin-area.html#cb117-5" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb117-6"><a href="외부-마진-영역-outer-margin-area.html#cb117-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb117-7"><a href="외부-마진-영역-outer-margin-area.html#cb117-7" aria-hidden="true" tabindex="-1"></a><span class="co"># par() 함수 옵션을 변경합니다.</span></span>
+<span id="cb117-8"><a href="외부-마진-영역-outer-margin-area.html#cb117-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),                       <span class="co"># 1행 2열로 프레임을 분할합니다.</span></span>
+<span id="cb117-9"><a href="외부-마진-영역-outer-margin-area.html#cb117-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>),                  <span class="co"># 내부 마진을 설정합니다.</span></span>
+<span id="cb117-10"><a href="외부-마진-영역-outer-margin-area.html#cb117-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">oma =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dv">2</span>, <span class="fl">0.5</span>))            <span class="co"># 외부 마진을 설정합니다.</span></span>
+<span id="cb117-11"><a href="외부-마진-영역-outer-margin-area.html#cb117-11" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb117-12"><a href="외부-마진-영역-outer-margin-area.html#cb117-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 플롯 영역, 내부 마진 영역, 외부 마진 영역</span></span>
+<span id="cb117-13"><a href="외부-마진-영역-outer-margin-area.html#cb117-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>,</span>
+<span id="cb117-14"><a href="외부-마진-영역-outer-margin-area.html#cb117-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Inner Margin Area&quot;</span>,</span>
+<span id="cb117-15"><a href="외부-마진-영역-outer-margin-area.html#cb117-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Inner Margin Area&quot;</span>) </span>
+<span id="cb117-16"><a href="외부-마진-영역-outer-margin-area.html#cb117-16" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb117-17"><a href="외부-마진-영역-outer-margin-area.html#cb117-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Horsepower, Cars93, <span class="at">type=</span><span class="st">&quot;p&quot;</span>,</span>
+<span id="cb117-18"><a href="외부-마진-영역-outer-margin-area.html#cb117-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Inner Margin Area&quot;</span>,</span>
+<span id="cb117-19"><a href="외부-마진-영역-outer-margin-area.html#cb117-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Inner Margin Area&quot;</span>) </span>
+<span id="cb117-20"><a href="외부-마진-영역-outer-margin-area.html#cb117-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-21"><a href="외부-마진-영역-outer-margin-area.html#cb117-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 저수준 함수로 텍스트를 표시합니다.</span></span>
+<span id="cb117-22"><a href="외부-마진-영역-outer-margin-area.html#cb117-22" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;Outer Margin Area&quot;</span>, <span class="at">outer =</span> <span class="cn">TRUE</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)   <span class="co"># outer = TRUE : 외부 마진 영역</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GraphAreaOutMar"></span>
 <img src="bookdown_files/figure-html/GraphAreaOutMar-1.png" alt="외부 마진 영역" width="672" />
 <p class="caption">
 Figure 6.3: 외부 마진 영역
 </p>
 </div>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb115-1"><a href="외부-마진-영역-outer-margin-area.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par를 초기 설정값으로 환원합니다.</span></span>
-<span id="cb115-2"><a href="외부-마진-영역-outer-margin-area.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb118-1"><a href="외부-마진-영역-outer-margin-area.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par를 초기 설정값으로 환원합니다.</span></span>
+<span id="cb118-2"><a href="외부-마진-영역-outer-margin-area.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
 <p><a href="그래프-영역.html#그래프-영역">Go Top</a></p>
 </div>
             </section>

@@ -212,8 +212,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html"><i class="fa fa-check"></i><b>5.4</b> 색 지정</a>
 <ul>
 <li class="chapter" data-level="5.4.1" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#기호-선-문자-등의-디폴트-색-지정"><i class="fa fa-check"></i><b>5.4.1</b> 기호, 선, 문자 등의 디폴트 색 지정</a></li>
-<li class="chapter" data-level="5.4.2" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#축-색-지정"><i class="fa fa-check"></i><b>5.4.2</b> 축 색 지정</a></li>
-<li class="chapter" data-level="5.4.3" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#x축과-y축의-레이블-색-지정"><i class="fa fa-check"></i><b>5.4.3</b> x축과 y축의 레이블 색 지정</a></li>
+<li class="chapter" data-level="5.4.2" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#축의-척도-색-지정"><i class="fa fa-check"></i><b>5.4.2</b> 축의 척도 색 지정</a></li>
+<li class="chapter" data-level="5.4.3" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#x축과-y축의-제목-색-지정"><i class="fa fa-check"></i><b>5.4.3</b> x축과 y축의 제목 색 지정</a></li>
 <li class="chapter" data-level="5.4.4" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#제목-색-지정"><i class="fa fa-check"></i><b>5.4.4</b> 제목 색 지정</a></li>
 <li class="chapter" data-level="5.4.5" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#부제목-색-지정"><i class="fa fa-check"></i><b>5.4.5</b> 부제목 색 지정</a></li>
 <li class="chapter" data-level="5.4.6" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#그래프-전경-색-지정"><i class="fa fa-check"></i><b>5.4.6</b> 그래프 전경 색 지정</a></li>
@@ -260,7 +260,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III <code>ggplot2</code></b></span></li>
-<li class="chapter" data-level="8" data-path="ggplot-문법.html"><a href="ggplot-문법.html"><i class="fa fa-check"></i><b>8</b> ggplot 문법</a></li>
+<li class="chapter" data-level="8" data-path="ggplot-문법.html"><a href="ggplot-문법.html"><i class="fa fa-check"></i><b>8</b> ggplot 문법</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ggplot2-문법.html"><a href="ggplot2-문법.html"><i class="fa fa-check"></i><b>8.1</b> ggplot2 문법</a></li>
+<li class="chapter" data-level="8.2" data-path="변수의-갯수와-형태별-시각화-유형.html"><a href="변수의-갯수와-형태별-시각화-유형.html"><i class="fa fa-check"></i><b>8.2</b> 변수의 갯수와 형태별 시각화 유형</a></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="일변량-변수-연속형-데이터.html"><a href="일변량-변수-연속형-데이터.html"><i class="fa fa-check"></i><b>9</b> 일변량 변수 - 연속형 데이터</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="히스토그램-1.html"><a href="히스토그램-1.html"><i class="fa fa-check"></i><b>9.1</b> 히스토그램</a>
@@ -503,18 +507,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="picker-control" class="section level2" number="15.4">
 <h2><span class="header-section-number">15.4</span> Picker Control</h2>
 <p>히스토그램에 대상 변수를 선택할 수 있는 Picker Control 예제입니다.</p>
-<div class="sourceCode" id="cb631"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb631-1"><a href="picker-control.html#cb631-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Picker Control</span></span>
-<span id="cb631-2"><a href="picker-control.html#cb631-2" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
-<span id="cb631-3"><a href="picker-control.html#cb631-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(Cars93[, continuous_variable], </span>
-<span id="cb631-4"><a href="picker-control.html#cb631-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> continuous_variable),</span>
-<span id="cb631-5"><a href="picker-control.html#cb631-5" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb631-6"><a href="picker-control.html#cb631-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">continuous_variable =</span> <span class="fu">picker</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Price&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb635"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb635-1"><a href="picker-control.html#cb635-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Picker Control</span></span>
+<span id="cb635-2"><a href="picker-control.html#cb635-2" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
+<span id="cb635-3"><a href="picker-control.html#cb635-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(Cars93[, continuous_variable], </span>
+<span id="cb635-4"><a href="picker-control.html#cb635-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> continuous_variable),</span>
+<span id="cb635-5"><a href="picker-control.html#cb635-5" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb635-6"><a href="picker-control.html#cb635-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">continuous_variable =</span> <span class="fu">picker</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Price&quot;</span>))</span></code></pre></div>
 <pre><code>## Error in manipulate(hist(Cars93[, continuous_variable], freq = FALSE, : The manipulate package must be run from within RStudio</code></pre>
 <p>산포도의 x축, <code>무게(Weight)</code>과 y축, <code>고속도로연비(MPG.highway)</code>은 정해져있고, <code>차종(Type)</code>별로 산포도를 보고 싶을 때 <code>차종(Type)</code>을 왼쪽의 Picker Control 상자로 만들어서 바로 바로 차종별로 선택해 가면서 산포도를 보는 프로그램 예제입니다.</p>
-<div class="sourceCode" id="cb633"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb633-1"><a href="picker-control.html#cb633-1" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
-<span id="cb633-2"><a href="picker-control.html#cb633-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data=</span>Cars93[Cars93<span class="sc">$</span>Type <span class="sc">==</span> Type,]),</span>
-<span id="cb633-3"><a href="picker-control.html#cb633-3" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb633-4"><a href="picker-control.html#cb633-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">Type =</span> <span class="fu">picker</span>(<span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Van&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb637"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb637-1"><a href="picker-control.html#cb637-1" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
+<span id="cb637-2"><a href="picker-control.html#cb637-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data=</span>Cars93[Cars93<span class="sc">$</span>Type <span class="sc">==</span> Type,]),</span>
+<span id="cb637-3"><a href="picker-control.html#cb637-3" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb637-4"><a href="picker-control.html#cb637-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">Type =</span> <span class="fu">picker</span>(<span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Van&quot;</span>))</span></code></pre></div>
 <pre><code>## Error in manipulate(plot(MPG.highway ~ Weight, data = Cars93[Cars93$Type == : The manipulate package must be run from within RStudio</code></pre>
 </div>
             </section>

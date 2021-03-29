@@ -212,8 +212,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html"><i class="fa fa-check"></i><b>5.4</b> 색 지정</a>
 <ul>
 <li class="chapter" data-level="5.4.1" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#기호-선-문자-등의-디폴트-색-지정"><i class="fa fa-check"></i><b>5.4.1</b> 기호, 선, 문자 등의 디폴트 색 지정</a></li>
-<li class="chapter" data-level="5.4.2" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#축-색-지정"><i class="fa fa-check"></i><b>5.4.2</b> 축 색 지정</a></li>
-<li class="chapter" data-level="5.4.3" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#x축과-y축의-레이블-색-지정"><i class="fa fa-check"></i><b>5.4.3</b> x축과 y축의 레이블 색 지정</a></li>
+<li class="chapter" data-level="5.4.2" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#축의-척도-색-지정"><i class="fa fa-check"></i><b>5.4.2</b> 축의 척도 색 지정</a></li>
+<li class="chapter" data-level="5.4.3" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#x축과-y축의-제목-색-지정"><i class="fa fa-check"></i><b>5.4.3</b> x축과 y축의 제목 색 지정</a></li>
 <li class="chapter" data-level="5.4.4" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#제목-색-지정"><i class="fa fa-check"></i><b>5.4.4</b> 제목 색 지정</a></li>
 <li class="chapter" data-level="5.4.5" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#부제목-색-지정"><i class="fa fa-check"></i><b>5.4.5</b> 부제목 색 지정</a></li>
 <li class="chapter" data-level="5.4.6" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#그래프-전경-색-지정"><i class="fa fa-check"></i><b>5.4.6</b> 그래프 전경 색 지정</a></li>
@@ -260,7 +260,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III <code>ggplot2</code></b></span></li>
-<li class="chapter" data-level="8" data-path="ggplot-문법.html"><a href="ggplot-문법.html"><i class="fa fa-check"></i><b>8</b> ggplot 문법</a></li>
+<li class="chapter" data-level="8" data-path="ggplot-문법.html"><a href="ggplot-문법.html"><i class="fa fa-check"></i><b>8</b> ggplot 문법</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ggplot2-문법.html"><a href="ggplot2-문법.html"><i class="fa fa-check"></i><b>8.1</b> ggplot2 문법</a></li>
+<li class="chapter" data-level="8.2" data-path="변수의-갯수와-형태별-시각화-유형.html"><a href="변수의-갯수와-형태별-시각화-유형.html"><i class="fa fa-check"></i><b>8.2</b> 변수의 갯수와 형태별 시각화 유형</a></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="일변량-변수-연속형-데이터.html"><a href="일변량-변수-연속형-데이터.html"><i class="fa fa-check"></i><b>9</b> 일변량 변수 - 연속형 데이터</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="히스토그램-1.html"><a href="히스토그램-1.html"><i class="fa fa-check"></i><b>9.1</b> 히스토그램</a>
@@ -502,57 +506,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="그래프모수-선" class="section level2" number="5.3">
 <h2><span class="header-section-number">5.3</span> 선</h2>
-<p>이 절에서는 선과 관련한 모수 설정에 대해서 하나씩 예를 들어보면서 자세히 설명해보겠습니다.</p>
+<p>이 절에서는 플롯의 종류로서 <code>type = "l"</code>로 표시되는 선(line)과 관련한 모수 설정에 대해서 하나씩 예를 들어보면서 자세히 설명해보겠습니다.</p>
 <div id="선-유형" class="section level3" number="5.3.1">
 <h3><span class="header-section-number">5.3.1</span> 선 유형</h3>
-<p>R 그래프 모수에서 제공하는 <strong>선 유형</strong>에는 아래과 같이 6개가 있습니다.</p>
+<p>R 그래프 모수에서 제공하는 <strong>선 유형</strong>에는 아래과 같이 7 가지가 있습니다.</p>
 <div class="figure" style="text-align: center"><span id="fig:Graph-lty"></span>
-<img src="images/254EE838567E2FC50F.png" alt="선 유형" width="100%" />
+<img src="images/254EE838567E2FC50F.png" alt="선 유형" width="80%" />
 <p class="caption">
-Figure 5.10: 선 유형
+Figure 5.11: 선 유형
 </p>
 </div>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb98-1"><a href="그래프모수-선.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="do">## line types : lty </span></span>
-<span id="cb98-2"><a href="그래프모수-선.html#cb98-2" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb98-3"><a href="그래프모수-선.html#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ordering by Weight </span></span>
-<span id="cb98-4"><a href="그래프모수-선.html#cb98-4" aria-hidden="true" tabindex="-1"></a>Cars93_order <span class="ot">&lt;-</span> Cars93[<span class="fu">order</span>(Cars93<span class="sc">$</span>Weight),] </span>
-<span id="cb98-5"><a href="그래프모수-선.html#cb98-5" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb98-6"><a href="그래프모수-선.html#cb98-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)) </span>
-<span id="cb98-7"><a href="그래프모수-선.html#cb98-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot layout by 2 row and 3 column </span></span>
-<span id="cb98-8"><a href="그래프모수-선.html#cb98-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">main =</span> <span class="st">&quot;lty = 1&quot;</span>) </span>
-<span id="cb98-9"><a href="그래프모수-선.html#cb98-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;lty = 2&quot;</span>) </span>
-<span id="cb98-10"><a href="그래프모수-선.html#cb98-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">main =</span> <span class="st">&quot;lty = 3&quot;</span>) </span>
-<span id="cb98-11"><a href="그래프모수-선.html#cb98-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lty =</span> <span class="dv">4</span>, <span class="at">main =</span> <span class="st">&quot;lty = 4&quot;</span>) </span>
-<span id="cb98-12"><a href="그래프모수-선.html#cb98-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lty =</span> <span class="dv">5</span>, <span class="at">main =</span> <span class="st">&quot;lty = 5&quot;</span>) </span>
-<span id="cb98-13"><a href="그래프모수-선.html#cb98-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lty =</span> <span class="dv">6</span>, <span class="at">main =</span> <span class="st">&quot;lty = 6&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb101-1"><a href="그래프모수-선.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="do">## line types : lty </span></span>
+<span id="cb101-2"><a href="그래프모수-선.html#cb101-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb101-3"><a href="그래프모수-선.html#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 차의 무게로 정렬 </span></span>
+<span id="cb101-4"><a href="그래프모수-선.html#cb101-4" aria-hidden="true" tabindex="-1"></a>Cars93_order <span class="ot">&lt;-</span> Cars93[<span class="fu">order</span>(Cars93<span class="sc">$</span>Weight),] </span>
+<span id="cb101-5"><a href="그래프모수-선.html#cb101-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-6"><a href="그래프모수-선.html#cb101-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2행 3열로 플롯의 레이아웃 설정</span></span>
+<span id="cb101-7"><a href="그래프모수-선.html#cb101-7" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)) </span>
+<span id="cb101-8"><a href="그래프모수-선.html#cb101-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-9"><a href="그래프모수-선.html#cb101-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">main =</span> <span class="st">&quot;lty = 1&quot;</span>) </span>
+<span id="cb101-10"><a href="그래프모수-선.html#cb101-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;lty = 2&quot;</span>) </span>
+<span id="cb101-11"><a href="그래프모수-선.html#cb101-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">main =</span> <span class="st">&quot;lty = 3&quot;</span>) </span>
+<span id="cb101-12"><a href="그래프모수-선.html#cb101-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lty =</span> <span class="dv">4</span>, <span class="at">main =</span> <span class="st">&quot;lty = 4&quot;</span>) </span>
+<span id="cb101-13"><a href="그래프모수-선.html#cb101-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lty =</span> <span class="dv">5</span>, <span class="at">main =</span> <span class="st">&quot;lty = 5&quot;</span>) </span>
+<span id="cb101-14"><a href="그래프모수-선.html#cb101-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lty =</span> <span class="dv">6</span>, <span class="at">main =</span> <span class="st">&quot;lty = 6&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-local-lty"></span>
 <img src="bookdown_files/figure-html/fig-local-lty-1.png" alt="그래프 모수의 설정 : 선 유형 : lty" width="672" />
 <p class="caption">
-Figure 5.11: 그래프 모수의 설정 : 선 유형 : lty
+Figure 5.12: 그래프 모수의 설정 : 선 유형 : lty
 </p>
 </div>
 <p><a href="#기호-모양-크기-선-유형-선-두께">Go Top</a></p>
 </div>
 <div id="선-두께" class="section level3" number="5.3.2">
 <h3><span class="header-section-number">5.3.2</span> 선 두께</h3>
-<p>선 두께를 조절하는 그래프 모수는 <code>lwd</code> 입니다. <code>lwd = 1</code> 이 디폴트 값이며, 이 숫자를 기준으로 숫자만큼 선 두께가 배수가 됩니다. 아래에 <code>lwd = 0.5, 1, 2, 3, 4, 5</code> 별로 선 두께가 어떻게 변화하는지 예를 들어보았습니다. 참고로, <code>plot(x, y, dataset, **type = "l"**)</code> 로 하면 선 그래프 (line plot)를 그릴 수 있습니다.</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb99-1"><a href="그래프모수-선.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="do">## line width : lwd </span></span>
-<span id="cb99-2"><a href="그래프모수-선.html#cb99-2" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb99-3"><a href="그래프모수-선.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ordering by Weight </span></span>
-<span id="cb99-4"><a href="그래프모수-선.html#cb99-4" aria-hidden="true" tabindex="-1"></a>Cars93_order <span class="ot">&lt;-</span> Cars93[<span class="fu">order</span>(Cars93<span class="sc">$</span>Weight),] </span>
-<span id="cb99-5"><a href="그래프모수-선.html#cb99-5" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb99-6"><a href="그래프모수-선.html#cb99-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)) </span>
-<span id="cb99-7"><a href="그래프모수-선.html#cb99-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot display by 2 row and 3 column </span></span>
-<span id="cb99-8"><a href="그래프모수-선.html#cb99-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lwd =</span> <span class="fl">0.5</span>, <span class="at">main =</span> <span class="st">&quot;lwd = 0.5&quot;</span>)</span>
-<span id="cb99-9"><a href="그래프모수-선.html#cb99-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lwd =</span> <span class="dv">1</span>, <span class="at">main =</span> <span class="st">&quot;lwd = 1 (default)&quot;</span>) </span>
-<span id="cb99-10"><a href="그래프모수-선.html#cb99-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;lwd = 2&quot;</span>) </span>
-<span id="cb99-11"><a href="그래프모수-선.html#cb99-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">main =</span> <span class="st">&quot;lwd = 3&quot;</span>) </span>
-<span id="cb99-12"><a href="그래프모수-선.html#cb99-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lwd =</span> <span class="dv">4</span>, <span class="at">main =</span> <span class="st">&quot;lwd = 4&quot;</span>) </span>
-<span id="cb99-13"><a href="그래프모수-선.html#cb99-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lwd =</span> <span class="dv">5</span>, <span class="at">main =</span> <span class="st">&quot;lwd = 5&quot;</span>)</span></code></pre></div>
+<p>선 두께를 조절하는 그래프 모수는 <code>lwd</code> 입니다. <code>lwd = 1</code> 이 디폴트 값이며, 이 숫자를 기준으로 숫자만큼 선 두께가 배수가 됩니다.</p>
+<p>아래에 <code>lwd = 0.5, 1, 2, 3, 4, 5</code> 별로 선 두께가 어떻게 변화하는지 예를 들어보았습니다.</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb102-1"><a href="그래프모수-선.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="do">## line width : lwd </span></span>
+<span id="cb102-2"><a href="그래프모수-선.html#cb102-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb102-3"><a href="그래프모수-선.html#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 창의 무게로 정렬</span></span>
+<span id="cb102-4"><a href="그래프모수-선.html#cb102-4" aria-hidden="true" tabindex="-1"></a>Cars93_order <span class="ot">&lt;-</span> Cars93[<span class="fu">order</span>(Cars93<span class="sc">$</span>Weight),] </span>
+<span id="cb102-5"><a href="그래프모수-선.html#cb102-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb102-6"><a href="그래프모수-선.html#cb102-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)) </span>
+<span id="cb102-7"><a href="그래프모수-선.html#cb102-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-8"><a href="그래프모수-선.html#cb102-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lwd =</span> <span class="fl">0.5</span>, <span class="at">main =</span> <span class="st">&quot;lwd = 0.5&quot;</span>)</span>
+<span id="cb102-9"><a href="그래프모수-선.html#cb102-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lwd =</span> <span class="dv">1</span>, <span class="at">main =</span> <span class="st">&quot;lwd = 1 (default)&quot;</span>) </span>
+<span id="cb102-10"><a href="그래프모수-선.html#cb102-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;lwd = 2&quot;</span>) </span>
+<span id="cb102-11"><a href="그래프모수-선.html#cb102-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">main =</span> <span class="st">&quot;lwd = 3&quot;</span>) </span>
+<span id="cb102-12"><a href="그래프모수-선.html#cb102-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lwd =</span> <span class="dv">4</span>, <span class="at">main =</span> <span class="st">&quot;lwd = 4&quot;</span>) </span>
+<span id="cb102-13"><a href="그래프모수-선.html#cb102-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data =</span> Cars93_order, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lwd =</span> <span class="dv">5</span>, <span class="at">main =</span> <span class="st">&quot;lwd = 5&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-local-lwd"></span>
 <img src="bookdown_files/figure-html/fig-local-lwd-1.png" alt="그래프 모수의 설정 : 선 두께 : lty" width="672" />
 <p class="caption">
-Figure 5.12: 그래프 모수의 설정 : 선 두께 : lty
+Figure 5.13: 그래프 모수의 설정 : 선 두께 : lty
 </p>
 </div>
 <p><a href="#기호-모양-크기-선-유형-선-두께">Go Top</a></p>
