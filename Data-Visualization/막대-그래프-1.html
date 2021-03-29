@@ -510,9 +510,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="데이터-세트-4" class="section level3" number="10.1.1">
 <h3><span class="header-section-number">10.1.1</span> 데이터 세트</h3>
 <p>사용할 데이터는 <code>MASS</code> 패키지에 있는 <code>Cars93</code> 데이터 프레임에서 자동차 유형(Type), 제조국(Origin) 등의 범주형/요인(factor)형 변수를 사용하겠습니다.</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb318-1"><a href="막대-그래프-1.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb318-2"><a href="막대-그래프-1.html#cb318-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb318-3"><a href="막대-그래프-1.html#cb318-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb316-1"><a href="막대-그래프-1.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb316-2"><a href="막대-그래프-1.html#cb316-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb316-3"><a href="막대-그래프-1.html#cb316-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
 <pre class="bg-warning"><code>## &#39;data.frame&#39;:    93 obs. of  27 variables:
 ##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
 ##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
@@ -545,11 +545,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="기본-막대-그래프" class="section level3" number="10.1.2">
 <h3><span class="header-section-number">10.1.2</span> 기본 막대 그래프</h3>
 <p>자동차 유형(<code>Type</code>)별 도수를 가지고 막대 그래프를 그려 보겠습니다.</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb320-1"><a href="막대-그래프-1.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 막대 그래프</span></span>
-<span id="cb320-2"><a href="막대-그래프-1.html#cb320-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Type)) <span class="sc">+</span>                      <span class="co"># x축을 Type 변수로 지정합니다.</span></span>
-<span id="cb320-3"><a href="막대-그래프-1.html#cb320-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">fill=</span><span class="st">&quot;white&quot;</span>,                           <span class="co"># 막대의 채우기 색을 지정합니다.</span></span>
-<span id="cb320-4"><a href="막대-그래프-1.html#cb320-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">colour=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span>                       <span class="co"># 막대의 테두리 색을 지정합니다.</span></span>
-<span id="cb320-5"><a href="막대-그래프-1.html#cb320-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&quot;차량 유형별 도수 분포도&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb318-1"><a href="막대-그래프-1.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 막대 그래프</span></span>
+<span id="cb318-2"><a href="막대-그래프-1.html#cb318-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Type)) <span class="sc">+</span>                      <span class="co"># x축을 Type 변수로 지정합니다.</span></span>
+<span id="cb318-3"><a href="막대-그래프-1.html#cb318-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">fill=</span><span class="st">&quot;white&quot;</span>,                           <span class="co"># 막대의 채우기 색을 지정합니다.</span></span>
+<span id="cb318-4"><a href="막대-그래프-1.html#cb318-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">colour=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span>                       <span class="co"># 막대의 테두리 색을 지정합니다.</span></span>
+<span id="cb318-5"><a href="막대-그래프-1.html#cb318-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&quot;차량 유형별 도수 분포도&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGBarBase"></span>
 <img src="bookdown_files/figure-html/GGBarBase-1.png" alt="차량 유형별 도수 분포도 : 기본 막대 그래프" width="672" />
 <p class="caption">
@@ -564,18 +564,18 @@ Figure 10.1: 차량 유형별 도수 분포도 : 기본 막대 그래프
 <div id="차량-유형별-빈도수-구하기" class="section level4" number="10.1.3.1">
 <h4><span class="header-section-number">10.1.3.1</span> 차량 유형별 빈도수 구하기</h4>
 <p>아래 예제에서는 자동차 유형(<code>Type</code>)별로 <strong>도수를 집계</strong>(aggregation)할 때 <code>sqldf</code> 패키지를 사용하였습니다.</p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb321-1"><a href="막대-그래프-1.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차량 유형별(Type) 빈도수 구하기 : Type_cnt</span></span>
-<span id="cb321-2"><a href="막대-그래프-1.html#cb321-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;sqldf&quot;)</span></span>
-<span id="cb321-3"><a href="막대-그래프-1.html#cb321-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sqldf)</span></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb319-1"><a href="막대-그래프-1.html#cb319-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차량 유형별(Type) 빈도수 구하기 : Type_cnt</span></span>
+<span id="cb319-2"><a href="막대-그래프-1.html#cb319-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;sqldf&quot;)</span></span>
+<span id="cb319-3"><a href="막대-그래프-1.html#cb319-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sqldf)</span></code></pre></div>
 <pre><code>## Loading required package: gsubfn</code></pre>
 <pre><code>## Loading required package: proto</code></pre>
 <pre><code>## Loading required package: RSQLite</code></pre>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb325-1"><a href="막대-그래프-1.html#cb325-1" aria-hidden="true" tabindex="-1"></a>Car_Type_cnt <span class="ot">&lt;-</span> <span class="fu">sqldf</span>( <span class="st">&#39;select Type, count(*) as Type_cnt</span></span>
-<span id="cb325-2"><a href="막대-그래프-1.html#cb325-2" aria-hidden="true" tabindex="-1"></a><span class="st">                        from Cars93</span></span>
-<span id="cb325-3"><a href="막대-그래프-1.html#cb325-3" aria-hidden="true" tabindex="-1"></a><span class="st">                        group by Type</span></span>
-<span id="cb325-4"><a href="막대-그래프-1.html#cb325-4" aria-hidden="true" tabindex="-1"></a><span class="st">                        order by Type&#39;</span>)</span>
-<span id="cb325-5"><a href="막대-그래프-1.html#cb325-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb325-6"><a href="막대-그래프-1.html#cb325-6" aria-hidden="true" tabindex="-1"></a>Car_Type_cnt</span></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb323-1"><a href="막대-그래프-1.html#cb323-1" aria-hidden="true" tabindex="-1"></a>Car_Type_cnt <span class="ot">&lt;-</span> <span class="fu">sqldf</span>( <span class="st">&#39;select Type, count(*) as Type_cnt</span></span>
+<span id="cb323-2"><a href="막대-그래프-1.html#cb323-2" aria-hidden="true" tabindex="-1"></a><span class="st">                        from Cars93</span></span>
+<span id="cb323-3"><a href="막대-그래프-1.html#cb323-3" aria-hidden="true" tabindex="-1"></a><span class="st">                        group by Type</span></span>
+<span id="cb323-4"><a href="막대-그래프-1.html#cb323-4" aria-hidden="true" tabindex="-1"></a><span class="st">                        order by Type&#39;</span>)</span>
+<span id="cb323-5"><a href="막대-그래프-1.html#cb323-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb323-6"><a href="막대-그래프-1.html#cb323-6" aria-hidden="true" tabindex="-1"></a>Car_Type_cnt</span></code></pre></div>
 <pre class="bg-warning"><code>##      Type Type_cnt
 ## 1 Compact       16
 ## 2   Large       11
@@ -583,7 +583,7 @@ Figure 10.1: 차량 유형별 도수 분포도 : 기본 막대 그래프
 ## 4   Small       21
 ## 5  Sporty       14
 ## 6     Van        9</code></pre>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb327-1"><a href="막대-그래프-1.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(Car_Type_cnt, class)</span></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb325-1"><a href="막대-그래프-1.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(Car_Type_cnt, class)</span></code></pre></div>
 <pre class="bg-warning"><code>##      Type  Type_cnt 
 ##  &quot;factor&quot; &quot;integer&quot;</code></pre>
 </div>
@@ -591,16 +591,16 @@ Figure 10.1: 차량 유형별 도수 분포도 : 기본 막대 그래프
 <h4><span class="header-section-number">10.1.3.2</span> 빈도수를 Y축으로 하여 막대 그래프 그리기</h4>
 <p>다음으로 자동차 유형(<code>Type</code>)별로 <code>geom_bar()</code>를 이용하여 막대 그래프를 그려보도록 하겠습니다.</p>
 <p>앞에서 생성한 <code>Type_cnt</code> 변수를 <code>y</code>에 지정해 주고, <code>geom_bar()</code>에 <code>stat="identity"</code>를 설정해 주어야 합니다.</p>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb329-1"><a href="막대-그래프-1.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 자동차 유형별 도수 막대 그림 : stat 모수 사용</span></span>
-<span id="cb329-2"><a href="막대-그래프-1.html#cb329-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb329-3"><a href="막대-그래프-1.html#cb329-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb329-4"><a href="막대-그래프-1.html#cb329-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Car_Type_cnt, </span>
-<span id="cb329-5"><a href="막대-그래프-1.html#cb329-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type, </span>
-<span id="cb329-6"><a href="막대-그래프-1.html#cb329-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Type_cnt)) <span class="sc">+</span> </span>
-<span id="cb329-7"><a href="막대-그래프-1.html#cb329-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>,                     <span class="co"># y축에 명시한 값을 기준으로 그래프로 표현</span></span>
-<span id="cb329-8"><a href="막대-그래프-1.html#cb329-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> <span class="st">&quot;white&quot;</span>, </span>
-<span id="cb329-9"><a href="막대-그래프-1.html#cb329-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb329-10"><a href="막대-그래프-1.html#cb329-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&quot;차량 유형별 도수 분포도&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb327-1"><a href="막대-그래프-1.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 자동차 유형별 도수 막대 그림 : stat 모수 사용</span></span>
+<span id="cb327-2"><a href="막대-그래프-1.html#cb327-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb327-3"><a href="막대-그래프-1.html#cb327-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb327-4"><a href="막대-그래프-1.html#cb327-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Car_Type_cnt, </span>
+<span id="cb327-5"><a href="막대-그래프-1.html#cb327-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type, </span>
+<span id="cb327-6"><a href="막대-그래프-1.html#cb327-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Type_cnt)) <span class="sc">+</span> </span>
+<span id="cb327-7"><a href="막대-그래프-1.html#cb327-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>,                     <span class="co"># y축에 명시한 값을 기준으로 그래프로 표현</span></span>
+<span id="cb327-8"><a href="막대-그래프-1.html#cb327-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> <span class="st">&quot;white&quot;</span>, </span>
+<span id="cb327-9"><a href="막대-그래프-1.html#cb327-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb327-10"><a href="막대-그래프-1.html#cb327-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&quot;차량 유형별 도수 분포도&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGBarStatPar"></span>
 <img src="bookdown_files/figure-html/GGBarStatPar-1.png" alt="차량 유형별 도수 분포도 : stat 모수 사용" width="672" />
 <p class="caption">
@@ -618,28 +618,28 @@ Figure 10.2: 차량 유형별 도수 분포도 : stat 모수 사용
 <div id="aes-함수의-모수-이용-6" class="section level4" number="10.1.4.1">
 <h4><span class="header-section-number">10.1.4.1</span> <code>aes()</code> 함수의 모수 이용</h4>
 <p>이 경우도 <a href="히스토그램-1.html#그룹별-히스토그램">그룹별 히스토그램</a>에서 살펴본 바와 같이 <code>fill</code>, <code>group</code>, <code>colour</code> 등의 모수를 이용할 수 있습니다. 여기서는 <code>fill</code> 을 예로 설명하겠습니다.</p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb330-1"><a href="막대-그래프-1.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별 원산지별 도수 분포도 : 이변량 막대 그래프</span></span>
-<span id="cb330-2"><a href="막대-그래프-1.html#cb330-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb330-3"><a href="막대-그래프-1.html#cb330-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                        </span>
-<span id="cb330-4"><a href="막대-그래프-1.html#cb330-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Origin)) <span class="sc">+</span>                         <span class="co"># 막대 채우기 색을 Origin 별로 지정합니다.</span></span>
-<span id="cb330-5"><a href="막대-그래프-1.html#cb330-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>,                  <span class="co"># 막대를 Origin 별로 수평 배열합니다.(기본 값은 &quot;stack&quot;)</span></span>
-<span id="cb330-6"><a href="막대-그래프-1.html#cb330-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span>                  <span class="co"># 막대의 테두리 선을 지정합니다.</span></span>
-<span id="cb330-7"><a href="막대-그래프-1.html#cb330-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="dv">1</span>) <span class="sc">+</span>              <span class="co"># 막대의 컬러 팔레트를 1로 지정합니다.</span></span>
-<span id="cb330-8"><a href="막대-그래프-1.html#cb330-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 원산지별 도수 분포도 : 이변량 막대 그래프&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb328-1"><a href="막대-그래프-1.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별 원산지별 도수 분포도 : 이변량 막대 그래프</span></span>
+<span id="cb328-2"><a href="막대-그래프-1.html#cb328-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb328-3"><a href="막대-그래프-1.html#cb328-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                        </span>
+<span id="cb328-4"><a href="막대-그래프-1.html#cb328-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Origin)) <span class="sc">+</span>                         <span class="co"># 막대 채우기 색을 Origin 별로 지정합니다.</span></span>
+<span id="cb328-5"><a href="막대-그래프-1.html#cb328-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>,                  <span class="co"># 막대를 Origin 별로 수평 배열합니다.(기본 값은 &quot;stack&quot;)</span></span>
+<span id="cb328-6"><a href="막대-그래프-1.html#cb328-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span>                  <span class="co"># 막대의 테두리 선을 지정합니다.</span></span>
+<span id="cb328-7"><a href="막대-그래프-1.html#cb328-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="dv">1</span>) <span class="sc">+</span>              <span class="co"># 막대의 컬러 팔레트를 1로 지정합니다.</span></span>
+<span id="cb328-8"><a href="막대-그래프-1.html#cb328-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 원산지별 도수 분포도 : 이변량 막대 그래프&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGBarPlot2Vars-1"></span>
 <img src="bookdown_files/figure-html/GGBarPlot2Vars-1.png" alt="차종별 원산지별 도수 분포도 : 이변량 막대 그래프" width="50%" />
 <p class="caption">
 Figure 10.3: 차종별 원산지별 도수 분포도 : 이변량 막대 그래프
 </p>
 </div>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb331-1"><a href="막대-그래프-1.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별 원산지별 도수 분포도 : 이변량 누적 막대 그래프</span></span>
-<span id="cb331-2"><a href="막대-그래프-1.html#cb331-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb331-3"><a href="막대-그래프-1.html#cb331-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                        </span>
-<span id="cb331-4"><a href="막대-그래프-1.html#cb331-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Origin)) <span class="sc">+</span>                      </span>
-<span id="cb331-5"><a href="막대-그래프-1.html#cb331-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_bar</span>( <span class="co"># position = &quot;stack&quot;,               # 기본값은 &quot;stack&quot;, 생략 가능합니다.</span></span>
-<span id="cb331-6"><a href="막대-그래프-1.html#cb331-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span>                 </span>
-<span id="cb331-7"><a href="막대-그래프-1.html#cb331-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb331-8"><a href="막대-그래프-1.html#cb331-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 원산지별 도수 분포도 : 이변량 누적 막대 그래프&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb329-1"><a href="막대-그래프-1.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별 원산지별 도수 분포도 : 이변량 누적 막대 그래프</span></span>
+<span id="cb329-2"><a href="막대-그래프-1.html#cb329-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb329-3"><a href="막대-그래프-1.html#cb329-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                        </span>
+<span id="cb329-4"><a href="막대-그래프-1.html#cb329-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Origin)) <span class="sc">+</span>                      </span>
+<span id="cb329-5"><a href="막대-그래프-1.html#cb329-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_bar</span>( <span class="co"># position = &quot;stack&quot;,               # 기본값은 &quot;stack&quot;, 생략 가능합니다.</span></span>
+<span id="cb329-6"><a href="막대-그래프-1.html#cb329-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span>                 </span>
+<span id="cb329-7"><a href="막대-그래프-1.html#cb329-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb329-8"><a href="막대-그래프-1.html#cb329-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 원산지별 도수 분포도 : 이변량 누적 막대 그래프&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGBarPlot2Vars-2"></span>
 <img src="bookdown_files/figure-html/GGBarPlot2Vars-2.png" alt="차종별 원산지별 도수 분포도 : 이변량 막대 그래프" width="50%" />
 <p class="caption">
@@ -650,15 +650,15 @@ Figure 10.4: 차종별 원산지별 도수 분포도 : 이변량 막대 그래�
 <div id="facet_grid-함수-이용-4" class="section level4" number="10.1.4.2">
 <h4><span class="header-section-number">10.1.4.2</span> <code>facet_grid()</code> 함수 이용</h4>
 <p>자동차 유형별(<code>Type</code>)로 앞의 히스토그램을 비교하기 위해서는 <code>facet_grid(Type ~ .)</code> 또는 <code>facet_grid(vars(Type))</code>으로 지정하는 방법과 <code>facet_grid( . ~ Type)</code> 으로 지정하는 방법을 각각 살펴 보겠습니다.</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb332-1"><a href="막대-그래프-1.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별 원산지별 도수 분포도 : facet_grid()</span></span>
-<span id="cb332-2"><a href="막대-그래프-1.html#cb332-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb332-3"><a href="막대-그래프-1.html#cb332-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                        </span>
-<span id="cb332-4"><a href="막대-그래프-1.html#cb332-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Origin)) <span class="sc">+</span>                      </span>
-<span id="cb332-5"><a href="막대-그래프-1.html#cb332-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;identity&quot;</span>,               </span>
-<span id="cb332-6"><a href="막대-그래프-1.html#cb332-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span>                 </span>
-<span id="cb332-7"><a href="막대-그래프-1.html#cb332-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb332-8"><a href="막대-그래프-1.html#cb332-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 원산지별 도수 분포도 : facet_grid()&quot;</span>) <span class="sc">+</span></span>
-<span id="cb332-9"><a href="막대-그래프-1.html#cb332-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(Origin <span class="sc">~</span> Type)                    <span class="co"># Origin 별로 별도의 막대 그래프를 작성합니다.</span></span></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb330-1"><a href="막대-그래프-1.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별 원산지별 도수 분포도 : facet_grid()</span></span>
+<span id="cb330-2"><a href="막대-그래프-1.html#cb330-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb330-3"><a href="막대-그래프-1.html#cb330-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                        </span>
+<span id="cb330-4"><a href="막대-그래프-1.html#cb330-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Origin)) <span class="sc">+</span>                      </span>
+<span id="cb330-5"><a href="막대-그래프-1.html#cb330-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;identity&quot;</span>,               </span>
+<span id="cb330-6"><a href="막대-그래프-1.html#cb330-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span>                 </span>
+<span id="cb330-7"><a href="막대-그래프-1.html#cb330-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb330-8"><a href="막대-그래프-1.html#cb330-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 원산지별 도수 분포도 : facet_grid()&quot;</span>) <span class="sc">+</span></span>
+<span id="cb330-9"><a href="막대-그래프-1.html#cb330-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(Origin <span class="sc">~</span> Type)                    <span class="co"># Origin 별로 별도의 막대 그래프를 작성합니다.</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGBarPlot2VarsFacGrid"></span>
 <img src="bookdown_files/figure-html/GGBarPlot2VarsFacGrid-1.png" alt="차종별 원산지별 도수 분포도 : facet_grid()" width="672" />
 <p class="caption">
@@ -669,15 +669,15 @@ Figure 10.5: 차종별 원산지별 도수 분포도 : facet_grid()
 <div id="facet_wrap-함수-이용-4" class="section level4" number="10.1.4.3">
 <h4><span class="header-section-number">10.1.4.3</span> <code>facet_wrap()</code> 함수 이용</h4>
 <p>한편, <code>facet_wrap(</code>) 함수를 이용하여 각 자동차 유형(<code>Type</code>)별 히스트로그램을 작성할 수도 있습니다. <code>facet_wrap(Origin ~ Type, ncol = 2)</code>를 추가해 보겠습니다.</p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb333-1"><a href="막대-그래프-1.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별 원산지별 도수 분포도 : facet_wrap()</span></span>
-<span id="cb333-2"><a href="막대-그래프-1.html#cb333-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb333-3"><a href="막대-그래프-1.html#cb333-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                        </span>
-<span id="cb333-4"><a href="막대-그래프-1.html#cb333-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Origin)) <span class="sc">+</span>                      </span>
-<span id="cb333-5"><a href="막대-그래프-1.html#cb333-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;identity&quot;</span>,               </span>
-<span id="cb333-6"><a href="막대-그래프-1.html#cb333-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span>                 </span>
-<span id="cb333-7"><a href="막대-그래프-1.html#cb333-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb333-8"><a href="막대-그래프-1.html#cb333-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 원산지별 도수 분포도 : facet_wrap()&quot;</span>) <span class="sc">+</span></span>
-<span id="cb333-9"><a href="막대-그래프-1.html#cb333-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(Origin <span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">6</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb331-1"><a href="막대-그래프-1.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별 원산지별 도수 분포도 : facet_wrap()</span></span>
+<span id="cb331-2"><a href="막대-그래프-1.html#cb331-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb331-3"><a href="막대-그래프-1.html#cb331-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                        </span>
+<span id="cb331-4"><a href="막대-그래프-1.html#cb331-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Origin)) <span class="sc">+</span>                      </span>
+<span id="cb331-5"><a href="막대-그래프-1.html#cb331-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;identity&quot;</span>,               </span>
+<span id="cb331-6"><a href="막대-그래프-1.html#cb331-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span>                 </span>
+<span id="cb331-7"><a href="막대-그래프-1.html#cb331-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb331-8"><a href="막대-그래프-1.html#cb331-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 원산지별 도수 분포도 : facet_wrap()&quot;</span>) <span class="sc">+</span></span>
+<span id="cb331-9"><a href="막대-그래프-1.html#cb331-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(Origin <span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">6</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGBarPlot2VarsFacWrap"></span>
 <img src="bookdown_files/figure-html/GGBarPlot2VarsFacWrap-1.png" alt="차종별 원산지별 도수 분포도 : facet_wrap()" width="672" />
 <p class="caption">
@@ -691,23 +691,23 @@ Figure 10.6: 차종별 원산지별 도수 분포도 : facet_wrap()
 <h3><span class="header-section-number">10.1.5</span> Theme의 사용</h3>
 <p>히스토그램에서 <a href="히스토그램-1.html#UsignThemes">Theme을 사용</a>하였듯이, 막대 그래프에서도 Theme을 사용할 수 있습니다.</p>
 <p>다음의 예는 앞서 작성한 <a href="막대-그래프-1.html#기본-막대-그래프">기본 막대 그래프</a>에 <a href="히스토그램-1.html#UsignThemes">히스토그램에서 Theme으로 사용</a>한 <code>ggplot2::theme_classic() +</code> 이하 부분을 <strong>복사해서 붙여 넣기</strong>한 것입니다.</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb334-1"><a href="막대-그래프-1.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 막대 그래프에 theme_classic() 적용</span></span>
-<span id="cb334-2"><a href="막대-그래프-1.html#cb334-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Type)) <span class="sc">+</span> </span>
-<span id="cb334-3"><a href="막대-그래프-1.html#cb334-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">fill=</span><span class="st">&quot;white&quot;</span>,      </span>
-<span id="cb334-4"><a href="막대-그래프-1.html#cb334-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">colour=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span>  </span>
-<span id="cb334-5"><a href="막대-그래프-1.html#cb334-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;막대 그래프에 Theme 적용&quot;</span>) <span class="sc">+</span></span>
-<span id="cb334-6"><a href="막대-그래프-1.html#cb334-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_classic</span>() <span class="sc">+</span>                                         <span class="co"># 그래프 테마 지정</span></span>
-<span id="cb334-7"><a href="막대-그래프-1.html#cb334-7" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
-<span id="cb334-8"><a href="막대-그래프-1.html#cb334-8" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;italic&quot;</span>, </span>
-<span id="cb334-9"><a href="막대-그래프-1.html#cb334-9" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
-<span id="cb334-10"><a href="막대-그래프-1.html#cb334-10" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
-<span id="cb334-11"><a href="막대-그래프-1.html#cb334-11" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
-<span id="cb334-12"><a href="막대-그래프-1.html#cb334-12" aria-hidden="true" tabindex="-1"></a>                 <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
-<span id="cb334-13"><a href="막대-그래프-1.html#cb334-13" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;bold.italic&quot;</span>, </span>
-<span id="cb334-14"><a href="막대-그래프-1.html#cb334-14" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
-<span id="cb334-15"><a href="막대-그래프-1.html#cb334-15" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
-<span id="cb334-16"><a href="막대-그래프-1.html#cb334-16" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span>       </span>
-<span id="cb334-17"><a href="막대-그래프-1.html#cb334-17" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)              </span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb332-1"><a href="막대-그래프-1.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 막대 그래프에 theme_classic() 적용</span></span>
+<span id="cb332-2"><a href="막대-그래프-1.html#cb332-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Type)) <span class="sc">+</span> </span>
+<span id="cb332-3"><a href="막대-그래프-1.html#cb332-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">fill=</span><span class="st">&quot;white&quot;</span>,      </span>
+<span id="cb332-4"><a href="막대-그래프-1.html#cb332-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">colour=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span>  </span>
+<span id="cb332-5"><a href="막대-그래프-1.html#cb332-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;막대 그래프에 Theme 적용&quot;</span>) <span class="sc">+</span></span>
+<span id="cb332-6"><a href="막대-그래프-1.html#cb332-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_classic</span>() <span class="sc">+</span>                                         <span class="co"># 그래프 테마 지정</span></span>
+<span id="cb332-7"><a href="막대-그래프-1.html#cb332-7" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
+<span id="cb332-8"><a href="막대-그래프-1.html#cb332-8" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;italic&quot;</span>, </span>
+<span id="cb332-9"><a href="막대-그래프-1.html#cb332-9" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
+<span id="cb332-10"><a href="막대-그래프-1.html#cb332-10" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb332-11"><a href="막대-그래프-1.html#cb332-11" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb332-12"><a href="막대-그래프-1.html#cb332-12" aria-hidden="true" tabindex="-1"></a>                 <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
+<span id="cb332-13"><a href="막대-그래프-1.html#cb332-13" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;bold.italic&quot;</span>, </span>
+<span id="cb332-14"><a href="막대-그래프-1.html#cb332-14" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
+<span id="cb332-15"><a href="막대-그래프-1.html#cb332-15" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb332-16"><a href="막대-그래프-1.html#cb332-16" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span>       </span>
+<span id="cb332-17"><a href="막대-그래프-1.html#cb332-17" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)              </span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGBarPlotTheme"></span>
 <img src="bookdown_files/figure-html/GGBarPlotTheme-1.png" alt="막대 그래프에 Theme 적용" width="672" />
 <p class="caption">

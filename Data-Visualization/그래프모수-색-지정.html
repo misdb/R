@@ -553,10 +553,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="기호-선-문자-등의-디폴트-색-지정" class="section level3" number="5.4.1">
 <h3><span class="header-section-number">5.4.1</span> 기호, 선, 문자 등의 디폴트 색 지정</h3>
 <p>R에서 지원하는 <strong>색의 종류에는 657</strong>개가 있습니다. <strong><code>colors()</code></strong> 함수를 사용하면 657개 전체 색 리스트를 볼 수 있습니다.</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb103-1"><a href="그래프모수-색-지정.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="do">##-------------------------------</span></span>
-<span id="cb103-2"><a href="그래프모수-색-지정.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Graphical parameters : color</span></span>
-<span id="cb103-3"><a href="그래프모수-색-지정.html#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="do">##-------------------------------</span></span>
-<span id="cb103-4"><a href="그래프모수-색-지정.html#cb103-4" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">colors</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb101-1"><a href="그래프모수-색-지정.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="do">##-------------------------------</span></span>
+<span id="cb101-2"><a href="그래프모수-색-지정.html#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Graphical parameters : color</span></span>
+<span id="cb101-3"><a href="그래프모수-색-지정.html#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="do">##-------------------------------</span></span>
+<span id="cb101-4"><a href="그래프모수-색-지정.html#cb101-4" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">colors</span>())</span></code></pre></div>
 <pre class="bg-warning"><code>## [1] 657</code></pre>
 <pre><code>colors()</code></pre>
 <p>위처럼 text로 색깔 이름만 있으면 알기 어려울 수도 있는데요, <a href="http://research.stowers-institute.org/efg/R/Color/Chart/index.htm">Earl F. Glynn</a> 가 657개 색을 각 숫자별로 그리드에 색을 보기에 좋도록 정리를 해놓았습니다.</p>
@@ -651,10 +651,10 @@ Figure 5.14: Earl F. Glynn의 색상 표
 </tbody>
 </table>
 <p>다음의 예는 원을 8 등분 또는 16 등분하여 각 조각의 색을 지정하기 위해 <code>col =</code> 모수를 사용하고, 조각의 색을 식별 숫자로 지정하는 파이 차트의 예를 보여 주고 있습니다.</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb106-1"><a href="그래프모수-색-지정.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># color by index 1~8 </span></span>
-<span id="cb106-2"><a href="그래프모수-색-지정.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) </span>
-<span id="cb106-3"><a href="그래프모수-색-지정.html#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">8</span>), <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>)         <span class="co"># 1 ~ 8 번까지 지정합니다.</span></span>
-<span id="cb106-4"><a href="그래프모수-색-지정.html#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">16</span>), <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>)       <span class="co"># 9 ~ 16 번까지의 색은 1 ~ 8 번의 색으로 지정됩니다.</span></span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb104-1"><a href="그래프모수-색-지정.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># color by index 1~8 </span></span>
+<span id="cb104-2"><a href="그래프모수-색-지정.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) </span>
+<span id="cb104-3"><a href="그래프모수-색-지정.html#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">8</span>), <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>)         <span class="co"># 1 ~ 8 번까지 지정합니다.</span></span>
+<span id="cb104-4"><a href="그래프모수-색-지정.html#cb104-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">16</span>), <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>)       <span class="co"># 9 ~ 16 번까지의 색은 1 ~ 8 번의 색으로 지정됩니다.</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-col-index"></span>
 <img src="bookdown_files/figure-html/fig-col-index-1.png" alt="색 지정 : 색 식별 번호" width="672" />
 <p class="caption">
@@ -675,27 +675,27 @@ Figure 5.16:  Earl F. Glynn가 작성한 색상표
 <p>* 참고자료 : <a href="https://rstudio-pubs-static.s3.amazonaws.com/3486_79191ad32cf74955b4502b8530aad627.html" class="uri">https://rstudio-pubs-static.s3.amazonaws.com/3486_79191ad32cf74955b4502b8530aad627.html</a></p>
 </blockquote>
 <p><strong>파란색(blue)</strong>에 대해서 위의 4가지 방법, 즉 (1) 숫자 (index), (2) 색 이름 (color name), (3) 16진수 (hexadecimal), (4) RGB 색상표를 사용해서 R 함수 예를 들어보겠습니다. 파란색(blue)으로 모두 똑같은 결과가 나았습니다.</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb107-1"><a href="그래프모수-색-지정.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb107-2"><a href="그래프모수-색-지정.html#cb107-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-3"><a href="그래프모수-색-지정.html#cb107-3" aria-hidden="true" tabindex="-1"></a><span class="do">## &#39;파란색&#39; 설정 예</span></span>
-<span id="cb107-4"><a href="그래프모수-색-지정.html#cb107-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)) </span>
-<span id="cb107-5"><a href="그래프모수-색-지정.html#cb107-5" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb107-6"><a href="그래프모수-색-지정.html#cb107-6" aria-hidden="true" tabindex="-1"></a><span class="co"># method 1 : 색인번호 </span></span>
-<span id="cb107-7"><a href="그래프모수-색-지정.html#cb107-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">19</span>,</span>
-<span id="cb107-8"><a href="그래프모수-색-지정.html#cb107-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="dv">4</span>, <span class="at">main =</span> <span class="st">&quot;col = 4 (index)&quot;</span>) </span>
-<span id="cb107-9"><a href="그래프모수-색-지정.html#cb107-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb107-10"><a href="그래프모수-색-지정.html#cb107-10" aria-hidden="true" tabindex="-1"></a><span class="co"># method 2 : 색 이름 </span></span>
-<span id="cb107-11"><a href="그래프모수-색-지정.html#cb107-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">19</span>,</span>
-<span id="cb107-12"><a href="그래프모수-색-지정.html#cb107-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col = blue (name)&quot;</span>) </span>
-<span id="cb107-13"><a href="그래프모수-색-지정.html#cb107-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb107-14"><a href="그래프모수-색-지정.html#cb107-14" aria-hidden="true" tabindex="-1"></a><span class="co"># method 3 : 16진수 코드</span></span>
-<span id="cb107-15"><a href="그래프모수-색-지정.html#cb107-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">19</span>,</span>
-<span id="cb107-16"><a href="그래프모수-색-지정.html#cb107-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;#0000FF&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col = #0000FF (hexadecimal)&quot;</span>) </span>
-<span id="cb107-17"><a href="그래프모수-색-지정.html#cb107-17" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb107-18"><a href="그래프모수-색-지정.html#cb107-18" aria-hidden="true" tabindex="-1"></a><span class="co"># method 4 : 3자리로 이루어진 RGB 코드</span></span>
-<span id="cb107-19"><a href="그래프모수-색-지정.html#cb107-19" aria-hidden="true" tabindex="-1"></a>rgb_1 <span class="ot">&lt;-</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">255</span>, <span class="at">maxColorValue=</span><span class="dv">255</span>) </span>
-<span id="cb107-20"><a href="그래프모수-색-지정.html#cb107-20" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">19</span>,</span>
-<span id="cb107-21"><a href="그래프모수-색-지정.html#cb107-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> rgb_1, <span class="at">main =</span> <span class="st">&quot;col = RGB(0, 0, 255)(RGB triple)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb105-1"><a href="그래프모수-색-지정.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb105-2"><a href="그래프모수-색-지정.html#cb105-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-3"><a href="그래프모수-색-지정.html#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="do">## &#39;파란색&#39; 설정 예</span></span>
+<span id="cb105-4"><a href="그래프모수-색-지정.html#cb105-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)) </span>
+<span id="cb105-5"><a href="그래프모수-색-지정.html#cb105-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb105-6"><a href="그래프모수-색-지정.html#cb105-6" aria-hidden="true" tabindex="-1"></a><span class="co"># method 1 : 색인번호 </span></span>
+<span id="cb105-7"><a href="그래프모수-색-지정.html#cb105-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb105-8"><a href="그래프모수-색-지정.html#cb105-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="dv">4</span>, <span class="at">main =</span> <span class="st">&quot;col = 4 (index)&quot;</span>) </span>
+<span id="cb105-9"><a href="그래프모수-색-지정.html#cb105-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb105-10"><a href="그래프모수-색-지정.html#cb105-10" aria-hidden="true" tabindex="-1"></a><span class="co"># method 2 : 색 이름 </span></span>
+<span id="cb105-11"><a href="그래프모수-색-지정.html#cb105-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb105-12"><a href="그래프모수-색-지정.html#cb105-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col = blue (name)&quot;</span>) </span>
+<span id="cb105-13"><a href="그래프모수-색-지정.html#cb105-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb105-14"><a href="그래프모수-색-지정.html#cb105-14" aria-hidden="true" tabindex="-1"></a><span class="co"># method 3 : 16진수 코드</span></span>
+<span id="cb105-15"><a href="그래프모수-색-지정.html#cb105-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb105-16"><a href="그래프모수-색-지정.html#cb105-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;#0000FF&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col = #0000FF (hexadecimal)&quot;</span>) </span>
+<span id="cb105-17"><a href="그래프모수-색-지정.html#cb105-17" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb105-18"><a href="그래프모수-색-지정.html#cb105-18" aria-hidden="true" tabindex="-1"></a><span class="co"># method 4 : 3자리로 이루어진 RGB 코드</span></span>
+<span id="cb105-19"><a href="그래프모수-색-지정.html#cb105-19" aria-hidden="true" tabindex="-1"></a>rgb_1 <span class="ot">&lt;-</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">255</span>, <span class="at">maxColorValue=</span><span class="dv">255</span>) </span>
+<span id="cb105-20"><a href="그래프모수-색-지정.html#cb105-20" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb105-21"><a href="그래프모수-색-지정.html#cb105-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> rgb_1, <span class="at">main =</span> <span class="st">&quot;col = RGB(0, 0, 255)(RGB triple)&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-colname"></span>
 <img src="bookdown_files/figure-html/fig-colname-1.png" alt="색 지정 : 색 이름" width="672" />
 <p class="caption">
@@ -720,20 +720,20 @@ example(rainbow)</code></pre>
 <div id="축의-척도-색-지정" class="section level3" number="5.4.2">
 <h3><span class="header-section-number">5.4.2</span> 축의 척도 색 지정</h3>
 <p><code>x</code>축과 <code>y</code>축의 척도 표기 색상을 지정할 때 <code>col.axis</code> 모수 옵션을 사용합니다. 아래에 <code>x</code>축과 <code>y</code>축 척도 표기 색상으로 파랑색, 빨강색, 노랑색, 회색으로 바꿔가면서 그래프를 그려보았습니다.</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb109-1"><a href="그래프모수-색-지정.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 축의 척도 색 지정 : col.axis</span></span>
-<span id="cb109-2"><a href="그래프모수-색-지정.html#cb109-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-3"><a href="그래프모수-색-지정.html#cb109-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)) </span>
-<span id="cb109-4"><a href="그래프모수-색-지정.html#cb109-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,</span>
-<span id="cb109-5"><a href="그래프모수-색-지정.html#cb109-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.axis =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.axis = blue&quot;</span>) </span>
-<span id="cb109-6"><a href="그래프모수-색-지정.html#cb109-6" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb109-7"><a href="그래프모수-색-지정.html#cb109-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,</span>
-<span id="cb109-8"><a href="그래프모수-색-지정.html#cb109-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.axis =</span> <span class="st">&quot;red&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.axis = red&quot;</span>) </span>
-<span id="cb109-9"><a href="그래프모수-색-지정.html#cb109-9" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb109-10"><a href="그래프모수-색-지정.html#cb109-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,</span>
-<span id="cb109-11"><a href="그래프모수-색-지정.html#cb109-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.axis =</span> <span class="st">&quot;yellow&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.axis = yellow&quot;</span>) </span>
-<span id="cb109-12"><a href="그래프모수-색-지정.html#cb109-12" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb109-13"><a href="그래프모수-색-지정.html#cb109-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,</span>
-<span id="cb109-14"><a href="그래프모수-색-지정.html#cb109-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.axis =</span> <span class="st">&quot;gray&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.axis = gray&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb107-1"><a href="그래프모수-색-지정.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 축의 척도 색 지정 : col.axis</span></span>
+<span id="cb107-2"><a href="그래프모수-색-지정.html#cb107-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-3"><a href="그래프모수-색-지정.html#cb107-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)) </span>
+<span id="cb107-4"><a href="그래프모수-색-지정.html#cb107-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,</span>
+<span id="cb107-5"><a href="그래프모수-색-지정.html#cb107-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.axis =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.axis = blue&quot;</span>) </span>
+<span id="cb107-6"><a href="그래프모수-색-지정.html#cb107-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb107-7"><a href="그래프모수-색-지정.html#cb107-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,</span>
+<span id="cb107-8"><a href="그래프모수-색-지정.html#cb107-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.axis =</span> <span class="st">&quot;red&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.axis = red&quot;</span>) </span>
+<span id="cb107-9"><a href="그래프모수-색-지정.html#cb107-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb107-10"><a href="그래프모수-색-지정.html#cb107-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,</span>
+<span id="cb107-11"><a href="그래프모수-색-지정.html#cb107-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.axis =</span> <span class="st">&quot;yellow&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.axis = yellow&quot;</span>) </span>
+<span id="cb107-12"><a href="그래프모수-색-지정.html#cb107-12" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb107-13"><a href="그래프모수-색-지정.html#cb107-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,</span>
+<span id="cb107-14"><a href="그래프모수-색-지정.html#cb107-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.axis =</span> <span class="st">&quot;gray&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.axis = gray&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-col-axis"></span>
 <img src="bookdown_files/figure-html/fig-col-axis-1.png" alt="색 지정 : 축의 척도 색" width="672" />
 <p class="caption">
@@ -745,20 +745,20 @@ Figure 5.18: 색 지정 : 축의 척도 색
 <div id="x축과-y축의-제목-색-지정" class="section level3" number="5.4.3">
 <h3><span class="header-section-number">5.4.3</span> x축과 y축의 제목 색 지정</h3>
 <p>이번에는 x축과 y의 Lable 색을 지정하는 방법으로 <strong><code>col.lab</code></strong> 모수 옵션을 사용하면 됩니다. 파랑색, 빨강색, 노랑색, 회색으로 x축과 y축의 Lable 색을 설정하는 예를 들어보겠습니다.</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb110-1"><a href="그래프모수-색-지정.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="do">## x축과 y축의 제목 색 : col.lab </span></span>
-<span id="cb110-2"><a href="그래프모수-색-지정.html#cb110-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb110-3"><a href="그래프모수-색-지정.html#cb110-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)) </span>
-<span id="cb110-4"><a href="그래프모수-색-지정.html#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,</span>
-<span id="cb110-5"><a href="그래프모수-색-지정.html#cb110-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.lab =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.lab = blue&quot;</span>) </span>
-<span id="cb110-6"><a href="그래프모수-색-지정.html#cb110-6" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb110-7"><a href="그래프모수-색-지정.html#cb110-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
-<span id="cb110-8"><a href="그래프모수-색-지정.html#cb110-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.lab =</span> <span class="st">&quot;red&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.lab = red&quot;</span>) </span>
-<span id="cb110-9"><a href="그래프모수-색-지정.html#cb110-9" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb110-10"><a href="그래프모수-색-지정.html#cb110-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
-<span id="cb110-11"><a href="그래프모수-색-지정.html#cb110-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.lab =</span> <span class="st">&quot;yellow&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.lab = yellow&quot;</span>) </span>
-<span id="cb110-12"><a href="그래프모수-색-지정.html#cb110-12" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb110-13"><a href="그래프모수-색-지정.html#cb110-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
-<span id="cb110-14"><a href="그래프모수-색-지정.html#cb110-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.lab =</span> <span class="st">&quot;gray&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.lab = gray&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb108-1"><a href="그래프모수-색-지정.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="do">## x축과 y축의 제목 색 : col.lab </span></span>
+<span id="cb108-2"><a href="그래프모수-색-지정.html#cb108-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-3"><a href="그래프모수-색-지정.html#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)) </span>
+<span id="cb108-4"><a href="그래프모수-색-지정.html#cb108-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,</span>
+<span id="cb108-5"><a href="그래프모수-색-지정.html#cb108-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.lab =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.lab = blue&quot;</span>) </span>
+<span id="cb108-6"><a href="그래프모수-색-지정.html#cb108-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb108-7"><a href="그래프모수-색-지정.html#cb108-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
+<span id="cb108-8"><a href="그래프모수-색-지정.html#cb108-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.lab =</span> <span class="st">&quot;red&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.lab = red&quot;</span>) </span>
+<span id="cb108-9"><a href="그래프모수-색-지정.html#cb108-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb108-10"><a href="그래프모수-색-지정.html#cb108-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
+<span id="cb108-11"><a href="그래프모수-색-지정.html#cb108-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.lab =</span> <span class="st">&quot;yellow&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.lab = yellow&quot;</span>) </span>
+<span id="cb108-12"><a href="그래프모수-색-지정.html#cb108-12" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb108-13"><a href="그래프모수-색-지정.html#cb108-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
+<span id="cb108-14"><a href="그래프모수-색-지정.html#cb108-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.lab =</span> <span class="st">&quot;gray&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.lab = gray&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-col-lab"></span>
 <img src="bookdown_files/figure-html/fig-col-lab-1.png" alt="색 지정 : x축과 y축의 제목 색" width="672" />
 <p class="caption">
@@ -769,20 +769,20 @@ Figure 5.19: 색 지정 : x축과 y축의 제목 색
 </div>
 <div id="제목-색-지정" class="section level3" number="5.4.4">
 <h3><span class="header-section-number">5.4.4</span> 제목 색 지정</h3>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb111-1"><a href="그래프모수-색-지정.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 제목 색 지정 : col.main </span></span>
-<span id="cb111-2"><a href="그래프모수-색-지정.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) </span>
-<span id="cb111-3"><a href="그래프모수-색-지정.html#cb111-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-4"><a href="그래프모수-색-지정.html#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
-<span id="cb111-5"><a href="그래프모수-색-지정.html#cb111-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.main =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.main = blue&quot;</span>) </span>
-<span id="cb111-6"><a href="그래프모수-색-지정.html#cb111-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-7"><a href="그래프모수-색-지정.html#cb111-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
-<span id="cb111-8"><a href="그래프모수-색-지정.html#cb111-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.main =</span> <span class="st">&quot;red&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.main = red&quot;</span>) </span>
-<span id="cb111-9"><a href="그래프모수-색-지정.html#cb111-9" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb111-10"><a href="그래프모수-색-지정.html#cb111-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
-<span id="cb111-11"><a href="그래프모수-색-지정.html#cb111-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.main =</span> <span class="st">&quot;yellow&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.main = yellow&quot;</span>) </span>
-<span id="cb111-12"><a href="그래프모수-색-지정.html#cb111-12" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb111-13"><a href="그래프모수-색-지정.html#cb111-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
-<span id="cb111-14"><a href="그래프모수-색-지정.html#cb111-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.main =</span> <span class="st">&quot;gray&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.main = gray&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb109-1"><a href="그래프모수-색-지정.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 제목 색 지정 : col.main </span></span>
+<span id="cb109-2"><a href="그래프모수-색-지정.html#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) </span>
+<span id="cb109-3"><a href="그래프모수-색-지정.html#cb109-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-4"><a href="그래프모수-색-지정.html#cb109-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
+<span id="cb109-5"><a href="그래프모수-색-지정.html#cb109-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.main =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.main = blue&quot;</span>) </span>
+<span id="cb109-6"><a href="그래프모수-색-지정.html#cb109-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-7"><a href="그래프모수-색-지정.html#cb109-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
+<span id="cb109-8"><a href="그래프모수-색-지정.html#cb109-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.main =</span> <span class="st">&quot;red&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.main = red&quot;</span>) </span>
+<span id="cb109-9"><a href="그래프모수-색-지정.html#cb109-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb109-10"><a href="그래프모수-색-지정.html#cb109-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
+<span id="cb109-11"><a href="그래프모수-색-지정.html#cb109-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.main =</span> <span class="st">&quot;yellow&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.main = yellow&quot;</span>) </span>
+<span id="cb109-12"><a href="그래프모수-색-지정.html#cb109-12" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb109-13"><a href="그래프모수-색-지정.html#cb109-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
+<span id="cb109-14"><a href="그래프모수-색-지정.html#cb109-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.main =</span> <span class="st">&quot;gray&quot;</span>, <span class="at">main =</span> <span class="st">&quot;col.main = gray&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-col-main"></span>
 <img src="bookdown_files/figure-html/fig-col-main-1.png" alt="색 지정 : 제목" width="672" />
 <p class="caption">
@@ -793,20 +793,20 @@ Figure 5.20: 색 지정 : 제목
 </div>
 <div id="부제목-색-지정" class="section level3" number="5.4.5">
 <h3><span class="header-section-number">5.4.5</span> 부제목 색 지정</h3>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb112-1"><a href="그래프모수-색-지정.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 부제목 색 지정 : col.sub </span></span>
-<span id="cb112-2"><a href="그래프모수-색-지정.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) </span>
-<span id="cb112-3"><a href="그래프모수-색-지정.html#cb112-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb112-4"><a href="그래프모수-색-지정.html#cb112-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,</span>
-<span id="cb112-5"><a href="그래프모수-색-지정.html#cb112-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.sub =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">sub =</span> <span class="st">&quot;col.sub = blue&quot;</span>) </span>
-<span id="cb112-6"><a href="그래프모수-색-지정.html#cb112-6" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb112-7"><a href="그래프모수-색-지정.html#cb112-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
-<span id="cb112-8"><a href="그래프모수-색-지정.html#cb112-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.sub =</span> <span class="st">&quot;red&quot;</span>, <span class="at">sub =</span> <span class="st">&quot;col.sub = red&quot;</span>) </span>
-<span id="cb112-9"><a href="그래프모수-색-지정.html#cb112-9" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb112-10"><a href="그래프모수-색-지정.html#cb112-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,</span>
-<span id="cb112-11"><a href="그래프모수-색-지정.html#cb112-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.sub =</span> <span class="st">&quot;yellow&quot;</span>, <span class="at">sub =</span> <span class="st">&quot;col.sub = yellow&quot;</span>) </span>
-<span id="cb112-12"><a href="그래프모수-색-지정.html#cb112-12" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb112-13"><a href="그래프모수-색-지정.html#cb112-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
-<span id="cb112-14"><a href="그래프모수-색-지정.html#cb112-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.sub =</span> <span class="st">&quot;gray&quot;</span>, <span class="at">sub =</span> <span class="st">&quot;col.sub = gray&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb110-1"><a href="그래프모수-색-지정.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 부제목 색 지정 : col.sub </span></span>
+<span id="cb110-2"><a href="그래프모수-색-지정.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) </span>
+<span id="cb110-3"><a href="그래프모수-색-지정.html#cb110-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb110-4"><a href="그래프모수-색-지정.html#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,</span>
+<span id="cb110-5"><a href="그래프모수-색-지정.html#cb110-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.sub =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">sub =</span> <span class="st">&quot;col.sub = blue&quot;</span>) </span>
+<span id="cb110-6"><a href="그래프모수-색-지정.html#cb110-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb110-7"><a href="그래프모수-색-지정.html#cb110-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
+<span id="cb110-8"><a href="그래프모수-색-지정.html#cb110-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.sub =</span> <span class="st">&quot;red&quot;</span>, <span class="at">sub =</span> <span class="st">&quot;col.sub = red&quot;</span>) </span>
+<span id="cb110-9"><a href="그래프모수-색-지정.html#cb110-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb110-10"><a href="그래프모수-색-지정.html#cb110-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,</span>
+<span id="cb110-11"><a href="그래프모수-색-지정.html#cb110-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.sub =</span> <span class="st">&quot;yellow&quot;</span>, <span class="at">sub =</span> <span class="st">&quot;col.sub = yellow&quot;</span>) </span>
+<span id="cb110-12"><a href="그래프모수-색-지정.html#cb110-12" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb110-13"><a href="그래프모수-색-지정.html#cb110-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
+<span id="cb110-14"><a href="그래프모수-색-지정.html#cb110-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.sub =</span> <span class="st">&quot;gray&quot;</span>, <span class="at">sub =</span> <span class="st">&quot;col.sub = gray&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-col-sub"></span>
 <img src="bookdown_files/figure-html/fig-col-sub-1.png" alt="색 지정 : 부제목 색" width="672" />
 <p class="caption">
@@ -817,20 +817,20 @@ Figure 5.21: 색 지정 : 부제목 색
 </div>
 <div id="그래프-전경-색-지정" class="section level3" number="5.4.6">
 <h3><span class="header-section-number">5.4.6</span> 그래프 전경 색 지정</h3>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb113-1"><a href="그래프모수-색-지정.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 그래프 전경 색 지정 : fg </span></span>
-<span id="cb113-2"><a href="그래프모수-색-지정.html#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) </span>
-<span id="cb113-3"><a href="그래프모수-색-지정.html#cb113-3" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb113-4"><a href="그래프모수-색-지정.html#cb113-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,  </span>
-<span id="cb113-5"><a href="그래프모수-색-지정.html#cb113-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">fg =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;fg (foreground) = blue&quot;</span>) </span>
-<span id="cb113-6"><a href="그래프모수-색-지정.html#cb113-6" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb113-7"><a href="그래프모수-색-지정.html#cb113-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
-<span id="cb113-8"><a href="그래프모수-색-지정.html#cb113-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">fg =</span> <span class="st">&quot;red&quot;</span>, <span class="at">main =</span> <span class="st">&quot;fg (foreground) = red&quot;</span>) </span>
-<span id="cb113-9"><a href="그래프모수-색-지정.html#cb113-9" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb113-10"><a href="그래프모수-색-지정.html#cb113-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,  </span>
-<span id="cb113-11"><a href="그래프모수-색-지정.html#cb113-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">fg =</span> <span class="st">&quot;yellow&quot;</span>, <span class="at">main =</span> <span class="st">&quot;fg (foreground) = yellow&quot;</span>) </span>
-<span id="cb113-12"><a href="그래프모수-색-지정.html#cb113-12" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb113-13"><a href="그래프모수-색-지정.html#cb113-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,  </span>
-<span id="cb113-14"><a href="그래프모수-색-지정.html#cb113-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">fg =</span> <span class="st">&quot;gray&quot;</span>, <span class="at">main =</span> <span class="st">&quot;fg(foreground) = gray&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb111-1"><a href="그래프모수-색-지정.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 그래프 전경 색 지정 : fg </span></span>
+<span id="cb111-2"><a href="그래프모수-색-지정.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) </span>
+<span id="cb111-3"><a href="그래프모수-색-지정.html#cb111-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb111-4"><a href="그래프모수-색-지정.html#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,  </span>
+<span id="cb111-5"><a href="그래프모수-색-지정.html#cb111-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">fg =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;fg (foreground) = blue&quot;</span>) </span>
+<span id="cb111-6"><a href="그래프모수-색-지정.html#cb111-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb111-7"><a href="그래프모수-색-지정.html#cb111-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
+<span id="cb111-8"><a href="그래프모수-색-지정.html#cb111-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">fg =</span> <span class="st">&quot;red&quot;</span>, <span class="at">main =</span> <span class="st">&quot;fg (foreground) = red&quot;</span>) </span>
+<span id="cb111-9"><a href="그래프모수-색-지정.html#cb111-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb111-10"><a href="그래프모수-색-지정.html#cb111-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,  </span>
+<span id="cb111-11"><a href="그래프모수-색-지정.html#cb111-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">fg =</span> <span class="st">&quot;yellow&quot;</span>, <span class="at">main =</span> <span class="st">&quot;fg (foreground) = yellow&quot;</span>) </span>
+<span id="cb111-12"><a href="그래프모수-색-지정.html#cb111-12" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb111-13"><a href="그래프모수-색-지정.html#cb111-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">21</span>,  </span>
+<span id="cb111-14"><a href="그래프모수-색-지정.html#cb111-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">fg =</span> <span class="st">&quot;gray&quot;</span>, <span class="at">main =</span> <span class="st">&quot;fg(foreground) = gray&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-col-fg"></span>
 <img src="bookdown_files/figure-html/fig-col-fg-1.png" alt="색 지정 : 전경색" width="672" />
 <p class="caption">
@@ -842,20 +842,20 @@ Figure 5.22: 색 지정 : 전경색
 <div id="그래프-배경-색-지정" class="section level3" number="5.4.7">
 <h3><span class="header-section-number">5.4.7</span> 그래프 배경 색 지정</h3>
 <p><code>bg</code>는 그래프 기호의 배경색을 채울 때 사용합니다. 아래에 기호 모양 21번 (원)에 파랑색, 빨강색, 노랑색, 회색을 채워보았습니다.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb114-1"><a href="그래프모수-색-지정.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 그래프 배경 색 지정 : bg </span></span>
-<span id="cb114-2"><a href="그래프모수-색-지정.html#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) </span>
-<span id="cb114-3"><a href="그래프모수-색-지정.html#cb114-3" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb114-4"><a href="그래프모수-색-지정.html#cb114-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">21</span>,  </span>
-<span id="cb114-5"><a href="그래프모수-색-지정.html#cb114-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;bg (background) = blue&quot;</span>) </span>
-<span id="cb114-6"><a href="그래프모수-색-지정.html#cb114-6" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb114-7"><a href="그래프모수-색-지정.html#cb114-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">21</span>,  </span>
-<span id="cb114-8"><a href="그래프모수-색-지정.html#cb114-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">&quot;red&quot;</span>, <span class="at">main =</span> <span class="st">&quot;bg (background) = red&quot;</span>) </span>
-<span id="cb114-9"><a href="그래프모수-색-지정.html#cb114-9" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb114-10"><a href="그래프모수-색-지정.html#cb114-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
-<span id="cb114-11"><a href="그래프모수-색-지정.html#cb114-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">&quot;yellow&quot;</span>, <span class="at">main =</span> <span class="st">&quot;bg (background) = yellow&quot;</span>) </span>
-<span id="cb114-12"><a href="그래프모수-색-지정.html#cb114-12" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb114-13"><a href="그래프모수-색-지정.html#cb114-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">21</span>,  </span>
-<span id="cb114-14"><a href="그래프모수-색-지정.html#cb114-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">&quot;gray&quot;</span>, <span class="at">main =</span> <span class="st">&quot;bg (background) = gray&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb112-1"><a href="그래프모수-색-지정.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 그래프 배경 색 지정 : bg </span></span>
+<span id="cb112-2"><a href="그래프모수-색-지정.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) </span>
+<span id="cb112-3"><a href="그래프모수-색-지정.html#cb112-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb112-4"><a href="그래프모수-색-지정.html#cb112-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">21</span>,  </span>
+<span id="cb112-5"><a href="그래프모수-색-지정.html#cb112-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;bg (background) = blue&quot;</span>) </span>
+<span id="cb112-6"><a href="그래프모수-색-지정.html#cb112-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb112-7"><a href="그래프모수-색-지정.html#cb112-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">21</span>,  </span>
+<span id="cb112-8"><a href="그래프모수-색-지정.html#cb112-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">&quot;red&quot;</span>, <span class="at">main =</span> <span class="st">&quot;bg (background) = red&quot;</span>) </span>
+<span id="cb112-9"><a href="그래프모수-색-지정.html#cb112-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb112-10"><a href="그래프모수-색-지정.html#cb112-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">21</span>, </span>
+<span id="cb112-11"><a href="그래프모수-색-지정.html#cb112-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">&quot;yellow&quot;</span>, <span class="at">main =</span> <span class="st">&quot;bg (background) = yellow&quot;</span>) </span>
+<span id="cb112-12"><a href="그래프모수-색-지정.html#cb112-12" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb112-13"><a href="그래프모수-색-지정.html#cb112-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">21</span>,  </span>
+<span id="cb112-14"><a href="그래프모수-색-지정.html#cb112-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">&quot;gray&quot;</span>, <span class="at">main =</span> <span class="st">&quot;bg (background) = gray&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-col-bg"></span>
 <img src="bookdown_files/figure-html/fig-col-bg-1.png" alt="색 지정 : 배경색" width="672" />
 <p class="caption">
@@ -864,26 +864,26 @@ Figure 5.23: 색 지정 : 배경색
 </div>
 <p><a href="히스토그램-1.html#색-지정">Go Top</a></p>
 <p><code>bg (background color)</code>는 속이 비어있는 <code>pch 21</code>번부터 <code>25</code>번 까지만 사용가능하며, 그 외에는 적용이 안됩니다. 아래에 <code>pch =1</code> 일 때 <code>bg</code> 옵션이 적용이 안된 것을 확인할 수 있습니다.</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb115-1"><a href="그래프모수-색-지정.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="do">## bg (background color) only works with pch from 21 to 25 </span></span>
-<span id="cb115-2"><a href="그래프모수-색-지정.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>)) </span>
-<span id="cb115-3"><a href="그래프모수-색-지정.html#cb115-3" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb115-4"><a href="그래프모수-색-지정.html#cb115-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">1</span>,  </span>
-<span id="cb115-5"><a href="그래프모수-색-지정.html#cb115-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;pch = 1, bg is not working&quot;</span>) </span>
-<span id="cb115-6"><a href="그래프모수-색-지정.html#cb115-6" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb115-7"><a href="그래프모수-색-지정.html#cb115-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">21</span>,  </span>
-<span id="cb115-8"><a href="그래프모수-색-지정.html#cb115-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;pch = 21, bg is working&quot;</span>) </span>
-<span id="cb115-9"><a href="그래프모수-색-지정.html#cb115-9" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb115-10"><a href="그래프모수-색-지정.html#cb115-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">22</span>, </span>
-<span id="cb115-11"><a href="그래프모수-색-지정.html#cb115-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;pch = 22, bg is working&quot;</span>) </span>
-<span id="cb115-12"><a href="그래프모수-색-지정.html#cb115-12" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb115-13"><a href="그래프모수-색-지정.html#cb115-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">23</span>,  </span>
-<span id="cb115-14"><a href="그래프모수-색-지정.html#cb115-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;pch = 23, bg is working&quot;</span>) </span>
-<span id="cb115-15"><a href="그래프모수-색-지정.html#cb115-15" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb115-16"><a href="그래프모수-색-지정.html#cb115-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">24</span>,  </span>
-<span id="cb115-17"><a href="그래프모수-색-지정.html#cb115-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;pch = 24, bg is working&quot;</span>) </span>
-<span id="cb115-18"><a href="그래프모수-색-지정.html#cb115-18" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb115-19"><a href="그래프모수-색-지정.html#cb115-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">25</span>,  </span>
-<span id="cb115-20"><a href="그래프모수-색-지정.html#cb115-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;pch = 25, bg is working&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb113-1"><a href="그래프모수-색-지정.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="do">## bg (background color) only works with pch from 21 to 25 </span></span>
+<span id="cb113-2"><a href="그래프모수-색-지정.html#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>)) </span>
+<span id="cb113-3"><a href="그래프모수-색-지정.html#cb113-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb113-4"><a href="그래프모수-색-지정.html#cb113-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">1</span>,  </span>
+<span id="cb113-5"><a href="그래프모수-색-지정.html#cb113-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;pch = 1, bg is not working&quot;</span>) </span>
+<span id="cb113-6"><a href="그래프모수-색-지정.html#cb113-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb113-7"><a href="그래프모수-색-지정.html#cb113-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">21</span>,  </span>
+<span id="cb113-8"><a href="그래프모수-색-지정.html#cb113-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;pch = 21, bg is working&quot;</span>) </span>
+<span id="cb113-9"><a href="그래프모수-색-지정.html#cb113-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb113-10"><a href="그래프모수-색-지정.html#cb113-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">22</span>, </span>
+<span id="cb113-11"><a href="그래프모수-색-지정.html#cb113-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;pch = 22, bg is working&quot;</span>) </span>
+<span id="cb113-12"><a href="그래프모수-색-지정.html#cb113-12" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb113-13"><a href="그래프모수-색-지정.html#cb113-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">23</span>,  </span>
+<span id="cb113-14"><a href="그래프모수-색-지정.html#cb113-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;pch = 23, bg is working&quot;</span>) </span>
+<span id="cb113-15"><a href="그래프모수-색-지정.html#cb113-15" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb113-16"><a href="그래프모수-색-지정.html#cb113-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">24</span>,  </span>
+<span id="cb113-17"><a href="그래프모수-색-지정.html#cb113-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;pch = 24, bg is working&quot;</span>) </span>
+<span id="cb113-18"><a href="그래프모수-색-지정.html#cb113-18" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb113-19"><a href="그래프모수-색-지정.html#cb113-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">25</span>,  </span>
+<span id="cb113-20"><a href="그래프모수-색-지정.html#cb113-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;pch = 25, bg is working&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-col-bg-1"></span>
 <img src="bookdown_files/figure-html/fig-col-bg-1-1.png" alt="색 지정 : 배경색 미적용" width="672" />
 <p class="caption">

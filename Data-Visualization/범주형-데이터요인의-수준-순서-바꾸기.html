@@ -514,9 +514,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>Type</code> 변수의 경우에는 “<code>Compact</code>,” “<code>Large</code>,” “<code>Midsize</code>,” “<code>Small</code>,” “<code>Sporty</code>,” “<code>Van</code>” 등 6개의 수준으로 구성이 되어 있으며, 지금까지 살펴 본 그래프에서 이들 수준이 알파벳 순서로 정렬이 되어 있었습니다.</p>
 <p><code>ggplot2</code> 패키지를 사용해서 <code>Type</code>을 x축으로 <code>Price</code> 를 y축으로 해서 <strong>박스 그래프</strong>를 그려보겠습니다.</p>
 <p>이를 위해서 먼저 데이터셋을 <code>ggplot2</code>에서 사용할 수 있는 형태로 변환이 필요합니다. 가로로 옆으로 늘어서 있는 원래의 <code>Cars93</code> 데이터셋을 <code>tidyverse</code> 패키지의 <code>pivot_longer()</code> 함수를 이용하여 세로로 길게 세워보겠습니다.</p>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb309-1"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb309-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Factor 변수의 수준 순서 바꾸기</span></span>
-<span id="cb309-2"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb309-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 준비</span></span>
-<span id="cb309-3"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb309-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb307-1"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb307-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Factor 변수의 수준 순서 바꾸기</span></span>
+<span id="cb307-2"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb307-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 준비</span></span>
+<span id="cb307-3"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb307-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --</code></pre>
 <pre><code>## √ tidyr   1.1.3     √ dplyr   1.0.5
 ## √ readr   1.4.0     √ stringr 1.4.0
@@ -527,24 +527,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## x dplyr::recode() masks car::recode()
 ## x dplyr::select() masks MASS::select()
 ## x purrr::some()   masks car::some()</code></pre>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb313-1"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb313-1" aria-hidden="true" tabindex="-1"></a>Cars93.sub1 <span class="ot">&lt;-</span> Cars93[, <span class="fu">c</span>(<span class="st">&quot;Type&quot;</span>, <span class="st">&quot;Price&quot;</span>)]</span>
-<span id="cb313-2"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb313-2" aria-hidden="true" tabindex="-1"></a>Cars.Data <span class="ot">&lt;-</span> Cars93.sub1 <span class="sc">%&gt;%</span> </span>
-<span id="cb313-3"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb313-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;Variable&quot;</span>, </span>
-<span id="cb313-4"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb313-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">values_to =</span> <span class="st">&quot;Value&quot;</span>,</span>
-<span id="cb313-5"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb313-5" aria-hidden="true" tabindex="-1"></a>                            <span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb313-6"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb313-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb313-7"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb313-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars.Data)</span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb311-1"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb311-1" aria-hidden="true" tabindex="-1"></a>Cars93.sub1 <span class="ot">&lt;-</span> Cars93[, <span class="fu">c</span>(<span class="st">&quot;Type&quot;</span>, <span class="st">&quot;Price&quot;</span>)]</span>
+<span id="cb311-2"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb311-2" aria-hidden="true" tabindex="-1"></a>Cars.Data <span class="ot">&lt;-</span> Cars93.sub1 <span class="sc">%&gt;%</span> </span>
+<span id="cb311-3"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb311-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;Variable&quot;</span>, </span>
+<span id="cb311-4"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb311-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">values_to =</span> <span class="st">&quot;Value&quot;</span>,</span>
+<span id="cb311-5"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb311-5" aria-hidden="true" tabindex="-1"></a>                            <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb311-6"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb311-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb311-7"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb311-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars.Data)</span></code></pre></div>
 <pre class="bg-warning"><code>## tibble [93 x 3] (S3: tbl_df/tbl/data.frame)
 ##  $ Type    : Factor w/ 6 levels &quot;Compact&quot;,&quot;Large&quot;,..: 4 3 1 3 3 3 2 2 3 2 ...
 ##  $ Variable: chr [1:93] &quot;Price&quot; &quot;Price&quot; &quot;Price&quot; &quot;Price&quot; ...
 ##  $ Value   : num [1:93] 15.9 33.9 29.1 37.7 30 15.7 20.8 23.7 26.3 34.7 ...</code></pre>
 <p>데이터셋 준비가 되었으므로, 디폴트 설정으로 해서 x축에 <code>Type</code>, y축에 <code>Price</code>로 Box plot 을 그려보겠습니다.</p>
 <p>x축의 요인(factor)의 순서가 앞에서 살펴본 것처럼 “<code>Compact</code>,” “<code>Large</code>,” “<code>Midsize</code>,” “<code>Small</code>,” “<code>Sporty</code>,” “<code>Van</code>” 등과 같이 알파벳 순서로 되어있습니다.</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb315-1"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb315-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Type 변수의 기본 수준 순서</span></span>
-<span id="cb315-2"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb315-2" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars.Data, <span class="fu">aes</span>(<span class="at">x=</span>Type, <span class="at">y=</span>Value)) <span class="sc">+</span> </span>
-<span id="cb315-3"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb315-3" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb315-4"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb315-4" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>((<span class="st">&quot;Boxplot of Price&quot;</span>))</span>
-<span id="cb315-5"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb315-5" aria-hidden="true" tabindex="-1"></a>f1</span></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb313-1"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb313-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Type 변수의 기본 수준 순서</span></span>
+<span id="cb313-2"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb313-2" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars.Data, <span class="fu">aes</span>(<span class="at">x=</span>Type, <span class="at">y=</span>Value)) <span class="sc">+</span> </span>
+<span id="cb313-3"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb313-3" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb313-4"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb313-4" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>((<span class="st">&quot;Boxplot of Price&quot;</span>))</span>
+<span id="cb313-5"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb313-5" aria-hidden="true" tabindex="-1"></a>f1</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:FactorBoxPlot"></span>
 <img src="bookdown_files/figure-html/FactorBoxPlot-1.png" alt="차량 유형별 가격" width="672" />
 <p class="caption">
@@ -552,12 +552,12 @@ Figure 9.71: 차량 유형별 가격
 </p>
 </div>
 <p>이제 <code>Type</code> 변수의 수준 순서를 필요에 따라서 “<code>Small</code>,” “<code>Midsize</code>,” “<code>Large</code>,” “<code>Compact</code>,” “<code>Sporty</code>,” “<code>Van</code>” 등의 순서로 바꾸고 싶다고 가정해 보겠습니다. 이때 사용하는 것이 <code>scale_x_discrete(limit=...)</code>함수입니다.</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb316-1"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Type 변수의 수준 순서 바꾸기 : scale_x_discrete() 함수 이용</span></span>
-<span id="cb316-2"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb316-2" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> f1 <span class="sc">+</span> </span>
-<span id="cb316-3"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb316-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">limits=</span><span class="fu">c</span>(<span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Midsize&quot;</span>,  <span class="st">&quot;Large&quot;</span>, </span>
-<span id="cb316-4"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb316-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Compact&quot;</span>,  <span class="st">&quot;Sporty`&quot;</span>, <span class="st">&quot;Van&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb316-5"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb316-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;X축 수준의 순서 변경 : scale_x_discrete(limit=...) 함수 이용&quot;</span>)</span>
-<span id="cb316-6"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb316-6" aria-hidden="true" tabindex="-1"></a>f2</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb314-1"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Type 변수의 수준 순서 바꾸기 : scale_x_discrete() 함수 이용</span></span>
+<span id="cb314-2"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb314-2" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> f1 <span class="sc">+</span> </span>
+<span id="cb314-3"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb314-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">limits=</span><span class="fu">c</span>(<span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Midsize&quot;</span>,  <span class="st">&quot;Large&quot;</span>, </span>
+<span id="cb314-4"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb314-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Compact&quot;</span>,  <span class="st">&quot;Sporty`&quot;</span>, <span class="st">&quot;Van&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb314-5"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb314-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;X축 수준의 순서 변경 : scale_x_discrete(limit=...) 함수 이용&quot;</span>)</span>
+<span id="cb314-6"><a href="범주형-데이터요인의-수준-순서-바꾸기.html#cb314-6" aria-hidden="true" tabindex="-1"></a>f2</span></code></pre></div>
 <pre><code>## Warning: Removed 14 rows containing missing values (stat_boxplot).</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:FacOrdChan"></span>
 <img src="bookdown_files/figure-html/FacOrdChan-1.png" alt="X축 수준의 순서 바꾸기 : scale_x_discrete(limit=...) 함수 이용" width="672" />

@@ -576,10 +576,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>MASS</code> 패키지에 내장된 <code>Cars93</code>데이터프레임의 차종(<code>Type</code>) 별로 차 무게(<code>Weight</code>)와 고속도로 연비 (<code>MPG.highway</code>) 변수를 사용해서 산점도를 그려보겠습니다. 그리고 <strong>차종(<code>Type</code>) 그룹에 대한 범례(legend)</strong>를 추가해보겠습니다.</p>
 <div id="x-y-좌표를-직접-입력하여-범례-위치-설정" class="section level3" number="7.6.1">
 <h3><span class="header-section-number">7.6.1</span> <code>x</code>, <code>y</code> 좌표를 직접 입력하여 범례 위치 설정</h3>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb195-1"><a href="범례-추가-legendx-y-legend-.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
-<span id="cb195-2"><a href="범례-추가-legendx-y-legend-.html#cb195-2" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb195-3"><a href="범례-추가-legendx-y-legend-.html#cb195-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 산점도를 먼저 그립니다.</span></span>
-<span id="cb195-4"><a href="범례-추가-legendx-y-legend-.html#cb195-4" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Cars93) </span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb193-1"><a href="범례-추가-legendx-y-legend-.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
+<span id="cb193-2"><a href="범례-추가-legendx-y-legend-.html#cb193-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb193-3"><a href="범례-추가-legendx-y-legend-.html#cb193-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 산점도를 먼저 그립니다.</span></span>
+<span id="cb193-4"><a href="범례-추가-legendx-y-legend-.html#cb193-4" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Cars93) </span></code></pre></div>
 <pre><code>## The following object is masked _by_ .GlobalEnv:
 ## 
 ##     Cylinders</code></pre>
@@ -590,41 +590,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     Manufacturer, Max.Price, Min.Price, Model, MPG.city, MPG.highway,
 ##     Origin, Passengers, Price, Rear.seat.room, Rev.per.mile, RPM,
 ##     Turn.circle, Type, Weight, Wheelbase, Width</code></pre>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb198-1"><a href="범례-추가-legendx-y-legend-.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 빈 산점도를 그립니다. </span></span>
-<span id="cb198-2"><a href="범례-추가-legendx-y-legend-.html#cb198-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Weight, MPG.highway, <span class="at">type =</span> <span class="st">&#39;n&#39;</span>) <span class="co"># blank plot </span></span>
-<span id="cb198-3"><a href="범례-추가-legendx-y-legend-.html#cb198-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-4"><a href="범례-추가-legendx-y-legend-.html#cb198-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 자동차의 종류(Type) 별로 산점도에 점으로 표시될 기호와 색깔을 다르게 선택합니다.</span></span>
-<span id="cb198-5"><a href="범례-추가-legendx-y-legend-.html#cb198-5" aria-hidden="true" tabindex="-1"></a>types <span class="ot">&lt;-</span> <span class="fu">levels</span>(Type)   </span>
-<span id="cb198-6"><a href="범례-추가-legendx-y-legend-.html#cb198-6" aria-hidden="true" tabindex="-1"></a>pchs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">17</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">15</span>)</span>
-<span id="cb198-7"><a href="범례-추가-legendx-y-legend-.html#cb198-7" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb198-8"><a href="범례-추가-legendx-y-legend-.html#cb198-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-9"><a href="범례-추가-legendx-y-legend-.html#cb198-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>) {                   <span class="co"># for() 반복구문을 이용하여 차종별 점을 points() 함수로 그립니다.</span></span>
-<span id="cb198-10"><a href="범례-추가-legendx-y-legend-.html#cb198-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(Weight[Type <span class="sc">==</span> types[i]], MPG.highway[Type <span class="sc">==</span> types[i]], </span>
-<span id="cb198-11"><a href="범례-추가-legendx-y-legend-.html#cb198-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">pch =</span> pchs[i], </span>
-<span id="cb198-12"><a href="범례-추가-legendx-y-legend-.html#cb198-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">col =</span> cols[i])</span>
-<span id="cb198-13"><a href="범례-추가-legendx-y-legend-.html#cb198-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb198-14"><a href="범례-추가-legendx-y-legend-.html#cb198-14" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;플롯에 범례 추가하기&quot;</span>)                        <span class="co"># 전체 제목을 표시합니다.</span></span>
-<span id="cb198-15"><a href="범례-추가-legendx-y-legend-.html#cb198-15" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb198-16"><a href="범례-추가-legendx-y-legend-.html#cb198-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 상단부 오른쪽(&quot;topright&quot;)에 범례를 추가합니다.</span></span>
-<span id="cb198-17"><a href="범례-추가-legendx-y-legend-.html#cb198-17" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="dv">3500</span>, <span class="at">y =</span> <span class="dv">50</span>,</span>
-<span id="cb198-18"><a href="범례-추가-legendx-y-legend-.html#cb198-18" aria-hidden="true" tabindex="-1"></a>       types, </span>
-<span id="cb198-19"><a href="범례-추가-legendx-y-legend-.html#cb198-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> cols,</span>
-<span id="cb198-20"><a href="범례-추가-legendx-y-legend-.html#cb198-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> pchs</span>
-<span id="cb198-21"><a href="범례-추가-legendx-y-legend-.html#cb198-21" aria-hidden="true" tabindex="-1"></a>) </span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb196-1"><a href="범례-추가-legendx-y-legend-.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 빈 산점도를 그립니다. </span></span>
+<span id="cb196-2"><a href="범례-추가-legendx-y-legend-.html#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Weight, MPG.highway, <span class="at">type =</span> <span class="st">&#39;n&#39;</span>) <span class="co"># blank plot </span></span>
+<span id="cb196-3"><a href="범례-추가-legendx-y-legend-.html#cb196-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb196-4"><a href="범례-추가-legendx-y-legend-.html#cb196-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 자동차의 종류(Type) 별로 산점도에 점으로 표시될 기호와 색깔을 다르게 선택합니다.</span></span>
+<span id="cb196-5"><a href="범례-추가-legendx-y-legend-.html#cb196-5" aria-hidden="true" tabindex="-1"></a>types <span class="ot">&lt;-</span> <span class="fu">levels</span>(Type)   </span>
+<span id="cb196-6"><a href="범례-추가-legendx-y-legend-.html#cb196-6" aria-hidden="true" tabindex="-1"></a>pchs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">17</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">15</span>)</span>
+<span id="cb196-7"><a href="범례-추가-legendx-y-legend-.html#cb196-7" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb196-8"><a href="범례-추가-legendx-y-legend-.html#cb196-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb196-9"><a href="범례-추가-legendx-y-legend-.html#cb196-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>) {                   <span class="co"># for() 반복구문을 이용하여 차종별 점을 points() 함수로 그립니다.</span></span>
+<span id="cb196-10"><a href="범례-추가-legendx-y-legend-.html#cb196-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(Weight[Type <span class="sc">==</span> types[i]], MPG.highway[Type <span class="sc">==</span> types[i]], </span>
+<span id="cb196-11"><a href="범례-추가-legendx-y-legend-.html#cb196-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">pch =</span> pchs[i], </span>
+<span id="cb196-12"><a href="범례-추가-legendx-y-legend-.html#cb196-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">col =</span> cols[i])</span>
+<span id="cb196-13"><a href="범례-추가-legendx-y-legend-.html#cb196-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb196-14"><a href="범례-추가-legendx-y-legend-.html#cb196-14" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;플롯에 범례 추가하기&quot;</span>)                        <span class="co"># 전체 제목을 표시합니다.</span></span>
+<span id="cb196-15"><a href="범례-추가-legendx-y-legend-.html#cb196-15" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb196-16"><a href="범례-추가-legendx-y-legend-.html#cb196-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 상단부 오른쪽(&quot;topright&quot;)에 범례를 추가합니다.</span></span>
+<span id="cb196-17"><a href="범례-추가-legendx-y-legend-.html#cb196-17" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="dv">3500</span>, <span class="at">y =</span> <span class="dv">50</span>,</span>
+<span id="cb196-18"><a href="범례-추가-legendx-y-legend-.html#cb196-18" aria-hidden="true" tabindex="-1"></a>       types, </span>
+<span id="cb196-19"><a href="범례-추가-legendx-y-legend-.html#cb196-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> cols,</span>
+<span id="cb196-20"><a href="범례-추가-legendx-y-legend-.html#cb196-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> pchs</span>
+<span id="cb196-21"><a href="범례-추가-legendx-y-legend-.html#cb196-21" aria-hidden="true" tabindex="-1"></a>) </span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:ScatPlotLowLevLegendPos"></span>
 <img src="bookdown_files/figure-html/ScatPlotLowLevLegendPos-1.png" alt="범례 위치를 x, y 좌표를 직접 입력하여 지정" width="672" />
 <p class="caption">
 Figure 7.18: 범례 위치를 x, y 좌표를 직접 입력하여 지정
 </p>
 </div>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb199-1"><a href="범례-추가-legendx-y-legend-.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb197-1"><a href="범례-추가-legendx-y-legend-.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93)</span></code></pre></div>
 </div>
 <div id="범례의-위치를-문자열로-지정하기" class="section level3" number="7.6.2">
 <h3><span class="header-section-number">7.6.2</span> 범례의 위치를 문자열로 지정하기</h3>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb200-1"><a href="범례-추가-legendx-y-legend-.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
-<span id="cb200-2"><a href="범례-추가-legendx-y-legend-.html#cb200-2" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb200-3"><a href="범례-추가-legendx-y-legend-.html#cb200-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 산점도를 먼저 그립니다.</span></span>
-<span id="cb200-4"><a href="범례-추가-legendx-y-legend-.html#cb200-4" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Cars93) </span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb198-1"><a href="범례-추가-legendx-y-legend-.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
+<span id="cb198-2"><a href="범례-추가-legendx-y-legend-.html#cb198-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb198-3"><a href="범례-추가-legendx-y-legend-.html#cb198-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 산점도를 먼저 그립니다.</span></span>
+<span id="cb198-4"><a href="범례-추가-legendx-y-legend-.html#cb198-4" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Cars93) </span></code></pre></div>
 <pre><code>## The following object is masked _by_ .GlobalEnv:
 ## 
 ##     Cylinders</code></pre>
@@ -635,37 +635,37 @@ Figure 7.18: 범례 위치를 x, y 좌표를 직접 입력하여 지정
 ##     Manufacturer, Max.Price, Min.Price, Model, MPG.city, MPG.highway,
 ##     Origin, Passengers, Price, Rear.seat.room, Rev.per.mile, RPM,
 ##     Turn.circle, Type, Weight, Wheelbase, Width</code></pre>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb203-1"><a href="범례-추가-legendx-y-legend-.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 빈 산점도를 그립니다. </span></span>
-<span id="cb203-2"><a href="범례-추가-legendx-y-legend-.html#cb203-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Weight, MPG.highway, <span class="at">type =</span> <span class="st">&#39;n&#39;</span>) <span class="co"># blank plot </span></span>
-<span id="cb203-3"><a href="범례-추가-legendx-y-legend-.html#cb203-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb203-4"><a href="범례-추가-legendx-y-legend-.html#cb203-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 범례가 표시될 위치를 문자열 키워드로 지정합니다.</span></span>
-<span id="cb203-5"><a href="범례-추가-legendx-y-legend-.html#cb203-5" aria-hidden="true" tabindex="-1"></a>loc <span class="ot">&lt;-</span> <span class="st">&quot;topright&quot;</span></span>
-<span id="cb203-6"><a href="범례-추가-legendx-y-legend-.html#cb203-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb203-7"><a href="범례-추가-legendx-y-legend-.html#cb203-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 자동차의 종류(Type) 별로 산점도에 점으로 표시될 기호와 색깔을 다르게 선택합니다.</span></span>
-<span id="cb203-8"><a href="범례-추가-legendx-y-legend-.html#cb203-8" aria-hidden="true" tabindex="-1"></a>types <span class="ot">&lt;-</span> <span class="fu">levels</span>(Type)   </span>
-<span id="cb203-9"><a href="범례-추가-legendx-y-legend-.html#cb203-9" aria-hidden="true" tabindex="-1"></a>pchs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">17</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">15</span>)</span>
-<span id="cb203-10"><a href="범례-추가-legendx-y-legend-.html#cb203-10" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb203-11"><a href="범례-추가-legendx-y-legend-.html#cb203-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb203-12"><a href="범례-추가-legendx-y-legend-.html#cb203-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>) {                   <span class="co"># for() 반복구문을 이용하여 차종별 점을 points() 함수로 그립니다.</span></span>
-<span id="cb203-13"><a href="범례-추가-legendx-y-legend-.html#cb203-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(Weight[Type <span class="sc">==</span> types[i]], MPG.highway[Type <span class="sc">==</span> types[i]], </span>
-<span id="cb203-14"><a href="범례-추가-legendx-y-legend-.html#cb203-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">pch =</span> pchs[i], </span>
-<span id="cb203-15"><a href="범례-추가-legendx-y-legend-.html#cb203-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">col =</span> cols[i])</span>
-<span id="cb203-16"><a href="범례-추가-legendx-y-legend-.html#cb203-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb203-17"><a href="범례-추가-legendx-y-legend-.html#cb203-17" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;플롯에 범례 추가하기&quot;</span>)                        <span class="co"># 전체 제목을 표시합니다.</span></span>
-<span id="cb203-18"><a href="범례-추가-legendx-y-legend-.html#cb203-18" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb203-19"><a href="범례-추가-legendx-y-legend-.html#cb203-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 상단부 오른쪽(&quot;topright&quot;)에 범례를 추가합니다.</span></span>
-<span id="cb203-20"><a href="범례-추가-legendx-y-legend-.html#cb203-20" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(loc,</span>
-<span id="cb203-21"><a href="범례-추가-legendx-y-legend-.html#cb203-21" aria-hidden="true" tabindex="-1"></a>       types, </span>
-<span id="cb203-22"><a href="범례-추가-legendx-y-legend-.html#cb203-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> cols,</span>
-<span id="cb203-23"><a href="범례-추가-legendx-y-legend-.html#cb203-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> pchs</span>
-<span id="cb203-24"><a href="범례-추가-legendx-y-legend-.html#cb203-24" aria-hidden="true" tabindex="-1"></a>) </span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb201-1"><a href="범례-추가-legendx-y-legend-.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 빈 산점도를 그립니다. </span></span>
+<span id="cb201-2"><a href="범례-추가-legendx-y-legend-.html#cb201-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Weight, MPG.highway, <span class="at">type =</span> <span class="st">&#39;n&#39;</span>) <span class="co"># blank plot </span></span>
+<span id="cb201-3"><a href="범례-추가-legendx-y-legend-.html#cb201-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-4"><a href="범례-추가-legendx-y-legend-.html#cb201-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 범례가 표시될 위치를 문자열 키워드로 지정합니다.</span></span>
+<span id="cb201-5"><a href="범례-추가-legendx-y-legend-.html#cb201-5" aria-hidden="true" tabindex="-1"></a>loc <span class="ot">&lt;-</span> <span class="st">&quot;topright&quot;</span></span>
+<span id="cb201-6"><a href="범례-추가-legendx-y-legend-.html#cb201-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-7"><a href="범례-추가-legendx-y-legend-.html#cb201-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 자동차의 종류(Type) 별로 산점도에 점으로 표시될 기호와 색깔을 다르게 선택합니다.</span></span>
+<span id="cb201-8"><a href="범례-추가-legendx-y-legend-.html#cb201-8" aria-hidden="true" tabindex="-1"></a>types <span class="ot">&lt;-</span> <span class="fu">levels</span>(Type)   </span>
+<span id="cb201-9"><a href="범례-추가-legendx-y-legend-.html#cb201-9" aria-hidden="true" tabindex="-1"></a>pchs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">17</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">15</span>)</span>
+<span id="cb201-10"><a href="범례-추가-legendx-y-legend-.html#cb201-10" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb201-11"><a href="범례-추가-legendx-y-legend-.html#cb201-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-12"><a href="범례-추가-legendx-y-legend-.html#cb201-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>) {                   <span class="co"># for() 반복구문을 이용하여 차종별 점을 points() 함수로 그립니다.</span></span>
+<span id="cb201-13"><a href="범례-추가-legendx-y-legend-.html#cb201-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(Weight[Type <span class="sc">==</span> types[i]], MPG.highway[Type <span class="sc">==</span> types[i]], </span>
+<span id="cb201-14"><a href="범례-추가-legendx-y-legend-.html#cb201-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">pch =</span> pchs[i], </span>
+<span id="cb201-15"><a href="범례-추가-legendx-y-legend-.html#cb201-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">col =</span> cols[i])</span>
+<span id="cb201-16"><a href="범례-추가-legendx-y-legend-.html#cb201-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb201-17"><a href="범례-추가-legendx-y-legend-.html#cb201-17" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;플롯에 범례 추가하기&quot;</span>)                        <span class="co"># 전체 제목을 표시합니다.</span></span>
+<span id="cb201-18"><a href="범례-추가-legendx-y-legend-.html#cb201-18" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb201-19"><a href="범례-추가-legendx-y-legend-.html#cb201-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 상단부 오른쪽(&quot;topright&quot;)에 범례를 추가합니다.</span></span>
+<span id="cb201-20"><a href="범례-추가-legendx-y-legend-.html#cb201-20" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(loc,</span>
+<span id="cb201-21"><a href="범례-추가-legendx-y-legend-.html#cb201-21" aria-hidden="true" tabindex="-1"></a>       types, </span>
+<span id="cb201-22"><a href="범례-추가-legendx-y-legend-.html#cb201-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> cols,</span>
+<span id="cb201-23"><a href="범례-추가-legendx-y-legend-.html#cb201-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> pchs</span>
+<span id="cb201-24"><a href="범례-추가-legendx-y-legend-.html#cb201-24" aria-hidden="true" tabindex="-1"></a>) </span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:ScatPlotLowLevLegendPosStr"></span>
 <img src="bookdown_files/figure-html/ScatPlotLowLevLegendPosStr-1.png" alt="문자열로 범례의 위치를 지정하기" width="672" />
 <p class="caption">
 Figure 7.19: 문자열로 범례의 위치를 지정하기
 </p>
 </div>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb204-1"><a href="범례-추가-legendx-y-legend-.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb202-1"><a href="범례-추가-legendx-y-legend-.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93)</span></code></pre></div>
 <p>앞의 예에서 문자열의 위치를 <code>loc</code> 변수에 <code>“topright”</code>로 지정하고 있습니다. 이 값을 다른 값으로 수정해서 다시 그래프를 그려보기 바랍니다.</p>
 </div>
 </div>

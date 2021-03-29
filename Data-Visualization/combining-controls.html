@@ -507,16 +507,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="combining-controls" class="section level2" number="15.6">
 <h2><span class="header-section-number">15.6</span> Combining Controls</h2>
 <p>이번에는 Picker Control과 Slider Control 두 개를 함께 사용해 보는 예제입니다. Picker Control 로 대상 변수를 선택할 수 있게 하였고, Slider Control 로 Histogram 의 Bin size 를 조절할 수 있도록 해보았습니다.</p>
-<div class="sourceCode" id="cb641"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb641-1"><a href="combining-controls.html#cb641-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Combining Controls</span></span>
-<span id="cb641-2"><a href="combining-controls.html#cb641-2" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb641-3"><a href="combining-controls.html#cb641-3" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
-<span id="cb641-4"><a href="combining-controls.html#cb641-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(Cars93[, continuous_variable], </span>
-<span id="cb641-5"><a href="combining-controls.html#cb641-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">breaks =</span> bin_slider, </span>
-<span id="cb641-6"><a href="combining-controls.html#cb641-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> continuous_variable),</span>
-<span id="cb641-7"><a href="combining-controls.html#cb641-7" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb641-8"><a href="combining-controls.html#cb641-8" aria-hidden="true" tabindex="-1"></a>   <span class="at">continuous_variable =</span> <span class="fu">picker</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Price&quot;</span>), </span>
-<span id="cb641-9"><a href="combining-controls.html#cb641-9" aria-hidden="true" tabindex="-1"></a>   <span class="at">bin_slider =</span> <span class="fu">slider</span>(<span class="dv">5</span>,<span class="dv">50</span>, <span class="at">step=</span><span class="dv">5</span>, <span class="at">initial =</span> <span class="dv">10</span>)</span>
-<span id="cb641-10"><a href="combining-controls.html#cb641-10" aria-hidden="true" tabindex="-1"></a>   )</span></code></pre></div>
+<div class="sourceCode" id="cb639"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb639-1"><a href="combining-controls.html#cb639-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Combining Controls</span></span>
+<span id="cb639-2"><a href="combining-controls.html#cb639-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb639-3"><a href="combining-controls.html#cb639-3" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
+<span id="cb639-4"><a href="combining-controls.html#cb639-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(Cars93[, continuous_variable], </span>
+<span id="cb639-5"><a href="combining-controls.html#cb639-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">breaks =</span> bin_slider, </span>
+<span id="cb639-6"><a href="combining-controls.html#cb639-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> continuous_variable),</span>
+<span id="cb639-7"><a href="combining-controls.html#cb639-7" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb639-8"><a href="combining-controls.html#cb639-8" aria-hidden="true" tabindex="-1"></a>   <span class="at">continuous_variable =</span> <span class="fu">picker</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Price&quot;</span>), </span>
+<span id="cb639-9"><a href="combining-controls.html#cb639-9" aria-hidden="true" tabindex="-1"></a>   <span class="at">bin_slider =</span> <span class="fu">slider</span>(<span class="dv">5</span>,<span class="dv">50</span>, <span class="at">step=</span><span class="dv">5</span>, <span class="at">initial =</span> <span class="dv">10</span>)</span>
+<span id="cb639-10"><a href="combining-controls.html#cb639-10" aria-hidden="true" tabindex="-1"></a>   )</span></code></pre></div>
 <pre><code>## Error in manipulate(hist(Cars93[, continuous_variable], breaks = bin_slider, : The manipulate package must be run from within RStudio</code></pre>
 <div id="참고자료-4" class="section level3 unnumbered">
 <h3>참고자료</h3>
