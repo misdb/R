@@ -233,8 +233,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="낮은-수준의-그래프-함수.html"><a href="낮은-수준의-그래프-함수.html"><i class="fa fa-check"></i><b>7</b> 낮은 수준의 그래프 함수</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="제목과-xy축-레이블-추가하기.html"><a href="제목과-xy축-레이블-추가하기.html"><i class="fa fa-check"></i><b>7.1</b> 제목과 XY축 레이블 추가하기</a></li>
-<li class="chapter" data-level="7.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html"><i class="fa fa-check"></i><b>7.2</b> XY축 형태 변환 : <code>axis(side, ...)</code></a></li>
-<li class="chapter" data-level="7.3" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html"><i class="fa fa-check"></i><b>7.3</b> 직선의 연결과 추가</a></li>
+<li class="chapter" data-level="7.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html"><i class="fa fa-check"></i><b>7.2</b> XY축 형태 변환 : <code>axis(side, ...)</code></a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html#x축과-y축의-제거"><i class="fa fa-check"></i><b>7.2.1</b> X축과 Y축의 제거</a></li>
+<li class="chapter" data-level="7.2.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html#x축과-y축의-눈금-간격-변경"><i class="fa fa-check"></i><b>7.2.2</b> X축과 Y축의 눈금 간격 변경</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html"><i class="fa fa-check"></i><b>7.3</b> 직선의 연결과 추가</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html#선형-회귀선의-추가"><i class="fa fa-check"></i><b>7.3.1</b> 선형 회귀선의 추가</a></li>
+<li class="chapter" data-level="7.3.2" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html#비모수-회귀선의-추가"><i class="fa fa-check"></i><b>7.3.2</b> 비모수 회귀선의 추가</a></li>
+</ul></li>
 <li class="chapter" data-level="7.4" data-path="점-추가-pointsx-y.html"><a href="점-추가-pointsx-y.html"><i class="fa fa-check"></i><b>7.4</b> 점 추가 : <code>points(x, y)</code></a></li>
 <li class="chapter" data-level="7.5" data-path="문자열-추가.html"><a href="문자열-추가.html"><i class="fa fa-check"></i><b>7.5</b> 문자열 추가</a>
 <ul>
@@ -502,9 +510,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">5.2.1</span> 기호 모양</h3>
 <p>그래픽 모수 <code>pch</code> 를 사용해서 다양한 모양의 기호, 상징을 그릴 수 있습니다. 디폴트는 <code>pch=1</code> 로서 속이 빈 원 모양이며, 아래의 <code>pch</code> 그래픽 모수 숫자별 모양을 참고해서 원하는 모양의 숫자를 <code>pch = '숫자'</code> 로 입력하면 되겠습니다.</p>
 <div class="figure" style="text-align: center"><span id="fig:Graph-pch"></span>
-<img src="images/2652424F567E033A29.png" alt="기호 모양" width="100%" />
+<img src="images/2652424F567E033A29.png" alt="기호 모양" width="90%" />
 <p class="caption">
-Figure 5.8: 기호 모양
+Figure 5.6: 기호 모양
 </p>
 </div>
 <p><code>MASS</code> 패키지 내 <code>Cars93</code> 데이터프레임의 <code>차 무게(Weight)</code>와 <code>고속도로연비(MPG.highway)</code> 변수를 가지고 산포도 그래프를 아래와 같이 그려보았습니다. <code>pch=1</code> ~ <code>pch=6</code> 까지 6개만 예로 들어보았습니다.</p>
@@ -523,7 +531,7 @@ Figure 5.8: 기호 모양
 <div class="figure" style="text-align: center"><span id="fig:fig-local-pch"></span>
 <img src="bookdown_files/figure-html/fig-local-pch-1.png" alt="그래프 모수의 설정 : 기호 모양 : pch" width="672" />
 <p class="caption">
-Figure 5.9: 그래프 모수의 설정 : 기호 모양 : pch
+Figure 5.7: 그래프 모수의 설정 : 기호 모양 : pch
 </p>
 </div>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb95-1"><a href="그래프모수-기호.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
@@ -541,7 +549,7 @@ Figure 5.9: 그래프 모수의 설정 : 기호 모양 : pch
 <div class="figure" style="text-align: center"><span id="fig:fig-local-pch-2"></span>
 <img src="bookdown_files/figure-html/fig-local-pch-2-1.png" alt="그래프 모수의 설정 : 기호 모양 : 직접 지정" width="672" />
 <p class="caption">
-Figure 5.10: 그래프 모수의 설정 : 기호 모양 : 직접 지정
+Figure 5.8: 그래프 모수의 설정 : 기호 모양 : 직접 지정
 </p>
 </div>
 <p><a href="#기호-모양-크기-선-유형-선-두께">Go Top</a></p>
@@ -561,7 +569,7 @@ Figure 5.10: 그래프 모수의 설정 : 기호 모양 : 직접 지정
 <div class="figure" style="text-align: center"><span id="fig:fig-local-cex"></span>
 <img src="bookdown_files/figure-html/fig-local-cex-1.png" alt="그래프 모수의 설정 : 기호 크기 : cex" width="672" />
 <p class="caption">
-Figure 5.11: 그래프 모수의 설정 : 기호 크기 : cex
+Figure 5.9: 그래프 모수의 설정 : 기호 크기 : cex
 </p>
 </div>
 <p><a href="#기호-모양-크기-선-유형-선-두께">Go Top</a></p>

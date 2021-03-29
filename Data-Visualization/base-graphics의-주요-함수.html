@@ -233,8 +233,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="낮은-수준의-그래프-함수.html"><a href="낮은-수준의-그래프-함수.html"><i class="fa fa-check"></i><b>7</b> 낮은 수준의 그래프 함수</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="제목과-xy축-레이블-추가하기.html"><a href="제목과-xy축-레이블-추가하기.html"><i class="fa fa-check"></i><b>7.1</b> 제목과 XY축 레이블 추가하기</a></li>
-<li class="chapter" data-level="7.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html"><i class="fa fa-check"></i><b>7.2</b> XY축 형태 변환 : <code>axis(side, ...)</code></a></li>
-<li class="chapter" data-level="7.3" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html"><i class="fa fa-check"></i><b>7.3</b> 직선의 연결과 추가</a></li>
+<li class="chapter" data-level="7.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html"><i class="fa fa-check"></i><b>7.2</b> XY축 형태 변환 : <code>axis(side, ...)</code></a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html#x축과-y축의-제거"><i class="fa fa-check"></i><b>7.2.1</b> X축과 Y축의 제거</a></li>
+<li class="chapter" data-level="7.2.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html#x축과-y축의-눈금-간격-변경"><i class="fa fa-check"></i><b>7.2.2</b> X축과 Y축의 눈금 간격 변경</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html"><i class="fa fa-check"></i><b>7.3</b> 직선의 연결과 추가</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html#선형-회귀선의-추가"><i class="fa fa-check"></i><b>7.3.1</b> 선형 회귀선의 추가</a></li>
+<li class="chapter" data-level="7.3.2" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html#비모수-회귀선의-추가"><i class="fa fa-check"></i><b>7.3.2</b> 비모수 회귀선의 추가</a></li>
+</ul></li>
 <li class="chapter" data-level="7.4" data-path="점-추가-pointsx-y.html"><a href="점-추가-pointsx-y.html"><i class="fa fa-check"></i><b>7.4</b> 점 추가 : <code>points(x, y)</code></a></li>
 <li class="chapter" data-level="7.5" data-path="문자열-추가.html"><a href="문자열-추가.html"><i class="fa fa-check"></i><b>7.5</b> 문자열 추가</a>
 <ul>
@@ -519,24 +527,26 @@ Figure 3.1: Base Graphics system
 </div>
 <p>아래에 <strong>산포도(scatter plot)</strong>를 가지고 위에서 소개한 용어들이 의미하는 바를 예를 들어 설명해보도록 하겠습니다.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb31-1"><a href="base-graphics의-주요-함수.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
-<span id="cb31-2"><a href="base-graphics의-주요-함수.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Cars93)</span>
-<span id="cb31-3"><a href="base-graphics의-주요-함수.html#cb31-3" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb31-4"><a href="base-graphics의-주요-함수.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. high level graphics facility : plot() </span></span>
-<span id="cb31-5"><a href="base-graphics의-주요-함수.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># graphics parameters : type, pch, col, etc. </span></span>
-<span id="cb31-6"><a href="base-graphics의-주요-함수.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>) </span>
-<span id="cb31-7"><a href="base-graphics의-주요-함수.html#cb31-7" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb31-8"><a href="base-graphics의-주요-함수.html#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. low level graphics facility : abline(), title(), text() </span></span>
-<span id="cb31-9"><a href="base-graphics의-주요-함수.html#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. graphics parameters : labels, cex, pos, col, etc. </span></span>
-<span id="cb31-10"><a href="base-graphics의-주요-함수.html#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(MPG.highway <span class="sc">~</span> Weight)) </span>
-<span id="cb31-11"><a href="base-graphics의-주요-함수.html#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(Weight, MPG.highway, <span class="at">labels =</span> <span class="fu">abbreviate</span>(Manufacturer, <span class="at">minlength =</span> <span class="dv">5</span>), </span>
-<span id="cb31-12"><a href="base-graphics의-주요-함수.html#cb31-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.6</span>, <span class="at">pos =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<span id="cb31-2"><a href="base-graphics의-주요-함수.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Cars93)</span></code></pre></div>
+<pre><code>## The following object is masked _by_ .GlobalEnv:
+## 
+##     Cylinders</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb33-1"><a href="base-graphics의-주요-함수.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. high level graphics facility : plot() </span></span>
+<span id="cb33-2"><a href="base-graphics의-주요-함수.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># graphics parameters : type, pch, col, etc. </span></span>
+<span id="cb33-3"><a href="base-graphics의-주요-함수.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>) </span>
+<span id="cb33-4"><a href="base-graphics의-주요-함수.html#cb33-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb33-5"><a href="base-graphics의-주요-함수.html#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. low level graphics facility : abline(), title(), text() </span></span>
+<span id="cb33-6"><a href="base-graphics의-주요-함수.html#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. graphics parameters : labels, cex, pos, col, etc. </span></span>
+<span id="cb33-7"><a href="base-graphics의-주요-함수.html#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(MPG.highway <span class="sc">~</span> Weight)) </span>
+<span id="cb33-8"><a href="base-graphics의-주요-함수.html#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(Weight, MPG.highway, <span class="at">labels =</span> <span class="fu">abbreviate</span>(Manufacturer, <span class="at">minlength =</span> <span class="dv">5</span>), </span>
+<span id="cb33-9"><a href="base-graphics의-주요-함수.html#cb33-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.6</span>, <span class="at">pos =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:figCars93ex"></span>
 <img src="bookdown_files/figure-html/figCars93ex-1.png" alt="base Graphics의 그래프 예" width="672" />
 <p class="caption">
 Figure 3.2: base Graphics의 그래프 예
 </p>
 </div>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb32-1"><a href="base-graphics의-주요-함수.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb34-1"><a href="base-graphics의-주요-함수.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93)</span></code></pre></div>
 <p>위 그래프의 R함수에서 높은 수준의 그래프 함수, 낮은 수준의 그래프 함수, 그래프 모수에 해당하는 부분을 각 각 표기하면 아래와 같습니다.</p>
 <ul>
 <li><strong>높은 수준</strong>의 그래프 함수 <code>plot()</code>으로 먼저 뼈대를 잡아놓고,</li>

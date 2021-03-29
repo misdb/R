@@ -233,8 +233,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="낮은-수준의-그래프-함수.html"><a href="낮은-수준의-그래프-함수.html"><i class="fa fa-check"></i><b>7</b> 낮은 수준의 그래프 함수</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="제목과-xy축-레이블-추가하기.html"><a href="제목과-xy축-레이블-추가하기.html"><i class="fa fa-check"></i><b>7.1</b> 제목과 XY축 레이블 추가하기</a></li>
-<li class="chapter" data-level="7.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html"><i class="fa fa-check"></i><b>7.2</b> XY축 형태 변환 : <code>axis(side, ...)</code></a></li>
-<li class="chapter" data-level="7.3" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html"><i class="fa fa-check"></i><b>7.3</b> 직선의 연결과 추가</a></li>
+<li class="chapter" data-level="7.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html"><i class="fa fa-check"></i><b>7.2</b> XY축 형태 변환 : <code>axis(side, ...)</code></a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html#x축과-y축의-제거"><i class="fa fa-check"></i><b>7.2.1</b> X축과 Y축의 제거</a></li>
+<li class="chapter" data-level="7.2.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html#x축과-y축의-눈금-간격-변경"><i class="fa fa-check"></i><b>7.2.2</b> X축과 Y축의 눈금 간격 변경</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html"><i class="fa fa-check"></i><b>7.3</b> 직선의 연결과 추가</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html#선형-회귀선의-추가"><i class="fa fa-check"></i><b>7.3.1</b> 선형 회귀선의 추가</a></li>
+<li class="chapter" data-level="7.3.2" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html#비모수-회귀선의-추가"><i class="fa fa-check"></i><b>7.3.2</b> 비모수 회귀선의 추가</a></li>
+</ul></li>
 <li class="chapter" data-level="7.4" data-path="점-추가-pointsx-y.html"><a href="점-추가-pointsx-y.html"><i class="fa fa-check"></i><b>7.4</b> 점 추가 : <code>points(x, y)</code></a></li>
 <li class="chapter" data-level="7.5" data-path="문자열-추가.html"><a href="문자열-추가.html"><i class="fa fa-check"></i><b>7.5</b> 문자열 추가</a>
 <ul>
@@ -727,7 +735,7 @@ Figure 12.7: 차종별 산포도 : aes() 함수 이용 - 점의 모양 구분
 <span id="cb372-8"><a href="산포도-1.html#cb372-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_grid</span>(Type <span class="sc">~</span>.) <span class="sc">+</span>            <span class="co"># facet_grid() : Type을 Y축에 표시합니다.</span></span>
 <span id="cb372-9"><a href="산포도-1.html#cb372-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 산포도 : facet_grid() 함수 이용&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGScatterPlotFacGrid-1"></span>
-<img src="bookdown_files/figure-html/GGScatterPlotFacGrid-1.png" alt="차종별 산포도 : facet_grid() 함수 이용" width="50%" />
+<img src="bookdown_files/figure-html/GGScatterPlotFacGrid-1.png" alt="차종별 산포도 : facet_grid() 함수 이용" width="672" />
 <p class="caption">
 Figure 12.8: 차종별 산포도 : facet_grid() 함수 이용
 </p>
@@ -741,7 +749,7 @@ Figure 12.8: 차종별 산포도 : facet_grid() 함수 이용
 <span id="cb373-7"><a href="산포도-1.html#cb373-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_grid</span>(. <span class="sc">~</span> Type) <span class="sc">+</span>           <span class="co"># facet_grid() : Type을 X축에 표시합니다.</span></span>
 <span id="cb373-8"><a href="산포도-1.html#cb373-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 산포도 : facet_grid() 함수 이용&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGScatterPlotFacGrid-2"></span>
-<img src="bookdown_files/figure-html/GGScatterPlotFacGrid-2.png" alt="차종별 산포도 : facet_grid() 함수 이용" width="50%" />
+<img src="bookdown_files/figure-html/GGScatterPlotFacGrid-2.png" alt="차종별 산포도 : facet_grid() 함수 이용" width="672" />
 <p class="caption">
 Figure 12.9: 차종별 산포도 : facet_grid() 함수 이용
 </p>
@@ -764,7 +772,7 @@ Figure 12.9: 차종별 산포도 : facet_grid() 함수 이용
 <span id="cb374-8"><a href="산포도-1.html#cb374-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_wrap</span>(<span class="sc">~</span>Type, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span>                      <span class="co"># facet_wrap() : Type을 Y축에 표시합니다.</span></span>
 <span id="cb374-9"><a href="산포도-1.html#cb374-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 산포도 : facet_wrap() 함수 이용&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGScatterPlotFacWrap"></span>
-<img src="bookdown_files/figure-html/GGScatterPlotFacWrap-1.png" alt="차종별 산포도 : facet_wrap() 함수 이용" width="50%" />
+<img src="bookdown_files/figure-html/GGScatterPlotFacWrap-1.png" alt="차종별 산포도 : facet_wrap() 함수 이용" width="672" />
 <p class="caption">
 Figure 12.10: 차종별 산포도 : facet_wrap() 함수 이용
 </p>

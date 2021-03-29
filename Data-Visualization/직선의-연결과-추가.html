@@ -233,8 +233,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="낮은-수준의-그래프-함수.html"><a href="낮은-수준의-그래프-함수.html"><i class="fa fa-check"></i><b>7</b> 낮은 수준의 그래프 함수</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="제목과-xy축-레이블-추가하기.html"><a href="제목과-xy축-레이블-추가하기.html"><i class="fa fa-check"></i><b>7.1</b> 제목과 XY축 레이블 추가하기</a></li>
-<li class="chapter" data-level="7.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html"><i class="fa fa-check"></i><b>7.2</b> XY축 형태 변환 : <code>axis(side, ...)</code></a></li>
-<li class="chapter" data-level="7.3" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html"><i class="fa fa-check"></i><b>7.3</b> 직선의 연결과 추가</a></li>
+<li class="chapter" data-level="7.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html"><i class="fa fa-check"></i><b>7.2</b> XY축 형태 변환 : <code>axis(side, ...)</code></a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html#x축과-y축의-제거"><i class="fa fa-check"></i><b>7.2.1</b> X축과 Y축의 제거</a></li>
+<li class="chapter" data-level="7.2.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html#x축과-y축의-눈금-간격-변경"><i class="fa fa-check"></i><b>7.2.2</b> X축과 Y축의 눈금 간격 변경</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html"><i class="fa fa-check"></i><b>7.3</b> 직선의 연결과 추가</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html#선형-회귀선의-추가"><i class="fa fa-check"></i><b>7.3.1</b> 선형 회귀선의 추가</a></li>
+<li class="chapter" data-level="7.3.2" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html#비모수-회귀선의-추가"><i class="fa fa-check"></i><b>7.3.2</b> 비모수 회귀선의 추가</a></li>
+</ul></li>
 <li class="chapter" data-level="7.4" data-path="점-추가-pointsx-y.html"><a href="점-추가-pointsx-y.html"><i class="fa fa-check"></i><b>7.4</b> 점 추가 : <code>points(x, y)</code></a></li>
 <li class="chapter" data-level="7.5" data-path="문자열-추가.html"><a href="문자열-추가.html"><i class="fa fa-check"></i><b>7.5</b> 문자열 추가</a>
 <ul>
@@ -568,6 +576,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>* 출처 : <a href="http://sites.stat.psu.edu/~dhunter/R/html/graphics/html/abline.html" class="uri">http://sites.stat.psu.edu/~dhunter/R/html/graphics/html/abline.html</a></p>
+<div id="선형-회귀선의-추가" class="section level3" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> 선형 회귀선의 추가</h3>
 <p>먼저 회귀모형을 구하는 <code>lm()</code> 함수를 사용해서 <code>y = MPG.highway (고속도로 연비)</code>, <code>x = Weight (차의 무게)</code> 변수 간의 선형 회귀모형을 만들면 아래와 같습니다.</p>
 <div class="sourceCode" id="cb147"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb147-1"><a href="직선의-연결과-추가.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb147-2"><a href="직선의-연결과-추가.html#cb147-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -657,6 +667,9 @@ Figure 7.9: 선의 추가 : 낮은 수준의 함수 lines(), abline() 함수의 
 <div class="sourceCode" id="cb157"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb157-1"><a href="직선의-연결과-추가.html#cb157-1" aria-hidden="true" tabindex="-1"></a>fit<span class="fl">.1</span><span class="sc">$</span>coef[<span class="dv">2</span>]             <span class="co"># 기울기입니다.</span></span></code></pre></div>
 <pre class="bg-warning"><code>##  Weight 
 ## -0.0073</code></pre>
+</div>
+<div id="비모수-회귀선의-추가" class="section level3" number="7.3.2">
+<h3><span class="header-section-number">7.3.2</span> 비모수 회귀선의 추가</h3>
 <p>이번에는 <code>loess.smooth()</code> 함수로 <strong>비모수 회귀곡선</strong>을 적합시키고, <code>lines()</code> 함수로 <strong>평탄화된 회귀선(smoothed regression line)</strong>을 현재 그래프에 추가해보는 방법을 알아보겠습니다.</p>
 <div class="sourceCode" id="cb159"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb159-1"><a href="직선의-연결과-추가.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb159-2"><a href="직선의-연결과-추가.html#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 현재의 플롯에 평탄화된 회귀선을 추가합니다.: lines(), loess.smooth() </span></span>
@@ -697,6 +710,7 @@ Figure 7.10: 선형 회귀선의 추가 : 낮은 수준의 함수 lines(), ablin
 <p class="caption">
 Figure 7.11: 수평/수직선의 추가 : 낮은 수준의 함수 abline() 함수의 사용
 </p>
+</div>
 </div>
 </div>
             </section>

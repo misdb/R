@@ -233,8 +233,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="낮은-수준의-그래프-함수.html"><a href="낮은-수준의-그래프-함수.html"><i class="fa fa-check"></i><b>7</b> 낮은 수준의 그래프 함수</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="제목과-xy축-레이블-추가하기.html"><a href="제목과-xy축-레이블-추가하기.html"><i class="fa fa-check"></i><b>7.1</b> 제목과 XY축 레이블 추가하기</a></li>
-<li class="chapter" data-level="7.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html"><i class="fa fa-check"></i><b>7.2</b> XY축 형태 변환 : <code>axis(side, ...)</code></a></li>
-<li class="chapter" data-level="7.3" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html"><i class="fa fa-check"></i><b>7.3</b> 직선의 연결과 추가</a></li>
+<li class="chapter" data-level="7.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html"><i class="fa fa-check"></i><b>7.2</b> XY축 형태 변환 : <code>axis(side, ...)</code></a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html#x축과-y축의-제거"><i class="fa fa-check"></i><b>7.2.1</b> X축과 Y축의 제거</a></li>
+<li class="chapter" data-level="7.2.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html#x축과-y축의-눈금-간격-변경"><i class="fa fa-check"></i><b>7.2.2</b> X축과 Y축의 눈금 간격 변경</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html"><i class="fa fa-check"></i><b>7.3</b> 직선의 연결과 추가</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html#선형-회귀선의-추가"><i class="fa fa-check"></i><b>7.3.1</b> 선형 회귀선의 추가</a></li>
+<li class="chapter" data-level="7.3.2" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html#비모수-회귀선의-추가"><i class="fa fa-check"></i><b>7.3.2</b> 비모수 회귀선의 추가</a></li>
+</ul></li>
 <li class="chapter" data-level="7.4" data-path="점-추가-pointsx-y.html"><a href="점-추가-pointsx-y.html"><i class="fa fa-check"></i><b>7.4</b> 점 추가 : <code>points(x, y)</code></a></li>
 <li class="chapter" data-level="7.5" data-path="문자열-추가.html"><a href="문자열-추가.html"><i class="fa fa-check"></i><b>7.5</b> 문자열 추가</a>
 <ul>
@@ -505,12 +513,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">4.4.1</span> 산포도</h3>
 <p><strong>산포도</strong>(scatter plot) 또는 <strong>산점도</strong>라고도 합니다. 산포도는 <code>x</code>축과 <code>y</code>축으로 이루어진 그래프에 두 변수의 값을 <strong>점</strong>으로 나타낸 그래프입니다.</p>
 <p>산포도를 이용하면 <em>두 변수의 관계를 파악</em>하는데 용이합니다.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb62-1"><a href="이변량-연속형-데이터-그래프.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb62-2"><a href="이변량-연속형-데이터-그래프.html#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-3"><a href="이변량-연속형-데이터-그래프.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="do">##----- plot for 2 variables, continuous data </span></span>
-<span id="cb62-4"><a href="이변량-연속형-데이터-그래프.html#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot : plot(x, y) </span></span>
-<span id="cb62-5"><a href="이변량-연속형-데이터-그래프.html#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(Cars93, </span>
-<span id="cb62-6"><a href="이변량-연속형-데이터-그래프.html#cb62-6" aria-hidden="true" tabindex="-1"></a>     <span class="fu">plot</span>(Weight, MPG.highway, <span class="at">main =</span> <span class="st">&quot;scatter plot : plot(x, y)&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb64-1"><a href="이변량-연속형-데이터-그래프.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb64-2"><a href="이변량-연속형-데이터-그래프.html#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="이변량-연속형-데이터-그래프.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="do">##----- plot for 2 variables, continuous data </span></span>
+<span id="cb64-4"><a href="이변량-연속형-데이터-그래프.html#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot : plot(x, y) </span></span>
+<span id="cb64-5"><a href="이변량-연속형-데이터-그래프.html#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(Cars93, </span>
+<span id="cb64-6"><a href="이변량-연속형-데이터-그래프.html#cb64-6" aria-hidden="true" tabindex="-1"></a>     <span class="fu">plot</span>(Weight, MPG.highway, <span class="at">main =</span> <span class="st">&quot;scatter plot : plot(x, y)&quot;</span>))</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:figScatter1"></span>
 <img src="bookdown_files/figure-html/figScatter1-1.png" alt="이변량 연속형 데이터 그래프 : 산포도" width="672" />
 <p class="caption">
@@ -526,11 +534,11 @@ Figure 4.17: 이변량 연속형 데이터 그래프 : 산포도
 <p>아래의 예는 <code>Cars93</code> 데이터 세트 중 <strong>4개의 변수 간의 산포도</strong>를 <strong>행렬 형태</strong>로 보여주고 있습니다.</p>
 <p><code>Base Graphics</code> 패키지의 <code>plot()</code> 함수와 <code>car</code> 패키지의 <code>scatterplotMatrix()</code> 함수의 사용을 예로 들어 보겠습니다.</p>
 <p>먼저 <code>Base Graphics</code> 패키지의 <code>plot()</code> 함수를 이용한 4개 변수 간의 <strong>산포도 행렬</strong>을 작성하면 다음과 같습니다.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb63-1"><a href="이변량-연속형-데이터-그래프.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb63-2"><a href="이변량-연속형-데이터-그래프.html#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-3"><a href="이변량-연속형-데이터-그래프.html#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot matrix : plot(dataframe)</span></span>
-<span id="cb63-4"><a href="이변량-연속형-데이터-그래프.html#cb63-4" aria-hidden="true" tabindex="-1"></a>Cars93_subset <span class="ot">&lt;-</span> Cars93[,<span class="fu">c</span>(<span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Horsepower&quot;</span>, <span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;MPG.city&quot;</span>)] </span>
-<span id="cb63-5"><a href="이변량-연속형-데이터-그래프.html#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Cars93_subset, <span class="at">main =</span> <span class="st">&quot;scatter plot matrix : plot(dataframe)&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb65-1"><a href="이변량-연속형-데이터-그래프.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb65-2"><a href="이변량-연속형-데이터-그래프.html#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="이변량-연속형-데이터-그래프.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot matrix : plot(dataframe)</span></span>
+<span id="cb65-4"><a href="이변량-연속형-데이터-그래프.html#cb65-4" aria-hidden="true" tabindex="-1"></a>Cars93_subset <span class="ot">&lt;-</span> Cars93[,<span class="fu">c</span>(<span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Horsepower&quot;</span>, <span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;MPG.city&quot;</span>)] </span>
+<span id="cb65-5"><a href="이변량-연속형-데이터-그래프.html#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Cars93_subset, <span class="at">main =</span> <span class="st">&quot;scatter plot matrix : plot(dataframe)&quot;</span>) </span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:figScatter2"></span>
 <img src="bookdown_files/figure-html/figScatter2-1.png" alt="다변량 연속형 데이터 그래프 : 산포도 행렬" width="672" />
 <p class="caption">
@@ -538,12 +546,12 @@ Figure 4.18: 다변량 연속형 데이터 그래프 : 산포도 행렬
 </p>
 </div>
 <p>또한 <code>car</code> 패키지의 <code>scatterplotMatrix()</code> 함수를 이용하면 다음과 같습니다.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb64-1"><a href="이변량-연속형-데이터-그래프.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot matrix : scatterplotMatrix(dataframe)</span></span>
-<span id="cb64-2"><a href="이변량-연속형-데이터-그래프.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;car&quot;)</span></span>
-<span id="cb64-3"><a href="이변량-연속형-데이터-그래프.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car) </span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb66-1"><a href="이변량-연속형-데이터-그래프.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot matrix : scatterplotMatrix(dataframe)</span></span>
+<span id="cb66-2"><a href="이변량-연속형-데이터-그래프.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;car&quot;)</span></span>
+<span id="cb66-3"><a href="이변량-연속형-데이터-그래프.html#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car) </span></code></pre></div>
 <pre><code>## Loading required package: carData</code></pre>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb66-1"><a href="이변량-연속형-데이터-그래프.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scatterplotMatrix</span>(Cars93_subset, </span>
-<span id="cb66-2"><a href="이변량-연속형-데이터-그래프.html#cb66-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">main =</span> <span class="st">&quot;scatter plot matrix : scatterplotMatrx(dataframe)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb68-1"><a href="이변량-연속형-데이터-그래프.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scatterplotMatrix</span>(Cars93_subset, </span>
+<span id="cb68-2"><a href="이변량-연속형-데이터-그래프.html#cb68-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">main =</span> <span class="st">&quot;scatter plot matrix : scatterplotMatrx(dataframe)&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:figScatter3"></span>
 <img src="bookdown_files/figure-html/figScatter3-1.png" alt="다변량 연속형 데이터 그래프 : 산포도 행렬" width="672" />
 <p class="caption">
@@ -555,44 +563,44 @@ Figure 4.19: 다변량 연속형 데이터 그래프 : 산포도 행렬
 <div id="그래프-위의-데이터-모양-변경" class="section level4" number="4.4.2.1">
 <h4><span class="header-section-number">4.4.2.1</span> 그래프 위의 데이터 모양 변경</h4>
 <p>그런데 <code>plot()</code> 함수는 기본적으로 데이터를 <strong>점(<code>type = "p"</code>)</strong>으로 표현합니다. <a href="그래프-모수.html#그래프-모수">다음 장</a>에서 이들 모수에 대하여 자세히 살펴 볼 것입니다. 여기서는 여러 모수 중에서 <code>type =</code> 모수 부분를 변경하면서 그래프로 시각화해 보면 다음과 같습니다.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb67-1"><a href="이변량-연속형-데이터-그래프.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb67-2"><a href="이변량-연속형-데이터-그래프.html#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-3"><a href="이변량-연속형-데이터-그래프.html#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="do">##-------- </span></span>
-<span id="cb67-4"><a href="이변량-연속형-데이터-그래프.html#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot by various type : l, h, b, o, s, n </span></span>
-<span id="cb67-5"><a href="이변량-연속형-데이터-그래프.html#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="co"># order by Weight </span></span>
-<span id="cb67-6"><a href="이변량-연속형-데이터-그래프.html#cb67-6" aria-hidden="true" tabindex="-1"></a>Cars93_1 <span class="ot">&lt;-</span> Cars93[<span class="fu">order</span>(Cars93<span class="sc">$</span>Weight),] </span>
-<span id="cb67-7"><a href="이변량-연속형-데이터-그래프.html#cb67-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-8"><a href="이변량-연속형-데이터-그래프.html#cb67-8" aria-hidden="true" tabindex="-1"></a><span class="co"># dividing window frame </span></span>
-<span id="cb67-9"><a href="이변량-연속형-데이터-그래프.html#cb67-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-10"><a href="이변량-연속형-데이터-그래프.html#cb67-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plots by type </span></span>
-<span id="cb67-11"><a href="이변량-연속형-데이터-그래프.html#cb67-11" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Cars93_1)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb69-1"><a href="이변량-연속형-데이터-그래프.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb69-2"><a href="이변량-연속형-데이터-그래프.html#cb69-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-3"><a href="이변량-연속형-데이터-그래프.html#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="do">##-------- </span></span>
+<span id="cb69-4"><a href="이변량-연속형-데이터-그래프.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot by various type : l, h, b, o, s, n </span></span>
+<span id="cb69-5"><a href="이변량-연속형-데이터-그래프.html#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="co"># order by Weight </span></span>
+<span id="cb69-6"><a href="이변량-연속형-데이터-그래프.html#cb69-6" aria-hidden="true" tabindex="-1"></a>Cars93_1 <span class="ot">&lt;-</span> Cars93[<span class="fu">order</span>(Cars93<span class="sc">$</span>Weight),] </span>
+<span id="cb69-7"><a href="이변량-연속형-데이터-그래프.html#cb69-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-8"><a href="이변량-연속형-데이터-그래프.html#cb69-8" aria-hidden="true" tabindex="-1"></a><span class="co"># dividing window frame </span></span>
+<span id="cb69-9"><a href="이변량-연속형-데이터-그래프.html#cb69-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-10"><a href="이변량-연속형-데이터-그래프.html#cb69-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plots by type </span></span>
+<span id="cb69-11"><a href="이변량-연속형-데이터-그래프.html#cb69-11" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Cars93_1)</span></code></pre></div>
 <pre><code>## The following object is masked _by_ .GlobalEnv:
 ## 
 ##     Cylinders</code></pre>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb69-1"><a href="이변량-연속형-데이터-그래프.html#cb69-1" aria-hidden="true" tabindex="-1"></a>types <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;p&quot;</span>, <span class="st">&quot;l&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;h&quot;</span>, <span class="st">&quot;s&quot;</span>, <span class="st">&quot;S&quot;</span>, <span class="st">&quot;n&quot;</span>)            <span class="co"># 다양한 type 옵션들</span></span>
-<span id="cb69-2"><a href="이변량-연속형-데이터-그래프.html#cb69-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-3"><a href="이변량-연속형-데이터-그래프.html#cb69-3" aria-hidden="true" tabindex="-1"></a>titles <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;type = &#39;p&#39;&quot;</span>, <span class="st">&quot;type = &#39;l&#39;&quot;</span>, <span class="st">&quot;type = &#39;b&#39;&quot;</span>, <span class="st">&quot;type = &#39;c&#39;&quot;</span>, <span class="st">&quot;type = &#39;o&#39;&quot;</span>, </span>
-<span id="cb69-4"><a href="이변량-연속형-데이터-그래프.html#cb69-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;type = &#39;h&#39;&quot;</span>, <span class="st">&quot;type = &#39;s&#39;&quot;</span>, <span class="st">&quot;type = &#39;S&#39;&quot;</span>, <span class="st">&quot;type = &#39;n&#39; : Empty Graph&quot;</span>)</span>
-<span id="cb69-5"><a href="이변량-연속형-데이터-그래프.html#cb69-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-6"><a href="이변량-연속형-데이터-그래프.html#cb69-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">main =</span> <span class="st">&quot;Default Type&quot;</span>)              <span class="co"># type을 지정하지 않은 경우의 기본 모양</span></span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb71-1"><a href="이변량-연속형-데이터-그래프.html#cb71-1" aria-hidden="true" tabindex="-1"></a>types <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;p&quot;</span>, <span class="st">&quot;l&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;h&quot;</span>, <span class="st">&quot;s&quot;</span>, <span class="st">&quot;S&quot;</span>, <span class="st">&quot;n&quot;</span>)            <span class="co"># 다양한 type 옵션들</span></span>
+<span id="cb71-2"><a href="이변량-연속형-데이터-그래프.html#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-3"><a href="이변량-연속형-데이터-그래프.html#cb71-3" aria-hidden="true" tabindex="-1"></a>titles <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;type = &#39;p&#39;&quot;</span>, <span class="st">&quot;type = &#39;l&#39;&quot;</span>, <span class="st">&quot;type = &#39;b&#39;&quot;</span>, <span class="st">&quot;type = &#39;c&#39;&quot;</span>, <span class="st">&quot;type = &#39;o&#39;&quot;</span>, </span>
+<span id="cb71-4"><a href="이변량-연속형-데이터-그래프.html#cb71-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;type = &#39;h&#39;&quot;</span>, <span class="st">&quot;type = &#39;s&#39;&quot;</span>, <span class="st">&quot;type = &#39;S&#39;&quot;</span>, <span class="st">&quot;type = &#39;n&#39; : Empty Graph&quot;</span>)</span>
+<span id="cb71-5"><a href="이변량-연속형-데이터-그래프.html#cb71-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-6"><a href="이변량-연속형-데이터-그래프.html#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">main =</span> <span class="st">&quot;Default Type&quot;</span>)              <span class="co"># type을 지정하지 않은 경우의 기본 모양</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-scatter-3-1"></span>
 <img src="bookdown_files/figure-html/fig-scatter-3-1.png" alt="이변량 연속형 데이터 그래프 : 산포도 - 모양 변경" width="672" />
 <p class="caption">
 Figure 4.20: 이변량 연속형 데이터 그래프 : 산포도 - 모양 변경
 </p>
 </div>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb70-1"><a href="이변량-연속형-데이터-그래프.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>)) </span>
-<span id="cb70-2"><a href="이변량-연속형-데이터-그래프.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>) {</span>
-<span id="cb70-3"><a href="이변량-연속형-데이터-그래프.html#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">type =</span> types[i], <span class="at">main =</span> titles[i]) </span>
-<span id="cb70-4"><a href="이변량-연속형-데이터-그래프.html#cb70-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb72-1"><a href="이변량-연속형-데이터-그래프.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>)) </span>
+<span id="cb72-2"><a href="이변량-연속형-데이터-그래프.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>) {</span>
+<span id="cb72-3"><a href="이변량-연속형-데이터-그래프.html#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">type =</span> types[i], <span class="at">main =</span> titles[i]) </span>
+<span id="cb72-4"><a href="이변량-연속형-데이터-그래프.html#cb72-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-scatter-3-2"></span>
 <img src="bookdown_files/figure-html/fig-scatter-3-2.png" alt="이변량 연속형 데이터 그래프 : 산포도 - 모양 변경" width="672" />
 <p class="caption">
 Figure 4.21: 이변량 연속형 데이터 그래프 : 산포도 - 모양 변경
 </p>
 </div>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb71-1"><a href="이변량-연속형-데이터-그래프.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93_1)</span>
-<span id="cb71-2"><a href="이변량-연속형-데이터-그래프.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb73-1"><a href="이변량-연속형-데이터-그래프.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93_1)</span>
+<span id="cb73-2"><a href="이변량-연속형-데이터-그래프.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)) </span></code></pre></div>
 <p>이러한 높은 수준의 그래프 함수를 이용하여 바탕이 되는 그래프를 시각화해 줍니다. 그리고 높은 수준의 그래프 함수들은 <a href="그래프-모수.html#그래프-모수">공통의 모수와 고유한 모수를 이용</a>하여 표현 형식을 설정할 수 있습니다. 또한 <a href="낮은-수준의-그래프-함수.html#낮은-수준의-그래프-함수">낮은 수준의 그래프 함수</a>를 이용하여 그래프 위에 좀 더 다양한 정보를 표시할 수 있습니다.</p>
 <p><a href="이변량-연속형-데이터-그래프.html#이변량-연속형-데이터-그래프">Go Top</a></p>
 </div>

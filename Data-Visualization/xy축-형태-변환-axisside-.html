@@ -233,8 +233,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="낮은-수준의-그래프-함수.html"><a href="낮은-수준의-그래프-함수.html"><i class="fa fa-check"></i><b>7</b> 낮은 수준의 그래프 함수</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="제목과-xy축-레이블-추가하기.html"><a href="제목과-xy축-레이블-추가하기.html"><i class="fa fa-check"></i><b>7.1</b> 제목과 XY축 레이블 추가하기</a></li>
-<li class="chapter" data-level="7.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html"><i class="fa fa-check"></i><b>7.2</b> XY축 형태 변환 : <code>axis(side, ...)</code></a></li>
-<li class="chapter" data-level="7.3" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html"><i class="fa fa-check"></i><b>7.3</b> 직선의 연결과 추가</a></li>
+<li class="chapter" data-level="7.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html"><i class="fa fa-check"></i><b>7.2</b> XY축 형태 변환 : <code>axis(side, ...)</code></a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html#x축과-y축의-제거"><i class="fa fa-check"></i><b>7.2.1</b> X축과 Y축의 제거</a></li>
+<li class="chapter" data-level="7.2.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html#x축과-y축의-눈금-간격-변경"><i class="fa fa-check"></i><b>7.2.2</b> X축과 Y축의 눈금 간격 변경</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html"><i class="fa fa-check"></i><b>7.3</b> 직선의 연결과 추가</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html#선형-회귀선의-추가"><i class="fa fa-check"></i><b>7.3.1</b> 선형 회귀선의 추가</a></li>
+<li class="chapter" data-level="7.3.2" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html#비모수-회귀선의-추가"><i class="fa fa-check"></i><b>7.3.2</b> 비모수 회귀선의 추가</a></li>
+</ul></li>
 <li class="chapter" data-level="7.4" data-path="점-추가-pointsx-y.html"><a href="점-추가-pointsx-y.html"><i class="fa fa-check"></i><b>7.4</b> 점 추가 : <code>points(x, y)</code></a></li>
 <li class="chapter" data-level="7.5" data-path="문자열-추가.html"><a href="문자열-추가.html"><i class="fa fa-check"></i><b>7.5</b> 문자열 추가</a>
 <ul>
@@ -567,8 +575,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div id="x축과-y축의-제거" class="section level4" number="7.2.0.1">
-<h4><span class="header-section-number">7.2.0.1</span> X축과 Y축의 제거</h4>
+<div id="x축과-y축의-제거" class="section level3" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> X축과 Y축의 제거</h3>
 <p>X축과 Y축을 변경하기 전에 먼저 “<strong><code>axes = FALSE</code></strong>” 옵션을 사용해서 <strong>X축과 Y축을 제거</strong>해야 합니다. <strong>X축</strong>만 선별적으로 제거하려면 <code>xaxt = "n"</code>, Y축만 선별적으로 제거하려면 <code>yaxt = "n"</code> 옵션을 사용하면 되겠습니다.</p>
 <p>아래에 각각의 예를 들어보았습니다.</p>
 <div class="sourceCode" id="cb138"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb138-1"><a href="xy축-형태-변환-axisside-.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
@@ -603,8 +611,8 @@ Figure 7.5: X축과 Y축의 제거 : 높은 수준의 함수 모수 이용
 <div class="sourceCode" id="cb139"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb139-1"><a href="xy축-형태-변환-axisside-.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 원래의 par 기본 값을 불러옵니다.</span></span>
 <span id="cb139-2"><a href="xy축-형태-변환-axisside-.html#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
 </div>
-<div id="x축과-y축의-눈금-간격-변경" class="section level4" number="7.2.0.2">
-<h4><span class="header-section-number">7.2.0.2</span> X축과 Y축의 눈금 간격 변경</h4>
+<div id="x축과-y축의-눈금-간격-변경" class="section level3" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> X축과 Y축의 눈금 간격 변경</h3>
 <p><strong>X축과 Y축의 범위</strong>를 알아보기 위해 <code>summary()</code> 함수로 기술통계량을 알아보겠습니다.</p>
 <div class="sourceCode" id="cb140"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb140-1"><a href="xy축-형태-변환-axisside-.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb140-2"><a href="xy축-형태-변환-axisside-.html#cb140-2" aria-hidden="true" tabindex="-1"></a></span>
