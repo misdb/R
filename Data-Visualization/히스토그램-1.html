@@ -511,10 +511,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">9.1.1</span> 데이터 세트</h3>
 <p>이번 절에서는 먼저 <code>ggplot2</code> 패키지의 <strong><code>geom_histogram()</code></strong> 를 활용해서 히스토그램을 그리는 방법에 대해서 알아보겠습니다.</p>
 <p>데이터는 <code>MASS</code> 패키지에 들어있는 <code>Cars93</code> 데이터 프레임 데이터 셋에서 가격(<code>Price</code>)과 자동차유형(<code>Type</code>) 변수를 활용하여 히스토그램을 그려보겠습니다.</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb209-1"><a href="히스토그램-1.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb209-2"><a href="히스토그램-1.html#cb209-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Cars93 데이터 프레임 </span></span>
-<span id="cb209-3"><a href="히스토그램-1.html#cb209-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
-<span id="cb209-4"><a href="히스토그램-1.html#cb209-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb210-1"><a href="히스토그램-1.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb210-2"><a href="히스토그램-1.html#cb210-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Cars93 데이터 프레임 </span></span>
+<span id="cb210-3"><a href="히스토그램-1.html#cb210-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
+<span id="cb210-4"><a href="히스토그램-1.html#cb210-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
 <pre class="bg-warning"><code>## &#39;data.frame&#39;:    93 obs. of  27 variables:
 ##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
 ##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
@@ -555,15 +555,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>geom_histogram()</code> : <em>기본 그래프</em>를 <strong><em>히스토그램</em></strong> 형태로 시각화 해줍니다.</li>
 </ul>
 <p>이제 <code>Cars93</code> 데이터 세트에서 가격(<code>Price</code>) 변수를 히스토그램으로 그려 보겠습니다.</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb211-1"><a href="히스토그램-1.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb211-2"><a href="히스토그램-1.html#cb211-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb211-3"><a href="히스토그램-1.html#cb211-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 히스토그램 (Histogram) </span></span>
-<span id="cb211-4"><a href="히스토그램-1.html#cb211-4" aria-hidden="true" tabindex="-1"></a><span class="co">#  install.packages(&quot;ggplot2&quot;)              # ggplot2 패키지 설치 </span></span>
-<span id="cb211-5"><a href="히스토그램-1.html#cb211-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
-<span id="cb211-6"><a href="히스토그램-1.html#cb211-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb211-7"><a href="히스토그램-1.html#cb211-7" aria-hidden="true" tabindex="-1"></a><span class="co"># binwidth defaulted to range/30 </span></span>
-<span id="cb211-8"><a href="히스토그램-1.html#cb211-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>              <span class="co"># 그래프의 기본 틀을 설정합니다. 데이터와 X축의 변수를 지정합니다.</span></span>
-<span id="cb211-9"><a href="히스토그램-1.html#cb211-9" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_histogram</span>()                     <span class="co"># 히스트로그램으로 표현합니다.</span></span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb212-1"><a href="히스토그램-1.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb212-2"><a href="히스토그램-1.html#cb212-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb212-3"><a href="히스토그램-1.html#cb212-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 히스토그램 (Histogram) </span></span>
+<span id="cb212-4"><a href="히스토그램-1.html#cb212-4" aria-hidden="true" tabindex="-1"></a><span class="co">#  install.packages(&quot;ggplot2&quot;)              # ggplot2 패키지 설치 </span></span>
+<span id="cb212-5"><a href="히스토그램-1.html#cb212-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
+<span id="cb212-6"><a href="히스토그램-1.html#cb212-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb212-7"><a href="히스토그램-1.html#cb212-7" aria-hidden="true" tabindex="-1"></a><span class="co"># binwidth defaulted to range/30 </span></span>
+<span id="cb212-8"><a href="히스토그램-1.html#cb212-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>              <span class="co"># 그래프의 기본 틀을 설정합니다. 데이터와 X축의 변수를 지정합니다.</span></span>
+<span id="cb212-9"><a href="히스토그램-1.html#cb212-9" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_histogram</span>()                     <span class="co"># 히스트로그램으로 표현합니다.</span></span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:Ggplot2HistGram"></span>
 <img src="bookdown_files/figure-html/Ggplot2HistGram-1.png" alt="기본 히스토그램" width="672" />
@@ -578,17 +578,17 @@ Figure 9.1: 기본 히스토그램
 <h3><span class="header-section-number">9.1.3</span> 구간 폭의 기본값</h3>
 <p>위에 실행결과 콘솔창의 메시지를 보면 “<code>stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.</code>”이라는 메시지가 아래 보이는데요, 이는 <code>binwidth</code>를 설정하지 않아서 <code>range/30</code> 디폴트 기준으로 <code>binwidth</code>를 계산해서 그렸다는 뜻입니다. 구간의 갯수(<code>bins</code>)는 기본 값이 30개입니다.</p>
 <p>아래에 실제 범위(<code>range</code>)를 구해서 30으로 나누었더니 1.816 이었고, 이 값을 <code>geom_histogram(binwidth = 1.816)</code> 옵션값이 입력해서 히스토그램을 그려보았더니 위와 같음을 알 수 있습니다.</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb213-1"><a href="히스토그램-1.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb213-2"><a href="히스토그램-1.html#cb213-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb213-3"><a href="히스토그램-1.html#cb213-3" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(Cars93<span class="sc">$</span>Price)                             <span class="co"># Price 변수의 범위를 구합니다. (최솟값, 최댓값)</span></span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb214-1"><a href="히스토그램-1.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb214-2"><a href="히스토그램-1.html#cb214-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb214-3"><a href="히스토그램-1.html#cb214-3" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(Cars93<span class="sc">$</span>Price)                             <span class="co"># Price 변수의 범위를 구합니다. (최솟값, 최댓값)</span></span></code></pre></div>
 <pre class="bg-warning"><code>## [1]  7.4 61.9</code></pre>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb215-1"><a href="히스토그램-1.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(Cars93<span class="sc">$</span>Price))                       <span class="co"># (최댓값 - 최솟값) 을 구합니다.</span></span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb216-1"><a href="히스토그램-1.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(Cars93<span class="sc">$</span>Price))                       <span class="co"># (최댓값 - 최솟값) 을 구합니다.</span></span></code></pre></div>
 <pre class="bg-warning"><code>## [1] 54</code></pre>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb217-1"><a href="히스토그램-1.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(Cars93<span class="sc">$</span>Price))<span class="sc">/</span><span class="dv">30</span>                    <span class="co"># (최댓값 - 최솟값) / 30 을 구합니다. = 1.816</span></span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb218-1"><a href="히스토그램-1.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(Cars93<span class="sc">$</span>Price))<span class="sc">/</span><span class="dv">30</span>                    <span class="co"># (최댓값 - 최솟값) / 30 을 구합니다. = 1.816</span></span></code></pre></div>
 <pre class="bg-warning"><code>## [1] 1.8</code></pre>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb219-1"><a href="히스토그램-1.html#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>                  <span class="co"># 그래프의 기본 틀을 설정합니다. 데이터와 X축을 지정합니다.</span></span>
-<span id="cb219-2"><a href="히스토그램-1.html#cb219-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">1.816</span>) <span class="sc">+</span>       <span class="co"># 앞에서 구한 1,816을 구간의 폭으로 지정합니다.</span></span>
-<span id="cb219-3"><a href="히스토그램-1.html#cb219-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;Binwidth=1.816 ; Default, range/30&quot;</span>)    </span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb220-1"><a href="히스토그램-1.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>                  <span class="co"># 그래프의 기본 틀을 설정합니다. 데이터와 X축을 지정합니다.</span></span>
+<span id="cb220-2"><a href="히스토그램-1.html#cb220-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">1.816</span>) <span class="sc">+</span>       <span class="co"># 앞에서 구한 1,816을 구간의 폭으로 지정합니다.</span></span>
+<span id="cb220-3"><a href="히스토그램-1.html#cb220-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;Binwidth=1.816 ; Default, range/30&quot;</span>)    </span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Ggplot2HistGramBin"></span>
 <img src="bookdown_files/figure-html/Ggplot2HistGramBin-1.png" alt="히스토그램의 구간의 폭" width="672" />
 <p class="caption">
@@ -605,79 +605,79 @@ Figure 9.2: 히스토그램의 구간의 폭
 <blockquote>
 <p>그런데 여기서 <code>ggplot()</code> 함수의 결과를 <code>h1</code>과 같이 변수에 치환할 수 있습니다. 그리고 <code>h1</code>을 입력하면 바로 그래프가 출력되게 됩니다.</p>
 </blockquote>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb220-1"><a href="히스토그램-1.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb220-2"><a href="히스토그램-1.html#cb220-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb220-3"><a href="히스토그램-1.html#cb220-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 다양한 폭으로 히스토그램 그리기 </span></span>
-<span id="cb220-4"><a href="히스토그램-1.html#cb220-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb220-5"><a href="히스토그램-1.html#cb220-5" aria-hidden="true" tabindex="-1"></a>h1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>               </span>
-<span id="cb220-6"><a href="히스토그램-1.html#cb220-6" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span>      <span class="co"># 구간의 폭을 0.5로 설정합니다.</span></span>
-<span id="cb220-7"><a href="히스토그램-1.html#cb220-7" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>(<span class="st">&quot;Binwidth=0.5&quot;</span>) </span>
-<span id="cb220-8"><a href="히스토그램-1.html#cb220-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb220-9"><a href="히스토그램-1.html#cb220-9" aria-hidden="true" tabindex="-1"></a>h2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>               </span>
-<span id="cb220-10"><a href="히스토그램-1.html#cb220-10" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">1.0</span>) <span class="sc">+</span>      <span class="co"># 구간의 폭을 1.0으로 설정합니다.</span></span>
-<span id="cb220-11"><a href="히스토그램-1.html#cb220-11" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>(<span class="st">&quot;Binwidth=1.0&quot;</span>) </span>
-<span id="cb220-12"><a href="히스토그램-1.html#cb220-12" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb220-13"><a href="히스토그램-1.html#cb220-13" aria-hidden="true" tabindex="-1"></a>h3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>               </span>
-<span id="cb220-14"><a href="히스토그램-1.html#cb220-14" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span>      <span class="co"># 구간의 폭을 1.5로 설정합니다.</span></span>
-<span id="cb220-15"><a href="히스토그램-1.html#cb220-15" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>(<span class="st">&quot;Binwidth=1.5&quot;</span>) </span>
-<span id="cb220-16"><a href="히스토그램-1.html#cb220-16" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb220-17"><a href="히스토그램-1.html#cb220-17" aria-hidden="true" tabindex="-1"></a>h4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>               </span>
-<span id="cb220-18"><a href="히스토그램-1.html#cb220-18" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">1.816</span>) <span class="sc">+</span>    <span class="co"># 구간의 폭을 1.816으로 설정합니다.</span></span>
-<span id="cb220-19"><a href="히스토그램-1.html#cb220-19" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>(<span class="st">&quot;Binwidth=1.816 ; Default, range/30&quot;</span>) </span>
-<span id="cb220-20"><a href="히스토그램-1.html#cb220-20" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb220-21"><a href="히스토그램-1.html#cb220-21" aria-hidden="true" tabindex="-1"></a>h5 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>  </span>
-<span id="cb220-22"><a href="히스토그램-1.html#cb220-22" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>) <span class="sc">+</span>        <span class="co"># 구간의 폭을 5로 설정합니다.</span></span>
-<span id="cb220-23"><a href="히스토그램-1.html#cb220-23" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>(<span class="st">&quot;Binwidth=5&quot;</span>) </span>
-<span id="cb220-24"><a href="히스토그램-1.html#cb220-24" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb220-25"><a href="히스토그램-1.html#cb220-25" aria-hidden="true" tabindex="-1"></a>h6 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>  </span>
-<span id="cb220-26"><a href="히스토그램-1.html#cb220-26" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>) <span class="sc">+</span>       <span class="co"># 구간의 폭을 10으로 설정합니다.</span></span>
-<span id="cb220-27"><a href="히스토그램-1.html#cb220-27" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>(<span class="st">&quot;Binwidth=10&quot;</span>) </span>
-<span id="cb220-28"><a href="히스토그램-1.html#cb220-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb220-29"><a href="히스토그램-1.html#cb220-29" aria-hidden="true" tabindex="-1"></a><span class="do">##-----------------</span></span>
-<span id="cb220-30"><a href="히스토그램-1.html#cb220-30" aria-hidden="true" tabindex="-1"></a><span class="do">## multiplot function by knitr and Jekyll (author of Cookbook for R)</span></span>
-<span id="cb220-31"><a href="히스토그램-1.html#cb220-31" aria-hidden="true" tabindex="-1"></a><span class="do">## 아래 사용자정의 함수를 그대로 카피해서 사용하면 됩니다.</span></span>
-<span id="cb220-32"><a href="히스토그램-1.html#cb220-32" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;grid&quot;)</span></span>
-<span id="cb220-33"><a href="히스토그램-1.html#cb220-33" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
-<span id="cb220-34"><a href="히스토그램-1.html#cb220-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb220-35"><a href="히스토그램-1.html#cb220-35" aria-hidden="true" tabindex="-1"></a>multiplot <span class="ot">&lt;-</span> <span class="cf">function</span>(..., <span class="at">plotlist=</span><span class="cn">NULL</span>, file, <span class="at">cols=</span><span class="dv">1</span>, <span class="at">layout=</span><span class="cn">NULL</span>) {</span>
-<span id="cb220-36"><a href="히스토그램-1.html#cb220-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(grid)</span>
-<span id="cb220-37"><a href="히스토그램-1.html#cb220-37" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb220-38"><a href="히스토그램-1.html#cb220-38" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Make a list from the ... arguments and plotlist</span></span>
-<span id="cb220-39"><a href="히스토그램-1.html#cb220-39" aria-hidden="true" tabindex="-1"></a>  plots <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">list</span>(...), plotlist)</span>
-<span id="cb220-40"><a href="히스토그램-1.html#cb220-40" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb220-41"><a href="히스토그램-1.html#cb220-41" aria-hidden="true" tabindex="-1"></a>  numPlots <span class="ot">=</span> <span class="fu">length</span>(plots)</span>
-<span id="cb220-42"><a href="히스토그램-1.html#cb220-42" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb220-43"><a href="히스토그램-1.html#cb220-43" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If layout is NULL, then use &#39;cols&#39; to determine layout</span></span>
-<span id="cb220-44"><a href="히스토그램-1.html#cb220-44" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(layout)) {</span>
-<span id="cb220-45"><a href="히스토그램-1.html#cb220-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Make the panel</span></span>
-<span id="cb220-46"><a href="히스토그램-1.html#cb220-46" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ncol: Number of columns of plots</span></span>
-<span id="cb220-47"><a href="히스토그램-1.html#cb220-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># nrow: Number of rows needed, calculated from # of cols</span></span>
-<span id="cb220-48"><a href="히스토그램-1.html#cb220-48" aria-hidden="true" tabindex="-1"></a>    layout <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">seq</span>(<span class="dv">1</span>, cols <span class="sc">*</span> <span class="fu">ceiling</span>(numPlots<span class="sc">/</span>cols)),</span>
-<span id="cb220-49"><a href="히스토그램-1.html#cb220-49" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ncol =</span> cols, <span class="at">nrow =</span> <span class="fu">ceiling</span>(numPlots<span class="sc">/</span>cols))</span>
-<span id="cb220-50"><a href="히스토그램-1.html#cb220-50" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb220-51"><a href="히스토그램-1.html#cb220-51" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb220-52"><a href="히스토그램-1.html#cb220-52" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (numPlots<span class="sc">==</span><span class="dv">1</span>) {</span>
-<span id="cb220-53"><a href="히스토그램-1.html#cb220-53" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(plots[[<span class="dv">1</span>]])</span>
-<span id="cb220-54"><a href="히스토그램-1.html#cb220-54" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb220-55"><a href="히스토그램-1.html#cb220-55" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb220-56"><a href="히스토그램-1.html#cb220-56" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set up the page</span></span>
-<span id="cb220-57"><a href="히스토그램-1.html#cb220-57" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grid.newpage</span>()</span>
-<span id="cb220-58"><a href="히스토그램-1.html#cb220-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pushViewport</span>(<span class="fu">viewport</span>(<span class="at">layout =</span> <span class="fu">grid.layout</span>(<span class="fu">nrow</span>(layout), <span class="fu">ncol</span>(layout))))</span>
-<span id="cb220-59"><a href="히스토그램-1.html#cb220-59" aria-hidden="true" tabindex="-1"></a>     </span>
-<span id="cb220-60"><a href="히스토그램-1.html#cb220-60" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Make each plot, in the correct location</span></span>
-<span id="cb220-61"><a href="히스토그램-1.html#cb220-61" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>numPlots) {</span>
-<span id="cb220-62"><a href="히스토그램-1.html#cb220-62" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Get the i,j matrix positions of the regions that contain this subplot</span></span>
-<span id="cb220-63"><a href="히스토그램-1.html#cb220-63" aria-hidden="true" tabindex="-1"></a>      matchidx <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">which</span>(layout <span class="sc">==</span> i, <span class="at">arr.ind =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb220-64"><a href="히스토그램-1.html#cb220-64" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb220-65"><a href="히스토그램-1.html#cb220-65" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(plots[[i]], <span class="at">vp =</span> <span class="fu">viewport</span>(<span class="at">layout.pos.row =</span> matchidx<span class="sc">$</span>row,</span>
-<span id="cb220-66"><a href="히스토그램-1.html#cb220-66" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">layout.pos.col =</span> matchidx<span class="sc">$</span>col))</span>
-<span id="cb220-67"><a href="히스토그램-1.html#cb220-67" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb220-68"><a href="히스토그램-1.html#cb220-68" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb220-69"><a href="히스토그램-1.html#cb220-69" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb220-70"><a href="히스토그램-1.html#cb220-70" aria-hidden="true" tabindex="-1"></a><span class="do">##-----------------</span></span>
-<span id="cb220-71"><a href="히스토그램-1.html#cb220-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb220-72"><a href="히스토그램-1.html#cb220-72" aria-hidden="true" tabindex="-1"></a><span class="co"># 하나의 페이지에 여러 개의 플롯을 그리기 : multiplot() 함수 이용</span></span>
-<span id="cb220-73"><a href="히스토그램-1.html#cb220-73" aria-hidden="true" tabindex="-1"></a><span class="fu">multiplot</span>(h1, h2, h3, h4, h5, h6, <span class="at">cols=</span><span class="dv">2</span>)               <span class="co"># 6개의 그래프를 2개의 열로 나타냅니다.</span></span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb221-1"><a href="히스토그램-1.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb221-2"><a href="히스토그램-1.html#cb221-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb221-3"><a href="히스토그램-1.html#cb221-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 다양한 폭으로 히스토그램 그리기 </span></span>
+<span id="cb221-4"><a href="히스토그램-1.html#cb221-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb221-5"><a href="히스토그램-1.html#cb221-5" aria-hidden="true" tabindex="-1"></a>h1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>               </span>
+<span id="cb221-6"><a href="히스토그램-1.html#cb221-6" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span>      <span class="co"># 구간의 폭을 0.5로 설정합니다.</span></span>
+<span id="cb221-7"><a href="히스토그램-1.html#cb221-7" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>(<span class="st">&quot;Binwidth=0.5&quot;</span>) </span>
+<span id="cb221-8"><a href="히스토그램-1.html#cb221-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb221-9"><a href="히스토그램-1.html#cb221-9" aria-hidden="true" tabindex="-1"></a>h2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>               </span>
+<span id="cb221-10"><a href="히스토그램-1.html#cb221-10" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">1.0</span>) <span class="sc">+</span>      <span class="co"># 구간의 폭을 1.0으로 설정합니다.</span></span>
+<span id="cb221-11"><a href="히스토그램-1.html#cb221-11" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>(<span class="st">&quot;Binwidth=1.0&quot;</span>) </span>
+<span id="cb221-12"><a href="히스토그램-1.html#cb221-12" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb221-13"><a href="히스토그램-1.html#cb221-13" aria-hidden="true" tabindex="-1"></a>h3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>               </span>
+<span id="cb221-14"><a href="히스토그램-1.html#cb221-14" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span>      <span class="co"># 구간의 폭을 1.5로 설정합니다.</span></span>
+<span id="cb221-15"><a href="히스토그램-1.html#cb221-15" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>(<span class="st">&quot;Binwidth=1.5&quot;</span>) </span>
+<span id="cb221-16"><a href="히스토그램-1.html#cb221-16" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb221-17"><a href="히스토그램-1.html#cb221-17" aria-hidden="true" tabindex="-1"></a>h4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>               </span>
+<span id="cb221-18"><a href="히스토그램-1.html#cb221-18" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">1.816</span>) <span class="sc">+</span>    <span class="co"># 구간의 폭을 1.816으로 설정합니다.</span></span>
+<span id="cb221-19"><a href="히스토그램-1.html#cb221-19" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>(<span class="st">&quot;Binwidth=1.816 ; Default, range/30&quot;</span>) </span>
+<span id="cb221-20"><a href="히스토그램-1.html#cb221-20" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb221-21"><a href="히스토그램-1.html#cb221-21" aria-hidden="true" tabindex="-1"></a>h5 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>  </span>
+<span id="cb221-22"><a href="히스토그램-1.html#cb221-22" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>) <span class="sc">+</span>        <span class="co"># 구간의 폭을 5로 설정합니다.</span></span>
+<span id="cb221-23"><a href="히스토그램-1.html#cb221-23" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>(<span class="st">&quot;Binwidth=5&quot;</span>) </span>
+<span id="cb221-24"><a href="히스토그램-1.html#cb221-24" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb221-25"><a href="히스토그램-1.html#cb221-25" aria-hidden="true" tabindex="-1"></a>h6 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>  </span>
+<span id="cb221-26"><a href="히스토그램-1.html#cb221-26" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>) <span class="sc">+</span>       <span class="co"># 구간의 폭을 10으로 설정합니다.</span></span>
+<span id="cb221-27"><a href="히스토그램-1.html#cb221-27" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>(<span class="st">&quot;Binwidth=10&quot;</span>) </span>
+<span id="cb221-28"><a href="히스토그램-1.html#cb221-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb221-29"><a href="히스토그램-1.html#cb221-29" aria-hidden="true" tabindex="-1"></a><span class="do">##-----------------</span></span>
+<span id="cb221-30"><a href="히스토그램-1.html#cb221-30" aria-hidden="true" tabindex="-1"></a><span class="do">## multiplot function by knitr and Jekyll (author of Cookbook for R)</span></span>
+<span id="cb221-31"><a href="히스토그램-1.html#cb221-31" aria-hidden="true" tabindex="-1"></a><span class="do">## 아래 사용자정의 함수를 그대로 카피해서 사용하면 됩니다.</span></span>
+<span id="cb221-32"><a href="히스토그램-1.html#cb221-32" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;grid&quot;)</span></span>
+<span id="cb221-33"><a href="히스토그램-1.html#cb221-33" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb221-34"><a href="히스토그램-1.html#cb221-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb221-35"><a href="히스토그램-1.html#cb221-35" aria-hidden="true" tabindex="-1"></a>multiplot <span class="ot">&lt;-</span> <span class="cf">function</span>(..., <span class="at">plotlist=</span><span class="cn">NULL</span>, file, <span class="at">cols=</span><span class="dv">1</span>, <span class="at">layout=</span><span class="cn">NULL</span>) {</span>
+<span id="cb221-36"><a href="히스토그램-1.html#cb221-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(grid)</span>
+<span id="cb221-37"><a href="히스토그램-1.html#cb221-37" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb221-38"><a href="히스토그램-1.html#cb221-38" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Make a list from the ... arguments and plotlist</span></span>
+<span id="cb221-39"><a href="히스토그램-1.html#cb221-39" aria-hidden="true" tabindex="-1"></a>  plots <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">list</span>(...), plotlist)</span>
+<span id="cb221-40"><a href="히스토그램-1.html#cb221-40" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb221-41"><a href="히스토그램-1.html#cb221-41" aria-hidden="true" tabindex="-1"></a>  numPlots <span class="ot">=</span> <span class="fu">length</span>(plots)</span>
+<span id="cb221-42"><a href="히스토그램-1.html#cb221-42" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb221-43"><a href="히스토그램-1.html#cb221-43" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If layout is NULL, then use &#39;cols&#39; to determine layout</span></span>
+<span id="cb221-44"><a href="히스토그램-1.html#cb221-44" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(layout)) {</span>
+<span id="cb221-45"><a href="히스토그램-1.html#cb221-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Make the panel</span></span>
+<span id="cb221-46"><a href="히스토그램-1.html#cb221-46" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ncol: Number of columns of plots</span></span>
+<span id="cb221-47"><a href="히스토그램-1.html#cb221-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># nrow: Number of rows needed, calculated from # of cols</span></span>
+<span id="cb221-48"><a href="히스토그램-1.html#cb221-48" aria-hidden="true" tabindex="-1"></a>    layout <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">seq</span>(<span class="dv">1</span>, cols <span class="sc">*</span> <span class="fu">ceiling</span>(numPlots<span class="sc">/</span>cols)),</span>
+<span id="cb221-49"><a href="히스토그램-1.html#cb221-49" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ncol =</span> cols, <span class="at">nrow =</span> <span class="fu">ceiling</span>(numPlots<span class="sc">/</span>cols))</span>
+<span id="cb221-50"><a href="히스토그램-1.html#cb221-50" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb221-51"><a href="히스토그램-1.html#cb221-51" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb221-52"><a href="히스토그램-1.html#cb221-52" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (numPlots<span class="sc">==</span><span class="dv">1</span>) {</span>
+<span id="cb221-53"><a href="히스토그램-1.html#cb221-53" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(plots[[<span class="dv">1</span>]])</span>
+<span id="cb221-54"><a href="히스토그램-1.html#cb221-54" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb221-55"><a href="히스토그램-1.html#cb221-55" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb221-56"><a href="히스토그램-1.html#cb221-56" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set up the page</span></span>
+<span id="cb221-57"><a href="히스토그램-1.html#cb221-57" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grid.newpage</span>()</span>
+<span id="cb221-58"><a href="히스토그램-1.html#cb221-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pushViewport</span>(<span class="fu">viewport</span>(<span class="at">layout =</span> <span class="fu">grid.layout</span>(<span class="fu">nrow</span>(layout), <span class="fu">ncol</span>(layout))))</span>
+<span id="cb221-59"><a href="히스토그램-1.html#cb221-59" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb221-60"><a href="히스토그램-1.html#cb221-60" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Make each plot, in the correct location</span></span>
+<span id="cb221-61"><a href="히스토그램-1.html#cb221-61" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>numPlots) {</span>
+<span id="cb221-62"><a href="히스토그램-1.html#cb221-62" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Get the i,j matrix positions of the regions that contain this subplot</span></span>
+<span id="cb221-63"><a href="히스토그램-1.html#cb221-63" aria-hidden="true" tabindex="-1"></a>      matchidx <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">which</span>(layout <span class="sc">==</span> i, <span class="at">arr.ind =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb221-64"><a href="히스토그램-1.html#cb221-64" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb221-65"><a href="히스토그램-1.html#cb221-65" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(plots[[i]], <span class="at">vp =</span> <span class="fu">viewport</span>(<span class="at">layout.pos.row =</span> matchidx<span class="sc">$</span>row,</span>
+<span id="cb221-66"><a href="히스토그램-1.html#cb221-66" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">layout.pos.col =</span> matchidx<span class="sc">$</span>col))</span>
+<span id="cb221-67"><a href="히스토그램-1.html#cb221-67" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb221-68"><a href="히스토그램-1.html#cb221-68" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb221-69"><a href="히스토그램-1.html#cb221-69" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb221-70"><a href="히스토그램-1.html#cb221-70" aria-hidden="true" tabindex="-1"></a><span class="do">##-----------------</span></span>
+<span id="cb221-71"><a href="히스토그램-1.html#cb221-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb221-72"><a href="히스토그램-1.html#cb221-72" aria-hidden="true" tabindex="-1"></a><span class="co"># 하나의 페이지에 여러 개의 플롯을 그리기 : multiplot() 함수 이용</span></span>
+<span id="cb221-73"><a href="히스토그램-1.html#cb221-73" aria-hidden="true" tabindex="-1"></a><span class="fu">multiplot</span>(h1, h2, h3, h4, h5, h6, <span class="at">cols=</span><span class="dv">2</span>)               <span class="co"># 6개의 그래프를 2개의 열로 나타냅니다.</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Ggplot2HistGramBinSet"></span>
 <img src="bookdown_files/figure-html/Ggplot2HistGramBinSet-1.png" alt="히스토그램의 구간의 너비 조정" width="672" />
 <p class="caption">
@@ -692,27 +692,27 @@ Figure 9.3: 히스토그램의 구간의 너비 조정
 <div id="구간의-수-조정" class="section level3" number="9.1.5">
 <h3><span class="header-section-number">9.1.5</span> 구간의 수 조정</h3>
 <p>앞에서는 데이터를 구분할 때 데이터 구간의 폭(<code>binwidth</code>)으로 조정하였습니다. 이번에는 데이터를 구분하는 전체 구간의 수(<code>bins</code>)로 조절해 보겠습니다. <code>bins</code>의 기본 값은 <code>30</code>입니다.</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb221-1"><a href="히스토그램-1.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb221-2"><a href="히스토그램-1.html#cb221-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb221-3"><a href="히스토그램-1.html#cb221-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 구간의 수 조정</span></span>
-<span id="cb221-4"><a href="히스토그램-1.html#cb221-4" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>             </span>
-<span id="cb221-5"><a href="히스토그램-1.html#cb221-5" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>)  <span class="sc">+</span>         <span class="co"># 구간의 수를 10개로 정합니다.</span></span>
-<span id="cb221-6"><a href="히스토그램-1.html#cb221-6" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>(<span class="st">&quot;Bins = 10&quot;</span>)</span>
-<span id="cb221-7"><a href="히스토그램-1.html#cb221-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb221-8"><a href="히스토그램-1.html#cb221-8" aria-hidden="true" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>             </span>
-<span id="cb221-9"><a href="히스토그램-1.html#cb221-9" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">15</span>)  <span class="sc">+</span>         <span class="co"># 구간의 수를 15개로 정합니다.</span></span>
-<span id="cb221-10"><a href="히스토그램-1.html#cb221-10" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>(<span class="st">&quot;Bins = 15&quot;</span>)</span>
-<span id="cb221-11"><a href="히스토그램-1.html#cb221-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb221-12"><a href="히스토그램-1.html#cb221-12" aria-hidden="true" tabindex="-1"></a>b3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>             </span>
-<span id="cb221-13"><a href="히스토그램-1.html#cb221-13" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>)  <span class="sc">+</span>         <span class="co"># 구간의 수를 20개로 정합니다.</span></span>
-<span id="cb221-14"><a href="히스토그램-1.html#cb221-14" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>(<span class="st">&quot;Bins = 20&quot;</span>)</span>
-<span id="cb221-15"><a href="히스토그램-1.html#cb221-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb221-16"><a href="히스토그램-1.html#cb221-16" aria-hidden="true" tabindex="-1"></a>b4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>             </span>
-<span id="cb221-17"><a href="히스토그램-1.html#cb221-17" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">25</span>)  <span class="sc">+</span>         <span class="co"># 구간의 수를 25개로 정합니다.</span></span>
-<span id="cb221-18"><a href="히스토그램-1.html#cb221-18" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>(<span class="st">&quot;Bins = 25&quot;</span>)</span>
-<span id="cb221-19"><a href="히스토그램-1.html#cb221-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb221-20"><a href="히스토그램-1.html#cb221-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 하나의 페이지에 여러 개의 플롯을 그리기 : multiplot() 함수 이용</span></span>
-<span id="cb221-21"><a href="히스토그램-1.html#cb221-21" aria-hidden="true" tabindex="-1"></a><span class="fu">multiplot</span>(b1, b2, b3, b4, <span class="at">cols=</span><span class="dv">2</span>)                 <span class="co"># 6개의 그래프를 2개의 열로 나타냅니다.</span></span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb222-1"><a href="히스토그램-1.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb222-2"><a href="히스토그램-1.html#cb222-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb222-3"><a href="히스토그램-1.html#cb222-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 구간의 수 조정</span></span>
+<span id="cb222-4"><a href="히스토그램-1.html#cb222-4" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>             </span>
+<span id="cb222-5"><a href="히스토그램-1.html#cb222-5" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>)  <span class="sc">+</span>         <span class="co"># 구간의 수를 10개로 정합니다.</span></span>
+<span id="cb222-6"><a href="히스토그램-1.html#cb222-6" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>(<span class="st">&quot;Bins = 10&quot;</span>)</span>
+<span id="cb222-7"><a href="히스토그램-1.html#cb222-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb222-8"><a href="히스토그램-1.html#cb222-8" aria-hidden="true" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>             </span>
+<span id="cb222-9"><a href="히스토그램-1.html#cb222-9" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">15</span>)  <span class="sc">+</span>         <span class="co"># 구간의 수를 15개로 정합니다.</span></span>
+<span id="cb222-10"><a href="히스토그램-1.html#cb222-10" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>(<span class="st">&quot;Bins = 15&quot;</span>)</span>
+<span id="cb222-11"><a href="히스토그램-1.html#cb222-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb222-12"><a href="히스토그램-1.html#cb222-12" aria-hidden="true" tabindex="-1"></a>b3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>             </span>
+<span id="cb222-13"><a href="히스토그램-1.html#cb222-13" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>)  <span class="sc">+</span>         <span class="co"># 구간의 수를 20개로 정합니다.</span></span>
+<span id="cb222-14"><a href="히스토그램-1.html#cb222-14" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>(<span class="st">&quot;Bins = 20&quot;</span>)</span>
+<span id="cb222-15"><a href="히스토그램-1.html#cb222-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb222-16"><a href="히스토그램-1.html#cb222-16" aria-hidden="true" tabindex="-1"></a>b4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>             </span>
+<span id="cb222-17"><a href="히스토그램-1.html#cb222-17" aria-hidden="true" tabindex="-1"></a>             <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">25</span>)  <span class="sc">+</span>         <span class="co"># 구간의 수를 25개로 정합니다.</span></span>
+<span id="cb222-18"><a href="히스토그램-1.html#cb222-18" aria-hidden="true" tabindex="-1"></a>             <span class="fu">ggtitle</span>(<span class="st">&quot;Bins = 25&quot;</span>)</span>
+<span id="cb222-19"><a href="히스토그램-1.html#cb222-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb222-20"><a href="히스토그램-1.html#cb222-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 하나의 페이지에 여러 개의 플롯을 그리기 : multiplot() 함수 이용</span></span>
+<span id="cb222-21"><a href="히스토그램-1.html#cb222-21" aria-hidden="true" tabindex="-1"></a><span class="fu">multiplot</span>(b1, b2, b3, b4, <span class="at">cols=</span><span class="dv">2</span>)                 <span class="co"># 6개의 그래프를 2개의 열로 나타냅니다.</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Ggplot2HistGramBins"></span>
 <img src="bookdown_files/figure-html/Ggplot2HistGramBins-1.png" alt="히스토그램의 구간 수 조정" width="672" />
 <p class="caption">
@@ -724,52 +724,52 @@ Figure 9.4: 히스토그램의 구간 수 조정
 <blockquote>
 <p><strong>히스토그램의 bin width를 수동으로 설정해주고, bin별로 색깔을 다르게</strong> 해서 히스토그램을 그려보겠습니다.</p>
 </blockquote>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb222-1"><a href="히스토그램-1.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="co">#----------------</span></span>
-<span id="cb222-2"><a href="히스토그램-1.html#cb222-2" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram with variable size of bin width and different colors per bins using ggplot2</span></span>
-<span id="cb222-3"><a href="히스토그램-1.html#cb222-3" aria-hidden="true" tabindex="-1"></a><span class="co">#----------------</span></span>
-<span id="cb222-4"><a href="히스토그램-1.html#cb222-4" aria-hidden="true" tabindex="-1"></a><span class="co"># sample data frame</span></span>
-<span id="cb222-5"><a href="히스토그램-1.html#cb222-5" aria-hidden="true" tabindex="-1"></a>mydf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">var =</span> <span class="fu">c</span>(<span class="dv">1100</span>, <span class="dv">10000</span>, <span class="dv">100000</span>, <span class="dv">190000</span>, <span class="dv">110000</span>, <span class="dv">220000</span>, <span class="dv">550000</span>, <span class="dv">701000</span>, <span class="dv">790000</span>))</span>
-<span id="cb222-6"><a href="히스토그램-1.html#cb222-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb222-7"><a href="히스토그램-1.html#cb222-7" aria-hidden="true" tabindex="-1"></a><span class="co"># numeric notation for large numbers</span></span>
-<span id="cb222-8"><a href="히스토그램-1.html#cb222-8" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">30</span>)</span>
-<span id="cb222-9"><a href="히스토그램-1.html#cb222-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb222-10"><a href="히스토그램-1.html#cb222-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
-<span id="cb222-11"><a href="히스토그램-1.html#cb222-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb222-12"><a href="히스토그램-1.html#cb222-12" aria-hidden="true" tabindex="-1"></a><span class="co"># fill color with different colors per bins</span></span>
-<span id="cb222-13"><a href="히스토그램-1.html#cb222-13" aria-hidden="true" tabindex="-1"></a>mydf<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(mydf <span class="sc">$</span>var <span class="sc">&lt;</span> <span class="dv">10000</span>, <span class="dv">1</span>, </span>
-<span id="cb222-14"><a href="히스토그램-1.html#cb222-14" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">ifelse</span>(mydf <span class="sc">$</span>var <span class="sc">&lt;</span> <span class="dv">100000</span>, <span class="dv">2</span>, </span>
-<span id="cb222-15"><a href="히스토그램-1.html#cb222-15" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">ifelse</span>(mydf <span class="sc">$</span>var <span class="sc">&lt;</span> <span class="dv">200000</span>, <span class="dv">3</span>, </span>
-<span id="cb222-16"><a href="히스토그램-1.html#cb222-16" aria-hidden="true" tabindex="-1"></a>                                        <span class="fu">ifelse</span>(mydf <span class="sc">$</span>var <span class="sc">&lt;</span> <span class="dv">500000</span>, <span class="dv">4</span>, <span class="dv">5</span>))))</span>
-<span id="cb222-17"><a href="히스토그램-1.html#cb222-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb222-18"><a href="히스토그램-1.html#cb222-18" aria-hidden="true" tabindex="-1"></a><span class="co"># breaks of bin</span></span>
-<span id="cb222-19"><a href="히스토그램-1.html#cb222-19" aria-hidden="true" tabindex="-1"></a>bins <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">10000</span>, <span class="dv">100000</span>, <span class="dv">200000</span>, <span class="dv">500000</span>, <span class="dv">800000</span>)</span>
-<span id="cb222-20"><a href="히스토그램-1.html#cb222-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb222-21"><a href="히스토그램-1.html#cb222-21" aria-hidden="true" tabindex="-1"></a><span class="co"># draw histogram with variable size of bin width and different colors per bins</span></span>
-<span id="cb222-22"><a href="히스토그램-1.html#cb222-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mydf, <span class="fu">aes</span>(<span class="at">x=</span> var)) <span class="sc">+</span></span>
-<span id="cb222-23"><a href="히스토그램-1.html#cb222-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">data=</span><span class="fu">subset</span>(mydf, group<span class="sc">==</span><span class="dv">1</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">10000</span>), <span class="at">fill=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb222-24"><a href="히스토그램-1.html#cb222-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">data=</span><span class="fu">subset</span>(mydf, group<span class="sc">==</span><span class="dv">2</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">10000</span>, <span class="dv">100000</span>), <span class="at">fill=</span><span class="st">&quot;yellow&quot;</span>) <span class="sc">+</span></span>
-<span id="cb222-25"><a href="히스토그램-1.html#cb222-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">data=</span><span class="fu">subset</span>(mydf, group<span class="sc">==</span><span class="dv">3</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">100000</span>, <span class="dv">200000</span>), <span class="at">fill=</span><span class="st">&quot;green&quot;</span>) <span class="sc">+</span></span>
-<span id="cb222-26"><a href="히스토그램-1.html#cb222-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">data=</span><span class="fu">subset</span>(mydf, group<span class="sc">==</span><span class="dv">4</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">200000</span>, <span class="dv">500000</span>), <span class="at">fill=</span><span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb222-27"><a href="히스토그램-1.html#cb222-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">data=</span><span class="fu">subset</span>(mydf, group<span class="sc">==</span><span class="dv">5</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">500000</span>, <span class="dv">800000</span>), <span class="at">fill=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb222-28"><a href="히스토그램-1.html#cb222-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> bins, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">800000</span>)) <span class="sc">+</span></span>
-<span id="cb222-29"><a href="히스토그램-1.html#cb222-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;variable 1&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb222-30"><a href="히스토그램-1.html#cb222-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;count&quot;</span>) <span class="sc">+</span></span>
-<span id="cb222-31"><a href="히스토그램-1.html#cb222-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram with different size of bin width and colors&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb222-32"><a href="히스토그램-1.html#cb222-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">14</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb223-1"><a href="히스토그램-1.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="co">#----------------</span></span>
+<span id="cb223-2"><a href="히스토그램-1.html#cb223-2" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram with variable size of bin width and different colors per bins using ggplot2</span></span>
+<span id="cb223-3"><a href="히스토그램-1.html#cb223-3" aria-hidden="true" tabindex="-1"></a><span class="co">#----------------</span></span>
+<span id="cb223-4"><a href="히스토그램-1.html#cb223-4" aria-hidden="true" tabindex="-1"></a><span class="co"># sample data frame</span></span>
+<span id="cb223-5"><a href="히스토그램-1.html#cb223-5" aria-hidden="true" tabindex="-1"></a>mydf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">var =</span> <span class="fu">c</span>(<span class="dv">1100</span>, <span class="dv">10000</span>, <span class="dv">100000</span>, <span class="dv">190000</span>, <span class="dv">110000</span>, <span class="dv">220000</span>, <span class="dv">550000</span>, <span class="dv">701000</span>, <span class="dv">790000</span>))</span>
+<span id="cb223-6"><a href="히스토그램-1.html#cb223-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb223-7"><a href="히스토그램-1.html#cb223-7" aria-hidden="true" tabindex="-1"></a><span class="co"># numeric notation for large numbers</span></span>
+<span id="cb223-8"><a href="히스토그램-1.html#cb223-8" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">30</span>)</span>
+<span id="cb223-9"><a href="히스토그램-1.html#cb223-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb223-10"><a href="히스토그램-1.html#cb223-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb223-11"><a href="히스토그램-1.html#cb223-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb223-12"><a href="히스토그램-1.html#cb223-12" aria-hidden="true" tabindex="-1"></a><span class="co"># fill color with different colors per bins</span></span>
+<span id="cb223-13"><a href="히스토그램-1.html#cb223-13" aria-hidden="true" tabindex="-1"></a>mydf<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(mydf <span class="sc">$</span>var <span class="sc">&lt;</span> <span class="dv">10000</span>, <span class="dv">1</span>, </span>
+<span id="cb223-14"><a href="히스토그램-1.html#cb223-14" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">ifelse</span>(mydf <span class="sc">$</span>var <span class="sc">&lt;</span> <span class="dv">100000</span>, <span class="dv">2</span>, </span>
+<span id="cb223-15"><a href="히스토그램-1.html#cb223-15" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">ifelse</span>(mydf <span class="sc">$</span>var <span class="sc">&lt;</span> <span class="dv">200000</span>, <span class="dv">3</span>, </span>
+<span id="cb223-16"><a href="히스토그램-1.html#cb223-16" aria-hidden="true" tabindex="-1"></a>                                        <span class="fu">ifelse</span>(mydf <span class="sc">$</span>var <span class="sc">&lt;</span> <span class="dv">500000</span>, <span class="dv">4</span>, <span class="dv">5</span>))))</span>
+<span id="cb223-17"><a href="히스토그램-1.html#cb223-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb223-18"><a href="히스토그램-1.html#cb223-18" aria-hidden="true" tabindex="-1"></a><span class="co"># breaks of bin</span></span>
+<span id="cb223-19"><a href="히스토그램-1.html#cb223-19" aria-hidden="true" tabindex="-1"></a>bins <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">10000</span>, <span class="dv">100000</span>, <span class="dv">200000</span>, <span class="dv">500000</span>, <span class="dv">800000</span>)</span>
+<span id="cb223-20"><a href="히스토그램-1.html#cb223-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb223-21"><a href="히스토그램-1.html#cb223-21" aria-hidden="true" tabindex="-1"></a><span class="co"># draw histogram with variable size of bin width and different colors per bins</span></span>
+<span id="cb223-22"><a href="히스토그램-1.html#cb223-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mydf, <span class="fu">aes</span>(<span class="at">x=</span> var)) <span class="sc">+</span></span>
+<span id="cb223-23"><a href="히스토그램-1.html#cb223-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">data=</span><span class="fu">subset</span>(mydf, group<span class="sc">==</span><span class="dv">1</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">10000</span>), <span class="at">fill=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb223-24"><a href="히스토그램-1.html#cb223-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">data=</span><span class="fu">subset</span>(mydf, group<span class="sc">==</span><span class="dv">2</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">10000</span>, <span class="dv">100000</span>), <span class="at">fill=</span><span class="st">&quot;yellow&quot;</span>) <span class="sc">+</span></span>
+<span id="cb223-25"><a href="히스토그램-1.html#cb223-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">data=</span><span class="fu">subset</span>(mydf, group<span class="sc">==</span><span class="dv">3</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">100000</span>, <span class="dv">200000</span>), <span class="at">fill=</span><span class="st">&quot;green&quot;</span>) <span class="sc">+</span></span>
+<span id="cb223-26"><a href="히스토그램-1.html#cb223-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">data=</span><span class="fu">subset</span>(mydf, group<span class="sc">==</span><span class="dv">4</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">200000</span>, <span class="dv">500000</span>), <span class="at">fill=</span><span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb223-27"><a href="히스토그램-1.html#cb223-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">data=</span><span class="fu">subset</span>(mydf, group<span class="sc">==</span><span class="dv">5</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">500000</span>, <span class="dv">800000</span>), <span class="at">fill=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb223-28"><a href="히스토그램-1.html#cb223-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> bins, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">800000</span>)) <span class="sc">+</span></span>
+<span id="cb223-29"><a href="히스토그램-1.html#cb223-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;variable 1&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb223-30"><a href="히스토그램-1.html#cb223-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;count&quot;</span>) <span class="sc">+</span></span>
+<span id="cb223-31"><a href="히스토그램-1.html#cb223-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram with different size of bin width and colors&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb223-32"><a href="히스토그램-1.html#cb223-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">14</span>))</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p><a href="히스토그램-1.html#히스토그램-1">Go Top</a></p>
 </div>
 <div id="색-지정" class="section level3" number="9.1.6">
 <h3><span class="header-section-number">9.1.6</span> 색 지정</h3>
 <p>위의 히스토그램을 보면 거무튀튀하니 그다지 색깔이 아름답지는 않지요? 그러면 이번에는 <strong>색 채우기</strong>, <strong>경계선 색 지정</strong>하기를 해보겠습니다.</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb223-1"><a href="히스토그램-1.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb223-2"><a href="히스토그램-1.html#cb223-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb223-3"><a href="히스토그램-1.html#cb223-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 채우기 색, 경계선 색 : geom_histogram(binwidth, fill, colour) </span></span>
-<span id="cb223-4"><a href="히스토그램-1.html#cb223-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>                   </span>
-<span id="cb223-5"><a href="히스토그램-1.html#cb223-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>,                </span>
-<span id="cb223-6"><a href="히스토그램-1.html#cb223-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>,             <span class="co"># 막대의 색을 &quot;blue&quot;로 설정합니다.</span></span>
-<span id="cb223-7"><a href="히스토그램-1.html#cb223-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span>        <span class="co"># 막대의 테두리 색을 &quot;black&quot;으로 설정합니다.</span></span>
-<span id="cb223-8"><a href="히스토그램-1.html#cb223-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;Binwidth=5, fill = blue, colour = black&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb224-1"><a href="히스토그램-1.html#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb224-2"><a href="히스토그램-1.html#cb224-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb224-3"><a href="히스토그램-1.html#cb224-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 채우기 색, 경계선 색 : geom_histogram(binwidth, fill, colour) </span></span>
+<span id="cb224-4"><a href="히스토그램-1.html#cb224-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>                   </span>
+<span id="cb224-5"><a href="히스토그램-1.html#cb224-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>,                </span>
+<span id="cb224-6"><a href="히스토그램-1.html#cb224-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>,             <span class="co"># 막대의 색을 &quot;blue&quot;로 설정합니다.</span></span>
+<span id="cb224-7"><a href="히스토그램-1.html#cb224-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span>        <span class="co"># 막대의 테두리 색을 &quot;black&quot;으로 설정합니다.</span></span>
+<span id="cb224-8"><a href="히스토그램-1.html#cb224-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;Binwidth=5, fill = blue, colour = black&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Ggplot2HistGramColor"></span>
 <img src="bookdown_files/figure-html/Ggplot2HistGramColor-1.png" alt="히스토그램의 색과 경계선 지정" width="672" />
 <p class="caption">
@@ -797,37 +797,37 @@ Figure 9.5: 히스토그램의 색과 경계선 지정
 <li><p><code>fille = Type</code>을 추가하면 히스토그램의 막대가 <code>Type</code> 별로 <strong>색이 채워</strong>집니다. 이때는 <code>geom_histogram()</code> 함수에 <code>colour = “white”</code> 와 같이 <strong>테두리 색</strong>을 지정해 주는 것이 좋습니다.</p></li>
 <li><p><code>group = Type</code>을 추가하면 히스토그램이 Type별로 구분이 됩니다. 그러나, <code>geom_histogram()</code> 함수에 <code>colour = “white”</code> 와 같이 <strong>테두리 색</strong>을 지정해 주어야 확인이 가능합니다.</p></li>
 </ul>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb224-1"><a href="히스토그램-1.html#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 그룹별 히스토그램 그리기 : aes()에 모수 지정하기</span></span>
-<span id="cb224-2"><a href="히스토그램-1.html#cb224-2" aria-hidden="true" tabindex="-1"></a><span class="co"># colour 모수에 Type 변수를 지정하기</span></span>
-<span id="cb224-3"><a href="히스토그램-1.html#cb224-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb224-4"><a href="히스토그램-1.html#cb224-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Price, </span>
-<span id="cb224-5"><a href="히스토그램-1.html#cb224-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type)) <span class="sc">+</span>                   <span class="co"># 막대를 채우는 색으로 요인형 변수를 지정합니다.</span></span>
-<span id="cb224-6"><a href="히스토그램-1.html#cb224-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb225-1"><a href="히스토그램-1.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 그룹별 히스토그램 그리기 : aes()에 모수 지정하기</span></span>
+<span id="cb225-2"><a href="히스토그램-1.html#cb225-2" aria-hidden="true" tabindex="-1"></a><span class="co"># colour 모수에 Type 변수를 지정하기</span></span>
+<span id="cb225-3"><a href="히스토그램-1.html#cb225-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb225-4"><a href="히스토그램-1.html#cb225-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Price, </span>
+<span id="cb225-5"><a href="히스토그램-1.html#cb225-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type)) <span class="sc">+</span>                   <span class="co"># 막대를 채우는 색으로 요인형 변수를 지정합니다.</span></span>
+<span id="cb225-6"><a href="히스토그램-1.html#cb225-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Ggplot2HistGramGrpAes-1"></span>
 <img src="bookdown_files/figure-html/Ggplot2HistGramGrpAes-1.png" alt="그룹별 히스토그램 : aes() 모수 이용" width="672" />
 <p class="caption">
 Figure 9.6: 그룹별 히스토그램 : aes() 모수 이용
 </p>
 </div>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb225-1"><a href="히스토그램-1.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fill 모수에 Type변수를 지정하기</span></span>
-<span id="cb225-2"><a href="히스토그램-1.html#cb225-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb225-3"><a href="히스토그램-1.html#cb225-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Price, </span>
-<span id="cb225-4"><a href="히스토그램-1.html#cb225-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type,</span>
-<span id="cb225-5"><a href="히스토그램-1.html#cb225-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Type)) <span class="sc">+</span>                     <span class="co"># 막대를 채우는 색으로 요인형 변수를 지정합니다.</span></span>
-<span id="cb225-6"><a href="히스토그램-1.html#cb225-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>, </span>
-<span id="cb225-7"><a href="히스토그램-1.html#cb225-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>)             <span class="co"># 테두리 선을 지정합니다.</span></span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb226-1"><a href="히스토그램-1.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fill 모수에 Type변수를 지정하기</span></span>
+<span id="cb226-2"><a href="히스토그램-1.html#cb226-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb226-3"><a href="히스토그램-1.html#cb226-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Price, </span>
+<span id="cb226-4"><a href="히스토그램-1.html#cb226-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type,</span>
+<span id="cb226-5"><a href="히스토그램-1.html#cb226-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Type)) <span class="sc">+</span>                     <span class="co"># 막대를 채우는 색으로 요인형 변수를 지정합니다.</span></span>
+<span id="cb226-6"><a href="히스토그램-1.html#cb226-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>, </span>
+<span id="cb226-7"><a href="히스토그램-1.html#cb226-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>)             <span class="co"># 테두리 선을 지정합니다.</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Ggplot2HistGramGrpAes-2"></span>
 <img src="bookdown_files/figure-html/Ggplot2HistGramGrpAes-2.png" alt="그룹별 히스토그램 : aes() 모수 이용" width="672" />
 <p class="caption">
 Figure 9.7: 그룹별 히스토그램 : aes() 모수 이용
 </p>
 </div>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb226-1"><a href="히스토그램-1.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="co"># group 모수에 Type변수를 지정하기</span></span>
-<span id="cb226-2"><a href="히스토그램-1.html#cb226-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb226-3"><a href="히스토그램-1.html#cb226-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Price, </span>
-<span id="cb226-4"><a href="히스토그램-1.html#cb226-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> Type)) <span class="sc">+</span>                    <span class="co"># 막대가 Type별로 구분됩니다.</span></span>
-<span id="cb226-5"><a href="히스토그램-1.html#cb226-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>,</span>
-<span id="cb226-6"><a href="히스토그램-1.html#cb226-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>)             <span class="co"># 구분된 부분의 테두리 색을 지정합니다.</span></span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb227-1"><a href="히스토그램-1.html#cb227-1" aria-hidden="true" tabindex="-1"></a><span class="co"># group 모수에 Type변수를 지정하기</span></span>
+<span id="cb227-2"><a href="히스토그램-1.html#cb227-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb227-3"><a href="히스토그램-1.html#cb227-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Price, </span>
+<span id="cb227-4"><a href="히스토그램-1.html#cb227-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> Type)) <span class="sc">+</span>                    <span class="co"># 막대가 Type별로 구분됩니다.</span></span>
+<span id="cb227-5"><a href="히스토그램-1.html#cb227-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>,</span>
+<span id="cb227-6"><a href="히스토그램-1.html#cb227-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>)             <span class="co"># 구분된 부분의 테두리 색을 지정합니다.</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Ggplot2HistGramGrpAes-3"></span>
 <img src="bookdown_files/figure-html/Ggplot2HistGramGrpAes-3.png" alt="그룹별 히스토그램 : aes() 모수 이용" width="672" />
 <p class="caption">
@@ -838,20 +838,20 @@ Figure 9.8: 그룹별 히스토그램 : aes() 모수 이용
 <div id="facet_grid-함수-이용" class="section level4" number="9.1.7.2">
 <h4><span class="header-section-number">9.1.7.2</span> <code>facet_grid()</code> 함수 이용</h4>
 <p>자동차 유형별(<code>Type</code>)로 앞의 히스토그램을 비교하기 위해서는 <code>facet_grid(Type ~ .)</code> 또는 <code>facet_grid(vars(Type))</code>으로 지정하는 방법과 <code>facet_grid( . ~ Type)</code> 으로 지정하는 방법을 각각 살펴 보겠습니다.</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb227-1"><a href="히스토그램-1.html#cb227-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb227-2"><a href="히스토그램-1.html#cb227-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb227-3"><a href="히스토그램-1.html#cb227-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Type 그룹별 히스토그램 그리기</span></span>
-<span id="cb227-4"><a href="히스토그램-1.html#cb227-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 요인(factor) 여부 확인, levels 확인 </span></span>
-<span id="cb227-5"><a href="히스토그램-1.html#cb227-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(Cars93<span class="sc">$</span>Type); <span class="fu">levels</span>(Cars93<span class="sc">$</span>Type)</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb228-1"><a href="히스토그램-1.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb228-2"><a href="히스토그램-1.html#cb228-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb228-3"><a href="히스토그램-1.html#cb228-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Type 그룹별 히스토그램 그리기</span></span>
+<span id="cb228-4"><a href="히스토그램-1.html#cb228-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 요인(factor) 여부 확인, levels 확인 </span></span>
+<span id="cb228-5"><a href="히스토그램-1.html#cb228-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(Cars93<span class="sc">$</span>Type); <span class="fu">levels</span>(Cars93<span class="sc">$</span>Type)</span></code></pre></div>
 <pre class="bg-warning"><code>## [1] &quot;factor&quot;</code></pre>
 <pre class="bg-warning"><code>## [1] &quot;Compact&quot; &quot;Large&quot;   &quot;Midsize&quot; &quot;Small&quot;   &quot;Sporty&quot;  &quot;Van&quot;</code></pre>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb230-1"><a href="히스토그램-1.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 요인/집단/그룹(factor)별로 나누어서 히스토그램 그리기 </span></span>
-<span id="cb230-2"><a href="히스토그램-1.html#cb230-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>                  </span>
-<span id="cb230-3"><a href="히스토그램-1.html#cb230-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>,               </span>
-<span id="cb230-4"><a href="히스토그램-1.html#cb230-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>,            </span>
-<span id="cb230-5"><a href="히스토그램-1.html#cb230-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span>       </span>
-<span id="cb230-6"><a href="히스토그램-1.html#cb230-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;facet_grid(Type ~ .)&quot;</span>) <span class="sc">+</span>  </span>
-<span id="cb230-7"><a href="히스토그램-1.html#cb230-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">facet_grid</span>(Type <span class="sc">~</span> .)                      <span class="co"># 히스토그램을 Type 별로 세로로 배열합니다.</span></span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb231-1"><a href="히스토그램-1.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 요인/집단/그룹(factor)별로 나누어서 히스토그램 그리기 </span></span>
+<span id="cb231-2"><a href="히스토그램-1.html#cb231-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>                  </span>
+<span id="cb231-3"><a href="히스토그램-1.html#cb231-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>,               </span>
+<span id="cb231-4"><a href="히스토그램-1.html#cb231-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>,            </span>
+<span id="cb231-5"><a href="히스토그램-1.html#cb231-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span>       </span>
+<span id="cb231-6"><a href="히스토그램-1.html#cb231-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;facet_grid(Type ~ .)&quot;</span>) <span class="sc">+</span>  </span>
+<span id="cb231-7"><a href="히스토그램-1.html#cb231-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">facet_grid</span>(Type <span class="sc">~</span> .)                      <span class="co"># 히스토그램을 Type 별로 세로로 배열합니다.</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Ggplot2HistGramFacetGrid1"></span>
 <img src="bookdown_files/figure-html/Ggplot2HistGramFacetGrid1-1.png" alt="그룹별 히스토그램 : facet_grid( Type ~ .)" width="672" />
 <p class="caption">
@@ -861,14 +861,14 @@ Figure 9.9: 그룹별 히스토그램 : facet_grid( Type ~ .)
 <p>위의 히스토그램처럼 자동차의 유형(<code>Type</code>)인 ‘<code>Compact</code>,’ ‘<code>Large</code>,’ ‘<code>Midsize</code>,’ ‘<code>Small</code>,’ ‘<code>Sporty</code>,’ ‘<code>Van</code>’ 의 6개 유형별로 가격(<code>Price</code>)의 히스토그램을 그려보면 서로 한눈에 비교가 가능하니 매우 유용하다고 하겠습니다.</p>
 <p>참고로, 위처럼 <strong>가로로 비교</strong>를 하는 것이 아니라 <strong>세로</strong>로 세워서 그래프를 그린 후에 비교를 하려면 <strong><code>+  facet_grid(. ~ Type)</code></strong> 처럼 괄호안의 기입 순서를 바꾸어주면 됩니다.</p>
 <p>단, 아래에 예시 그래프를 보면 알겠지만, 차종별로 가격의 분포를 비교하기에는 아래처럼 그래프를 그려서는 안되겠지요? <em>분석 목적에 맞게 가로로 비교할지, 세로로 비교할지 잘 선택해서 사용하시기 바랍니다.</em></p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb231-1"><a href="히스토그램-1.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb231-2"><a href="히스토그램-1.html#cb231-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb231-3"><a href="히스토그램-1.html#cb231-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 요인/집단/그룹(factor)별로 나누어서 히스토그램 그리기 </span></span>
-<span id="cb231-4"><a href="히스토그램-1.html#cb231-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 그룹 히스토그램</span></span>
-<span id="cb231-5"><a href="히스토그램-1.html#cb231-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>  </span>
-<span id="cb231-6"><a href="히스토그램-1.html#cb231-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span>  </span>
-<span id="cb231-7"><a href="히스토그램-1.html#cb231-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot; facet_grid(. ~ Type)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb231-8"><a href="히스토그램-1.html#cb231-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">facet_grid</span>(. <span class="sc">~</span> Type)                           <span class="co"># 히스토그램을 Type 별로 가로로 배열합니다.</span></span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb232-1"><a href="히스토그램-1.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb232-2"><a href="히스토그램-1.html#cb232-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb232-3"><a href="히스토그램-1.html#cb232-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 요인/집단/그룹(factor)별로 나누어서 히스토그램 그리기 </span></span>
+<span id="cb232-4"><a href="히스토그램-1.html#cb232-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 그룹 히스토그램</span></span>
+<span id="cb232-5"><a href="히스토그램-1.html#cb232-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>  </span>
+<span id="cb232-6"><a href="히스토그램-1.html#cb232-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span>  </span>
+<span id="cb232-7"><a href="히스토그램-1.html#cb232-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot; facet_grid(. ~ Type)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb232-8"><a href="히스토그램-1.html#cb232-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">facet_grid</span>(. <span class="sc">~</span> Type)                           <span class="co"># 히스토그램을 Type 별로 가로로 배열합니다.</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Ggplot2HistGramFacetGrid2"></span>
 <img src="bookdown_files/figure-html/Ggplot2HistGramFacetGrid2-1.png" alt="그룹별 히스토그램 : facet_grid( . ~ Type)" width="672" />
 <p class="caption">
@@ -881,14 +881,14 @@ Figure 9.10: 그룹별 히스토그램 : facet_grid( . ~ Type)
 <div id="facet_wrap-함수-이용" class="section level4" number="9.1.7.3">
 <h4><span class="header-section-number">9.1.7.3</span> <code>facet_wrap()</code> 함수 이용</h4>
 <p>한편, <code>facet_wrap(</code>) 함수를 이용하여 각 자동차 유형(<code>Type</code>)별 히스트로그램을 작성할 수도 있습니다. 1 함수 대신에 <code>facet_wrap(~ Type, ncol = 2)</code>를 추가해 보겠습니다.</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb232-1"><a href="히스토그램-1.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb232-2"><a href="히스토그램-1.html#cb232-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb232-3"><a href="히스토그램-1.html#cb232-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 요인/집단/그룹(factor)별로 나누어서 히스토그램 그리기 </span></span>
-<span id="cb232-4"><a href="히스토그램-1.html#cb232-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 그룹 히스토그램</span></span>
-<span id="cb232-5"><a href="히스토그램-1.html#cb232-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>  </span>
-<span id="cb232-6"><a href="히스토그램-1.html#cb232-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span>  </span>
-<span id="cb232-7"><a href="히스토그램-1.html#cb232-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;facet_wrap() 함수의 사용&quot;</span>) <span class="sc">+</span></span>
-<span id="cb232-8"><a href="히스토그램-1.html#cb232-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">2</span>)                         <span class="co"># 히스토그램을 Type 별로 2열로 배열합니다.</span></span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb233-1"><a href="히스토그램-1.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb233-2"><a href="히스토그램-1.html#cb233-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb233-3"><a href="히스토그램-1.html#cb233-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 요인/집단/그룹(factor)별로 나누어서 히스토그램 그리기 </span></span>
+<span id="cb233-4"><a href="히스토그램-1.html#cb233-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 그룹 히스토그램</span></span>
+<span id="cb233-5"><a href="히스토그램-1.html#cb233-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>  </span>
+<span id="cb233-6"><a href="히스토그램-1.html#cb233-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span>  </span>
+<span id="cb233-7"><a href="히스토그램-1.html#cb233-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;facet_wrap() 함수의 사용&quot;</span>) <span class="sc">+</span></span>
+<span id="cb233-8"><a href="히스토그램-1.html#cb233-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">2</span>)                         <span class="co"># 히스토그램을 Type 별로 2열로 배열합니다.</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Ggplot2HistGramFacetWrap"></span>
 <img src="bookdown_files/figure-html/Ggplot2HistGramFacetWrap-1.png" alt="그룹별 히스토그램 : facet_wrap(~ Type)" width="672" />
 <p class="caption">
@@ -905,22 +905,22 @@ Figure 9.11: 그룹별 히스토그램 : facet_wrap(~ Type)
 <div id="UsignThemes" class="section level3" number="9.1.8">
 <h3><span class="header-section-number">9.1.8</span> Theme의 사용</h3>
 <p><code>ggplot2</code> 패키지는 8 가지의 그래프 테마(<a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">Complete Themes</a>)를 제공하고 있습니다. 다음의 예는 <code>theme_class()</code> 함수를 사용하여 <strong>X축과 Y축의 서식을 지정</strong>하는 예를 보여 주고 있습니다. 또한 참고로 Y축의 값에 컴마(<code>,</code>)를 삽입하는 예도 포함하였습니다.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb233-1"><a href="히스토그램-1.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Theme의 사용</span></span>
-<span id="cb233-2"><a href="히스토그램-1.html#cb233-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>  </span>
-<span id="cb233-3"><a href="히스토그램-1.html#cb233-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span>  </span>
-<span id="cb233-4"><a href="히스토그램-1.html#cb233-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Theme의 사용&quot;</span>) <span class="sc">+</span></span>
-<span id="cb233-5"><a href="히스토그램-1.html#cb233-5" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">theme_classic</span>() <span class="sc">+</span>                                         <span class="co"># 그래프 테마 지정</span></span>
-<span id="cb233-6"><a href="히스토그램-1.html#cb233-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
-<span id="cb233-7"><a href="히스토그램-1.html#cb233-7" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;italic&quot;</span>, </span>
-<span id="cb233-8"><a href="히스토그램-1.html#cb233-8" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
-<span id="cb233-9"><a href="히스토그램-1.html#cb233-9" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
-<span id="cb233-10"><a href="히스토그램-1.html#cb233-10" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
-<span id="cb233-11"><a href="히스토그램-1.html#cb233-11" aria-hidden="true" tabindex="-1"></a>                 <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
-<span id="cb233-12"><a href="히스토그램-1.html#cb233-12" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;bold.italic&quot;</span>, </span>
-<span id="cb233-13"><a href="히스토그램-1.html#cb233-13" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
-<span id="cb233-14"><a href="히스토그램-1.html#cb233-14" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
-<span id="cb233-15"><a href="히스토그램-1.html#cb233-15" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span>       <span class="co"># X축과 Y축의 서식 스타일 지정</span></span>
-<span id="cb233-16"><a href="히스토그램-1.html#cb233-16" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)              <span class="co"># Y 값의 천단위에 콤마 표시</span></span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb234-1"><a href="히스토그램-1.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Theme의 사용</span></span>
+<span id="cb234-2"><a href="히스토그램-1.html#cb234-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>  </span>
+<span id="cb234-3"><a href="히스토그램-1.html#cb234-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span>  </span>
+<span id="cb234-4"><a href="히스토그램-1.html#cb234-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Theme의 사용&quot;</span>) <span class="sc">+</span></span>
+<span id="cb234-5"><a href="히스토그램-1.html#cb234-5" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">theme_classic</span>() <span class="sc">+</span>                                         <span class="co"># 그래프 테마 지정</span></span>
+<span id="cb234-6"><a href="히스토그램-1.html#cb234-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
+<span id="cb234-7"><a href="히스토그램-1.html#cb234-7" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;italic&quot;</span>, </span>
+<span id="cb234-8"><a href="히스토그램-1.html#cb234-8" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
+<span id="cb234-9"><a href="히스토그램-1.html#cb234-9" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb234-10"><a href="히스토그램-1.html#cb234-10" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb234-11"><a href="히스토그램-1.html#cb234-11" aria-hidden="true" tabindex="-1"></a>                 <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
+<span id="cb234-12"><a href="히스토그램-1.html#cb234-12" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;bold.italic&quot;</span>, </span>
+<span id="cb234-13"><a href="히스토그램-1.html#cb234-13" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
+<span id="cb234-14"><a href="히스토그램-1.html#cb234-14" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb234-15"><a href="히스토그램-1.html#cb234-15" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span>       <span class="co"># X축과 Y축의 서식 스타일 지정</span></span>
+<span id="cb234-16"><a href="히스토그램-1.html#cb234-16" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)              <span class="co"># Y 값의 천단위에 콤마 표시</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Ggplot2HistGramTheme"></span>
 <img src="bookdown_files/figure-html/Ggplot2HistGramTheme-1.png" alt="히스토그램 : Theme의 사용" width="672" />
 <p class="caption">

@@ -555,7 +555,7 @@ Figure 7.3: 제목과 XY축 레이블 추가 : 낮은 수준의 함수 title() �
 </div>
 <p>높은 수준의 그래프 함수에서도 주 제목, 부 제목, XY축 Label 등을 설정할 수 있는데 왜 굳이 낮은 수준의 그래프 함수 <code>title()</code> 을 가지고 추가 정보를 입력하는지 의아할 수도 있겠습니다.</p>
 <p><strong>높은 수준의 그래프 함수 중에 부가정보를 입력할 수 없는 그래프 함수도 있으며</strong>, R의 장점 중에 하나가 <strong>대화형으로 그래프의 부가 정보를</strong> 추가하는 것을 직접 확인할 수 있습니다. 따라서 매우 <strong>직관적으로 탐색적 데이터 분석을 할 수 있다</strong>는 점입니다.</p>
-<p>참고로, 지난번 포스팅에서 소개한 <strong>그래프 모수 (graphics parameters)</strong> 중에서 기호의 크기를 설정하는 <strong>“<code>cex.main =</code>,” “<code>cex.sub =</code>,” “<code>cex.lab =</code>”</strong> 옵션을 사용해서 주 제목, 부 제목, XY축 레이블의 크기를 변경해보겠습니다.</p>
+<p>참고로, 지난 절에서 소개한 <strong>그래프 모수 (graphics parameters)</strong> 중에서 <strong>글자의 크기</strong>를 설정하는 <strong>“<code>cex.main =</code>,” “<code>cex.sub =</code>,” “<code>cex.lab =</code>”</strong> 옵션을 사용해서 주 제목, 부 제목, XY축 레이블의 <strong>글자 크기</strong>를 변경해보겠습니다.</p>
 <div class="sourceCode" id="cb137"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb137-1"><a href="제목과-xy축-레이블-추가하기.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb137-2"><a href="제목과-xy축-레이블-추가하기.html#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 제목, 부제목, xy 레이블의 글자 크기를 수정하기</span></span>
 <span id="cb137-3"><a href="제목과-xy축-레이블-추가하기.html#cb137-3" aria-hidden="true" tabindex="-1"></a><span class="co"># X와 Y 레이블의 삭제 : ann = FALSE </span></span>
@@ -573,6 +573,29 @@ Figure 7.3: 제목과 XY축 레이블 추가 : 낮은 수준의 함수 title() �
 <img src="bookdown_files/figure-html/LowLevelGraphLowLevlLetSize-1.png" alt="제목, 부제목, xy 레이블의 글자 크기를 수정 : 낮은 수준의 함수 title() 함수의 사용" width="672" />
 <p class="caption">
 Figure 7.4: 제목, 부제목, xy 레이블의 글자 크기를 수정 : 낮은 수준의 함수 title() 함수의 사용
+</p>
+</div>
+<p><code>col.main =</code>, <code>col.sub =</code>, <code>col.lab =</code> 등의 모수를 이용하여 <strong>글자의 색도 지정</strong>할 수 있겠지요…</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb138-1"><a href="제목과-xy축-레이블-추가하기.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb138-2"><a href="제목과-xy축-레이블-추가하기.html#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 제목, 부제목, xy 레이블의 글자 크기를 수정하기</span></span>
+<span id="cb138-3"><a href="제목과-xy축-레이블-추가하기.html#cb138-3" aria-hidden="true" tabindex="-1"></a><span class="co"># X와 Y 레이블의 삭제 : ann = FALSE </span></span>
+<span id="cb138-4"><a href="제목과-xy축-레이블-추가하기.html#cb138-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, Cars93, <span class="at">ann =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb138-5"><a href="제목과-xy축-레이블-추가하기.html#cb138-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-6"><a href="제목과-xy축-레이블-추가하기.html#cb138-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 제목, 부제목, x 레이블, 그리고 y 레이블 등의 부가정보를 추가하면서, 글자 크기도 수정합니다.</span></span>
+<span id="cb138-7"><a href="제목과-xy축-레이블-추가하기.html#cb138-7" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">main =</span> <span class="st">&quot;cex가 2.2인 제목&quot;</span>,  </span>
+<span id="cb138-8"><a href="제목과-xy축-레이블-추가하기.html#cb138-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">sub =</span> <span class="st">&quot;cex가 1.5인 부제목&quot;</span>,</span>
+<span id="cb138-9"><a href="제목과-xy축-레이블-추가하기.html#cb138-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab =</span> <span class="st">&quot;cex가 1인 x 레이블&quot;</span>,</span>
+<span id="cb138-10"><a href="제목과-xy축-레이블-추가하기.html#cb138-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">&quot;cex가 1인 y 레이블&quot;</span>,</span>
+<span id="cb138-11"><a href="제목과-xy축-레이블-추가하기.html#cb138-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">cex.main =</span> <span class="fl">2.2</span>,</span>
+<span id="cb138-12"><a href="제목과-xy축-레이블-추가하기.html#cb138-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">cex.sub =</span> <span class="fl">1.5</span>, </span>
+<span id="cb138-13"><a href="제목과-xy축-레이블-추가하기.html#cb138-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">cex.lab =</span> <span class="dv">1</span>,</span>
+<span id="cb138-14"><a href="제목과-xy축-레이블-추가하기.html#cb138-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.main =</span> <span class="st">&quot;red&quot;</span>,</span>
+<span id="cb138-15"><a href="제목과-xy축-레이블-추가하기.html#cb138-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.sub =</span> <span class="st">&quot;red&quot;</span>,</span>
+<span id="cb138-16"><a href="제목과-xy축-레이블-추가하기.html#cb138-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.lab =</span> <span class="st">&quot;blue&quot;</span>)   </span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:LowLevelGraphLowLevlLetCol"></span>
+<img src="bookdown_files/figure-html/LowLevelGraphLowLevlLetCol-1.png" alt="제목, 부제목, xy 레이블의 글자 색 지정 : 낮은 수준의 함수 title() 함수의 사용" width="672" />
+<p class="caption">
+Figure 7.5: 제목, 부제목, xy 레이블의 글자 색 지정 : 낮은 수준의 함수 title() 함수의 사용
 </p>
 </div>
 </div>
