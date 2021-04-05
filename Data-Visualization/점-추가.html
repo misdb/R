@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7.7 다각형 추가 : polygon(x, y, …) | Data Visualization with R</title>
+  <title>7.3 점 추가 | Data Visualization with R</title>
   <meta name="description" content="The output format for book is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7.7 다각형 추가 : polygon(x, y, …) | Data Visualization with R" />
+  <meta property="og:title" content="7.3 점 추가 | Data Visualization with R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7.7 다각형 추가 : polygon(x, y, …) | Data Visualization with R" />
+  <meta name="twitter:title" content="7.3 점 추가 | Data Visualization with R" />
   
   <meta name="twitter:description" content="The output format for book is bookdown::gitbook." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="범례-추가-legendx-y-legend-.html"/>
-<link rel="next" href="ggplot-문법.html"/>
+<link rel="prev" href="xy축-형태-변환-axisside-.html"/>
+<link rel="next" href="직선의-연결과-추가.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -533,173 +533,153 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="다각형-추가-polygonx-y" class="section level2" number="7.7">
-<h2><span class="header-section-number">7.7</span> 다각형 추가 : polygon(x, y, …)</h2>
-<p>이번 절에서는 낮은 수준의 그래프 함수로 <strong><code>polygon(x, y, ...)</code></strong> 함수를 이용하여 <strong>다각형을 추가</strong>하는 방법에 대해서 알아 보겠습니다.</p>
-<p>다각형을 그리는 <code>polygon()</code>함수의 일반적인 사용법은 다음과 같습니다.</p>
-<pre><code>polygon(x, y = NULL, density = NULL, angle = 45,     
-       border = NULL, col = NA, lty = par(&quot;lty&quot;),     
-       ..., fillOddEven = FALSE) </code></pre>
+<div id="점-추가" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> 점 추가</h2>
+<div id="points-함수의-사용법" class="section level3" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> points() 함수의 사용법</h3>
+<p>이번 절에서는 낮은 수준의 그래프 함수 네번째로 <strong><code>points(x, y)</code></strong> 함수를 이용하여 <strong>점을 추가하는 방법</strong>에 대하여 학습하겠습니다.</p>
+<p><code>points()</code> 함수의 일반적인 사용법은 다음과 같습니다.</p>
+<pre><code>points(x, y = NULL, type = &quot;p&quot;, ...) </code></pre>
 <table>
-<caption><span id="tab:polygonFun">Table 7.8: </span> polygon() 함수의 옵션 설정</caption>
-<colgroup>
-<col width="8%" />
-<col width="58%" />
-<col width="32%" />
-</colgroup>
+<caption><span id="tab:points">Table 7.2: </span> points() 함수의 일반적 사용법</caption>
 <thead>
 <tr class="header">
 <th>구분</th>
-<th>옵션</th>
-<th>설명</th>
+<th>기능 설명</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>x</code>, <code>y</code></td>
-<td></td>
-<td>다각형의 좌표의 벡터</td>
+<td><code>x</code>,<code>y</code></td>
+<td>x, y 좌표 벡터 (coordinate vectors of points to plot)</td>
 </tr>
 <tr class="even">
-<td><code>density</code></td>
-<td></td>
-<td>다각형 안을 채우는 음영 선의 밀도 (default 는 NULL)</td>
-</tr>
-<tr class="odd">
-<td><code>angle</code></td>
-<td></td>
-<td>음영있는 선의 각도 (수평선을 기준으로 해서 반시계방향)</td>
-</tr>
-<tr class="even">
-<td><code>border</code></td>
-<td></td>
-<td>다각형 테두리의 색깔</td>
-</tr>
-<tr class="odd">
-<td><code>col</code></td>
-<td></td>
-<td>다각형을 채우는 색깔 (default 는 NA)</td>
-</tr>
-<tr class="even">
-<td><code>lty</code></td>
-<td>0 = blank<br>1 = solid (기본 값)<br>2 = dashed<br>3 = dotted<br>4 = dot dash<br>5 = long dash<br>6 = two dash</td>
-<td><code>par()</code>함수에서 사용하는 선 유형</td>
+<td><code>type = "p"</code></td>
+<td>그래프 유형 = “점 그래프”</td>
 </tr>
 <tr class="odd">
 <td><code>...</code></td>
-<td></td>
-<td>추가로 그래프 모수 사용 가능</td>
-</tr>
-<tr class="even">
-<td><code>fillOddEven</code></td>
-<td></td>
-<td>다각형의 음영을 논리적으로 조절하는 모드 (default 는 FALSE)</td>
+<td>기호 모양(<code>pch</code>), 색깔(<code>col</code>), 크기(<code>cex</code>) 등의 그래프 모수 (parameters) 사용</td>
 </tr>
 </tbody>
 </table>
-<p>두 개의 삼각형을 테두리의 색깔(<code>border</code>)과 선 유형(<code>lty</code>), 다각형을 채우는 색깔(<code>col</code>), 다각형을 채우는 선의 밀도(<code>density</code>)와 각도(<code>angle</code>), 색깔(<code>col</code>)을 달리해서 그려보겠습니다.</p>
-<p><code>x</code>와 <code>y</code>의 좌표값의 중간에 “<code>NA</code>” 가 들어있음에 주의해서 보시기 바랍니다.</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb206-1"><a href="다각형-추가-polygonx-y.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="do">##------------------------------------- </span></span>
-<span id="cb206-2"><a href="다각형-추가-polygonx-y.html#cb206-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 다각형 추가하기 : polygon(x, y, ...) </span></span>
-<span id="cb206-3"><a href="다각형-추가-polygonx-y.html#cb206-3" aria-hidden="true" tabindex="-1"></a><span class="do">##------------------------------------- </span></span>
-<span id="cb206-4"><a href="다각형-추가-polygonx-y.html#cb206-4" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb206-5"><a href="다각형-추가-polygonx-y.html#cb206-5" aria-hidden="true" tabindex="-1"></a><span class="co"># NA 값을 갖는 복수 개의 다각형</span></span>
-<span id="cb206-6"><a href="다각형-추가-polygonx-y.html#cb206-6" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb206-7"><a href="다각형-추가-polygonx-y.html#cb206-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="fl">3.5</span>, <span class="fl">3.5</span>), <span class="at">type =</span> <span class="st">&quot;n&quot;</span>) </span>
-<span id="cb206-8"><a href="다각형-추가-polygonx-y.html#cb206-8" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">6</span>) </span>
-<span id="cb206-9"><a href="다각형-추가-polygonx-y.html#cb206-9" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">3</span>) </span>
-<span id="cb206-10"><a href="다각형-추가-polygonx-y.html#cb206-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb206-11"><a href="다각형-추가-polygonx-y.html#cb206-11" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(x, y,     </span>
-<span id="cb206-12"><a href="다각형-추가-polygonx-y.html#cb206-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;blue&quot;</span>),</span>
-<span id="cb206-13"><a href="다각형-추가-polygonx-y.html#cb206-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">border =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
-<span id="cb206-14"><a href="다각형-추가-polygonx-y.html#cb206-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">lwd =</span> <span class="dv">2</span>,</span>
-<span id="cb206-15"><a href="다각형-추가-polygonx-y.html#cb206-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">lty =</span> <span class="fu">c</span>(<span class="st">&quot;dotted&quot;</span>, <span class="st">&quot;solid&quot;</span>)) </span>
-<span id="cb206-16"><a href="다각형-추가-polygonx-y.html#cb206-16" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;NA 값을 갖는 복수 개의 다각형&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:ScatPlotLowLevLegendNAPoligon"></span>
-<img src="bookdown_files/figure-html/ScatPlotLowLevLegendNAPoligon-1.png" alt="NA 값을 갖는 복수 개의 다각형 추가하기" width="672" />
+<p><code>MASS</code> 패키지에 내장되어 있는 <code>Cars93</code> 데이터프레임의 차량 무게(<code>Weight</code>), 고속도로 연비 (<code>MPG.highway</code>), 차종 (<code>Type</code>) 변수를 사용해서 <strong>점을 추가하는 그래프</strong>를 실습해보겠습니다.</p>
+<p>높은 수준의 그래프 함수 중에서 <code>plot(x, y, type = 'p')</code> 로 하면 점 그래프 (points plot)을 그릴 수 있습니다.</p>
+</div>
+<div id="점을-추가하는-방법" class="section level3" number="7.3.2">
+<h3><span class="header-section-number">7.3.2</span> 점을 추가하는 방법</h3>
+<p><code>plot(x, y, type = 'p')</code>로 <strong>산점도</strong>를 그리고, 그 위에 <code>points(x, y)</code> 함수로 <strong>점을 추가하는</strong> 예를 살펴 보겠습니다. 정확히 두 개 그래프가 일치합니다.</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb149-1"><a href="점-추가.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb149-2"><a href="점-추가.html#cb149-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-3"><a href="점-추가.html#cb149-3" aria-hidden="true" tabindex="-1"></a><span class="do">##----------------------------------------- </span></span>
+<span id="cb149-4"><a href="점-추가.html#cb149-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 점 추가 : point(x, y) </span></span>
+<span id="cb149-5"><a href="점-추가.html#cb149-5" aria-hidden="true" tabindex="-1"></a><span class="do">##----------------------------------------- </span></span>
+<span id="cb149-6"><a href="점-추가.html#cb149-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-7"><a href="점-추가.html#cb149-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 고수준 함수 plot()을 이용하여 산점도 그리기</span></span>
+<span id="cb149-8"><a href="점-추가.html#cb149-8" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Cars93) </span></code></pre></div>
+<pre><code>## The following object is masked _by_ .GlobalEnv:
+## 
+##     Cylinders</code></pre>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb151-1"><a href="점-추가.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Weight, MPG.highway, </span>
+<span id="cb151-2"><a href="점-추가.html#cb151-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&#39;p&#39;</span>)                     <span class="co"># 점 플롯입니다.</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:LowLevelGraphHighLevPoints"></span>
+<img src="bookdown_files/figure-html/LowLevelGraphHighLevPoints-1.png" alt="점의 추가 : 높은 수준의 함수 사용" width="672" />
 <p class="caption">
-Figure 7.22: NA 값을 갖는 복수 개의 다각형 추가하기
+Figure 7.9: 점의 추가 : 높은 수준의 함수 사용
 </p>
 </div>
-<p>아래의 다각형은 위의 예와 거의 비슷합니다. 단 한가지 차이점이라면 <strong>x, y의 좌표값에 “<code>NA</code>”가 없다</strong>는 점입니다. “<code>NA</code>” 가 없다보니 중간에 다각형을 분리하지를 못하고, 그냥 하나의 색깔, 선 유형, 다각형 채우는 색을 계속 사용하고 있습니다.</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb207-1"><a href="다각형-추가-polygonx-y.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="do">## NA가 없는 경우의 복수 개의 다각형</span></span>
-<span id="cb207-2"><a href="다각형-추가-polygonx-y.html#cb207-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="fl">3.5</span>, <span class="fl">3.5</span>), <span class="at">type =</span> <span class="st">&quot;n&quot;</span>) </span>
-<span id="cb207-3"><a href="다각형-추가-polygonx-y.html#cb207-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb207-4"><a href="다각형-추가-polygonx-y.html#cb207-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">6</span>) </span>
-<span id="cb207-5"><a href="다각형-추가-polygonx-y.html#cb207-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">3</span>) </span>
-<span id="cb207-6"><a href="다각형-추가-polygonx-y.html#cb207-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb207-7"><a href="다각형-추가-polygonx-y.html#cb207-7" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(x, y,</span>
-<span id="cb207-8"><a href="다각형-추가-polygonx-y.html#cb207-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;blue&quot;</span>),</span>
-<span id="cb207-9"><a href="다각형-추가-polygonx-y.html#cb207-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">border =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
-<span id="cb207-10"><a href="다각형-추가-polygonx-y.html#cb207-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">lwd =</span> <span class="dv">2</span>,</span>
-<span id="cb207-11"><a href="다각형-추가-polygonx-y.html#cb207-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">lty =</span> <span class="fu">c</span>(<span class="st">&quot;dotted&quot;</span>, <span class="st">&quot;solid&quot;</span>)) </span>
-<span id="cb207-12"><a href="다각형-추가-polygonx-y.html#cb207-12" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;NA가 없는 복수 개의 다각형&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:ScatPlotLowLevLegendPoligon"></span>
-<img src="bookdown_files/figure-html/ScatPlotLowLevLegendPoligon-1.png" alt="NA가 없는 복수 개의 다각형 추가하기" width="672" />
+<p>다음은 낮은 수준의 함수인 <code>points()</code> 함수를 이용하여 점을 추가하는 예를 보여주고 있습니다.</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb152-1"><a href="점-추가.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 플롯 위에 낮은 수준의 함수 point() 를 이용하여 점을 추가합니다.</span></span>
+<span id="cb152-2"><a href="점-추가.html#cb152-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb152-3"><a href="점-추가.html#cb152-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Weight, MPG.highway, <span class="at">type =</span> <span class="st">&#39;n&#39;</span>)                     <span class="co"># 빈 플롯입니다.</span></span>
+<span id="cb152-4"><a href="점-추가.html#cb152-4" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Weight, MPG.highway)                               <span class="co"># 위의 플롯과 정확히 똑 같습니다.</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:LowLevelGraphLowLevPoints"></span>
+<img src="bookdown_files/figure-html/LowLevelGraphLowLevPoints-1.png" alt="점의 추가 : 낮은 수준의 함수 points() 함수의 사용" width="672" />
 <p class="caption">
-Figure 7.23: NA가 없는 복수 개의 다각형 추가하기
+Figure 7.10: 점의 추가 : 낮은 수준의 함수 points() 함수의 사용
 </p>
 </div>
-<p>이번에는 <strong>다각형 안의 음영을 선으로 채우는 방법</strong>을 소개하겠습니다. <code>density</code> 로 <strong>선의 밀도</strong>(숫자가 클 수록 촘촘해짐)를 지정하고, <code>angle</code> 로 <strong>선의 각도</strong>(수평선을 기준으로 반시계방향)를 지정하면 됩니다.</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb208-1"><a href="다각형-추가-polygonx-y.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 선이 추가된 다각형</span></span>
-<span id="cb208-2"><a href="다각형-추가-polygonx-y.html#cb208-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="fl">3.5</span>, <span class="fl">3.5</span>), <span class="at">type =</span> <span class="st">&quot;n&quot;</span>) </span>
-<span id="cb208-3"><a href="다각형-추가-polygonx-y.html#cb208-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">6</span>) </span>
-<span id="cb208-4"><a href="다각형-추가-polygonx-y.html#cb208-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">3</span>) </span>
-<span id="cb208-5"><a href="다각형-추가-polygonx-y.html#cb208-5" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(x, y,</span>
-<span id="cb208-6"><a href="다각형-추가-polygonx-y.html#cb208-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;blue&quot;</span>),</span>
-<span id="cb208-7"><a href="다각형-추가-polygonx-y.html#cb208-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">border =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
-<span id="cb208-8"><a href="다각형-추가-polygonx-y.html#cb208-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">lwd =</span> <span class="dv">2</span>,</span>
-<span id="cb208-9"><a href="다각형-추가-polygonx-y.html#cb208-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">lty =</span> <span class="fu">c</span>(<span class="st">&quot;dotted&quot;</span>, <span class="st">&quot;solid&quot;</span>),</span>
-<span id="cb208-10"><a href="다각형-추가-polygonx-y.html#cb208-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">density =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>),</span>
-<span id="cb208-11"><a href="다각형-추가-polygonx-y.html#cb208-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">angle =</span> <span class="fu">c</span>(<span class="dv">45</span>, <span class="sc">-</span><span class="dv">45</span>)) </span>
-<span id="cb208-12"><a href="다각형-추가-polygonx-y.html#cb208-12" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;선이 추가된 다각형&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:ScatPlotLowLevLegendLinePoligon"></span>
-<img src="bookdown_files/figure-html/ScatPlotLowLevLegendLinePoligon-1.png" alt="선이 추가된 다각형" width="672" />
+<div class="sourceCode" id="cb153"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb153-1"><a href="점-추가.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93)</span></code></pre></div>
+<p>그러면 왜 굳이 <code>points()</code> 라는 낮은 수준의 함수를 가지고 점을 추가하려고 하는 것인지 의문이 들것입니다.</p>
+<p>그 이유는 <code>points()</code> 함수를 가지고 필요에 따라서 순차적으로 점을 추가할 수 있고, 조건을 부여하고 그래프 모수 중에 색깔이나 기호 모양 등을 다르게 해서 탐색적 분석을 진행하는데 유용하기 때문입니다.</p>
+<p>물론 <code>plot(x, y, type = 'p')</code>로 원하는 그래프를 그릴 수 있다면 <code>points()</code>함수를 사용할 필요는 없겠지요. 아래에 <code>points()</code>의 몇 가지 사용 형태를 보시고 필요한 상황에 맞게 골라 쓰면 되겠습니다.</p>
+<p>아래에는 차종(<code>Type</code>)별로 기호 모양과 색깔을 달리하면서 무게(<code>Weight</code>)와 고속도로 연비(<code>MPG.highway</code>) 산점도를 그려보겠습니다. 2차원의 x, y 공간에 차종(<code>Type</code>)이라는 제3의 차원을 추가해서 볼 수 있는 매우 유용한 방법입니다.</p>
+<blockquote>
+<p><code>Base Graphics</code> 에서는 조건의 갯수만큼 손이 참 많이 가는 단점이 있습니다 (참고로, <code>ggplot2</code> plotting system을 사용하면 조건에 따른 색이나 기호를 달리하도록 지정하는게 한 줄이면 끝나고, 범례(legend)도 알아서 추가해주므로 편합니다).</p>
+</blockquote>
+</div>
+<div id="점의-속성-추가" class="section level3" number="7.3.3">
+<h3><span class="header-section-number">7.3.3</span> 점의 속성 추가</h3>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb154-1"><a href="점-추가.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb154-2"><a href="점-추가.html#cb154-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Cars93) </span></code></pre></div>
+<pre><code>## The following object is masked _by_ .GlobalEnv:
+## 
+##     Cylinders</code></pre>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb156-1"><a href="점-추가.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  현재의 빈 플롯에 pch, col, cex 모수를 설정한 점을 추가합니다.</span></span>
+<span id="cb156-2"><a href="점-추가.html#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Weight, MPG.highway, <span class="at">type =</span> <span class="st">&#39;n&#39;</span>)                          <span class="co"># 빈 플롯입니다.</span></span>
+<span id="cb156-3"><a href="점-추가.html#cb156-3" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Weight, MPG.highway, <span class="at">pch =</span> <span class="dv">15</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">cex =</span> <span class="fl">1.5</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:LowLevelGraphLowLevPointsAtt"></span>
+<img src="bookdown_files/figure-html/LowLevelGraphLowLevPointsAtt-1.png" alt="점의 속성 추가 : 낮은 수준의 함수 points() 함수의 사용" width="672" />
 <p class="caption">
-Figure 7.24: 선이 추가된 다각형
+Figure 7.11: 점의 속성 추가 : 낮은 수준의 함수 points() 함수의 사용
 </p>
 </div>
-<p>아래 다각형은 <code>x</code>, <code>y</code> 좌표값이 위의 예와는 좀 다릅니다. 두 좌표 값들 간의 거리에 색깔을 채워넣은 형태의 그래프인데요, <code>polygon()</code> 함수로 이런 그래프도 그릴 수 있다는 예시로 보면 좋겠다 싶어서 <a href="http://www.math.cula.edu/">www.math.cula.edu</a> 사이트에서 참조하였습니다.</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb209-1"><a href="다각형-추가-polygonx-y.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 색칠된 다각형 </span></span>
-<span id="cb209-2"><a href="다각형-추가-polygonx-y.html#cb209-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 출처 : http://www.math.ucla.edu/~anderson/rw1001/library/base/html/polygon.html </span></span>
-<span id="cb209-3"><a href="다각형-추가-polygonx-y.html#cb209-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3232</span>)</span>
-<span id="cb209-4"><a href="다각형-추가-polygonx-y.html#cb209-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span> </span>
-<span id="cb209-5"><a href="다각형-추가-polygonx-y.html#cb209-5" aria-hidden="true" tabindex="-1"></a>xx <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span>n, n<span class="sc">:</span><span class="dv">0</span>) </span>
-<span id="cb209-6"><a href="다각형-추가-polygonx-y.html#cb209-6" aria-hidden="true" tabindex="-1"></a>yy <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">cumsum</span>(<span class="fu">rnorm</span>(n))), <span class="fu">rev</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">cumsum</span>(<span class="fu">rnorm</span>(n))))) </span>
-<span id="cb209-7"><a href="다각형-추가-polygonx-y.html#cb209-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(xx, yy, <span class="at">type=</span><span class="st">&quot;n&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Time&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Distance&quot;</span>) </span>
-<span id="cb209-8"><a href="다각형-추가-polygonx-y.html#cb209-8" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(xx, yy, <span class="at">col=</span><span class="st">&quot;green&quot;</span>, <span class="at">border =</span> <span class="st">&quot;red&quot;</span>) </span>
-<span id="cb209-9"><a href="다각형-추가-polygonx-y.html#cb209-9" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;색칠된 다각형&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:ScatPlotLowLevLegendColPoligon"></span>
-<img src="bookdown_files/figure-html/ScatPlotLowLevLegendColPoligon-1.png" alt="색칠된 다각형" width="672" />
+<div class="sourceCode" id="cb157"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb157-1"><a href="점-추가.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93)</span></code></pre></div>
+<p>산점도의 점들을 <strong>조건에 따라 상이한 문자의 점으로 추가</strong>할 수도 있습니다.</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb158-1"><a href="점-추가.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb158-2"><a href="점-추가.html#cb158-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Cars93)</span></code></pre></div>
+<pre><code>## The following object is masked _by_ .GlobalEnv:
+## 
+##     Cylinders</code></pre>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb160-1"><a href="점-추가.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 조건에 따라 상이한 문자의 점을 추가합니다.</span></span>
+<span id="cb160-2"><a href="점-추가.html#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Weight, MPG.highway, <span class="at">type =</span> <span class="st">&#39;n&#39;</span>)                      <span class="co"># 빈 플롯을 그립니다.</span></span>
+<span id="cb160-3"><a href="점-추가.html#cb160-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-4"><a href="점-추가.html#cb160-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Cars93<span class="sc">$</span>Type) </span></code></pre></div>
+<pre class="bg-warning"><code>## 
+## Compact   Large Midsize   Small  Sporty     Van 
+##      16      11      22      21      14       9</code></pre>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb162-1"><a href="점-추가.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Type = Compact 인 경우</span></span>
+<span id="cb162-2"><a href="점-추가.html#cb162-2" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Weight[Type <span class="sc">==</span> <span class="st">&quot;Compact&quot;</span>], MPG.highway[Type <span class="sc">==</span> <span class="st">&quot;Compact&quot;</span>], <span class="at">pch =</span> <span class="dv">0</span>) </span>
+<span id="cb162-3"><a href="점-추가.html#cb162-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-4"><a href="점-추가.html#cb162-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Type = Large 인 경우</span></span>
+<span id="cb162-5"><a href="점-추가.html#cb162-5" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Weight[Type <span class="sc">==</span> <span class="st">&quot;Large&quot;</span>], MPG.highway[Type <span class="sc">==</span> <span class="st">&quot;Large&quot;</span>], <span class="at">pch =</span> <span class="dv">1</span>) </span>
+<span id="cb162-6"><a href="점-추가.html#cb162-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-7"><a href="점-추가.html#cb162-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Type = Midsize 인 경우</span></span>
+<span id="cb162-8"><a href="점-추가.html#cb162-8" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Weight[Type <span class="sc">==</span> <span class="st">&quot;Midsize&quot;</span>], MPG.highway[Type <span class="sc">==</span> <span class="st">&quot;Midsize&quot;</span>], <span class="at">pch =</span> <span class="dv">17</span>, <span class="at">col =</span> <span class="st">&quot;yellow&quot;</span>) </span>
+<span id="cb162-9"><a href="점-추가.html#cb162-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-10"><a href="점-추가.html#cb162-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Type = Small 인 경우</span></span>
+<span id="cb162-11"><a href="점-추가.html#cb162-11" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Weight[Type <span class="sc">==</span> <span class="st">&quot;Small&quot;</span>], MPG.highway[Type <span class="sc">==</span> <span class="st">&quot;Small&quot;</span>], <span class="at">pch =</span> <span class="dv">3</span>) </span>
+<span id="cb162-12"><a href="점-추가.html#cb162-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-13"><a href="점-추가.html#cb162-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Type = Sporty 인 경우</span></span>
+<span id="cb162-14"><a href="점-추가.html#cb162-14" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Weight[Type <span class="sc">==</span> <span class="st">&quot;Sporty&quot;</span>], MPG.highway[Type <span class="sc">==</span> <span class="st">&quot;Sporty&quot;</span>], <span class="at">pch =</span> <span class="dv">9</span>) </span>
+<span id="cb162-15"><a href="점-추가.html#cb162-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-16"><a href="점-추가.html#cb162-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Type = Van 인 경우</span></span>
+<span id="cb162-17"><a href="점-추가.html#cb162-17" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Weight[Type <span class="sc">==</span> <span class="st">&quot;Van&quot;</span>], MPG.highway[Type <span class="sc">==</span> <span class="st">&quot;Van&quot;</span>], <span class="at">pch =</span> <span class="dv">15</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb162-18"><a href="점-추가.html#cb162-18" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb162-19"><a href="점-추가.html#cb162-19" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;자동차 종류에 따라 상이한 문자의 점 추가&quot;</span>) </span>
+<span id="cb162-20"><a href="점-추가.html#cb162-20" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb162-21"><a href="점-추가.html#cb162-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 상단부 오른쪽에 범례를 추가합니다.</span></span>
+<span id="cb162-22"><a href="점-추가.html#cb162-22" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>,                                                     <span class="co"># 범례의 표시 위치입니다.</span></span>
+<span id="cb162-23"><a href="점-추가.html#cb162-23" aria-hidden="true" tabindex="-1"></a>       <span class="fu">c</span>(<span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Van&quot;</span>),     <span class="co"># 범례로 출력될 문자열입니다.</span></span>
+<span id="cb162-24"><a href="점-추가.html#cb162-24" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>),  <span class="co"># 범례의 색깔입니다</span></span>
+<span id="cb162-25"><a href="점-추가.html#cb162-25" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">17</span>, <span class="dv">3</span>, <span class="dv">9</span>, <span class="dv">15</span>)                                     <span class="co"># 표시될 기호 문자입니다.</span></span>
+<span id="cb162-26"><a href="점-추가.html#cb162-26" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:LowLevelGraphLowLevPointsCond"></span>
+<img src="bookdown_files/figure-html/LowLevelGraphLowLevPointsCond-1.png" alt="조건에 따른 상이한 속성의 점 추가 : 낮은 수준의 함수 points() 함수의 사용" width="672" />
 <p class="caption">
-Figure 7.25: 색칠된 다각형
+Figure 7.12: 조건에 따른 상이한 속성의 점 추가 : 낮은 수준의 함수 points() 함수의 사용
 </p>
 </div>
-<div id="참고자료-2" class="section level3 unnumbered">
-<h3>참고자료</h3>
-<ul>
-<li><p><a href="https://rfriend.tistory.com/152?category=605866" class="uri">https://rfriend.tistory.com/152?category=605866</a></p></li>
-<li><p><a href="https://rfriend.tistory.com/153?category=605866" class="uri">https://rfriend.tistory.com/153?category=605866</a></p></li>
-<li><p><a href="https://rfriend.tistory.com/155?category=605866" class="uri">https://rfriend.tistory.com/155?category=605866</a></p></li>
-<li><p><a href="https://rfriend.tistory.com/156?category=605866" class="uri">https://rfriend.tistory.com/156?category=605866</a></p></li>
-<li><p><a href="https://rfriend.tistory.com/157?category=605866" class="uri">https://rfriend.tistory.com/157?category=605866</a></p></li>
-<li><p><a href="https://rfriend.tistory.com/158?category=605866" class="uri">https://rfriend.tistory.com/158?category=605866</a></p></li>
-<li><p><a href="https://rfriend.tistory.com/159?category=605866" class="uri">https://rfriend.tistory.com/159?category=605866</a></p></li>
-</ul>
-
+<div class="sourceCode" id="cb163"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb163-1"><a href="점-추가.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(Cars93)</span></code></pre></div>
 </div>
 </div>
-<!-- </div> -->
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="범례-추가-legendx-y-legend-.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ggplot-문법.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="xy축-형태-변환-axisside-.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="직선의-연결과-추가.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
