@@ -255,6 +255,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="7.4.1" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html#선형-회귀선의-추가"><i class="fa fa-check"></i><b>7.4.1</b> 선형 회귀선의 추가</a></li>
 <li class="chapter" data-level="7.4.2" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html#비모수-회귀선의-추가"><i class="fa fa-check"></i><b>7.4.2</b> 비모수 회귀선의 추가</a></li>
+<li class="chapter" data-level="7.4.3" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html#수평선과-수직선의-추가"><i class="fa fa-check"></i><b>7.4.3</b> 수평선과 수직선의 추가</a></li>
 </ul></li>
 <li class="chapter" data-level="7.5" data-path="문자열-추가.html"><a href="문자열-추가.html"><i class="fa fa-check"></i><b>7.5</b> 문자열 추가</a>
 <ul>
@@ -725,18 +726,27 @@ Figure 7.15: 선의 추가 : 낮은 수준의 함수 lines(), abline() 함수의
 Figure 7.16: 선형 회귀선의 추가 : 낮은 수준의 함수 lines(), abline() 함수의 사용
 </p>
 </div>
-<p><strong><code>abline()</code>함수</strong>를 이용하여 플롯에 <strong>수평선과 수직선을 추가</strong>할 수 있습니다.</p>
+</div>
+<div id="수평선과-수직선의-추가" class="section level3" number="7.4.3">
+<h3><span class="header-section-number">7.4.3</span> 수평선과 수직선의 추가</h3>
+<p><strong><code>abline()</code>함수</strong>를 이용하여 플롯에 <strong>x축과 y축의 평균</strong>을 나타내는 <strong>수평선과 수직선을 추가</strong>해 보겠습니다.</p>
+<ul>
+<li><code>abline(v = )</code> : <strong>수직선(vertical)</strong>을 추가합니다. <code>v =</code> 에 수직선을 표시할 X축의 값을 입력해 줍니다.</li>
+<li><code>abline(h = )</code> : <strong>수평선(horizontal)</strong>을 추가합니다. <code>h =</code> 에 수평선을 표시할 y축의 값을 입력해 줍니다.</li>
+</ul>
 <div class="sourceCode" id="cb183"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb183-1"><a href="직선의-연결과-추가.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb183-2"><a href="직선의-연결과-추가.html#cb183-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 수평선과 수직선을 추가하기 : abline() </span></span>
 <span id="cb183-3"><a href="직선의-연결과-추가.html#cb183-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb183-4"><a href="직선의-연결과-추가.html#cb183-4" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(Cars93, <span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight)) </span>
 <span id="cb183-5"><a href="직선의-연결과-추가.html#cb183-5" aria-hidden="true" tabindex="-1"></a><span class="co"># (1) 수직선의 추가 </span></span>
-<span id="cb183-6"><a href="직선의-연결과-추가.html#cb183-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(Cars93<span class="sc">$</span>Weight), <span class="at">col =</span> <span class="st">&quot;black&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>)  </span>
-<span id="cb183-7"><a href="직선의-연결과-추가.html#cb183-7" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb183-8"><a href="직선의-연결과-추가.html#cb183-8" aria-hidden="true" tabindex="-1"></a><span class="co"># (2) 수평선의 추가</span></span>
-<span id="cb183-9"><a href="직선의-연결과-추가.html#cb183-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">mean</span>(Cars93<span class="sc">$</span>MPG.highway), <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>) </span>
-<span id="cb183-10"><a href="직선의-연결과-추가.html#cb183-10" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb183-11"><a href="직선의-연결과-추가.html#cb183-11" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;수평선과 수직선 추가 : abline()&quot;</span>)</span></code></pre></div>
+<span id="cb183-6"><a href="직선의-연결과-추가.html#cb183-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(Cars93<span class="sc">$</span>Weight), </span>
+<span id="cb183-7"><a href="직선의-연결과-추가.html#cb183-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&quot;black&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>)  </span>
+<span id="cb183-8"><a href="직선의-연결과-추가.html#cb183-8" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb183-9"><a href="직선의-연결과-추가.html#cb183-9" aria-hidden="true" tabindex="-1"></a><span class="co"># (2) 수평선의 추가</span></span>
+<span id="cb183-10"><a href="직선의-연결과-추가.html#cb183-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">mean</span>(Cars93<span class="sc">$</span>MPG.highway), </span>
+<span id="cb183-11"><a href="직선의-연결과-추가.html#cb183-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>) </span>
+<span id="cb183-12"><a href="직선의-연결과-추가.html#cb183-12" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb183-13"><a href="직선의-연결과-추가.html#cb183-13" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;수평선과 수직선 추가 : abline()&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:LowLevelGraphLowLevHorVerLines"></span>
 <img src="bookdown_files/figure-html/LowLevelGraphLowLevHorVerLines-1.png" alt="수평/수직선의 추가 : 낮은 수준의 함수 abline() 함수의 사용" width="672" />
 <p class="caption">
