@@ -549,7 +549,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>그리고 <code>labels =</code> 모수에 출력될 문자열을 지정해 주어야 하는데, <code>round()</code> 함수를 이용하여 소숫점 이하는 반올림처리 해 줍니다.</p>
 <p>또한 <code>pos =</code> 모수의 값으로 <code>3</code>을 입력하여 막대의 위로 문자열의 출력 위치를 지정해 줍니다.</p>
 <div class="sourceCode" id="cb218"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb218-1"><a href="데이터-레이블-표시하기.html#cb218-1" aria-hidden="true" tabindex="-1"></a>bp <span class="ot">&lt;-</span> <span class="fu">barplot</span>(dd<span class="sc">$</span>MPG.mean, </span>
-<span id="cb218-2"><a href="데이터-레이블-표시하기.html#cb218-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;자동차 유형별 평균 고속도로 연비&quot;</span>,</span>
+<span id="cb218-2"><a href="데이터-레이블-표시하기.html#cb218-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;자동차 유형별 평균 고속도로 연비 : 데이터 레이블&quot;</span>,</span>
 <span id="cb218-3"><a href="데이터-레이블-표시하기.html#cb218-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;자동차 유형&quot;</span>,</span>
 <span id="cb218-4"><a href="데이터-레이블-표시하기.html#cb218-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;고속도로 연비&quot;</span>,</span>
 <span id="cb218-5"><a href="데이터-레이블-표시하기.html#cb218-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> names, </span>
@@ -561,7 +561,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb218-11"><a href="데이터-레이블-표시하기.html#cb218-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">round</span>(dd<span class="sc">$</span>MPG.mean,<span class="dv">0</span>),</span>
 <span id="cb218-12"><a href="데이터-레이블-표시하기.html#cb218-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">3</span></span>
 <span id="cb218-13"><a href="데이터-레이블-표시하기.html#cb218-13" aria-hidden="true" tabindex="-1"></a>     )</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="figure" style="text-align: center"><span id="fig:MixPlotDatalab"></span>
+<img src="bookdown_files/figure-html/MixPlotDatalab-1.png" alt="자동차 유형별 평균 고속도로 연비 : 데이터 레이블" width="672" />
+<p class="caption">
+Figure 8.3: 자동차 유형별 평균 고속도로 연비 : 데이터 레이블
+</p>
+</div>
 <p><a href="혼합형-데이터-그래프.html#혼합형-데이터-그래프">Go Top</a></p>
 </div>
             </section>

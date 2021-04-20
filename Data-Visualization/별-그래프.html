@@ -694,7 +694,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb599-13"><a href="별-그래프.html#cb599-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">lwd =</span> <span class="dv">1</span>, <span class="co"># line width (by default, lwd = 1)</span></span>
 <span id="cb599-14"><a href="별-그래프.html#cb599-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">key.loc =</span> <span class="fu">c</span>(<span class="fl">7.5</span>, <span class="fl">1.5</span>) <span class="co"># vector with x and y coordinates of the unit key</span></span>
 <span id="cb599-15"><a href="별-그래프.html#cb599-15" aria-hidden="true" tabindex="-1"></a>      )</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
 </div>
 <div id="stars-함수로-레이터-차트-그리기" class="section level4" number="14.2.3.2">
 <h4><span class="header-section-number">14.2.3.2</span> <code>stars()</code> 함수로 레이터 차트 그리기</h4>
@@ -716,7 +716,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb600-12"><a href="별-그래프.html#cb600-12" aria-hidden="true" tabindex="-1"></a>      )</span>
 <span id="cb600-13"><a href="별-그래프.html#cb600-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb600-14"><a href="별-그래프.html#cb600-14" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x=</span><span class="dv">1</span>, <span class="at">y=</span><span class="dv">1</span>, <span class="at">legend =</span> mean_by_Type<span class="sc">$</span>Type, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>), <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
 <p>위에 <code>stars()</code> 함수로 레이더 차트를 그리기는 했는데요, 이전 포스팅에서 <code>fmsb</code> Package의 <code>radarchart()</code> 함수로 그린 radar chart 보다는 가독성이 좀 떨어져보입니다.</p>
 <p><strong>여러 개의 그룹</strong>을 레이더 차트 (radar chart)로 보려면 <code>fmsb</code> Package의 <code>radarchart()</code> 함수를 사용하고, <strong>개별 그룹 단위</strong>로 분리해서 보려면 graphics Package의 <code>stars()</code> 함수로 별 그림 (star plot)을 그려서 보면 좋을 것 같습니다.</p>
 <p>다음 번에는 <strong>평행 좌표 그림 (parallel coordinate plot)</strong>에 대해서 알아보겠습니다.</p>
@@ -749,17 +749,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">14.2.4.4</span> stars() 함수로 차트 그리기</h4>
 <p>이제 스타차트를 생성하는 명령어를 입력해봅니다.</p>
 <div class="sourceCode" id="cb603"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb603-1"><a href="별-그래프.html#cb603-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stars</span>(crime)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
 <p>스타차트의 모양새를 갖추긴 했지만, 뭔가 균형도 안맞고 복잡해 보입니다. 이를 조정하기 위해 <code>flip.labels</code>변수를 조정해 줍니다.</p>
 <div class="sourceCode" id="cb604"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb604-1"><a href="별-그래프.html#cb604-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stars</span>(crime, <span class="at">flip.labels=</span><span class="cn">FALSE</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
 <p><code>flip.labels</code>설정을 기본값인 <code>TRUE</code>에서 <code>FALSE</code>로 변경한 결과입니다. 이전보다 확실이 안정된 느낌입니다.</p>
 <p>그리고 <code>key.loc=c(6, 2)</code>를 지정해 준다.</p>
 <div class="sourceCode" id="cb605"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb605-1"><a href="별-그래프.html#cb605-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stars</span>(crime, <span class="at">flip.labels=</span><span class="cn">FALSE</span>, <span class="at">key.loc=</span><span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">2</span>))</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
 <p>그 다음 이 스타차트를 절반만 사용해서 표시하는 방법으로 <code>full = FALSE</code>를 지정해 준다.</p>
 <div class="sourceCode" id="cb606"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb606-1"><a href="별-그래프.html#cb606-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stars</span>(crime, <span class="at">flip.labels=</span><span class="cn">FALSE</span>, <span class="at">key.loc=</span><span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">2</span>), <span class="at">full=</span><span class="cn">FALSE</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
 <p>이처럼 이전 명령어에서 ’<code>full</code>’을 <code>FALSE</code>로 설정해 주면 됩니다.</p>
 <p>실행하면 plot창에서 확인 하실 수 있습니다.</p>
 <p>그리고 그 다음으로 살펴볼 것은 ’나이팅게일 차트’입니다.</p>
@@ -768,7 +768,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">14.2.4.5</span> 나이팅 게일 차트 그리기</h4>
 <p>지금까지 사용한 명령어에서 다른 부분을 추가하면 나이팅게일차트로 표현이 가능합니다.</p>
 <div class="sourceCode" id="cb607"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb607-1"><a href="별-그래프.html#cb607-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stars</span>(crime, <span class="at">flip.labels=</span><span class="cn">FALSE</span>, <span class="at">key.loc=</span><span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">2</span>), <span class="at">draw.segments=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
 <p><code>draw.segments</code> 부분을 <code>TRUE</code>로 설정해주면 이렇게 알록달록 나이팅게일차트를 얻을 수 있습니다.^^</p>
 <p>만들어진 차트를 일러스트레이터를 이용해서 보정해보면 좋은 결과가 있을 것 같습니다^^.</p>
 </div>
