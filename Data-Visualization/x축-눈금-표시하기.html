@@ -356,14 +356,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11" data-path="일변량-변수-범주형-데이터.html"><a href="일변량-변수-범주형-데이터.html"><i class="fa fa-check"></i><b>11</b> 일변량 변수 - 범주형 데이터</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html"><i class="fa fa-check"></i><b>11.1</b> 막대 그래프</a>
+<li class="chapter" data-level="11.1" data-path="ggbar.html"><a href="ggbar.html"><i class="fa fa-check"></i><b>11.1</b> 막대 그래프</a>
 <ul>
-<li class="chapter" data-level="11.1.1" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#데이터-세트-4"><i class="fa fa-check"></i><b>11.1.1</b> 데이터 세트</a></li>
-<li class="chapter" data-level="11.1.2" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#막대-그래프-활용-방식"><i class="fa fa-check"></i><b>11.1.2</b> 막대 그래프 활용 방식</a></li>
-<li class="chapter" data-level="11.1.3" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#x축을-범주형-변수로-한-기본-막대-그래프"><i class="fa fa-check"></i><b>11.1.3</b> x축을 범주형 변수로 한 기본 막대 그래프</a></li>
-<li class="chapter" data-level="11.1.4" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#y축에-변수를-지정한-막대-그래프"><i class="fa fa-check"></i><b>11.1.4</b> Y축에 변수를 지정한 막대 그래프</a></li>
-<li class="chapter" data-level="11.1.5" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#그룹별-막대-그래프"><i class="fa fa-check"></i><b>11.1.5</b> 그룹별 막대 그래프</a></li>
-<li class="chapter" data-level="11.1.6" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#UsignThemesInBarPlot"><i class="fa fa-check"></i><b>11.1.6</b> Theme의 사용</a></li>
+<li class="chapter" data-level="11.1.1" data-path="ggbar.html"><a href="ggbar.html#데이터-세트-4"><i class="fa fa-check"></i><b>11.1.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="11.1.2" data-path="ggbar.html"><a href="ggbar.html#막대-그래프-활용-방식"><i class="fa fa-check"></i><b>11.1.2</b> 막대 그래프 활용 방식</a></li>
+<li class="chapter" data-level="11.1.3" data-path="ggbar.html"><a href="ggbar.html#x축을-범주형-변수로-한-기본-막대-그래프"><i class="fa fa-check"></i><b>11.1.3</b> x축을 범주형 변수로 한 기본 막대 그래프</a></li>
+<li class="chapter" data-level="11.1.4" data-path="ggbar.html"><a href="ggbar.html#y축에-변수를-지정한-막대-그래프"><i class="fa fa-check"></i><b>11.1.4</b> Y축에 변수를 지정한 막대 그래프</a></li>
+<li class="chapter" data-level="11.1.5" data-path="ggbar.html"><a href="ggbar.html#그룹별-막대-그래프"><i class="fa fa-check"></i><b>11.1.5</b> 그룹별 막대 그래프</a></li>
+<li class="chapter" data-level="11.1.6" data-path="ggbar.html"><a href="ggbar.html#UsignThemesInBarPlot"><i class="fa fa-check"></i><b>11.1.6</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="파이-차트-1.html"><a href="파이-차트-1.html"><i class="fa fa-check"></i><b>11.2</b> 파이 차트</a>
 <ul>
@@ -546,28 +546,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>먼저의 눈금의 간격을 <code>x</code>로 하고, <code>seq()</code> 함수를 이용하여 지정해 줍니다.</p>
 <p>그런 다음, X축에 눈금을 그리기 위해서는 <code>axis()</code> 함수를 이용할 수 있습니다. 자세한 내용은 다음의 스트립 내에 있는 주석문을 참고하기 바랍니다.</p>
 <p>그리고 Y축의 범위도 0~40으로 조정해 줍니다.</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb219-1"><a href="x축-눈금-표시하기.html#cb219-1" aria-hidden="true" tabindex="-1"></a>bp <span class="ot">&lt;-</span> <span class="fu">barplot</span>(dd<span class="sc">$</span>MPG.mean, </span>
-<span id="cb219-2"><a href="x축-눈금-표시하기.html#cb219-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;자동차 유형별 평균 고속도로 연비 : X축 눈금&quot;</span>,</span>
-<span id="cb219-3"><a href="x축-눈금-표시하기.html#cb219-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;자동차 유형&quot;</span>,</span>
-<span id="cb219-4"><a href="x축-눈금-표시하기.html#cb219-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;고속도로 연비&quot;</span>,</span>
-<span id="cb219-5"><a href="x축-눈금-표시하기.html#cb219-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> names, </span>
-<span id="cb219-6"><a href="x축-눈금-표시하기.html#cb219-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">rainbow</span>(<span class="dv">6</span>),</span>
-<span id="cb219-7"><a href="x축-눈금-표시하기.html#cb219-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">40</span>))</span>
-<span id="cb219-8"><a href="x축-눈금-표시하기.html#cb219-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb219-9"><a href="x축-눈금-표시하기.html#cb219-9" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> bp,</span>
-<span id="cb219-10"><a href="x축-눈금-표시하기.html#cb219-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> dd<span class="sc">$</span>MPG.mean,</span>
-<span id="cb219-11"><a href="x축-눈금-표시하기.html#cb219-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">round</span>(dd<span class="sc">$</span>MPG.mean,<span class="dv">0</span>),</span>
-<span id="cb219-12"><a href="x축-눈금-표시하기.html#cb219-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">3</span></span>
-<span id="cb219-13"><a href="x축-눈금-표시하기.html#cb219-13" aria-hidden="true" tabindex="-1"></a>     )</span>
-<span id="cb219-14"><a href="x축-눈금-표시하기.html#cb219-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb219-15"><a href="x축-눈금-표시하기.html#cb219-15" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="fl">0.45</span>, <span class="fl">7.95</span>, <span class="at">by =</span> <span class="fl">1.2</span>)       <span class="co"># x축의 눈금 값들</span></span>
-<span id="cb219-16"><a href="x축-눈금-표시하기.html#cb219-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb219-17"><a href="x축-눈금-표시하기.html#cb219-17" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>,                        <span class="co"># 플롯 영역의 아랫 부분 - x축</span></span>
-<span id="cb219-18"><a href="x축-눈금-표시하기.html#cb219-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">at =</span> x,                          <span class="co"># 눈금을 표시할 x축의 값</span></span>
-<span id="cb219-19"><a href="x축-눈금-표시하기.html#cb219-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">tck =</span> <span class="sc">-</span><span class="fl">0.02</span>,                     <span class="co"># 눈금의 길이 (음수 : 아랫 방향)</span></span>
-<span id="cb219-20"><a href="x축-눈금-표시하기.html#cb219-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">0</span>,                         <span class="co"># 눈금이 표시될 Y축의 값</span></span>
-<span id="cb219-21"><a href="x축-눈금-표시하기.html#cb219-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.ticks =</span> <span class="st">&quot;blue&quot;</span>,              <span class="co"># X축의 색</span></span>
-<span id="cb219-22"><a href="x축-눈금-표시하기.html#cb219-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="cn">FALSE</span>)                  <span class="co"># 눈금에 라벨을 표시하지 않습니다.</span></span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb220-1"><a href="x축-눈금-표시하기.html#cb220-1" aria-hidden="true" tabindex="-1"></a>bp <span class="ot">&lt;-</span> <span class="fu">barplot</span>(dd<span class="sc">$</span>MPG.mean, </span>
+<span id="cb220-2"><a href="x축-눈금-표시하기.html#cb220-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;자동차 유형별 평균 고속도로 연비 : X축 눈금&quot;</span>,</span>
+<span id="cb220-3"><a href="x축-눈금-표시하기.html#cb220-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;자동차 유형&quot;</span>,</span>
+<span id="cb220-4"><a href="x축-눈금-표시하기.html#cb220-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;고속도로 연비&quot;</span>,</span>
+<span id="cb220-5"><a href="x축-눈금-표시하기.html#cb220-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> names, </span>
+<span id="cb220-6"><a href="x축-눈금-표시하기.html#cb220-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">rainbow</span>(<span class="dv">6</span>),</span>
+<span id="cb220-7"><a href="x축-눈금-표시하기.html#cb220-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">40</span>))</span>
+<span id="cb220-8"><a href="x축-눈금-표시하기.html#cb220-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-9"><a href="x축-눈금-표시하기.html#cb220-9" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> bp,</span>
+<span id="cb220-10"><a href="x축-눈금-표시하기.html#cb220-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> dd<span class="sc">$</span>MPG.mean,</span>
+<span id="cb220-11"><a href="x축-눈금-표시하기.html#cb220-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">round</span>(dd<span class="sc">$</span>MPG.mean,<span class="dv">0</span>),</span>
+<span id="cb220-12"><a href="x축-눈금-표시하기.html#cb220-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">3</span></span>
+<span id="cb220-13"><a href="x축-눈금-표시하기.html#cb220-13" aria-hidden="true" tabindex="-1"></a>     )</span>
+<span id="cb220-14"><a href="x축-눈금-표시하기.html#cb220-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-15"><a href="x축-눈금-표시하기.html#cb220-15" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="fl">0.45</span>, <span class="fl">7.95</span>, <span class="at">by =</span> <span class="fl">1.2</span>)       <span class="co"># x축의 눈금 값들</span></span>
+<span id="cb220-16"><a href="x축-눈금-표시하기.html#cb220-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-17"><a href="x축-눈금-표시하기.html#cb220-17" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>,                        <span class="co"># 플롯 영역의 아랫 부분 - x축</span></span>
+<span id="cb220-18"><a href="x축-눈금-표시하기.html#cb220-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">at =</span> x,                          <span class="co"># 눈금을 표시할 x축의 값</span></span>
+<span id="cb220-19"><a href="x축-눈금-표시하기.html#cb220-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">tck =</span> <span class="sc">-</span><span class="fl">0.02</span>,                     <span class="co"># 눈금의 길이 (음수 : 아랫 방향)</span></span>
+<span id="cb220-20"><a href="x축-눈금-표시하기.html#cb220-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">0</span>,                         <span class="co"># 눈금이 표시될 Y축의 값</span></span>
+<span id="cb220-21"><a href="x축-눈금-표시하기.html#cb220-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.ticks =</span> <span class="st">&quot;blue&quot;</span>,              <span class="co"># X축의 색</span></span>
+<span id="cb220-22"><a href="x축-눈금-표시하기.html#cb220-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="cn">FALSE</span>)                  <span class="co"># 눈금에 라벨을 표시하지 않습니다.</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:MixPlotXScale"></span>
 <img src="bookdown_files/figure-html/MixPlotXScale-1.png" alt="자동차 유형별 평균 고속도로 연비 : X축 눈금" width="672" />
 <p class="caption">

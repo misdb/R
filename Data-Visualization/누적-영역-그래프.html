@@ -356,14 +356,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11" data-path="일변량-변수-범주형-데이터.html"><a href="일변량-변수-범주형-데이터.html"><i class="fa fa-check"></i><b>11</b> 일변량 변수 - 범주형 데이터</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html"><i class="fa fa-check"></i><b>11.1</b> 막대 그래프</a>
+<li class="chapter" data-level="11.1" data-path="ggbar.html"><a href="ggbar.html"><i class="fa fa-check"></i><b>11.1</b> 막대 그래프</a>
 <ul>
-<li class="chapter" data-level="11.1.1" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#데이터-세트-4"><i class="fa fa-check"></i><b>11.1.1</b> 데이터 세트</a></li>
-<li class="chapter" data-level="11.1.2" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#막대-그래프-활용-방식"><i class="fa fa-check"></i><b>11.1.2</b> 막대 그래프 활용 방식</a></li>
-<li class="chapter" data-level="11.1.3" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#x축을-범주형-변수로-한-기본-막대-그래프"><i class="fa fa-check"></i><b>11.1.3</b> x축을 범주형 변수로 한 기본 막대 그래프</a></li>
-<li class="chapter" data-level="11.1.4" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#y축에-변수를-지정한-막대-그래프"><i class="fa fa-check"></i><b>11.1.4</b> Y축에 변수를 지정한 막대 그래프</a></li>
-<li class="chapter" data-level="11.1.5" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#그룹별-막대-그래프"><i class="fa fa-check"></i><b>11.1.5</b> 그룹별 막대 그래프</a></li>
-<li class="chapter" data-level="11.1.6" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#UsignThemesInBarPlot"><i class="fa fa-check"></i><b>11.1.6</b> Theme의 사용</a></li>
+<li class="chapter" data-level="11.1.1" data-path="ggbar.html"><a href="ggbar.html#데이터-세트-4"><i class="fa fa-check"></i><b>11.1.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="11.1.2" data-path="ggbar.html"><a href="ggbar.html#막대-그래프-활용-방식"><i class="fa fa-check"></i><b>11.1.2</b> 막대 그래프 활용 방식</a></li>
+<li class="chapter" data-level="11.1.3" data-path="ggbar.html"><a href="ggbar.html#x축을-범주형-변수로-한-기본-막대-그래프"><i class="fa fa-check"></i><b>11.1.3</b> x축을 범주형 변수로 한 기본 막대 그래프</a></li>
+<li class="chapter" data-level="11.1.4" data-path="ggbar.html"><a href="ggbar.html#y축에-변수를-지정한-막대-그래프"><i class="fa fa-check"></i><b>11.1.4</b> Y축에 변수를 지정한 막대 그래프</a></li>
+<li class="chapter" data-level="11.1.5" data-path="ggbar.html"><a href="ggbar.html#그룹별-막대-그래프"><i class="fa fa-check"></i><b>11.1.5</b> 그룹별 막대 그래프</a></li>
+<li class="chapter" data-level="11.1.6" data-path="ggbar.html"><a href="ggbar.html#UsignThemesInBarPlot"><i class="fa fa-check"></i><b>11.1.6</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="파이-차트-1.html"><a href="파이-차트-1.html"><i class="fa fa-check"></i><b>11.2</b> 파이 차트</a>
 <ul>
@@ -553,28 +553,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>-&gt; sqldf 패키지를 활용해 Year 단위로 수출입 실적을 집계</p>
 <p>-&gt; 이때 단위를 1000$ -&gt; 1B$ 로 바꿔주기 위해 1,000,000 으로 나눠줌</p>
 <p>을 써 데이터를 필요에 맞게 집계해보겠습니다.</p>
-<div class="sourceCode" id="cb484"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb484-1"><a href="누적-영역-그래프.html#cb484-1" aria-hidden="true" tabindex="-1"></a>trade_stat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/trade_stat_07_14.csv&quot;</span>, <span class="co"># 경로 설정</span></span>
-<span id="cb484-2"><a href="누적-영역-그래프.html#cb484-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb484-3"><a href="누적-영역-그래프.html#cb484-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb484-4"><a href="누적-영역-그래프.html#cb484-4" aria-hidden="true" tabindex="-1"></a>trade_stat <span class="ot">&lt;-</span> <span class="fu">transform</span>(trade_stat, <span class="at">Year =</span> <span class="fu">substr</span>(Time, <span class="dv">1</span>, <span class="dv">4</span>))</span>
-<span id="cb484-5"><a href="누적-영역-그래프.html#cb484-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb484-6"><a href="누적-영역-그래프.html#cb484-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(trade_stat, class)</span></code></pre></div>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb485-1"><a href="누적-영역-그래프.html#cb485-1" aria-hidden="true" tabindex="-1"></a>trade_stat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/trade_stat_07_14.csv&quot;</span>, <span class="co"># 경로 설정</span></span>
+<span id="cb485-2"><a href="누적-영역-그래프.html#cb485-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb485-3"><a href="누적-영역-그래프.html#cb485-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb485-4"><a href="누적-영역-그래프.html#cb485-4" aria-hidden="true" tabindex="-1"></a>trade_stat <span class="ot">&lt;-</span> <span class="fu">transform</span>(trade_stat, <span class="at">Year =</span> <span class="fu">substr</span>(Time, <span class="dv">1</span>, <span class="dv">4</span>))</span>
+<span id="cb485-5"><a href="누적-영역-그래프.html#cb485-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb485-6"><a href="누적-영역-그래프.html#cb485-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(trade_stat, class)</span></code></pre></div>
 <pre class="bg-warning"><code>##        Time  export_amt  import_amt        Year 
 ##   &quot;numeric&quot;   &quot;integer&quot;   &quot;integer&quot; &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb486-1"><a href="누적-영역-그래프.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;sqldf&quot;)</span></span>
-<span id="cb486-2"><a href="누적-영역-그래프.html#cb486-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sqldf)</span></code></pre></div>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb487-1"><a href="누적-영역-그래프.html#cb487-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;sqldf&quot;)</span></span>
+<span id="cb487-2"><a href="누적-영역-그래프.html#cb487-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sqldf)</span></code></pre></div>
 <pre><code>## Loading required package: gsubfn</code></pre>
 <pre><code>## Loading required package: proto</code></pre>
 <pre><code>## Loading required package: RSQLite</code></pre>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb490-1"><a href="누적-영역-그래프.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 한국 수/출입 무역금액, 단위: 1B$</span></span>
-<span id="cb490-2"><a href="누적-영역-그래프.html#cb490-2" aria-hidden="true" tabindex="-1"></a>trade_stat_Year <span class="ot">&lt;-</span> <span class="fu">sqldf</span>(<span class="st">&#39;select Year, </span></span>
-<span id="cb490-3"><a href="누적-영역-그래프.html#cb490-3" aria-hidden="true" tabindex="-1"></a><span class="st">                                 sum(export_amt)/100000 as exp_amt_Year, </span></span>
-<span id="cb490-4"><a href="누적-영역-그래프.html#cb490-4" aria-hidden="true" tabindex="-1"></a><span class="st">                                 sum(import_amt)/100000 as imp_amt_Year </span></span>
-<span id="cb490-5"><a href="누적-영역-그래프.html#cb490-5" aria-hidden="true" tabindex="-1"></a><span class="st">                           from trade_stat</span></span>
-<span id="cb490-6"><a href="누적-영역-그래프.html#cb490-6" aria-hidden="true" tabindex="-1"></a><span class="st">                           group by Year</span></span>
-<span id="cb490-7"><a href="누적-영역-그래프.html#cb490-7" aria-hidden="true" tabindex="-1"></a><span class="st">                           order by Year</span></span>
-<span id="cb490-8"><a href="누적-영역-그래프.html#cb490-8" aria-hidden="true" tabindex="-1"></a><span class="st">                         &#39;</span>)</span>
-<span id="cb490-9"><a href="누적-영역-그래프.html#cb490-9" aria-hidden="true" tabindex="-1"></a>trade_stat_Year</span></code></pre></div>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb491-1"><a href="누적-영역-그래프.html#cb491-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 한국 수/출입 무역금액, 단위: 1B$</span></span>
+<span id="cb491-2"><a href="누적-영역-그래프.html#cb491-2" aria-hidden="true" tabindex="-1"></a>trade_stat_Year <span class="ot">&lt;-</span> <span class="fu">sqldf</span>(<span class="st">&#39;select Year, </span></span>
+<span id="cb491-3"><a href="누적-영역-그래프.html#cb491-3" aria-hidden="true" tabindex="-1"></a><span class="st">                                 sum(export_amt)/100000 as exp_amt_Year, </span></span>
+<span id="cb491-4"><a href="누적-영역-그래프.html#cb491-4" aria-hidden="true" tabindex="-1"></a><span class="st">                                 sum(import_amt)/100000 as imp_amt_Year </span></span>
+<span id="cb491-5"><a href="누적-영역-그래프.html#cb491-5" aria-hidden="true" tabindex="-1"></a><span class="st">                           from trade_stat</span></span>
+<span id="cb491-6"><a href="누적-영역-그래프.html#cb491-6" aria-hidden="true" tabindex="-1"></a><span class="st">                           group by Year</span></span>
+<span id="cb491-7"><a href="누적-영역-그래프.html#cb491-7" aria-hidden="true" tabindex="-1"></a><span class="st">                           order by Year</span></span>
+<span id="cb491-8"><a href="누적-영역-그래프.html#cb491-8" aria-hidden="true" tabindex="-1"></a><span class="st">                         &#39;</span>)</span>
+<span id="cb491-9"><a href="누적-영역-그래프.html#cb491-9" aria-hidden="true" tabindex="-1"></a>trade_stat_Year</span></code></pre></div>
 <pre class="bg-warning"><code>##   Year exp_amt_Year imp_amt_Year
 ## 1 2007         3714         3568
 ## 2 2008         4220         4352
@@ -586,11 +586,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 8 2014         5726         5255</code></pre>
 <p>여기까지 했는데도 누적 영역 그래프를 그리기에 딱 맞는 데이터 형태가 아니라서 <code>reshape</code> 패키지의 <code>melt()</code> 함수를 사용하여 데이터를 현재의 가로로 늘어져있는 <code>exp_amt_Year</code>, <code>imp_amt_Year</code> 변수를 -&gt; 세로로 세워서 데이터 구조를 변경해보겠습니다. (<strong>wide form의 테이블을 long form의 테이블로 변환</strong>)</p>
 <p>그 다음에 <code>variable -&gt; trade_cd</code> (수입, 수출 구분 코드), <code>value -&gt; amount_B</code> (무역금액, 단위 : 1B$) 로 변수명을 변경하였습니다.</p>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb492-1"><a href="누적-영역-그래프.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 구조 녹이기(melt) - 세로로 세우기 (Long Form)</span></span>
-<span id="cb492-2"><a href="누적-영역-그래프.html#cb492-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape)</span>
-<span id="cb492-3"><a href="누적-영역-그래프.html#cb492-3" aria-hidden="true" tabindex="-1"></a>trade_stat_Year_melt <span class="ot">&lt;-</span> <span class="fu">melt</span>(trade_stat_Year, <span class="at">idvars =</span> <span class="fu">c</span>(<span class="st">&quot;Year&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb493-1"><a href="누적-영역-그래프.html#cb493-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 구조 녹이기(melt) - 세로로 세우기 (Long Form)</span></span>
+<span id="cb493-2"><a href="누적-영역-그래프.html#cb493-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape)</span>
+<span id="cb493-3"><a href="누적-영역-그래프.html#cb493-3" aria-hidden="true" tabindex="-1"></a>trade_stat_Year_melt <span class="ot">&lt;-</span> <span class="fu">melt</span>(trade_stat_Year, <span class="at">idvars =</span> <span class="fu">c</span>(<span class="st">&quot;Year&quot;</span>))</span></code></pre></div>
 <pre><code>## Using Year as id variables</code></pre>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb494-1"><a href="누적-영역-그래프.html#cb494-1" aria-hidden="true" tabindex="-1"></a>trade_stat_Year_melt</span></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb495-1"><a href="누적-영역-그래프.html#cb495-1" aria-hidden="true" tabindex="-1"></a>trade_stat_Year_melt</span></code></pre></div>
 <pre class="bg-warning"><code>##    Year     variable value
 ## 1  2007 exp_amt_Year  3714
 ## 2  2008 exp_amt_Year  4220
@@ -608,10 +608,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 14 2012 imp_amt_Year  5195
 ## 15 2013 imp_amt_Year  5155
 ## 16 2014 imp_amt_Year  5255</code></pre>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb496-1"><a href="누적-영역-그래프.html#cb496-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 변수명 변경</span></span>
-<span id="cb496-2"><a href="누적-영역-그래프.html#cb496-2" aria-hidden="true" tabindex="-1"></a>trade_stat_Year_melt <span class="ot">&lt;-</span> <span class="fu">rename</span>(trade_stat_Year_melt, </span>
-<span id="cb496-3"><a href="누적-영역-그래프.html#cb496-3" aria-hidden="true" tabindex="-1"></a>                               <span class="fu">c</span>(<span class="at">variable=</span><span class="st">&quot;trade_cd&quot;</span>, <span class="at">value=</span><span class="st">&quot;amount_B&quot;</span>))</span>
-<span id="cb496-4"><a href="누적-영역-그래프.html#cb496-4" aria-hidden="true" tabindex="-1"></a>trade_stat_Year_melt</span></code></pre></div>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb497-1"><a href="누적-영역-그래프.html#cb497-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 변수명 변경</span></span>
+<span id="cb497-2"><a href="누적-영역-그래프.html#cb497-2" aria-hidden="true" tabindex="-1"></a>trade_stat_Year_melt <span class="ot">&lt;-</span> <span class="fu">rename</span>(trade_stat_Year_melt, </span>
+<span id="cb497-3"><a href="누적-영역-그래프.html#cb497-3" aria-hidden="true" tabindex="-1"></a>                               <span class="fu">c</span>(<span class="at">variable=</span><span class="st">&quot;trade_cd&quot;</span>, <span class="at">value=</span><span class="st">&quot;amount_B&quot;</span>))</span>
+<span id="cb497-4"><a href="누적-영역-그래프.html#cb497-4" aria-hidden="true" tabindex="-1"></a>trade_stat_Year_melt</span></code></pre></div>
 <pre class="bg-warning"><code>##    Year     trade_cd amount_B
 ## 1  2007 exp_amt_Year     3714
 ## 2  2008 exp_amt_Year     4220
@@ -635,20 +635,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">13.6.2</span> 누적영역 그래프 그리기</h3>
 <p>이제 드디어 누적 영역 그래프를 그릴 데이터 셋 준비가 다 되었군요. <code>ggplot2</code>의 <code>geom_area()</code> 함수를 사용하여 우선 값 기준으로 그리고, 다음으로 비율 기준으로도 그려보겠습니다.</p>
 <p><code>geom_area(colour=NA)</code>로 하고 <code>geom_line(position="stack")</code>으로 해서 양 옆에 선은 트여주고, 영역 간 경계선은 그려주었습니다.</p>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb498-1"><a href="누적-영역-그래프.html#cb498-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 누적 영역 그래프 그리기</span></span>
-<span id="cb498-2"><a href="누적-영역-그래프.html#cb498-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trade_stat_Year_melt, <span class="fu">aes</span>(<span class="at">x=</span>Year, <span class="at">y=</span>amount_B, <span class="at">fill=</span>trade_cd, <span class="at">group=</span>trade_cd)) <span class="sc">+</span></span>
-<span id="cb498-3"><a href="누적-영역-그래프.html#cb498-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_area</span>(<span class="at">colour=</span><span class="cn">NA</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> <span class="co"># alpha 투명도</span></span>
-<span id="cb498-4"><a href="누적-영역-그래프.html#cb498-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">&quot;Blues&quot;</span>) <span class="sc">+</span></span>
-<span id="cb498-5"><a href="누적-영역-그래프.html#cb498-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">position=</span><span class="st">&quot;stack&quot;</span>, <span class="at">size=</span><span class="fl">0.3</span>) <span class="sc">+</span> </span>
-<span id="cb498-6"><a href="누적-영역-그래프.html#cb498-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Stacked Area Plot of Trade (Import, Export) from 2007 to 2014&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb499-1"><a href="누적-영역-그래프.html#cb499-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 누적 영역 그래프 그리기</span></span>
+<span id="cb499-2"><a href="누적-영역-그래프.html#cb499-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trade_stat_Year_melt, <span class="fu">aes</span>(<span class="at">x=</span>Year, <span class="at">y=</span>amount_B, <span class="at">fill=</span>trade_cd, <span class="at">group=</span>trade_cd)) <span class="sc">+</span></span>
+<span id="cb499-3"><a href="누적-영역-그래프.html#cb499-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_area</span>(<span class="at">colour=</span><span class="cn">NA</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> <span class="co"># alpha 투명도</span></span>
+<span id="cb499-4"><a href="누적-영역-그래프.html#cb499-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">&quot;Blues&quot;</span>) <span class="sc">+</span></span>
+<span id="cb499-5"><a href="누적-영역-그래프.html#cb499-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">position=</span><span class="st">&quot;stack&quot;</span>, <span class="at">size=</span><span class="fl">0.3</span>) <span class="sc">+</span> </span>
+<span id="cb499-6"><a href="누적-영역-그래프.html#cb499-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Stacked Area Plot of Trade (Import, Export) from 2007 to 2014&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 <p><a href="누적-영역-그래프.html#누적-영역-그래프">Go Top</a></p>
 </div>
 <div id="누적영역-순서-바꾸기" class="section level3" number="13.6.3">
 <h3><span class="header-section-number">13.6.3</span> 누적영역 순서 바꾸기</h3>
 <p><code>aes(arder=desc())</code> 를 사용하여 위의 영역 구분 그룹의 순서를 바꿀 수도 있습니다. 위의 예제에서는 exp_amt_Year (수출액)이 아래에 위치했습니다만, 아래 예제에서는 <code>exp_amt_Year</code>(수출액)이 위로 위치가 바뀌었음을 알 수 있습니다.</p>
-<div class="sourceCode" id="cb499"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb499-1"><a href="누적-영역-그래프.html#cb499-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 누적 영역 순서 바꾸기</span></span>
-<span id="cb499-2"><a href="누적-영역-그래프.html#cb499-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr) <span class="co"># desc() 함수 사용 위해 필요</span></span></code></pre></div>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb500-1"><a href="누적-영역-그래프.html#cb500-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 누적 영역 순서 바꾸기</span></span>
+<span id="cb500-2"><a href="누적-영역-그래프.html#cb500-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr) <span class="co"># desc() 함수 사용 위해 필요</span></span></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------------</code></pre>
 <pre><code>## You have loaded plyr after dplyr - this is likely to cause problems.
 ## If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
@@ -666,12 +666,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## The following object is masked from &#39;package:purrr&#39;:
 ## 
 ##     compact</code></pre>
-<div class="sourceCode" id="cb507"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb507-1"><a href="누적-영역-그래프.html#cb507-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trade_stat_Year_melt, <span class="fu">aes</span>(<span class="at">x=</span>Year, <span class="at">y=</span>amount_B, <span class="at">fill=</span>trade_cd, <span class="at">group=</span>trade_cd, </span>
-<span id="cb507-2"><a href="누적-영역-그래프.html#cb507-2" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">order=</span><span class="fu">desc</span>(trade_cd))) <span class="sc">+</span> <span class="co"># 누적 영역 순서 내림차순 정렬</span></span>
-<span id="cb507-3"><a href="누적-영역-그래프.html#cb507-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_area</span>(<span class="at">colour=</span><span class="cn">NA</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> <span class="co"># alpha 투명도</span></span>
-<span id="cb507-4"><a href="누적-영역-그래프.html#cb507-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">&quot;Blues&quot;</span>) <span class="sc">+</span></span>
-<span id="cb507-5"><a href="누적-영역-그래프.html#cb507-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">position=</span><span class="st">&quot;stack&quot;</span>, <span class="at">size=</span><span class="fl">0.3</span>) <span class="sc">+</span> </span>
-<span id="cb507-6"><a href="누적-영역-그래프.html#cb507-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Stacked Area Plot of Trade (Import, Export) from 2007 to 2014&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb508"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb508-1"><a href="누적-영역-그래프.html#cb508-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trade_stat_Year_melt, <span class="fu">aes</span>(<span class="at">x=</span>Year, <span class="at">y=</span>amount_B, <span class="at">fill=</span>trade_cd, <span class="at">group=</span>trade_cd, </span>
+<span id="cb508-2"><a href="누적-영역-그래프.html#cb508-2" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">order=</span><span class="fu">desc</span>(trade_cd))) <span class="sc">+</span> <span class="co"># 누적 영역 순서 내림차순 정렬</span></span>
+<span id="cb508-3"><a href="누적-영역-그래프.html#cb508-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_area</span>(<span class="at">colour=</span><span class="cn">NA</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> <span class="co"># alpha 투명도</span></span>
+<span id="cb508-4"><a href="누적-영역-그래프.html#cb508-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">&quot;Blues&quot;</span>) <span class="sc">+</span></span>
+<span id="cb508-5"><a href="누적-영역-그래프.html#cb508-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">position=</span><span class="st">&quot;stack&quot;</span>, <span class="at">size=</span><span class="fl">0.3</span>) <span class="sc">+</span> </span>
+<span id="cb508-6"><a href="누적-영역-그래프.html#cb508-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Stacked Area Plot of Trade (Import, Export) from 2007 to 2014&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <p><a href="누적-영역-그래프.html#누적-영역-그래프">Go Top</a></p>
 </div>
@@ -680,16 +680,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>이번에는 비율 기준으로 해서 누적 영역 그래프를 그려보겠습니다. 이를 위해서는 데이터셋에서 <code>Year</code> 별로 비율을 계산해주어야 합니다. 데이터 프레임에서 사칙연산을 써가면서 <code>transform()</code> 함수로 step-by-step 해나갈 수도 있는데요, <code>plyr</code>패키지의 <code>ddply()</code> 함수를 사용하면 놀랍도록 간편하게 원하는 비율 값을 구할 수 있습니다.</p>
 <div id="비율-계산하기" class="section level4" number="13.6.4.1">
 <h4><span class="header-section-number">13.6.4.1</span> 비율 계산하기</h4>
-<div class="sourceCode" id="cb508"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb508-1"><a href="누적-영역-그래프.html#cb508-1" aria-hidden="true" tabindex="-1"></a><span class="co">#-----</span></span>
-<span id="cb508-2"><a href="누적-영역-그래프.html#cb508-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 비율 누적 영역 그래프 그리기</span></span>
-<span id="cb508-3"><a href="누적-영역-그래프.html#cb508-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 비율 계산하기</span></span>
-<span id="cb508-4"><a href="누적-영역-그래프.html#cb508-4" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;plyr&quot;)</span></span>
-<span id="cb508-5"><a href="누적-영역-그래프.html#cb508-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
-<span id="cb508-6"><a href="누적-영역-그래프.html#cb508-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb508-7"><a href="누적-영역-그래프.html#cb508-7" aria-hidden="true" tabindex="-1"></a>trade_stat_Year_melt_prop <span class="ot">&lt;-</span> <span class="fu">ddply</span>(trade_stat_Year_melt, </span>
-<span id="cb508-8"><a href="누적-영역-그래프.html#cb508-8" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">&quot;Year&quot;</span>, transform, </span>
-<span id="cb508-9"><a href="누적-영역-그래프.html#cb508-9" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">trade_prop =</span> <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>amount_B<span class="sc">/</span><span class="fu">sum</span>(amount_B),<span class="dv">1</span>))</span>
-<span id="cb508-10"><a href="누적-영역-그래프.html#cb508-10" aria-hidden="true" tabindex="-1"></a>trade_stat_Year_melt_prop</span></code></pre></div>
+<div class="sourceCode" id="cb509"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb509-1"><a href="누적-영역-그래프.html#cb509-1" aria-hidden="true" tabindex="-1"></a><span class="co">#-----</span></span>
+<span id="cb509-2"><a href="누적-영역-그래프.html#cb509-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 비율 누적 영역 그래프 그리기</span></span>
+<span id="cb509-3"><a href="누적-영역-그래프.html#cb509-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 비율 계산하기</span></span>
+<span id="cb509-4"><a href="누적-영역-그래프.html#cb509-4" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;plyr&quot;)</span></span>
+<span id="cb509-5"><a href="누적-영역-그래프.html#cb509-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb509-6"><a href="누적-영역-그래프.html#cb509-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb509-7"><a href="누적-영역-그래프.html#cb509-7" aria-hidden="true" tabindex="-1"></a>trade_stat_Year_melt_prop <span class="ot">&lt;-</span> <span class="fu">ddply</span>(trade_stat_Year_melt, </span>
+<span id="cb509-8"><a href="누적-영역-그래프.html#cb509-8" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">&quot;Year&quot;</span>, transform, </span>
+<span id="cb509-9"><a href="누적-영역-그래프.html#cb509-9" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">trade_prop =</span> <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>amount_B<span class="sc">/</span><span class="fu">sum</span>(amount_B),<span class="dv">1</span>))</span>
+<span id="cb509-10"><a href="누적-영역-그래프.html#cb509-10" aria-hidden="true" tabindex="-1"></a>trade_stat_Year_melt_prop</span></code></pre></div>
 <pre class="bg-warning"><code>##    Year     trade_cd amount_B trade_prop
 ## 1  2007 exp_amt_Year     3714         51
 ## 2  2007 imp_amt_Year     3568         49
@@ -712,16 +712,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">13.6.4.2</span> 비율 누적 영역 그래프</h4>
 <p>위의 <code>trade_prop</code> 변수를 활용해서 <strong>비율 누적 영역 그래프(Propostion stacked area plot)</strong>을 그려보도록 하겠습니다. 값을 기준으로 했을 때와 script는 동일하며, y값 자리에 <code>trade_prop</code> (수출입 무역 비율) 변수로 바꾸어주기만 하면 됩니다.</p>
 <p>그래프 뒤에 단위 격자가 보이도록 <code>geom_area(alpha=0.5)</code> 로 해서 약간 투명하게 처리했습니다.</p>
-<div class="sourceCode" id="cb510"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb510-1"><a href="누적-영역-그래프.html#cb510-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 비율 누적 영역 그래프 그리기</span></span>
-<span id="cb510-2"><a href="누적-영역-그래프.html#cb510-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr) <span class="co"># desc() 함수 사용 위해 필요</span></span>
-<span id="cb510-3"><a href="누적-영역-그래프.html#cb510-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trade_stat_Year_melt_prop, </span>
-<span id="cb510-4"><a href="누적-영역-그래프.html#cb510-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Year, <span class="at">y=</span>trade_prop, </span>
-<span id="cb510-5"><a href="누적-영역-그래프.html#cb510-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill=</span>trade_cd, <span class="at">group=</span>trade_cd,</span>
-<span id="cb510-6"><a href="누적-영역-그래프.html#cb510-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">order=</span><span class="fu">desc</span>(trade_cd))) <span class="sc">+</span>                     <span class="co"># 누적 영역 순서 내림차순 정렬</span></span>
-<span id="cb510-7"><a href="누적-영역-그래프.html#cb510-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_area</span>(<span class="at">colour=</span><span class="cn">NA</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span>                    <span class="co"># alpha 투명도</span></span>
-<span id="cb510-8"><a href="누적-영역-그래프.html#cb510-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">&quot;Blues&quot;</span>) <span class="sc">+</span></span>
-<span id="cb510-9"><a href="누적-영역-그래프.html#cb510-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">position=</span><span class="st">&quot;stack&quot;</span>, <span class="at">size=</span><span class="fl">0.3</span>) <span class="sc">+</span> </span>
-<span id="cb510-10"><a href="누적-영역-그래프.html#cb510-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Stacked Area Plot of Trade Proportion (Import, Export) from 2007 to 2014&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb511"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb511-1"><a href="누적-영역-그래프.html#cb511-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 비율 누적 영역 그래프 그리기</span></span>
+<span id="cb511-2"><a href="누적-영역-그래프.html#cb511-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr) <span class="co"># desc() 함수 사용 위해 필요</span></span>
+<span id="cb511-3"><a href="누적-영역-그래프.html#cb511-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trade_stat_Year_melt_prop, </span>
+<span id="cb511-4"><a href="누적-영역-그래프.html#cb511-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Year, <span class="at">y=</span>trade_prop, </span>
+<span id="cb511-5"><a href="누적-영역-그래프.html#cb511-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill=</span>trade_cd, <span class="at">group=</span>trade_cd,</span>
+<span id="cb511-6"><a href="누적-영역-그래프.html#cb511-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">order=</span><span class="fu">desc</span>(trade_cd))) <span class="sc">+</span>                     <span class="co"># 누적 영역 순서 내림차순 정렬</span></span>
+<span id="cb511-7"><a href="누적-영역-그래프.html#cb511-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_area</span>(<span class="at">colour=</span><span class="cn">NA</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span>                    <span class="co"># alpha 투명도</span></span>
+<span id="cb511-8"><a href="누적-영역-그래프.html#cb511-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">&quot;Blues&quot;</span>) <span class="sc">+</span></span>
+<span id="cb511-9"><a href="누적-영역-그래프.html#cb511-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">position=</span><span class="st">&quot;stack&quot;</span>, <span class="at">size=</span><span class="fl">0.3</span>) <span class="sc">+</span> </span>
+<span id="cb511-10"><a href="누적-영역-그래프.html#cb511-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Stacked Area Plot of Trade Proportion (Import, Export) from 2007 to 2014&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <p><a href="누적-영역-그래프.html#누적-영역-그래프">Go Top</a></p>
 </div>

@@ -356,14 +356,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11" data-path="일변량-변수-범주형-데이터.html"><a href="일변량-변수-범주형-데이터.html"><i class="fa fa-check"></i><b>11</b> 일변량 변수 - 범주형 데이터</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html"><i class="fa fa-check"></i><b>11.1</b> 막대 그래프</a>
+<li class="chapter" data-level="11.1" data-path="ggbar.html"><a href="ggbar.html"><i class="fa fa-check"></i><b>11.1</b> 막대 그래프</a>
 <ul>
-<li class="chapter" data-level="11.1.1" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#데이터-세트-4"><i class="fa fa-check"></i><b>11.1.1</b> 데이터 세트</a></li>
-<li class="chapter" data-level="11.1.2" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#막대-그래프-활용-방식"><i class="fa fa-check"></i><b>11.1.2</b> 막대 그래프 활용 방식</a></li>
-<li class="chapter" data-level="11.1.3" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#x축을-범주형-변수로-한-기본-막대-그래프"><i class="fa fa-check"></i><b>11.1.3</b> x축을 범주형 변수로 한 기본 막대 그래프</a></li>
-<li class="chapter" data-level="11.1.4" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#y축에-변수를-지정한-막대-그래프"><i class="fa fa-check"></i><b>11.1.4</b> Y축에 변수를 지정한 막대 그래프</a></li>
-<li class="chapter" data-level="11.1.5" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#그룹별-막대-그래프"><i class="fa fa-check"></i><b>11.1.5</b> 그룹별 막대 그래프</a></li>
-<li class="chapter" data-level="11.1.6" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#UsignThemesInBarPlot"><i class="fa fa-check"></i><b>11.1.6</b> Theme의 사용</a></li>
+<li class="chapter" data-level="11.1.1" data-path="ggbar.html"><a href="ggbar.html#데이터-세트-4"><i class="fa fa-check"></i><b>11.1.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="11.1.2" data-path="ggbar.html"><a href="ggbar.html#막대-그래프-활용-방식"><i class="fa fa-check"></i><b>11.1.2</b> 막대 그래프 활용 방식</a></li>
+<li class="chapter" data-level="11.1.3" data-path="ggbar.html"><a href="ggbar.html#x축을-범주형-변수로-한-기본-막대-그래프"><i class="fa fa-check"></i><b>11.1.3</b> x축을 범주형 변수로 한 기본 막대 그래프</a></li>
+<li class="chapter" data-level="11.1.4" data-path="ggbar.html"><a href="ggbar.html#y축에-변수를-지정한-막대-그래프"><i class="fa fa-check"></i><b>11.1.4</b> Y축에 변수를 지정한 막대 그래프</a></li>
+<li class="chapter" data-level="11.1.5" data-path="ggbar.html"><a href="ggbar.html#그룹별-막대-그래프"><i class="fa fa-check"></i><b>11.1.5</b> 그룹별 막대 그래프</a></li>
+<li class="chapter" data-level="11.1.6" data-path="ggbar.html"><a href="ggbar.html#UsignThemesInBarPlot"><i class="fa fa-check"></i><b>11.1.6</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="파이-차트-1.html"><a href="파이-차트-1.html"><i class="fa fa-check"></i><b>11.2</b> 파이 차트</a>
 <ul>
@@ -547,19 +547,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>이제 <code>text()</code> 함수의 x 축의 모수의 값으로 <code>bp</code>를 대입해 주고, y 축으로 <code>dd$MPG.mean</code>을 대입해 줍니다.</p>
 <p>그리고 <code>labels =</code> 모수에 출력될 문자열을 지정해 주어야 하는데, <code>round()</code> 함수를 이용하여 소숫점 이하는 반올림처리 해 줍니다.</p>
 <p>또한 <code>pos =</code> 모수의 값으로 <code>3</code>을 입력하여 막대의 위로 문자열의 출력 위치를 지정해 줍니다.</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb218-1"><a href="데이터-레이블-표시하기.html#cb218-1" aria-hidden="true" tabindex="-1"></a>bp <span class="ot">&lt;-</span> <span class="fu">barplot</span>(dd<span class="sc">$</span>MPG.mean, </span>
-<span id="cb218-2"><a href="데이터-레이블-표시하기.html#cb218-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;자동차 유형별 평균 고속도로 연비 : 데이터 레이블&quot;</span>,</span>
-<span id="cb218-3"><a href="데이터-레이블-표시하기.html#cb218-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;자동차 유형&quot;</span>,</span>
-<span id="cb218-4"><a href="데이터-레이블-표시하기.html#cb218-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;고속도로 연비&quot;</span>,</span>
-<span id="cb218-5"><a href="데이터-레이블-표시하기.html#cb218-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> names, </span>
-<span id="cb218-6"><a href="데이터-레이블-표시하기.html#cb218-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">rainbow</span>(<span class="dv">6</span>),</span>
-<span id="cb218-7"><a href="데이터-레이블-표시하기.html#cb218-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">40</span>))</span>
-<span id="cb218-8"><a href="데이터-레이블-표시하기.html#cb218-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb218-9"><a href="데이터-레이블-표시하기.html#cb218-9" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> bp,</span>
-<span id="cb218-10"><a href="데이터-레이블-표시하기.html#cb218-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> dd<span class="sc">$</span>MPG.mean,</span>
-<span id="cb218-11"><a href="데이터-레이블-표시하기.html#cb218-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">round</span>(dd<span class="sc">$</span>MPG.mean,<span class="dv">0</span>),</span>
-<span id="cb218-12"><a href="데이터-레이블-표시하기.html#cb218-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">3</span></span>
-<span id="cb218-13"><a href="데이터-레이블-표시하기.html#cb218-13" aria-hidden="true" tabindex="-1"></a>     )</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb219-1"><a href="데이터-레이블-표시하기.html#cb219-1" aria-hidden="true" tabindex="-1"></a>bp <span class="ot">&lt;-</span> <span class="fu">barplot</span>(dd<span class="sc">$</span>MPG.mean, </span>
+<span id="cb219-2"><a href="데이터-레이블-표시하기.html#cb219-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;자동차 유형별 평균 고속도로 연비 : 데이터 레이블&quot;</span>,</span>
+<span id="cb219-3"><a href="데이터-레이블-표시하기.html#cb219-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;자동차 유형&quot;</span>,</span>
+<span id="cb219-4"><a href="데이터-레이블-표시하기.html#cb219-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;고속도로 연비&quot;</span>,</span>
+<span id="cb219-5"><a href="데이터-레이블-표시하기.html#cb219-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> names, </span>
+<span id="cb219-6"><a href="데이터-레이블-표시하기.html#cb219-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">rainbow</span>(<span class="dv">6</span>),</span>
+<span id="cb219-7"><a href="데이터-레이블-표시하기.html#cb219-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">40</span>))</span>
+<span id="cb219-8"><a href="데이터-레이블-표시하기.html#cb219-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb219-9"><a href="데이터-레이블-표시하기.html#cb219-9" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> bp,</span>
+<span id="cb219-10"><a href="데이터-레이블-표시하기.html#cb219-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> dd<span class="sc">$</span>MPG.mean,</span>
+<span id="cb219-11"><a href="데이터-레이블-표시하기.html#cb219-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">round</span>(dd<span class="sc">$</span>MPG.mean,<span class="dv">0</span>),</span>
+<span id="cb219-12"><a href="데이터-레이블-표시하기.html#cb219-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">3</span></span>
+<span id="cb219-13"><a href="데이터-레이블-표시하기.html#cb219-13" aria-hidden="true" tabindex="-1"></a>     )</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:MixPlotDatalab"></span>
 <img src="bookdown_files/figure-html/MixPlotDatalab-1.png" alt="자동차 유형별 평균 고속도로 연비 : 데이터 레이블" width="672" />
 <p class="caption">

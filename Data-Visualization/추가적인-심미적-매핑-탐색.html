@@ -356,14 +356,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11" data-path="일변량-변수-범주형-데이터.html"><a href="일변량-변수-범주형-데이터.html"><i class="fa fa-check"></i><b>11</b> 일변량 변수 - 범주형 데이터</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html"><i class="fa fa-check"></i><b>11.1</b> 막대 그래프</a>
+<li class="chapter" data-level="11.1" data-path="ggbar.html"><a href="ggbar.html"><i class="fa fa-check"></i><b>11.1</b> 막대 그래프</a>
 <ul>
-<li class="chapter" data-level="11.1.1" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#데이터-세트-4"><i class="fa fa-check"></i><b>11.1.1</b> 데이터 세트</a></li>
-<li class="chapter" data-level="11.1.2" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#막대-그래프-활용-방식"><i class="fa fa-check"></i><b>11.1.2</b> 막대 그래프 활용 방식</a></li>
-<li class="chapter" data-level="11.1.3" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#x축을-범주형-변수로-한-기본-막대-그래프"><i class="fa fa-check"></i><b>11.1.3</b> x축을 범주형 변수로 한 기본 막대 그래프</a></li>
-<li class="chapter" data-level="11.1.4" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#y축에-변수를-지정한-막대-그래프"><i class="fa fa-check"></i><b>11.1.4</b> Y축에 변수를 지정한 막대 그래프</a></li>
-<li class="chapter" data-level="11.1.5" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#그룹별-막대-그래프"><i class="fa fa-check"></i><b>11.1.5</b> 그룹별 막대 그래프</a></li>
-<li class="chapter" data-level="11.1.6" data-path="막대-그래프-1.html"><a href="막대-그래프-1.html#UsignThemesInBarPlot"><i class="fa fa-check"></i><b>11.1.6</b> Theme의 사용</a></li>
+<li class="chapter" data-level="11.1.1" data-path="ggbar.html"><a href="ggbar.html#데이터-세트-4"><i class="fa fa-check"></i><b>11.1.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="11.1.2" data-path="ggbar.html"><a href="ggbar.html#막대-그래프-활용-방식"><i class="fa fa-check"></i><b>11.1.2</b> 막대 그래프 활용 방식</a></li>
+<li class="chapter" data-level="11.1.3" data-path="ggbar.html"><a href="ggbar.html#x축을-범주형-변수로-한-기본-막대-그래프"><i class="fa fa-check"></i><b>11.1.3</b> x축을 범주형 변수로 한 기본 막대 그래프</a></li>
+<li class="chapter" data-level="11.1.4" data-path="ggbar.html"><a href="ggbar.html#y축에-변수를-지정한-막대-그래프"><i class="fa fa-check"></i><b>11.1.4</b> Y축에 변수를 지정한 막대 그래프</a></li>
+<li class="chapter" data-level="11.1.5" data-path="ggbar.html"><a href="ggbar.html#그룹별-막대-그래프"><i class="fa fa-check"></i><b>11.1.5</b> 그룹별 막대 그래프</a></li>
+<li class="chapter" data-level="11.1.6" data-path="ggbar.html"><a href="ggbar.html#UsignThemesInBarPlot"><i class="fa fa-check"></i><b>11.1.6</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="파이-차트-1.html"><a href="파이-차트-1.html"><i class="fa fa-check"></i><b>11.2</b> 파이 차트</a>
 <ul>
@@ -546,24 +546,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>따라서 데이터에서 <strong>변수를 나타낼 수 있는 심미적 요소</strong>들에 대하여 살펴 보겠습니다.</p>
 <p>지금까지 x와 y 위치를 지정하였고, 이것은 “점”이라는 기하학적 객체로 표현하는데 필요한 심미적 요소입니다. 그러나 <strong>더 많은 선택 사항</strong>이 있습니다.</p>
 <p>다음 예제에서는 필요한 심미적 매핑 (x 와 y 위치)을 수행한 다음 <strong><code>geom_point ()</code> 함수가 표현할 수 있는 다른 심미적 요소(색상, 모양, 크기, 알파 - 투명도)</strong>도 사용해 보겠습니다. 또한 이중 또는 삼중 의 심미적 “매핑”이 허용되는 것을 볼 수 있습니다. 여러 심미적 표현으로 동일한 변수를 나타낼 수 있습니다.</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb227-1"><a href="추가적인-심미적-매핑-탐색.html#cb227-1" aria-hidden="true" tabindex="-1"></a>Cars93 <span class="sc">%&gt;%</span>         </span>
-<span id="cb227-2"><a href="추가적인-심미적-매핑-탐색.html#cb227-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span>  </span>
-<span id="cb227-3"><a href="추가적인-심미적-매핑-탐색.html#cb227-3" aria-hidden="true" tabindex="-1"></a><span class="co"># X축 : Weight 변수</span></span>
-<span id="cb227-4"><a href="추가적인-심미적-매핑-탐색.html#cb227-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Weight) <span class="sc">+</span>  </span>
-<span id="cb227-5"><a href="추가적인-심미적-매핑-탐색.html#cb227-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb227-6"><a href="추가적인-심미적-매핑-탐색.html#cb227-6" aria-hidden="true" tabindex="-1"></a><span class="co"># y축 : MPG.highway 변수</span></span>
-<span id="cb227-7"><a href="추가적인-심미적-매핑-탐색.html#cb227-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> MPG.highway) <span class="sc">+</span></span>
-<span id="cb227-8"><a href="추가적인-심미적-매핑-탐색.html#cb227-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb227-9"><a href="추가적인-심미적-매핑-탐색.html#cb227-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 각 행의 X와 Y 위치에 점을 표시 : geom_point() 함수</span></span>
-<span id="cb227-10"><a href="추가적인-심미적-매핑-탐색.html#cb227-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb227-11"><a href="추가적인-심미적-매핑-탐색.html#cb227-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb227-12"><a href="추가적인-심미적-매핑-탐색.html#cb227-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 다음의 요소를 (+)로 중복 적용할 수도 있고,</span></span>
-<span id="cb227-13"><a href="추가적인-심미적-매핑-탐색.html#cb227-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 한번에 하나씩 적용할 수도 있습니다.</span></span>
-<span id="cb227-14"><a href="추가적인-심미적-매핑-탐색.html#cb227-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">colour =</span> Type) <span class="sc">+</span>    <span class="co"># 색 지정</span></span>
-<span id="cb227-15"><a href="추가적인-심미적-매핑-탐색.html#cb227-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">shape =</span> Type) <span class="sc">+</span>     <span class="co"># 점의 모양 지정</span></span>
-<span id="cb227-16"><a href="추가적인-심미적-매핑-탐색.html#cb227-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">size =</span> MPG.highway) <span class="sc">+</span>  <span class="co"># 점의 크기</span></span>
-<span id="cb227-17"><a href="추가적인-심미적-매핑-탐색.html#cb227-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">alpha =</span> MPG.highway) <span class="sc">+</span> <span class="co"># 점의 투명도</span></span>
-<span id="cb227-18"><a href="추가적인-심미적-매핑-탐색.html#cb227-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">colour =</span> MPG.highway)  <span class="co"># 색의 중복 적용</span></span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb228-1"><a href="추가적인-심미적-매핑-탐색.html#cb228-1" aria-hidden="true" tabindex="-1"></a>Cars93 <span class="sc">%&gt;%</span>         </span>
+<span id="cb228-2"><a href="추가적인-심미적-매핑-탐색.html#cb228-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span>  </span>
+<span id="cb228-3"><a href="추가적인-심미적-매핑-탐색.html#cb228-3" aria-hidden="true" tabindex="-1"></a><span class="co"># X축 : Weight 변수</span></span>
+<span id="cb228-4"><a href="추가적인-심미적-매핑-탐색.html#cb228-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Weight) <span class="sc">+</span>  </span>
+<span id="cb228-5"><a href="추가적인-심미적-매핑-탐색.html#cb228-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb228-6"><a href="추가적인-심미적-매핑-탐색.html#cb228-6" aria-hidden="true" tabindex="-1"></a><span class="co"># y축 : MPG.highway 변수</span></span>
+<span id="cb228-7"><a href="추가적인-심미적-매핑-탐색.html#cb228-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> MPG.highway) <span class="sc">+</span></span>
+<span id="cb228-8"><a href="추가적인-심미적-매핑-탐색.html#cb228-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb228-9"><a href="추가적인-심미적-매핑-탐색.html#cb228-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 각 행의 X와 Y 위치에 점을 표시 : geom_point() 함수</span></span>
+<span id="cb228-10"><a href="추가적인-심미적-매핑-탐색.html#cb228-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb228-11"><a href="추가적인-심미적-매핑-탐색.html#cb228-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb228-12"><a href="추가적인-심미적-매핑-탐색.html#cb228-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 다음의 요소를 (+)로 중복 적용할 수도 있고,</span></span>
+<span id="cb228-13"><a href="추가적인-심미적-매핑-탐색.html#cb228-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 한번에 하나씩 적용할 수도 있습니다.</span></span>
+<span id="cb228-14"><a href="추가적인-심미적-매핑-탐색.html#cb228-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">colour =</span> Type) <span class="sc">+</span>    <span class="co"># 색 지정</span></span>
+<span id="cb228-15"><a href="추가적인-심미적-매핑-탐색.html#cb228-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">shape =</span> Type) <span class="sc">+</span>     <span class="co"># 점의 모양 지정</span></span>
+<span id="cb228-16"><a href="추가적인-심미적-매핑-탐색.html#cb228-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">size =</span> MPG.highway) <span class="sc">+</span>  <span class="co"># 점의 크기</span></span>
+<span id="cb228-17"><a href="추가적인-심미적-매핑-탐색.html#cb228-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">alpha =</span> MPG.highway) <span class="sc">+</span> <span class="co"># 점의 투명도</span></span>
+<span id="cb228-18"><a href="추가적인-심미적-매핑-탐색.html#cb228-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">colour =</span> MPG.highway)  <span class="co"># 색의 중복 적용</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:gGramBasicGeomPAes1"></span>
 <img src="bookdown_files/figure-html/gGramBasicGeomPAes1-1.png" alt="ggplot을 위한 심미적 요소의 추가 1" width="672" />
 <p class="caption">
@@ -573,20 +573,20 @@ Figure 9.8: ggplot을 위한 심미적 요소의 추가 1
 <div id="추가적-심미적-요소" class="section level3" number="9.2.1">
 <h3><span class="header-section-number">9.2.1</span> 추가적 심미적 요소</h3>
 <p>다음의 플롯에서 <code>fill =</code> 요소와 <code>color =</code> 요소는 어떻게 다를까요?</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb228-1"><a href="추가적인-심미적-매핑-탐색.html#cb228-1" aria-hidden="true" tabindex="-1"></a>Cars93 <span class="sc">%&gt;%</span> </span>
-<span id="cb228-2"><a href="추가적인-심미적-매핑-탐색.html#cb228-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span>  </span>
-<span id="cb228-3"><a href="추가적인-심미적-매핑-탐색.html#cb228-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb228-4"><a href="추가적인-심미적-매핑-탐색.html#cb228-4" aria-hidden="true" tabindex="-1"></a><span class="co"># X축 : Type 변수</span></span>
-<span id="cb228-5"><a href="추가적인-심미적-매핑-탐색.html#cb228-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Type) <span class="sc">+</span>  </span>
-<span id="cb228-6"><a href="추가적인-심미적-매핑-탐색.html#cb228-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb228-7"><a href="추가적인-심미적-매핑-탐색.html#cb228-7" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_bar() 함수</span></span>
-<span id="cb228-8"><a href="추가적인-심미적-매핑-탐색.html#cb228-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb228-9"><a href="추가적인-심미적-매핑-탐색.html#cb228-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb228-10"><a href="추가적인-심미적-매핑-탐색.html#cb228-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 추가적인 심미적 요소</span></span>
-<span id="cb228-11"><a href="추가적인-심미적-매핑-탐색.html#cb228-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">colour =</span> Type) <span class="sc">+</span>       <span class="co"># 막대의 테두리 색 지정</span></span>
-<span id="cb228-12"><a href="추가적인-심미적-매핑-탐색.html#cb228-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">fill =</span> Type) <span class="sc">+</span>         <span class="co"># 막대의 채우기 색 지정</span></span>
-<span id="cb228-13"><a href="추가적인-심미적-매핑-탐색.html#cb228-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">alpha =</span> ..count..) <span class="sc">+</span>   <span class="co"># 막대 색의 투명도 (Type 별 빈도수) 지정</span></span>
-<span id="cb228-14"><a href="추가적인-심미적-매핑-탐색.html#cb228-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">linetype =</span> Type)</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb229-1"><a href="추가적인-심미적-매핑-탐색.html#cb229-1" aria-hidden="true" tabindex="-1"></a>Cars93 <span class="sc">%&gt;%</span> </span>
+<span id="cb229-2"><a href="추가적인-심미적-매핑-탐색.html#cb229-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span>  </span>
+<span id="cb229-3"><a href="추가적인-심미적-매핑-탐색.html#cb229-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb229-4"><a href="추가적인-심미적-매핑-탐색.html#cb229-4" aria-hidden="true" tabindex="-1"></a><span class="co"># X축 : Type 변수</span></span>
+<span id="cb229-5"><a href="추가적인-심미적-매핑-탐색.html#cb229-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Type) <span class="sc">+</span>  </span>
+<span id="cb229-6"><a href="추가적인-심미적-매핑-탐색.html#cb229-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb229-7"><a href="추가적인-심미적-매핑-탐색.html#cb229-7" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_bar() 함수</span></span>
+<span id="cb229-8"><a href="추가적인-심미적-매핑-탐색.html#cb229-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb229-9"><a href="추가적인-심미적-매핑-탐색.html#cb229-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb229-10"><a href="추가적인-심미적-매핑-탐색.html#cb229-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 추가적인 심미적 요소</span></span>
+<span id="cb229-11"><a href="추가적인-심미적-매핑-탐색.html#cb229-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">colour =</span> Type) <span class="sc">+</span>       <span class="co"># 막대의 테두리 색 지정</span></span>
+<span id="cb229-12"><a href="추가적인-심미적-매핑-탐색.html#cb229-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">fill =</span> Type) <span class="sc">+</span>         <span class="co"># 막대의 채우기 색 지정</span></span>
+<span id="cb229-13"><a href="추가적인-심미적-매핑-탐색.html#cb229-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">alpha =</span> ..count..) <span class="sc">+</span>   <span class="co"># 막대 색의 투명도 (Type 별 빈도수) 지정</span></span>
+<span id="cb229-14"><a href="추가적인-심미적-매핑-탐색.html#cb229-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">linetype =</span> Type)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:gGramBasicGeomPAes2"></span>
 <img src="bookdown_files/figure-html/gGramBasicGeomPAes2-1.png" alt="ggplot을 위한 심미적 요소의 추가 2" width="672" />
 <p class="caption">
@@ -607,11 +607,11 @@ Figure 9.9: ggplot을 위한 심미적 요소의 추가 2
 <li>그리고 <code>coord_flip()</code> 함수 등과 같은 <strong>좌표 시스템</strong>을 추가하게 됩니다.</li>
 </ul>
 <p>다음의 예는 <code>Cars93</code> <strong>데이터 세트</strong>를 이용하여, <strong>X축과 Y축</strong>으로 각각 <code>Cylinders</code>와 <code>MPG.highway</code>, 그리고 점의 <strong>색상</strong>은 <code>Type</code> 변수를 기준으로 해서 데이터를 <strong>점</strong>으로 시각화하고 있습니다.</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb229-1"><a href="추가적인-심미적-매핑-탐색.html#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb229-2"><a href="추가적인-심미적-매핑-탐색.html#cb229-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Cylinders, </span>
-<span id="cb229-3"><a href="추가적인-심미적-매핑-탐색.html#cb229-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway, </span>
-<span id="cb229-4"><a href="추가적인-심미적-매핑-탐색.html#cb229-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type)) <span class="sc">+</span> </span>
-<span id="cb229-5"><a href="추가적인-심미적-매핑-탐색.html#cb229-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb230-1"><a href="추가적인-심미적-매핑-탐색.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb230-2"><a href="추가적인-심미적-매핑-탐색.html#cb230-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Cylinders, </span>
+<span id="cb230-3"><a href="추가적인-심미적-매핑-탐색.html#cb230-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway, </span>
+<span id="cb230-4"><a href="추가적인-심미적-매핑-탐색.html#cb230-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type)) <span class="sc">+</span> </span>
+<span id="cb230-5"><a href="추가적인-심미적-매핑-탐색.html#cb230-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/ggplotExmaple-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="stat-함수" class="section level3" number="9.2.2">
@@ -620,23 +620,23 @@ Figure 9.9: ggplot을 위한 심미적 요소의 추가 2
 <p>예를 들어, <code>geom_histogram()</code> 함수는 한 변수의 데이터를 일정한 수의 <code>bin</code>(구간)으로 나눈 후, 각각의 <code>bin</code>에 속하는 데이터 갯수를 셉니다. 즉, X축은 데이터의 구간 값(<code>bin</code>)들이고, Y축은 각 구간 별 데이터의 갯수(<code>..count..</code>)가 되는 것입니다. 여기서 <code>..count..</code> 변수는 원래 데이터 세트에는 없는 변수입니다.</p>
 <p>이처럼 <code>geom_*()</code> 함수를 이용하여 그래프를 그리면 새로운 값을 계산해내는 <code>ggplot2</code>의 알고리즘이 필요하고 이러한 알고리즘을 <code>stat</code>(Statistical Transformation)이라고 합니다. 그리고 이러한 <code>geom_*()</code> 함수에서 사용하는 <code>stat</code> 알고리즘은 <strong><code>args(geom_*)</code></strong>으로 확인할 수 있습니다.</p>
 <p><code>geom_point()</code> 함수의 기본 알고리즘을 확인해 보겠습니다.</p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb230-1"><a href="추가적인-심미적-매핑-탐색.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">args</span>(geom_point)</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb231-1"><a href="추가적인-심미적-매핑-탐색.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="fu">args</span>(geom_point)</span></code></pre></div>
 <pre class="bg-warning"><code>## function (mapping = NULL, data = NULL, stat = &quot;identity&quot;, position = &quot;identity&quot;, 
 ##     ..., na.rm = FALSE, show.legend = NA, inherit.aes = TRUE) 
 ## NULL</code></pre>
 <p><strong><code>stat = "identity"</code></strong>가 <code>geom_point()</code> 함수의 <strong>기본 알고리즘</strong>임을 알 수 있습니다.</p>
 <p>그런데 여기서 또 중요한 것은 <strong><code>stat_알고리즘()</code></strong> 함수를 <code>geom_*()</code> 함수를 대체해서 사용할 수 있다는 것입니다.</p>
 <p>즉, <code>stat_identity()</code> 함수로 <code>geom_point()</code> 함수를 대신해 사용할 수 있습니다. 앞에서 <code>geom_point()</code> 함수를 사용한 그림 <a href="통계적-그래프.html#fig:gGramBasicGeomP">9.7</a>은 다음과 같이 <code>stat_identity()</code> 함수를 이용해도 그릴 수 있다는 것입니다.</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb232-1"><a href="추가적인-심미적-매핑-탐색.html#cb232-1" aria-hidden="true" tabindex="-1"></a>Cars93 <span class="sc">%&gt;%</span>         </span>
-<span id="cb232-2"><a href="추가적인-심미적-매핑-탐색.html#cb232-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span>  </span>
-<span id="cb232-3"><a href="추가적인-심미적-매핑-탐색.html#cb232-3" aria-hidden="true" tabindex="-1"></a><span class="co"># X축 : Weight 변수</span></span>
-<span id="cb232-4"><a href="추가적인-심미적-매핑-탐색.html#cb232-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Weight) <span class="sc">+</span>  </span>
-<span id="cb232-5"><a href="추가적인-심미적-매핑-탐색.html#cb232-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb232-6"><a href="추가적인-심미적-매핑-탐색.html#cb232-6" aria-hidden="true" tabindex="-1"></a><span class="co"># y축 : MPG.highway 변수</span></span>
-<span id="cb232-7"><a href="추가적인-심미적-매핑-탐색.html#cb232-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> MPG.highway) <span class="sc">+</span></span>
-<span id="cb232-8"><a href="추가적인-심미적-매핑-탐색.html#cb232-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb232-9"><a href="추가적인-심미적-매핑-탐색.html#cb232-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 각 행의 X와 Y 위치에 점을 표시 : stat_identity() 함수</span></span>
-<span id="cb232-10"><a href="추가적인-심미적-매핑-탐색.html#cb232-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_identity</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb233-1"><a href="추가적인-심미적-매핑-탐색.html#cb233-1" aria-hidden="true" tabindex="-1"></a>Cars93 <span class="sc">%&gt;%</span>         </span>
+<span id="cb233-2"><a href="추가적인-심미적-매핑-탐색.html#cb233-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span>  </span>
+<span id="cb233-3"><a href="추가적인-심미적-매핑-탐색.html#cb233-3" aria-hidden="true" tabindex="-1"></a><span class="co"># X축 : Weight 변수</span></span>
+<span id="cb233-4"><a href="추가적인-심미적-매핑-탐색.html#cb233-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Weight) <span class="sc">+</span>  </span>
+<span id="cb233-5"><a href="추가적인-심미적-매핑-탐색.html#cb233-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb233-6"><a href="추가적인-심미적-매핑-탐색.html#cb233-6" aria-hidden="true" tabindex="-1"></a><span class="co"># y축 : MPG.highway 변수</span></span>
+<span id="cb233-7"><a href="추가적인-심미적-매핑-탐색.html#cb233-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> MPG.highway) <span class="sc">+</span></span>
+<span id="cb233-8"><a href="추가적인-심미적-매핑-탐색.html#cb233-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb233-9"><a href="추가적인-심미적-매핑-탐색.html#cb233-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 각 행의 X와 Y 위치에 점을 표시 : stat_identity() 함수</span></span>
+<span id="cb233-10"><a href="추가적인-심미적-매핑-탐색.html#cb233-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_identity</span>()</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:gGramBasicStatId"></span>
 <img src="bookdown_files/figure-html/gGramBasicStatId-1.png" alt="ggplot 시각화 객체 : stat_identity() 함수" width="672" />
 <p class="caption">
@@ -646,19 +646,19 @@ Figure 9.10: ggplot 시각화 객체 : stat_identity() 함수
 <p>한편 <code>stat</code>에 지정된 알고리즘이 아닌 데이터 세트에 있는 변수로 그래프를 그려야 할 때가 있습니다.</p>
 <p>예를 들어, <strong><code>geom_bar()</code></strong> 함수의 경우 <code>count</code>를 기본 <code>stat</code>으로 하여 x축의 변수에 대한 도수(<code>count</code>)를 y축에 표시하게 됩니다. 그런데 Y축에 이러한 카운트를 사용하지 않고, 데이터 세트에 있는 다른 변수를 표시하고 싶은 경우가 있습니다.</p>
 <p>다음은 <code>Cars93</code> 데이터 세트에 있는 자동차의 유형(<code>Type</code>)을 X축에 그리고 고속도로 연비(<code>MPG.highway</code>)를 Y축에 막대 그래프로 표시하는 예입니다.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb233-1"><a href="추가적인-심미적-매핑-탐색.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93) <span class="sc">+</span></span>
-<span id="cb233-2"><a href="추가적인-심미적-매핑-탐색.html#cb233-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Type) <span class="sc">+</span></span>
-<span id="cb233-3"><a href="추가적인-심미적-매핑-탐색.html#cb233-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> MPG.highway) <span class="sc">+</span></span>
-<span id="cb233-4"><a href="추가적인-심미적-매핑-탐색.html#cb233-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb234-1"><a href="추가적인-심미적-매핑-탐색.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93) <span class="sc">+</span></span>
+<span id="cb234-2"><a href="추가적인-심미적-매핑-탐색.html#cb234-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Type) <span class="sc">+</span></span>
+<span id="cb234-3"><a href="추가적인-심미적-매핑-탐색.html#cb234-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> MPG.highway) <span class="sc">+</span></span>
+<span id="cb234-4"><a href="추가적인-심미적-매핑-탐색.html#cb234-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
 <pre><code>## Error: stat_count() can only have an x or y aesthetic.</code></pre>
 <p><img src="bookdown_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>이 경우에 <code>geom_bar()</code> 함수는 <code>count</code> 알고리즘을 기본 <code>stat</code>으로 사용하므로 Y축이 <code>y = ..count..</code> 이 되어야 하는데, 지금은 <code>y = MPG.highway</code>로 되어 있어 에러가 발생합니다.</p>
 <p>Y축의 값으로 기본적인 <code>stat</code> 알고리즘을 사용하지 않는 경우에는 이러한 에러를 방지하기 위해서 시각화 객체인 <code>geom_bar()</code> 함수에 <strong><code>stat = 'identity'</code></strong>를 삽입해 주어야 합니다.</p>
 <p>이는 Y축에 표시될 값은 기본 알고리즘을 사용하여 산출하지 않고 원 데이터 세트에 있는 값으로 사용하겠다는 설정인 것입니다.</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb235-1"><a href="추가적인-심미적-매핑-탐색.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb235-2"><a href="추가적인-심미적-매핑-탐색.html#cb235-2" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> Type, </span>
-<span id="cb235-3"><a href="추가적인-심미적-매핑-탐색.html#cb235-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> MPG.highway)) <span class="sc">+</span></span>
-<span id="cb235-4"><a href="추가적인-심미적-매핑-탐색.html#cb235-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb236-1"><a href="추가적인-심미적-매핑-탐색.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb236-2"><a href="추가적인-심미적-매핑-탐색.html#cb236-2" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> Type, </span>
+<span id="cb236-3"><a href="추가적인-심미적-매핑-탐색.html#cb236-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> MPG.highway)) <span class="sc">+</span></span>
+<span id="cb236-4"><a href="추가적인-심미적-매핑-탐색.html#cb236-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:ggplotStatIdent"></span>
 <img src="bookdown_files/figure-html/ggplotStatIdent-1.png" alt="Y축을 데이터 세트의 값으로 사용할 경우 : stat = 'identity'" width="672" />
 <p class="caption">
@@ -668,9 +668,9 @@ Figure 9.11: Y축을 데이터 세트의 값으로 사용할 경우 : stat = ‘
 <p>이제 우리가 원하는대로 X축에 자동차 유형(<code>Type</code>)이 그리고 Y축에는 고속도로 연비(<code>MPG.higyway</code>)가 표시되고 있음을 알 수 있습니다.</p>
 <p>그런데 여기서 <strong>Y축의 값</strong>은 무슨 값일까요? 기본적으로 <strong>합계 값</strong>을 표현하고 있습니다.</p>
 <p>참고로, 합계 값은 다음과 같이 확인할 수 있습니다.</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb236-1"><a href="추가적인-심미적-매핑-탐색.html#cb236-1" aria-hidden="true" tabindex="-1"></a>Cars93 <span class="sc">%&gt;%</span>                          <span class="co"># 데이터 세트</span></span>
-<span id="cb236-2"><a href="추가적인-심미적-매핑-탐색.html#cb236-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Type) <span class="sc">%&gt;%</span>                <span class="co"># X 축의 변수로 그룹화합니다.</span></span>
-<span id="cb236-3"><a href="추가적인-심미적-매핑-탐색.html#cb236-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">sum</span>(MPG.highway))       <span class="co"># Y 축의 변수의 그룹별 합계를 구합니다.</span></span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb237-1"><a href="추가적인-심미적-매핑-탐색.html#cb237-1" aria-hidden="true" tabindex="-1"></a>Cars93 <span class="sc">%&gt;%</span>                          <span class="co"># 데이터 세트</span></span>
+<span id="cb237-2"><a href="추가적인-심미적-매핑-탐색.html#cb237-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Type) <span class="sc">%&gt;%</span>                <span class="co"># X 축의 변수로 그룹화합니다.</span></span>
+<span id="cb237-3"><a href="추가적인-심미적-매핑-탐색.html#cb237-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">sum</span>(MPG.highway))       <span class="co"># Y 축의 변수의 그룹별 합계를 구합니다.</span></span></code></pre></div>
 <pre class="bg-warning"><code>## # A tibble: 6 x 2
 ##   Type    `sum(MPG.highway)`
 ##   &lt;fct&gt;                &lt;int&gt;
