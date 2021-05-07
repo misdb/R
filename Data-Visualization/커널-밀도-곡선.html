@@ -581,7 +581,14 @@ Figure 11.15: 가격 커널 밀도 곡선
 <span id="cb292-5"><a href="커널-밀도-곡선.html#cb292-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;yellow&quot;</span>,          <span class="co"># 곡선 밑부분을 &quot;yellow&quot; 색으로 채웁니다.</span></span>
 <span id="cb292-6"><a href="커널-밀도-곡선.html#cb292-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>,           <span class="co"># 커널 밀도 곡선의 색을 &quot;red&quot;로 표시합니다.</span></span>
 <span id="cb292-7"><a href="커널-밀도-곡선.html#cb292-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">alpha =</span> .<span class="dv">2</span>)  <span class="sc">+</span>            <span class="co"># fill 색의 투명도를 20%로 설정합니다.</span></span>
-<span id="cb292-8"><a href="커널-밀도-곡선.html#cb292-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggtitle</span>(<span class="st">&quot;곡선의 색과 곡선 아래 부분의 색 지정(투명도 포함)&quot;</span>)        <span class="co"># 그래프의 제목을 지정합니다.</span></span></code></pre></div>
+<span id="cb292-8"><a href="커널-밀도-곡선.html#cb292-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggtitle</span>(<span class="st">&quot;곡선의 색과 곡선 아래 부분의 색 지정(투명도 포함)&quot;</span>)        <span class="co"># 그래프의 제목을 지정합니다.</span></span>
+<span id="cb292-9"><a href="커널-밀도-곡선.html#cb292-9" aria-hidden="true" tabindex="-1"></a>k1</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:KDCPriceLineCol"></span>
+<img src="bookdown_files/figure-html/KDCPriceLineCol-1.png" alt="가격 커널 밀도 곡선 : 선과 면 색 지정" width="672" />
+<p class="caption">
+Figure 11.16: 가격 커널 밀도 곡선 : 선과 면 색 지정
+</p>
+</div>
 </div>
 <div id="geom_line-함수의-이용" class="section level4" number="11.2.2.2">
 <h4><span class="header-section-number">11.2.2.2</span> geom_line() 함수의 이용</h4>
@@ -591,7 +598,14 @@ Figure 11.15: 가격 커널 밀도 곡선
 <span id="cb293-3"><a href="커널-밀도-곡선.html#cb293-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">colour =</span> <span class="cn">NA</span>,              <span class="co"># 커널 밀도 곡선을 지웁니다.</span></span>
 <span id="cb293-4"><a href="커널-밀도-곡선.html#cb293-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">alpha =</span> .<span class="dv">5</span>)  <span class="sc">+</span>            </span>
 <span id="cb293-5"><a href="커널-밀도-곡선.html#cb293-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">&quot;density&quot;</span>) <span class="sc">+</span>          <span class="co"># 커널 밀도 곡선을 추가합니다.</span></span>
-<span id="cb293-6"><a href="커널-밀도-곡선.html#cb293-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggtitle</span>(<span class="st">&quot;geom_line() 함수의 이용&quot;</span>)      </span></code></pre></div>
+<span id="cb293-6"><a href="커널-밀도-곡선.html#cb293-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggtitle</span>(<span class="st">&quot;geom_line() 함수의 이용&quot;</span>)      </span>
+<span id="cb293-7"><a href="커널-밀도-곡선.html#cb293-7" aria-hidden="true" tabindex="-1"></a>k2</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:KDCPriceGeomLine"></span>
+<img src="bookdown_files/figure-html/KDCPriceGeomLine-1.png" alt="가격 커널 밀도 곡선 : geom_line() 함수 이용" width="672" />
+<p class="caption">
+Figure 11.17: 가격 커널 밀도 곡선 : geom_line() 함수 이용
+</p>
+</div>
 </div>
 <div id="축-값의-범위-지정" class="section level4" number="11.2.2.3">
 <h4><span class="header-section-number">11.2.2.3</span> 축 값의 범위 지정</h4>
@@ -604,31 +618,37 @@ Figure 11.15: 가격 커널 밀도 곡선
 <span id="cb294-5"><a href="커널-밀도-곡선.html#cb294-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">&quot;density&quot;</span>) <span class="sc">+</span>         </span>
 <span id="cb294-6"><a href="커널-밀도-곡선.html#cb294-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.06</span>)) <span class="sc">+</span>        <span class="co"># y 축값의 범위를 지정합니다. 0 ~ 0.06</span></span>
 <span id="cb294-7"><a href="커널-밀도-곡선.html#cb294-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggtitle</span>(<span class="st">&quot;Y 축 범위의 지정&quot;</span>)             </span>
-<span id="cb294-8"><a href="커널-밀도-곡선.html#cb294-8" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb294-9"><a href="커널-밀도-곡선.html#cb294-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 하나의 페이지에 여러 개의 플롯을 그리기 : multiplot() 함수 이용</span></span>
-<span id="cb294-10"><a href="커널-밀도-곡선.html#cb294-10" aria-hidden="true" tabindex="-1"></a><span class="fu">multiplot</span>(k1, k2, k3, <span class="at">cols =</span> <span class="dv">1</span>)                </span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:KDCPriceOptions"></span>
+<span id="cb294-8"><a href="커널-밀도-곡선.html#cb294-8" aria-hidden="true" tabindex="-1"></a>k3</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:KDCPriceOptions-1"></span>
 <img src="bookdown_files/figure-html/KDCPriceOptions-1.png" alt="옵션을 설정한 다양한 커널 밀도 곡선" width="672" />
 <p class="caption">
-Figure 11.16: 옵션을 설정한 다양한 커널 밀도 곡선
+Figure 11.18: 옵션을 설정한 다양한 커널 밀도 곡선
+</p>
+</div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb295-1"><a href="커널-밀도-곡선.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 하나의 페이지에 여러 개의 플롯을 그리기 : multiplot() 함수 이용</span></span>
+<span id="cb295-2"><a href="커널-밀도-곡선.html#cb295-2" aria-hidden="true" tabindex="-1"></a><span class="fu">multiplot</span>(k1, k2, k3, <span class="at">cols =</span> <span class="dv">1</span>)                </span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:KDCPriceOptions-2"></span>
+<img src="bookdown_files/figure-html/KDCPriceOptions-2.png" alt="옵션을 설정한 다양한 커널 밀도 곡선" width="672" />
+<p class="caption">
+Figure 11.19: 옵션을 설정한 다양한 커널 밀도 곡선
 </p>
 </div>
 <p>참고로 <code>x</code>축의 값을 <code>40 ~ 60</code>으로 제한하고자 할 때는 <code>xlim(40, 60)</code>을 추가해 주면 됩니다.</p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb295-1"><a href="커널-밀도-곡선.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>                  </span>
-<span id="cb295-2"><a href="커널-밀도-곡선.html#cb295-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;yellow&quot;</span>,           </span>
-<span id="cb295-3"><a href="커널-밀도-곡선.html#cb295-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">colour =</span> <span class="cn">NA</span>,               </span>
-<span id="cb295-4"><a href="커널-밀도-곡선.html#cb295-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span>                </span>
-<span id="cb295-5"><a href="커널-밀도-곡선.html#cb295-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">&quot;density&quot;</span>) <span class="sc">+</span>           </span>
-<span id="cb295-6"><a href="커널-밀도-곡선.html#cb295-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.06</span>)) <span class="sc">+</span>         </span>
-<span id="cb295-7"><a href="커널-밀도-곡선.html#cb295-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">xlim</span>(<span class="dv">40</span>, <span class="dv">60</span>) <span class="sc">+</span>                          <span class="co"># x 축 값의 범위를 지정합니다. 40 ~ 60</span></span>
-<span id="cb295-8"><a href="커널-밀도-곡선.html#cb295-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggtitle</span>(<span class="st">&quot;X,Y 축 범위의 지정&quot;</span>)            </span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb296-1"><a href="커널-밀도-곡선.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>                  </span>
+<span id="cb296-2"><a href="커널-밀도-곡선.html#cb296-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;yellow&quot;</span>,           </span>
+<span id="cb296-3"><a href="커널-밀도-곡선.html#cb296-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">colour =</span> <span class="cn">NA</span>,               </span>
+<span id="cb296-4"><a href="커널-밀도-곡선.html#cb296-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span>                </span>
+<span id="cb296-5"><a href="커널-밀도-곡선.html#cb296-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">&quot;density&quot;</span>) <span class="sc">+</span>           </span>
+<span id="cb296-6"><a href="커널-밀도-곡선.html#cb296-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.06</span>)) <span class="sc">+</span>         </span>
+<span id="cb296-7"><a href="커널-밀도-곡선.html#cb296-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">xlim</span>(<span class="dv">40</span>, <span class="dv">60</span>) <span class="sc">+</span>                          <span class="co"># x 축 값의 범위를 지정합니다. 40 ~ 60</span></span>
+<span id="cb296-8"><a href="커널-밀도-곡선.html#cb296-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggtitle</span>(<span class="st">&quot;X,Y 축 범위의 지정&quot;</span>)            </span></code></pre></div>
 <pre><code>## Warning: Removed 91 rows containing non-finite values (stat_density).
 
 ## Warning: Removed 91 rows containing non-finite values (stat_density).</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:KDCXYRange"></span>
 <img src="bookdown_files/figure-html/KDCXYRange-1.png" alt="커널 밀도 곡선 : X축과 Y축의 값 범위 지정" width="672" />
 <p class="caption">
-Figure 11.17: 커널 밀도 곡선 : X축과 Y축의 값 범위 지정
+Figure 11.20: 커널 밀도 곡선 : X축과 Y축의 값 범위 지정
 </p>
 </div>
 <p><a href="커널-밀도-곡선.html#커널-밀도-곡선">Go Top</a></p>
@@ -638,14 +658,14 @@ Figure 11.17: 커널 밀도 곡선 : X축과 Y축의 값 범위 지정
 <h3><span class="header-section-number">11.2.3</span> <code>stat_density()</code> 함수의 이용</h3>
 <p><code>geom_*()</code> 함수들은 기본적인 <code>stat_*()</code> 함수를 가지고 있습니다.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> <code>args(geom_density)</code>로 확인해 보면 <code>geom_density()</code> 함수는 <code>stat = "density"</code>를 알고리즘으로 사용하고 있습니다.</p>
 <p><code>geom_density()</code> 함수의 경우에는 <code>stat_density()</code> 함수가 여기에 해당하며, <strong><code>geom_density()</code></strong> 함수 대신에 <strong><code>stat_density()</code></strong> 함수를 이용할 수 있습니다.</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb297-1"><a href="커널-밀도-곡선.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 기본 커널 밀도 곡선</span></span>
-<span id="cb297-2"><a href="커널-밀도-곡선.html#cb297-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 가격 커널 밀도 곡선(Kernel Density Curve)</span></span>
-<span id="cb297-3"><a href="커널-밀도-곡선.html#cb297-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>      </span>
-<span id="cb297-4"><a href="커널-밀도-곡선.html#cb297-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">stat_density</span>(<span class="at">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="at">fill =</span> <span class="cn">NA</span>)               </span></code></pre></div>
-<div class="figure" style="text-align: center">
-<img src="bookdown_files/figure-html/KDCPriceStat_D-1.png" alt="가격 커널 밀도 곡선 : stat_density() 함수 이용" width="672" />
+<div class="sourceCode" id="cb298"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb298-1"><a href="커널-밀도-곡선.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 기본 커널 밀도 곡선</span></span>
+<span id="cb298-2"><a href="커널-밀도-곡선.html#cb298-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 가격 커널 밀도 곡선(Kernel Density Curve)</span></span>
+<span id="cb298-3"><a href="커널-밀도-곡선.html#cb298-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>      </span>
+<span id="cb298-4"><a href="커널-밀도-곡선.html#cb298-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">stat_density</span>(<span class="at">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="at">fill =</span> <span class="cn">NA</span>)               </span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:KDCPriceStatD"></span>
+<img src="bookdown_files/figure-html/KDCPriceStatD-1.png" alt="가격 커널 밀도 곡선 : stat_density() 함수 이용" width="672" />
 <p class="caption">
-(#fig:KDCPriceStat_D)가격 커널 밀도 곡선 : stat_density() 함수 이용
+Figure 11.21: 가격 커널 밀도 곡선 : stat_density() 함수 이용
 </p>
 </div>
 <p>자세한 사항은 <code>? stat_density()</code>로 확인하기 바랍니다.</p>
@@ -657,60 +677,41 @@ Figure 11.17: 커널 밀도 곡선 : X축과 Y축의 값 범위 지정
 <p>그룹별 커널 밀도 곡선도 앞에서의 <a href="gg히스토그램.html#그룹별-히스토그램">그룹별 히스토그램</a>과 마찬가지로 <code>aes()</code> 함수, <code>facet_grid()</code>, 그리고 <code>facet_wrap()</code> 함수를 이용하여 작성할 수 있습니다.</p>
 <div id="aes-함수의-모수-이용-2" class="section level4" number="11.2.4.1">
 <h4><span class="header-section-number">11.2.4.1</span> <code>aes()</code> 함수의 모수 이용</h4>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb298-1"><a href="커널-밀도-곡선.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종(Type)별 가격 커널 밀도 곡선</span></span>
-<span id="cb298-2"><a href="커널-밀도-곡선.html#cb298-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,                                   </span>
-<span id="cb298-3"><a href="커널-밀도-곡선.html#cb298-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Price,                              </span>
-<span id="cb298-4"><a href="커널-밀도-곡선.html#cb298-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type)) <span class="sc">+</span>                     <span class="co"># 그룹변수(요인변수)를 colour에 지정해 줍니다.</span></span>
-<span id="cb298-5"><a href="커널-밀도-곡선.html#cb298-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;yellow&quot;</span>,            </span>
-<span id="cb298-6"><a href="커널-밀도-곡선.html#cb298-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">colour =</span> <span class="cn">NA</span>,                </span>
-<span id="cb298-7"><a href="커널-밀도-곡선.html#cb298-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span>                 </span>
-<span id="cb298-8"><a href="커널-밀도-곡선.html#cb298-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">&quot;density&quot;</span>) <span class="sc">+</span>            </span>
-<span id="cb298-9"><a href="커널-밀도-곡선.html#cb298-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.06</span>)) <span class="sc">+</span>          </span>
-<span id="cb298-10"><a href="커널-밀도-곡선.html#cb298-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggtitle</span>(<span class="st">&quot;차종(Type)별 가격 커널 밀도 곡선&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb299-1"><a href="커널-밀도-곡선.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종(Type)별 가격 커널 밀도 곡선</span></span>
+<span id="cb299-2"><a href="커널-밀도-곡선.html#cb299-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,                                   </span>
+<span id="cb299-3"><a href="커널-밀도-곡선.html#cb299-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Price,                              </span>
+<span id="cb299-4"><a href="커널-밀도-곡선.html#cb299-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type)) <span class="sc">+</span>                     <span class="co"># 그룹변수(요인변수)를 colour에 지정해 줍니다.</span></span>
+<span id="cb299-5"><a href="커널-밀도-곡선.html#cb299-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;yellow&quot;</span>,            </span>
+<span id="cb299-6"><a href="커널-밀도-곡선.html#cb299-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">colour =</span> <span class="cn">NA</span>,                </span>
+<span id="cb299-7"><a href="커널-밀도-곡선.html#cb299-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span>                 </span>
+<span id="cb299-8"><a href="커널-밀도-곡선.html#cb299-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">&quot;density&quot;</span>) <span class="sc">+</span>            </span>
+<span id="cb299-9"><a href="커널-밀도-곡선.html#cb299-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.06</span>)) <span class="sc">+</span>          </span>
+<span id="cb299-10"><a href="커널-밀도-곡선.html#cb299-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggtitle</span>(<span class="st">&quot;차종(Type)별 가격 커널 밀도 곡선&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:KDCPriceByType"></span>
 <img src="bookdown_files/figure-html/KDCPriceByType-1.png" alt="차종별 가격 커널 밀도 곡선" width="672" />
 <p class="caption">
-Figure 11.18: 차종별 가격 커널 밀도 곡선
+Figure 11.22: 차종별 가격 커널 밀도 곡선
 </p>
 </div>
 </div>
 <div id="facet_grid-함수-이용-3" class="section level4" number="11.2.4.2">
 <h4><span class="header-section-number">11.2.4.2</span> <code>facet_grid()</code> 함수 이용</h4>
 <p><code>facet_grid()</code> 함수를 이용해서도 그룹별 커널 밀도 곡선을 그릴 수 있습니다.</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb299-1"><a href="커널-밀도-곡선.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종(Type)별 가격 커널 밀도 곡선</span></span>
-<span id="cb299-2"><a href="커널-밀도-곡선.html#cb299-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>              </span>
-<span id="cb299-3"><a href="커널-밀도-곡선.html#cb299-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;yellow&quot;</span>,        </span>
-<span id="cb299-4"><a href="커널-밀도-곡선.html#cb299-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">colour =</span> <span class="cn">NA</span>,            </span>
-<span id="cb299-5"><a href="커널-밀도-곡선.html#cb299-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span>             </span>
-<span id="cb299-6"><a href="커널-밀도-곡선.html#cb299-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">&quot;density&quot;</span>) <span class="sc">+</span>        </span>
-<span id="cb299-7"><a href="커널-밀도-곡선.html#cb299-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.06</span>)) <span class="sc">+</span>      </span>
-<span id="cb299-8"><a href="커널-밀도-곡선.html#cb299-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">facet_grid</span>(Type <span class="sc">~</span> .)  <span class="sc">+</span>                <span class="co"># Type 별로 그래프를 표시해 줍니다.</span></span>
-<span id="cb299-9"><a href="커널-밀도-곡선.html#cb299-9" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종(Type)별 가격 커널 밀도 곡선&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb300-1"><a href="커널-밀도-곡선.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종(Type)별 가격 커널 밀도 곡선</span></span>
+<span id="cb300-2"><a href="커널-밀도-곡선.html#cb300-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>              </span>
+<span id="cb300-3"><a href="커널-밀도-곡선.html#cb300-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;yellow&quot;</span>,        </span>
+<span id="cb300-4"><a href="커널-밀도-곡선.html#cb300-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">colour =</span> <span class="cn">NA</span>,            </span>
+<span id="cb300-5"><a href="커널-밀도-곡선.html#cb300-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span>             </span>
+<span id="cb300-6"><a href="커널-밀도-곡선.html#cb300-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">&quot;density&quot;</span>) <span class="sc">+</span>        </span>
+<span id="cb300-7"><a href="커널-밀도-곡선.html#cb300-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.06</span>)) <span class="sc">+</span>      </span>
+<span id="cb300-8"><a href="커널-밀도-곡선.html#cb300-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">facet_grid</span>(Type <span class="sc">~</span> .)  <span class="sc">+</span>                <span class="co"># Type 별로 그래프를 표시해 줍니다.</span></span>
+<span id="cb300-9"><a href="커널-밀도-곡선.html#cb300-9" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종(Type)별 가격 커널 밀도 곡선&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:KDCPriceByTypeFacGrid-1"></span>
 <img src="bookdown_files/figure-html/KDCPriceByTypeFacGrid-1.png" alt="차종별 가격 커널 밀도 곡선 : facet_grid()" width="100%" />
 <p class="caption">
-Figure 11.19: 차종별 가격 커널 밀도 곡선 : facet_grid()
+Figure 11.23: 차종별 가격 커널 밀도 곡선 : facet_grid()
 </p>
 </div>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb300-1"><a href="커널-밀도-곡선.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종(Type)별 가격 커널 밀도 곡선</span></span>
-<span id="cb300-2"><a href="커널-밀도-곡선.html#cb300-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>               </span>
-<span id="cb300-3"><a href="커널-밀도-곡선.html#cb300-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;yellow&quot;</span>,         </span>
-<span id="cb300-4"><a href="커널-밀도-곡선.html#cb300-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">colour =</span> <span class="cn">NA</span>,             </span>
-<span id="cb300-5"><a href="커널-밀도-곡선.html#cb300-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span>              </span>
-<span id="cb300-6"><a href="커널-밀도-곡선.html#cb300-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">&quot;density&quot;</span>) <span class="sc">+</span>         </span>
-<span id="cb300-7"><a href="커널-밀도-곡선.html#cb300-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.06</span>)) <span class="sc">+</span>       </span>
-<span id="cb300-8"><a href="커널-밀도-곡선.html#cb300-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">facet_grid</span>(. <span class="sc">~</span> Type)  <span class="sc">+</span>                <span class="co"># Type 별로 그래프를 표시해 줍니다.</span></span>
-<span id="cb300-9"><a href="커널-밀도-곡선.html#cb300-9" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종(Type)별 가격 커널 밀도 곡선&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:KDCPriceByTypeFacGrid-2"></span>
-<img src="bookdown_files/figure-html/KDCPriceByTypeFacGrid-2.png" alt="차종별 가격 커널 밀도 곡선 : facet_grid()" width="100%" />
-<p class="caption">
-Figure 11.20: 차종별 가격 커널 밀도 곡선 : facet_grid()
-</p>
-</div>
-</div>
-<div id="facet_wrap-함수-이용-3" class="section level4" number="11.2.4.3">
-<h4><span class="header-section-number">11.2.4.3</span> <code>facet_wrap()</code> 함수 이용</h4>
-<p><code>facet_wrap</code> 함수를 이용해서도 그룹별 커널 밀도 곡선을 그릴 수 있습니다.</p>
 <div class="sourceCode" id="cb301"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb301-1"><a href="커널-밀도-곡선.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종(Type)별 가격 커널 밀도 곡선</span></span>
 <span id="cb301-2"><a href="커널-밀도-곡선.html#cb301-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>               </span>
 <span id="cb301-3"><a href="커널-밀도-곡선.html#cb301-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;yellow&quot;</span>,         </span>
@@ -718,12 +719,31 @@ Figure 11.20: 차종별 가격 커널 밀도 곡선 : facet_grid()
 <span id="cb301-5"><a href="커널-밀도-곡선.html#cb301-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span>              </span>
 <span id="cb301-6"><a href="커널-밀도-곡선.html#cb301-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">&quot;density&quot;</span>) <span class="sc">+</span>         </span>
 <span id="cb301-7"><a href="커널-밀도-곡선.html#cb301-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.06</span>)) <span class="sc">+</span>       </span>
-<span id="cb301-8"><a href="커널-밀도-곡선.html#cb301-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">facet_wrap</span>( <span class="sc">~</span> Type)  <span class="sc">+</span>                 <span class="co"># Type 별로 그래프를 표시해 줍니다.</span></span>
+<span id="cb301-8"><a href="커널-밀도-곡선.html#cb301-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">facet_grid</span>(. <span class="sc">~</span> Type)  <span class="sc">+</span>                <span class="co"># Type 별로 그래프를 표시해 줍니다.</span></span>
 <span id="cb301-9"><a href="커널-밀도-곡선.html#cb301-9" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종(Type)별 가격 커널 밀도 곡선&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:KDCPriceByTypeFacGrid-2"></span>
+<img src="bookdown_files/figure-html/KDCPriceByTypeFacGrid-2.png" alt="차종별 가격 커널 밀도 곡선 : facet_grid()" width="100%" />
+<p class="caption">
+Figure 11.24: 차종별 가격 커널 밀도 곡선 : facet_grid()
+</p>
+</div>
+</div>
+<div id="facet_wrap-함수-이용-3" class="section level4" number="11.2.4.3">
+<h4><span class="header-section-number">11.2.4.3</span> <code>facet_wrap()</code> 함수 이용</h4>
+<p><code>facet_wrap</code> 함수를 이용해서도 그룹별 커널 밀도 곡선을 그릴 수 있습니다.</p>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb302-1"><a href="커널-밀도-곡선.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종(Type)별 가격 커널 밀도 곡선</span></span>
+<span id="cb302-2"><a href="커널-밀도-곡선.html#cb302-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>               </span>
+<span id="cb302-3"><a href="커널-밀도-곡선.html#cb302-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;yellow&quot;</span>,         </span>
+<span id="cb302-4"><a href="커널-밀도-곡선.html#cb302-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">colour =</span> <span class="cn">NA</span>,             </span>
+<span id="cb302-5"><a href="커널-밀도-곡선.html#cb302-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span>              </span>
+<span id="cb302-6"><a href="커널-밀도-곡선.html#cb302-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">&quot;density&quot;</span>) <span class="sc">+</span>         </span>
+<span id="cb302-7"><a href="커널-밀도-곡선.html#cb302-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.06</span>)) <span class="sc">+</span>       </span>
+<span id="cb302-8"><a href="커널-밀도-곡선.html#cb302-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">facet_wrap</span>( <span class="sc">~</span> Type)  <span class="sc">+</span>                 <span class="co"># Type 별로 그래프를 표시해 줍니다.</span></span>
+<span id="cb302-9"><a href="커널-밀도-곡선.html#cb302-9" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종(Type)별 가격 커널 밀도 곡선&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:KDCPriceByTypeFacWrap"></span>
 <img src="bookdown_files/figure-html/KDCPriceByTypeFacWrap-1.png" alt="차종별 가격 커널 밀도 곡선 : facet_wrap()" width="672" />
 <p class="caption">
-Figure 11.21: 차종별 가격 커널 밀도 곡선 : facet_wrap()
+Figure 11.25: 차종별 가격 커널 밀도 곡선 : facet_wrap()
 </p>
 </div>
 <p><a href="커널-밀도-곡선.html#커널-밀도-곡선">Go Top</a></p>
@@ -741,34 +761,37 @@ Figure 11.21: 차종별 가격 커널 밀도 곡선 : facet_wrap()
 <li>Y의 최댓값이 되는 X 축의 값을 구합니다.</li>
 </ol>
 <p>이를 R 스크립트로 구현하면 다음과 같습니다.</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb302-1"><a href="커널-밀도-곡선.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 최정점이 되는 X, Y 값 구하기</span></span>
-<span id="cb302-2"><a href="커널-밀도-곡선.html#cb302-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Y값 구하기</span></span>
-<span id="cb302-3"><a href="커널-밀도-곡선.html#cb302-3" aria-hidden="true" tabindex="-1"></a>den <span class="ot">&lt;-</span> <span class="fu">density</span>(Cars93<span class="sc">$</span>Price)</span>
-<span id="cb302-4"><a href="커널-밀도-곡선.html#cb302-4" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">max</span>(den<span class="sc">$</span>y)</span>
-<span id="cb302-5"><a href="커널-밀도-곡선.html#cb302-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb302-6"><a href="커널-밀도-곡선.html#cb302-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) X값 구하기</span></span>
-<span id="cb302-7"><a href="커널-밀도-곡선.html#cb302-7" aria-hidden="true" tabindex="-1"></a>index.X <span class="ot">&lt;-</span> <span class="fu">which.max</span>(den<span class="sc">$</span>y)</span>
-<span id="cb302-8"><a href="커널-밀도-곡선.html#cb302-8" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> den<span class="sc">$</span>x[index.X]</span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb303-1"><a href="커널-밀도-곡선.html#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 최정점이 되는 X, Y 값 구하기</span></span>
+<span id="cb303-2"><a href="커널-밀도-곡선.html#cb303-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Y값 구하기</span></span>
+<span id="cb303-3"><a href="커널-밀도-곡선.html#cb303-3" aria-hidden="true" tabindex="-1"></a>den <span class="ot">&lt;-</span> <span class="fu">density</span>(Cars93<span class="sc">$</span>Price)</span>
+<span id="cb303-4"><a href="커널-밀도-곡선.html#cb303-4" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">max</span>(den<span class="sc">$</span>y)</span>
+<span id="cb303-5"><a href="커널-밀도-곡선.html#cb303-5" aria-hidden="true" tabindex="-1"></a>Y</span></code></pre></div>
+<pre class="bg-warning"><code>## [1] 0.05</code></pre>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb305-1"><a href="커널-밀도-곡선.html#cb305-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) X값 구하기</span></span>
+<span id="cb305-2"><a href="커널-밀도-곡선.html#cb305-2" aria-hidden="true" tabindex="-1"></a>index.X <span class="ot">&lt;-</span> <span class="fu">which.max</span>(den<span class="sc">$</span>y)</span>
+<span id="cb305-3"><a href="커널-밀도-곡선.html#cb305-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> den<span class="sc">$</span>x[index.X]</span>
+<span id="cb305-4"><a href="커널-밀도-곡선.html#cb305-4" aria-hidden="true" tabindex="-1"></a>X</span></code></pre></div>
+<pre class="bg-warning"><code>## [1] 16</code></pre>
 </div>
 <div id="커널-밀도-곡선에-최정점-표시하기" class="section level4" number="11.2.5.2">
 <h4><span class="header-section-number">11.2.5.2</span> 커널 밀도 곡선에 최정점 표시하기</h4>
 <p>geom_vline() 함수를 이용하여 앞에서 구한 y 피크값의 x 좌표를 입력해주면 커널 밀도 곡선의 최대 피크값 위치에 수직선(vertical line)을 추가할 수 있습니다.</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb303-1"><a href="커널-밀도-곡선.html#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 커널 밀도 곡선에 최정점 표시하기</span></span>
-<span id="cb303-2"><a href="커널-밀도-곡선.html#cb303-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>                </span>
-<span id="cb303-3"><a href="커널-밀도-곡선.html#cb303-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;yellow&quot;</span>,         </span>
-<span id="cb303-4"><a href="커널-밀도-곡선.html#cb303-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">colour =</span> <span class="cn">NA</span>,             </span>
-<span id="cb303-5"><a href="커널-밀도-곡선.html#cb303-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span>              </span>
-<span id="cb303-6"><a href="커널-밀도-곡선.html#cb303-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">&quot;density&quot;</span>) <span class="sc">+</span>         </span>
-<span id="cb303-7"><a href="커널-밀도-곡선.html#cb303-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.06</span>)) <span class="sc">+</span>       </span>
-<span id="cb303-8"><a href="커널-밀도-곡선.html#cb303-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggtitle</span>(<span class="st">&quot;커널 밀도 곡선에 최정점 표시하기&quot;</span>) <span class="sc">+</span></span>
-<span id="cb303-9"><a href="커널-밀도-곡선.html#cb303-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> X,                     <span class="co"># Y값이 최대가 되는 X축의 값을 지정합니다.</span></span>
-<span id="cb303-10"><a href="커널-밀도-곡선.html#cb303-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">color =</span> <span class="st">&#39;blue&#39;</span>,                     <span class="co"># 수직선의 색을 지정합니다.</span></span>
-<span id="cb303-11"><a href="커널-밀도-곡선.html#cb303-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">size =</span> <span class="fl">1.5</span>,                         <span class="co"># 수직선의 두께를 지정합니다.</span></span>
-<span id="cb303-12"><a href="커널-밀도-곡선.html#cb303-12" aria-hidden="true" tabindex="-1"></a>                   <span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>)                <span class="co"># 수직선의 형탤르 지정합니다.</span></span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb307-1"><a href="커널-밀도-곡선.html#cb307-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 커널 밀도 곡선에 최정점 표시하기</span></span>
+<span id="cb307-2"><a href="커널-밀도-곡선.html#cb307-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Price)) <span class="sc">+</span>                </span>
+<span id="cb307-3"><a href="커널-밀도-곡선.html#cb307-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;yellow&quot;</span>,         </span>
+<span id="cb307-4"><a href="커널-밀도-곡선.html#cb307-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">colour =</span> <span class="cn">NA</span>,             </span>
+<span id="cb307-5"><a href="커널-밀도-곡선.html#cb307-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span>              </span>
+<span id="cb307-6"><a href="커널-밀도-곡선.html#cb307-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">&quot;density&quot;</span>) <span class="sc">+</span>         </span>
+<span id="cb307-7"><a href="커널-밀도-곡선.html#cb307-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.06</span>)) <span class="sc">+</span>       </span>
+<span id="cb307-8"><a href="커널-밀도-곡선.html#cb307-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggtitle</span>(<span class="st">&quot;커널 밀도 곡선에 최정점 표시하기&quot;</span>) <span class="sc">+</span></span>
+<span id="cb307-9"><a href="커널-밀도-곡선.html#cb307-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> X,                     <span class="co"># Y값이 최대가 되는 X축의 값을 지정합니다.</span></span>
+<span id="cb307-10"><a href="커널-밀도-곡선.html#cb307-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">color =</span> <span class="st">&#39;blue&#39;</span>,                     <span class="co"># 수직선의 색을 지정합니다.</span></span>
+<span id="cb307-11"><a href="커널-밀도-곡선.html#cb307-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">size =</span> <span class="fl">1.5</span>,                         <span class="co"># 수직선의 두께를 지정합니다.</span></span>
+<span id="cb307-12"><a href="커널-밀도-곡선.html#cb307-12" aria-hidden="true" tabindex="-1"></a>                   <span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>)                <span class="co"># 수직선의 형탤르 지정합니다.</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:KDCPriceVertPeak"></span>
 <img src="bookdown_files/figure-html/KDCPriceVertPeak-1.png" alt="커널 밀도 곡선의 점점에 수직선 표시하기" width="672" />
 <p class="caption">
-Figure 11.22: 커널 밀도 곡선의 점점에 수직선 표시하기
+Figure 11.26: 커널 밀도 곡선의 점점에 수직선 표시하기
 </p>
 </div>
 <ul>
@@ -780,18 +803,18 @@ Figure 11.22: 커널 밀도 곡선의 점점에 수직선 표시하기
 <div id="히스토그램과-커널-밀도-곡선-겹쳐-그리기" class="section level3" number="11.2.6">
 <h3><span class="header-section-number">11.2.6</span> 히스토그램과 커널 밀도 곡선 겹쳐 그리기</h3>
 <p><strong>히스토그램과 커널 밀도 곡선을 겹쳐서</strong> 그려보도록 하겠습니다.</p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb304-1"><a href="커널-밀도-곡선.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 히스토그램과 커널 밀도 곡선을 겹쳐서 그리기</span></span>
-<span id="cb304-2"><a href="커널-밀도-곡선.html#cb304-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Price, </span>
-<span id="cb304-3"><a href="커널-밀도-곡선.html#cb304-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> ..density..)) <span class="sc">+</span>                    <span class="co"># Y축을 ..density..로 설정합니다.</span></span>
-<span id="cb304-4"><a href="커널-밀도-곡선.html#cb304-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb304-5"><a href="커널-밀도-곡선.html#cb304-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">colour =</span> <span class="cn">NA</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span>  </span>
-<span id="cb304-6"><a href="커널-밀도-곡선.html#cb304-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">&quot;density&quot;</span>) <span class="sc">+</span>  </span>
-<span id="cb304-7"><a href="커널-밀도-곡선.html#cb304-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.06</span>)) <span class="sc">+</span> </span>
-<span id="cb304-8"><a href="커널-밀도-곡선.html#cb304-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;히스토그램과 커널 밀도 곡선을 겹쳐서 그리기&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb308-1"><a href="커널-밀도-곡선.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 히스토그램과 커널 밀도 곡선을 겹쳐서 그리기</span></span>
+<span id="cb308-2"><a href="커널-밀도-곡선.html#cb308-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Price, </span>
+<span id="cb308-3"><a href="커널-밀도-곡선.html#cb308-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> ..density..)) <span class="sc">+</span>                    <span class="co"># Y축을 ..density..로 설정합니다.</span></span>
+<span id="cb308-4"><a href="커널-밀도-곡선.html#cb308-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb308-5"><a href="커널-밀도-곡선.html#cb308-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">colour =</span> <span class="cn">NA</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span>  </span>
+<span id="cb308-6"><a href="커널-밀도-곡선.html#cb308-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">&quot;density&quot;</span>) <span class="sc">+</span>  </span>
+<span id="cb308-7"><a href="커널-밀도-곡선.html#cb308-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.06</span>)) <span class="sc">+</span> </span>
+<span id="cb308-8"><a href="커널-밀도-곡선.html#cb308-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;히스토그램과 커널 밀도 곡선을 겹쳐서 그리기&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:KDCPriceHist"></span>
 <img src="bookdown_files/figure-html/KDCPriceHist-1.png" alt="히스토그램과 커널 밀도 곡선 겹쳐 그리기" width="672" />
 <p class="caption">
-Figure 11.23: 히스토그램과 커널 밀도 곡선 겹쳐 그리기
+Figure 11.27: 히스토그램과 커널 밀도 곡선 겹쳐 그리기
 </p>
 </div>
 <p><a href="커널-밀도-곡선.html#커널-밀도-곡선">Go Top</a></p>
@@ -799,30 +822,30 @@ Figure 11.23: 히스토그램과 커널 밀도 곡선 겹쳐 그리기
 <div id="theme의-사용" class="section level3" number="11.2.7">
 <h3><span class="header-section-number">11.2.7</span> Theme의 사용</h3>
 <p>히스토그램에서 <a href="gg히스토그램.html#UsignThemes">Theme을 사용</a>하였듯이, 커널 밀도 곡선에서도 Theme을 사용할 수 있습니다. 앞에서 사용한 theme 부분을 그대로 복사해서 붙여 넣으면 앞의 theme을 그대로 사용할 수 있습니다. 다음의 예에서 <code>ggplot2::theme_classic() +</code> 이하 부분은 히스토그램에서 <a href="gg히스토그램.html#UsignThemes">Theme을 사용</a>에서 사용한 부분을 그대로 복사해서 붙여 넣은 내용입니다.</p>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb305-1"><a href="커널-밀도-곡선.html#cb305-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Theme의 사용</span></span>
-<span id="cb305-2"><a href="커널-밀도-곡선.html#cb305-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Price, </span>
-<span id="cb305-3"><a href="커널-밀도-곡선.html#cb305-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> ..density..)) <span class="sc">+</span>                   </span>
-<span id="cb305-4"><a href="커널-밀도-곡선.html#cb305-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb305-5"><a href="커널-밀도-곡선.html#cb305-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">colour =</span> <span class="cn">NA</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span>  </span>
-<span id="cb305-6"><a href="커널-밀도-곡선.html#cb305-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">&quot;density&quot;</span>) <span class="sc">+</span>  </span>
-<span id="cb305-7"><a href="커널-밀도-곡선.html#cb305-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.06</span>)) <span class="sc">+</span> </span>
-<span id="cb305-8"><a href="커널-밀도-곡선.html#cb305-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;히스토그램과 커널 밀도 곡선을 겹쳐서 그리기&quot;</span>) <span class="sc">+</span></span>
-<span id="cb305-9"><a href="커널-밀도-곡선.html#cb305-9" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">theme_classic</span>() <span class="sc">+</span>                                         <span class="co"># 그래프 테마 지정</span></span>
-<span id="cb305-10"><a href="커널-밀도-곡선.html#cb305-10" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
-<span id="cb305-11"><a href="커널-밀도-곡선.html#cb305-11" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;italic&quot;</span>, </span>
-<span id="cb305-12"><a href="커널-밀도-곡선.html#cb305-12" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
-<span id="cb305-13"><a href="커널-밀도-곡선.html#cb305-13" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
-<span id="cb305-14"><a href="커널-밀도-곡선.html#cb305-14" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
-<span id="cb305-15"><a href="커널-밀도-곡선.html#cb305-15" aria-hidden="true" tabindex="-1"></a>                 <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
-<span id="cb305-16"><a href="커널-밀도-곡선.html#cb305-16" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;bold.italic&quot;</span>, </span>
-<span id="cb305-17"><a href="커널-밀도-곡선.html#cb305-17" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
-<span id="cb305-18"><a href="커널-밀도-곡선.html#cb305-18" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
-<span id="cb305-19"><a href="커널-밀도-곡선.html#cb305-19" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span>       <span class="co"># X축과 Y축의 서식 스타일 지정</span></span>
-<span id="cb305-20"><a href="커널-밀도-곡선.html#cb305-20" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)              <span class="co"># Y 값의 천단위에 콤마 표시</span></span></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb309-1"><a href="커널-밀도-곡선.html#cb309-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Theme의 사용</span></span>
+<span id="cb309-2"><a href="커널-밀도-곡선.html#cb309-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Price, </span>
+<span id="cb309-3"><a href="커널-밀도-곡선.html#cb309-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> ..density..)) <span class="sc">+</span>                   </span>
+<span id="cb309-4"><a href="커널-밀도-곡선.html#cb309-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb309-5"><a href="커널-밀도-곡선.html#cb309-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">colour =</span> <span class="cn">NA</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span>  </span>
+<span id="cb309-6"><a href="커널-밀도-곡선.html#cb309-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">&quot;density&quot;</span>) <span class="sc">+</span>  </span>
+<span id="cb309-7"><a href="커널-밀도-곡선.html#cb309-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.06</span>)) <span class="sc">+</span> </span>
+<span id="cb309-8"><a href="커널-밀도-곡선.html#cb309-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;히스토그램과 커널 밀도 곡선을 겹쳐서 그리기&quot;</span>) <span class="sc">+</span></span>
+<span id="cb309-9"><a href="커널-밀도-곡선.html#cb309-9" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">theme_classic</span>() <span class="sc">+</span>                                         <span class="co"># 그래프 테마 지정</span></span>
+<span id="cb309-10"><a href="커널-밀도-곡선.html#cb309-10" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
+<span id="cb309-11"><a href="커널-밀도-곡선.html#cb309-11" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;italic&quot;</span>, </span>
+<span id="cb309-12"><a href="커널-밀도-곡선.html#cb309-12" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
+<span id="cb309-13"><a href="커널-밀도-곡선.html#cb309-13" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb309-14"><a href="커널-밀도-곡선.html#cb309-14" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb309-15"><a href="커널-밀도-곡선.html#cb309-15" aria-hidden="true" tabindex="-1"></a>                 <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
+<span id="cb309-16"><a href="커널-밀도-곡선.html#cb309-16" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;bold.italic&quot;</span>, </span>
+<span id="cb309-17"><a href="커널-밀도-곡선.html#cb309-17" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
+<span id="cb309-18"><a href="커널-밀도-곡선.html#cb309-18" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb309-19"><a href="커널-밀도-곡선.html#cb309-19" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span>       <span class="co"># X축과 Y축의 서식 스타일 지정</span></span>
+<span id="cb309-20"><a href="커널-밀도-곡선.html#cb309-20" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)              <span class="co"># Y 값의 천단위에 콤마 표시</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:KDCPriceHistTheme"></span>
 <img src="bookdown_files/figure-html/KDCPriceHistTheme-1.png" alt="히스토그램과 커널 밀도 곡선 겹쳐 그리기 : Theme의 사용" width="672" />
 <p class="caption">
-Figure 11.24: 히스토그램과 커널 밀도 곡선 겹쳐 그리기 : Theme의 사용
+Figure 11.28: 히스토그램과 커널 밀도 곡선 겹쳐 그리기 : Theme의 사용
 </p>
 </div>
 <p><a href="커널-밀도-곡선.html#커널-밀도-곡선">Go Top</a></p>

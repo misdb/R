@@ -634,9 +634,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="데이터-세트-18" class="section level3" number="14.5.1">
 <h3><span class="header-section-number">14.5.1</span> 데이터 세트</h3>
 <p>예제에 사용할 데이터는 <code>MASS</code> Package에 내장되어있는 <code>Cars93</code> dataframe을 사용하겠으며, 전체 93개의 관측치가 있는데요, 이를 모두 그리자니 너무 많아서요, 1번째 관측치부터 20번째 관측치까지만 사용하겠습니다. <strong>체르노프 얼굴그림</strong> 그릴 때 사용할 변수로는 <code>가격("Price")</code>, <code>고속도로연비("MPG.highway")</code>, <code>마력("Horsepower")</code>, <code>RPM("RPM")</code>, <code>차길이("Length")</code>, <code>차무게("Weight")</code>의 5개 만 선별해서 사용하겠습니다. 아래처럼 <code>Cars93_1</code> 이라는 새로운 이름의 데이터프레임을 만들었습니다.</p>
-<div class="sourceCode" id="cb629"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb629-1"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb629-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dataset preparation</span></span>
-<span id="cb629-2"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb629-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb629-3"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb629-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb633"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb633-1"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb633-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dataset preparation</span></span>
+<span id="cb633-2"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb633-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb633-3"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb633-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
 <pre class="bg-warning"><code>## &#39;data.frame&#39;:    93 obs. of  27 variables:
 ##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
 ##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
@@ -665,10 +665,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ Weight            : int  2705 3560 3375 3405 3640 2880 3470 4105 3495 3620 ...
 ##  $ Origin            : Factor w/ 2 levels &quot;USA&quot;,&quot;non-USA&quot;: 2 2 2 2 2 1 1 1 1 1 ...
 ##  $ Make              : Factor w/ 93 levels &quot;Acura Integra&quot;,..: 1 2 4 3 5 6 7 9 8 10 ...</code></pre>
-<div class="sourceCode" id="cb631"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb631-1"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb631-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sampling observations from 1st to 20th, selecting 5 variables</span></span>
-<span id="cb631-2"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb631-2" aria-hidden="true" tabindex="-1"></a>Cars93_1 <span class="ot">&lt;-</span> Cars93[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>),<span class="fu">c</span>(<span class="st">&quot;Price&quot;</span>, <span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Horsepower&quot;</span>, </span>
-<span id="cb631-3"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb631-3" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;RPM&quot;</span>, <span class="st">&quot;Length&quot;</span>, <span class="st">&quot;Weight&quot;</span>)]</span>
-<span id="cb631-4"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb631-4" aria-hidden="true" tabindex="-1"></a>Cars93_1</span></code></pre></div>
+<div class="sourceCode" id="cb635"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb635-1"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb635-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sampling observations from 1st to 20th, selecting 5 variables</span></span>
+<span id="cb635-2"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb635-2" aria-hidden="true" tabindex="-1"></a>Cars93_1 <span class="ot">&lt;-</span> Cars93[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>),<span class="fu">c</span>(<span class="st">&quot;Price&quot;</span>, <span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Horsepower&quot;</span>, </span>
+<span id="cb635-3"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb635-3" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;RPM&quot;</span>, <span class="st">&quot;Length&quot;</span>, <span class="st">&quot;Weight&quot;</span>)]</span>
+<span id="cb635-4"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb635-4" aria-hidden="true" tabindex="-1"></a>Cars93_1</span></code></pre></div>
 <pre class="bg-warning"><code>##    Price MPG.highway Horsepower  RPM Length Weight
 ## 1     16          31        140 6300    177   2705
 ## 2     34          25        200 5500    195   3560
@@ -697,8 +697,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">14.5.2.1</span> 패키지 불러오기</h4>
 <p>체로노프 얼굴그림을 그리기 위해 R의 <strong>aplpack Package</strong>의 <strong>faces() 함수</strong>를 사용하겠습니다.</p>
 <p>install.package() 함수를 써서 설치하고, library() 함수로 호출해 보겠습니다.</p>
-<div class="sourceCode" id="cb633"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb633-1"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb633-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;aplpack&quot;)</span></span>
-<span id="cb633-2"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb633-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(aplpack)</span></code></pre></div>
+<div class="sourceCode" id="cb637"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb637-1"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb637-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;aplpack&quot;)</span></span>
+<span id="cb637-2"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb637-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(aplpack)</span></code></pre></div>
 </div>
 <div id="faces-함수의-형식" class="section level4" number="14.5.2.2">
 <h4><span class="header-section-number">14.5.2.2</span> <code>faces()</code> 함수의 형식</h4>
@@ -715,8 +715,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">14.5.2.3</span> 체르노프 얼굴 그림 그리기</h4>
 <div id="face.type-0-line-drawing-faces" class="section level5" number="14.5.2.3.1">
 <h5><span class="header-section-number">14.5.2.3.1</span> face.type = 0 (line drawing faces)</h5>
-<div class="sourceCode" id="cb634"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb634-1"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb634-1" aria-hidden="true" tabindex="-1"></a><span class="co"># face.type = 0 : line drawing faces</span></span>
-<span id="cb634-2"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb634-2" aria-hidden="true" tabindex="-1"></a><span class="fu">faces</span>(Cars93_1, <span class="at">face.type =</span> <span class="dv">0</span>, <span class="at">main =</span> <span class="st">&quot;Chernoff faces: face.type = 0&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb638"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb638-1"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb638-1" aria-hidden="true" tabindex="-1"></a><span class="co"># face.type = 0 : line drawing faces</span></span>
+<span id="cb638-2"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb638-2" aria-hidden="true" tabindex="-1"></a><span class="fu">faces</span>(Cars93_1, <span class="at">face.type =</span> <span class="dv">0</span>, <span class="at">main =</span> <span class="st">&quot;Chernoff faces: face.type = 0&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
 <pre class="bg-warning"><code>## effect of variables:
 ##  modified item       Var          
@@ -738,8 +738,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="face.type-1-the-elements-of-the-faces-are-painted" class="section level5" number="14.5.2.3.2">
 <h5><span class="header-section-number">14.5.2.3.2</span> face.type = 1 (the elements of the faces are painted)</h5>
-<div class="sourceCode" id="cb636"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb636-1"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb636-1" aria-hidden="true" tabindex="-1"></a><span class="co"># face.type = 1 : the elements of the faces are painted</span></span>
-<span id="cb636-2"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb636-2" aria-hidden="true" tabindex="-1"></a><span class="fu">faces</span>(Cars93_1, <span class="at">face.type =</span> <span class="dv">1</span>, <span class="at">main =</span> <span class="st">&quot;Chernoff faces: face.type = 1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb640"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb640-1"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb640-1" aria-hidden="true" tabindex="-1"></a><span class="co"># face.type = 1 : the elements of the faces are painted</span></span>
+<span id="cb640-2"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb640-2" aria-hidden="true" tabindex="-1"></a><span class="fu">faces</span>(Cars93_1, <span class="at">face.type =</span> <span class="dv">1</span>, <span class="at">main =</span> <span class="st">&quot;Chernoff faces: face.type = 1&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
 <pre class="bg-warning"><code>## effect of variables:
 ##  modified item       Var          
@@ -761,8 +761,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="face.type-2-santa-claus-faces-are-drawn" class="section level5" number="14.5.2.3.3">
 <h5><span class="header-section-number">14.5.2.3.3</span> face.type = 2 (Santa Claus faces are drawn)</h5>
-<div class="sourceCode" id="cb638"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb638-1"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb638-1" aria-hidden="true" tabindex="-1"></a><span class="co"># face.type = 2 : Santa Claus faces are drawn</span></span>
-<span id="cb638-2"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb638-2" aria-hidden="true" tabindex="-1"></a><span class="fu">faces</span>(Cars93_1, <span class="at">face.type =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;Chernoff faces: face.type = 2&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb642"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb642-1"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb642-1" aria-hidden="true" tabindex="-1"></a><span class="co"># face.type = 2 : Santa Claus faces are drawn</span></span>
+<span id="cb642-2"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb642-2" aria-hidden="true" tabindex="-1"></a><span class="fu">faces</span>(Cars93_1, <span class="at">face.type =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;Chernoff faces: face.type = 2&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/unnamed-chunk-89-1.png" width="672" /></p>
 <pre class="bg-warning"><code>## effect of variables:
 ##  modified item       Var          
@@ -785,10 +785,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="체로노프-얼굴그림에-이름-추가하기-labels" class="section level5" number="14.5.2.3.4">
 <h5><span class="header-section-number">14.5.2.3.4</span> 체로노프 얼굴그림에 이름 추가하기 : <code>labels =</code></h5>
-<div class="sourceCode" id="cb640"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb640-1"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb640-1" aria-hidden="true" tabindex="-1"></a><span class="co"># putting labels as face names : labels</span></span>
-<span id="cb640-2"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb640-2" aria-hidden="true" tabindex="-1"></a><span class="fu">faces</span>(Cars93_1, <span class="at">face.type =</span> <span class="dv">1</span>, </span>
-<span id="cb640-3"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb640-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> Cars93[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,]<span class="sc">$</span>Model, </span>
-<span id="cb640-4"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb640-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">&quot;putting labels as face names : labels = &quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb644"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb644-1"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb644-1" aria-hidden="true" tabindex="-1"></a><span class="co"># putting labels as face names : labels</span></span>
+<span id="cb644-2"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb644-2" aria-hidden="true" tabindex="-1"></a><span class="fu">faces</span>(Cars93_1, <span class="at">face.type =</span> <span class="dv">1</span>, </span>
+<span id="cb644-3"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb644-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> Cars93[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,]<span class="sc">$</span>Model, </span>
+<span id="cb644-4"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb644-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">&quot;putting labels as face names : labels = &quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/unnamed-chunk-90-1.png" width="672" /></p>
 <pre class="bg-warning"><code>## effect of variables:
 ##  modified item       Var          
@@ -818,12 +818,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>plot.faces()</code> 함수를 사용해서 산포도 위에 (2)번에서 생성해 놓은 체르노프 얼굴그림을 겹쳐서 그려줍니다. <code>width</code> 와 <code>height</code> 는 x축과 y축의 단위를 보고서 trial &amp; error 를 해보면서 숫자를 조금씩 바꿔가면서 그려본 후에 가장 마음에 드는 걸로 선택하면 되겠습니다.</p></li>
 </ol>
 <p>체르노프 얼굴그림을 산포도에 겹쳐서 그리니 제법 유용한 다차원 그래프이지 않은가요? ^^</p>
-<div class="sourceCode" id="cb642"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb642-1"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb642-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Overlapping Chernoff faces over scatter plot (MPG.highway*Weight)</span></span>
-<span id="cb642-2"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb642-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Cars93_1[,<span class="fu">c</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Weight&quot;</span>)], </span>
-<span id="cb642-3"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb642-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty=</span><span class="st">&quot;n&quot;</span>, <span class="co"># To make a plot with no box around the plot area</span></span>
-<span id="cb642-4"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb642-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Chernoff faces of Cars93&quot;</span>)</span>
-<span id="cb642-5"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb642-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb642-6"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb642-6" aria-hidden="true" tabindex="-1"></a>Cars93_1_faces <span class="ot">&lt;-</span> <span class="fu">faces</span>(Cars93_1, <span class="at">scale =</span> <span class="cn">TRUE</span>, <span class="at">plot=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb646"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb646-1"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb646-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Overlapping Chernoff faces over scatter plot (MPG.highway*Weight)</span></span>
+<span id="cb646-2"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb646-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Cars93_1[,<span class="fu">c</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Weight&quot;</span>)], </span>
+<span id="cb646-3"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb646-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty=</span><span class="st">&quot;n&quot;</span>, <span class="co"># To make a plot with no box around the plot area</span></span>
+<span id="cb646-4"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb646-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Chernoff faces of Cars93&quot;</span>)</span>
+<span id="cb646-5"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb646-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb646-6"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb646-6" aria-hidden="true" tabindex="-1"></a>Cars93_1_faces <span class="ot">&lt;-</span> <span class="fu">faces</span>(Cars93_1, <span class="at">scale =</span> <span class="cn">TRUE</span>, <span class="at">plot=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 <pre class="bg-warning"><code>## effect of variables:
 ##  modified item       Var          
 ##  &quot;height of face   &quot; &quot;Price&quot;      
@@ -841,11 +841,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  &quot;width of nose   &quot;  &quot;Price&quot;      
 ##  &quot;width of ear    &quot;  &quot;MPG.highway&quot;
 ##  &quot;height of ear   &quot;  &quot;Horsepower&quot;</code></pre>
-<div class="sourceCode" id="cb644"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb644-1"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb644-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.faces</span>(Cars93_1_faces, </span>
-<span id="cb644-2"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb644-2" aria-hidden="true" tabindex="-1"></a>           Cars93_1[,<span class="fu">c</span>(<span class="st">&quot;MPG.highway&quot;</span>)], </span>
-<span id="cb644-3"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb644-3" aria-hidden="true" tabindex="-1"></a>           Cars93_1[,<span class="fu">c</span>(<span class="st">&quot;Weight&quot;</span>)], </span>
-<span id="cb644-4"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb644-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">width =</span> <span class="dv">2</span>, </span>
-<span id="cb644-5"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb644-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">height =</span> <span class="dv">250</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb648"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb648-1"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb648-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.faces</span>(Cars93_1_faces, </span>
+<span id="cb648-2"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb648-2" aria-hidden="true" tabindex="-1"></a>           Cars93_1[,<span class="fu">c</span>(<span class="st">&quot;MPG.highway&quot;</span>)], </span>
+<span id="cb648-3"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb648-3" aria-hidden="true" tabindex="-1"></a>           Cars93_1[,<span class="fu">c</span>(<span class="st">&quot;Weight&quot;</span>)], </span>
+<span id="cb648-4"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb648-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">width =</span> <span class="dv">2</span>, </span>
+<span id="cb648-5"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#cb648-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">height =</span> <span class="dv">250</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
 <p>체르노프 얼굴그림에 대해서 좀더 알고 싶은 분은 아래의 Reference를 참고하시기 바랍니다.</p>
 <ul>

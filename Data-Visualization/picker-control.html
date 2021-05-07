@@ -543,18 +543,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="picker-control" class="section level2" number="16.4">
 <h2><span class="header-section-number">16.4</span> Picker Control</h2>
 <p>히스토그램에 대상 변수를 선택할 수 있는 Picker Control 예제입니다.</p>
-<div class="sourceCode" id="cb665"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb665-1"><a href="picker-control.html#cb665-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Picker Control</span></span>
-<span id="cb665-2"><a href="picker-control.html#cb665-2" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
-<span id="cb665-3"><a href="picker-control.html#cb665-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(Cars93[, continuous_variable], </span>
-<span id="cb665-4"><a href="picker-control.html#cb665-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> continuous_variable),</span>
-<span id="cb665-5"><a href="picker-control.html#cb665-5" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb665-6"><a href="picker-control.html#cb665-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">continuous_variable =</span> <span class="fu">picker</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Price&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb669"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb669-1"><a href="picker-control.html#cb669-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Picker Control</span></span>
+<span id="cb669-2"><a href="picker-control.html#cb669-2" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
+<span id="cb669-3"><a href="picker-control.html#cb669-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(Cars93[, continuous_variable], </span>
+<span id="cb669-4"><a href="picker-control.html#cb669-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> continuous_variable),</span>
+<span id="cb669-5"><a href="picker-control.html#cb669-5" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb669-6"><a href="picker-control.html#cb669-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">continuous_variable =</span> <span class="fu">picker</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Price&quot;</span>))</span></code></pre></div>
 <pre><code>## Error in manipulate(hist(Cars93[, continuous_variable], freq = FALSE, : The manipulate package must be run from within RStudio</code></pre>
 <p>산포도의 x축, <code>무게(Weight)</code>과 y축, <code>고속도로연비(MPG.highway)</code>은 정해져있고, <code>차종(Type)</code>별로 산포도를 보고 싶을 때 <code>차종(Type)</code>을 왼쪽의 Picker Control 상자로 만들어서 바로 바로 차종별로 선택해 가면서 산포도를 보는 프로그램 예제입니다.</p>
-<div class="sourceCode" id="cb667"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb667-1"><a href="picker-control.html#cb667-1" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
-<span id="cb667-2"><a href="picker-control.html#cb667-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data=</span>Cars93[Cars93<span class="sc">$</span>Type <span class="sc">==</span> Type,]),</span>
-<span id="cb667-3"><a href="picker-control.html#cb667-3" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb667-4"><a href="picker-control.html#cb667-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">Type =</span> <span class="fu">picker</span>(<span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Van&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb671"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb671-1"><a href="picker-control.html#cb671-1" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
+<span id="cb671-2"><a href="picker-control.html#cb671-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data=</span>Cars93[Cars93<span class="sc">$</span>Type <span class="sc">==</span> Type,]),</span>
+<span id="cb671-3"><a href="picker-control.html#cb671-3" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb671-4"><a href="picker-control.html#cb671-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">Type =</span> <span class="fu">picker</span>(<span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Van&quot;</span>))</span></code></pre></div>
 <pre><code>## Error in manipulate(plot(MPG.highway ~ Weight, data = Cars93[Cars93$Type == : The manipulate package must be run from within RStudio</code></pre>
 </div>
             </section>
