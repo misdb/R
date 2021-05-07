@@ -64,6 +64,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -543,12 +544,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="slider-control" class="section level2" number="16.3">
 <h2><span class="header-section-number">16.3</span> Slider Control</h2>
 <p><code>slider(start point, end point, step= , initial = )</code> 의 형태로 슬라이더 조작 옵션을 설정하고, 이 옵션 객체를 그래프의 조작하고자 하는 부분에 할당을 하면 됩니다. 말이 좀 어려운데요, 아래 히스토그램에서 Bin size 를 3부터 100까지의 범위 내에서 5 씩 증가하게끔 해놓고, 처음 만들어졌을 때의 디폴트는 20으로 설정한 예제입니다. 동적 그래프의 특성을 직관적으로 이해할 수 있도록 화면캡쳐와 함께 동영상 캡쳐도 해서 올립니다. 왼쪽의 슬라이드 바를 좌우로 조절할 때마다 우측 plots 창의 히스토그램이 어떻게 바뀌는지 확인해보기 바랍니다.</p>
-<div class="sourceCode" id="cb667"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb667-1"><a href="slider-control.html#cb667-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb667-2"><a href="slider-control.html#cb667-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Slider Control</span></span>
-<span id="cb667-3"><a href="slider-control.html#cb667-3" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb667-4"><a href="slider-control.html#cb667-4" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
-<span id="cb667-5"><a href="slider-control.html#cb667-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(Cars93<span class="sc">$</span>Price, <span class="at">breaks =</span> bin_slider),  </span>
-<span id="cb667-6"><a href="slider-control.html#cb667-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">bin_slider=</span><span class="fu">slider</span>(<span class="dv">3</span>,<span class="dv">100</span>, <span class="at">step=</span><span class="dv">5</span>, <span class="at">initial =</span> <span class="dv">20</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb669"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb669-1"><a href="slider-control.html#cb669-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb669-2"><a href="slider-control.html#cb669-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Slider Control</span></span>
+<span id="cb669-3"><a href="slider-control.html#cb669-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb669-4"><a href="slider-control.html#cb669-4" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
+<span id="cb669-5"><a href="slider-control.html#cb669-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(Cars93<span class="sc">$</span>Price, <span class="at">breaks =</span> bin_slider),  </span>
+<span id="cb669-6"><a href="slider-control.html#cb669-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">bin_slider=</span><span class="fu">slider</span>(<span class="dv">3</span>,<span class="dv">100</span>, <span class="at">step=</span><span class="dv">5</span>, <span class="at">initial =</span> <span class="dv">20</span>))</span></code></pre></div>
 <pre><code>## Error in manipulate(hist(Cars93$Price, breaks = bin_slider), bin_slider = slider(3, : The manipulate package must be run from within RStudio</code></pre>
 </div>
             </section>

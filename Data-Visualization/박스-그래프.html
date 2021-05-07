@@ -64,6 +64,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -551,7 +552,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Figure 11.29: 박스 플롯의 구성
 </p>
 </div>
-<p>이번 포스팅에서는 먼저 <code>ggplot2</code> 패키지의 <code>geom_boxplot()</code> 를 활용해서 박스그래프(박스 플롯, 수염상자 그림, 상자그림 등으로 불림)을 그리는 방법에 대해서 알아보겠습니다.</p>
+<p>이번 절에서는 먼저 <code>ggplot2</code> 패키지의 <code>geom_boxplot()</code> 를 활용해서 박스그래프(박스 플롯, 수염상자 그림, 상자그림 등으로 불림)을 그리는 방법에 대해서 알아보겠습니다.</p>
 <div id="데이터-세트-4" class="section level3" number="11.3.1">
 <h3><span class="header-section-number">11.3.1</span> 데이터 세트</h3>
 <p>데이터는 <code>MASS</code> 패키지에 들어있는 <code>Cars93</code> 데이터 프레임 데이터 셋에서 가격<code>(Price</code>)과 자동차유형(<code>Type</code>) 변수를 활용하여 박스 그래프를 그려보겠습니다.</p>
@@ -593,9 +594,9 @@ Figure 11.29: 박스 플롯의 구성
 <p>그럼, 먼저 <code>Cars93</code> 데이터 프레임 내 가격(<code>Price</code>) 변수 하나를 가지고 <code>geom_boxplot()</code>을 사용하여 박스 그래프(Box Plot)을 그려보겠습니다.</p>
 <div class="sourceCode" id="cb312"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb312-1"><a href="박스-그래프.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 박스 그래프 그리기</span></span>
 <span id="cb312-2"><a href="박스-그래프.html#cb312-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb312-3"><a href="박스-그래프.html#cb312-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>,                         <span class="co"># 박스 그래프는 기본적으로 x = 1로 설정합니다.</span></span>
-<span id="cb312-4"><a href="박스-그래프.html#cb312-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price)) <span class="sc">+</span>                  <span class="co"># Y축의 변수로 Price를 설정합니다.</span></span>
-<span id="cb312-5"><a href="박스-그래프.html#cb312-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_boxplot</span>()                      <span class="co"># 박스 그래프를 그립니다.</span></span></code></pre></div>
+<span id="cb312-3"><a href="박스-그래프.html#cb312-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>,           <span class="co"># 박스 그래프는 기본적으로 x = 1로 설정합니다.</span></span>
+<span id="cb312-4"><a href="박스-그래프.html#cb312-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price)) <span class="sc">+</span>    <span class="co"># Y축의 변수로 Price를 설정합니다.</span></span>
+<span id="cb312-5"><a href="박스-그래프.html#cb312-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_boxplot</span>()        <span class="co"># 박스 그래프를 그립니다.</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotBase"></span>
 <img src="bookdown_files/figure-html/GGPlot2BoxPlotBase-1.png" alt="기본 박스 그래프" width="672" />
 <p class="caption">
@@ -610,8 +611,8 @@ Figure 11.30: 기본 박스 그래프
 <div class="sourceCode" id="cb313"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb313-1"><a href="박스-그래프.html#cb313-1" aria-hidden="true" tabindex="-1"></a><span class="co"># X축의 이름과 척도 없애기</span></span>
 <span id="cb313-2"><a href="박스-그래프.html#cb313-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> Price)) <span class="sc">+</span> </span>
 <span id="cb313-3"><a href="박스-그래프.html#cb313-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
-<span id="cb313-4"><a href="박스-그래프.html#cb313-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span>                  <span class="co"># x축 이름 생략</span></span>
-<span id="cb313-5"><a href="박스-그래프.html#cb313-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span>              <span class="co"># x축 척도 생략</span></span>
+<span id="cb313-4"><a href="박스-그래프.html#cb313-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span>         <span class="co"># x축 척도 생략</span></span>
+<span id="cb313-5"><a href="박스-그래프.html#cb313-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span>     <span class="co"># x축 이름름 생략</span></span>
 <span id="cb313-6"><a href="박스-그래프.html#cb313-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;X축의 이름과 척도 없애기&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotXaxis"></span>
 <img src="bookdown_files/figure-html/GGPlot2BoxPlotXaxis-1.png" alt="X축의 이름과 구분자 없애기" width="672" />
@@ -749,23 +750,40 @@ Figure 11.37: 박스 그래프 : 색 지정
 </div>
 <div id="박스-그래프에-평균-추가하기" class="section level3" number="11.3.9">
 <h3><span class="header-section-number">11.3.9</span> 박스 그래프에 평균 추가하기</h3>
-<p>위의 차종(<code>Type</code>)별 박스 그림의 박스 가운데 선은 <strong>중앙값(Median)</strong>을 나타냅니다.</p>
-<p>이번에는 <strong>평균을 추가</strong>해 보도록 하겠습니다. 평균은 이상치에 민감하므로 아래 예제처럼 이상치가 있는 경우에는 중심화 경향을 나타내는 통계량으로 부적합하며, 박스 그림의 박스 가운데에 쳐진 선이 의미하는 중앙값(Median) 이 더 적합한 중심화 경향 지표라고 하겠습니다.</p>
+<p>박스 그래프의 박스 가운데 선은 <strong>평균</strong>이 아닌 <strong>중앙값(Median)</strong>을 나타냅니다.</p>
+<p>따라서 박스 그래프에 <strong>평균을 표시</strong>해 보도록 하겠습니다. 평균은 이상치에 민감하므로 아래 예제처럼 이상치가 있는 경우에는 중심화 경향을 나타내는 통계량으로 부적합하며, 박스 그림의 박스 가운데에 쳐진 선이 의미하는 중앙값(Median) 이 더 적합한 중심화 경향 지표라고 하겠습니다.</p>
 <p>평균을 추가하기 위해서는 <code>stat_summary()</code> 함수를 이용합니다. 그리고 <code>fun.y = “mean”</code> 모수를 추가해 줍니다. 다음의 예에서는 동시에 기호의 모양, 크기, 그리고 색도 지정하고 있습니다.</p>
 <div class="sourceCode" id="cb320"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb320-1"><a href="박스-그래프.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 박스 그래프에 평균 추가하기</span></span>
-<span id="cb320-2"><a href="박스-그래프.html#cb320-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Type, <span class="at">y =</span> Price)) <span class="sc">+</span> </span>
-<span id="cb320-3"><a href="박스-그래프.html#cb320-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.8</span>, <span class="at">outlier.size =</span> <span class="dv">3</span>, <span class="at">outlier.shape =</span> <span class="dv">16</span>, <span class="at">outlier.colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb320-4"><a href="박스-그래프.html#cb320-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">stat_summary</span>(<span class="at">fun.y =</span> <span class="st">&quot;mean&quot;</span>,                <span class="co"># Y축의 평균값을 산출합니다</span></span>
-<span id="cb320-5"><a href="박스-그래프.html#cb320-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>,                <span class="co"># 점으로 표시합니다.</span></span>
-<span id="cb320-6"><a href="박스-그래프.html#cb320-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">shape =</span> <span class="dv">8</span>,                     <span class="co"># 점의 모양을 8로 지정합니다.</span></span>
-<span id="cb320-7"><a href="박스-그래프.html#cb320-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">size =</span> <span class="dv">3</span>,                      <span class="co"># 점의 크기를 지정합니다.</span></span>
-<span id="cb320-8"><a href="박스-그래프.html#cb320-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span>             <span class="co"># 점의 색을 지정합니다.</span></span>
-<span id="cb320-9"><a href="박스-그래프.html#cb320-9" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot; 박스 그래프에 평균 추가하기&quot;</span>)</span></code></pre></div>
+<span id="cb320-2"><a href="박스-그래프.html#cb320-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> Price)) <span class="sc">+</span> </span>
+<span id="cb320-3"><a href="박스-그래프.html#cb320-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb320-4"><a href="박스-그래프.html#cb320-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">stat_summary</span>(<span class="at">fun.y =</span> <span class="st">&quot;mean&quot;</span>,     <span class="co"># Y축의 평균값을 산출합니다</span></span>
+<span id="cb320-5"><a href="박스-그래프.html#cb320-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>,     <span class="co"># 점으로 표시합니다.</span></span>
+<span id="cb320-6"><a href="박스-그래프.html#cb320-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">shape =</span> <span class="dv">8</span>,          <span class="co"># 점의 모양을 8로 지정합니다.</span></span>
+<span id="cb320-7"><a href="박스-그래프.html#cb320-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">size =</span> <span class="dv">3</span>,           <span class="co"># 점의 크기를 지정합니다.</span></span>
+<span id="cb320-8"><a href="박스-그래프.html#cb320-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span>  <span class="co"># 점의 색을 지정합니다.</span></span>
+<span id="cb320-9"><a href="박스-그래프.html#cb320-9" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;박스 그래프에 평균 표시하기&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning: `fun.y` is deprecated. Use `fun` instead.</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotMean"></span>
-<img src="bookdown_files/figure-html/GGPlot2BoxPlotMean-1.png" alt="박스 그래프 : 평균 추가하기" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotMean1"></span>
+<img src="bookdown_files/figure-html/GGPlot2BoxPlotMean1-1.png" alt="박스 그래프에 평균 표시하기" width="672" />
 <p class="caption">
-Figure 11.38: 박스 그래프 : 평균 추가하기
+Figure 11.38: 박스 그래프에 평균 표시하기
+</p>
+</div>
+<p>다음의 예는 x축을 자동차 유형(<code>Type</code>)으로 하고 y축을 자동차 가격(<code>Price</code>)로 하는 박스 그래프를 그리고 각 자동차 유형별 평균 가격을 점으로 나타내고 있습니다.</p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb322-1"><a href="박스-그래프.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 박스 그래프에 평균 추가하기</span></span>
+<span id="cb322-2"><a href="박스-그래프.html#cb322-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Type, <span class="at">y =</span> Price)) <span class="sc">+</span> </span>
+<span id="cb322-3"><a href="박스-그래프.html#cb322-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.8</span>, <span class="at">outlier.size =</span> <span class="dv">3</span>, <span class="at">outlier.shape =</span> <span class="dv">16</span>, <span class="at">outlier.colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb322-4"><a href="박스-그래프.html#cb322-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">stat_summary</span>(<span class="at">fun.y =</span> <span class="st">&quot;mean&quot;</span>,                <span class="co"># Y축의 평균값을 산출합니다</span></span>
+<span id="cb322-5"><a href="박스-그래프.html#cb322-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>,                <span class="co"># 점으로 표시합니다.</span></span>
+<span id="cb322-6"><a href="박스-그래프.html#cb322-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">shape =</span> <span class="dv">8</span>,                     <span class="co"># 점의 모양을 8로 지정합니다.</span></span>
+<span id="cb322-7"><a href="박스-그래프.html#cb322-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">size =</span> <span class="dv">3</span>,                      <span class="co"># 점의 크기를 지정합니다.</span></span>
+<span id="cb322-8"><a href="박스-그래프.html#cb322-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span>             <span class="co"># 점의 색을 지정합니다.</span></span>
+<span id="cb322-9"><a href="박스-그래프.html#cb322-9" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;박스 그래프에 자동차 유형별 가격의 평균 표시하기&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: `fun.y` is deprecated. Use `fun` instead.</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotMean2"></span>
+<img src="bookdown_files/figure-html/GGPlot2BoxPlotMean2-1.png" alt="박스 그래프에 자동차 유형별 가격의 평균 표시하기" width="672" />
+<p class="caption">
+Figure 11.39: 박스 그래프에 자동차 유형별 가격의 평균 표시하기
 </p>
 </div>
 <p><a href="박스-그래프.html#박스-그래프">Go Top</a></p>
@@ -774,15 +792,15 @@ Figure 11.38: 박스 그래프 : 평균 추가하기
 <h3><span class="header-section-number">11.3.10</span> <code>stat_boxplot()</code> 함수의 이용</h3>
 <p><code>geom_*()</code> 함수들은 기본적인 <code>stat_*()</code> 함수를 가지고 있습니다.<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a> <code>args(geom_boxplot)</code>로 확인해 보면 <code>geom_boxplot()</code> 함수는 <code>stat = "boxplot"</code>를 알고리즘으로 사용하고 있습니다.</p>
 <p><code>geom_boxplot()</code> 함수의 경우에는 <code>stat_boxplot()</code> 함수가 여기에 해당하며, <strong><code>geom_boxplot()</code></strong> 함수 대신에 <strong><code>stat_boxplot()</code></strong> 함수를 이용할 수 있습니다.</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb322-1"><a href="박스-그래프.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 박스 그래프 그리기</span></span>
-<span id="cb322-2"><a href="박스-그래프.html#cb322-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb322-3"><a href="박스-그래프.html#cb322-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, </span>
-<span id="cb322-4"><a href="박스-그래프.html#cb322-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price)) <span class="sc">+</span></span>
-<span id="cb322-5"><a href="박스-그래프.html#cb322-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">stat_boxplot</span>()                      <span class="co"># 박스 그래프를 그립니다.</span></span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb324-1"><a href="박스-그래프.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 박스 그래프 그리기</span></span>
+<span id="cb324-2"><a href="박스-그래프.html#cb324-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb324-3"><a href="박스-그래프.html#cb324-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, </span>
+<span id="cb324-4"><a href="박스-그래프.html#cb324-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price)) <span class="sc">+</span></span>
+<span id="cb324-5"><a href="박스-그래프.html#cb324-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">stat_boxplot</span>()                      <span class="co"># 박스 그래프를 그립니다.</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotStat"></span>
 <img src="bookdown_files/figure-html/GGPlot2BoxPlotStat-1.png" alt="기본 박스 그래프 : stat_boxplot() 함수 이용" width="672" />
 <p class="caption">
-Figure 11.39: 기본 박스 그래프 : stat_boxplot() 함수 이용
+Figure 11.40: 기본 박스 그래프 : stat_boxplot() 함수 이용
 </p>
 </div>
 <p>자세한 사항은 <code>? stat_boxplot()</code>로 확인하기 바랍니다.</p>
@@ -796,142 +814,142 @@ Figure 11.39: 기본 박스 그래프 : stat_boxplot() 함수 이용
 <p>여기서 주의할 점은 <strong>x 는 요인(factor)형 변수가 입력</strong>되어야 합니다. 차종(<code>Type</code>)은 이미 요인형 변수이므로 그대로 입력하면 됩니다. 만약 요인형 변수가 아니라면 <code>x=factor(variable name)</code> 이런 식으로 입력해주거나, 아니면 형 변환 함수인 <code>as.factor()</code> 함수를 이용하여 데이터 형태를 요인형 변수로 변경해도 좋습니다.</p>
 <p>한편 이러한 차종별(<code>Type</code>) 그룹별 박스 그래프의 <strong>테두리 색을 지정</strong>하고 싶다면, <code>aes()</code> 함수에 <code>colour = factor.variable</code>을 삽입해 주면 됩니다. 그리고 박스의 색을 채우고 싶다면 <code>aes()</code> 함수에 <code>fill = factor variable</code>를 추가해 주면 됩니다.</p>
 <p>그런데 <code>colour</code>와 <code>fill</code> 모수는 동시에 사용하기 보다는 둘 중의 하나를 선택하는 것이 좋을 것 같습니다.</p>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb323-1"><a href="박스-그래프.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 그룹별 박스 그래프 : aes() 모수 이용</span></span>
-<span id="cb323-2"><a href="박스-그래프.html#cb323-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 박스 그래프</span></span>
-<span id="cb323-3"><a href="박스-그래프.html#cb323-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb323-4"><a href="박스-그래프.html#cb323-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                                  <span class="co"># x 축에 요인형(그룹) 변수를 지정합니다.</span></span>
-<span id="cb323-5"><a href="박스-그래프.html#cb323-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price)) <span class="sc">+</span>                              <span class="co"># y 축에 일변량 연속형 변수를 지정합니다.</span></span>
-<span id="cb323-6"><a href="박스-그래프.html#cb323-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb323-7"><a href="박스-그래프.html#cb323-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 박스그래프&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb325-1"><a href="박스-그래프.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 그룹별 박스 그래프 : aes() 모수 이용</span></span>
+<span id="cb325-2"><a href="박스-그래프.html#cb325-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 박스 그래프</span></span>
+<span id="cb325-3"><a href="박스-그래프.html#cb325-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb325-4"><a href="박스-그래프.html#cb325-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                                  <span class="co"># x 축에 요인형(그룹) 변수를 지정합니다.</span></span>
+<span id="cb325-5"><a href="박스-그래프.html#cb325-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price)) <span class="sc">+</span>                              <span class="co"># y 축에 일변량 연속형 변수를 지정합니다.</span></span>
+<span id="cb325-6"><a href="박스-그래프.html#cb325-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb325-7"><a href="박스-그래프.html#cb325-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 박스그래프&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotByTypeColor-1"></span>
 <img src="bookdown_files/figure-html/GGPlot2BoxPlotByTypeColor-1.png" alt="차종별 박스 그래프와 색 지정하기" width="100%" />
-<p class="caption">
-Figure 11.40: 차종별 박스 그래프와 색 지정하기
-</p>
-</div>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb324-1"><a href="박스-그래프.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 박스 그래프 : 테두리 색 지정</span></span>
-<span id="cb324-2"><a href="박스-그래프.html#cb324-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb324-3"><a href="박스-그래프.html#cb324-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                                  <span class="co"># x 축에 요인형(그룹) 변수를 지정합니다.</span></span>
-<span id="cb324-4"><a href="박스-그래프.html#cb324-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price,                                 </span>
-<span id="cb324-5"><a href="박스-그래프.html#cb324-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type)) <span class="sc">+</span>                          <span class="co"># aes() 함수의 모수 colour 에 요인형 변수 지정.</span></span>
-<span id="cb324-6"><a href="박스-그래프.html#cb324-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb324-7"><a href="박스-그래프.html#cb324-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 박스그래프 : 테두리 색 지정&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotByTypeColor-2"></span>
-<img src="bookdown_files/figure-html/GGPlot2BoxPlotByTypeColor-2.png" alt="차종별 박스 그래프와 색 지정하기" width="100%" />
 <p class="caption">
 Figure 11.41: 차종별 박스 그래프와 색 지정하기
 </p>
 </div>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb325-1"><a href="박스-그래프.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 박스 그래프 : 색 채우기</span></span>
-<span id="cb325-2"><a href="박스-그래프.html#cb325-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb325-3"><a href="박스-그래프.html#cb325-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                                  <span class="co"># x 축에 요인형(그룹) 변수를 지정합니다.</span></span>
-<span id="cb325-4"><a href="박스-그래프.html#cb325-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price,                                 </span>
-<span id="cb325-5"><a href="박스-그래프.html#cb325-5" aria-hidden="true" tabindex="-1"></a><span class="co">#           colour = Type,                            # 테두리 색을 지정합니다.</span></span>
-<span id="cb325-6"><a href="박스-그래프.html#cb325-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Type)) <span class="sc">+</span>                            <span class="co"># 박스 그래프를 채울 색을 지정합니다.</span></span>
-<span id="cb325-7"><a href="박스-그래프.html#cb325-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb325-8"><a href="박스-그래프.html#cb325-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 박스그래프 : 색 채우기&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb326-1"><a href="박스-그래프.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 박스 그래프 : 테두리 색 지정</span></span>
+<span id="cb326-2"><a href="박스-그래프.html#cb326-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb326-3"><a href="박스-그래프.html#cb326-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                                  <span class="co"># x 축에 요인형(그룹) 변수를 지정합니다.</span></span>
+<span id="cb326-4"><a href="박스-그래프.html#cb326-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price,                                 </span>
+<span id="cb326-5"><a href="박스-그래프.html#cb326-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type)) <span class="sc">+</span>                          <span class="co"># aes() 함수의 모수 colour 에 요인형 변수 지정.</span></span>
+<span id="cb326-6"><a href="박스-그래프.html#cb326-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb326-7"><a href="박스-그래프.html#cb326-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 박스그래프 : 테두리 색 지정&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotByTypeColor-2"></span>
+<img src="bookdown_files/figure-html/GGPlot2BoxPlotByTypeColor-2.png" alt="차종별 박스 그래프와 색 지정하기" width="100%" />
+<p class="caption">
+Figure 11.42: 차종별 박스 그래프와 색 지정하기
+</p>
+</div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb327-1"><a href="박스-그래프.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 박스 그래프 : 색 채우기</span></span>
+<span id="cb327-2"><a href="박스-그래프.html#cb327-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb327-3"><a href="박스-그래프.html#cb327-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                                  <span class="co"># x 축에 요인형(그룹) 변수를 지정합니다.</span></span>
+<span id="cb327-4"><a href="박스-그래프.html#cb327-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price,                                 </span>
+<span id="cb327-5"><a href="박스-그래프.html#cb327-5" aria-hidden="true" tabindex="-1"></a><span class="co">#           colour = Type,                            # 테두리 색을 지정합니다.</span></span>
+<span id="cb327-6"><a href="박스-그래프.html#cb327-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Type)) <span class="sc">+</span>                            <span class="co"># 박스 그래프를 채울 색을 지정합니다.</span></span>
+<span id="cb327-7"><a href="박스-그래프.html#cb327-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb327-8"><a href="박스-그래프.html#cb327-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 박스그래프 : 색 채우기&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotByTypeColor-3"></span>
 <img src="bookdown_files/figure-html/GGPlot2BoxPlotByTypeColor-3.png" alt="차종별 박스 그래프와 색 지정하기" width="100%" />
 <p class="caption">
-Figure 11.42: 차종별 박스 그래프와 색 지정하기
+Figure 11.43: 차종별 박스 그래프와 색 지정하기
 </p>
 </div>
 </div>
 <div id="facet_grid-함수-이용-4" class="section level4" number="11.3.11.2">
 <h4><span class="header-section-number">11.3.11.2</span> <code>facet_grid()</code> 함수 이용</h4>
 <p><code>aes()</code> 함수에 <code>x = Type</code> 모수를 추가하고, <code>facet_grid( . ~ Type)</code>을 추가해 줍니다. (<code>facet_grid(vars(Type))</code> 또는 <code>facet_type(Type ~ .)</code> 등은 바람직 하지 않습니다.)</p>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb326-1"><a href="박스-그래프.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 그룹별 박스 그래프 : facet_grid() 함수 이용</span></span>
-<span id="cb326-2"><a href="박스-그래프.html#cb326-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 박스그래프 </span></span>
-<span id="cb326-3"><a href="박스-그래프.html#cb326-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb326-4"><a href="박스-그래프.html#cb326-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> Price)) <span class="sc">+</span>                             </span>
-<span id="cb326-5"><a href="박스-그래프.html#cb326-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb326-6"><a href="박스-그래프.html#cb326-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span>                  <span class="co"># x축 이름 생략</span></span>
-<span id="cb326-7"><a href="박스-그래프.html#cb326-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span>              <span class="co"># x축 척도 생략</span></span>
-<span id="cb326-8"><a href="박스-그래프.html#cb326-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>( . <span class="sc">~</span> Type) <span class="sc">+</span>                              <span class="co"># Type 별로 박스 그래프를 그립니다.</span></span>
-<span id="cb326-9"><a href="박스-그래프.html#cb326-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 박스그래프 : facet_grid() 함수&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotByTypeFacetGrid-1"></span>
-<img src="bookdown_files/figure-html/GGPlot2BoxPlotByTypeFacetGrid-1.png" alt="차종별 박스 그래프 : facet_grid()" width="100%" />
-<p class="caption">
-Figure 11.43: 차종별 박스 그래프 : facet_grid()
-</p>
-</div>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb327-1"><a href="박스-그래프.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 박스그래프 : 색 지정하기 (테두리 선)</span></span>
-<span id="cb327-2"><a href="박스-그래프.html#cb327-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb327-3"><a href="박스-그래프.html#cb327-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> Price,</span>
-<span id="cb327-4"><a href="박스-그래프.html#cb327-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type)) <span class="sc">+</span>                             </span>
-<span id="cb327-5"><a href="박스-그래프.html#cb327-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb327-6"><a href="박스-그래프.html#cb327-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span>                  <span class="co"># x축 이름 생략</span></span>
-<span id="cb327-7"><a href="박스-그래프.html#cb327-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span>              <span class="co"># x축 척도 생략</span></span>
-<span id="cb327-8"><a href="박스-그래프.html#cb327-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>( . <span class="sc">~</span> Type) <span class="sc">+</span>                              <span class="co"># Type 별로 박스 그래프를 그립니다.</span></span>
-<span id="cb327-9"><a href="박스-그래프.html#cb327-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 박스그래프 : facet_grid() 함수&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotByTypeFacetGrid-2"></span>
-<img src="bookdown_files/figure-html/GGPlot2BoxPlotByTypeFacetGrid-2.png" alt="차종별 박스 그래프 : facet_grid()" width="100%" />
-<p class="caption">
-Figure 11.44: 차종별 박스 그래프 : facet_grid()
-</p>
-</div>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb328-1"><a href="박스-그래프.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 박스그래프 : 색 지정하기 (채우기)</span></span>
-<span id="cb328-2"><a href="박스-그래프.html#cb328-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb328-3"><a href="박스-그래프.html#cb328-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> Price,</span>
-<span id="cb328-4"><a href="박스-그래프.html#cb328-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Type)) <span class="sc">+</span>                             </span>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb328-1"><a href="박스-그래프.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 그룹별 박스 그래프 : facet_grid() 함수 이용</span></span>
+<span id="cb328-2"><a href="박스-그래프.html#cb328-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 박스그래프 </span></span>
+<span id="cb328-3"><a href="박스-그래프.html#cb328-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb328-4"><a href="박스-그래프.html#cb328-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> Price)) <span class="sc">+</span>                             </span>
 <span id="cb328-5"><a href="박스-그래프.html#cb328-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
 <span id="cb328-6"><a href="박스-그래프.html#cb328-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span>                  <span class="co"># x축 이름 생략</span></span>
 <span id="cb328-7"><a href="박스-그래프.html#cb328-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span>              <span class="co"># x축 척도 생략</span></span>
 <span id="cb328-8"><a href="박스-그래프.html#cb328-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>( . <span class="sc">~</span> Type) <span class="sc">+</span>                              <span class="co"># Type 별로 박스 그래프를 그립니다.</span></span>
 <span id="cb328-9"><a href="박스-그래프.html#cb328-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 박스그래프 : facet_grid() 함수&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotByTypeFacetGrid-1"></span>
+<img src="bookdown_files/figure-html/GGPlot2BoxPlotByTypeFacetGrid-1.png" alt="차종별 박스 그래프 : facet_grid()" width="100%" />
+<p class="caption">
+Figure 11.44: 차종별 박스 그래프 : facet_grid()
+</p>
+</div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb329-1"><a href="박스-그래프.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 박스그래프 : 색 지정하기 (테두리 선)</span></span>
+<span id="cb329-2"><a href="박스-그래프.html#cb329-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb329-3"><a href="박스-그래프.html#cb329-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> Price,</span>
+<span id="cb329-4"><a href="박스-그래프.html#cb329-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type)) <span class="sc">+</span>                             </span>
+<span id="cb329-5"><a href="박스-그래프.html#cb329-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb329-6"><a href="박스-그래프.html#cb329-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span>                  <span class="co"># x축 이름 생략</span></span>
+<span id="cb329-7"><a href="박스-그래프.html#cb329-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span>              <span class="co"># x축 척도 생략</span></span>
+<span id="cb329-8"><a href="박스-그래프.html#cb329-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>( . <span class="sc">~</span> Type) <span class="sc">+</span>                              <span class="co"># Type 별로 박스 그래프를 그립니다.</span></span>
+<span id="cb329-9"><a href="박스-그래프.html#cb329-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 박스그래프 : facet_grid() 함수&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotByTypeFacetGrid-2"></span>
+<img src="bookdown_files/figure-html/GGPlot2BoxPlotByTypeFacetGrid-2.png" alt="차종별 박스 그래프 : facet_grid()" width="100%" />
+<p class="caption">
+Figure 11.45: 차종별 박스 그래프 : facet_grid()
+</p>
+</div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb330-1"><a href="박스-그래프.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 박스그래프 : 색 지정하기 (채우기)</span></span>
+<span id="cb330-2"><a href="박스-그래프.html#cb330-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb330-3"><a href="박스-그래프.html#cb330-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> Price,</span>
+<span id="cb330-4"><a href="박스-그래프.html#cb330-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Type)) <span class="sc">+</span>                             </span>
+<span id="cb330-5"><a href="박스-그래프.html#cb330-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb330-6"><a href="박스-그래프.html#cb330-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span>                  <span class="co"># x축 이름 생략</span></span>
+<span id="cb330-7"><a href="박스-그래프.html#cb330-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span>              <span class="co"># x축 척도 생략</span></span>
+<span id="cb330-8"><a href="박스-그래프.html#cb330-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>( . <span class="sc">~</span> Type) <span class="sc">+</span>                              <span class="co"># Type 별로 박스 그래프를 그립니다.</span></span>
+<span id="cb330-9"><a href="박스-그래프.html#cb330-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 박스그래프 : facet_grid() 함수&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotByTypeFacetGrid-3"></span>
 <img src="bookdown_files/figure-html/GGPlot2BoxPlotByTypeFacetGrid-3.png" alt="차종별 박스 그래프 : facet_grid()" width="100%" />
 <p class="caption">
-Figure 11.45: 차종별 박스 그래프 : facet_grid()
+Figure 11.46: 차종별 박스 그래프 : facet_grid()
 </p>
 </div>
 </div>
 <div id="facet_wrap-함수-이용-4" class="section level4" number="11.3.11.3">
 <h4><span class="header-section-number">11.3.11.3</span> <code>facet_wrap()</code> 함수 이용</h4>
 <p><code>aes()</code> 함수에 <code>x = Type</code> 모수를 추가하고, <code>facet_wrap(~ Type, ncol = 3)</code>을 추가해 줍니다.</p>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb329-1"><a href="박스-그래프.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 그룹별 박스 그래프 : facet_wrap() 함수 이용</span></span>
-<span id="cb329-2"><a href="박스-그래프.html#cb329-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 박스그래프 </span></span>
-<span id="cb329-3"><a href="박스-그래프.html#cb329-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb329-4"><a href="박스-그래프.html#cb329-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> Price)) <span class="sc">+</span>                             </span>
-<span id="cb329-5"><a href="박스-그래프.html#cb329-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb329-6"><a href="박스-그래프.html#cb329-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span>                  </span>
-<span id="cb329-7"><a href="박스-그래프.html#cb329-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span>              </span>
-<span id="cb329-8"><a href="박스-그래프.html#cb329-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span>                       <span class="co"># Type 별로 박스 그래프를 3열로 그립니다.</span></span>
-<span id="cb329-9"><a href="박스-그래프.html#cb329-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 박스그래프 : facet_wrap() 함수&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotByTypeFacetWrap-1"></span>
-<img src="bookdown_files/figure-html/GGPlot2BoxPlotByTypeFacetWrap-1.png" alt="차종별 박스 그래프 : facet_wrap()" width="100%" />
-<p class="caption">
-Figure 11.46: 차종별 박스 그래프 : facet_wrap()
-</p>
-</div>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb330-1"><a href="박스-그래프.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 박스그래프 : 테두리 선</span></span>
-<span id="cb330-2"><a href="박스-그래프.html#cb330-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb330-3"><a href="박스-그래프.html#cb330-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> Price,</span>
-<span id="cb330-4"><a href="박스-그래프.html#cb330-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type)) <span class="sc">+</span>                           <span class="co"># 테두리 선의 색을 지정합니다.                      </span></span>
-<span id="cb330-5"><a href="박스-그래프.html#cb330-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb330-6"><a href="박스-그래프.html#cb330-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span>                  </span>
-<span id="cb330-7"><a href="박스-그래프.html#cb330-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span>              </span>
-<span id="cb330-8"><a href="박스-그래프.html#cb330-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span>                       <span class="co"># Type 별로 박스 그래프를 3열로 그립니다.</span></span>
-<span id="cb330-9"><a href="박스-그래프.html#cb330-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 박스그래프 : facet_wrap() 함수&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotByTypeFacetWrap-2"></span>
-<img src="bookdown_files/figure-html/GGPlot2BoxPlotByTypeFacetWrap-2.png" alt="차종별 박스 그래프 : facet_wrap()" width="100%" />
-<p class="caption">
-Figure 11.47: 차종별 박스 그래프 : facet_wrap()
-</p>
-</div>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb331-1"><a href="박스-그래프.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 박스그래프 : 색 채우기</span></span>
-<span id="cb331-2"><a href="박스-그래프.html#cb331-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb331-3"><a href="박스-그래프.html#cb331-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> Price,</span>
-<span id="cb331-4"><a href="박스-그래프.html#cb331-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Type)) <span class="sc">+</span>                             <span class="co"># 채우기 색을 지정합니다.                      </span></span>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb331-1"><a href="박스-그래프.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 그룹별 박스 그래프 : facet_wrap() 함수 이용</span></span>
+<span id="cb331-2"><a href="박스-그래프.html#cb331-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 박스그래프 </span></span>
+<span id="cb331-3"><a href="박스-그래프.html#cb331-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb331-4"><a href="박스-그래프.html#cb331-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> Price)) <span class="sc">+</span>                             </span>
 <span id="cb331-5"><a href="박스-그래프.html#cb331-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
 <span id="cb331-6"><a href="박스-그래프.html#cb331-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span>                  </span>
 <span id="cb331-7"><a href="박스-그래프.html#cb331-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span>              </span>
 <span id="cb331-8"><a href="박스-그래프.html#cb331-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span>                       <span class="co"># Type 별로 박스 그래프를 3열로 그립니다.</span></span>
-<span id="cb331-9"><a href="박스-그래프.html#cb331-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 박스그래프 : facet_wrap() 함수&quot;</span>) </span></code></pre></div>
+<span id="cb331-9"><a href="박스-그래프.html#cb331-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 박스그래프 : facet_wrap() 함수&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotByTypeFacetWrap-1"></span>
+<img src="bookdown_files/figure-html/GGPlot2BoxPlotByTypeFacetWrap-1.png" alt="차종별 박스 그래프 : facet_wrap()" width="100%" />
+<p class="caption">
+Figure 11.47: 차종별 박스 그래프 : facet_wrap()
+</p>
+</div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb332-1"><a href="박스-그래프.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 박스그래프 : 테두리 선</span></span>
+<span id="cb332-2"><a href="박스-그래프.html#cb332-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb332-3"><a href="박스-그래프.html#cb332-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> Price,</span>
+<span id="cb332-4"><a href="박스-그래프.html#cb332-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type)) <span class="sc">+</span>                           <span class="co"># 테두리 선의 색을 지정합니다.                      </span></span>
+<span id="cb332-5"><a href="박스-그래프.html#cb332-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb332-6"><a href="박스-그래프.html#cb332-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span>                  </span>
+<span id="cb332-7"><a href="박스-그래프.html#cb332-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span>              </span>
+<span id="cb332-8"><a href="박스-그래프.html#cb332-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span>                       <span class="co"># Type 별로 박스 그래프를 3열로 그립니다.</span></span>
+<span id="cb332-9"><a href="박스-그래프.html#cb332-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 박스그래프 : facet_wrap() 함수&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotByTypeFacetWrap-2"></span>
+<img src="bookdown_files/figure-html/GGPlot2BoxPlotByTypeFacetWrap-2.png" alt="차종별 박스 그래프 : facet_wrap()" width="100%" />
+<p class="caption">
+Figure 11.48: 차종별 박스 그래프 : facet_wrap()
+</p>
+</div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb333-1"><a href="박스-그래프.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별(Type) 박스그래프 : 색 채우기</span></span>
+<span id="cb333-2"><a href="박스-그래프.html#cb333-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb333-3"><a href="박스-그래프.html#cb333-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> Price,</span>
+<span id="cb333-4"><a href="박스-그래프.html#cb333-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Type)) <span class="sc">+</span>                             <span class="co"># 채우기 색을 지정합니다.                      </span></span>
+<span id="cb333-5"><a href="박스-그래프.html#cb333-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb333-6"><a href="박스-그래프.html#cb333-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span>                  </span>
+<span id="cb333-7"><a href="박스-그래프.html#cb333-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span>              </span>
+<span id="cb333-8"><a href="박스-그래프.html#cb333-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span>                       <span class="co"># Type 별로 박스 그래프를 3열로 그립니다.</span></span>
+<span id="cb333-9"><a href="박스-그래프.html#cb333-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종별(Type) 박스그래프 : facet_wrap() 함수&quot;</span>) </span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotByTypeFacetWrap-3"></span>
 <img src="bookdown_files/figure-html/GGPlot2BoxPlotByTypeFacetWrap-3.png" alt="차종별 박스 그래프 : facet_wrap()" width="100%" />
 <p class="caption">
-Figure 11.48: 차종별 박스 그래프 : facet_wrap()
+Figure 11.49: 차종별 박스 그래프 : facet_wrap()
 </p>
 </div>
 <p><a href="박스-그래프.html#박스-그래프">Go Top</a></p>
@@ -943,66 +961,66 @@ Figure 11.48: 차종별 박스 그래프 : facet_wrap()
 <div id="aes-함수의-모수-이용-4" class="section level4" number="11.3.12.1">
 <h4><span class="header-section-number">11.3.12.1</span> <code>aes()</code> 함수의 모수 이용</h4>
 <p><code>aes(fill = Origin)</code> 또는 <code>aes(color = Origin)</code> 을 추가해 주면 됩니다.</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb332-1"><a href="박스-그래프.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 두 기준/그룹별 박스 그래프 그리기 : aes() 함수의 모수 이용</span></span>
-<span id="cb332-2"><a href="박스-그래프.html#cb332-2" aria-hidden="true" tabindex="-1"></a><span class="co"># fill 모수 지정</span></span>
-<span id="cb332-3"><a href="박스-그래프.html#cb332-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb332-4"><a href="박스-그래프.html#cb332-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                         <span class="co"># Type 변수를 X로 지정합니다.</span></span>
-<span id="cb332-5"><a href="박스-그래프.html#cb332-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price, </span>
-<span id="cb332-6"><a href="박스-그래프.html#cb332-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Origin)) <span class="sc">+</span>                 <span class="co"># Orgin 변수를 fill의 값으로 지정합니다.</span></span>
-<span id="cb332-7"><a href="박스-그래프.html#cb332-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb332-8"><a href="박스-그래프.html#cb332-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종과 생산지 별 박스 그래프 : fill&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb334-1"><a href="박스-그래프.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 두 기준/그룹별 박스 그래프 그리기 : aes() 함수의 모수 이용</span></span>
+<span id="cb334-2"><a href="박스-그래프.html#cb334-2" aria-hidden="true" tabindex="-1"></a><span class="co"># fill 모수 지정</span></span>
+<span id="cb334-3"><a href="박스-그래프.html#cb334-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb334-4"><a href="박스-그래프.html#cb334-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                         <span class="co"># Type 변수를 X로 지정합니다.</span></span>
+<span id="cb334-5"><a href="박스-그래프.html#cb334-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price, </span>
+<span id="cb334-6"><a href="박스-그래프.html#cb334-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Origin)) <span class="sc">+</span>                 <span class="co"># Orgin 변수를 fill의 값으로 지정합니다.</span></span>
+<span id="cb334-7"><a href="박스-그래프.html#cb334-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb334-8"><a href="박스-그래프.html#cb334-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종과 생산지 별 박스 그래프 : fill&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotByTypeOriginAes-1"></span>
 <img src="bookdown_files/figure-html/GGPlot2BoxPlotByTypeOriginAes-1.png" alt="차종별 생산지별 박스 그래프 : aes()" width="100%" />
 <p class="caption">
-Figure 11.49: 차종별 생산지별 박스 그래프 : aes()
+Figure 11.50: 차종별 생산지별 박스 그래프 : aes()
 </p>
 </div>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb333-1"><a href="박스-그래프.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="co"># colour 모수 지정</span></span>
-<span id="cb333-2"><a href="박스-그래프.html#cb333-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb333-3"><a href="박스-그래프.html#cb333-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                         <span class="co"># Type 변수를 X로 지정합니다.</span></span>
-<span id="cb333-4"><a href="박스-그래프.html#cb333-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price, </span>
-<span id="cb333-5"><a href="박스-그래프.html#cb333-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Origin)) <span class="sc">+</span>               <span class="co"># Orgin 변수를 colour의 값으로 지정합니다.</span></span>
-<span id="cb333-6"><a href="박스-그래프.html#cb333-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb333-7"><a href="박스-그래프.html#cb333-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종과 생산지 별 박스 그래프 : colour&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb335-1"><a href="박스-그래프.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="co"># colour 모수 지정</span></span>
+<span id="cb335-2"><a href="박스-그래프.html#cb335-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb335-3"><a href="박스-그래프.html#cb335-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                         <span class="co"># Type 변수를 X로 지정합니다.</span></span>
+<span id="cb335-4"><a href="박스-그래프.html#cb335-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price, </span>
+<span id="cb335-5"><a href="박스-그래프.html#cb335-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Origin)) <span class="sc">+</span>               <span class="co"># Orgin 변수를 colour의 값으로 지정합니다.</span></span>
+<span id="cb335-6"><a href="박스-그래프.html#cb335-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb335-7"><a href="박스-그래프.html#cb335-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;차종과 생산지 별 박스 그래프 : colour&quot;</span>) </span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotByTypeOriginAes-2"></span>
 <img src="bookdown_files/figure-html/GGPlot2BoxPlotByTypeOriginAes-2.png" alt="차종별 생산지별 박스 그래프 : aes()" width="100%" />
 <p class="caption">
-Figure 11.50: 차종별 생산지별 박스 그래프 : aes()
+Figure 11.51: 차종별 생산지별 박스 그래프 : aes()
 </p>
 </div>
 </div>
 <div id="facet_grid-함수의-이용" class="section level4" number="11.3.12.2">
 <h4><span class="header-section-number">11.3.12.2</span> <code>facet_grid()</code> 함수의 이용</h4>
 <p>첫 번째 기준으로 차종(<code>Type</code>)을 그리고 두 번째 기준으로 생산지(<code>Origin</code>)로 해서 박스 그래프를 그리고자 하는 경우, <code>facet_grid(Origin ~ Type)</code>으로 설정해 줍니다.</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb334-1"><a href="박스-그래프.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 두 기준/그룹별 박스 그래프 그리기 : facet_grid() 함수의 이용</span></span>
-<span id="cb334-2"><a href="박스-그래프.html#cb334-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb334-3"><a href="박스-그래프.html#cb334-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                         <span class="co"># Type 변수를 X로 지정합니다.</span></span>
-<span id="cb334-4"><a href="박스-그래프.html#cb334-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price, </span>
-<span id="cb334-5"><a href="박스-그래프.html#cb334-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Origin)) <span class="sc">+</span>                 <span class="co"># Orgin 변수를 fill(색 채우기)의 값으로 지정합니다.</span></span>
-<span id="cb334-6"><a href="박스-그래프.html#cb334-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb334-7"><a href="박스-그래프.html#cb334-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종과 생산지 별 박스 그래프 : facet_grid()&quot;</span>) <span class="sc">+</span></span>
-<span id="cb334-8"><a href="박스-그래프.html#cb334-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(Origin <span class="sc">~</span> Type)                  <span class="co"># Type을 첫째 기준, Origin을 둘째 기준으로 지정합니다.</span></span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb336-1"><a href="박스-그래프.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 두 기준/그룹별 박스 그래프 그리기 : facet_grid() 함수의 이용</span></span>
+<span id="cb336-2"><a href="박스-그래프.html#cb336-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb336-3"><a href="박스-그래프.html#cb336-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                         <span class="co"># Type 변수를 X로 지정합니다.</span></span>
+<span id="cb336-4"><a href="박스-그래프.html#cb336-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price, </span>
+<span id="cb336-5"><a href="박스-그래프.html#cb336-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Origin)) <span class="sc">+</span>                 <span class="co"># Orgin 변수를 fill(색 채우기)의 값으로 지정합니다.</span></span>
+<span id="cb336-6"><a href="박스-그래프.html#cb336-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb336-7"><a href="박스-그래프.html#cb336-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종과 생산지 별 박스 그래프 : facet_grid()&quot;</span>) <span class="sc">+</span></span>
+<span id="cb336-8"><a href="박스-그래프.html#cb336-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(Origin <span class="sc">~</span> Type)                  <span class="co"># Type을 첫째 기준, Origin을 둘째 기준으로 지정합니다.</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotByTypeOriginFGrid"></span>
 <img src="bookdown_files/figure-html/GGPlot2BoxPlotByTypeOriginFGrid-1.png" alt="차종별 생산지별 박스 그래프 : facet_grid()" width="100%" />
 <p class="caption">
-Figure 11.51: 차종별 생산지별 박스 그래프 : facet_grid()
+Figure 11.52: 차종별 생산지별 박스 그래프 : facet_grid()
 </p>
 </div>
 </div>
 <div id="facet_wrap-함수의-이용" class="section level4" number="11.3.12.3">
 <h4><span class="header-section-number">11.3.12.3</span> <code>facet_wrap()</code> 함수의 이용</h4>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb335-1"><a href="박스-그래프.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 두 기준/그룹별 박스 그래프 그리기 : facet_wrap() 함수의 이용</span></span>
-<span id="cb335-2"><a href="박스-그래프.html#cb335-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
-<span id="cb335-3"><a href="박스-그래프.html#cb335-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                         <span class="co"># Type 변수를 X로 지정합니다.</span></span>
-<span id="cb335-4"><a href="박스-그래프.html#cb335-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price, </span>
-<span id="cb335-5"><a href="박스-그래프.html#cb335-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Origin)) <span class="sc">+</span>               <span class="co"># Orgin 변수를 colour(테두리 선)의 값으로 지정합니다.</span></span>
-<span id="cb335-6"><a href="박스-그래프.html#cb335-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb335-7"><a href="박스-그래프.html#cb335-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종과 생산지 별 박스 그래프 : facet_wrap()&quot;</span>) <span class="sc">+</span></span>
-<span id="cb335-8"><a href="박스-그래프.html#cb335-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(Origin <span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">6</span>)        <span class="co"># Type을 첫째 기준, Origin을 둘째 기준으로 지정합니다.</span></span></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb337-1"><a href="박스-그래프.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 두 기준/그룹별 박스 그래프 그리기 : facet_wrap() 함수의 이용</span></span>
+<span id="cb337-2"><a href="박스-그래프.html#cb337-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, </span>
+<span id="cb337-3"><a href="박스-그래프.html#cb337-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,                         <span class="co"># Type 변수를 X로 지정합니다.</span></span>
+<span id="cb337-4"><a href="박스-그래프.html#cb337-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Price, </span>
+<span id="cb337-5"><a href="박스-그래프.html#cb337-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Origin)) <span class="sc">+</span>               <span class="co"># Orgin 변수를 colour(테두리 선)의 값으로 지정합니다.</span></span>
+<span id="cb337-6"><a href="박스-그래프.html#cb337-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.8</span>, <span class="at">outlier.size=</span><span class="dv">3</span>, <span class="at">outlier.shape=</span><span class="dv">16</span>, <span class="at">outlier.colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb337-7"><a href="박스-그래프.html#cb337-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;차종과 생산지 별 박스 그래프 : facet_wrap()&quot;</span>) <span class="sc">+</span></span>
+<span id="cb337-8"><a href="박스-그래프.html#cb337-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(Origin <span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">6</span>)        <span class="co"># Type을 첫째 기준, Origin을 둘째 기준으로 지정합니다.</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotByTypeOriginFWrap"></span>
 <img src="bookdown_files/figure-html/GGPlot2BoxPlotByTypeOriginFWrap-1.png" alt="차종별 생산지별 박스 그래프 : facet_wrap()" width="100%" />
 <p class="caption">
-Figure 11.52: 차종별 생산지별 박스 그래프 : facet_wrap()
+Figure 11.53: 차종별 생산지별 박스 그래프 : facet_wrap()
 </p>
 </div>
 <p><a href="박스-그래프.html#박스-그래프">Go Top</a></p>
@@ -1013,33 +1031,33 @@ Figure 11.52: 차종별 생산지별 박스 그래프 : facet_wrap()
 <p>히스토그램과 커널 밀도 곡선에서 Theme을 사용하였듯이, 박스 그래프에서도 Theme을 사용할 수 있습니다.</p>
 <p>앞의 예에서 <a href="박스-그래프.html#박스-그래프에-평균-추가하기">박스 그래프에 평균</a>을 추가한 그래프에 Theme을 사용해 보겠습니다.</p>
 <p>이 예에서도 히스토그램에서 <a href="gg히스토그램.html#UsignThemes">Theme으로 사용</a>한 <code>ggplot2::theme_classic() +</code> 이하 부분을 <strong>복사해서 붙여 넣기</strong>한 것입니다.</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb336-1"><a href="박스-그래프.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 박스 그래프에 평균 추가하기 + Theme의 사용</span></span>
-<span id="cb336-2"><a href="박스-그래프.html#cb336-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Type, <span class="at">y =</span> Price)) <span class="sc">+</span> </span>
-<span id="cb336-3"><a href="박스-그래프.html#cb336-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.8</span>, <span class="at">outlier.size =</span> <span class="dv">3</span>, <span class="at">outlier.shape =</span> <span class="dv">16</span>, <span class="at">outlier.colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb336-4"><a href="박스-그래프.html#cb336-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">stat_summary</span>(<span class="at">fun.y =</span> <span class="st">&quot;mean&quot;</span>,                <span class="co"># Y축의 평균값을 산출합니다</span></span>
-<span id="cb336-5"><a href="박스-그래프.html#cb336-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>,                <span class="co"># 점으로 표시합니다.</span></span>
-<span id="cb336-6"><a href="박스-그래프.html#cb336-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">shape =</span> <span class="dv">8</span>,                     <span class="co"># 점의 모양을 8로 지정합니다.</span></span>
-<span id="cb336-7"><a href="박스-그래프.html#cb336-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">size =</span> <span class="dv">3</span>,                      <span class="co"># 점의 크기를 지정합니다.</span></span>
-<span id="cb336-8"><a href="박스-그래프.html#cb336-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span>             <span class="co"># 점의 색을 지정합니다.</span></span>
-<span id="cb336-9"><a href="박스-그래프.html#cb336-9" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot; 박스 그래프에 평균 추가하기&quot;</span>) <span class="sc">+</span></span>
-<span id="cb336-10"><a href="박스-그래프.html#cb336-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb336-11"><a href="박스-그래프.html#cb336-11" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_classic</span>() <span class="sc">+</span>                                         <span class="co"># 그래프 테마 지정</span></span>
-<span id="cb336-12"><a href="박스-그래프.html#cb336-12" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
-<span id="cb336-13"><a href="박스-그래프.html#cb336-13" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;italic&quot;</span>, </span>
-<span id="cb336-14"><a href="박스-그래프.html#cb336-14" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
-<span id="cb336-15"><a href="박스-그래프.html#cb336-15" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
-<span id="cb336-16"><a href="박스-그래프.html#cb336-16" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
-<span id="cb336-17"><a href="박스-그래프.html#cb336-17" aria-hidden="true" tabindex="-1"></a>                 <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
-<span id="cb336-18"><a href="박스-그래프.html#cb336-18" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;bold.italic&quot;</span>, </span>
-<span id="cb336-19"><a href="박스-그래프.html#cb336-19" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
-<span id="cb336-20"><a href="박스-그래프.html#cb336-20" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
-<span id="cb336-21"><a href="박스-그래프.html#cb336-21" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span>       <span class="co"># X축과 Y축의 서식 스타일 지정</span></span>
-<span id="cb336-22"><a href="박스-그래프.html#cb336-22" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)              <span class="co"># Y 값의 천단위에 콤마 표시</span></span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb338-1"><a href="박스-그래프.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 박스 그래프에 평균 추가하기 + Theme의 사용</span></span>
+<span id="cb338-2"><a href="박스-그래프.html#cb338-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Type, <span class="at">y =</span> Price)) <span class="sc">+</span> </span>
+<span id="cb338-3"><a href="박스-그래프.html#cb338-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.8</span>, <span class="at">outlier.size =</span> <span class="dv">3</span>, <span class="at">outlier.shape =</span> <span class="dv">16</span>, <span class="at">outlier.colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb338-4"><a href="박스-그래프.html#cb338-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">stat_summary</span>(<span class="at">fun.y =</span> <span class="st">&quot;mean&quot;</span>,                <span class="co"># Y축의 평균값을 산출합니다</span></span>
+<span id="cb338-5"><a href="박스-그래프.html#cb338-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>,                <span class="co"># 점으로 표시합니다.</span></span>
+<span id="cb338-6"><a href="박스-그래프.html#cb338-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">shape =</span> <span class="dv">8</span>,                     <span class="co"># 점의 모양을 8로 지정합니다.</span></span>
+<span id="cb338-7"><a href="박스-그래프.html#cb338-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">size =</span> <span class="dv">3</span>,                      <span class="co"># 점의 크기를 지정합니다.</span></span>
+<span id="cb338-8"><a href="박스-그래프.html#cb338-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span>             <span class="co"># 점의 색을 지정합니다.</span></span>
+<span id="cb338-9"><a href="박스-그래프.html#cb338-9" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot; 박스 그래프에 평균 추가하기&quot;</span>) <span class="sc">+</span></span>
+<span id="cb338-10"><a href="박스-그래프.html#cb338-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb338-11"><a href="박스-그래프.html#cb338-11" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_classic</span>() <span class="sc">+</span>                                         <span class="co"># 그래프 테마 지정</span></span>
+<span id="cb338-12"><a href="박스-그래프.html#cb338-12" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
+<span id="cb338-13"><a href="박스-그래프.html#cb338-13" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;italic&quot;</span>, </span>
+<span id="cb338-14"><a href="박스-그래프.html#cb338-14" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
+<span id="cb338-15"><a href="박스-그래프.html#cb338-15" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb338-16"><a href="박스-그래프.html#cb338-16" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb338-17"><a href="박스-그래프.html#cb338-17" aria-hidden="true" tabindex="-1"></a>                 <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
+<span id="cb338-18"><a href="박스-그래프.html#cb338-18" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;bold.italic&quot;</span>, </span>
+<span id="cb338-19"><a href="박스-그래프.html#cb338-19" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
+<span id="cb338-20"><a href="박스-그래프.html#cb338-20" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb338-21"><a href="박스-그래프.html#cb338-21" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span>       <span class="co"># X축과 Y축의 서식 스타일 지정</span></span>
+<span id="cb338-22"><a href="박스-그래프.html#cb338-22" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)              <span class="co"># Y 값의 천단위에 콤마 표시</span></span></code></pre></div>
 <pre><code>## Warning: `fun.y` is deprecated. Use `fun` instead.</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:GGPlot2BoxPlotMeanTheme"></span>
 <img src="bookdown_files/figure-html/GGPlot2BoxPlotMeanTheme-1.png" alt="박스 그래프 : Theme 적용하기" width="672" />
 <p class="caption">
-Figure 11.53: 박스 그래프 : Theme 적용하기
+Figure 11.54: 박스 그래프 : Theme 적용하기
 </p>
 </div>
 <p><a href="박스-그래프.html#박스-그래프">Go Top</a></p>
