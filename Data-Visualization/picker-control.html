@@ -304,8 +304,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.1.2" data-path="ggbar.html"><a href="ggbar.html#막대-그래프-활용-방식"><i class="fa fa-check"></i><b>10.1.2</b> 막대 그래프 활용 방식</a></li>
 <li class="chapter" data-level="10.1.3" data-path="ggbar.html"><a href="ggbar.html#x축을-범주형-변수로-한-기본-막대-그래프"><i class="fa fa-check"></i><b>10.1.3</b> x축을 범주형 변수로 한 기본 막대 그래프</a></li>
 <li class="chapter" data-level="10.1.4" data-path="ggbar.html"><a href="ggbar.html#y축에-변수를-지정한-막대-그래프"><i class="fa fa-check"></i><b>10.1.4</b> Y축에 변수를 지정한 막대 그래프</a></li>
-<li class="chapter" data-level="10.1.5" data-path="ggbar.html"><a href="ggbar.html#그룹별-막대-그래프"><i class="fa fa-check"></i><b>10.1.5</b> 그룹별 막대 그래프</a></li>
-<li class="chapter" data-level="10.1.6" data-path="ggbar.html"><a href="ggbar.html#UsignThemesInBarPlot"><i class="fa fa-check"></i><b>10.1.6</b> Theme의 사용</a></li>
+<li class="chapter" data-level="10.1.5" data-path="ggbar.html"><a href="ggbar.html#상대-비율-막대-그래프"><i class="fa fa-check"></i><b>10.1.5</b> 상대 비율 막대 그래프</a></li>
+<li class="chapter" data-level="10.1.6" data-path="ggbar.html"><a href="ggbar.html#막대-그래프에-데이터-레이블-달기"><i class="fa fa-check"></i><b>10.1.6</b> 막대 그래프에 데이터 레이블 달기</a></li>
+<li class="chapter" data-level="10.1.7" data-path="ggbar.html"><a href="ggbar.html#그룹별-막대-그래프"><i class="fa fa-check"></i><b>10.1.7</b> 그룹별 막대 그래프</a></li>
+<li class="chapter" data-level="10.1.8" data-path="ggbar.html"><a href="ggbar.html#UsignThemesInBarPlot"><i class="fa fa-check"></i><b>10.1.8</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="파이-차트-1.html"><a href="파이-차트-1.html"><i class="fa fa-check"></i><b>10.2</b> 파이 차트</a>
 <ul>
@@ -383,7 +385,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.1.2" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html#일변량-범주형-변수의-시각화"><i class="fa fa-check"></i><b>12.1.2</b> 일변량 범주형 변수의 시각화</a></li>
 <li class="chapter" data-level="12.1.3" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html#범주형-변수의-수준-확인"><i class="fa fa-check"></i><b>12.1.3</b> 범주형 변수의 수준 확인</a></li>
 <li class="chapter" data-level="12.1.4" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html#막대-그래프-1"><i class="fa fa-check"></i><b>12.1.4</b> 막대 그래프</a></li>
-<li class="chapter" data-level="12.1.5" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html#상대-비율-막대-그래프"><i class="fa fa-check"></i><b>12.1.5</b> 상대 비율 막대 그래프</a></li>
+<li class="chapter" data-level="12.1.5" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html#상대-비율-막대-그래프-1"><i class="fa fa-check"></i><b>12.1.5</b> 상대 비율 막대 그래프</a></li>
 <li class="chapter" data-level="12.1.6" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html#ggplot-2CatVarsBarGroup"><i class="fa fa-check"></i><b>12.1.6</b> 그룹별 막대 그래프</a></li>
 <li class="chapter" data-level="12.1.7" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html#theme의-사용-3"><i class="fa fa-check"></i><b>12.1.7</b> Theme의 사용</a></li>
 </ul></li>
@@ -554,18 +556,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="picker-control" class="section level2" number="16.4">
 <h2><span class="header-section-number">16.4</span> Picker Control</h2>
 <p>히스토그램에 대상 변수를 선택할 수 있는 Picker Control 예제입니다.</p>
-<div class="sourceCode" id="cb682"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb682-1"><a href="picker-control.html#cb682-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Picker Control</span></span>
-<span id="cb682-2"><a href="picker-control.html#cb682-2" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
-<span id="cb682-3"><a href="picker-control.html#cb682-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(Cars93[, continuous_variable], </span>
-<span id="cb682-4"><a href="picker-control.html#cb682-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> continuous_variable),</span>
-<span id="cb682-5"><a href="picker-control.html#cb682-5" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb682-6"><a href="picker-control.html#cb682-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">continuous_variable =</span> <span class="fu">picker</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Price&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb688"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb688-1"><a href="picker-control.html#cb688-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Picker Control</span></span>
+<span id="cb688-2"><a href="picker-control.html#cb688-2" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
+<span id="cb688-3"><a href="picker-control.html#cb688-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(Cars93[, continuous_variable], </span>
+<span id="cb688-4"><a href="picker-control.html#cb688-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> continuous_variable),</span>
+<span id="cb688-5"><a href="picker-control.html#cb688-5" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb688-6"><a href="picker-control.html#cb688-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">continuous_variable =</span> <span class="fu">picker</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Price&quot;</span>))</span></code></pre></div>
 <pre><code>## Error in manipulate(hist(Cars93[, continuous_variable], freq = FALSE, : The manipulate package must be run from within RStudio</code></pre>
 <p>산포도의 x축, <code>무게(Weight)</code>과 y축, <code>고속도로연비(MPG.highway)</code>은 정해져있고, <code>차종(Type)</code>별로 산포도를 보고 싶을 때 <code>차종(Type)</code>을 왼쪽의 Picker Control 상자로 만들어서 바로 바로 차종별로 선택해 가면서 산포도를 보는 프로그램 예제입니다.</p>
-<div class="sourceCode" id="cb684"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb684-1"><a href="picker-control.html#cb684-1" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
-<span id="cb684-2"><a href="picker-control.html#cb684-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data=</span>Cars93[Cars93<span class="sc">$</span>Type <span class="sc">==</span> Type,]),</span>
-<span id="cb684-3"><a href="picker-control.html#cb684-3" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb684-4"><a href="picker-control.html#cb684-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">Type =</span> <span class="fu">picker</span>(<span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Van&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb690"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb690-1"><a href="picker-control.html#cb690-1" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
+<span id="cb690-2"><a href="picker-control.html#cb690-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data=</span>Cars93[Cars93<span class="sc">$</span>Type <span class="sc">==</span> Type,]),</span>
+<span id="cb690-3"><a href="picker-control.html#cb690-3" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb690-4"><a href="picker-control.html#cb690-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">Type =</span> <span class="fu">picker</span>(<span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Van&quot;</span>))</span></code></pre></div>
 <pre><code>## Error in manipulate(plot(MPG.highway ~ Weight, data = Cars93[Cars93$Type == : The manipulate package must be run from within RStudio</code></pre>
 </div>
             </section>

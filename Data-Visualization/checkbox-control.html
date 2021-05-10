@@ -304,8 +304,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.1.2" data-path="ggbar.html"><a href="ggbar.html#막대-그래프-활용-방식"><i class="fa fa-check"></i><b>10.1.2</b> 막대 그래프 활용 방식</a></li>
 <li class="chapter" data-level="10.1.3" data-path="ggbar.html"><a href="ggbar.html#x축을-범주형-변수로-한-기본-막대-그래프"><i class="fa fa-check"></i><b>10.1.3</b> x축을 범주형 변수로 한 기본 막대 그래프</a></li>
 <li class="chapter" data-level="10.1.4" data-path="ggbar.html"><a href="ggbar.html#y축에-변수를-지정한-막대-그래프"><i class="fa fa-check"></i><b>10.1.4</b> Y축에 변수를 지정한 막대 그래프</a></li>
-<li class="chapter" data-level="10.1.5" data-path="ggbar.html"><a href="ggbar.html#그룹별-막대-그래프"><i class="fa fa-check"></i><b>10.1.5</b> 그룹별 막대 그래프</a></li>
-<li class="chapter" data-level="10.1.6" data-path="ggbar.html"><a href="ggbar.html#UsignThemesInBarPlot"><i class="fa fa-check"></i><b>10.1.6</b> Theme의 사용</a></li>
+<li class="chapter" data-level="10.1.5" data-path="ggbar.html"><a href="ggbar.html#상대-비율-막대-그래프"><i class="fa fa-check"></i><b>10.1.5</b> 상대 비율 막대 그래프</a></li>
+<li class="chapter" data-level="10.1.6" data-path="ggbar.html"><a href="ggbar.html#막대-그래프에-데이터-레이블-달기"><i class="fa fa-check"></i><b>10.1.6</b> 막대 그래프에 데이터 레이블 달기</a></li>
+<li class="chapter" data-level="10.1.7" data-path="ggbar.html"><a href="ggbar.html#그룹별-막대-그래프"><i class="fa fa-check"></i><b>10.1.7</b> 그룹별 막대 그래프</a></li>
+<li class="chapter" data-level="10.1.8" data-path="ggbar.html"><a href="ggbar.html#UsignThemesInBarPlot"><i class="fa fa-check"></i><b>10.1.8</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="파이-차트-1.html"><a href="파이-차트-1.html"><i class="fa fa-check"></i><b>10.2</b> 파이 차트</a>
 <ul>
@@ -383,7 +385,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.1.2" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html#일변량-범주형-변수의-시각화"><i class="fa fa-check"></i><b>12.1.2</b> 일변량 범주형 변수의 시각화</a></li>
 <li class="chapter" data-level="12.1.3" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html#범주형-변수의-수준-확인"><i class="fa fa-check"></i><b>12.1.3</b> 범주형 변수의 수준 확인</a></li>
 <li class="chapter" data-level="12.1.4" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html#막대-그래프-1"><i class="fa fa-check"></i><b>12.1.4</b> 막대 그래프</a></li>
-<li class="chapter" data-level="12.1.5" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html#상대-비율-막대-그래프"><i class="fa fa-check"></i><b>12.1.5</b> 상대 비율 막대 그래프</a></li>
+<li class="chapter" data-level="12.1.5" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html#상대-비율-막대-그래프-1"><i class="fa fa-check"></i><b>12.1.5</b> 상대 비율 막대 그래프</a></li>
 <li class="chapter" data-level="12.1.6" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html#ggplot-2CatVarsBarGroup"><i class="fa fa-check"></i><b>12.1.6</b> 그룹별 막대 그래프</a></li>
 <li class="chapter" data-level="12.1.7" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html#theme의-사용-3"><i class="fa fa-check"></i><b>12.1.7</b> Theme의 사용</a></li>
 </ul></li>
@@ -554,12 +556,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="checkbox-control" class="section level2" number="16.5">
 <h2><span class="header-section-number">16.5</span> Checkbox Control</h2>
 <p>아래는 Box Plot 에서 <strong>IQR(Inter Quartile Range)</strong>의 1.5배 기준으로 계산된 Outlier 를 포함시켜서 제시를 할지 아니면 제외시킬지를 Checkbox 로 선택할 수 있게 한 예제입니다.</p>
-<div class="sourceCode" id="cb686"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb686-1"><a href="checkbox-control.html#cb686-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Checkbox Control</span></span>
-<span id="cb686-2"><a href="checkbox-control.html#cb686-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb686-3"><a href="checkbox-control.html#cb686-3" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
-<span id="cb686-4"><a href="checkbox-control.html#cb686-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">boxplot</span>(Price <span class="sc">~</span> Type, <span class="at">data =</span> Cars93, <span class="at">outline =</span> outline),</span>
-<span id="cb686-5"><a href="checkbox-control.html#cb686-5" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb686-6"><a href="checkbox-control.html#cb686-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">outline =</span> <span class="fu">checkbox</span>(<span class="cn">FALSE</span>, <span class="st">&quot;Show outliers&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb692"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb692-1"><a href="checkbox-control.html#cb692-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Checkbox Control</span></span>
+<span id="cb692-2"><a href="checkbox-control.html#cb692-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb692-3"><a href="checkbox-control.html#cb692-3" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
+<span id="cb692-4"><a href="checkbox-control.html#cb692-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">boxplot</span>(Price <span class="sc">~</span> Type, <span class="at">data =</span> Cars93, <span class="at">outline =</span> outline),</span>
+<span id="cb692-5"><a href="checkbox-control.html#cb692-5" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb692-6"><a href="checkbox-control.html#cb692-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">outline =</span> <span class="fu">checkbox</span>(<span class="cn">FALSE</span>, <span class="st">&quot;Show outliers&quot;</span>))</span></code></pre></div>
 <pre><code>## Error in manipulate(boxplot(Price ~ Type, data = Cars93, outline = outline), : The manipulate package must be run from within RStudio</code></pre>
 </div>
             </section>
