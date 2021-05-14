@@ -303,11 +303,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.1.1" data-path="ggbar.html"><a href="ggbar.html#데이터-세트-1"><i class="fa fa-check"></i><b>10.1.1</b> 데이터 세트</a></li>
 <li class="chapter" data-level="10.1.2" data-path="ggbar.html"><a href="ggbar.html#막대-그래프-활용-방식"><i class="fa fa-check"></i><b>10.1.2</b> 막대 그래프 활용 방식</a></li>
 <li class="chapter" data-level="10.1.3" data-path="ggbar.html"><a href="ggbar.html#x축을-범주형-변수로-한-기본-막대-그래프"><i class="fa fa-check"></i><b>10.1.3</b> x축을 범주형 변수로 한 기본 막대 그래프</a></li>
-<li class="chapter" data-level="10.1.4" data-path="ggbar.html"><a href="ggbar.html#y축에-변수를-지정한-막대-그래프"><i class="fa fa-check"></i><b>10.1.4</b> Y축에 변수를 지정한 막대 그래프</a></li>
-<li class="chapter" data-level="10.1.5" data-path="ggbar.html"><a href="ggbar.html#상대-비율-막대-그래프"><i class="fa fa-check"></i><b>10.1.5</b> 상대 비율 막대 그래프</a></li>
+<li class="chapter" data-level="10.1.4" data-path="ggbar.html"><a href="ggbar.html#상대-비율-막대-그래프"><i class="fa fa-check"></i><b>10.1.4</b> 상대 비율 막대 그래프</a></li>
+<li class="chapter" data-level="10.1.5" data-path="ggbar.html"><a href="ggbar.html#y축에-변수를-지정한-막대-그래프"><i class="fa fa-check"></i><b>10.1.5</b> Y축에 변수를 지정한 막대 그래프</a></li>
 <li class="chapter" data-level="10.1.6" data-path="ggbar.html"><a href="ggbar.html#막대-그래프에-데이터-레이블-달기"><i class="fa fa-check"></i><b>10.1.6</b> 막대 그래프에 데이터 레이블 달기</a></li>
 <li class="chapter" data-level="10.1.7" data-path="ggbar.html"><a href="ggbar.html#그룹별-막대-그래프"><i class="fa fa-check"></i><b>10.1.7</b> 그룹별 막대 그래프</a></li>
 <li class="chapter" data-level="10.1.8" data-path="ggbar.html"><a href="ggbar.html#UsignThemesInBarPlot"><i class="fa fa-check"></i><b>10.1.8</b> Theme의 사용</a></li>
+<li class="chapter" data-level="" data-path="ggbar.html"><a href="ggbar.html#연습문제"><i class="fa fa-check"></i>연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="파이-차트-1.html"><a href="파이-차트-1.html"><i class="fa fa-check"></i><b>10.2</b> 파이 차트</a>
 <ul>
@@ -316,6 +317,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2.3" data-path="파이-차트-1.html"><a href="파이-차트-1.html#불스-아이-차트"><i class="fa fa-check"></i><b>10.2.3</b> 불스 아이 차트</a></li>
 <li class="chapter" data-level="10.2.4" data-path="파이-차트-1.html"><a href="파이-차트-1.html#coxcomb-plot"><i class="fa fa-check"></i><b>10.2.4</b> Coxcomb Plot</a></li>
 <li class="chapter" data-level="10.2.5" data-path="파이-차트-1.html"><a href="파이-차트-1.html#그룹별-파이-차트"><i class="fa fa-check"></i><b>10.2.5</b> 그룹별 파이 차트</a></li>
+<li class="chapter" data-level="" data-path="파이-차트-1.html"><a href="파이-차트-1.html#연습문제-1"><i class="fa fa-check"></i>연습문제</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="일변량-변수-연속형-데이터.html"><a href="일변량-변수-연속형-데이터.html"><i class="fa fa-check"></i><b>11</b> 일변량 변수 - 연속형 데이터</a>
@@ -559,9 +561,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="데이터-세트-6" class="section level3" number="12.1.1">
 <h3><span class="header-section-number">12.1.1</span> 데이터 세트</h3>
 <p>사용할 데이터는 <code>MASS</code> 패키지에 있는 <code>Cars93</code> 데이터 프레임에서 자동차 유형(<code>Type</code>), 자동차 구동 방식(<code>DriveTrain</code>) 등의 범주형/요인(factor)형 변수를 사용하겠습니다.</p>
-<div class="sourceCode" id="cb383"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb383-1"><a href="ggplot-bar-2CatVars.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb383-2"><a href="ggplot-bar-2CatVars.html#cb383-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb383-3"><a href="ggplot-bar-2CatVars.html#cb383-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb454-1"><a href="ggplot-bar-2CatVars.html#cb454-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb454-2"><a href="ggplot-bar-2CatVars.html#cb454-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb454-3"><a href="ggplot-bar-2CatVars.html#cb454-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
 <pre class="bg-warning"><code>## &#39;data.frame&#39;:    93 obs. of  27 variables:
 ##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
 ##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
@@ -595,10 +597,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="일변량-범주형-변수의-시각화" class="section level3" number="12.1.2">
 <h3><span class="header-section-number">12.1.2</span> 일변량 범주형 변수의 시각화</h3>
 <p>먼저 자동차 유형(<code>Type</code>)을 막대 그래프로 시각화해 보겠습니다.</p>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb385-1"><a href="ggplot-bar-2CatVars.html#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,</span>
-<span id="cb385-2"><a href="ggplot-bar-2CatVars.html#cb385-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type)) <span class="sc">+</span></span>
-<span id="cb385-3"><a href="ggplot-bar-2CatVars.html#cb385-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb385-4"><a href="ggplot-bar-2CatVars.html#cb385-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;일변량 범주형 변수의 시각화&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb456-1"><a href="ggplot-bar-2CatVars.html#cb456-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,</span>
+<span id="cb456-2"><a href="ggplot-bar-2CatVars.html#cb456-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type)) <span class="sc">+</span></span>
+<span id="cb456-3"><a href="ggplot-bar-2CatVars.html#cb456-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb456-4"><a href="ggplot-bar-2CatVars.html#cb456-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;일변량 범주형 변수의 시각화&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:2CatVars1"></span>
 <img src="bookdown_files/figure-html/2CatVars1-1.png" alt="일변량 범주형 변수의 시각화" width="672" />
 <p class="caption">
@@ -610,7 +612,7 @@ Figure 12.1: 일변량 범주형 변수의 시각화
 <div id="범주형-변수의-수준-확인" class="section level3" number="12.1.3">
 <h3><span class="header-section-number">12.1.3</span> 범주형 변수의 수준 확인</h3>
 <p>자동차 구동 방식(<code>DriveTrain</code>)의 클래스 타입은 앞의 데이터 세트에서 확인한 바와 같이 ’요인형(factor)’임을 알 수 있습니다. 그러면 이 변수의 <strong>수준(levels)</strong>을 확인해 보겠습니다.</p>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb386-1"><a href="ggplot-bar-2CatVars.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(Cars93<span class="sc">$</span>DriveTrain)</span></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb457-1"><a href="ggplot-bar-2CatVars.html#cb457-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(Cars93<span class="sc">$</span>DriveTrain)</span></code></pre></div>
 <pre class="bg-warning"><code>## [1] &quot;4WD&quot;   &quot;Front&quot; &quot;Rear&quot;</code></pre>
 <p>즉, 자동차 구동 방식(<code>DriveTrain</code>) 변수는 “4WD,” “Front,” “Rear” 등을 수준으로 하는 변수임을 알 수 있습니다. “4WD”는 사륜구동을, “Front”는 전륜구동, 그리고 “Rear”는 후륜구동을 나타내고 있습니다.</p>
 <p><a href="ggplot-bar-2CatVars.html#ggplot-bar-2CatVars">Go Top</a></p>
@@ -621,11 +623,11 @@ Figure 12.1: 일변량 범주형 변수의 시각화
 <div id="누적-막대-그래프" class="section level4" number="12.1.4.1">
 <h4><span class="header-section-number">12.1.4.1</span> 누적 막대 그래프</h4>
 <p>다음과 같이 <code>aes()</code> 함수 내에 <code>fill = DriveTrain</code>를 입력하면 다음과 같이 누적 막대 그래프(stacked bar char)가 생성됩니다.</p>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb388-1"><a href="ggplot-bar-2CatVars.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,</span>
-<span id="cb388-2"><a href="ggplot-bar-2CatVars.html#cb388-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,</span>
-<span id="cb388-3"><a href="ggplot-bar-2CatVars.html#cb388-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
-<span id="cb388-4"><a href="ggplot-bar-2CatVars.html#cb388-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb388-5"><a href="ggplot-bar-2CatVars.html#cb388-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;누적 막대 그래프&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb459-1"><a href="ggplot-bar-2CatVars.html#cb459-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,</span>
+<span id="cb459-2"><a href="ggplot-bar-2CatVars.html#cb459-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,</span>
+<span id="cb459-3"><a href="ggplot-bar-2CatVars.html#cb459-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
+<span id="cb459-4"><a href="ggplot-bar-2CatVars.html#cb459-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb459-5"><a href="ggplot-bar-2CatVars.html#cb459-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;누적 막대 그래프&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:2CatVarsCum"></span>
 <img src="bookdown_files/figure-html/2CatVarsCum-1.png" alt="누적 막대 그래프" width="672" />
 <p class="caption">
@@ -639,11 +641,11 @@ Figure 12.2: 누적 막대 그래프
 <h4><span class="header-section-number">12.1.4.2</span> 그룹 막대 그래프</h4>
 <p>한편, 각 자동차 유형별로 자동차 구동 방식이 누적 형태로 표시하는 대신에 자동차 유형별(그룹)(<code>Type</code>)로 자동차 구동 방식(<code>DriveTrain</code>)을 또 다른 막대 그래프로 비교할 수도 있습니다.</p>
 <p>이를 위해서는 <code>geom_bar()</code> 함수 내에 <code>position = "dodge"</code> 모수를 입력해 줍니다.</p>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb389-1"><a href="ggplot-bar-2CatVars.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,</span>
-<span id="cb389-2"><a href="ggplot-bar-2CatVars.html#cb389-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,</span>
-<span id="cb389-3"><a href="ggplot-bar-2CatVars.html#cb389-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
-<span id="cb389-4"><a href="ggplot-bar-2CatVars.html#cb389-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
-<span id="cb389-5"><a href="ggplot-bar-2CatVars.html#cb389-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;그룹 막대 그래프&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb460-1"><a href="ggplot-bar-2CatVars.html#cb460-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,</span>
+<span id="cb460-2"><a href="ggplot-bar-2CatVars.html#cb460-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,</span>
+<span id="cb460-3"><a href="ggplot-bar-2CatVars.html#cb460-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
+<span id="cb460-4"><a href="ggplot-bar-2CatVars.html#cb460-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
+<span id="cb460-5"><a href="ggplot-bar-2CatVars.html#cb460-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;그룹 막대 그래프&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:2CatVarsGrp"></span>
 <img src="bookdown_files/figure-html/2CatVarsGrp-1.png" alt="그룹 막대 그래프" width="672" />
 <p class="caption">
@@ -653,16 +655,16 @@ Figure 12.3: 그룹 막대 그래프
 <p>그런데 이 그래프에서 보면 자동차 유형별(<code>Type</code>)로 자동차 구동 방식(<code>DriveTrain</code>)을 궅이 한 그래프에 다 표시하지 않고 분할하여 그래프로 나타낼 수 도 있습니다.</p>
 <p>이는 아래의 <a href="ggplot-bar-2CatVars.html#ggplot-2CatVarsBarGroup">그룹별 막대 그래프</a>에서 확인하기 바랍니다.</p>
 <p>한편 그림 <a href="ggplot-bar-2CatVars.html#fig:2CatVarsGrp">12.3</a>에 <code>geom_text()</code> 함수를 이용하여 데이터 레이블을 표시해 보겠습니다.</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb390-1"><a href="ggplot-bar-2CatVars.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,</span>
-<span id="cb390-2"><a href="ggplot-bar-2CatVars.html#cb390-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,</span>
-<span id="cb390-3"><a href="ggplot-bar-2CatVars.html#cb390-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
-<span id="cb390-4"><a href="ggplot-bar-2CatVars.html#cb390-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
-<span id="cb390-5"><a href="ggplot-bar-2CatVars.html#cb390-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;그룹 막대 그래프&quot;</span>) <span class="sc">+</span></span>
-<span id="cb390-6"><a href="ggplot-bar-2CatVars.html#cb390-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">stat =</span> <span class="st">&quot;count&quot;</span>,</span>
-<span id="cb390-7"><a href="ggplot-bar-2CatVars.html#cb390-7" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">label =</span> ..count..),</span>
-<span id="cb390-8"><a href="ggplot-bar-2CatVars.html#cb390-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.9</span>),</span>
-<span id="cb390-9"><a href="ggplot-bar-2CatVars.html#cb390-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">vjust =</span> <span class="fl">1.5</span>,</span>
-<span id="cb390-10"><a href="ggplot-bar-2CatVars.html#cb390-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="fl">2.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb461-1"><a href="ggplot-bar-2CatVars.html#cb461-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,</span>
+<span id="cb461-2"><a href="ggplot-bar-2CatVars.html#cb461-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,</span>
+<span id="cb461-3"><a href="ggplot-bar-2CatVars.html#cb461-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
+<span id="cb461-4"><a href="ggplot-bar-2CatVars.html#cb461-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
+<span id="cb461-5"><a href="ggplot-bar-2CatVars.html#cb461-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;그룹 막대 그래프&quot;</span>) <span class="sc">+</span></span>
+<span id="cb461-6"><a href="ggplot-bar-2CatVars.html#cb461-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">stat =</span> <span class="st">&quot;count&quot;</span>,</span>
+<span id="cb461-7"><a href="ggplot-bar-2CatVars.html#cb461-7" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">label =</span> ..count..),</span>
+<span id="cb461-8"><a href="ggplot-bar-2CatVars.html#cb461-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.9</span>),</span>
+<span id="cb461-9"><a href="ggplot-bar-2CatVars.html#cb461-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">vjust =</span> <span class="fl">1.5</span>,</span>
+<span id="cb461-10"><a href="ggplot-bar-2CatVars.html#cb461-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="fl">2.5</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:2CatVarsGrp1"></span>
 <img src="bookdown_files/figure-html/2CatVarsGrp1-1.png" alt="그룹 막대 그래프" width="672" />
 <p class="caption">
@@ -676,11 +678,11 @@ Figure 12.4: 그룹 막대 그래프
 <h3><span class="header-section-number">12.1.5</span> 상대 비율 막대 그래프</h3>
 <p>앞의 누적 막대 그래프의 경우는 Y축에 빈도를 나타내는 <code>count</code>로 표시가 되고 있습니다.</p>
 <p>그런데 이를 100%에 대한 상대 비율로 시각화할 수도 있습니다 이를 위해서는 <code>geom_bar()</code> 함수에 <code>position = "fill"</code> 모수를 추가해 주면 됩니다.</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb391-1"><a href="ggplot-bar-2CatVars.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,</span>
-<span id="cb391-2"><a href="ggplot-bar-2CatVars.html#cb391-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,</span>
-<span id="cb391-3"><a href="ggplot-bar-2CatVars.html#cb391-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
-<span id="cb391-4"><a href="ggplot-bar-2CatVars.html#cb391-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;fill&quot;</span>) <span class="sc">+</span></span>
-<span id="cb391-5"><a href="ggplot-bar-2CatVars.html#cb391-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;상대 비율 막대 그래프&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb462-1"><a href="ggplot-bar-2CatVars.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,</span>
+<span id="cb462-2"><a href="ggplot-bar-2CatVars.html#cb462-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,</span>
+<span id="cb462-3"><a href="ggplot-bar-2CatVars.html#cb462-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
+<span id="cb462-4"><a href="ggplot-bar-2CatVars.html#cb462-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;fill&quot;</span>) <span class="sc">+</span></span>
+<span id="cb462-5"><a href="ggplot-bar-2CatVars.html#cb462-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;상대 비율 막대 그래프&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:2CatVarsProp"></span>
 <img src="bookdown_files/figure-html/2CatVarsProp-1.png" alt="상대 비율 막대 그래프" width="672" />
 <p class="caption">
@@ -695,12 +697,12 @@ Figure 12.5: 상대 비율 막대 그래프
 <div id="facet_grid-함수의-이용-2" class="section level4" number="12.1.6.1">
 <h4><span class="header-section-number">12.1.6.1</span> <code>facet_grid()</code> 함수의 이용</h4>
 <p>앞에서 작성한 <code>그룹 막대 그래프</code>에 다음과 같이 <code>facet_grid()</code> 함수를 추가해 주면 자동차 구동 방식별로 막대 그래프를 분할하여 표시할 수 있습니다.</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb392-1"><a href="ggplot-bar-2CatVars.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,</span>
-<span id="cb392-2"><a href="ggplot-bar-2CatVars.html#cb392-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,</span>
-<span id="cb392-3"><a href="ggplot-bar-2CatVars.html#cb392-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
-<span id="cb392-4"><a href="ggplot-bar-2CatVars.html#cb392-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
-<span id="cb392-5"><a href="ggplot-bar-2CatVars.html#cb392-5" aria-hidden="true" tabindex="-1"></a><span class="fu">facet_grid</span>(DriveTrain <span class="sc">~</span> .)  <span class="sc">+</span> <span class="co"># facet_grid(. ~ DriveTrain)  </span></span>
-<span id="cb392-6"><a href="ggplot-bar-2CatVars.html#cb392-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtitle</span>(<span class="st">&quot;그룹별 막대 그래프 : facet_grid() 함수 이용&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb463-1"><a href="ggplot-bar-2CatVars.html#cb463-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,</span>
+<span id="cb463-2"><a href="ggplot-bar-2CatVars.html#cb463-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,</span>
+<span id="cb463-3"><a href="ggplot-bar-2CatVars.html#cb463-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
+<span id="cb463-4"><a href="ggplot-bar-2CatVars.html#cb463-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
+<span id="cb463-5"><a href="ggplot-bar-2CatVars.html#cb463-5" aria-hidden="true" tabindex="-1"></a><span class="fu">facet_grid</span>(DriveTrain <span class="sc">~</span> .)  <span class="sc">+</span> <span class="co"># facet_grid(. ~ DriveTrain)  </span></span>
+<span id="cb463-6"><a href="ggplot-bar-2CatVars.html#cb463-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtitle</span>(<span class="st">&quot;그룹별 막대 그래프 : facet_grid() 함수 이용&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:2CatVarsFGrid"></span>
 <img src="bookdown_files/figure-html/2CatVarsFGrid-1.png" alt="그룹별 막대 그래프 : facet_grid() 함수 이용" width="672" />
 <p class="caption">
@@ -712,12 +714,12 @@ Figure 12.6: 그룹별 막대 그래프 : facet_grid() 함수 이용
 <div id="facet_wrap-함수의-이용-2" class="section level4" number="12.1.6.2">
 <h4><span class="header-section-number">12.1.6.2</span> <code>facet_wrap()</code> 함수의 이용</h4>
 <p><code>facet_wrap()</code> 함수를 이용해도 비슷한 효과를 볼 수 있습니다.</p>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb393-1"><a href="ggplot-bar-2CatVars.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,</span>
-<span id="cb393-2"><a href="ggplot-bar-2CatVars.html#cb393-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,</span>
-<span id="cb393-3"><a href="ggplot-bar-2CatVars.html#cb393-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
-<span id="cb393-4"><a href="ggplot-bar-2CatVars.html#cb393-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
-<span id="cb393-5"><a href="ggplot-bar-2CatVars.html#cb393-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> DriveTrain, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb393-6"><a href="ggplot-bar-2CatVars.html#cb393-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;그룹별 막대 그래프 : facet_wrap() 함수 이용&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb464-1"><a href="ggplot-bar-2CatVars.html#cb464-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,</span>
+<span id="cb464-2"><a href="ggplot-bar-2CatVars.html#cb464-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,</span>
+<span id="cb464-3"><a href="ggplot-bar-2CatVars.html#cb464-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
+<span id="cb464-4"><a href="ggplot-bar-2CatVars.html#cb464-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
+<span id="cb464-5"><a href="ggplot-bar-2CatVars.html#cb464-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> DriveTrain, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb464-6"><a href="ggplot-bar-2CatVars.html#cb464-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;그룹별 막대 그래프 : facet_wrap() 함수 이용&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:2CatVarsFWrap"></span>
 <img src="bookdown_files/figure-html/2CatVarsFWrap-1.png" alt="그룹별 막대 그래프 : facet_wrap() 함수 이용" width="672" />
 <p class="caption">
@@ -731,23 +733,23 @@ Figure 12.7: 그룹별 막대 그래프 : facet_wrap() 함수 이용
 <div id="theme의-사용-3" class="section level3" number="12.1.7">
 <h3><span class="header-section-number">12.1.7</span> Theme의 사용</h3>
 <p>여기에서도 앞에서 사용한 바와 같은 테마를 사용할 수 있습니다.</p>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb394-1"><a href="ggplot-bar-2CatVars.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,</span>
-<span id="cb394-2"><a href="ggplot-bar-2CatVars.html#cb394-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,</span>
-<span id="cb394-3"><a href="ggplot-bar-2CatVars.html#cb394-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
-<span id="cb394-4"><a href="ggplot-bar-2CatVars.html#cb394-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
-<span id="cb394-5"><a href="ggplot-bar-2CatVars.html#cb394-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;이변량 범주형 막대 그래프 : Theme의 사용&quot;</span>) <span class="sc">+</span></span>
-<span id="cb394-6"><a href="ggplot-bar-2CatVars.html#cb394-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_classic</span>() <span class="sc">+</span>                                         <span class="co"># 그래프 테마 지정</span></span>
-<span id="cb394-7"><a href="ggplot-bar-2CatVars.html#cb394-7" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
-<span id="cb394-8"><a href="ggplot-bar-2CatVars.html#cb394-8" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;italic&quot;</span>, </span>
-<span id="cb394-9"><a href="ggplot-bar-2CatVars.html#cb394-9" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
-<span id="cb394-10"><a href="ggplot-bar-2CatVars.html#cb394-10" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
-<span id="cb394-11"><a href="ggplot-bar-2CatVars.html#cb394-11" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
-<span id="cb394-12"><a href="ggplot-bar-2CatVars.html#cb394-12" aria-hidden="true" tabindex="-1"></a>                 <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
-<span id="cb394-13"><a href="ggplot-bar-2CatVars.html#cb394-13" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;bold.italic&quot;</span>, </span>
-<span id="cb394-14"><a href="ggplot-bar-2CatVars.html#cb394-14" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
-<span id="cb394-15"><a href="ggplot-bar-2CatVars.html#cb394-15" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
-<span id="cb394-16"><a href="ggplot-bar-2CatVars.html#cb394-16" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>))  <span class="sc">+</span>       <span class="co"># X축과 Y축의 서식 스타일 지정</span></span>
-<span id="cb394-17"><a href="ggplot-bar-2CatVars.html#cb394-17" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)              <span class="co"># Y 값의 천단위에 콤마 표시</span></span></code></pre></div>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb465-1"><a href="ggplot-bar-2CatVars.html#cb465-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,</span>
+<span id="cb465-2"><a href="ggplot-bar-2CatVars.html#cb465-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Type,</span>
+<span id="cb465-3"><a href="ggplot-bar-2CatVars.html#cb465-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
+<span id="cb465-4"><a href="ggplot-bar-2CatVars.html#cb465-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
+<span id="cb465-5"><a href="ggplot-bar-2CatVars.html#cb465-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;이변량 범주형 막대 그래프 : Theme의 사용&quot;</span>) <span class="sc">+</span></span>
+<span id="cb465-6"><a href="ggplot-bar-2CatVars.html#cb465-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_classic</span>() <span class="sc">+</span>                                         <span class="co"># 그래프 테마 지정</span></span>
+<span id="cb465-7"><a href="ggplot-bar-2CatVars.html#cb465-7" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
+<span id="cb465-8"><a href="ggplot-bar-2CatVars.html#cb465-8" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;italic&quot;</span>, </span>
+<span id="cb465-9"><a href="ggplot-bar-2CatVars.html#cb465-9" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
+<span id="cb465-10"><a href="ggplot-bar-2CatVars.html#cb465-10" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb465-11"><a href="ggplot-bar-2CatVars.html#cb465-11" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb465-12"><a href="ggplot-bar-2CatVars.html#cb465-12" aria-hidden="true" tabindex="-1"></a>                 <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
+<span id="cb465-13"><a href="ggplot-bar-2CatVars.html#cb465-13" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;bold.italic&quot;</span>, </span>
+<span id="cb465-14"><a href="ggplot-bar-2CatVars.html#cb465-14" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
+<span id="cb465-15"><a href="ggplot-bar-2CatVars.html#cb465-15" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb465-16"><a href="ggplot-bar-2CatVars.html#cb465-16" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>))  <span class="sc">+</span>       <span class="co"># X축과 Y축의 서식 스타일 지정</span></span>
+<span id="cb465-17"><a href="ggplot-bar-2CatVars.html#cb465-17" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)              <span class="co"># Y 값의 천단위에 콤마 표시</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:2CatVarsTheme"></span>
 <img src="bookdown_files/figure-html/2CatVarsTheme-1.png" alt="이변량 범주형 막대 그래프 : Theme의 사용" width="672" />
 <p class="caption">

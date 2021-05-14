@@ -303,11 +303,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.1.1" data-path="ggbar.html"><a href="ggbar.html#데이터-세트-1"><i class="fa fa-check"></i><b>10.1.1</b> 데이터 세트</a></li>
 <li class="chapter" data-level="10.1.2" data-path="ggbar.html"><a href="ggbar.html#막대-그래프-활용-방식"><i class="fa fa-check"></i><b>10.1.2</b> 막대 그래프 활용 방식</a></li>
 <li class="chapter" data-level="10.1.3" data-path="ggbar.html"><a href="ggbar.html#x축을-범주형-변수로-한-기본-막대-그래프"><i class="fa fa-check"></i><b>10.1.3</b> x축을 범주형 변수로 한 기본 막대 그래프</a></li>
-<li class="chapter" data-level="10.1.4" data-path="ggbar.html"><a href="ggbar.html#y축에-변수를-지정한-막대-그래프"><i class="fa fa-check"></i><b>10.1.4</b> Y축에 변수를 지정한 막대 그래프</a></li>
-<li class="chapter" data-level="10.1.5" data-path="ggbar.html"><a href="ggbar.html#상대-비율-막대-그래프"><i class="fa fa-check"></i><b>10.1.5</b> 상대 비율 막대 그래프</a></li>
+<li class="chapter" data-level="10.1.4" data-path="ggbar.html"><a href="ggbar.html#상대-비율-막대-그래프"><i class="fa fa-check"></i><b>10.1.4</b> 상대 비율 막대 그래프</a></li>
+<li class="chapter" data-level="10.1.5" data-path="ggbar.html"><a href="ggbar.html#y축에-변수를-지정한-막대-그래프"><i class="fa fa-check"></i><b>10.1.5</b> Y축에 변수를 지정한 막대 그래프</a></li>
 <li class="chapter" data-level="10.1.6" data-path="ggbar.html"><a href="ggbar.html#막대-그래프에-데이터-레이블-달기"><i class="fa fa-check"></i><b>10.1.6</b> 막대 그래프에 데이터 레이블 달기</a></li>
 <li class="chapter" data-level="10.1.7" data-path="ggbar.html"><a href="ggbar.html#그룹별-막대-그래프"><i class="fa fa-check"></i><b>10.1.7</b> 그룹별 막대 그래프</a></li>
 <li class="chapter" data-level="10.1.8" data-path="ggbar.html"><a href="ggbar.html#UsignThemesInBarPlot"><i class="fa fa-check"></i><b>10.1.8</b> Theme의 사용</a></li>
+<li class="chapter" data-level="" data-path="ggbar.html"><a href="ggbar.html#연습문제"><i class="fa fa-check"></i>연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="파이-차트-1.html"><a href="파이-차트-1.html"><i class="fa fa-check"></i><b>10.2</b> 파이 차트</a>
 <ul>
@@ -316,6 +317,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2.3" data-path="파이-차트-1.html"><a href="파이-차트-1.html#불스-아이-차트"><i class="fa fa-check"></i><b>10.2.3</b> 불스 아이 차트</a></li>
 <li class="chapter" data-level="10.2.4" data-path="파이-차트-1.html"><a href="파이-차트-1.html#coxcomb-plot"><i class="fa fa-check"></i><b>10.2.4</b> Coxcomb Plot</a></li>
 <li class="chapter" data-level="10.2.5" data-path="파이-차트-1.html"><a href="파이-차트-1.html#그룹별-파이-차트"><i class="fa fa-check"></i><b>10.2.5</b> 그룹별 파이 차트</a></li>
+<li class="chapter" data-level="" data-path="파이-차트-1.html"><a href="파이-차트-1.html#연습문제-1"><i class="fa fa-check"></i>연습문제</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="일변량-변수-연속형-데이터.html"><a href="일변량-변수-연속형-데이터.html"><i class="fa fa-check"></i><b>11</b> 일변량 변수 - 연속형 데이터</a>
@@ -560,8 +562,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">13.1.1</span> 데이터 세트</h3>
 <p><code>MASS</code>패키지 내 <code>Cars93</code> 데이터 프레임의 <code>고속도로연비(MPG.highway)</code>와 <code>엔진크기(EngineSize)</code>, <code>무게(Weight)</code>, <code>길이(Length)</code> 와의 관계를 <code>ggplot2</code> 패키지의 <code>geom_point()</code> 함수를 이용하여 산포도로 알아보겠습니다.</p>
 <p>그리고 <strong><code>차종(Type)</code></strong>별로 <code>고속도로연비(MPG.highway)</code> 는 어떻게 되는지도 산포도를 가지고 <strong>점의 색깔과 모양</strong>을 달리해서 살펴보는 방법을 알아보겠습니다.</p>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb413-1"><a href="산포도-1.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb413-2"><a href="산포도-1.html#cb413-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb484-1"><a href="산포도-1.html#cb484-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb484-2"><a href="산포도-1.html#cb484-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
 <pre class="bg-warning"><code>## &#39;data.frame&#39;:    93 obs. of  27 variables:
 ##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
 ##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
@@ -594,9 +596,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="변수들-간의-상관계수" class="section level3" number="13.1.2">
 <h3><span class="header-section-number">13.1.2</span> 변수들 간의 상관계수</h3>
 <p>먼저 변수들 간의 <strong>상관계수</strong>를 가지고 <code>고속도로연비(MPG.highway)</code>와 <code>엔진크기(EngineSize)</code>, <code>무게(Weight)</code>, <code>길이(Length)</code>와의 <strong>상관도</strong>를 살펴보겠습니다.</p>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb415-1"><a href="산포도-1.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 변수들 간의 상관계수 : cor() 함수</span></span>
-<span id="cb415-2"><a href="산포도-1.html#cb415-2" aria-hidden="true" tabindex="-1"></a>Cars93_MPG <span class="ot">&lt;-</span> Cars93[, <span class="fu">c</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;EngineSize&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Length&quot;</span>)]</span>
-<span id="cb415-3"><a href="산포도-1.html#cb415-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(Cars93_MPG)          <span class="co"># 4개의 변수들 간의 상관계수를 구합니다.</span></span></code></pre></div>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb486-1"><a href="산포도-1.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 변수들 간의 상관계수 : cor() 함수</span></span>
+<span id="cb486-2"><a href="산포도-1.html#cb486-2" aria-hidden="true" tabindex="-1"></a>Cars93_MPG <span class="ot">&lt;-</span> Cars93[, <span class="fu">c</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;EngineSize&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Length&quot;</span>)]</span>
+<span id="cb486-3"><a href="산포도-1.html#cb486-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(Cars93_MPG)          <span class="co"># 4개의 변수들 간의 상관계수를 구합니다.</span></span></code></pre></div>
 <pre class="bg-warning"><code>##             MPG.highway EngineSize Weight Length
 ## MPG.highway        1.00      -0.63  -0.81  -0.54
 ## EngineSize        -0.63       1.00   0.85   0.78
@@ -611,8 +613,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">13.1.3.1</span> 산포도 행렬</h4>
 <p>이제 산포도 행렬을 그려서 <code>고속도로연비(MPG.highway)</code>와 <code>엔진크기(EngineSize)</code>, <code>무게(Weight)</code>, <code>길이(Length)</code> 관계를 살펴보겠습니다.</p>
 <p>제일 쉬운 방법은 <strong>Base graphics 패키지에 있는 <code>plot()</code>함수</strong>를 사용하는 방법입니다. 위에서 분석하려는 4 개의 변수만 따로 선별해 놓은 <code>Cars93_MPG</code> 데이터 프레임을 가지고 <strong>산포도 행렬</strong>을 그려보겠습니다.</p>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb417-1"><a href="산포도-1.html#cb417-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 산포도 행렬 : plot() 함수 이용</span></span>
-<span id="cb417-2"><a href="산포도-1.html#cb417-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Cars93_MPG, <span class="at">main=</span><span class="st">&quot;산포도 행렬&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb488-1"><a href="산포도-1.html#cb488-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 산포도 행렬 : plot() 함수 이용</span></span>
+<span id="cb488-2"><a href="산포도-1.html#cb488-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Cars93_MPG, <span class="at">main=</span><span class="st">&quot;산포도 행렬&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGScatterPlotMatrix"></span>
 <img src="bookdown_files/figure-html/GGScatterPlotMatrix-1.png" alt="plot() 함수를 이용한 산포도 행렬" width="672" />
 <p class="caption">
@@ -626,12 +628,12 @@ Figure 13.1: plot() 함수를 이용한 산포도 행렬
 <p><code>ggplot2</code>로는 <strong>산포도 행렬(Scatter Plot matrix)</strong>를 그리는 것이 힘듭니다.</p>
 <p>대신 여러 조건을 주어서 두 변수 간 산포도를 다양하게 그려보는 데는 아주 강력합니다.</p>
 <p>고속도로 연비(<code>MPG.highway</code>)와 엔진크기(<code>EngineSize</code>)의 관계를 <code>geom_point()</code> 함수를 이용하여 산포도로 시각화해 보겠습니다.</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb418-1"><a href="산포도-1.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 산포도 : MPG.highway 대 EngineSize, Weight, Length</span></span>
-<span id="cb418-2"><a href="산포도-1.html#cb418-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
-<span id="cb418-3"><a href="산포도-1.html#cb418-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> EngineSize, </span>
-<span id="cb418-4"><a href="산포도-1.html#cb418-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway)) <span class="sc">+</span> </span>
-<span id="cb418-5"><a href="산포도-1.html#cb418-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb418-6"><a href="산포도-1.html#cb418-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;기본 산포도&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb489-1"><a href="산포도-1.html#cb489-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 산포도 : MPG.highway 대 EngineSize, Weight, Length</span></span>
+<span id="cb489-2"><a href="산포도-1.html#cb489-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
+<span id="cb489-3"><a href="산포도-1.html#cb489-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> EngineSize, </span>
+<span id="cb489-4"><a href="산포도-1.html#cb489-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway)) <span class="sc">+</span> </span>
+<span id="cb489-5"><a href="산포도-1.html#cb489-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb489-6"><a href="산포도-1.html#cb489-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;기본 산포도&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGScatterPlotBas"></span>
 <img src="bookdown_files/figure-html/GGScatterPlotBas-1.png" alt="기본 산포도" width="90%" />
 <p class="caption">
@@ -641,38 +643,38 @@ Figure 13.2: 기본 산포도
 <div id="점의-모양shape과-색colour의-지정" class="section level4" number="13.1.4.1">
 <h4><span class="header-section-number">13.1.4.1</span> 점의 모양(Shape)과 색(Colour)의 지정</h4>
 <p>우선 <code>ggplot2</code>의 <code>geom_point()</code> 함수의 색깔(<code>colour</code>)과 모양(<code>shape</code>)의 모수 값을 달리하면서 산포도를 작성해 보겠습니다.</p>
-<div class="sourceCode" id="cb419"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb419-1"><a href="산포도-1.html#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 산포도 : MPG.highway 대 EngineSize, Weight, Length</span></span>
-<span id="cb419-2"><a href="산포도-1.html#cb419-2" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
-<span id="cb419-3"><a href="산포도-1.html#cb419-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> EngineSize, <span class="at">y =</span> MPG.highway)) <span class="sc">+</span> </span>
-<span id="cb419-4"><a href="산포도-1.html#cb419-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">12</span>, </span>
-<span id="cb419-5"><a href="산포도-1.html#cb419-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="dv">3</span>, </span>
-<span id="cb419-6"><a href="산포도-1.html#cb419-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">colour =</span> <span class="st">&quot;green&quot;</span>) <span class="sc">+</span>           <span class="co"># shape 15: solid square</span></span>
-<span id="cb419-7"><a href="산포도-1.html#cb419-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;산포도 : shape = 12, colour = </span><span class="sc">\&quot;</span><span class="st">green</span><span class="sc">\&quot;</span><span class="st">&quot;</span>)</span>
-<span id="cb419-8"><a href="산포도-1.html#cb419-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb419-9"><a href="산포도-1.html#cb419-9" aria-hidden="true" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
-<span id="cb419-10"><a href="산포도-1.html#cb419-10" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> EngineSize, <span class="at">y =</span> MPG.highway)) <span class="sc">+</span> </span>
-<span id="cb419-11"><a href="산포도-1.html#cb419-11" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">15</span>, </span>
-<span id="cb419-12"><a href="산포도-1.html#cb419-12" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="dv">3</span>, </span>
-<span id="cb419-13"><a href="산포도-1.html#cb419-13" aria-hidden="true" tabindex="-1"></a>                  <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span>            <span class="co"># shape 15: solid square</span></span>
-<span id="cb419-14"><a href="산포도-1.html#cb419-14" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;산포도: shape = 15, colour = </span><span class="sc">\&quot;</span><span class="st">blue</span><span class="sc">\&quot;</span><span class="st">&quot;</span>)</span>
-<span id="cb419-15"><a href="산포도-1.html#cb419-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb419-16"><a href="산포도-1.html#cb419-16" aria-hidden="true" tabindex="-1"></a>g3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
-<span id="cb419-17"><a href="산포도-1.html#cb419-17" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> Weight, </span>
-<span id="cb419-18"><a href="산포도-1.html#cb419-18" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> MPG.highway)) <span class="sc">+</span> </span>
-<span id="cb419-19"><a href="산포도-1.html#cb419-19" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">19</span>, </span>
-<span id="cb419-20"><a href="산포도-1.html#cb419-20" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="dv">3</span>, </span>
-<span id="cb419-21"><a href="산포도-1.html#cb419-21" aria-hidden="true" tabindex="-1"></a>                  <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span>             <span class="co"># shape 19: solid circle</span></span>
-<span id="cb419-22"><a href="산포도-1.html#cb419-22" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;산포도: shape = 19, colour = </span><span class="sc">\&quot;</span><span class="st">red</span><span class="sc">\&quot;</span><span class="st">&quot;</span>)</span>
-<span id="cb419-23"><a href="산포도-1.html#cb419-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb419-24"><a href="산포도-1.html#cb419-24" aria-hidden="true" tabindex="-1"></a>g4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
-<span id="cb419-25"><a href="산포도-1.html#cb419-25" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> Length, </span>
-<span id="cb419-26"><a href="산포도-1.html#cb419-26" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> MPG.highway)) <span class="sc">+</span> </span>
-<span id="cb419-27"><a href="산포도-1.html#cb419-27" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">24</span>, </span>
-<span id="cb419-28"><a href="산포도-1.html#cb419-28" aria-hidden="true" tabindex="-1"></a>                   <span class="at">size =</span> <span class="dv">3</span>, </span>
-<span id="cb419-29"><a href="산포도-1.html#cb419-29" aria-hidden="true" tabindex="-1"></a>                   <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span>           <span class="co"># shape 24: filled triangle point-up</span></span>
-<span id="cb419-30"><a href="산포도-1.html#cb419-30" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggtitle</span>(<span class="st">&quot;산포도: shape = 24, colour = </span><span class="sc">\&quot;</span><span class="st">black</span><span class="sc">\&quot;</span><span class="st">&quot;</span>)</span>
-<span id="cb419-31"><a href="산포도-1.html#cb419-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb419-32"><a href="산포도-1.html#cb419-32" aria-hidden="true" tabindex="-1"></a><span class="fu">multiplot</span>(g1, g2, g3, g4, <span class="at">cols =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb490-1"><a href="산포도-1.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 산포도 : MPG.highway 대 EngineSize, Weight, Length</span></span>
+<span id="cb490-2"><a href="산포도-1.html#cb490-2" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
+<span id="cb490-3"><a href="산포도-1.html#cb490-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> EngineSize, <span class="at">y =</span> MPG.highway)) <span class="sc">+</span> </span>
+<span id="cb490-4"><a href="산포도-1.html#cb490-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">12</span>, </span>
+<span id="cb490-5"><a href="산포도-1.html#cb490-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="dv">3</span>, </span>
+<span id="cb490-6"><a href="산포도-1.html#cb490-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">colour =</span> <span class="st">&quot;green&quot;</span>) <span class="sc">+</span>           <span class="co"># shape 15: solid square</span></span>
+<span id="cb490-7"><a href="산포도-1.html#cb490-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;산포도 : shape = 12, colour = </span><span class="sc">\&quot;</span><span class="st">green</span><span class="sc">\&quot;</span><span class="st">&quot;</span>)</span>
+<span id="cb490-8"><a href="산포도-1.html#cb490-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb490-9"><a href="산포도-1.html#cb490-9" aria-hidden="true" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
+<span id="cb490-10"><a href="산포도-1.html#cb490-10" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> EngineSize, <span class="at">y =</span> MPG.highway)) <span class="sc">+</span> </span>
+<span id="cb490-11"><a href="산포도-1.html#cb490-11" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">15</span>, </span>
+<span id="cb490-12"><a href="산포도-1.html#cb490-12" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="dv">3</span>, </span>
+<span id="cb490-13"><a href="산포도-1.html#cb490-13" aria-hidden="true" tabindex="-1"></a>                  <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span>            <span class="co"># shape 15: solid square</span></span>
+<span id="cb490-14"><a href="산포도-1.html#cb490-14" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;산포도: shape = 15, colour = </span><span class="sc">\&quot;</span><span class="st">blue</span><span class="sc">\&quot;</span><span class="st">&quot;</span>)</span>
+<span id="cb490-15"><a href="산포도-1.html#cb490-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb490-16"><a href="산포도-1.html#cb490-16" aria-hidden="true" tabindex="-1"></a>g3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
+<span id="cb490-17"><a href="산포도-1.html#cb490-17" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> Weight, </span>
+<span id="cb490-18"><a href="산포도-1.html#cb490-18" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> MPG.highway)) <span class="sc">+</span> </span>
+<span id="cb490-19"><a href="산포도-1.html#cb490-19" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">19</span>, </span>
+<span id="cb490-20"><a href="산포도-1.html#cb490-20" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="dv">3</span>, </span>
+<span id="cb490-21"><a href="산포도-1.html#cb490-21" aria-hidden="true" tabindex="-1"></a>                  <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span>             <span class="co"># shape 19: solid circle</span></span>
+<span id="cb490-22"><a href="산포도-1.html#cb490-22" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;산포도: shape = 19, colour = </span><span class="sc">\&quot;</span><span class="st">red</span><span class="sc">\&quot;</span><span class="st">&quot;</span>)</span>
+<span id="cb490-23"><a href="산포도-1.html#cb490-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb490-24"><a href="산포도-1.html#cb490-24" aria-hidden="true" tabindex="-1"></a>g4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
+<span id="cb490-25"><a href="산포도-1.html#cb490-25" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> Length, </span>
+<span id="cb490-26"><a href="산포도-1.html#cb490-26" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> MPG.highway)) <span class="sc">+</span> </span>
+<span id="cb490-27"><a href="산포도-1.html#cb490-27" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">24</span>, </span>
+<span id="cb490-28"><a href="산포도-1.html#cb490-28" aria-hidden="true" tabindex="-1"></a>                   <span class="at">size =</span> <span class="dv">3</span>, </span>
+<span id="cb490-29"><a href="산포도-1.html#cb490-29" aria-hidden="true" tabindex="-1"></a>                   <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span>           <span class="co"># shape 24: filled triangle point-up</span></span>
+<span id="cb490-30"><a href="산포도-1.html#cb490-30" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggtitle</span>(<span class="st">&quot;산포도: shape = 24, colour = </span><span class="sc">\&quot;</span><span class="st">black</span><span class="sc">\&quot;</span><span class="st">&quot;</span>)</span>
+<span id="cb490-31"><a href="산포도-1.html#cb490-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb490-32"><a href="산포도-1.html#cb490-32" aria-hidden="true" tabindex="-1"></a><span class="fu">multiplot</span>(g1, g2, g3, g4, <span class="at">cols =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGScatterPlot"></span>
 <img src="bookdown_files/figure-html/GGScatterPlot-1.png" alt="다양한 산포도" width="672" />
 <p class="caption">
@@ -682,24 +684,24 @@ Figure 13.3: 다양한 산포도
 <blockquote>
 <p>참고로, <code>ggplot2</code> 패키지의 <code>Vignette</code>에는 <em>Aesthetic specifications</em>를 통해 다양한 형식들을 요약해서 보여주고 있습니다.</p>
 </blockquote>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb420-1"><a href="산포도-1.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R 플롯 기호 : 점 모양</span></span>
-<span id="cb420-2"><a href="산포도-1.html#cb420-2" aria-hidden="true" tabindex="-1"></a>?? aes          <span class="co"># Vignettes:  ggplot2::ggplot2- Aesthetic specification 선택.</span></span></code></pre></div>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb491-1"><a href="산포도-1.html#cb491-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R 플롯 기호 : 점 모양</span></span>
+<span id="cb491-2"><a href="산포도-1.html#cb491-2" aria-hidden="true" tabindex="-1"></a>?? aes          <span class="co"># Vignettes:  ggplot2::ggplot2- Aesthetic specification 선택.</span></span></code></pre></div>
 <p><a href="산포도-1.html#산포도-1">Go Top</a></p>
 </div>
 <div id="산포도에-레이블-달기" class="section level4" number="13.1.4.2">
 <h4><span class="header-section-number">13.1.4.2</span> 산포도에 레이블 달기</h4>
 <p>이번에는 두 변수의 산포도의 <strong>각 점이 나타내는 자동차 모델명(<code>Model</code>)</strong>을 <strong><code>geom_text(label =)</code></strong> 함수를 이용하여 표시해 보겠습니다.</p>
-<div class="sourceCode" id="cb421"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb421-1"><a href="산포도-1.html#cb421-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 산포도에 레이블 달기 (모델명)</span></span>
-<span id="cb421-2"><a href="산포도-1.html#cb421-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
-<span id="cb421-3"><a href="산포도-1.html#cb421-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Weight, </span>
-<span id="cb421-4"><a href="산포도-1.html#cb421-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway)) <span class="sc">+</span> </span>
-<span id="cb421-5"><a href="산포도-1.html#cb421-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">19</span>,             <span class="co"># 점의 모양</span></span>
-<span id="cb421-6"><a href="산포도-1.html#cb421-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">size =</span> <span class="fl">1.5</span>,             <span class="co"># 점의 크기</span></span>
-<span id="cb421-7"><a href="산포도-1.html#cb421-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span>         <span class="co"># 점의 색깔                        </span></span>
-<span id="cb421-8"><a href="산포도-1.html#cb421-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;산포도의 점에 레이블 달기&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb421-9"><a href="산포도-1.html#cb421-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> Model,       <span class="co"># 레이블 변수 지정 </span></span>
-<span id="cb421-10"><a href="산포도-1.html#cb421-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>,          <span class="co"># vjust = -는 위, +는 아래</span></span>
-<span id="cb421-11"><a href="산포도-1.html#cb421-11" aria-hidden="true" tabindex="-1"></a>                 <span class="at">hjust =</span> <span class="fl">0.5</span>))          <span class="co"># hjust = +는 왼쪽, -는 오른쪽 </span></span></code></pre></div>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb492-1"><a href="산포도-1.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 산포도에 레이블 달기 (모델명)</span></span>
+<span id="cb492-2"><a href="산포도-1.html#cb492-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
+<span id="cb492-3"><a href="산포도-1.html#cb492-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Weight, </span>
+<span id="cb492-4"><a href="산포도-1.html#cb492-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway)) <span class="sc">+</span> </span>
+<span id="cb492-5"><a href="산포도-1.html#cb492-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">19</span>,             <span class="co"># 점의 모양</span></span>
+<span id="cb492-6"><a href="산포도-1.html#cb492-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">size =</span> <span class="fl">1.5</span>,             <span class="co"># 점의 크기</span></span>
+<span id="cb492-7"><a href="산포도-1.html#cb492-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">colour=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span>         <span class="co"># 점의 색깔                        </span></span>
+<span id="cb492-8"><a href="산포도-1.html#cb492-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;산포도의 점에 레이블 달기&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb492-9"><a href="산포도-1.html#cb492-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> Model,       <span class="co"># 레이블 변수 지정 </span></span>
+<span id="cb492-10"><a href="산포도-1.html#cb492-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>,          <span class="co"># vjust = -는 위, +는 아래</span></span>
+<span id="cb492-11"><a href="산포도-1.html#cb492-11" aria-hidden="true" tabindex="-1"></a>                 <span class="at">hjust =</span> <span class="fl">0.5</span>))          <span class="co"># hjust = +는 왼쪽, -는 오른쪽 </span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGScatterPlotLabel"></span>
 <img src="bookdown_files/figure-html/GGScatterPlotLabel-1.png" alt="산포도의 점에 레이블 달기" width="672" />
 <p class="caption">
@@ -725,14 +727,14 @@ Figure 13.4: 산포도의 점에 레이블 달기
 <div id="ScatterPlotAes" class="section level4" number="13.1.5.1">
 <h4><span class="header-section-number">13.1.5.1</span> <code>aes()</code> 함수의 모수 이용</h4>
 <p><code>차종(Type)별</code>로 <code>색깔(colour)</code>을 달리하여 산포도를 그리려면 <code>aes()</code> 함수의 모수에 <code>colour = Type</code> 을 추가해 주면 됩니다.</p>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb422-1"><a href="산포도-1.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별 산포도 : aes()의 colour 모수 이용</span></span>
-<span id="cb422-2"><a href="산포도-1.html#cb422-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
-<span id="cb422-3"><a href="산포도-1.html#cb422-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Weight, </span>
-<span id="cb422-4"><a href="산포도-1.html#cb422-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway, </span>
-<span id="cb422-5"><a href="산포도-1.html#cb422-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type)) <span class="sc">+</span>    <span class="co"># aes() 함수에 colour 모수를 설정합니다.</span></span>
-<span id="cb422-6"><a href="산포도-1.html#cb422-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">19</span>,         <span class="co"># 점의 모양을 19로 지정합니다.</span></span>
-<span id="cb422-7"><a href="산포도-1.html#cb422-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb422-8"><a href="산포도-1.html#cb422-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 산포도 : aes() 함수 이용 - 색 구분&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb493-1"><a href="산포도-1.html#cb493-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별 산포도 : aes()의 colour 모수 이용</span></span>
+<span id="cb493-2"><a href="산포도-1.html#cb493-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
+<span id="cb493-3"><a href="산포도-1.html#cb493-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Weight, </span>
+<span id="cb493-4"><a href="산포도-1.html#cb493-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway, </span>
+<span id="cb493-5"><a href="산포도-1.html#cb493-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type)) <span class="sc">+</span>    <span class="co"># aes() 함수에 colour 모수를 설정합니다.</span></span>
+<span id="cb493-6"><a href="산포도-1.html#cb493-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">19</span>,         <span class="co"># 점의 모양을 19로 지정합니다.</span></span>
+<span id="cb493-7"><a href="산포도-1.html#cb493-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb493-8"><a href="산포도-1.html#cb493-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 산포도 : aes() 함수 이용 - 색 구분&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGScatterPlotAesColour"></span>
 <img src="bookdown_files/figure-html/GGScatterPlotAesColour-1.png" alt="차종별 산포도 : aes() 함수 이용 - 색 구분" width="672" />
 <p class="caption">
@@ -741,28 +743,28 @@ Figure 13.5: 차종별 산포도 : aes() 함수 이용 - 색 구분
 </div>
 <p>지금까지 설명한 <code>aes()</code> 의 모수애는 <code>fill</code>, <code>colour</code> 이외에도 <code>shape</code> 이 있습니다.</p>
 <p>다음의 예는 <code>aes()</code> 함수의 <code>shape</code> 모수를 이용하여 <code>차종(Type)별</code>로 <code>모양(shape)</code>을 달리 표현하는 예입니다.</p>
-<div class="sourceCode" id="cb423"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb423-1"><a href="산포도-1.html#cb423-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별 산포도 : aes()의 shape 모수 이용</span></span>
-<span id="cb423-2"><a href="산포도-1.html#cb423-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
-<span id="cb423-3"><a href="산포도-1.html#cb423-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Weight, </span>
-<span id="cb423-4"><a href="산포도-1.html#cb423-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway, </span>
-<span id="cb423-5"><a href="산포도-1.html#cb423-5" aria-hidden="true" tabindex="-1"></a><span class="co">#           colour = Type,        # aes() 에 colour 모수도 추가해 보세요.</span></span>
-<span id="cb423-6"><a href="산포도-1.html#cb423-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">shape =</span> Type)) <span class="sc">+</span>      <span class="co"># aes() 함수에 shape 모수를 설정합니다.</span></span>
-<span id="cb423-7"><a href="산포도-1.html#cb423-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span>        <span class="co"># shape 모수를 제거해 줍니다.</span></span>
-<span id="cb423-8"><a href="산포도-1.html#cb423-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 산포도 : aes() 함수 이용 - 점의 모양 구분&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb494-1"><a href="산포도-1.html#cb494-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별 산포도 : aes()의 shape 모수 이용</span></span>
+<span id="cb494-2"><a href="산포도-1.html#cb494-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
+<span id="cb494-3"><a href="산포도-1.html#cb494-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Weight, </span>
+<span id="cb494-4"><a href="산포도-1.html#cb494-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway, </span>
+<span id="cb494-5"><a href="산포도-1.html#cb494-5" aria-hidden="true" tabindex="-1"></a><span class="co">#           colour = Type,        # aes() 에 colour 모수도 추가해 보세요.</span></span>
+<span id="cb494-6"><a href="산포도-1.html#cb494-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">shape =</span> Type)) <span class="sc">+</span>      <span class="co"># aes() 함수에 shape 모수를 설정합니다.</span></span>
+<span id="cb494-7"><a href="산포도-1.html#cb494-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span>        <span class="co"># shape 모수를 제거해 줍니다.</span></span>
+<span id="cb494-8"><a href="산포도-1.html#cb494-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 산포도 : aes() 함수 이용 - 점의 모양 구분&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGScatterPlotAesShape-1"></span>
 <img src="bookdown_files/figure-html/GGScatterPlotAesShape-1.png" alt="차종별 산포도 : aes() 함수 이용 - 점의 모양 구분" width="672" />
 <p class="caption">
 Figure 13.6: 차종별 산포도 : aes() 함수 이용 - 점의 모양 구분
 </p>
 </div>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb424-1"><a href="산포도-1.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별 산포도 : aes()의 shape 모수와 colour 모수</span></span>
-<span id="cb424-2"><a href="산포도-1.html#cb424-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
-<span id="cb424-3"><a href="산포도-1.html#cb424-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Weight, </span>
-<span id="cb424-4"><a href="산포도-1.html#cb424-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway, </span>
-<span id="cb424-5"><a href="산포도-1.html#cb424-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type,        <span class="co"># aes() 에 colour 모수도 추가해 보세요.</span></span>
-<span id="cb424-6"><a href="산포도-1.html#cb424-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">shape =</span> Type)) <span class="sc">+</span>      <span class="co"># aes() 함수에 shape 모수를 설정합니다.</span></span>
-<span id="cb424-7"><a href="산포도-1.html#cb424-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span>        <span class="co"># shape 모수를 제거해 줍니다.</span></span>
-<span id="cb424-8"><a href="산포도-1.html#cb424-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 산포도 : aes() 함수 이용 - 점의 모양과 색 구분&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb495-1"><a href="산포도-1.html#cb495-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별 산포도 : aes()의 shape 모수와 colour 모수</span></span>
+<span id="cb495-2"><a href="산포도-1.html#cb495-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
+<span id="cb495-3"><a href="산포도-1.html#cb495-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Weight, </span>
+<span id="cb495-4"><a href="산포도-1.html#cb495-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway, </span>
+<span id="cb495-5"><a href="산포도-1.html#cb495-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type,        <span class="co"># aes() 에 colour 모수도 추가해 보세요.</span></span>
+<span id="cb495-6"><a href="산포도-1.html#cb495-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">shape =</span> Type)) <span class="sc">+</span>      <span class="co"># aes() 함수에 shape 모수를 설정합니다.</span></span>
+<span id="cb495-7"><a href="산포도-1.html#cb495-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span>        <span class="co"># shape 모수를 제거해 줍니다.</span></span>
+<span id="cb495-8"><a href="산포도-1.html#cb495-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 산포도 : aes() 함수 이용 - 점의 모양과 색 구분&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGScatterPlotAesShape-2"></span>
 <img src="bookdown_files/figure-html/GGScatterPlotAesShape-2.png" alt="차종별 산포도 : aes() 함수 이용 - 점의 모양 구분" width="672" />
 <p class="caption">
@@ -778,29 +780,29 @@ Figure 13.7: 차종별 산포도 : aes() 함수 이용 - 점의 모양 구분
 <div id="facet_grid-함수의-이용-3" class="section level4" number="13.1.5.2">
 <h4><span class="header-section-number">13.1.5.2</span> <code>facet_grid()</code> 함수의 이용</h4>
 <p>이번에는 <code>facet_grid()</code> 함수를 이용하여 <code>차종(Type)별</code>로 산포도를 그려 보겠습니다.</p>
-<div class="sourceCode" id="cb425"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb425-1"><a href="산포도-1.html#cb425-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별 산포도 : facet_grid() 함수 이용</span></span>
-<span id="cb425-2"><a href="산포도-1.html#cb425-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
-<span id="cb425-3"><a href="산포도-1.html#cb425-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Weight, </span>
-<span id="cb425-4"><a href="산포도-1.html#cb425-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway,</span>
-<span id="cb425-5"><a href="산포도-1.html#cb425-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type,           <span class="co"># aes() 에 colour 모수도 추가해 보았습니다.</span></span>
-<span id="cb425-6"><a href="산포도-1.html#cb425-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">shape =</span> Type)) <span class="sc">+</span>                            </span>
-<span id="cb425-7"><a href="산포도-1.html#cb425-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span>                              </span>
-<span id="cb425-8"><a href="산포도-1.html#cb425-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_grid</span>(Type <span class="sc">~</span>.) <span class="sc">+</span>            <span class="co"># facet_grid() : Type을 Y축에 표시합니다.</span></span>
-<span id="cb425-9"><a href="산포도-1.html#cb425-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 산포도 : facet_grid() 함수 이용&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb496-1"><a href="산포도-1.html#cb496-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별 산포도 : facet_grid() 함수 이용</span></span>
+<span id="cb496-2"><a href="산포도-1.html#cb496-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
+<span id="cb496-3"><a href="산포도-1.html#cb496-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Weight, </span>
+<span id="cb496-4"><a href="산포도-1.html#cb496-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway,</span>
+<span id="cb496-5"><a href="산포도-1.html#cb496-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type,           <span class="co"># aes() 에 colour 모수도 추가해 보았습니다.</span></span>
+<span id="cb496-6"><a href="산포도-1.html#cb496-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">shape =</span> Type)) <span class="sc">+</span>                            </span>
+<span id="cb496-7"><a href="산포도-1.html#cb496-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span>                              </span>
+<span id="cb496-8"><a href="산포도-1.html#cb496-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_grid</span>(Type <span class="sc">~</span>.) <span class="sc">+</span>            <span class="co"># facet_grid() : Type을 Y축에 표시합니다.</span></span>
+<span id="cb496-9"><a href="산포도-1.html#cb496-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 산포도 : facet_grid() 함수 이용&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGScatterPlotFacGrid-1"></span>
 <img src="bookdown_files/figure-html/GGScatterPlotFacGrid-1.png" alt="차종별 산포도 : facet_grid() 함수 이용" width="672" />
 <p class="caption">
 Figure 13.8: 차종별 산포도 : facet_grid() 함수 이용
 </p>
 </div>
-<div class="sourceCode" id="cb426"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb426-1"><a href="산포도-1.html#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
-<span id="cb426-2"><a href="산포도-1.html#cb426-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Weight, </span>
-<span id="cb426-3"><a href="산포도-1.html#cb426-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway,</span>
-<span id="cb426-4"><a href="산포도-1.html#cb426-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type,           <span class="co"># aes() 에 colour 모수도 추가해 보았습니다.</span></span>
-<span id="cb426-5"><a href="산포도-1.html#cb426-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">shape =</span> Type)) <span class="sc">+</span>                            </span>
-<span id="cb426-6"><a href="산포도-1.html#cb426-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span>                              </span>
-<span id="cb426-7"><a href="산포도-1.html#cb426-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_grid</span>(. <span class="sc">~</span> Type) <span class="sc">+</span>           <span class="co"># facet_grid() : Type을 X축에 표시합니다.</span></span>
-<span id="cb426-8"><a href="산포도-1.html#cb426-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 산포도 : facet_grid() 함수 이용&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb497-1"><a href="산포도-1.html#cb497-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
+<span id="cb497-2"><a href="산포도-1.html#cb497-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Weight, </span>
+<span id="cb497-3"><a href="산포도-1.html#cb497-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway,</span>
+<span id="cb497-4"><a href="산포도-1.html#cb497-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type,           <span class="co"># aes() 에 colour 모수도 추가해 보았습니다.</span></span>
+<span id="cb497-5"><a href="산포도-1.html#cb497-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">shape =</span> Type)) <span class="sc">+</span>                            </span>
+<span id="cb497-6"><a href="산포도-1.html#cb497-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span>                              </span>
+<span id="cb497-7"><a href="산포도-1.html#cb497-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_grid</span>(. <span class="sc">~</span> Type) <span class="sc">+</span>           <span class="co"># facet_grid() : Type을 X축에 표시합니다.</span></span>
+<span id="cb497-8"><a href="산포도-1.html#cb497-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 산포도 : facet_grid() 함수 이용&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGScatterPlotFacGrid-2"></span>
 <img src="bookdown_files/figure-html/GGScatterPlotFacGrid-2.png" alt="차종별 산포도 : facet_grid() 함수 이용" width="672" />
 <p class="caption">
@@ -815,15 +817,15 @@ Figure 13.9: 차종별 산포도 : facet_grid() 함수 이용
 <div id="facet_wrap-함수의-이용-3" class="section level4" number="13.1.5.3">
 <h4><span class="header-section-number">13.1.5.3</span> <code>facet_wrap()</code> 함수의 이용</h4>
 <p>이번에는 <code>facet_wrap()</code> 함수를 이용하여 <code>차종(Type)별</code>로 산포도를 그려 보겠습니다.</p>
-<div class="sourceCode" id="cb427"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb427-1"><a href="산포도-1.html#cb427-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별 산포도 : facet_wrap() 함수 이용</span></span>
-<span id="cb427-2"><a href="산포도-1.html#cb427-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
-<span id="cb427-3"><a href="산포도-1.html#cb427-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Weight, </span>
-<span id="cb427-4"><a href="산포도-1.html#cb427-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway,</span>
-<span id="cb427-5"><a href="산포도-1.html#cb427-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type,                     </span>
-<span id="cb427-6"><a href="산포도-1.html#cb427-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">shape =</span> Type)) <span class="sc">+</span>                            </span>
-<span id="cb427-7"><a href="산포도-1.html#cb427-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span>                              </span>
-<span id="cb427-8"><a href="산포도-1.html#cb427-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_wrap</span>(<span class="sc">~</span>Type, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span>                      <span class="co"># facet_wrap() : Type을 Y축에 표시합니다.</span></span>
-<span id="cb427-9"><a href="산포도-1.html#cb427-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 산포도 : facet_wrap() 함수 이용&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb498-1"><a href="산포도-1.html#cb498-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 차종별 산포도 : facet_wrap() 함수 이용</span></span>
+<span id="cb498-2"><a href="산포도-1.html#cb498-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
+<span id="cb498-3"><a href="산포도-1.html#cb498-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Weight, </span>
+<span id="cb498-4"><a href="산포도-1.html#cb498-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway,</span>
+<span id="cb498-5"><a href="산포도-1.html#cb498-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type,                     </span>
+<span id="cb498-6"><a href="산포도-1.html#cb498-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">shape =</span> Type)) <span class="sc">+</span>                            </span>
+<span id="cb498-7"><a href="산포도-1.html#cb498-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span>                              </span>
+<span id="cb498-8"><a href="산포도-1.html#cb498-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_wrap</span>(<span class="sc">~</span>Type, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span>                      <span class="co"># facet_wrap() : Type을 Y축에 표시합니다.</span></span>
+<span id="cb498-9"><a href="산포도-1.html#cb498-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;차종별 산포도 : facet_wrap() 함수 이용&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGScatterPlotFacWrap"></span>
 <img src="bookdown_files/figure-html/GGScatterPlotFacWrap-1.png" alt="차종별 산포도 : facet_wrap() 함수 이용" width="672" />
 <p class="caption">
@@ -840,26 +842,26 @@ Figure 13.10: 차종별 산포도 : facet_wrap() 함수 이용
 <h3><span class="header-section-number">13.1.6</span> Theme의 사용</h3>
 <p>히스토그램에서 <a href="gg히스토그램.html#UsignThemes">Theme을 사용</a>하였듯이, 산포도에서도 Theme을 사용할 수 있습니다.</p>
 <p>다음의 예는 앞서 작성한 <a href="산포도-1.html#ScatterPlotAes">차종별 산포도</a>에 <a href="gg히스토그램.html#UsignThemes">히스토그램에서 Theme으로 사용</a>한 <code>ggplot2::theme_classic() +</code> 이하 부분을 <strong>복사해서 붙여넣기</strong>한 것입니다.</p>
-<div class="sourceCode" id="cb428"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb428-1"><a href="산포도-1.html#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 산포도에 theme_classic() 적용</span></span>
-<span id="cb428-2"><a href="산포도-1.html#cb428-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
-<span id="cb428-3"><a href="산포도-1.html#cb428-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> EngineSize, </span>
-<span id="cb428-4"><a href="산포도-1.html#cb428-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway,</span>
-<span id="cb428-5"><a href="산포도-1.html#cb428-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type,</span>
-<span id="cb428-6"><a href="산포도-1.html#cb428-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">shape =</span> Type)) <span class="sc">+</span> </span>
-<span id="cb428-7"><a href="산포도-1.html#cb428-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span>                             </span>
-<span id="cb428-8"><a href="산포도-1.html#cb428-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;산포도: MPG.highway vs. EngineSize - Theme 적용&quot;</span>) <span class="sc">+</span></span>
-<span id="cb428-9"><a href="산포도-1.html#cb428-9" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_classic</span>() <span class="sc">+</span>                     <span class="co"># 그래프 테마 지정</span></span>
-<span id="cb428-10"><a href="산포도-1.html#cb428-10" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
-<span id="cb428-11"><a href="산포도-1.html#cb428-11" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;italic&quot;</span>, </span>
-<span id="cb428-12"><a href="산포도-1.html#cb428-12" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
-<span id="cb428-13"><a href="산포도-1.html#cb428-13" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
-<span id="cb428-14"><a href="산포도-1.html#cb428-14" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
-<span id="cb428-15"><a href="산포도-1.html#cb428-15" aria-hidden="true" tabindex="-1"></a>                 <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
-<span id="cb428-16"><a href="산포도-1.html#cb428-16" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;bold.italic&quot;</span>, </span>
-<span id="cb428-17"><a href="산포도-1.html#cb428-17" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
-<span id="cb428-18"><a href="산포도-1.html#cb428-18" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
-<span id="cb428-19"><a href="산포도-1.html#cb428-19" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span>       </span>
-<span id="cb428-20"><a href="산포도-1.html#cb428-20" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)              </span></code></pre></div>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb499-1"><a href="산포도-1.html#cb499-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 산포도에 theme_classic() 적용</span></span>
+<span id="cb499-2"><a href="산포도-1.html#cb499-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
+<span id="cb499-3"><a href="산포도-1.html#cb499-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> EngineSize, </span>
+<span id="cb499-4"><a href="산포도-1.html#cb499-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway,</span>
+<span id="cb499-5"><a href="산포도-1.html#cb499-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type,</span>
+<span id="cb499-6"><a href="산포도-1.html#cb499-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">shape =</span> Type)) <span class="sc">+</span> </span>
+<span id="cb499-7"><a href="산포도-1.html#cb499-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span>                             </span>
+<span id="cb499-8"><a href="산포도-1.html#cb499-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;산포도: MPG.highway vs. EngineSize - Theme 적용&quot;</span>) <span class="sc">+</span></span>
+<span id="cb499-9"><a href="산포도-1.html#cb499-9" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_classic</span>() <span class="sc">+</span>                     <span class="co"># 그래프 테마 지정</span></span>
+<span id="cb499-10"><a href="산포도-1.html#cb499-10" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
+<span id="cb499-11"><a href="산포도-1.html#cb499-11" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;italic&quot;</span>, </span>
+<span id="cb499-12"><a href="산포도-1.html#cb499-12" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
+<span id="cb499-13"><a href="산포도-1.html#cb499-13" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb499-14"><a href="산포도-1.html#cb499-14" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb499-15"><a href="산포도-1.html#cb499-15" aria-hidden="true" tabindex="-1"></a>                 <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
+<span id="cb499-16"><a href="산포도-1.html#cb499-16" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;bold.italic&quot;</span>, </span>
+<span id="cb499-17"><a href="산포도-1.html#cb499-17" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
+<span id="cb499-18"><a href="산포도-1.html#cb499-18" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb499-19"><a href="산포도-1.html#cb499-19" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span>       </span>
+<span id="cb499-20"><a href="산포도-1.html#cb499-20" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)              </span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGScatterPlotTheme"></span>
 <img src="bookdown_files/figure-html/GGScatterPlotTheme-1.png" alt="산포도에 Theme 적용" width="672" />
 <p class="caption">
@@ -875,18 +877,18 @@ Figure 13.11: 산포도에 Theme 적용
 <div id="선형-회귀선-적합화" class="section level4" number="13.1.7.1">
 <h4><span class="header-section-number">13.1.7.1</span> 선형 회귀선 적합화</h4>
 <p><code>stat_smooth()</code> 함수를 이용하여 이러한 변수간의 <strong>선형 회귀선</strong>과 <strong>신뢰구 간</strong>을 시각화할 수 있습니다.</p>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb429-1"><a href="산포도-1.html#cb429-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 산포도 :  선형 회귀선과 신뢰구간의 표시</span></span>
-<span id="cb429-2"><a href="산포도-1.html#cb429-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
-<span id="cb429-3"><a href="산포도-1.html#cb429-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> EngineSize, </span>
-<span id="cb429-4"><a href="산포도-1.html#cb429-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway)) <span class="sc">+</span> </span>
-<span id="cb429-5"><a href="산포도-1.html#cb429-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, </span>
-<span id="cb429-6"><a href="산포도-1.html#cb429-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">shape =</span> <span class="dv">19</span>, </span>
-<span id="cb429-7"><a href="산포도-1.html#cb429-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span>   </span>
-<span id="cb429-8"><a href="산포도-1.html#cb429-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 선형회귀선과 신뢰구간의 시각화</span></span>
-<span id="cb429-9"><a href="산포도-1.html#cb429-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_smooth</span>(<span class="at">method =</span> lm,        <span class="co"># 선형 모델(linear model) 적용합니다.</span></span>
-<span id="cb429-10"><a href="산포도-1.html#cb429-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">level =</span> <span class="fl">0.95</span>,       <span class="co"># 유의수준을 0.05로 설정합니다.(신뢰도 0.95)</span></span>
-<span id="cb429-11"><a href="산포도-1.html#cb429-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span>   <span class="co"># 선형 회귀선의 색을 설정합니다,  </span></span>
-<span id="cb429-12"><a href="산포도-1.html#cb429-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;산포도: 선형 회귀선과 신뢰구간의 표시&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb500-1"><a href="산포도-1.html#cb500-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 산포도 :  선형 회귀선과 신뢰구간의 표시</span></span>
+<span id="cb500-2"><a href="산포도-1.html#cb500-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
+<span id="cb500-3"><a href="산포도-1.html#cb500-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> EngineSize, </span>
+<span id="cb500-4"><a href="산포도-1.html#cb500-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway)) <span class="sc">+</span> </span>
+<span id="cb500-5"><a href="산포도-1.html#cb500-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, </span>
+<span id="cb500-6"><a href="산포도-1.html#cb500-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">shape =</span> <span class="dv">19</span>, </span>
+<span id="cb500-7"><a href="산포도-1.html#cb500-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span>   </span>
+<span id="cb500-8"><a href="산포도-1.html#cb500-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 선형회귀선과 신뢰구간의 시각화</span></span>
+<span id="cb500-9"><a href="산포도-1.html#cb500-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_smooth</span>(<span class="at">method =</span> lm,        <span class="co"># 선형 모델(linear model) 적용합니다.</span></span>
+<span id="cb500-10"><a href="산포도-1.html#cb500-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">level =</span> <span class="fl">0.95</span>,       <span class="co"># 유의수준을 0.05로 설정합니다.(신뢰도 0.95)</span></span>
+<span id="cb500-11"><a href="산포도-1.html#cb500-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span>   <span class="co"># 선형 회귀선의 색을 설정합니다,  </span></span>
+<span id="cb500-12"><a href="산포도-1.html#cb500-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;산포도: 선형 회귀선과 신뢰구간의 표시&quot;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:GGScatterPlotRegreCF"></span>
 <img src="bookdown_files/figure-html/GGScatterPlotRegreCF-1.png" alt="산포도 : 선형 회귀선과 신뢰구간의 표시" width="672" />
@@ -895,17 +897,17 @@ Figure 13.12: 산포도 : 선형 회귀선과 신뢰구간의 표시
 </p>
 </div>
 <p>산포도에 회귀선을 적합시켰는데, 아래와 같이 <strong>신뢰구간은 제외</strong>할 수도 있습니다.</p>
-<div class="sourceCode" id="cb431"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb431-1"><a href="산포도-1.html#cb431-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 산포도 :  선형 회귀선만 표시</span></span>
-<span id="cb431-2"><a href="산포도-1.html#cb431-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
-<span id="cb431-3"><a href="산포도-1.html#cb431-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> EngineSize, </span>
-<span id="cb431-4"><a href="산포도-1.html#cb431-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway)) <span class="sc">+</span> </span>
-<span id="cb431-5"><a href="산포도-1.html#cb431-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">shape =</span> <span class="dv">19</span>, <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span>   </span>
-<span id="cb431-6"><a href="산포도-1.html#cb431-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 선형회귀선과 신뢰구간의 시각화</span></span>
-<span id="cb431-7"><a href="산포도-1.html#cb431-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_smooth</span>(<span class="at">method =</span> lm,                        </span>
-<span id="cb431-8"><a href="산포도-1.html#cb431-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">level =</span> <span class="fl">0.95</span>,                       </span>
-<span id="cb431-9"><a href="산포도-1.html#cb431-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>,                     </span>
-<span id="cb431-10"><a href="산포도-1.html#cb431-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span>                       <span class="co"># 신뢰구간을 제외합니다.</span></span>
-<span id="cb431-11"><a href="산포도-1.html#cb431-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;산포도: 산포도 : 선형 회귀선에서 신뢰구간의 제외&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb502-1"><a href="산포도-1.html#cb502-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 산포도 :  선형 회귀선만 표시</span></span>
+<span id="cb502-2"><a href="산포도-1.html#cb502-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
+<span id="cb502-3"><a href="산포도-1.html#cb502-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> EngineSize, </span>
+<span id="cb502-4"><a href="산포도-1.html#cb502-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway)) <span class="sc">+</span> </span>
+<span id="cb502-5"><a href="산포도-1.html#cb502-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">shape =</span> <span class="dv">19</span>, <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span>   </span>
+<span id="cb502-6"><a href="산포도-1.html#cb502-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 선형회귀선과 신뢰구간의 시각화</span></span>
+<span id="cb502-7"><a href="산포도-1.html#cb502-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_smooth</span>(<span class="at">method =</span> lm,                        </span>
+<span id="cb502-8"><a href="산포도-1.html#cb502-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">level =</span> <span class="fl">0.95</span>,                       </span>
+<span id="cb502-9"><a href="산포도-1.html#cb502-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>,                     </span>
+<span id="cb502-10"><a href="산포도-1.html#cb502-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span>                       <span class="co"># 신뢰구간을 제외합니다.</span></span>
+<span id="cb502-11"><a href="산포도-1.html#cb502-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;산포도: 산포도 : 선형 회귀선에서 신뢰구간의 제외&quot;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:GGScatterPlotRegre"></span>
 <img src="bookdown_files/figure-html/GGScatterPlotRegre-1.png" alt="산포도 : 선형 회귀선에서 신뢰구간의 제외" width="672" />
@@ -918,16 +920,16 @@ Figure 13.13: 산포도 : 선형 회귀선에서 신뢰구간의 제외
 <h4><span class="header-section-number">13.1.7.2</span> 비모수 회귀선 적합화</h4>
 <p>산포도에 선을 적합시킬 때 선형 회귀선 말고도 <strong>loess(locally weighted polynomial)</strong> 를 이용하여 <strong>비모수 회귀(Nonparametric regression) 선을 적합</strong>시킬 수도 있습니다.</p>
 <p><code>stat_smooth()</code> 함수의 <code>method</code> 모수 값을 <code>loess</code>로 설정해 주면 됩니다.</p>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb433-1"><a href="산포도-1.html#cb433-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 산포도 :  비선형 회귀선(loess)</span></span>
-<span id="cb433-2"><a href="산포도-1.html#cb433-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
-<span id="cb433-3"><a href="산포도-1.html#cb433-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> EngineSize, </span>
-<span id="cb433-4"><a href="산포도-1.html#cb433-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway)) <span class="sc">+</span> </span>
-<span id="cb433-5"><a href="산포도-1.html#cb433-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">shape =</span> <span class="dv">19</span>, <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span>   </span>
-<span id="cb433-6"><a href="산포도-1.html#cb433-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 선형회귀선과 신뢰구간의 시각화</span></span>
-<span id="cb433-7"><a href="산포도-1.html#cb433-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_smooth</span>(<span class="at">method =</span> loess,                     <span class="co"># 비모수 회귀선 모델인 loess를 적용합니다.</span></span>
-<span id="cb433-8"><a href="산포도-1.html#cb433-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">level =</span> <span class="fl">0.95</span>,                       <span class="co"># 유의수준을 0.05로 설정합니다.(신뢰도 0.95)</span></span>
-<span id="cb433-9"><a href="산포도-1.html#cb433-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span>                   <span class="co"># 선형 회귀선의 색을 설정합니다,  </span></span>
-<span id="cb433-10"><a href="산포도-1.html#cb433-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;산포도 : 비선형 회귀선과 신뢰구간의 표시&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb504-1"><a href="산포도-1.html#cb504-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 산포도 :  비선형 회귀선(loess)</span></span>
+<span id="cb504-2"><a href="산포도-1.html#cb504-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Cars93, </span>
+<span id="cb504-3"><a href="산포도-1.html#cb504-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> EngineSize, </span>
+<span id="cb504-4"><a href="산포도-1.html#cb504-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway)) <span class="sc">+</span> </span>
+<span id="cb504-5"><a href="산포도-1.html#cb504-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">shape =</span> <span class="dv">19</span>, <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span>   </span>
+<span id="cb504-6"><a href="산포도-1.html#cb504-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 선형회귀선과 신뢰구간의 시각화</span></span>
+<span id="cb504-7"><a href="산포도-1.html#cb504-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_smooth</span>(<span class="at">method =</span> loess,                     <span class="co"># 비모수 회귀선 모델인 loess를 적용합니다.</span></span>
+<span id="cb504-8"><a href="산포도-1.html#cb504-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">level =</span> <span class="fl">0.95</span>,                       <span class="co"># 유의수준을 0.05로 설정합니다.(신뢰도 0.95)</span></span>
+<span id="cb504-9"><a href="산포도-1.html#cb504-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span>                   <span class="co"># 선형 회귀선의 색을 설정합니다,  </span></span>
+<span id="cb504-10"><a href="산포도-1.html#cb504-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;산포도 : 비선형 회귀선과 신뢰구간의 표시&quot;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:GGScatterPlotLoessCF"></span>
 <img src="bookdown_files/figure-html/GGScatterPlotLoessCF-1.png" alt="산포도 : 비선형 회귀선과 신뢰구간의 표시" width="672" />
