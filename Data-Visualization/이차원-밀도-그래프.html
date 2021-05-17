@@ -415,6 +415,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.1" data-path="버블-그래프.html"><a href="버블-그래프.html#데이터-세트-8"><i class="fa fa-check"></i><b>13.2.1</b> 데이터 세트</a></li>
 <li class="chapter" data-level="13.2.2" data-path="버블-그래프.html"><a href="버블-그래프.html#기본-버블-그래프"><i class="fa fa-check"></i><b>13.2.2</b> 기본 버블 그래프</a></li>
 <li class="chapter" data-level="13.2.3" data-path="버블-그래프.html"><a href="버블-그래프.html#텍스트-레이블-추가"><i class="fa fa-check"></i><b>13.2.3</b> 텍스트 레이블 추가</a></li>
+<li class="chapter" data-level="13.2.4" data-path="버블-그래프.html"><a href="버블-그래프.html#그룹별-버블-그래프-그리기"><i class="fa fa-check"></i><b>13.2.4</b> 그룹별 버블 그래프 그리기</a></li>
+<li class="chapter" data-level="13.2.5" data-path="버블-그래프.html"><a href="버블-그래프.html#theme의-사용-5"><i class="fa fa-check"></i><b>13.2.5</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html"><i class="fa fa-check"></i><b>13.3</b> 선 그래프와 시계열 그래프</a>
 <ul>
@@ -422,7 +424,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3.2" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#기본-선-그래프-그리기"><i class="fa fa-check"></i><b>13.3.2</b> 기본 선 그래프 그리기</a></li>
 <li class="chapter" data-level="13.3.3" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#시계열-그래프의-옵션-설정하기"><i class="fa fa-check"></i><b>13.3.3</b> 시계열 그래프의 옵션 설정하기</a></li>
 <li class="chapter" data-level="13.3.4" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#그룹별-시계열-그래프-그리기"><i class="fa fa-check"></i><b>13.3.4</b> 그룹별 시계열 그래프 그리기</a></li>
-<li class="chapter" data-level="13.3.5" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#theme의-사용-5"><i class="fa fa-check"></i><b>13.3.5</b> Theme의 사용</a></li>
+<li class="chapter" data-level="13.3.5" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#theme의-사용-6"><i class="fa fa-check"></i><b>13.3.5</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="13.4" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html"><i class="fa fa-check"></i><b>13.4</b> 이차원 밀도 그래프</a>
 <ul>
@@ -565,10 +567,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">13.4.1</span> 데이터 세트</h3>
 <p>이번에 R로 예를 들 데이터는 뉴욕의 기상을 1973년 5월부터 9월까지 매일 측정한 <code>airquality</code> 데이터 프레임에서 5월달과 7월달 두 달의 <code>Wind</code>, <code>Temp</code>를 사용하겠습니다. (<code>airquality</code>는 시계열 데이터이고, 이전 포스팅에서 <code>airquality</code> 데이터 프레임을 사용하여 <code>ggplot2</code>로 시계열 그래프 그래프 그리는 법을 설명하였으니 참고하시기 바랍니다)</p>
 <p>먼저, <code>airquality</code>의 <strong>데이터 구조</strong>를 살펴보고, 5월달과 7월달 데이터만 선별해서 새로운 데이터 프레임을 만들어보겠습니다.</p>
-<div class="sourceCode" id="cb534"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb534-1"><a href="이차원-밀도-그래프.html#cb534-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb534-2"><a href="이차원-밀도-그래프.html#cb534-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb534-3"><a href="이차원-밀도-그래프.html#cb534-3" aria-hidden="true" tabindex="-1"></a><span class="co"># airquality 구조 </span></span>
-<span id="cb534-4"><a href="이차원-밀도-그래프.html#cb534-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(airquality)</span></code></pre></div>
+<div class="sourceCode" id="cb538"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb538-1"><a href="이차원-밀도-그래프.html#cb538-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb538-2"><a href="이차원-밀도-그래프.html#cb538-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb538-3"><a href="이차원-밀도-그래프.html#cb538-3" aria-hidden="true" tabindex="-1"></a><span class="co"># airquality 구조 </span></span>
+<span id="cb538-4"><a href="이차원-밀도-그래프.html#cb538-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(airquality)</span></code></pre></div>
 <pre class="bg-warning"><code>## &#39;data.frame&#39;:    153 obs. of  11 variables:
 ##  $ Ozone        : int  41 36 12 18 NA 28 23 19 8 NA ...
 ##  $ Solar.R      : int  190 118 149 313 NA NA 299 99 19 194 ...
@@ -581,12 +583,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ Month.ch     : chr  &quot;05&quot; &quot;05&quot; &quot;05&quot; &quot;05&quot; ...
 ##  $ Day.ch       : chr  &quot;01&quot; &quot;02&quot; &quot;03&quot; &quot;04&quot; ...
 ##  $ Time         : Date, format: &quot;2021-05-01&quot; &quot;2021-05-02&quot; ...</code></pre>
-<div class="sourceCode" id="cb536"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb536-1"><a href="이차원-밀도-그래프.html#cb536-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5월과 7월만 선택</span></span>
-<span id="cb536-2"><a href="이차원-밀도-그래프.html#cb536-2" aria-hidden="true" tabindex="-1"></a>airquality_May_July <span class="ot">&lt;-</span> <span class="fu">subset</span>(airquality, </span>
-<span id="cb536-3"><a href="이차원-밀도-그래프.html#cb536-3" aria-hidden="true" tabindex="-1"></a>                               <span class="at">select =</span> <span class="fu">c</span>(Month, Day, Wind, Temp), </span>
-<span id="cb536-4"><a href="이차원-밀도-그래프.html#cb536-4" aria-hidden="true" tabindex="-1"></a>                               <span class="at">subset =</span> (Month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">7</span>)))</span>
-<span id="cb536-5"><a href="이차원-밀도-그래프.html#cb536-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb536-6"><a href="이차원-밀도-그래프.html#cb536-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(airquality_May_July)</span></code></pre></div>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb540-1"><a href="이차원-밀도-그래프.html#cb540-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5월과 7월만 선택</span></span>
+<span id="cb540-2"><a href="이차원-밀도-그래프.html#cb540-2" aria-hidden="true" tabindex="-1"></a>airquality_May_July <span class="ot">&lt;-</span> <span class="fu">subset</span>(airquality, </span>
+<span id="cb540-3"><a href="이차원-밀도-그래프.html#cb540-3" aria-hidden="true" tabindex="-1"></a>                               <span class="at">select =</span> <span class="fu">c</span>(Month, Day, Wind, Temp), </span>
+<span id="cb540-4"><a href="이차원-밀도-그래프.html#cb540-4" aria-hidden="true" tabindex="-1"></a>                               <span class="at">subset =</span> (Month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">7</span>)))</span>
+<span id="cb540-5"><a href="이차원-밀도-그래프.html#cb540-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb540-6"><a href="이차원-밀도-그래프.html#cb540-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(airquality_May_July)</span></code></pre></div>
 <pre class="bg-warning"><code>##   Month Day Wind Temp
 ## 1     5   1  7.4   67
 ## 2     5   2  8.0   72
@@ -594,7 +596,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4     5   4 11.5   62
 ## 5     5   5 14.3   56
 ## 6     5   6 14.9   66</code></pre>
-<div class="sourceCode" id="cb538"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb538-1"><a href="이차원-밀도-그래프.html#cb538-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(airquality_May_July)</span></code></pre></div>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb542-1"><a href="이차원-밀도-그래프.html#cb542-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(airquality_May_July)</span></code></pre></div>
 <pre class="bg-warning"><code>##    Month Day Wind Temp
 ## 87     7  26  8.6   82
 ## 88     7  27 12.0   86
@@ -608,25 +610,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="aes에-범주형-변수-지정하기" class="section level3" number="13.4.2">
 <h3><span class="header-section-number">13.4.2</span> <code>aes()</code>에 범주형 변수 지정하기</h3>
 <p>이때 조심해야 할 것이 있습니다. <code>aes()</code> 에 <code>shape</code>이나 <code>colour</code> 에는 <strong>범주형 변수(factor)</strong>가 들어가야 합니다. 만약 연속형 변수가 들어가면 “Error: A continuous variable can not be mapped to shape” 라는 에러 메시지가 뜹니다.</p>
-<div class="sourceCode" id="cb540"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb540-1"><a href="이차원-밀도-그래프.html#cb540-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2차원 밀도 그래프 : 모양과 색깔로 구분</span></span>
-<span id="cb540-2"><a href="이차원-밀도-그래프.html#cb540-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 연속형 변수라서 error</span></span>
-<span id="cb540-3"><a href="이차원-밀도-그래프.html#cb540-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> airquality_May_July, </span>
-<span id="cb540-4"><a href="이차원-밀도-그래프.html#cb540-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Wind, </span>
-<span id="cb540-5"><a href="이차원-밀도-그래프.html#cb540-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp, </span>
-<span id="cb540-6"><a href="이차원-밀도-그래프.html#cb540-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">shape =</span> Month)) <span class="sc">+</span></span>
-<span id="cb540-7"><a href="이차원-밀도-그래프.html#cb540-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb540-8"><a href="이차원-밀도-그래프.html#cb540-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_density2d</span>() <span class="sc">+</span></span>
-<span id="cb540-9"><a href="이차원-밀도-그래프.html#cb540-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;2차원 밀도 그래프 : 모양과 색깔로 구분&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb544-1"><a href="이차원-밀도-그래프.html#cb544-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2차원 밀도 그래프 : 모양과 색깔로 구분</span></span>
+<span id="cb544-2"><a href="이차원-밀도-그래프.html#cb544-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 연속형 변수라서 error</span></span>
+<span id="cb544-3"><a href="이차원-밀도-그래프.html#cb544-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> airquality_May_July, </span>
+<span id="cb544-4"><a href="이차원-밀도-그래프.html#cb544-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Wind, </span>
+<span id="cb544-5"><a href="이차원-밀도-그래프.html#cb544-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp, </span>
+<span id="cb544-6"><a href="이차원-밀도-그래프.html#cb544-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">shape =</span> Month)) <span class="sc">+</span></span>
+<span id="cb544-7"><a href="이차원-밀도-그래프.html#cb544-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb544-8"><a href="이차원-밀도-그래프.html#cb544-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_density2d</span>() <span class="sc">+</span></span>
+<span id="cb544-9"><a href="이차원-밀도-그래프.html#cb544-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;2차원 밀도 그래프 : 모양과 색깔로 구분&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
 <p><code>Month</code>를 <code>Month.ch</code>라는 새로운 <strong>문자형 변수</strong>로 변환해, 이를 사용해서 이차원 밀도 그래프를 <code>Month</code>별로 모양과 색깔을 구분해서 그려보겠습니다.</p>
-<div class="sourceCode" id="cb541"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb541-1"><a href="이차원-밀도-그래프.html#cb541-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Month를 문자형 변수로 변환</span></span>
-<span id="cb541-2"><a href="이차원-밀도-그래프.html#cb541-2" aria-hidden="true" tabindex="-1"></a>airquality_May_July <span class="ot">&lt;-</span> <span class="fu">transform</span>(airquality_May_July, </span>
-<span id="cb541-3"><a href="이차원-밀도-그래프.html#cb541-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">Month.ch =</span> <span class="fu">as.character</span>(Month))</span>
-<span id="cb541-4"><a href="이차원-밀도-그래프.html#cb541-4" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb541-5"><a href="이차원-밀도-그래프.html#cb541-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(airquality_May_July, class)</span></code></pre></div>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb545-1"><a href="이차원-밀도-그래프.html#cb545-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Month를 문자형 변수로 변환</span></span>
+<span id="cb545-2"><a href="이차원-밀도-그래프.html#cb545-2" aria-hidden="true" tabindex="-1"></a>airquality_May_July <span class="ot">&lt;-</span> <span class="fu">transform</span>(airquality_May_July, </span>
+<span id="cb545-3"><a href="이차원-밀도-그래프.html#cb545-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">Month.ch =</span> <span class="fu">as.character</span>(Month))</span>
+<span id="cb545-4"><a href="이차원-밀도-그래프.html#cb545-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb545-5"><a href="이차원-밀도-그래프.html#cb545-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(airquality_May_July, class)</span></code></pre></div>
 <pre class="bg-warning"><code>##       Month         Day        Wind        Temp    Month.ch 
 ##    &quot;factor&quot;   &quot;integer&quot;   &quot;numeric&quot;   &quot;integer&quot; &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb543"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb543-1"><a href="이차원-밀도-그래프.html#cb543-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(airquality_May_July)</span></code></pre></div>
+<div class="sourceCode" id="cb547"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb547-1"><a href="이차원-밀도-그래프.html#cb547-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(airquality_May_July)</span></code></pre></div>
 <pre class="bg-warning"><code>##   Month Day Wind Temp Month.ch
 ## 1     5   1  7.4   67        5
 ## 2     5   2  8.0   72        5
@@ -639,29 +641,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="커널-밀도-추정치-계산" class="section level3" number="13.4.3">
 <h3><span class="header-section-number">13.4.3</span> 커널 밀도 추정치 계산</h3>
 <p><code>stat_density2d()</code> 함수로 <strong>커널 밀도 추정치를 계산</strong>해서 2차원 밀도 그래프를 그리면,</p>
-<div class="sourceCode" id="cb545"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb545-1"><a href="이차원-밀도-그래프.html#cb545-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2차원 밀도 그래프 : Month별 모양 구분</span></span>
-<span id="cb545-2"><a href="이차원-밀도-그래프.html#cb545-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>airquality_May_July, </span>
-<span id="cb545-3"><a href="이차원-밀도-그래프.html#cb545-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Wind, </span>
-<span id="cb545-4"><a href="이차원-밀도-그래프.html#cb545-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp, </span>
-<span id="cb545-5"><a href="이차원-밀도-그래프.html#cb545-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">shape =</span> Month.ch)) <span class="sc">+</span></span>
-<span id="cb545-6"><a href="이차원-밀도-그래프.html#cb545-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span> </span>
-<span id="cb545-7"><a href="이차원-밀도-그래프.html#cb545-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_density2d</span>() <span class="sc">+</span></span>
-<span id="cb545-8"><a href="이차원-밀도-그래프.html#cb545-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;2차원 밀도 그래프 : Month별 모양 구분&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb549"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb549-1"><a href="이차원-밀도-그래프.html#cb549-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2차원 밀도 그래프 : Month별 모양 구분</span></span>
+<span id="cb549-2"><a href="이차원-밀도-그래프.html#cb549-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>airquality_May_July, </span>
+<span id="cb549-3"><a href="이차원-밀도-그래프.html#cb549-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Wind, </span>
+<span id="cb549-4"><a href="이차원-밀도-그래프.html#cb549-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp, </span>
+<span id="cb549-5"><a href="이차원-밀도-그래프.html#cb549-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">shape =</span> Month.ch)) <span class="sc">+</span></span>
+<span id="cb549-6"><a href="이차원-밀도-그래프.html#cb549-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span> </span>
+<span id="cb549-7"><a href="이차원-밀도-그래프.html#cb549-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_density2d</span>() <span class="sc">+</span></span>
+<span id="cb549-8"><a href="이차원-밀도-그래프.html#cb549-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;2차원 밀도 그래프 : Month별 모양 구분&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/StatDens2D-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><a href="이차원-밀도-그래프.html#이차원-밀도-그래프">Go Top</a></p>
 </div>
 <div id="라벨-추가" class="section level3" number="13.4.4">
 <h3><span class="header-section-number">13.4.4</span> 라벨 추가</h3>
 <p>이번에는 (범례가 있기는 합니다만) 사용자의 가독성을 조금 더 높여주기 위해 2차원 밀도 그래프의 5월, 7월 두 집단의 중앙 부위에 “년/월”을 <code>annotate()</code>의 “<code>text</code>”로 <strong>라벨을 추가</strong>해 보겠습니다.</p>
-<div class="sourceCode" id="cb546"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb546-1"><a href="이차원-밀도-그래프.html#cb546-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2차원 밀도 그래프 : Month별 색깔로 구분, 년/월 라벨 추가</span></span>
-<span id="cb546-2"><a href="이차원-밀도-그래프.html#cb546-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>airquality_May_July, </span>
-<span id="cb546-3"><a href="이차원-밀도-그래프.html#cb546-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Wind, </span>
-<span id="cb546-4"><a href="이차원-밀도-그래프.html#cb546-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp, </span>
-<span id="cb546-5"><a href="이차원-밀도-그래프.html#cb546-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">shape =</span> Month.ch)) <span class="sc">+</span></span>
-<span id="cb546-6"><a href="이차원-밀도-그래프.html#cb546-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_density2d</span>() <span class="sc">+</span></span>
-<span id="cb546-7"><a href="이차원-밀도-그래프.html#cb546-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;2차원 밀도 그래프 : Month별 색깔로 구분, 년/월 라벨 추가&quot;</span>) <span class="sc">+</span></span>
-<span id="cb546-8"><a href="이차원-밀도-그래프.html#cb546-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">11</span>, <span class="at">y=</span><span class="dv">65</span>, <span class="at">label=</span><span class="st">&quot;May, 1973&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb546-9"><a href="이차원-밀도-그래프.html#cb546-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">9</span>, <span class="at">y=</span> <span class="dv">83</span>, <span class="at">label=</span><span class="st">&quot;July, 1973&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb550"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb550-1"><a href="이차원-밀도-그래프.html#cb550-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2차원 밀도 그래프 : Month별 색깔로 구분, 년/월 라벨 추가</span></span>
+<span id="cb550-2"><a href="이차원-밀도-그래프.html#cb550-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>airquality_May_July, </span>
+<span id="cb550-3"><a href="이차원-밀도-그래프.html#cb550-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Wind, </span>
+<span id="cb550-4"><a href="이차원-밀도-그래프.html#cb550-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp, </span>
+<span id="cb550-5"><a href="이차원-밀도-그래프.html#cb550-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">shape =</span> Month.ch)) <span class="sc">+</span></span>
+<span id="cb550-6"><a href="이차원-밀도-그래프.html#cb550-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_density2d</span>() <span class="sc">+</span></span>
+<span id="cb550-7"><a href="이차원-밀도-그래프.html#cb550-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;2차원 밀도 그래프 : Month별 색깔로 구분, 년/월 라벨 추가&quot;</span>) <span class="sc">+</span></span>
+<span id="cb550-8"><a href="이차원-밀도-그래프.html#cb550-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">11</span>, <span class="at">y=</span><span class="dv">65</span>, <span class="at">label=</span><span class="st">&quot;May, 1973&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb550-9"><a href="이차원-밀도-그래프.html#cb550-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">9</span>, <span class="at">y=</span> <span class="dv">83</span>, <span class="at">label=</span><span class="st">&quot;July, 1973&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/StatDens2DColLab-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><a href="이차원-밀도-그래프.html#이차원-밀도-그래프">Go Top</a></p>
 </div>
@@ -669,39 +671,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">13.4.5</span> 등고선 효과 추가하기</h3>
 <p>그림이 조금 재미가 없네요… 등고선에 그래디언트 효과를 줘서 <strong>히트맵</strong> 형태로 표현을 해 보겠습니다. <code>stat_density2d()</code> 함수 내에 <code>aes()</code> 함수를 이용하여 등고선 효과를 추가합니다.
 그리고, <code>scale_fill_gradient()</code> 함수와 <code>scale_alpha()</code> 함수도 추가해 줍니다.</p>
-<div class="sourceCode" id="cb547"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb547-1"><a href="이차원-밀도-그래프.html#cb547-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2차원 밀도 그래프 : 등고선 효과</span></span>
-<span id="cb547-2"><a href="이차원-밀도-그래프.html#cb547-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>airquality_May_July, </span>
-<span id="cb547-3"><a href="이차원-밀도-그래프.html#cb547-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Wind, </span>
-<span id="cb547-4"><a href="이차원-밀도-그래프.html#cb547-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp, </span>
-<span id="cb547-5"><a href="이차원-밀도-그래프.html#cb547-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">shape =</span> Month.ch)) <span class="sc">+</span></span>
-<span id="cb547-6"><a href="이차원-밀도-그래프.html#cb547-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>(<span class="fu">aes</span>(                 </span>
-<span id="cb547-7"><a href="이차원-밀도-그래프.html#cb547-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">fill =</span> ..level.., </span>
-<span id="cb547-8"><a href="이차원-밀도-그래프.html#cb547-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">alpha =</span> ..level..), </span>
-<span id="cb547-9"><a href="이차원-밀도-그래프.html#cb547-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">size =</span> <span class="fl">0.01</span>, </span>
-<span id="cb547-10"><a href="이차원-밀도-그래프.html#cb547-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">bins =</span> <span class="dv">20</span>,                                    <span class="co"># 등고선 간격 조절</span></span>
-<span id="cb547-11"><a href="이차원-밀도-그래프.html#cb547-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">geom =</span> <span class="st">&quot;polygon&quot;</span>) <span class="sc">+</span></span>
-<span id="cb547-12"><a href="이차원-밀도-그래프.html#cb547-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;green&quot;</span>, <span class="at">high =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb547-13"><a href="이차원-밀도-그래프.html#cb547-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_alpha</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>), <span class="at">guide =</span> <span class="cn">FALSE</span>)             <span class="sc">+</span></span>
-<span id="cb547-14"><a href="이차원-밀도-그래프.html#cb547-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;2차원 밀도 그래프 : 등고선 효과&quot;</span>) <span class="sc">+</span></span>
-<span id="cb547-15"><a href="이차원-밀도-그래프.html#cb547-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">11</span>, <span class="at">y=</span><span class="dv">65</span>, <span class="at">label=</span><span class="st">&quot;May, 1973&quot;</span>, <span class="at">alpha=</span><span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb547-16"><a href="이차원-밀도-그래프.html#cb547-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">9</span>, <span class="at">y=</span> <span class="dv">83</span>, <span class="at">label=</span><span class="st">&quot;July, 1973&quot;</span>, <span class="at">alpha=</span><span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb551-1"><a href="이차원-밀도-그래프.html#cb551-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2차원 밀도 그래프 : 등고선 효과</span></span>
+<span id="cb551-2"><a href="이차원-밀도-그래프.html#cb551-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>airquality_May_July, </span>
+<span id="cb551-3"><a href="이차원-밀도-그래프.html#cb551-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Wind, </span>
+<span id="cb551-4"><a href="이차원-밀도-그래프.html#cb551-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp, </span>
+<span id="cb551-5"><a href="이차원-밀도-그래프.html#cb551-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">shape =</span> Month.ch)) <span class="sc">+</span></span>
+<span id="cb551-6"><a href="이차원-밀도-그래프.html#cb551-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>(<span class="fu">aes</span>(                 </span>
+<span id="cb551-7"><a href="이차원-밀도-그래프.html#cb551-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">fill =</span> ..level.., </span>
+<span id="cb551-8"><a href="이차원-밀도-그래프.html#cb551-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">alpha =</span> ..level..), </span>
+<span id="cb551-9"><a href="이차원-밀도-그래프.html#cb551-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">size =</span> <span class="fl">0.01</span>, </span>
+<span id="cb551-10"><a href="이차원-밀도-그래프.html#cb551-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">bins =</span> <span class="dv">20</span>,                                    <span class="co"># 등고선 간격 조절</span></span>
+<span id="cb551-11"><a href="이차원-밀도-그래프.html#cb551-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">geom =</span> <span class="st">&quot;polygon&quot;</span>) <span class="sc">+</span></span>
+<span id="cb551-12"><a href="이차원-밀도-그래프.html#cb551-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;green&quot;</span>, <span class="at">high =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb551-13"><a href="이차원-밀도-그래프.html#cb551-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_alpha</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>), <span class="at">guide =</span> <span class="cn">FALSE</span>)             <span class="sc">+</span></span>
+<span id="cb551-14"><a href="이차원-밀도-그래프.html#cb551-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;2차원 밀도 그래프 : 등고선 효과&quot;</span>) <span class="sc">+</span></span>
+<span id="cb551-15"><a href="이차원-밀도-그래프.html#cb551-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">11</span>, <span class="at">y=</span><span class="dv">65</span>, <span class="at">label=</span><span class="st">&quot;May, 1973&quot;</span>, <span class="at">alpha=</span><span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb551-16"><a href="이차원-밀도-그래프.html#cb551-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">9</span>, <span class="at">y=</span> <span class="dv">83</span>, <span class="at">label=</span><span class="st">&quot;July, 1973&quot;</span>, <span class="at">alpha=</span><span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/StatDens2DLine-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>그래도 뭔가 불만이 있네요.. 등고선을 없애고 부드럽게 표현해 보겠습니다. <code>ggplot()</code> 함수 내의 <code>colour = Month.ch</code>을 제거하고 다시 한번 더 그려보지요…</p>
-<div class="sourceCode" id="cb548"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb548-1"><a href="이차원-밀도-그래프.html#cb548-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2차원 밀도 그래프 : 등고선 효과</span></span>
-<span id="cb548-2"><a href="이차원-밀도-그래프.html#cb548-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>airquality_May_July, </span>
-<span id="cb548-3"><a href="이차원-밀도-그래프.html#cb548-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Wind, </span>
-<span id="cb548-4"><a href="이차원-밀도-그래프.html#cb548-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp)) <span class="sc">+</span></span>
-<span id="cb548-5"><a href="이차원-밀도-그래프.html#cb548-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>(</span>
-<span id="cb548-6"><a href="이차원-밀도-그래프.html#cb548-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">fill =</span> ..level.., </span>
-<span id="cb548-7"><a href="이차원-밀도-그래프.html#cb548-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha =</span> ..level..), </span>
-<span id="cb548-8"><a href="이차원-밀도-그래프.html#cb548-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="fl">0.01</span>, </span>
-<span id="cb548-9"><a href="이차원-밀도-그래프.html#cb548-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">bins =</span> <span class="dv">20</span>,                                    <span class="co"># 등고선 간격 조절</span></span>
-<span id="cb548-10"><a href="이차원-밀도-그래프.html#cb548-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">geom =</span> <span class="st">&quot;polygon&quot;</span>) <span class="sc">+</span></span>
-<span id="cb548-11"><a href="이차원-밀도-그래프.html#cb548-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;green&quot;</span>, <span class="at">high =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb548-12"><a href="이차원-밀도-그래프.html#cb548-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_alpha</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>), <span class="at">guide =</span> <span class="cn">FALSE</span>)             <span class="sc">+</span></span>
-<span id="cb548-13"><a href="이차원-밀도-그래프.html#cb548-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;2차원 밀도 그래프 : 등고선 효과&quot;</span>) <span class="sc">+</span></span>
-<span id="cb548-14"><a href="이차원-밀도-그래프.html#cb548-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">11</span>, <span class="at">y=</span><span class="dv">65</span>, <span class="at">label=</span><span class="st">&quot;May, 1973&quot;</span>, <span class="at">alpha=</span><span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb548-15"><a href="이차원-밀도-그래프.html#cb548-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">9</span>, <span class="at">y=</span> <span class="dv">83</span>, <span class="at">label=</span><span class="st">&quot;July, 1973&quot;</span>, <span class="at">alpha=</span><span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb552"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb552-1"><a href="이차원-밀도-그래프.html#cb552-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2차원 밀도 그래프 : 등고선 효과</span></span>
+<span id="cb552-2"><a href="이차원-밀도-그래프.html#cb552-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>airquality_May_July, </span>
+<span id="cb552-3"><a href="이차원-밀도-그래프.html#cb552-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Wind, </span>
+<span id="cb552-4"><a href="이차원-밀도-그래프.html#cb552-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp)) <span class="sc">+</span></span>
+<span id="cb552-5"><a href="이차원-밀도-그래프.html#cb552-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>(</span>
+<span id="cb552-6"><a href="이차원-밀도-그래프.html#cb552-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">fill =</span> ..level.., </span>
+<span id="cb552-7"><a href="이차원-밀도-그래프.html#cb552-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha =</span> ..level..), </span>
+<span id="cb552-8"><a href="이차원-밀도-그래프.html#cb552-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="fl">0.01</span>, </span>
+<span id="cb552-9"><a href="이차원-밀도-그래프.html#cb552-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">bins =</span> <span class="dv">20</span>,                                    <span class="co"># 등고선 간격 조절</span></span>
+<span id="cb552-10"><a href="이차원-밀도-그래프.html#cb552-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">geom =</span> <span class="st">&quot;polygon&quot;</span>) <span class="sc">+</span></span>
+<span id="cb552-11"><a href="이차원-밀도-그래프.html#cb552-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;green&quot;</span>, <span class="at">high =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb552-12"><a href="이차원-밀도-그래프.html#cb552-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_alpha</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>), <span class="at">guide =</span> <span class="cn">FALSE</span>)             <span class="sc">+</span></span>
+<span id="cb552-13"><a href="이차원-밀도-그래프.html#cb552-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;2차원 밀도 그래프 : 등고선 효과&quot;</span>) <span class="sc">+</span></span>
+<span id="cb552-14"><a href="이차원-밀도-그래프.html#cb552-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">11</span>, <span class="at">y=</span><span class="dv">65</span>, <span class="at">label=</span><span class="st">&quot;May, 1973&quot;</span>, <span class="at">alpha=</span><span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb552-15"><a href="이차원-밀도-그래프.html#cb552-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">9</span>, <span class="at">y=</span> <span class="dv">83</span>, <span class="at">label=</span><span class="st">&quot;July, 1973&quot;</span>, <span class="at">alpha=</span><span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/StatDens2DPolyGon-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>참고로 <code>aes()</code> 함수 내의 <code>bins</code>는 등고선 간의 간격 갯수라고 이해하면 좋겠습니다. 간격의 갯수가 많아질수록 등고선의 간격이 좁아지겠지요…. <code>bins</code>의 값을 5, 10, 15, 20, 25, 30 등으로 수정하면서 다시 그려보기 바랍니다.</p>
 <p><a href="이차원-밀도-그래프.html#이차원-밀도-그래프">Go Top</a></p>
@@ -709,21 +711,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="facet_wrap-함수-이용-7" class="section level3" number="13.4.6">
 <h3><span class="header-section-number">13.4.6</span> <code>facet_wrap()</code> 함수 이용</h3>
 <p>한번 더 해 보지요… 이번에는 앞에서 제거한 <code>Month.ch</code> 변수를 <code>facet_wrap()</code> 함수 안에 추가해서 그림을 다시 그려보겠습니다. 그러면 5월과 7월의 지도가 따로 그려지겠지요…</p>
-<div class="sourceCode" id="cb549"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb549-1"><a href="이차원-밀도-그래프.html#cb549-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2차원 밀도 그래프 : facet_wrap() 함수 이용</span></span>
-<span id="cb549-2"><a href="이차원-밀도-그래프.html#cb549-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>airquality_May_July, <span class="fu">aes</span>(<span class="at">x=</span>Wind, <span class="at">y=</span>Temp)) <span class="sc">+</span></span>
-<span id="cb549-3"><a href="이차원-밀도-그래프.html#cb549-3" aria-hidden="true" tabindex="-1"></a><span class="co">#  geom_point(size=4) + </span></span>
-<span id="cb549-4"><a href="이차원-밀도-그래프.html#cb549-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>(</span>
-<span id="cb549-5"><a href="이차원-밀도-그래프.html#cb549-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">fill =</span> ..level.., </span>
-<span id="cb549-6"><a href="이차원-밀도-그래프.html#cb549-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha =</span> ..level..), </span>
-<span id="cb549-7"><a href="이차원-밀도-그래프.html#cb549-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="fl">0.01</span>, </span>
-<span id="cb549-8"><a href="이차원-밀도-그래프.html#cb549-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">bins =</span> <span class="dv">20</span>,                                    <span class="co"># 등고선 간격 조절</span></span>
-<span id="cb549-9"><a href="이차원-밀도-그래프.html#cb549-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">geom =</span> <span class="st">&quot;polygon&quot;</span>) <span class="sc">+</span></span>
-<span id="cb549-10"><a href="이차원-밀도-그래프.html#cb549-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;green&quot;</span>, <span class="at">high =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb549-11"><a href="이차원-밀도-그래프.html#cb549-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_alpha</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>), <span class="at">guide =</span> <span class="cn">FALSE</span>)             <span class="sc">+</span></span>
-<span id="cb549-12"><a href="이차원-밀도-그래프.html#cb549-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;2D desity plot of Wind and Tmep, at1973. May/July by Colour&quot;</span>) <span class="sc">+</span></span>
-<span id="cb549-13"><a href="이차원-밀도-그래프.html#cb549-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">11</span>, <span class="at">y=</span><span class="dv">65</span>, <span class="at">label=</span><span class="st">&quot;May, 1973&quot;</span>, <span class="at">alpha=</span><span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb549-14"><a href="이차원-밀도-그래프.html#cb549-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">9</span>, <span class="at">y=</span> <span class="dv">83</span>, <span class="at">label=</span><span class="st">&quot;July, 1973&quot;</span>, <span class="at">alpha=</span><span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb549-15"><a href="이차원-밀도-그래프.html#cb549-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(Month.ch))</span></code></pre></div>
+<div class="sourceCode" id="cb553"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb553-1"><a href="이차원-밀도-그래프.html#cb553-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2차원 밀도 그래프 : facet_wrap() 함수 이용</span></span>
+<span id="cb553-2"><a href="이차원-밀도-그래프.html#cb553-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>airquality_May_July, <span class="fu">aes</span>(<span class="at">x=</span>Wind, <span class="at">y=</span>Temp)) <span class="sc">+</span></span>
+<span id="cb553-3"><a href="이차원-밀도-그래프.html#cb553-3" aria-hidden="true" tabindex="-1"></a><span class="co">#  geom_point(size=4) + </span></span>
+<span id="cb553-4"><a href="이차원-밀도-그래프.html#cb553-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>(</span>
+<span id="cb553-5"><a href="이차원-밀도-그래프.html#cb553-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">fill =</span> ..level.., </span>
+<span id="cb553-6"><a href="이차원-밀도-그래프.html#cb553-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha =</span> ..level..), </span>
+<span id="cb553-7"><a href="이차원-밀도-그래프.html#cb553-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="fl">0.01</span>, </span>
+<span id="cb553-8"><a href="이차원-밀도-그래프.html#cb553-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">bins =</span> <span class="dv">20</span>,                                    <span class="co"># 등고선 간격 조절</span></span>
+<span id="cb553-9"><a href="이차원-밀도-그래프.html#cb553-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">geom =</span> <span class="st">&quot;polygon&quot;</span>) <span class="sc">+</span></span>
+<span id="cb553-10"><a href="이차원-밀도-그래프.html#cb553-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;green&quot;</span>, <span class="at">high =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb553-11"><a href="이차원-밀도-그래프.html#cb553-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_alpha</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>), <span class="at">guide =</span> <span class="cn">FALSE</span>)             <span class="sc">+</span></span>
+<span id="cb553-12"><a href="이차원-밀도-그래프.html#cb553-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;2D desity plot of Wind and Tmep, at1973. May/July by Colour&quot;</span>) <span class="sc">+</span></span>
+<span id="cb553-13"><a href="이차원-밀도-그래프.html#cb553-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">11</span>, <span class="at">y=</span><span class="dv">65</span>, <span class="at">label=</span><span class="st">&quot;May, 1973&quot;</span>, <span class="at">alpha=</span><span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb553-14"><a href="이차원-밀도-그래프.html#cb553-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">9</span>, <span class="at">y=</span> <span class="dv">83</span>, <span class="at">label=</span><span class="st">&quot;July, 1973&quot;</span>, <span class="at">alpha=</span><span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb553-15"><a href="이차원-밀도-그래프.html#cb553-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(Month.ch))</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/StatDens2DFacWrap-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><a href="이차원-밀도-그래프.html#이차원-밀도-그래프">Go Top</a></p>
 </div>

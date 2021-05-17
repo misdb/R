@@ -415,6 +415,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.1" data-path="버블-그래프.html"><a href="버블-그래프.html#데이터-세트-8"><i class="fa fa-check"></i><b>13.2.1</b> 데이터 세트</a></li>
 <li class="chapter" data-level="13.2.2" data-path="버블-그래프.html"><a href="버블-그래프.html#기본-버블-그래프"><i class="fa fa-check"></i><b>13.2.2</b> 기본 버블 그래프</a></li>
 <li class="chapter" data-level="13.2.3" data-path="버블-그래프.html"><a href="버블-그래프.html#텍스트-레이블-추가"><i class="fa fa-check"></i><b>13.2.3</b> 텍스트 레이블 추가</a></li>
+<li class="chapter" data-level="13.2.4" data-path="버블-그래프.html"><a href="버블-그래프.html#그룹별-버블-그래프-그리기"><i class="fa fa-check"></i><b>13.2.4</b> 그룹별 버블 그래프 그리기</a></li>
+<li class="chapter" data-level="13.2.5" data-path="버블-그래프.html"><a href="버블-그래프.html#theme의-사용-5"><i class="fa fa-check"></i><b>13.2.5</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html"><i class="fa fa-check"></i><b>13.3</b> 선 그래프와 시계열 그래프</a>
 <ul>
@@ -422,7 +424,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3.2" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#기본-선-그래프-그리기"><i class="fa fa-check"></i><b>13.3.2</b> 기본 선 그래프 그리기</a></li>
 <li class="chapter" data-level="13.3.3" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#시계열-그래프의-옵션-설정하기"><i class="fa fa-check"></i><b>13.3.3</b> 시계열 그래프의 옵션 설정하기</a></li>
 <li class="chapter" data-level="13.3.4" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#그룹별-시계열-그래프-그리기"><i class="fa fa-check"></i><b>13.3.4</b> 그룹별 시계열 그래프 그리기</a></li>
-<li class="chapter" data-level="13.3.5" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#theme의-사용-5"><i class="fa fa-check"></i><b>13.3.5</b> Theme의 사용</a></li>
+<li class="chapter" data-level="13.3.5" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#theme의-사용-6"><i class="fa fa-check"></i><b>13.3.5</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="13.4" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html"><i class="fa fa-check"></i><b>13.4</b> 이차원 밀도 그래프</a>
 <ul>
@@ -557,11 +559,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="감마-분포-gamma-distribution-stat_functionfun-dgamma" class="section level2" number="15.7">
 <h2><span class="header-section-number">15.7</span> 감마 분포 (Gamma Distribution) : <code>stat_function(fun = dgamma)</code></h2>
-<div class="sourceCode" id="cb739"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb739-1"><a href="감마-분포-gamma-distribution-stat-functionfun-dgamma.html#cb739-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 감마 분포 : fun = dgamma</span></span>
-<span id="cb739-2"><a href="감마-분포-gamma-distribution-stat-functionfun-dgamma.html#cb739-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">400</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span></span>
-<span id="cb739-3"><a href="감마-분포-gamma-distribution-stat-functionfun-dgamma.html#cb739-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_function</span>(<span class="at">fun=</span>dgamma, <span class="at">args=</span><span class="fu">list</span>(<span class="at">shape=</span><span class="dv">5</span>, <span class="at">rate=</span><span class="fl">0.05</span>), <span class="at">colour=</span><span class="st">&quot;green&quot;</span>) <span class="sc">+</span></span>
-<span id="cb739-4"><a href="감마-분포-gamma-distribution-stat-functionfun-dgamma.html#cb739-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Gamma Distribution of (shape=5, rate=0.05)&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-127-1.png" width="672" /></p>
+<div class="sourceCode" id="cb743"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb743-1"><a href="감마-분포-gamma-distribution-stat-functionfun-dgamma.html#cb743-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 감마 분포 : fun = dgamma</span></span>
+<span id="cb743-2"><a href="감마-분포-gamma-distribution-stat-functionfun-dgamma.html#cb743-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">400</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span></span>
+<span id="cb743-3"><a href="감마-분포-gamma-distribution-stat-functionfun-dgamma.html#cb743-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stat_function</span>(<span class="at">fun=</span>dgamma, <span class="at">args=</span><span class="fu">list</span>(<span class="at">shape=</span><span class="dv">5</span>, <span class="at">rate=</span><span class="fl">0.05</span>), <span class="at">colour=</span><span class="st">&quot;green&quot;</span>) <span class="sc">+</span></span>
+<span id="cb743-4"><a href="감마-분포-gamma-distribution-stat-functionfun-dgamma.html#cb743-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Gamma Distribution of (shape=5, rate=0.05)&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-128-1.png" width="672" /></p>
 </div>
             </section>
 

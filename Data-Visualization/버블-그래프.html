@@ -415,6 +415,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.1" data-path="버블-그래프.html"><a href="버블-그래프.html#데이터-세트-8"><i class="fa fa-check"></i><b>13.2.1</b> 데이터 세트</a></li>
 <li class="chapter" data-level="13.2.2" data-path="버블-그래프.html"><a href="버블-그래프.html#기본-버블-그래프"><i class="fa fa-check"></i><b>13.2.2</b> 기본 버블 그래프</a></li>
 <li class="chapter" data-level="13.2.3" data-path="버블-그래프.html"><a href="버블-그래프.html#텍스트-레이블-추가"><i class="fa fa-check"></i><b>13.2.3</b> 텍스트 레이블 추가</a></li>
+<li class="chapter" data-level="13.2.4" data-path="버블-그래프.html"><a href="버블-그래프.html#그룹별-버블-그래프-그리기"><i class="fa fa-check"></i><b>13.2.4</b> 그룹별 버블 그래프 그리기</a></li>
+<li class="chapter" data-level="13.2.5" data-path="버블-그래프.html"><a href="버블-그래프.html#theme의-사용-5"><i class="fa fa-check"></i><b>13.2.5</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html"><i class="fa fa-check"></i><b>13.3</b> 선 그래프와 시계열 그래프</a>
 <ul>
@@ -422,7 +424,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3.2" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#기본-선-그래프-그리기"><i class="fa fa-check"></i><b>13.3.2</b> 기본 선 그래프 그리기</a></li>
 <li class="chapter" data-level="13.3.3" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#시계열-그래프의-옵션-설정하기"><i class="fa fa-check"></i><b>13.3.3</b> 시계열 그래프의 옵션 설정하기</a></li>
 <li class="chapter" data-level="13.3.4" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#그룹별-시계열-그래프-그리기"><i class="fa fa-check"></i><b>13.3.4</b> 그룹별 시계열 그래프 그리기</a></li>
-<li class="chapter" data-level="13.3.5" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#theme의-사용-5"><i class="fa fa-check"></i><b>13.3.5</b> Theme의 사용</a></li>
+<li class="chapter" data-level="13.3.5" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#theme의-사용-6"><i class="fa fa-check"></i><b>13.3.5</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="13.4" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html"><i class="fa fa-check"></i><b>13.4</b> 이차원 밀도 그래프</a>
 <ul>
@@ -697,6 +699,109 @@ Figure 13.17: R에서의 점의 모양
 Figure 13.18: 버블 그래프 : 모델 레이블 추가
 </p>
 </div>
+<p><a href="버블-그래프.html#버블-그래프">Go Top</a></p>
+</div>
+<div id="그룹별-버블-그래프-그리기" class="section level3" number="13.2.4">
+<h3><span class="header-section-number">13.2.4</span> 그룹별 버블 그래프 그리기</h3>
+<div id="aes-함수의-모수-이용-7" class="section level4" number="13.2.4.1">
+<h4><span class="header-section-number">13.2.4.1</span> <code>aes()</code> 함수의 모수 이용</h4>
+<p><code>aes()</code> 함수의 모수 중 <code>colour =</code> 와 <code>fill =</code> 등의 두 개의 모수를 자동차 유형(<code>Type</code>)으로 설정하면 버블 그래프가 자동차 유형별(<code>Type</code>)로 그룹화 됨을 볼 수 있습니다.</p>
+<p>이때, <code>geom_point()</code> 함수 안의 <code>colour =</code> 또는 <code>fill =</code> 은 제거해 줍니다.</p>
+<div class="sourceCode" id="cb508"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb508-1"><a href="버블-그래프.html#cb508-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 그룹별 버블 그래프 : aes() 함수의 이용</span></span>
+<span id="cb508-2"><a href="버블-그래프.html#cb508-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,                          <span class="co"># 데이터 세트를 지정합니다.</span></span>
+<span id="cb508-3"><a href="버블-그래프.html#cb508-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Weight,                         <span class="co"># x축을 Weight 변수로 지정.</span></span>
+<span id="cb508-4"><a href="버블-그래프.html#cb508-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway,                    <span class="co"># y축을 MPG.highway 변수로 지정.</span></span>
+<span id="cb508-5"><a href="버블-그래프.html#cb508-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type,</span>
+<span id="cb508-6"><a href="버블-그래프.html#cb508-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Type)) <span class="sc">+</span>                 </span>
+<span id="cb508-7"><a href="버블-그래프.html#cb508-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> Price),           <span class="co"># 점의 크기를 Price 변수로 지정.</span></span>
+<span id="cb508-8"><a href="버블-그래프.html#cb508-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">shape=</span><span class="dv">21</span>,                    <span class="co"># 점의 모양</span></span>
+<span id="cb508-9"><a href="버블-그래프.html#cb508-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span>                 <span class="co"># 점의 투명도 : 50%</span></span>
+<span id="cb508-10"><a href="버블-그래프.html#cb508-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_size_area</span>(<span class="at">max_size =</span> <span class="dv">15</span>) <span class="sc">+</span>            <span class="co"># 최대 점의 크기 : 15</span></span>
+<span id="cb508-11"><a href="버블-그래프.html#cb508-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;자동차 유형별 버블 그래프 : aes() 함수의 이용&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:GGBubPlotAesColour"></span>
+<img src="bookdown_files/figure-html/GGBubPlotAesColour-1.png" alt="자동차 유형별 버블 그래프 : aes() 함수의 이용" width="672" />
+<p class="caption">
+Figure 13.19: 자동차 유형별 버블 그래프 : aes() 함수의 이용
+</p>
+</div>
+<p><a href="버블-그래프.html#버블-그래프">Go Top</a></p>
+</div>
+<div id="facet_grid-함수의-이용-4" class="section level4" number="13.2.4.2">
+<h4><span class="header-section-number">13.2.4.2</span> <code>facet_grid()</code> 함수의 이용</h4>
+<p>다음은 <code>facet_grid()</code> 함수를 이용하여 자동차 유형별(<code>Type</code>)로 버블 그래프를 그룹화한 것입니다.</p>
+<div class="sourceCode" id="cb509"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb509-1"><a href="버블-그래프.html#cb509-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 그룹별 버블 그래프 : facet_grid() 함수의 이용</span></span>
+<span id="cb509-2"><a href="버블-그래프.html#cb509-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,                          <span class="co"># 데이터 세트를 지정합니다.</span></span>
+<span id="cb509-3"><a href="버블-그래프.html#cb509-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Weight,                     <span class="co"># x축을 Weight 변수로 지정합니다.</span></span>
+<span id="cb509-4"><a href="버블-그래프.html#cb509-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway,                <span class="co"># y축을 MPG.highway 변수로 지정합니다.</span></span>
+<span id="cb509-5"><a href="버블-그래프.html#cb509-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type,                  <span class="co"># Type 변수를 그룹의 색으로 지정</span></span>
+<span id="cb509-6"><a href="버블-그래프.html#cb509-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Type)) <span class="sc">+</span>                 </span>
+<span id="cb509-7"><a href="버블-그래프.html#cb509-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> Price),       <span class="co"># 점의 크기를 Price 변수로 지정.</span></span>
+<span id="cb509-8"><a href="버블-그래프.html#cb509-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">shape=</span><span class="dv">21</span>,                <span class="co"># 점의 모양</span></span>
+<span id="cb509-9"><a href="버블-그래프.html#cb509-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span>             <span class="co"># 점의 투명도 : 50%</span></span>
+<span id="cb509-10"><a href="버블-그래프.html#cb509-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_size_area</span>(<span class="at">max_size =</span> <span class="dv">15</span>) <span class="sc">+</span>        <span class="co"># 최대 점의 크기 : 15</span></span>
+<span id="cb509-11"><a href="버블-그래프.html#cb509-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_grid</span>( Type <span class="sc">~</span> .) <span class="sc">+</span></span>
+<span id="cb509-12"><a href="버블-그래프.html#cb509-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;자동차 유형별 버블 그래프 : facet_grid() 함수의 이용&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:GGBubPlotFacGrid"></span>
+<img src="bookdown_files/figure-html/GGBubPlotFacGrid-1.png" alt="자동차 유형별 버블 그래프 : facet_grid() 함수의 이용" width="672" />
+<p class="caption">
+Figure 13.20: 자동차 유형별 버블 그래프 : facet_grid() 함수의 이용
+</p>
+</div>
+<p><a href="버블-그래프.html#버블-그래프">Go Top</a></p>
+</div>
+<div id="facet_wrap-함수의-이용-4" class="section level4" number="13.2.4.3">
+<h4><span class="header-section-number">13.2.4.3</span> <code>facet_wrap()</code> 함수의 이용</h4>
+<p>다음은 <code>facet_wrap()</code> 함수를 이용하여 자동차 유형별(<code>Type</code>)로 버블 그래프를 그룹화한 것입니다.</p>
+<div class="sourceCode" id="cb510"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb510-1"><a href="버블-그래프.html#cb510-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 그룹별 버블 그래프 : facet_wrap() 함수의 이용</span></span>
+<span id="cb510-2"><a href="버블-그래프.html#cb510-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,                          <span class="co"># 데이터 세트를 지정합니다.</span></span>
+<span id="cb510-3"><a href="버블-그래프.html#cb510-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Weight,                     <span class="co"># x축을 Weight 변수로 지정합니다.</span></span>
+<span id="cb510-4"><a href="버블-그래프.html#cb510-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway,                <span class="co"># y축을 MPG.highway 변수로 지정합니다.</span></span>
+<span id="cb510-5"><a href="버블-그래프.html#cb510-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type,                  <span class="co"># Type 변수를 그룹의 색으로 지정</span></span>
+<span id="cb510-6"><a href="버블-그래프.html#cb510-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Type)) <span class="sc">+</span>                 </span>
+<span id="cb510-7"><a href="버블-그래프.html#cb510-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> Price),         <span class="co"># 점의 크기를 Price 변수로 지정.</span></span>
+<span id="cb510-8"><a href="버블-그래프.html#cb510-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">shape=</span><span class="dv">21</span>,         </span>
+<span id="cb510-9"><a href="버블-그래프.html#cb510-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span>                <span class="co"># 점의 투명도 : 50%</span></span>
+<span id="cb510-10"><a href="버블-그래프.html#cb510-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_size_area</span>(<span class="at">max_size =</span> <span class="dv">15</span>) <span class="sc">+</span>           <span class="co"># 최대 점의 크기 : 15</span></span>
+<span id="cb510-11"><a href="버블-그래프.html#cb510-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_wrap</span>( <span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb510-12"><a href="버블-그래프.html#cb510-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;자동차 유형별 버블 그래프 : facet_wrap() 함수의 이용&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:GGBubPlotFacWrap"></span>
+<img src="bookdown_files/figure-html/GGBubPlotFacWrap-1.png" alt="자동차 유형별 버블 그래프 : facet_wrap() 함수의 이용" width="672" />
+<p class="caption">
+Figure 13.21: 자동차 유형별 버블 그래프 : facet_wrap() 함수의 이용
+</p>
+</div>
+<p><a href="버블-그래프.html#버블-그래프">Go Top</a></p>
+</div>
+</div>
+<div id="theme의-사용-5" class="section level3" number="13.2.5">
+<h3><span class="header-section-number">13.2.5</span> Theme의 사용</h3>
+<p>히스토그램에서 <a href="gg히스토그램.html#UsignThemes">Theme을 사용</a>하였듯이, <strong>버블 그래프</strong>에서도 Theme을 사용할 수 있습니다.</p>
+<p>다음의 예는 앞서 작성한 <a href="#GGBubPlotAesColour">자동차 유형별 버블 그래프</a>에 <a href="gg히스토그램.html#UsignThemes">히스토그램에서 Theme으로 사용</a>한 <code>ggplot2::theme_classic() +</code> 이하 부분을 <strong>복사해서 붙여넣기</strong>한 것입니다.</p>
+<div class="sourceCode" id="cb511"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb511-1"><a href="버블-그래프.html#cb511-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 버블 그래프 : Theme의 사용</span></span>
+<span id="cb511-2"><a href="버블-그래프.html#cb511-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93,                          <span class="co"># 데이터 세트를 지정합니다.</span></span>
+<span id="cb511-3"><a href="버블-그래프.html#cb511-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Weight,                     <span class="co"># x축을 Weight 변수로 지정합니다.</span></span>
+<span id="cb511-4"><a href="버블-그래프.html#cb511-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> MPG.highway,                <span class="co"># y축을 MPG.highway 변수로 지정합니다.</span></span>
+<span id="cb511-5"><a href="버블-그래프.html#cb511-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Type,                  <span class="co"># Type 변수를 그룹의 색으로 지정</span></span>
+<span id="cb511-6"><a href="버블-그래프.html#cb511-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> Type)) <span class="sc">+</span>                 </span>
+<span id="cb511-7"><a href="버블-그래프.html#cb511-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> Price),         <span class="co"># 점의 크기를 Price 변수로 지정.</span></span>
+<span id="cb511-8"><a href="버블-그래프.html#cb511-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">shape=</span><span class="dv">21</span>,         </span>
+<span id="cb511-9"><a href="버블-그래프.html#cb511-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span>                <span class="co"># 점의 투명도 : 50%</span></span>
+<span id="cb511-10"><a href="버블-그래프.html#cb511-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_size_area</span>(<span class="at">max_size =</span> <span class="dv">15</span>) <span class="sc">+</span>           <span class="co"># 최대 점의 크기 : 15</span></span>
+<span id="cb511-11"><a href="버블-그래프.html#cb511-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_wrap</span>( <span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb511-12"><a href="버블-그래프.html#cb511-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;버블 그래프 : Theme의 사용&quot;</span>) <span class="sc">+</span></span>
+<span id="cb511-13"><a href="버블-그래프.html#cb511-13" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_classic</span>() <span class="sc">+</span>                     <span class="co"># 그래프 테마 지정</span></span>
+<span id="cb511-14"><a href="버블-그래프.html#cb511-14" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
+<span id="cb511-15"><a href="버블-그래프.html#cb511-15" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;italic&quot;</span>, </span>
+<span id="cb511-16"><a href="버블-그래프.html#cb511-16" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
+<span id="cb511-17"><a href="버블-그래프.html#cb511-17" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb511-18"><a href="버블-그래프.html#cb511-18" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb511-19"><a href="버블-그래프.html#cb511-19" aria-hidden="true" tabindex="-1"></a>                 <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
+<span id="cb511-20"><a href="버블-그래프.html#cb511-20" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;bold.italic&quot;</span>, </span>
+<span id="cb511-21"><a href="버블-그래프.html#cb511-21" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
+<span id="cb511-22"><a href="버블-그래프.html#cb511-22" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb511-23"><a href="버블-그래프.html#cb511-23" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span>       </span>
+<span id="cb511-24"><a href="버블-그래프.html#cb511-24" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)     </span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
 <p><a href="버블-그래프.html#버블-그래프">Go Top</a></p>
 </div>
 </div>

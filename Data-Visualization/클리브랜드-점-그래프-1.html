@@ -415,6 +415,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.1" data-path="버블-그래프.html"><a href="버블-그래프.html#데이터-세트-8"><i class="fa fa-check"></i><b>13.2.1</b> 데이터 세트</a></li>
 <li class="chapter" data-level="13.2.2" data-path="버블-그래프.html"><a href="버블-그래프.html#기본-버블-그래프"><i class="fa fa-check"></i><b>13.2.2</b> 기본 버블 그래프</a></li>
 <li class="chapter" data-level="13.2.3" data-path="버블-그래프.html"><a href="버블-그래프.html#텍스트-레이블-추가"><i class="fa fa-check"></i><b>13.2.3</b> 텍스트 레이블 추가</a></li>
+<li class="chapter" data-level="13.2.4" data-path="버블-그래프.html"><a href="버블-그래프.html#그룹별-버블-그래프-그리기"><i class="fa fa-check"></i><b>13.2.4</b> 그룹별 버블 그래프 그리기</a></li>
+<li class="chapter" data-level="13.2.5" data-path="버블-그래프.html"><a href="버블-그래프.html#theme의-사용-5"><i class="fa fa-check"></i><b>13.2.5</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html"><i class="fa fa-check"></i><b>13.3</b> 선 그래프와 시계열 그래프</a>
 <ul>
@@ -422,7 +424,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3.2" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#기본-선-그래프-그리기"><i class="fa fa-check"></i><b>13.3.2</b> 기본 선 그래프 그리기</a></li>
 <li class="chapter" data-level="13.3.3" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#시계열-그래프의-옵션-설정하기"><i class="fa fa-check"></i><b>13.3.3</b> 시계열 그래프의 옵션 설정하기</a></li>
 <li class="chapter" data-level="13.3.4" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#그룹별-시계열-그래프-그리기"><i class="fa fa-check"></i><b>13.3.4</b> 그룹별 시계열 그래프 그리기</a></li>
-<li class="chapter" data-level="13.3.5" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#theme의-사용-5"><i class="fa fa-check"></i><b>13.3.5</b> Theme의 사용</a></li>
+<li class="chapter" data-level="13.3.5" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#theme의-사용-6"><i class="fa fa-check"></i><b>13.3.5</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="13.4" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html"><i class="fa fa-check"></i><b>13.4</b> 이차원 밀도 그래프</a>
 <ul>
@@ -562,8 +564,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="데이터-세트-11" class="section level3" number="13.5.1">
 <h3><span class="header-section-number">13.5.1</span> 데이터 세트</h3>
 <p>분석에 활용할 데이터는 <code>MASS</code> 패키지 내 <code>Cars93</code> 데이터 프레임에서, <code>차종(Type)</code>, <code>모델(Model)</code>, <code>Max.Price, Min.Price</code>의 4개 변수를 사용하겠으며, 관측치 개수가 많아서 화면 하나에 전부 뿌리기에는 너무 많으므로 <code>차종(Type)</code>의 Level 중에서 “<code>Large</code>,” “<code>Midsize</code>,” “<code>Small</code>” 만 선별하고 “<code>Compact</code>,” “<code>Sproty</code>,” “<code>Van</code>”은 제외하도록 하겠습니다.</p>
-<div class="sourceCode" id="cb550"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb550-1"><a href="클리브랜드-점-그래프-1.html#cb550-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
-<span id="cb550-2"><a href="클리브랜드-점-그래프-1.html#cb550-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb554"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb554-1"><a href="클리브랜드-점-그래프-1.html#cb554-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
+<span id="cb554-2"><a href="클리브랜드-점-그래프-1.html#cb554-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
 <pre class="bg-warning"><code>## &#39;data.frame&#39;:    93 obs. of  27 variables:
 ##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
 ##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
@@ -592,22 +594,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ Weight            : int  2705 3560 3375 3405 3640 2880 3470 4105 3495 3620 ...
 ##  $ Origin            : Factor w/ 2 levels &quot;USA&quot;,&quot;non-USA&quot;: 2 2 2 2 2 1 1 1 1 1 ...
 ##  $ Make              : Factor w/ 93 levels &quot;Acura Integra&quot;,..: 1 2 4 3 5 6 7 9 8 10 ...</code></pre>
-<div class="sourceCode" id="cb552"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb552-1"><a href="클리브랜드-점-그래프-1.html#cb552-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Cars93<span class="sc">$</span>Type)</span></code></pre></div>
+<div class="sourceCode" id="cb556"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb556-1"><a href="클리브랜드-점-그래프-1.html#cb556-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Cars93<span class="sc">$</span>Type)</span></code></pre></div>
 <pre class="bg-warning"><code>## 
 ## Compact   Large Midsize   Small  Sporty     Van 
 ##      16      11      22      21      14       9</code></pre>
-<div class="sourceCode" id="cb554"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb554-1"><a href="클리브랜드-점-그래프-1.html#cb554-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model, Type, Max.Price, Min.Price 변수만 선택</span></span>
-<span id="cb554-2"><a href="클리브랜드-점-그래프-1.html#cb554-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Type 중에서 Large, Midsize, Small만 선택 (Compact, Sortry, Van은 제외)</span></span>
-<span id="cb554-3"><a href="클리브랜드-점-그래프-1.html#cb554-3" aria-hidden="true" tabindex="-1"></a>Cars93_P <span class="ot">&lt;-</span> <span class="fu">subset</span>(Cars93, </span>
-<span id="cb554-4"><a href="클리브랜드-점-그래프-1.html#cb554-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">select =</span> <span class="fu">c</span>(Model, Type, Min.Price, Max.Price), </span>
-<span id="cb554-5"><a href="클리브랜드-점-그래프-1.html#cb554-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">subset =</span> (Type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Small&quot;</span>)))</span>
-<span id="cb554-6"><a href="클리브랜드-점-그래프-1.html#cb554-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93_P)</span></code></pre></div>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb558-1"><a href="클리브랜드-점-그래프-1.html#cb558-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model, Type, Max.Price, Min.Price 변수만 선택</span></span>
+<span id="cb558-2"><a href="클리브랜드-점-그래프-1.html#cb558-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Type 중에서 Large, Midsize, Small만 선택 (Compact, Sortry, Van은 제외)</span></span>
+<span id="cb558-3"><a href="클리브랜드-점-그래프-1.html#cb558-3" aria-hidden="true" tabindex="-1"></a>Cars93_P <span class="ot">&lt;-</span> <span class="fu">subset</span>(Cars93, </span>
+<span id="cb558-4"><a href="클리브랜드-점-그래프-1.html#cb558-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">select =</span> <span class="fu">c</span>(Model, Type, Min.Price, Max.Price), </span>
+<span id="cb558-5"><a href="클리브랜드-점-그래프-1.html#cb558-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">subset =</span> (Type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Small&quot;</span>)))</span>
+<span id="cb558-6"><a href="클리브랜드-점-그래프-1.html#cb558-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93_P)</span></code></pre></div>
 <pre class="bg-warning"><code>## &#39;data.frame&#39;:    54 obs. of  4 variables:
 ##  $ Model    : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 1 6 24 54 74 73 35 79 ...
 ##  $ Type     : Factor w/ 6 levels &quot;Compact&quot;,&quot;Large&quot;,..: 4 3 3 3 3 2 2 3 2 3 ...
 ##  $ Min.Price: num  12.9 29.2 30.8 23.7 14.2 19.9 22.6 26.3 33 37.5 ...
 ##  $ Max.Price: num  18.8 38.7 44.6 36.2 17.3 21.7 24.9 26.3 36.3 42.7 ...</code></pre>
-<div class="sourceCode" id="cb556"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb556-1"><a href="클리브랜드-점-그래프-1.html#cb556-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Cars93_P)</span></code></pre></div>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb560-1"><a href="클리브랜드-점-그래프-1.html#cb560-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Cars93_P)</span></code></pre></div>
 <pre class="bg-warning"><code>##     Model    Type Min.Price Max.Price
 ## 1 Integra   Small        13        19
 ## 2  Legend Midsize        29        39
@@ -620,51 +622,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">13.5.2</span> 클리브랜드 점 그래프 그리기</h3>
 <p><strong><code>geom_point()</code></strong> 함수를 사용하여 클리브랜드 점 그래프(Cleveland dot plot)을 그려보겠습니다.</p>
 <p><strong><code>aes(y = reorder(Model, Max.Price))</code></strong> 를 사용해서 y축에 사용할 <code>Model</code> 을 <code>Max.Price</code> 를 기준으로 <strong>정렬</strong>을 하였기 때문에 아래처럼 <code>Max.Price</code>가 높은 것부터 낮은 것으로 정렬이 된 채로 점 그래프가 제시되었습니다. <strong><code>aes(shape = Type)</code></strong> 을 적용하여서 <code>Type(Large, Midsize, Small)</code> 별로 모양(shape)을 달리해서 제시하였습니다.</p>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb558-1"><a href="클리브랜드-점-그래프-1.html#cb558-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cleveland dot plot of Max Price of Models with different shape by Type</span></span>
-<span id="cb558-2"><a href="클리브랜드-점-그래프-1.html#cb558-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb558-3"><a href="클리브랜드-점-그래프-1.html#cb558-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb558-4"><a href="클리브랜드-점-그래프-1.html#cb558-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93_P, <span class="fu">aes</span>(<span class="at">x =</span> Max.Price, <span class="at">y =</span> <span class="fu">reorder</span>(Model, Max.Price), <span class="at">shape =</span> Type)) <span class="sc">+</span></span>
-<span id="cb558-5"><a href="클리브랜드-점-그래프-1.html#cb558-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb558-6"><a href="클리브랜드-점-그래프-1.html#cb558-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_bw</span>() <span class="sc">+</span>                                    <span class="co"># background 색 없애기</span></span>
-<span id="cb558-7"><a href="클리브랜드-점-그래프-1.html#cb558-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(<span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),     <span class="co"># x축 선 없애기</span></span>
-<span id="cb558-8"><a href="클리브랜드-점-그래프-1.html#cb558-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">panel.grid.minor.x =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb558-9"><a href="클리브랜드-점-그래프-1.html#cb558-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">panel.grid.major.y =</span> <span class="fu">element_line</span>(<span class="at">colour=</span><span class="st">&quot;grey90&quot;</span>, <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb558-10"><a href="클리브랜드-점-그래프-1.html#cb558-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Cleveland dot plot of Max.Price of Models with different shape by Type&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb562-1"><a href="클리브랜드-점-그래프-1.html#cb562-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cleveland dot plot of Max Price of Models with different shape by Type</span></span>
+<span id="cb562-2"><a href="클리브랜드-점-그래프-1.html#cb562-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb562-3"><a href="클리브랜드-점-그래프-1.html#cb562-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb562-4"><a href="클리브랜드-점-그래프-1.html#cb562-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93_P, <span class="fu">aes</span>(<span class="at">x =</span> Max.Price, <span class="at">y =</span> <span class="fu">reorder</span>(Model, Max.Price), <span class="at">shape =</span> Type)) <span class="sc">+</span></span>
+<span id="cb562-5"><a href="클리브랜드-점-그래프-1.html#cb562-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb562-6"><a href="클리브랜드-점-그래프-1.html#cb562-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_bw</span>() <span class="sc">+</span>                                    <span class="co"># background 색 없애기</span></span>
+<span id="cb562-7"><a href="클리브랜드-점-그래프-1.html#cb562-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(<span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),     <span class="co"># x축 선 없애기</span></span>
+<span id="cb562-8"><a href="클리브랜드-점-그래프-1.html#cb562-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">panel.grid.minor.x =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb562-9"><a href="클리브랜드-점-그래프-1.html#cb562-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">panel.grid.major.y =</span> <span class="fu">element_line</span>(<span class="at">colour=</span><span class="st">&quot;grey90&quot;</span>, <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb562-10"><a href="클리브랜드-점-그래프-1.html#cb562-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Cleveland dot plot of Max.Price of Models with different shape by Type&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 <p><a href="클리브랜드-점-그래프-1.html#클리브랜드-점-그래프-1">Go Top</a></p>
 </div>
 <div id="facet_grid-함수-이용-7" class="section level3" number="13.5.3">
 <h3><span class="header-section-number">13.5.3</span> <code>facet_grid()</code> 함수 이용</h3>
 <p>다음으로, <code>Type(Large, Midsize, Small)</code> 별로 <strong><code>facet_grid(Type ~ ., scales="free_y", space="free_y")</code></strong> 을 적용하여 <strong>면을 분할을 한 클리브랜드 점 그래프(Cleveland dot plot)</strong>을 그려보겠습니다.</p>
 <p>면 분할해서 그리려면 위의 예처럼 <code>ggplot2</code> 내 <code>aes(reorder)</code>로는 안되구요, 먼저 <code>Type</code>과 <code>Max.Price</code> 순서대로 데이터셋을 따로 정렬해서 요인(factor)으로 <code>levels</code> 를 지정해서 변환해주어야 합니다. 그래프는 상대적으로 쉬운데, 데이터셋 정렬/요인변환이 어려울 수 있겠습니다.</p>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb559-1"><a href="클리브랜드-점-그래프-1.html#cb559-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Type, Max.Price 순서대로 정렬</span></span>
-<span id="cb559-2"><a href="클리브랜드-점-그래프-1.html#cb559-2" aria-hidden="true" tabindex="-1"></a>Model_Order <span class="ot">&lt;-</span> Cars93_P<span class="sc">$</span>Model[<span class="fu">order</span>(Cars93_P<span class="sc">$</span>Type, <span class="co"># Large, Midsize, Small 순서</span></span>
-<span id="cb559-3"><a href="클리브랜드-점-그래프-1.html#cb559-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="sc">-</span>Cars93_P<span class="sc">$</span>Max.Price, <span class="co"># 높은것에서 낮은 순서</span></span>
-<span id="cb559-4"><a href="클리브랜드-점-그래프-1.html#cb559-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">decreasing=</span><span class="cn">TRUE</span>)]</span>
-<span id="cb559-5"><a href="클리브랜드-점-그래프-1.html#cb559-5" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb559-6"><a href="클리브랜드-점-그래프-1.html#cb559-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Model_Order를 요인(factor)으로 변환</span></span>
-<span id="cb559-7"><a href="클리브랜드-점-그래프-1.html#cb559-7" aria-hidden="true" tabindex="-1"></a>Cars93_P<span class="sc">$</span>Model <span class="ot">&lt;-</span> <span class="fu">factor</span>(Cars93_P<span class="sc">$</span>Model, <span class="at">levels=</span>Model_Order)</span>
-<span id="cb559-8"><a href="클리브랜드-점-그래프-1.html#cb559-8" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb559-9"><a href="클리브랜드-점-그래프-1.html#cb559-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Type별로 면 분할, Max.Price 순서대로 정렬된 Cleveland dot plot</span></span>
-<span id="cb559-10"><a href="클리브랜드-점-그래프-1.html#cb559-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93_P, <span class="fu">aes</span>(<span class="at">x =</span> Max.Price, <span class="at">y =</span> Model)) <span class="sc">+</span></span>
-<span id="cb559-11"><a href="클리브랜드-점-그래프-1.html#cb559-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="fu">aes</span>(<span class="at">colour =</span> Type)) <span class="sc">+</span></span>
-<span id="cb559-12"><a href="클리브랜드-점-그래프-1.html#cb559-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb559-13"><a href="클리브랜드-점-그래프-1.html#cb559-13" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(<span class="at">panel.grid.major.y =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb559-14"><a href="클리브랜드-점-그래프-1.html#cb559-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">panel.grid.minor.y =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span> </span>
-<span id="cb559-15"><a href="클리브랜드-점-그래프-1.html#cb559-15" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_grid</span>(Type <span class="sc">~</span> ., <span class="at">scales=</span><span class="st">&quot;free_y&quot;</span>, <span class="at">space=</span><span class="st">&quot;free_y&quot;</span>) <span class="sc">+</span></span>
-<span id="cb559-16"><a href="클리브랜드-점-그래프-1.html#cb559-16" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Cleveland dot plot of Max.Price of Models with Facets of Type&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb563-1"><a href="클리브랜드-점-그래프-1.html#cb563-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Type, Max.Price 순서대로 정렬</span></span>
+<span id="cb563-2"><a href="클리브랜드-점-그래프-1.html#cb563-2" aria-hidden="true" tabindex="-1"></a>Model_Order <span class="ot">&lt;-</span> Cars93_P<span class="sc">$</span>Model[<span class="fu">order</span>(Cars93_P<span class="sc">$</span>Type, <span class="co"># Large, Midsize, Small 순서</span></span>
+<span id="cb563-3"><a href="클리브랜드-점-그래프-1.html#cb563-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="sc">-</span>Cars93_P<span class="sc">$</span>Max.Price, <span class="co"># 높은것에서 낮은 순서</span></span>
+<span id="cb563-4"><a href="클리브랜드-점-그래프-1.html#cb563-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">decreasing=</span><span class="cn">TRUE</span>)]</span>
+<span id="cb563-5"><a href="클리브랜드-점-그래프-1.html#cb563-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb563-6"><a href="클리브랜드-점-그래프-1.html#cb563-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Model_Order를 요인(factor)으로 변환</span></span>
+<span id="cb563-7"><a href="클리브랜드-점-그래프-1.html#cb563-7" aria-hidden="true" tabindex="-1"></a>Cars93_P<span class="sc">$</span>Model <span class="ot">&lt;-</span> <span class="fu">factor</span>(Cars93_P<span class="sc">$</span>Model, <span class="at">levels=</span>Model_Order)</span>
+<span id="cb563-8"><a href="클리브랜드-점-그래프-1.html#cb563-8" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb563-9"><a href="클리브랜드-점-그래프-1.html#cb563-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Type별로 면 분할, Max.Price 순서대로 정렬된 Cleveland dot plot</span></span>
+<span id="cb563-10"><a href="클리브랜드-점-그래프-1.html#cb563-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93_P, <span class="fu">aes</span>(<span class="at">x =</span> Max.Price, <span class="at">y =</span> Model)) <span class="sc">+</span></span>
+<span id="cb563-11"><a href="클리브랜드-점-그래프-1.html#cb563-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="fu">aes</span>(<span class="at">colour =</span> Type)) <span class="sc">+</span></span>
+<span id="cb563-12"><a href="클리브랜드-점-그래프-1.html#cb563-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb563-13"><a href="클리브랜드-점-그래프-1.html#cb563-13" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(<span class="at">panel.grid.major.y =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb563-14"><a href="클리브랜드-점-그래프-1.html#cb563-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">panel.grid.minor.y =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span> </span>
+<span id="cb563-15"><a href="클리브랜드-점-그래프-1.html#cb563-15" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_grid</span>(Type <span class="sc">~</span> ., <span class="at">scales=</span><span class="st">&quot;free_y&quot;</span>, <span class="at">space=</span><span class="st">&quot;free_y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb563-16"><a href="클리브랜드-점-그래프-1.html#cb563-16" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Cleveland dot plot of Max.Price of Models with Facets of Type&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
 <p><a href="클리브랜드-점-그래프-1.html#클리브랜드-점-그래프-1">Go Top</a></p>
 </div>
 <div id="변수의-추가와-모양-변경하기" class="section level3" number="13.5.4">
 <h3><span class="header-section-number">13.5.4</span> 변수의 추가와 모양 변경하기</h3>
 <p>다음으로, <code>차종(Type)</code>별로 면 분할은 유지하면서 위의 <code>Max.Price</code> 에 더해서 <strong><code>Min.Price</code> 를 추가하고 모양(shape)을 다르게 제시</strong>해보겠습니다.</p>
 <p>이것도 데이터 셋을 따로 미리 손을 봐줘야 합니다. <code>reshape</code> 패키지의 <code>melt()</code> 함수를 사용해서 <code>Max.Price</code>, <code>Min.Price</code> 두 값을 <code>Price_cd (Max.Price, Min.Price)</code>와 <code>Price (value)</code> 의 두개 변수로 녹여서 데이터 구조를 <code>ggplot2</code>의 <code>geom_point()</code>에 사용할 수 있도록 변경하여야 합니다. (<code>reshape</code> 패키지의 <code>melt()</code>, <code>cast()</code> 함수는 여기서 자세히 설명하기가 힘든데요, 따로 알아보시면 좋겠습니다)</p>
-<div class="sourceCode" id="cb560"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb560-1"><a href="클리브랜드-점-그래프-1.html#cb560-1" aria-hidden="true" tabindex="-1"></a><span class="co">#--------</span></span>
-<span id="cb560-2"><a href="클리브랜드-점-그래프-1.html#cb560-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Min.Price 추가 </span></span>
-<span id="cb560-3"><a href="클리브랜드-점-그래프-1.html#cb560-3" aria-hidden="true" tabindex="-1"></a><span class="co"># melt</span></span>
-<span id="cb560-4"><a href="클리브랜드-점-그래프-1.html#cb560-4" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;reshape&quot;)</span></span>
-<span id="cb560-5"><a href="클리브랜드-점-그래프-1.html#cb560-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape)</span></code></pre></div>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb564-1"><a href="클리브랜드-점-그래프-1.html#cb564-1" aria-hidden="true" tabindex="-1"></a><span class="co">#--------</span></span>
+<span id="cb564-2"><a href="클리브랜드-점-그래프-1.html#cb564-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Min.Price 추가 </span></span>
+<span id="cb564-3"><a href="클리브랜드-점-그래프-1.html#cb564-3" aria-hidden="true" tabindex="-1"></a><span class="co"># melt</span></span>
+<span id="cb564-4"><a href="클리브랜드-점-그래프-1.html#cb564-4" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;reshape&quot;)</span></span>
+<span id="cb564-5"><a href="클리브랜드-점-그래프-1.html#cb564-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;reshape&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:dplyr&#39;:
@@ -673,9 +675,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## The following objects are masked from &#39;package:tidyr&#39;:
 ## 
 ##     expand, smiths</code></pre>
-<div class="sourceCode" id="cb564"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb564-1"><a href="클리브랜드-점-그래프-1.html#cb564-1" aria-hidden="true" tabindex="-1"></a>Cars93_P_melt <span class="ot">&lt;-</span> <span class="fu">melt</span>(Cars93_P, <span class="at">idvars =</span> <span class="fu">c</span>(<span class="st">&quot;Type&quot;</span>, <span class="st">&quot;Model&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb568-1"><a href="클리브랜드-점-그래프-1.html#cb568-1" aria-hidden="true" tabindex="-1"></a>Cars93_P_melt <span class="ot">&lt;-</span> <span class="fu">melt</span>(Cars93_P, <span class="at">idvars =</span> <span class="fu">c</span>(<span class="st">&quot;Type&quot;</span>, <span class="st">&quot;Model&quot;</span>))</span></code></pre></div>
 <pre><code>## Using Model, Type as id variables</code></pre>
-<div class="sourceCode" id="cb566"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb566-1"><a href="클리브랜드-점-그래프-1.html#cb566-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Cars93_P_melt)</span></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb570-1"><a href="클리브랜드-점-그래프-1.html#cb570-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Cars93_P_melt)</span></code></pre></div>
 <pre class="bg-warning"><code>##     Model    Type  variable value
 ## 1 Integra   Small Min.Price    13
 ## 2  Legend Midsize Min.Price    29
@@ -683,9 +685,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4    535i Midsize Min.Price    24
 ## 5 Century Midsize Min.Price    14
 ## 6 LeSabre   Large Min.Price    20</code></pre>
-<div class="sourceCode" id="cb568"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb568-1"><a href="클리브랜드-점-그래프-1.html#cb568-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 변수명 변경</span></span>
-<span id="cb568-2"><a href="클리브랜드-점-그래프-1.html#cb568-2" aria-hidden="true" tabindex="-1"></a>Cars93_P_melt <span class="ot">&lt;-</span> <span class="fu">rename</span>(Cars93_P_melt, <span class="fu">c</span>(<span class="at">variable =</span> <span class="st">&quot;Price_cd&quot;</span>, <span class="at">value =</span> <span class="st">&quot;Price&quot;</span>))</span>
-<span id="cb568-3"><a href="클리브랜드-점-그래프-1.html#cb568-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Cars93_P_melt)</span></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb572-1"><a href="클리브랜드-점-그래프-1.html#cb572-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 변수명 변경</span></span>
+<span id="cb572-2"><a href="클리브랜드-점-그래프-1.html#cb572-2" aria-hidden="true" tabindex="-1"></a>Cars93_P_melt <span class="ot">&lt;-</span> <span class="fu">rename</span>(Cars93_P_melt, <span class="fu">c</span>(<span class="at">variable =</span> <span class="st">&quot;Price_cd&quot;</span>, <span class="at">value =</span> <span class="st">&quot;Price&quot;</span>))</span>
+<span id="cb572-3"><a href="클리브랜드-점-그래프-1.html#cb572-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Cars93_P_melt)</span></code></pre></div>
 <pre class="bg-warning"><code>##     Model    Type  Price_cd Price
 ## 1 Integra   Small Min.Price    13
 ## 2  Legend Midsize Min.Price    29
@@ -693,16 +695,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4    535i Midsize Min.Price    24
 ## 5 Century Midsize Min.Price    14
 ## 6 LeSabre   Large Min.Price    20</code></pre>
-<div class="sourceCode" id="cb570"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb570-1"><a href="클리브랜드-점-그래프-1.html#cb570-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Type별로 면 분할, Max.Price 순서대로 정렬, Min.Price추가된 Cleveland dot plot</span></span>
-<span id="cb570-2"><a href="클리브랜드-점-그래프-1.html#cb570-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93_P_melt, <span class="fu">aes</span>(<span class="at">x =</span> Price, <span class="at">y =</span> Model)) <span class="sc">+</span> </span>
-<span id="cb570-3"><a href="클리브랜드-점-그래프-1.html#cb570-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">yend=</span>Model, <span class="at">xend=</span><span class="dv">0</span>)) <span class="sc">+</span> <span class="co"># 점까지만 선 그리기</span></span>
-<span id="cb570-4"><a href="클리브랜드-점-그래프-1.html#cb570-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>, <span class="fu">aes</span>(<span class="at">shape =</span> Price_cd)) <span class="sc">+</span> <span class="co"># Price_cd로 모양 구분</span></span>
-<span id="cb570-5"><a href="클리브랜드-점-그래프-1.html#cb570-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="co"># backgroud 색 없애기</span></span>
-<span id="cb570-6"><a href="클리브랜드-점-그래프-1.html#cb570-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(<span class="at">panel.grid.major.y =</span> <span class="fu">element_blank</span>(), <span class="co"># y축 없애기</span></span>
-<span id="cb570-7"><a href="클리브랜드-점-그래프-1.html#cb570-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">panel.grid.minor.y =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span> <span class="co"># y축 없애기</span></span>
-<span id="cb570-8"><a href="클리브랜드-점-그래프-1.html#cb570-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_grid</span>(Type <span class="sc">~</span> ., <span class="at">scales=</span><span class="st">&quot;free_y&quot;</span>, <span class="at">space=</span><span class="st">&quot;free_y&quot;</span>) <span class="sc">+</span> <span class="co"># Type별로 면 분할</span></span>
-<span id="cb570-9"><a href="클리브랜드-점-그래프-1.html#cb570-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Cleveland dot plot of Max, Min Price of Models with Facets of Type&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb574-1"><a href="클리브랜드-점-그래프-1.html#cb574-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Type별로 면 분할, Max.Price 순서대로 정렬, Min.Price추가된 Cleveland dot plot</span></span>
+<span id="cb574-2"><a href="클리브랜드-점-그래프-1.html#cb574-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93_P_melt, <span class="fu">aes</span>(<span class="at">x =</span> Price, <span class="at">y =</span> Model)) <span class="sc">+</span> </span>
+<span id="cb574-3"><a href="클리브랜드-점-그래프-1.html#cb574-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">yend=</span>Model, <span class="at">xend=</span><span class="dv">0</span>)) <span class="sc">+</span> <span class="co"># 점까지만 선 그리기</span></span>
+<span id="cb574-4"><a href="클리브랜드-점-그래프-1.html#cb574-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>, <span class="fu">aes</span>(<span class="at">shape =</span> Price_cd)) <span class="sc">+</span> <span class="co"># Price_cd로 모양 구분</span></span>
+<span id="cb574-5"><a href="클리브랜드-점-그래프-1.html#cb574-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="co"># backgroud 색 없애기</span></span>
+<span id="cb574-6"><a href="클리브랜드-점-그래프-1.html#cb574-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(<span class="at">panel.grid.major.y =</span> <span class="fu">element_blank</span>(), <span class="co"># y축 없애기</span></span>
+<span id="cb574-7"><a href="클리브랜드-점-그래프-1.html#cb574-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">panel.grid.minor.y =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span> <span class="co"># y축 없애기</span></span>
+<span id="cb574-8"><a href="클리브랜드-점-그래프-1.html#cb574-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_grid</span>(Type <span class="sc">~</span> ., <span class="at">scales=</span><span class="st">&quot;free_y&quot;</span>, <span class="at">space=</span><span class="st">&quot;free_y&quot;</span>) <span class="sc">+</span> <span class="co"># Type별로 면 분할</span></span>
+<span id="cb574-9"><a href="클리브랜드-점-그래프-1.html#cb574-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;Cleveland dot plot of Max, Min Price of Models with Facets of Type&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
 <p><a href="클리브랜드-점-그래프-1.html#클리브랜드-점-그래프-1">Go Top</a></p>
 <p>위의 세번째 그래프처럼 <code>Max.Price</code>와 <code>Min.Price</code>를 같은 그래프에 그리는데, 만약 이것을 막대 그래프로 그린다고 상상해 보세요. 막대그래프로 그린다면 지저분하고 해석, 가독성이 클리브랜드 점 그래프 대비 떨어질겁니다.</p>
 <hr />

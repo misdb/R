@@ -415,6 +415,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.1" data-path="버블-그래프.html"><a href="버블-그래프.html#데이터-세트-8"><i class="fa fa-check"></i><b>13.2.1</b> 데이터 세트</a></li>
 <li class="chapter" data-level="13.2.2" data-path="버블-그래프.html"><a href="버블-그래프.html#기본-버블-그래프"><i class="fa fa-check"></i><b>13.2.2</b> 기본 버블 그래프</a></li>
 <li class="chapter" data-level="13.2.3" data-path="버블-그래프.html"><a href="버블-그래프.html#텍스트-레이블-추가"><i class="fa fa-check"></i><b>13.2.3</b> 텍스트 레이블 추가</a></li>
+<li class="chapter" data-level="13.2.4" data-path="버블-그래프.html"><a href="버블-그래프.html#그룹별-버블-그래프-그리기"><i class="fa fa-check"></i><b>13.2.4</b> 그룹별 버블 그래프 그리기</a></li>
+<li class="chapter" data-level="13.2.5" data-path="버블-그래프.html"><a href="버블-그래프.html#theme의-사용-5"><i class="fa fa-check"></i><b>13.2.5</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html"><i class="fa fa-check"></i><b>13.3</b> 선 그래프와 시계열 그래프</a>
 <ul>
@@ -422,7 +424,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3.2" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#기본-선-그래프-그리기"><i class="fa fa-check"></i><b>13.3.2</b> 기본 선 그래프 그리기</a></li>
 <li class="chapter" data-level="13.3.3" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#시계열-그래프의-옵션-설정하기"><i class="fa fa-check"></i><b>13.3.3</b> 시계열 그래프의 옵션 설정하기</a></li>
 <li class="chapter" data-level="13.3.4" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#그룹별-시계열-그래프-그리기"><i class="fa fa-check"></i><b>13.3.4</b> 그룹별 시계열 그래프 그리기</a></li>
-<li class="chapter" data-level="13.3.5" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#theme의-사용-5"><i class="fa fa-check"></i><b>13.3.5</b> Theme의 사용</a></li>
+<li class="chapter" data-level="13.3.5" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#theme의-사용-6"><i class="fa fa-check"></i><b>13.3.5</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="13.4" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html"><i class="fa fa-check"></i><b>13.4</b> 이차원 밀도 그래프</a>
 <ul>
@@ -565,7 +567,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="변수의-선택" class="section level4" number="13.8.1.1">
 <h4><span class="header-section-number">13.8.1.1</span> 변수의 선택</h4>
 <p>예제로 사용한 데이터는 뉴욕의 1973년도 공기의 질을 측정한 <code>airquality</code> 데이터셋의 Ozone, <code>Solar.R</code>, <code>Wind</code>, <code>Temp</code> 4개의 변수가 되겠습니다.</p>
-<div class="sourceCode" id="cb629"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb629-1"><a href="산포도-행렬-그리기.html#cb629-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(airquality)</span></code></pre></div>
+<div class="sourceCode" id="cb633"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb633-1"><a href="산포도-행렬-그리기.html#cb633-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(airquality)</span></code></pre></div>
 <pre class="bg-warning"><code>## &#39;data.frame&#39;:    153 obs. of  11 variables:
 ##  $ Ozone        : int  41 36 12 18 NA 28 23 19 8 NA ...
 ##  $ Solar.R      : int  190 118 149 313 NA NA 299 99 19 194 ...
@@ -578,9 +580,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ Month.ch     : chr  &quot;05&quot; &quot;05&quot; &quot;05&quot; &quot;05&quot; ...
 ##  $ Day.ch       : chr  &quot;01&quot; &quot;02&quot; &quot;03&quot; &quot;04&quot; ...
 ##  $ Time         : Date, format: &quot;2021-05-01&quot; &quot;2021-05-02&quot; ...</code></pre>
-<div class="sourceCode" id="cb631"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb631-1"><a href="산포도-행렬-그리기.html#cb631-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1~4번째 변수만 선택</span></span>
-<span id="cb631-2"><a href="산포도-행렬-그리기.html#cb631-2" aria-hidden="true" tabindex="-1"></a>airquality_1 <span class="ot">&lt;-</span> airquality[,<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)]</span>
-<span id="cb631-3"><a href="산포도-행렬-그리기.html#cb631-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(airquality_1)</span></code></pre></div>
+<div class="sourceCode" id="cb635"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb635-1"><a href="산포도-행렬-그리기.html#cb635-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1~4번째 변수만 선택</span></span>
+<span id="cb635-2"><a href="산포도-행렬-그리기.html#cb635-2" aria-hidden="true" tabindex="-1"></a>airquality_1 <span class="ot">&lt;-</span> airquality[,<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)]</span>
+<span id="cb635-3"><a href="산포도-행렬-그리기.html#cb635-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(airquality_1)</span></code></pre></div>
 <pre class="bg-warning"><code>## &#39;data.frame&#39;:    153 obs. of  4 variables:
 ##  $ Ozone  : int  41 36 12 18 NA 28 23 19 8 NA ...
 ##  $ Solar.R: int  190 118 149 313 NA NA 299 99 19 194 ...
@@ -590,25 +592,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="결측치의-처리" class="section level4" number="13.8.1.2">
 <h4><span class="header-section-number">13.8.1.2</span> 결측치의 처리</h4>
 <p>결측값이 있으면 상관계수를 구할 때 NA 값이 나오므로, 결측값 여부 확인하고 결측값이 있는 행은 삭제한 후에 산포도 행렬을 그려보겠습니다.</p>
-<div class="sourceCode" id="cb633"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb633-1"><a href="산포도-행렬-그리기.html#cb633-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 결측값 개수 확인</span></span>
-<span id="cb633-2"><a href="산포도-행렬-그리기.html#cb633-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality_1<span class="sc">$</span>Ozone)) <span class="co"># 37</span></span></code></pre></div>
+<div class="sourceCode" id="cb637"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb637-1"><a href="산포도-행렬-그리기.html#cb637-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 결측값 개수 확인</span></span>
+<span id="cb637-2"><a href="산포도-행렬-그리기.html#cb637-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality_1<span class="sc">$</span>Ozone)) <span class="co"># 37</span></span></code></pre></div>
 <pre class="bg-warning"><code>## [1] 37</code></pre>
-<div class="sourceCode" id="cb635"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb635-1"><a href="산포도-행렬-그리기.html#cb635-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality_1<span class="sc">$</span>Solar.R)) <span class="co"># 7</span></span></code></pre></div>
+<div class="sourceCode" id="cb639"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb639-1"><a href="산포도-행렬-그리기.html#cb639-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality_1<span class="sc">$</span>Solar.R)) <span class="co"># 7</span></span></code></pre></div>
 <pre class="bg-warning"><code>## [1] 7</code></pre>
-<div class="sourceCode" id="cb637"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb637-1"><a href="산포도-행렬-그리기.html#cb637-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality_1<span class="sc">$</span>Wind)) <span class="co"># 0</span></span></code></pre></div>
+<div class="sourceCode" id="cb641"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb641-1"><a href="산포도-행렬-그리기.html#cb641-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality_1<span class="sc">$</span>Wind)) <span class="co"># 0</span></span></code></pre></div>
 <pre class="bg-warning"><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb639"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb639-1"><a href="산포도-행렬-그리기.html#cb639-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality_1<span class="sc">$</span>Temp)) <span class="co"># 0</span></span></code></pre></div>
+<div class="sourceCode" id="cb643"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb643-1"><a href="산포도-행렬-그리기.html#cb643-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality_1<span class="sc">$</span>Temp)) <span class="co"># 0</span></span></code></pre></div>
 <pre class="bg-warning"><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb641"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb641-1"><a href="산포도-행렬-그리기.html#cb641-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 결측값 있는 상태에서 상관계수 계산했을 때</span></span>
-<span id="cb641-2"><a href="산포도-행렬-그리기.html#cb641-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(airquality_1)</span></code></pre></div>
+<div class="sourceCode" id="cb645"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb645-1"><a href="산포도-행렬-그리기.html#cb645-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 결측값 있는 상태에서 상관계수 계산했을 때</span></span>
+<span id="cb645-2"><a href="산포도-행렬-그리기.html#cb645-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(airquality_1)</span></code></pre></div>
 <pre class="bg-warning"><code>##         Ozone Solar.R  Wind  Temp
 ## Ozone       1      NA    NA    NA
 ## Solar.R    NA       1    NA    NA
 ## Wind       NA      NA  1.00 -0.46
 ## Temp       NA      NA -0.46  1.00</code></pre>
-<div class="sourceCode" id="cb643"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb643-1"><a href="산포도-행렬-그리기.html#cb643-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 결측값 있는 행 전체 삭제</span></span>
-<span id="cb643-2"><a href="산포도-행렬-그리기.html#cb643-2" aria-hidden="true" tabindex="-1"></a>airquality_2 <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(airquality_1)</span>
-<span id="cb643-3"><a href="산포도-행렬-그리기.html#cb643-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(airquality_2)</span></code></pre></div>
+<div class="sourceCode" id="cb647"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb647-1"><a href="산포도-행렬-그리기.html#cb647-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 결측값 있는 행 전체 삭제</span></span>
+<span id="cb647-2"><a href="산포도-행렬-그리기.html#cb647-2" aria-hidden="true" tabindex="-1"></a>airquality_2 <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(airquality_1)</span>
+<span id="cb647-3"><a href="산포도-행렬-그리기.html#cb647-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(airquality_2)</span></code></pre></div>
 <pre class="bg-warning"><code>## &#39;data.frame&#39;:    111 obs. of  4 variables:
 ##  $ Ozone  : int  41 36 12 18 23 19 8 16 11 14 ...
 ##  $ Solar.R: int  190 118 149 313 299 99 19 256 290 274 ...
@@ -616,9 +618,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ Temp   : int  67 72 74 62 65 59 61 69 66 68 ...
 ##  - attr(*, &quot;na.action&quot;)= &#39;omit&#39; Named int [1:42] 5 6 10 11 25 26 27 32 33 34 ...
 ##   ..- attr(*, &quot;names&quot;)= chr [1:42] &quot;5&quot; &quot;6&quot; &quot;10&quot; &quot;11&quot; ...</code></pre>
-<div class="sourceCode" id="cb645"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb645-1"><a href="산포도-행렬-그리기.html#cb645-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality_2<span class="sc">$</span>Ozone)) <span class="co"># 0</span></span></code></pre></div>
+<div class="sourceCode" id="cb649"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb649-1"><a href="산포도-행렬-그리기.html#cb649-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality_2<span class="sc">$</span>Ozone)) <span class="co"># 0</span></span></code></pre></div>
 <pre class="bg-warning"><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb647"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb647-1"><a href="산포도-행렬-그리기.html#cb647-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality_2<span class="sc">$</span>Solar.R)) <span class="co"># 0</span></span></code></pre></div>
+<div class="sourceCode" id="cb651"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb651-1"><a href="산포도-행렬-그리기.html#cb651-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality_2<span class="sc">$</span>Solar.R)) <span class="co"># 0</span></span></code></pre></div>
 <pre class="bg-warning"><code>## [1] 0</code></pre>
 <p><a href="산포도-행렬-그리기.html#산포도-행렬-그리기-1">Go Top</a></p>
 </div>
@@ -628,68 +630,68 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="대각선에-히스트그램-추가하는-함수" class="section level4" number="13.8.2.1">
 <h4><span class="header-section-number">13.8.2.1</span> 대각선에 히스트그램 추가하는 함수</h4>
 <p><strong>산포도 행렬의 대각선에 히스토그램을 추가하는 사용자 정의 함수</strong>입니다. <code>pairs()</code> 도움말(help)에 나와있는 사용자 정의함수 그대로 가져왔습니다. 아래 사용자 정의 함수를 복사해서 사용하시기 바랍니다.</p>
-<div class="sourceCode" id="cb649"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb649-1"><a href="산포도-행렬-그리기.html#cb649-1" aria-hidden="true" tabindex="-1"></a><span class="do">## put histograms on the diagonal</span></span>
-<span id="cb649-2"><a href="산포도-행렬-그리기.html#cb649-2" aria-hidden="true" tabindex="-1"></a>panel.hist <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...)</span>
-<span id="cb649-3"><a href="산포도-행렬-그리기.html#cb649-3" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb649-4"><a href="산포도-행렬-그리기.html#cb649-4" aria-hidden="true" tabindex="-1"></a>  usr <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="st">&quot;usr&quot;</span>); <span class="fu">on.exit</span>(<span class="fu">par</span>(usr))</span>
-<span id="cb649-5"><a href="산포도-행렬-그리기.html#cb649-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">par</span>(<span class="at">usr =</span> <span class="fu">c</span>(usr[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="dv">0</span>, <span class="fl">1.5</span>) )</span>
-<span id="cb649-6"><a href="산포도-행렬-그리기.html#cb649-6" aria-hidden="true" tabindex="-1"></a>  h <span class="ot">&lt;-</span> <span class="fu">hist</span>(x, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb649-7"><a href="산포도-행렬-그리기.html#cb649-7" aria-hidden="true" tabindex="-1"></a>  breaks <span class="ot">&lt;-</span> h<span class="sc">$</span>breaks; nB <span class="ot">&lt;-</span> <span class="fu">length</span>(breaks)</span>
-<span id="cb649-8"><a href="산포도-행렬-그리기.html#cb649-8" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> h<span class="sc">$</span>counts; y <span class="ot">&lt;-</span> y<span class="sc">/</span><span class="fu">max</span>(y)</span>
-<span id="cb649-9"><a href="산포도-행렬-그리기.html#cb649-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rect</span>(breaks[<span class="sc">-</span>nB], <span class="dv">0</span>, breaks[<span class="sc">-</span><span class="dv">1</span>], y, <span class="at">col =</span> <span class="st">&quot;cyan&quot;</span>, ...)</span>
-<span id="cb649-10"><a href="산포도-행렬-그리기.html#cb649-10" aria-hidden="true" tabindex="-1"></a>} </span>
-<span id="cb649-11"><a href="산포도-행렬-그리기.html#cb649-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb649-12"><a href="산포도-행렬-그리기.html#cb649-12" aria-hidden="true" tabindex="-1"></a><span class="co"># source: help(pairs)</span></span></code></pre></div>
+<div class="sourceCode" id="cb653"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb653-1"><a href="산포도-행렬-그리기.html#cb653-1" aria-hidden="true" tabindex="-1"></a><span class="do">## put histograms on the diagonal</span></span>
+<span id="cb653-2"><a href="산포도-행렬-그리기.html#cb653-2" aria-hidden="true" tabindex="-1"></a>panel.hist <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...)</span>
+<span id="cb653-3"><a href="산포도-행렬-그리기.html#cb653-3" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb653-4"><a href="산포도-행렬-그리기.html#cb653-4" aria-hidden="true" tabindex="-1"></a>  usr <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="st">&quot;usr&quot;</span>); <span class="fu">on.exit</span>(<span class="fu">par</span>(usr))</span>
+<span id="cb653-5"><a href="산포도-행렬-그리기.html#cb653-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">par</span>(<span class="at">usr =</span> <span class="fu">c</span>(usr[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="dv">0</span>, <span class="fl">1.5</span>) )</span>
+<span id="cb653-6"><a href="산포도-행렬-그리기.html#cb653-6" aria-hidden="true" tabindex="-1"></a>  h <span class="ot">&lt;-</span> <span class="fu">hist</span>(x, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb653-7"><a href="산포도-행렬-그리기.html#cb653-7" aria-hidden="true" tabindex="-1"></a>  breaks <span class="ot">&lt;-</span> h<span class="sc">$</span>breaks; nB <span class="ot">&lt;-</span> <span class="fu">length</span>(breaks)</span>
+<span id="cb653-8"><a href="산포도-행렬-그리기.html#cb653-8" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> h<span class="sc">$</span>counts; y <span class="ot">&lt;-</span> y<span class="sc">/</span><span class="fu">max</span>(y)</span>
+<span id="cb653-9"><a href="산포도-행렬-그리기.html#cb653-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rect</span>(breaks[<span class="sc">-</span>nB], <span class="dv">0</span>, breaks[<span class="sc">-</span><span class="dv">1</span>], y, <span class="at">col =</span> <span class="st">&quot;cyan&quot;</span>, ...)</span>
+<span id="cb653-10"><a href="산포도-행렬-그리기.html#cb653-10" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb653-11"><a href="산포도-행렬-그리기.html#cb653-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb653-12"><a href="산포도-행렬-그리기.html#cb653-12" aria-hidden="true" tabindex="-1"></a><span class="co"># source: help(pairs)</span></span></code></pre></div>
 </div>
 <div id="산포도-행렬-위쪽에-상관계수-숫자-삽입하는-함수-정의" class="section level4" number="13.8.2.2">
 <h4><span class="header-section-number">13.8.2.2</span> 산포도 행렬 위쪽에 상관계수 숫자 삽입하는 함수 정의</h4>
 <p><strong>다음으로 산포도 행렬의 위쪽에 상관계수 숫자를 집어넣는 사용자 정의 함수</strong>입니다. 이 또한 pairs() 도움말(help)에 나와있는 사용자 정의함수 그대로 가져왔습니다. 아래 사용자 정의 함수를 카피해서 사용하시기 바랍니다.</p>
-<div class="sourceCode" id="cb650"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb650-1"><a href="산포도-행렬-그리기.html#cb650-1" aria-hidden="true" tabindex="-1"></a><span class="do">## put (absolute) correlations on the upper panels,</span></span>
-<span id="cb650-2"><a href="산포도-행렬-그리기.html#cb650-2" aria-hidden="true" tabindex="-1"></a><span class="do">## with size proportional to the correlations.</span></span>
-<span id="cb650-3"><a href="산포도-행렬-그리기.html#cb650-3" aria-hidden="true" tabindex="-1"></a>panel.cor <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">prefix =</span> <span class="st">&quot;&quot;</span>, cex.cor, ...)</span>
-<span id="cb650-4"><a href="산포도-행렬-그리기.html#cb650-4" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb650-5"><a href="산포도-행렬-그리기.html#cb650-5" aria-hidden="true" tabindex="-1"></a>  usr <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="st">&quot;usr&quot;</span>); <span class="fu">on.exit</span>(<span class="fu">par</span>(usr))</span>
-<span id="cb650-6"><a href="산포도-행렬-그리기.html#cb650-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">par</span>(<span class="at">usr =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span>
-<span id="cb650-7"><a href="산포도-행렬-그리기.html#cb650-7" aria-hidden="true" tabindex="-1"></a>  r <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="fu">cor</span>(x, y))</span>
-<span id="cb650-8"><a href="산포도-행렬-그리기.html#cb650-8" aria-hidden="true" tabindex="-1"></a>  txt <span class="ot">&lt;-</span> <span class="fu">format</span>(<span class="fu">c</span>(r, <span class="fl">0.123456789</span>), <span class="at">digits =</span> digits)[<span class="dv">1</span>]</span>
-<span id="cb650-9"><a href="산포도-행렬-그리기.html#cb650-9" aria-hidden="true" tabindex="-1"></a>  txt <span class="ot">&lt;-</span> <span class="fu">paste0</span>(prefix, txt)</span>
-<span id="cb650-10"><a href="산포도-행렬-그리기.html#cb650-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">missing</span>(cex.cor)) cex.cor <span class="ot">&lt;-</span> <span class="fl">0.8</span><span class="sc">/</span><span class="fu">strwidth</span>(txt)</span>
-<span id="cb650-11"><a href="산포도-행렬-그리기.html#cb650-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">text</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, txt, <span class="at">cex =</span> cex.cor <span class="sc">*</span> r)</span>
-<span id="cb650-12"><a href="산포도-행렬-그리기.html#cb650-12" aria-hidden="true" tabindex="-1"></a>} </span>
-<span id="cb650-13"><a href="산포도-행렬-그리기.html#cb650-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb650-14"><a href="산포도-행렬-그리기.html#cb650-14" aria-hidden="true" tabindex="-1"></a><span class="co"># source : help(pairs)</span></span></code></pre></div>
+<div class="sourceCode" id="cb654"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb654-1"><a href="산포도-행렬-그리기.html#cb654-1" aria-hidden="true" tabindex="-1"></a><span class="do">## put (absolute) correlations on the upper panels,</span></span>
+<span id="cb654-2"><a href="산포도-행렬-그리기.html#cb654-2" aria-hidden="true" tabindex="-1"></a><span class="do">## with size proportional to the correlations.</span></span>
+<span id="cb654-3"><a href="산포도-행렬-그리기.html#cb654-3" aria-hidden="true" tabindex="-1"></a>panel.cor <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">prefix =</span> <span class="st">&quot;&quot;</span>, cex.cor, ...)</span>
+<span id="cb654-4"><a href="산포도-행렬-그리기.html#cb654-4" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb654-5"><a href="산포도-행렬-그리기.html#cb654-5" aria-hidden="true" tabindex="-1"></a>  usr <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="st">&quot;usr&quot;</span>); <span class="fu">on.exit</span>(<span class="fu">par</span>(usr))</span>
+<span id="cb654-6"><a href="산포도-행렬-그리기.html#cb654-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">par</span>(<span class="at">usr =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb654-7"><a href="산포도-행렬-그리기.html#cb654-7" aria-hidden="true" tabindex="-1"></a>  r <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="fu">cor</span>(x, y))</span>
+<span id="cb654-8"><a href="산포도-행렬-그리기.html#cb654-8" aria-hidden="true" tabindex="-1"></a>  txt <span class="ot">&lt;-</span> <span class="fu">format</span>(<span class="fu">c</span>(r, <span class="fl">0.123456789</span>), <span class="at">digits =</span> digits)[<span class="dv">1</span>]</span>
+<span id="cb654-9"><a href="산포도-행렬-그리기.html#cb654-9" aria-hidden="true" tabindex="-1"></a>  txt <span class="ot">&lt;-</span> <span class="fu">paste0</span>(prefix, txt)</span>
+<span id="cb654-10"><a href="산포도-행렬-그리기.html#cb654-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">missing</span>(cex.cor)) cex.cor <span class="ot">&lt;-</span> <span class="fl">0.8</span><span class="sc">/</span><span class="fu">strwidth</span>(txt)</span>
+<span id="cb654-11"><a href="산포도-행렬-그리기.html#cb654-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">text</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, txt, <span class="at">cex =</span> cex.cor <span class="sc">*</span> r)</span>
+<span id="cb654-12"><a href="산포도-행렬-그리기.html#cb654-12" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb654-13"><a href="산포도-행렬-그리기.html#cb654-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb654-14"><a href="산포도-행렬-그리기.html#cb654-14" aria-hidden="true" tabindex="-1"></a><span class="co"># source : help(pairs)</span></span></code></pre></div>
 </div>
 <div id="산포도에-선형-회귀선-추가하는-사용자-정의-함수" class="section level4" number="13.8.2.3">
 <h4><span class="header-section-number">13.8.2.3</span> 산포도에 선형 회귀선 추가하는 사용자 정의 함수</h4>
 <p>다음으로 <strong>산포도에 선형 회귀선을 추가하는 사용자 정의 함수</strong>입니다. 이는 <em>R Graphics Cookbook</em> (원스턴 챙 지음, 이제원 옮김)을 참조하였습니다. 아래 사용자 정의 함수를 카피해서 사용하시기 바랍니다.</p>
-<div class="sourceCode" id="cb651"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb651-1"><a href="산포도-행렬-그리기.html#cb651-1" aria-hidden="true" tabindex="-1"></a><span class="do">## put linear regression line on the scatter plot</span></span>
-<span id="cb651-2"><a href="산포도-행렬-그리기.html#cb651-2" aria-hidden="true" tabindex="-1"></a>panel.lm <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, <span class="at">col=</span><span class="fu">par</span>(<span class="st">&quot;col&quot;</span>), <span class="at">bg=</span><span class="cn">NA</span>, <span class="at">pch=</span><span class="fu">par</span>(<span class="st">&quot;pch&quot;</span>),</span>
-<span id="cb651-3"><a href="산포도-행렬-그리기.html#cb651-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">cex=</span><span class="dv">1</span>, <span class="at">col.smooth=</span><span class="st">&quot;black&quot;</span>, ...) {</span>
-<span id="cb651-4"><a href="산포도-행렬-그리기.html#cb651-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(x, y, <span class="at">pch=</span>pch, <span class="at">col=</span>col, <span class="at">bg=</span>bg, <span class="at">cex=</span>cex)</span>
-<span id="cb651-5"><a href="산포도-행렬-그리기.html#cb651-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>(stats<span class="sc">::</span><span class="fu">lm</span>(y<span class="sc">~</span>x), <span class="at">col=</span>col.smooth, ...)</span>
-<span id="cb651-6"><a href="산포도-행렬-그리기.html#cb651-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb655"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb655-1"><a href="산포도-행렬-그리기.html#cb655-1" aria-hidden="true" tabindex="-1"></a><span class="do">## put linear regression line on the scatter plot</span></span>
+<span id="cb655-2"><a href="산포도-행렬-그리기.html#cb655-2" aria-hidden="true" tabindex="-1"></a>panel.lm <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, <span class="at">col=</span><span class="fu">par</span>(<span class="st">&quot;col&quot;</span>), <span class="at">bg=</span><span class="cn">NA</span>, <span class="at">pch=</span><span class="fu">par</span>(<span class="st">&quot;pch&quot;</span>),</span>
+<span id="cb655-3"><a href="산포도-행렬-그리기.html#cb655-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">cex=</span><span class="dv">1</span>, <span class="at">col.smooth=</span><span class="st">&quot;black&quot;</span>, ...) {</span>
+<span id="cb655-4"><a href="산포도-행렬-그리기.html#cb655-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(x, y, <span class="at">pch=</span>pch, <span class="at">col=</span>col, <span class="at">bg=</span>bg, <span class="at">cex=</span>cex)</span>
+<span id="cb655-5"><a href="산포도-행렬-그리기.html#cb655-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>(stats<span class="sc">::</span><span class="fu">lm</span>(y<span class="sc">~</span>x), <span class="at">col=</span>col.smooth, ...)</span>
+<span id="cb655-6"><a href="산포도-행렬-그리기.html#cb655-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><a href="산포도-행렬-그리기.html#산포도-행렬-그리기-1">Go Top</a></p>
 </div>
 </div>
 <div id="산포도-행렬-그리기-1" class="section level3" number="13.8.3">
 <h3><span class="header-section-number">13.8.3</span> 산포도 행렬 그리기</h3>
 <p>이제 준비가 다 되었습니다. <code>airquality</code>의 4개 변수 간의 <strong>산포도 행렬</strong>, 상관계수 숫자, <strong>히스토그램</strong>을 하나의 도표로 나타내보겠습니다.</p>
-<div class="sourceCode" id="cb652"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb652-1"><a href="산포도-행렬-그리기.html#cb652-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 산포도 행렬(scatter-plot matrix), 상관계수(correlation), 히스토그램(histogram)</span></span>
-<span id="cb652-2"><a href="산포도-행렬-그리기.html#cb652-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(airquality_2, </span>
-<span id="cb652-3"><a href="산포도-행렬-그리기.html#cb652-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">lower.panel =</span> panel.lm, <span class="co"># 아래쪽 산포도에 선형 직선 추가</span></span>
-<span id="cb652-4"><a href="산포도-행렬-그리기.html#cb652-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">upper.panel =</span> panel.cor, <span class="co"># 위쪽에는 상관계수 숫자 (상관계수에 크기 비례)</span></span>
-<span id="cb652-5"><a href="산포도-행렬-그리기.html#cb652-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">diag.panel =</span> panel.hist, <span class="co"># 대각선에는 히스토그램</span></span>
-<span id="cb652-6"><a href="산포도-행렬-그리기.html#cb652-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">pch=</span><span class="st">&quot;*&quot;</span>,  <span class="co"># 점 모양은 * 로</span></span>
-<span id="cb652-7"><a href="산포도-행렬-그리기.html#cb652-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">&quot;scatter-plot matrix, correlation coef., histogram&quot;</span></span>
-<span id="cb652-8"><a href="산포도-행렬-그리기.html#cb652-8" aria-hidden="true" tabindex="-1"></a>      )</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
+<div class="sourceCode" id="cb656"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb656-1"><a href="산포도-행렬-그리기.html#cb656-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 산포도 행렬(scatter-plot matrix), 상관계수(correlation), 히스토그램(histogram)</span></span>
+<span id="cb656-2"><a href="산포도-행렬-그리기.html#cb656-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(airquality_2, </span>
+<span id="cb656-3"><a href="산포도-행렬-그리기.html#cb656-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">lower.panel =</span> panel.lm, <span class="co"># 아래쪽 산포도에 선형 직선 추가</span></span>
+<span id="cb656-4"><a href="산포도-행렬-그리기.html#cb656-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">upper.panel =</span> panel.cor, <span class="co"># 위쪽에는 상관계수 숫자 (상관계수에 크기 비례)</span></span>
+<span id="cb656-5"><a href="산포도-행렬-그리기.html#cb656-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">diag.panel =</span> panel.hist, <span class="co"># 대각선에는 히스토그램</span></span>
+<span id="cb656-6"><a href="산포도-행렬-그리기.html#cb656-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">pch=</span><span class="st">&quot;*&quot;</span>,  <span class="co"># 점 모양은 * 로</span></span>
+<span id="cb656-7"><a href="산포도-행렬-그리기.html#cb656-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">&quot;scatter-plot matrix, correlation coef., histogram&quot;</span></span>
+<span id="cb656-8"><a href="산포도-행렬-그리기.html#cb656-8" aria-hidden="true" tabindex="-1"></a>      )</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
 <div id="그룹별로-점의-색깔-달리하기" class="section level4" number="13.8.3.1">
 <h4><span class="header-section-number">13.8.3.1</span> 그룹별로 점의 색깔 달리하기</h4>
 <p>보너스로, <code>pairs()</code> 함수를 사용해서 <strong>범주(그룹)별로 점의 색깔</strong>을 달리하는 방법도 소개하겠습니다. 이 역시 <code>pairs()</code> 함수 도움말(help)에 있는 R script 를 가져왔습니다. 도움말(help)이 정말 도움이 많이 됩니다. ^^ 사용한 데이터는 그 유명한 <code>Iris</code> 데이터가 되겠습니다.</p>
-<div class="sourceCode" id="cb653"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb653-1"><a href="산포도-행렬-그리기.html#cb653-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 범주(그룹)을 색깔로 구분하여 산포도 행렬 그리기</span></span>
-<span id="cb653-2"><a href="산포도-행렬-그리기.html#cb653-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(iris[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">main =</span> <span class="st">&quot;Anderson&#39;s Iris Data -- 3 species&quot;</span>,</span>
-<span id="cb653-3"><a href="산포도-행렬-그리기.html#cb653-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">pch =</span> <span class="dv">21</span>, <span class="at">bg =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green3&quot;</span>, <span class="st">&quot;blue&quot;</span>)[<span class="fu">unclass</span>(iris<span class="sc">$</span>Species)])</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
+<div class="sourceCode" id="cb657"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb657-1"><a href="산포도-행렬-그리기.html#cb657-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 범주(그룹)을 색깔로 구분하여 산포도 행렬 그리기</span></span>
+<span id="cb657-2"><a href="산포도-행렬-그리기.html#cb657-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(iris[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">main =</span> <span class="st">&quot;Anderson&#39;s Iris Data -- 3 species&quot;</span>,</span>
+<span id="cb657-3"><a href="산포도-행렬-그리기.html#cb657-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">pch =</span> <span class="dv">21</span>, <span class="at">bg =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green3&quot;</span>, <span class="st">&quot;blue&quot;</span>)[<span class="fu">unclass</span>(iris<span class="sc">$</span>Species)])</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
 <p>* R script source : <code>help(pairs)</code></p>
 <p><a href="산포도-행렬-그리기.html#산포도-행렬-그리기-1">Go Top</a></p>
 </div>

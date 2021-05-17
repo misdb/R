@@ -415,6 +415,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.1" data-path="버블-그래프.html"><a href="버블-그래프.html#데이터-세트-8"><i class="fa fa-check"></i><b>13.2.1</b> 데이터 세트</a></li>
 <li class="chapter" data-level="13.2.2" data-path="버블-그래프.html"><a href="버블-그래프.html#기본-버블-그래프"><i class="fa fa-check"></i><b>13.2.2</b> 기본 버블 그래프</a></li>
 <li class="chapter" data-level="13.2.3" data-path="버블-그래프.html"><a href="버블-그래프.html#텍스트-레이블-추가"><i class="fa fa-check"></i><b>13.2.3</b> 텍스트 레이블 추가</a></li>
+<li class="chapter" data-level="13.2.4" data-path="버블-그래프.html"><a href="버블-그래프.html#그룹별-버블-그래프-그리기"><i class="fa fa-check"></i><b>13.2.4</b> 그룹별 버블 그래프 그리기</a></li>
+<li class="chapter" data-level="13.2.5" data-path="버블-그래프.html"><a href="버블-그래프.html#theme의-사용-5"><i class="fa fa-check"></i><b>13.2.5</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html"><i class="fa fa-check"></i><b>13.3</b> 선 그래프와 시계열 그래프</a>
 <ul>
@@ -422,7 +424,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3.2" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#기본-선-그래프-그리기"><i class="fa fa-check"></i><b>13.3.2</b> 기본 선 그래프 그리기</a></li>
 <li class="chapter" data-level="13.3.3" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#시계열-그래프의-옵션-설정하기"><i class="fa fa-check"></i><b>13.3.3</b> 시계열 그래프의 옵션 설정하기</a></li>
 <li class="chapter" data-level="13.3.4" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#그룹별-시계열-그래프-그리기"><i class="fa fa-check"></i><b>13.3.4</b> 그룹별 시계열 그래프 그리기</a></li>
-<li class="chapter" data-level="13.3.5" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#theme의-사용-5"><i class="fa fa-check"></i><b>13.3.5</b> Theme의 사용</a></li>
+<li class="chapter" data-level="13.3.5" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#theme의-사용-6"><i class="fa fa-check"></i><b>13.3.5</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="13.4" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html"><i class="fa fa-check"></i><b>13.4</b> 이차원 밀도 그래프</a>
 <ul>
@@ -561,12 +563,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="데이터-세트-17" class="section level3" number="14.3.1">
 <h3><span class="header-section-number">14.3.1</span> 데이터 세트</h3>
 <p><strong><code>MASS Package</code>의 <code>parcoord()</code> 함수</strong>를 사용하겠으며, 예제 데이터 역시 <code>MASS</code> Package에 내장된 <code>Cars93</code> 데이터 프레임의 <code>차종(Type)</code>별로 <strong>선모양(line type)</strong>과 <strong>색깔(color)</strong>을 달리하여 <code>가격(Price)</code>, <code>고속도로연비(MPG.highway)</code>, <code>마력(Horsepower)</code>, <code>분당회전수(RPM)</code>, <code>길이(Length)</code>, <code>무게(Weight)</code> 변수를 가지고 그래프를 그려보겠습니다.</p>
-<div class="sourceCode" id="cb696"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb696-1"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb696-1" aria-hidden="true" tabindex="-1"></a><span class="do">##--------------------------------------</span></span>
-<span id="cb696-2"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb696-2" aria-hidden="true" tabindex="-1"></a><span class="do">## parallel coordinate plot</span></span>
-<span id="cb696-3"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb696-3" aria-hidden="true" tabindex="-1"></a><span class="do">##--------------------------------------</span></span>
-<span id="cb696-4"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb696-4" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb696-5"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb696-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb696-6"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb696-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb700"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb700-1"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-1" aria-hidden="true" tabindex="-1"></a><span class="do">##--------------------------------------</span></span>
+<span id="cb700-2"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-2" aria-hidden="true" tabindex="-1"></a><span class="do">## parallel coordinate plot</span></span>
+<span id="cb700-3"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-3" aria-hidden="true" tabindex="-1"></a><span class="do">##--------------------------------------</span></span>
+<span id="cb700-4"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb700-5"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb700-6"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
 <pre class="bg-warning"><code>## &#39;data.frame&#39;:    93 obs. of  27 variables:
 ##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
 ##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
@@ -599,16 +601,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="데이터-전처리-3" class="section level3" number="14.3.2">
 <h3><span class="header-section-number">14.3.2</span> 데이터 전처리</h3>
 <p><code>차종(Type)</code>별로 <strong>선 모양(lty)</strong>과 <strong>선 색깔(col)</strong>을 다르게 하기 위해서 데이터 전처리를 해보겠습니다. <code>차종</code>이 현재는 “<code>Compact</code>,” “<code>Large</code>” 등과 같이 <strong>character</strong> 로 되어있는데요, 1, 2, …, 6 의 <strong>numeric</strong> 으로 변환하겠습니다.</p>
-<div class="sourceCode" id="cb698"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb698-1"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb698-1" aria-hidden="true" tabindex="-1"></a><span class="co"># making Type_number variable to put line type and color by Car Type</span></span>
-<span id="cb698-2"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb698-2" aria-hidden="true" tabindex="-1"></a>Cars93_1 <span class="ot">&lt;-</span> <span class="fu">transform</span>(Cars93, </span>
-<span id="cb698-3"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb698-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">Type_no =</span> <span class="fu">ifelse</span>(Type <span class="sc">==</span> <span class="st">&quot;Compact&quot;</span>, <span class="dv">1</span>, </span>
-<span id="cb698-4"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb698-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="fu">ifelse</span>(Type <span class="sc">==</span> <span class="st">&quot;Large&quot;</span>, <span class="dv">2</span>, </span>
-<span id="cb698-5"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb698-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">ifelse</span>(Type <span class="sc">==</span> <span class="st">&quot;Midsize&quot;</span>, <span class="dv">3</span>, </span>
-<span id="cb698-6"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb698-6" aria-hidden="true" tabindex="-1"></a>                                         <span class="fu">ifelse</span>(Type <span class="sc">==</span> <span class="st">&quot;Small&quot;</span>, <span class="dv">4</span>, </span>
-<span id="cb698-7"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb698-7" aria-hidden="true" tabindex="-1"></a>                                            <span class="fu">ifelse</span>(Type <span class="sc">==</span> <span class="st">&quot;Sporty&quot;</span>, <span class="dv">5</span>, <span class="dv">6</span>)))))</span>
-<span id="cb698-8"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb698-8" aria-hidden="true" tabindex="-1"></a>                      )</span>
-<span id="cb698-9"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb698-9" aria-hidden="true" tabindex="-1"></a><span class="co"># checking top 10 observations</span></span>
-<span id="cb698-10"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb698-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Cars93_1[,<span class="fu">c</span>(<span class="st">&quot;Type&quot;</span>, <span class="st">&quot;Type_no&quot;</span>)], <span class="at">n=</span><span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb702"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb702-1"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb702-1" aria-hidden="true" tabindex="-1"></a><span class="co"># making Type_number variable to put line type and color by Car Type</span></span>
+<span id="cb702-2"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb702-2" aria-hidden="true" tabindex="-1"></a>Cars93_1 <span class="ot">&lt;-</span> <span class="fu">transform</span>(Cars93, </span>
+<span id="cb702-3"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb702-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">Type_no =</span> <span class="fu">ifelse</span>(Type <span class="sc">==</span> <span class="st">&quot;Compact&quot;</span>, <span class="dv">1</span>, </span>
+<span id="cb702-4"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb702-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="fu">ifelse</span>(Type <span class="sc">==</span> <span class="st">&quot;Large&quot;</span>, <span class="dv">2</span>, </span>
+<span id="cb702-5"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb702-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">ifelse</span>(Type <span class="sc">==</span> <span class="st">&quot;Midsize&quot;</span>, <span class="dv">3</span>, </span>
+<span id="cb702-6"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb702-6" aria-hidden="true" tabindex="-1"></a>                                         <span class="fu">ifelse</span>(Type <span class="sc">==</span> <span class="st">&quot;Small&quot;</span>, <span class="dv">4</span>, </span>
+<span id="cb702-7"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb702-7" aria-hidden="true" tabindex="-1"></a>                                            <span class="fu">ifelse</span>(Type <span class="sc">==</span> <span class="st">&quot;Sporty&quot;</span>, <span class="dv">5</span>, <span class="dv">6</span>)))))</span>
+<span id="cb702-8"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb702-8" aria-hidden="true" tabindex="-1"></a>                      )</span>
+<span id="cb702-9"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb702-9" aria-hidden="true" tabindex="-1"></a><span class="co"># checking top 10 observations</span></span>
+<span id="cb702-10"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb702-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Cars93_1[,<span class="fu">c</span>(<span class="st">&quot;Type&quot;</span>, <span class="st">&quot;Type_no&quot;</span>)], <span class="at">n=</span><span class="dv">10</span>)</span></code></pre></div>
 <pre class="bg-warning"><code>##       Type Type_no
 ## 1    Small       4
 ## 2  Midsize       3
@@ -629,23 +631,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>var.label = TRUE</code> 옵션을 설정하면 각 변수별로 minimum value, maximum value 가 하단과 상단에 표기됩니다.</p>
 <p><code>main = "parallel coordinate plot of Cars93 by Type"</code> 옵션은 그래프에 제목 넣을 때 사용합니다.</p>
 <p>아래 그래프 상단 우측에 범례가 들어가 있는데요, <code>legend()</code> 함수를 사용해서 추가한 것입니다.</p>
-<div class="sourceCode" id="cb700"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb700-1"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-1" aria-hidden="true" tabindex="-1"></a><span class="co"># parallel coordinate plot</span></span>
-<span id="cb700-2"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb700-3"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb700-4"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-4" aria-hidden="true" tabindex="-1"></a><span class="fu">parcoord</span>(Cars93_1[, <span class="fu">c</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;RPM&quot;</span>, <span class="st">&quot;Horsepower&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Length&quot;</span>, <span class="st">&quot;Price&quot;</span>)], </span>
-<span id="cb700-5"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">lty =</span> Cars93_1<span class="sc">$</span>Type_no,</span>
-<span id="cb700-6"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">col =</span> Cars93_1<span class="sc">$</span>Type_no, </span>
-<span id="cb700-7"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">var.label =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb700-8"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">main =</span> <span class="st">&quot;parallel coordinate plot of Cars93 by Type&quot;</span>)</span>
-<span id="cb700-9"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-9" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb700-10"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-10" aria-hidden="true" tabindex="-1"></a><span class="co"># putting legend</span></span>
-<span id="cb700-11"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-11" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, </span>
-<span id="cb700-12"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Van&quot;</span>), </span>
-<span id="cb700-13"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>), </span>
-<span id="cb700-14"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>), </span>
-<span id="cb700-15"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>, <span class="co"># line width</span></span>
-<span id="cb700-16"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb700-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">cex =</span> <span class="fl">0.7</span>)  <span class="co"># character size</span></span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
+<div class="sourceCode" id="cb704"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb704-1"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb704-1" aria-hidden="true" tabindex="-1"></a><span class="co"># parallel coordinate plot</span></span>
+<span id="cb704-2"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb704-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb704-3"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb704-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb704-4"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb704-4" aria-hidden="true" tabindex="-1"></a><span class="fu">parcoord</span>(Cars93_1[, <span class="fu">c</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;RPM&quot;</span>, <span class="st">&quot;Horsepower&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Length&quot;</span>, <span class="st">&quot;Price&quot;</span>)], </span>
+<span id="cb704-5"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb704-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">lty =</span> Cars93_1<span class="sc">$</span>Type_no,</span>
+<span id="cb704-6"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb704-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">col =</span> Cars93_1<span class="sc">$</span>Type_no, </span>
+<span id="cb704-7"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb704-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">var.label =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb704-8"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb704-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">main =</span> <span class="st">&quot;parallel coordinate plot of Cars93 by Type&quot;</span>)</span>
+<span id="cb704-9"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb704-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb704-10"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb704-10" aria-hidden="true" tabindex="-1"></a><span class="co"># putting legend</span></span>
+<span id="cb704-11"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb704-11" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, </span>
+<span id="cb704-12"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb704-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Van&quot;</span>), </span>
+<span id="cb704-13"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb704-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>), </span>
+<span id="cb704-14"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb704-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>), </span>
+<span id="cb704-15"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb704-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>, <span class="co"># line width</span></span>
+<span id="cb704-16"><a href="평행-좌표-그림-parallel-coordinate-plot.html#cb704-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">cex =</span> <span class="fl">0.7</span>)  <span class="co"># character size</span></span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
 <p>다음번 포스팅에서는 <strong>3차원 산포도 (3 dimensional scatter plot)</strong>에 대해서 소개하도록 하겠습니다.</p>
 </div>
 </div>

@@ -415,6 +415,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.1" data-path="버블-그래프.html"><a href="버블-그래프.html#데이터-세트-8"><i class="fa fa-check"></i><b>13.2.1</b> 데이터 세트</a></li>
 <li class="chapter" data-level="13.2.2" data-path="버블-그래프.html"><a href="버블-그래프.html#기본-버블-그래프"><i class="fa fa-check"></i><b>13.2.2</b> 기본 버블 그래프</a></li>
 <li class="chapter" data-level="13.2.3" data-path="버블-그래프.html"><a href="버블-그래프.html#텍스트-레이블-추가"><i class="fa fa-check"></i><b>13.2.3</b> 텍스트 레이블 추가</a></li>
+<li class="chapter" data-level="13.2.4" data-path="버블-그래프.html"><a href="버블-그래프.html#그룹별-버블-그래프-그리기"><i class="fa fa-check"></i><b>13.2.4</b> 그룹별 버블 그래프 그리기</a></li>
+<li class="chapter" data-level="13.2.5" data-path="버블-그래프.html"><a href="버블-그래프.html#theme의-사용-5"><i class="fa fa-check"></i><b>13.2.5</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html"><i class="fa fa-check"></i><b>13.3</b> 선 그래프와 시계열 그래프</a>
 <ul>
@@ -422,7 +424,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3.2" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#기본-선-그래프-그리기"><i class="fa fa-check"></i><b>13.3.2</b> 기본 선 그래프 그리기</a></li>
 <li class="chapter" data-level="13.3.3" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#시계열-그래프의-옵션-설정하기"><i class="fa fa-check"></i><b>13.3.3</b> 시계열 그래프의 옵션 설정하기</a></li>
 <li class="chapter" data-level="13.3.4" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#그룹별-시계열-그래프-그리기"><i class="fa fa-check"></i><b>13.3.4</b> 그룹별 시계열 그래프 그리기</a></li>
-<li class="chapter" data-level="13.3.5" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#theme의-사용-5"><i class="fa fa-check"></i><b>13.3.5</b> Theme의 사용</a></li>
+<li class="chapter" data-level="13.3.5" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#theme의-사용-6"><i class="fa fa-check"></i><b>13.3.5</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="13.4" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html"><i class="fa fa-check"></i><b>13.4</b> 이차원 밀도 그래프</a>
 <ul>
@@ -563,9 +565,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">13.3.1</span> 데이터 세트</h3>
 <p><code>Base</code>패키지에 들어있는 <code>airquality</code> 데이터 프레임(<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a>을 가지고 시계열 그래프를 그려보도록 하겠습니다.</p>
 <p><code>airquality</code> 데이터 프레임은 1973년 5월부터 9월달까지 뉴욕의 공기의 <code>Ozone</code>, <code>Solar</code>, <code>Wind</code>, <code>Temp</code>를 매일(Daily) 측정한 데이터 세트입니다. 결측값이 없는 <code>Wind</code>와 <code>Temp</code>를 가지고 시계열 그래프를 그려보겠습니다.</p>
-<div class="sourceCode" id="cb508"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb508-1"><a href="선-그래프와-시계열-그래프.html#cb508-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb508-2"><a href="선-그래프와-시계열-그래프.html#cb508-2" aria-hidden="true" tabindex="-1"></a><span class="co"># airquality 데이터 세트의 구조를 확인합니다.</span></span>
-<span id="cb508-3"><a href="선-그래프와-시계열-그래프.html#cb508-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(airquality)</span></code></pre></div>
+<div class="sourceCode" id="cb512"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb512-1"><a href="선-그래프와-시계열-그래프.html#cb512-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb512-2"><a href="선-그래프와-시계열-그래프.html#cb512-2" aria-hidden="true" tabindex="-1"></a><span class="co"># airquality 데이터 세트의 구조를 확인합니다.</span></span>
+<span id="cb512-3"><a href="선-그래프와-시계열-그래프.html#cb512-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(airquality)</span></code></pre></div>
 <pre class="bg-warning"><code>## &#39;data.frame&#39;:    153 obs. of  6 variables:
 ##  $ Ozone  : int  41 36 12 18 NA 28 23 19 8 NA ...
 ##  $ Solar.R: int  190 118 149 313 NA NA 299 99 19 194 ...
@@ -573,12 +575,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ Temp   : int  67 72 74 62 56 66 65 59 61 69 ...
 ##  $ Month  : int  5 5 5 5 5 5 5 5 5 5 ...
 ##  $ Day    : int  1 2 3 4 5 6 7 8 9 10 ...</code></pre>
-<div class="sourceCode" id="cb510"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb510-1"><a href="선-그래프와-시계열-그래프.html#cb510-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 결측값 여부 확인 : 결측값의 갯수 확인</span></span>
-<span id="cb510-2"><a href="선-그래프와-시계열-그래프.html#cb510-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality<span class="sc">$</span>Ozone))</span></code></pre></div>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb514-1"><a href="선-그래프와-시계열-그래프.html#cb514-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 결측값 여부 확인 : 결측값의 갯수 확인</span></span>
+<span id="cb514-2"><a href="선-그래프와-시계열-그래프.html#cb514-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality<span class="sc">$</span>Ozone))</span></code></pre></div>
 <pre class="bg-warning"><code>## [1] 37</code></pre>
-<div class="sourceCode" id="cb512"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb512-1"><a href="선-그래프와-시계열-그래프.html#cb512-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality<span class="sc">$</span>Solar.R))</span></code></pre></div>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb516-1"><a href="선-그래프와-시계열-그래프.html#cb516-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality<span class="sc">$</span>Solar.R))</span></code></pre></div>
 <pre class="bg-warning"><code>## [1] 7</code></pre>
-<div class="sourceCode" id="cb514"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb514-1"><a href="선-그래프와-시계열-그래프.html#cb514-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality<span class="sc">$</span>Wind))</span></code></pre></div>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb518-1"><a href="선-그래프와-시계열-그래프.html#cb518-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality<span class="sc">$</span>Wind))</span></code></pre></div>
 <pre class="bg-warning"><code>## [1] 0</code></pre>
 </div>
 <div id="기본-선-그래프-그리기" class="section level3" number="13.3.2">
@@ -590,18 +592,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="x-변수가-숫자형인-경우" class="section level4" number="13.3.2.1">
 <h4><span class="header-section-number">13.3.2.1</span> X 변수가 숫자형인 경우</h4>
 <p><code>Y</code> 변수를 온도(<code>Temp</code>)로 하고, <code>X</code> 변수는 <code>airquality</code> 데이터 세트에 있는 숫자형 컬럼 중의 하나인 <code>Wind</code>로 해서 선 그래프를 그려보겠습니다.</p>
-<div class="sourceCode" id="cb516"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb516-1"><a href="선-그래프와-시계열-그래프.html#cb516-1" aria-hidden="true" tabindex="-1"></a><span class="do">## X가 숫자형인 경우의 선 그래프 </span></span>
-<span id="cb516-2"><a href="선-그래프와-시계열-그래프.html#cb516-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality,                     <span class="co"># 데이터 세트를 지정합니다.</span></span>
-<span id="cb516-3"><a href="선-그래프와-시계열-그래프.html#cb516-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Wind,                   <span class="co"># x 축의 변수를 지정합니다. (Wind : 숫자형)</span></span>
-<span id="cb516-4"><a href="선-그래프와-시계열-그래프.html#cb516-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp)) <span class="sc">+</span>                <span class="co"># y 축의 변수를 지정합니다. (Temp : 숫자형)</span></span>
-<span id="cb516-5"><a href="선-그래프와-시계열-그래프.html#cb516-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb520-1"><a href="선-그래프와-시계열-그래프.html#cb520-1" aria-hidden="true" tabindex="-1"></a><span class="do">## X가 숫자형인 경우의 선 그래프 </span></span>
+<span id="cb520-2"><a href="선-그래프와-시계열-그래프.html#cb520-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality,                     <span class="co"># 데이터 세트를 지정합니다.</span></span>
+<span id="cb520-3"><a href="선-그래프와-시계열-그래프.html#cb520-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Wind,                   <span class="co"># x 축의 변수를 지정합니다. (Wind : 숫자형)</span></span>
+<span id="cb520-4"><a href="선-그래프와-시계열-그래프.html#cb520-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp)) <span class="sc">+</span>                <span class="co"># y 축의 변수를 지정합니다. (Temp : 숫자형)</span></span>
+<span id="cb520-5"><a href="선-그래프와-시계열-그래프.html#cb520-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_line</span>()</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGLineBaseNumX"></span>
 <img src="bookdown_files/figure-html/GGLineBaseNumX-1.png" alt="기본 선 그래프 : 숫자형 X 변수" width="672" />
 <p class="caption">
-Figure 13.19: 기본 선 그래프 : 숫자형 X 변수
+Figure 13.22: 기본 선 그래프 : 숫자형 X 변수
 </p>
 </div>
-<div class="sourceCode" id="cb517"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb517-1"><a href="선-그래프와-시계열-그래프.html#cb517-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtitle</span>(<span class="st">&quot;기본 선 그래프 : 숫자형 X 변수&quot;</span>)    </span></code></pre></div>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb521-1"><a href="선-그래프와-시계열-그래프.html#cb521-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtitle</span>(<span class="st">&quot;기본 선 그래프 : 숫자형 X 변수&quot;</span>)    </span></code></pre></div>
 <pre class="bg-warning"><code>## $title
 ## [1] &quot;기본 선 그래프 : 숫자형 X 변수&quot;
 ## 
@@ -613,33 +615,33 @@ Figure 13.19: 기본 선 그래프 : 숫자형 X 변수
 <p><code>airquality</code> 데이터 세트는 모든 컬럼이 숫자형으로만 되어 있는 데이터 프레임입니다. 특히, <code>Month</code> 컬럼과 <code>Day</code> 컬럼 까지도 정수형(<code>int</code>)으로 되어 있습니다.</p>
 <p>이 <code>Month</code> 컬럼과 <code>Day</code> 컬럼을 결합하여 <code>TIme</code> 이라는 <strong>문자형 컬럼</strong>을 생성하고, 이 <code>Time</code> 컬럼을 <code>X</code> 변수로 지정해서 선 그래프를 그려 보겠습니다.</p>
 <p>먼저 <code>Month</code> 변수와 <code>Day</code> 변수를 합쳐서 <code>Time</code>이라는 새로운 <strong>문자형 변수</strong>를 만들어 보겠습니다.</p>
-<div class="sourceCode" id="cb519"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb519-1"><a href="선-그래프와-시계열-그래프.html#cb519-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 문자형 Time 변수 생성</span></span>
-<span id="cb519-2"><a href="선-그래프와-시계열-그래프.html#cb519-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Month, Day 컬럼을 문자형(Character)으로 변형하여 새로운 컬럼 생성</span></span>
-<span id="cb519-3"><a href="선-그래프와-시계열-그래프.html#cb519-3" aria-hidden="true" tabindex="-1"></a>airquality <span class="ot">&lt;-</span> <span class="fu">transform</span>(airquality, </span>
-<span id="cb519-4"><a href="선-그래프와-시계열-그래프.html#cb519-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Month.ch_temp =</span> <span class="fu">as.character</span>(Month), </span>
-<span id="cb519-5"><a href="선-그래프와-시계열-그래프.html#cb519-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Day.ch_temp =</span> <span class="fu">as.character</span>(Day))</span>
-<span id="cb519-6"><a href="선-그래프와-시계열-그래프.html#cb519-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb519-7"><a href="선-그래프와-시계열-그래프.html#cb519-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Month.ch_temp와 Day.ch_temp의 한 자리를 두 자리로 변경</span></span>
-<span id="cb519-8"><a href="선-그래프와-시계열-그래프.html#cb519-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 예) 1 -&gt; 01, 2 -&gt; 02, 3 -&gt; 03,...</span></span>
-<span id="cb519-9"><a href="선-그래프와-시계열-그래프.html#cb519-9" aria-hidden="true" tabindex="-1"></a>airquality <span class="ot">&lt;-</span> <span class="fu">transform</span>(airquality, </span>
-<span id="cb519-10"><a href="선-그래프와-시계열-그래프.html#cb519-10" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Month.ch =</span> <span class="fu">paste</span>(<span class="st">&quot;0&quot;</span>, Month.ch_temp, <span class="at">sep=</span><span class="st">&quot;&quot;</span>), </span>
-<span id="cb519-11"><a href="선-그래프와-시계열-그래프.html#cb519-11" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Day.ch =</span> <span class="fu">ifelse</span>(Day.ch_temp <span class="sc">==</span> <span class="st">&quot;1&quot;</span>, <span class="st">&quot;01&quot;</span>, </span>
-<span id="cb519-12"><a href="선-그래프와-시계열-그래프.html#cb519-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">ifelse</span>(Day.ch_temp <span class="sc">==</span> <span class="st">&quot;2&quot;</span>, <span class="st">&quot;02&quot;</span>, </span>
-<span id="cb519-13"><a href="선-그래프와-시계열-그래프.html#cb519-13" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">ifelse</span>(Day.ch_temp <span class="sc">==</span> <span class="st">&quot;3&quot;</span>, <span class="st">&quot;03&quot;</span>, </span>
-<span id="cb519-14"><a href="선-그래프와-시계열-그래프.html#cb519-14" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">ifelse</span>(Day.ch_temp <span class="sc">==</span> <span class="st">&quot;4&quot;</span>, <span class="st">&quot;04&quot;</span>, </span>
-<span id="cb519-15"><a href="선-그래프와-시계열-그래프.html#cb519-15" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">ifelse</span>(Day.ch_temp <span class="sc">==</span> <span class="st">&quot;5&quot;</span>, <span class="st">&quot;05&quot;</span>, </span>
-<span id="cb519-16"><a href="선-그래프와-시계열-그래프.html#cb519-16" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">ifelse</span>(Day.ch_temp <span class="sc">==</span> <span class="st">&quot;6&quot;</span>, <span class="st">&quot;06&quot;</span>, </span>
-<span id="cb519-17"><a href="선-그래프와-시계열-그래프.html#cb519-17" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">ifelse</span>(Day.ch_temp <span class="sc">==</span> <span class="st">&quot;7&quot;</span>, <span class="st">&quot;07&quot;</span>, </span>
-<span id="cb519-18"><a href="선-그래프와-시계열-그래프.html#cb519-18" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">ifelse</span>(Day.ch_temp <span class="sc">==</span> <span class="st">&quot;8&quot;</span>, <span class="st">&quot;08&quot;</span>, </span>
-<span id="cb519-19"><a href="선-그래프와-시계열-그래프.html#cb519-19" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">ifelse</span>(Day.ch_temp <span class="sc">==</span> <span class="st">&quot;9&quot;</span>, <span class="st">&quot;09&quot;</span>, </span>
-<span id="cb519-20"><a href="선-그래프와-시계열-그래프.html#cb519-20" aria-hidden="true" tabindex="-1"></a>                                                  Day))))))))))</span>
-<span id="cb519-21"><a href="선-그래프와-시계열-그래프.html#cb519-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb519-22"><a href="선-그래프와-시계열-그래프.html#cb519-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Month.ch_temp와 Day.ch_temp를 paste() 함수로 결합하여 문자형 Time 변수 생성</span></span>
-<span id="cb519-23"><a href="선-그래프와-시계열-그래프.html#cb519-23" aria-hidden="true" tabindex="-1"></a>airquality <span class="ot">&lt;-</span> <span class="fu">transform</span>(airquality, </span>
-<span id="cb519-24"><a href="선-그래프와-시계열-그래프.html#cb519-24" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Time =</span> <span class="fu">paste</span>(Month.ch, Day.ch, <span class="at">sep=</span><span class="st">&quot;&quot;</span>))</span>
-<span id="cb519-25"><a href="선-그래프와-시계열-그래프.html#cb519-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb519-26"><a href="선-그래프와-시계열-그래프.html#cb519-26" aria-hidden="true" tabindex="-1"></a><span class="co"># airquality의 구조 보기</span></span>
-<span id="cb519-27"><a href="선-그래프와-시계열-그래프.html#cb519-27" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(airquality)</span></code></pre></div>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb523-1"><a href="선-그래프와-시계열-그래프.html#cb523-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 문자형 Time 변수 생성</span></span>
+<span id="cb523-2"><a href="선-그래프와-시계열-그래프.html#cb523-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Month, Day 컬럼을 문자형(Character)으로 변형하여 새로운 컬럼 생성</span></span>
+<span id="cb523-3"><a href="선-그래프와-시계열-그래프.html#cb523-3" aria-hidden="true" tabindex="-1"></a>airquality <span class="ot">&lt;-</span> <span class="fu">transform</span>(airquality, </span>
+<span id="cb523-4"><a href="선-그래프와-시계열-그래프.html#cb523-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Month.ch_temp =</span> <span class="fu">as.character</span>(Month), </span>
+<span id="cb523-5"><a href="선-그래프와-시계열-그래프.html#cb523-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Day.ch_temp =</span> <span class="fu">as.character</span>(Day))</span>
+<span id="cb523-6"><a href="선-그래프와-시계열-그래프.html#cb523-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb523-7"><a href="선-그래프와-시계열-그래프.html#cb523-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Month.ch_temp와 Day.ch_temp의 한 자리를 두 자리로 변경</span></span>
+<span id="cb523-8"><a href="선-그래프와-시계열-그래프.html#cb523-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 예) 1 -&gt; 01, 2 -&gt; 02, 3 -&gt; 03,...</span></span>
+<span id="cb523-9"><a href="선-그래프와-시계열-그래프.html#cb523-9" aria-hidden="true" tabindex="-1"></a>airquality <span class="ot">&lt;-</span> <span class="fu">transform</span>(airquality, </span>
+<span id="cb523-10"><a href="선-그래프와-시계열-그래프.html#cb523-10" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Month.ch =</span> <span class="fu">paste</span>(<span class="st">&quot;0&quot;</span>, Month.ch_temp, <span class="at">sep=</span><span class="st">&quot;&quot;</span>), </span>
+<span id="cb523-11"><a href="선-그래프와-시계열-그래프.html#cb523-11" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Day.ch =</span> <span class="fu">ifelse</span>(Day.ch_temp <span class="sc">==</span> <span class="st">&quot;1&quot;</span>, <span class="st">&quot;01&quot;</span>, </span>
+<span id="cb523-12"><a href="선-그래프와-시계열-그래프.html#cb523-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">ifelse</span>(Day.ch_temp <span class="sc">==</span> <span class="st">&quot;2&quot;</span>, <span class="st">&quot;02&quot;</span>, </span>
+<span id="cb523-13"><a href="선-그래프와-시계열-그래프.html#cb523-13" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">ifelse</span>(Day.ch_temp <span class="sc">==</span> <span class="st">&quot;3&quot;</span>, <span class="st">&quot;03&quot;</span>, </span>
+<span id="cb523-14"><a href="선-그래프와-시계열-그래프.html#cb523-14" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">ifelse</span>(Day.ch_temp <span class="sc">==</span> <span class="st">&quot;4&quot;</span>, <span class="st">&quot;04&quot;</span>, </span>
+<span id="cb523-15"><a href="선-그래프와-시계열-그래프.html#cb523-15" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">ifelse</span>(Day.ch_temp <span class="sc">==</span> <span class="st">&quot;5&quot;</span>, <span class="st">&quot;05&quot;</span>, </span>
+<span id="cb523-16"><a href="선-그래프와-시계열-그래프.html#cb523-16" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">ifelse</span>(Day.ch_temp <span class="sc">==</span> <span class="st">&quot;6&quot;</span>, <span class="st">&quot;06&quot;</span>, </span>
+<span id="cb523-17"><a href="선-그래프와-시계열-그래프.html#cb523-17" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">ifelse</span>(Day.ch_temp <span class="sc">==</span> <span class="st">&quot;7&quot;</span>, <span class="st">&quot;07&quot;</span>, </span>
+<span id="cb523-18"><a href="선-그래프와-시계열-그래프.html#cb523-18" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">ifelse</span>(Day.ch_temp <span class="sc">==</span> <span class="st">&quot;8&quot;</span>, <span class="st">&quot;08&quot;</span>, </span>
+<span id="cb523-19"><a href="선-그래프와-시계열-그래프.html#cb523-19" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">ifelse</span>(Day.ch_temp <span class="sc">==</span> <span class="st">&quot;9&quot;</span>, <span class="st">&quot;09&quot;</span>, </span>
+<span id="cb523-20"><a href="선-그래프와-시계열-그래프.html#cb523-20" aria-hidden="true" tabindex="-1"></a>                                                  Day))))))))))</span>
+<span id="cb523-21"><a href="선-그래프와-시계열-그래프.html#cb523-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb523-22"><a href="선-그래프와-시계열-그래프.html#cb523-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Month.ch_temp와 Day.ch_temp를 paste() 함수로 결합하여 문자형 Time 변수 생성</span></span>
+<span id="cb523-23"><a href="선-그래프와-시계열-그래프.html#cb523-23" aria-hidden="true" tabindex="-1"></a>airquality <span class="ot">&lt;-</span> <span class="fu">transform</span>(airquality, </span>
+<span id="cb523-24"><a href="선-그래프와-시계열-그래프.html#cb523-24" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Time =</span> <span class="fu">paste</span>(Month.ch, Day.ch, <span class="at">sep=</span><span class="st">&quot;&quot;</span>))</span>
+<span id="cb523-25"><a href="선-그래프와-시계열-그래프.html#cb523-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb523-26"><a href="선-그래프와-시계열-그래프.html#cb523-26" aria-hidden="true" tabindex="-1"></a><span class="co"># airquality의 구조 보기</span></span>
+<span id="cb523-27"><a href="선-그래프와-시계열-그래프.html#cb523-27" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(airquality)</span></code></pre></div>
 <pre class="bg-warning"><code>## &#39;data.frame&#39;:    153 obs. of  11 variables:
 ##  $ Ozone        : int  41 36 12 18 NA 28 23 19 8 NA ...
 ##  $ Solar.R      : int  190 118 149 313 NA NA 299 99 19 194 ...
@@ -654,33 +656,33 @@ Figure 13.19: 기본 선 그래프 : 숫자형 X 변수
 ##  $ Time         : chr  &quot;0501&quot; &quot;0502&quot; &quot;0503&quot; &quot;0504&quot; ...</code></pre>
 <p><a href="선-그래프와-시계열-그래프.html#선-그래프와-시계열-그래프">Go Top</a></p>
 <p>이제 <code>ggplot()</code> 함수의 <code>x</code> 축에 날짜(<code>Time</code>) 변수를 그리고 <code>y</code> 축에 온도(<code>Temp</code>) 변수를 지정한 다음, <code>geom_line()</code> 함수를 이용하여 선 그래프를 그려 보겠습니다.</p>
-<div class="sourceCode" id="cb521"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb521-1"><a href="선-그래프와-시계열-그래프.html#cb521-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 선 그래프 그리기 : 문자형 X 변수</span></span>
-<span id="cb521-2"><a href="선-그래프와-시계열-그래프.html#cb521-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality,                     <span class="co"># 데이터 세트를 지정합니다.</span></span>
-<span id="cb521-3"><a href="선-그래프와-시계열-그래프.html#cb521-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Time,                   <span class="co"># x 축의 변수를 지정합니다. (Time : 문자형)</span></span>
-<span id="cb521-4"><a href="선-그래프와-시계열-그래프.html#cb521-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp)) <span class="sc">+</span>                <span class="co"># y 축의 변수를 지정합니다. (Temp : 숫자형)</span></span>
-<span id="cb521-5"><a href="선-그래프와-시계열-그래프.html#cb521-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span>                      <span class="co"># 선 그래프를 그립니다.</span></span>
-<span id="cb521-6"><a href="선-그래프와-시계열-그래프.html#cb521-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&quot;선 그래프 : 문자형 X 변수&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb525"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb525-1"><a href="선-그래프와-시계열-그래프.html#cb525-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 선 그래프 그리기 : 문자형 X 변수</span></span>
+<span id="cb525-2"><a href="선-그래프와-시계열-그래프.html#cb525-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality,                     <span class="co"># 데이터 세트를 지정합니다.</span></span>
+<span id="cb525-3"><a href="선-그래프와-시계열-그래프.html#cb525-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Time,                   <span class="co"># x 축의 변수를 지정합니다. (Time : 문자형)</span></span>
+<span id="cb525-4"><a href="선-그래프와-시계열-그래프.html#cb525-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp)) <span class="sc">+</span>                <span class="co"># y 축의 변수를 지정합니다. (Temp : 숫자형)</span></span>
+<span id="cb525-5"><a href="선-그래프와-시계열-그래프.html#cb525-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span>                      <span class="co"># 선 그래프를 그립니다.</span></span>
+<span id="cb525-6"><a href="선-그래프와-시계열-그래프.html#cb525-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&quot;선 그래프 : 문자형 X 변수&quot;</span>)</span></code></pre></div>
 <pre><code>## geom_path: Each group consists of only one observation. Do you need to adjust
 ## the group aesthetic?</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:GGLineBaseChrX1"></span>
 <img src="bookdown_files/figure-html/GGLineBaseChrX1-1.png" alt="기본 선 그래프 : 문자형 X 변수" width="672" />
 <p class="caption">
-Figure 13.20: 기본 선 그래프 : 문자형 X 변수
+Figure 13.23: 기본 선 그래프 : 문자형 X 변수
 </p>
 </div>
 <p>위의 스크립트를 실행하면 앞에서의 경우와 달리 <em>경고 메시지가 발생</em>하면서 <strong>선 그래프가 표시가 되지 않습니다</strong>.</p>
 <p>이것은 X 변수가 문자형 변수이기 때문입니다. 이 문제를 해결하기 위해 <code>ggplot()</code> 함수의 <code>aes()</code> 함수의 모수로 <code>group = 1</code> 을 삽입해 줍니다.</p>
-<div class="sourceCode" id="cb523"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb523-1"><a href="선-그래프와-시계열-그래프.html#cb523-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 선 그래프 : 문자형 X 변수 (group = 1) 추가</span></span>
-<span id="cb523-2"><a href="선-그래프와-시계열-그래프.html#cb523-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, </span>
-<span id="cb523-3"><a href="선-그래프와-시계열-그래프.html#cb523-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Time, </span>
-<span id="cb523-4"><a href="선-그래프와-시계열-그래프.html#cb523-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp, </span>
-<span id="cb523-5"><a href="선-그래프와-시계열-그래프.html#cb523-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span> </span>
-<span id="cb523-6"><a href="선-그래프와-시계열-그래프.html#cb523-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb523-7"><a href="선-그래프와-시계열-그래프.html#cb523-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;기본 선 그래프 : 문자형 X 변수 (group = 1 추가)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb527-1"><a href="선-그래프와-시계열-그래프.html#cb527-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 기본 선 그래프 : 문자형 X 변수 (group = 1) 추가</span></span>
+<span id="cb527-2"><a href="선-그래프와-시계열-그래프.html#cb527-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, </span>
+<span id="cb527-3"><a href="선-그래프와-시계열-그래프.html#cb527-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Time, </span>
+<span id="cb527-4"><a href="선-그래프와-시계열-그래프.html#cb527-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp, </span>
+<span id="cb527-5"><a href="선-그래프와-시계열-그래프.html#cb527-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span> </span>
+<span id="cb527-6"><a href="선-그래프와-시계열-그래프.html#cb527-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb527-7"><a href="선-그래프와-시계열-그래프.html#cb527-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;기본 선 그래프 : 문자형 X 변수 (group = 1 추가)&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGLineBaseChrX2"></span>
 <img src="bookdown_files/figure-html/GGLineBaseChrX2-1.png" alt="기본 선 그래프 : 문자형 X 변수 (group = 1 추가)" width="672" />
 <p class="caption">
-Figure 13.21: 기본 선 그래프 : 문자형 X 변수 (group = 1 추가)
+Figure 13.24: 기본 선 그래프 : 문자형 X 변수 (group = 1 추가)
 </p>
 </div>
 <p>선 그래프의 <code>X</code>축으로 날짜(<code>Time</code>)의 데이터인 <code>0501 ~ 0930</code>이 표시되고, <code>Y</code>축에는 온도(<code>Time</code>)가 표시되는 선 그래프가 그려집니다. 그런데 <code>X</code> 축의 값들이 서로 겹쳐져서 잘 볼 수가 없네요…. (엄밀히 말하면 이 그래프는 시계열 그래프라 할 수 없습니다.)</p>
@@ -689,21 +691,21 @@ Figure 13.21: 기본 선 그래프 : 문자형 X 변수 (group = 1 추가)
 <h4><span class="header-section-number">13.3.2.3</span> X 변수가 날짜형인 경우</h4>
 <p><code>airquality_May</code> 데이터 세트의 날짜(<code>Time</code>) 컬럼을 날짜형(<code>Date</code> 형)으로 변형시켜서 선 그래프를 그려 보겠습니다.</p>
 <p>이제 이 선 그래프는 X축이 날짜형 변수이기 떄문에 <strong>시계열 그래프</strong>가 작성되는 것입니다.</p>
-<div class="sourceCode" id="cb524"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb524-1"><a href="선-그래프와-시계열-그래프.html#cb524-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 시계열 그래프 그리기 : 날짜형 X 변수</span></span>
-<span id="cb524-2"><a href="선-그래프와-시계열-그래프.html#cb524-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb524-3"><a href="선-그래프와-시계열-그래프.html#cb524-3" aria-hidden="true" tabindex="-1"></a><span class="co"># airquality의 Time 컬럼을 날짜형으로 변형합니다.</span></span>
-<span id="cb524-4"><a href="선-그래프와-시계열-그래프.html#cb524-4" aria-hidden="true" tabindex="-1"></a>airquality<span class="sc">$</span>Time <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(airquality<span class="sc">$</span>Time, <span class="at">format =</span> <span class="st">&quot;%m%d&quot;</span>)</span>
-<span id="cb524-5"><a href="선-그래프와-시계열-그래프.html#cb524-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb524-6"><a href="선-그래프와-시계열-그래프.html#cb524-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 시계열 그래프 그리기</span></span>
-<span id="cb524-7"><a href="선-그래프와-시계열-그래프.html#cb524-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, </span>
-<span id="cb524-8"><a href="선-그래프와-시계열-그래프.html#cb524-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Time,                         <span class="co"># X축의 Time 변수는 &#39;날짜형&#39;입니다.</span></span>
-<span id="cb524-9"><a href="선-그래프와-시계열-그래프.html#cb524-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp)) <span class="sc">+</span> </span>
-<span id="cb524-10"><a href="선-그래프와-시계열-그래프.html#cb524-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb524-11"><a href="선-그래프와-시계열-그래프.html#cb524-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;시계열 그래프 : 날짜형 X 변수&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb528"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb528-1"><a href="선-그래프와-시계열-그래프.html#cb528-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 시계열 그래프 그리기 : 날짜형 X 변수</span></span>
+<span id="cb528-2"><a href="선-그래프와-시계열-그래프.html#cb528-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb528-3"><a href="선-그래프와-시계열-그래프.html#cb528-3" aria-hidden="true" tabindex="-1"></a><span class="co"># airquality의 Time 컬럼을 날짜형으로 변형합니다.</span></span>
+<span id="cb528-4"><a href="선-그래프와-시계열-그래프.html#cb528-4" aria-hidden="true" tabindex="-1"></a>airquality<span class="sc">$</span>Time <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(airquality<span class="sc">$</span>Time, <span class="at">format =</span> <span class="st">&quot;%m%d&quot;</span>)</span>
+<span id="cb528-5"><a href="선-그래프와-시계열-그래프.html#cb528-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb528-6"><a href="선-그래프와-시계열-그래프.html#cb528-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 시계열 그래프 그리기</span></span>
+<span id="cb528-7"><a href="선-그래프와-시계열-그래프.html#cb528-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, </span>
+<span id="cb528-8"><a href="선-그래프와-시계열-그래프.html#cb528-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Time,                         <span class="co"># X축의 Time 변수는 &#39;날짜형&#39;입니다.</span></span>
+<span id="cb528-9"><a href="선-그래프와-시계열-그래프.html#cb528-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp)) <span class="sc">+</span> </span>
+<span id="cb528-10"><a href="선-그래프와-시계열-그래프.html#cb528-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb528-11"><a href="선-그래프와-시계열-그래프.html#cb528-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;시계열 그래프 : 날짜형 X 변수&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGLineBaseDateX"></span>
 <img src="bookdown_files/figure-html/GGLineBaseDateX-1.png" alt="시계열 그래프 : 날짜형 X 변수" width="672" />
 <p class="caption">
-Figure 13.22: 시계열 그래프 : 날짜형 X 변수
+Figure 13.25: 시계열 그래프 : 날짜형 X 변수
 </p>
 </div>
 <p>이제 이 그래프가 바로 <strong>시계열 그래프</strong>입니다. X 의 날짜가 적당한 날짜 간격으로 표시가 되어 보기도 좋습니다.</p>
@@ -715,18 +717,18 @@ Figure 13.22: 시계열 그래프 : 날짜형 X 변수
 <div id="y축-값의-범위-조절하기" class="section level4" number="13.3.3.1">
 <h4><span class="header-section-number">13.3.3.1</span> <code>Y</code>축 값의 범위 조절하기</h4>
 <p>시계열 그래프를 보면 <code>y</code>축을 <code>ggplot2</code>가 자동으로 계산해서 <strong>적정 범위</strong>를 설정해주었습니다만, 경우에 따라서는 사용자가 강제로 <strong>특정 범위를 설정</strong>해주고 싶을 때가 있습니다. 아래는 <code>ylim()</code>을 이용해서 <code>50 ~ max(y)</code> 값 까지 <code>y</code>축 범위를 설정한 예시입니다.</p>
-<div class="sourceCode" id="cb525"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb525-1"><a href="선-그래프와-시계열-그래프.html#cb525-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 시계열 그래프 : Y축 값의 범위 제한</span></span>
-<span id="cb525-2"><a href="선-그래프와-시계열-그래프.html#cb525-2" aria-hidden="true" tabindex="-1"></a><span class="co"># y축 범위 설정 50 ~ max</span></span>
-<span id="cb525-3"><a href="선-그래프와-시계열-그래프.html#cb525-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, </span>
-<span id="cb525-4"><a href="선-그래프와-시계열-그래프.html#cb525-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Time,                         </span>
-<span id="cb525-5"><a href="선-그래프와-시계열-그래프.html#cb525-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp)) <span class="sc">+</span> </span>
-<span id="cb525-6"><a href="선-그래프와-시계열-그래프.html#cb525-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb525-7"><a href="선-그래프와-시계열-그래프.html#cb525-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ylim</span>(<span class="dv">50</span>, <span class="fu">max</span>(airquality<span class="sc">$</span>Temp)) <span class="sc">+</span>              <span class="co"># Y 축의 값의 범위를 제한합니다.</span></span>
-<span id="cb525-8"><a href="선-그래프와-시계열-그래프.html#cb525-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;시계열 그래프 : Y축 값의 범위 제한&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb529"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb529-1"><a href="선-그래프와-시계열-그래프.html#cb529-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 시계열 그래프 : Y축 값의 범위 제한</span></span>
+<span id="cb529-2"><a href="선-그래프와-시계열-그래프.html#cb529-2" aria-hidden="true" tabindex="-1"></a><span class="co"># y축 범위 설정 50 ~ max</span></span>
+<span id="cb529-3"><a href="선-그래프와-시계열-그래프.html#cb529-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, </span>
+<span id="cb529-4"><a href="선-그래프와-시계열-그래프.html#cb529-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Time,                         </span>
+<span id="cb529-5"><a href="선-그래프와-시계열-그래프.html#cb529-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp)) <span class="sc">+</span> </span>
+<span id="cb529-6"><a href="선-그래프와-시계열-그래프.html#cb529-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb529-7"><a href="선-그래프와-시계열-그래프.html#cb529-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ylim</span>(<span class="dv">50</span>, <span class="fu">max</span>(airquality<span class="sc">$</span>Temp)) <span class="sc">+</span>              <span class="co"># Y 축의 값의 범위를 제한합니다.</span></span>
+<span id="cb529-8"><a href="선-그래프와-시계열-그래프.html#cb529-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;시계열 그래프 : Y축 값의 범위 제한&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGTimeSeriesYlim"></span>
 <img src="bookdown_files/figure-html/GGTimeSeriesYlim-1.png" alt="시계열 그래프 : Y축 값의 범위 제한" width="672" />
 <p class="caption">
-Figure 13.23: 시계열 그래프 : Y축 값의 범위 제한
+Figure 13.26: 시계열 그래프 : Y축 값의 범위 제한
 </p>
 </div>
 <p><a href="선-그래프와-시계열-그래프.html#선-그래프와-시계열-그래프">Go Top</a></p>
@@ -736,22 +738,22 @@ Figure 13.23: 시계열 그래프 : Y축 값의 범위 제한
 <p>시계열 그래프의 <strong>선 모양</strong>을 바꾸고 <strong>점을 추가</strong>할 수도 있습니다.</p>
 <p><strong>선의 모양</strong>은 <code>geom_line()</code> 함수의 모수인 <code>linetype</code>에 색의 <strong>번호(정수)나 이름</strong>을 지정할 수 있습니다.<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a></p>
 <p><strong>점</strong>은 <code>geom_point()</code> 함수를 이용하여 추가할 수 있으며, <a href="버블-그래프.html#기본-버블-그래프">기본 버블 그래프</a>에서도 살펴 본 바와 같이 점의 모양은 <code>shape</code> 모수를 이용하여 변경할 수 있습니다 (<code>0 ~ 25</code> 사이의 정수).</p>
-<div class="sourceCode" id="cb526"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb526-1"><a href="선-그래프와-시계열-그래프.html#cb526-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 시계열 그래프 : 선 모양 바꾸기, 점 추가하기</span></span>
-<span id="cb526-2"><a href="선-그래프와-시계열-그래프.html#cb526-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, </span>
-<span id="cb526-3"><a href="선-그래프와-시계열-그래프.html#cb526-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Time,                         </span>
-<span id="cb526-4"><a href="선-그래프와-시계열-그래프.html#cb526-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp)) <span class="sc">+</span> </span>
-<span id="cb526-5"><a href="선-그래프와-시계열-그래프.html#cb526-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>,             <span class="co"># 선 모양 : 점선, 크기 = 1, 색 = 파란색</span></span>
-<span id="cb526-6"><a href="선-그래프와-시계열-그래프.html#cb526-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">1</span>, </span>
-<span id="cb526-7"><a href="선-그래프와-시계열-그래프.html#cb526-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb526-8"><a href="선-그래프와-시계열-그래프.html#cb526-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.5</span>,                     <span class="co"># 점 : 19번 모양, 크기 = 1.5, 테두리 색 = 빨강</span></span>
-<span id="cb526-9"><a href="선-그래프와-시계열-그래프.html#cb526-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">shape =</span> <span class="dv">19</span>, </span>
-<span id="cb526-10"><a href="선-그래프와-시계열-그래프.html#cb526-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb526-11"><a href="선-그래프와-시계열-그래프.html#cb526-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ylim</span>(<span class="dv">50</span>, <span class="fu">max</span>(airquality<span class="sc">$</span>Temp)) <span class="sc">+</span>             </span>
-<span id="cb526-12"><a href="선-그래프와-시계열-그래프.html#cb526-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;시계열 그래프 : 선 모양 바꾸기, 점 추가하기&quot;</span>)  </span></code></pre></div>
+<div class="sourceCode" id="cb530"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb530-1"><a href="선-그래프와-시계열-그래프.html#cb530-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 시계열 그래프 : 선 모양 바꾸기, 점 추가하기</span></span>
+<span id="cb530-2"><a href="선-그래프와-시계열-그래프.html#cb530-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, </span>
+<span id="cb530-3"><a href="선-그래프와-시계열-그래프.html#cb530-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Time,                         </span>
+<span id="cb530-4"><a href="선-그래프와-시계열-그래프.html#cb530-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp)) <span class="sc">+</span> </span>
+<span id="cb530-5"><a href="선-그래프와-시계열-그래프.html#cb530-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>,             <span class="co"># 선 모양 : 점선, 크기 = 1, 색 = 파란색</span></span>
+<span id="cb530-6"><a href="선-그래프와-시계열-그래프.html#cb530-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">1</span>, </span>
+<span id="cb530-7"><a href="선-그래프와-시계열-그래프.html#cb530-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb530-8"><a href="선-그래프와-시계열-그래프.html#cb530-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.5</span>,                     <span class="co"># 점 : 19번 모양, 크기 = 1.5, 테두리 색 = 빨강</span></span>
+<span id="cb530-9"><a href="선-그래프와-시계열-그래프.html#cb530-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">shape =</span> <span class="dv">19</span>, </span>
+<span id="cb530-10"><a href="선-그래프와-시계열-그래프.html#cb530-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb530-11"><a href="선-그래프와-시계열-그래프.html#cb530-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ylim</span>(<span class="dv">50</span>, <span class="fu">max</span>(airquality<span class="sc">$</span>Temp)) <span class="sc">+</span>             </span>
+<span id="cb530-12"><a href="선-그래프와-시계열-그래프.html#cb530-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;시계열 그래프 : 선 모양 바꾸기, 점 추가하기&quot;</span>)  </span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGTimeSeriesLinePoint"></span>
 <img src="bookdown_files/figure-html/GGTimeSeriesLinePoint-1.png" alt="시계열 그래프 : 선 모양 바꾸기, 점 추가하기" width="672" />
 <p class="caption">
-Figure 13.24: 시계열 그래프 : 선 모양 바꾸기, 점 추가하기
+Figure 13.27: 시계열 그래프 : 선 모양 바꾸기, 점 추가하기
 </p>
 </div>
 <p>참고로 R 에서의 선의 모양은 그림 <a href="버블-그래프.html#fig:RLineType">13.16</a> 과 같으며, 점의 모양은 그림 <a href="버블-그래프.html#fig:RPointType">13.17</a> 과 같습니다.</p>
@@ -761,130 +763,130 @@ Figure 13.24: 시계열 그래프 : 선 모양 바꾸기, 점 추가하기
 <h3><span class="header-section-number">13.3.4</span> 그룹별 시계열 그래프 그리기</h3>
 <p><strong>월별 시계열 그래프</strong>를 작성해 보겠습니다.</p>
 <p>월별 시계열 그래프를 그리기 위해서는 정수형의 <code>Month</code> 컬럼을 <strong>요인형</strong>으로 변경해야 합니다. 이는 <code>as.factor()</code> 함수로 쉽게 변형할 수 있습니다.</p>
-<div class="sourceCode" id="cb527"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb527-1"><a href="선-그래프와-시계열-그래프.html#cb527-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Month 컬럼을 요인형으로 변형하기</span></span>
-<span id="cb527-2"><a href="선-그래프와-시계열-그래프.html#cb527-2" aria-hidden="true" tabindex="-1"></a>airquality<span class="sc">$</span>Month <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(airquality<span class="sc">$</span>Month)</span></code></pre></div>
+<div class="sourceCode" id="cb531"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb531-1"><a href="선-그래프와-시계열-그래프.html#cb531-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Month 컬럼을 요인형으로 변형하기</span></span>
+<span id="cb531-2"><a href="선-그래프와-시계열-그래프.html#cb531-2" aria-hidden="true" tabindex="-1"></a>airquality<span class="sc">$</span>Month <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(airquality<span class="sc">$</span>Month)</span></code></pre></div>
 <p>이제 월별 시계열 그래프를 <code>ggplot()</code> 함수 내의 <code>aes()</code> 함수에 모수를 지정하여 그리는 방법, <code>facet_grid()</code> 함수를 이용하는 방법 그리고 <code>facet_wrap()</code> 함수를 이용하는 방법으로 작성할 수 있습니다.</p>
 <div id="MonthlyTimeSeries" class="section level4" number="13.3.4.1">
 <h4><span class="header-section-number">13.3.4.1</span> <code>aes()</code> 함수의 모수 이용</h4>
 <p>이 절에서는 <code>ggplot()</code> 함수 내의 <code>aes()</code> 함수의 모수인 <code>group</code>과 <code>colour</code> 를 사용하여 그룹별로 시계열 그래프 그려 보겠습니다. <code>aes()</code> 함수 내에 <code>group = Month</code>, <code>colour = Month</code>를 추가해 주면 됩니다.</p>
-<div class="sourceCode" id="cb528"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb528-1"><a href="선-그래프와-시계열-그래프.html#cb528-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 월별 시계열 그래프 : aes() 함수 이용</span></span>
-<span id="cb528-2"><a href="선-그래프와-시계열-그래프.html#cb528-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, </span>
-<span id="cb528-3"><a href="선-그래프와-시계열-그래프.html#cb528-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Time,                         </span>
-<span id="cb528-4"><a href="선-그래프와-시계열-그래프.html#cb528-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp,</span>
-<span id="cb528-5"><a href="선-그래프와-시계열-그래프.html#cb528-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> Month,                         <span class="co"># 그룹 변수로 Month를 지정합니다.</span></span>
-<span id="cb528-6"><a href="선-그래프와-시계열-그래프.html#cb528-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Month)) <span class="sc">+</span>                     <span class="co"># 그룹별 선의 색을 지정합니다.</span></span>
-<span id="cb528-7"><a href="선-그래프와-시계열-그래프.html#cb528-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>,                 <span class="co"># colour 모수를 제거해 줍니다.</span></span>
-<span id="cb528-8"><a href="선-그래프와-시계열-그래프.html#cb528-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb528-9"><a href="선-그래프와-시계열-그래프.html#cb528-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.5</span>,                     </span>
-<span id="cb528-10"><a href="선-그래프와-시계열-그래프.html#cb528-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">shape =</span> <span class="dv">19</span>) <span class="sc">+</span>                       <span class="co"># colour 모수를 제거해 줍니다. </span></span>
-<span id="cb528-11"><a href="선-그래프와-시계열-그래프.html#cb528-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ylim</span>(<span class="dv">50</span>, <span class="fu">max</span>(airquality<span class="sc">$</span>Temp)) <span class="sc">+</span>             </span>
-<span id="cb528-12"><a href="선-그래프와-시계열-그래프.html#cb528-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;월별 시계열 그래프 : aes() 함수 이용&quot;</span>)  </span></code></pre></div>
+<div class="sourceCode" id="cb532"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb532-1"><a href="선-그래프와-시계열-그래프.html#cb532-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 월별 시계열 그래프 : aes() 함수 이용</span></span>
+<span id="cb532-2"><a href="선-그래프와-시계열-그래프.html#cb532-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, </span>
+<span id="cb532-3"><a href="선-그래프와-시계열-그래프.html#cb532-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Time,                         </span>
+<span id="cb532-4"><a href="선-그래프와-시계열-그래프.html#cb532-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp,</span>
+<span id="cb532-5"><a href="선-그래프와-시계열-그래프.html#cb532-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> Month,                         <span class="co"># 그룹 변수로 Month를 지정합니다.</span></span>
+<span id="cb532-6"><a href="선-그래프와-시계열-그래프.html#cb532-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Month)) <span class="sc">+</span>                     <span class="co"># 그룹별 선의 색을 지정합니다.</span></span>
+<span id="cb532-7"><a href="선-그래프와-시계열-그래프.html#cb532-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>,                 <span class="co"># colour 모수를 제거해 줍니다.</span></span>
+<span id="cb532-8"><a href="선-그래프와-시계열-그래프.html#cb532-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb532-9"><a href="선-그래프와-시계열-그래프.html#cb532-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.5</span>,                     </span>
+<span id="cb532-10"><a href="선-그래프와-시계열-그래프.html#cb532-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">shape =</span> <span class="dv">19</span>) <span class="sc">+</span>                       <span class="co"># colour 모수를 제거해 줍니다. </span></span>
+<span id="cb532-11"><a href="선-그래프와-시계열-그래프.html#cb532-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ylim</span>(<span class="dv">50</span>, <span class="fu">max</span>(airquality<span class="sc">$</span>Temp)) <span class="sc">+</span>             </span>
+<span id="cb532-12"><a href="선-그래프와-시계열-그래프.html#cb532-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;월별 시계열 그래프 : aes() 함수 이용&quot;</span>)  </span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGTimeSeriesGroupAes"></span>
 <img src="bookdown_files/figure-html/GGTimeSeriesGroupAes-1.png" alt="월별 시계열 그래프 : aes() 함수 이용" width="672" />
 <p class="caption">
-Figure 13.25: 월별 시계열 그래프 : aes() 함수 이용
+Figure 13.28: 월별 시계열 그래프 : aes() 함수 이용
 </p>
 </div>
 </div>
 <div id="facet_grid-함수-이용-6" class="section level4" number="13.3.4.2">
 <h4><span class="header-section-number">13.3.4.2</span> <code>facet_grid()</code> 함수 이용</h4>
-<div class="sourceCode" id="cb529"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb529-1"><a href="선-그래프와-시계열-그래프.html#cb529-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 월별 시계열 그래프 : facet_grid() 함수 이용</span></span>
-<span id="cb529-2"><a href="선-그래프와-시계열-그래프.html#cb529-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, </span>
-<span id="cb529-3"><a href="선-그래프와-시계열-그래프.html#cb529-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Time,                         </span>
-<span id="cb529-4"><a href="선-그래프와-시계열-그래프.html#cb529-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp,</span>
-<span id="cb529-5"><a href="선-그래프와-시계열-그래프.html#cb529-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> Month,                        </span>
-<span id="cb529-6"><a href="선-그래프와-시계열-그래프.html#cb529-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Month)) <span class="sc">+</span>                    </span>
-<span id="cb529-7"><a href="선-그래프와-시계열-그래프.html#cb529-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>,                 </span>
-<span id="cb529-8"><a href="선-그래프와-시계열-그래프.html#cb529-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb529-9"><a href="선-그래프와-시계열-그래프.html#cb529-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.5</span>,                     </span>
-<span id="cb529-10"><a href="선-그래프와-시계열-그래프.html#cb529-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">shape =</span> <span class="dv">19</span>) <span class="sc">+</span>                       </span>
-<span id="cb529-11"><a href="선-그래프와-시계열-그래프.html#cb529-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ylim</span>(<span class="dv">50</span>, <span class="fu">max</span>(airquality<span class="sc">$</span>Temp)) <span class="sc">+</span>             </span>
-<span id="cb529-12"><a href="선-그래프와-시계열-그래프.html#cb529-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;월별 시계열 그래프 : facet_grid() 함수 이용&quot;</span>)  <span class="sc">+</span></span>
-<span id="cb529-13"><a href="선-그래프와-시계열-그래프.html#cb529-13" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_grid</span>( . <span class="sc">~</span> Month)                                 <span class="co"># facet_grid() 함수 이용</span></span></code></pre></div>
+<div class="sourceCode" id="cb533"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb533-1"><a href="선-그래프와-시계열-그래프.html#cb533-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 월별 시계열 그래프 : facet_grid() 함수 이용</span></span>
+<span id="cb533-2"><a href="선-그래프와-시계열-그래프.html#cb533-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, </span>
+<span id="cb533-3"><a href="선-그래프와-시계열-그래프.html#cb533-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Time,                         </span>
+<span id="cb533-4"><a href="선-그래프와-시계열-그래프.html#cb533-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp,</span>
+<span id="cb533-5"><a href="선-그래프와-시계열-그래프.html#cb533-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> Month,                        </span>
+<span id="cb533-6"><a href="선-그래프와-시계열-그래프.html#cb533-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Month)) <span class="sc">+</span>                    </span>
+<span id="cb533-7"><a href="선-그래프와-시계열-그래프.html#cb533-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>,                 </span>
+<span id="cb533-8"><a href="선-그래프와-시계열-그래프.html#cb533-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb533-9"><a href="선-그래프와-시계열-그래프.html#cb533-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.5</span>,                     </span>
+<span id="cb533-10"><a href="선-그래프와-시계열-그래프.html#cb533-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">shape =</span> <span class="dv">19</span>) <span class="sc">+</span>                       </span>
+<span id="cb533-11"><a href="선-그래프와-시계열-그래프.html#cb533-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ylim</span>(<span class="dv">50</span>, <span class="fu">max</span>(airquality<span class="sc">$</span>Temp)) <span class="sc">+</span>             </span>
+<span id="cb533-12"><a href="선-그래프와-시계열-그래프.html#cb533-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;월별 시계열 그래프 : facet_grid() 함수 이용&quot;</span>)  <span class="sc">+</span></span>
+<span id="cb533-13"><a href="선-그래프와-시계열-그래프.html#cb533-13" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_grid</span>( . <span class="sc">~</span> Month)                                 <span class="co"># facet_grid() 함수 이용</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGTimeSeriesGroupFGrid-1"></span>
 <img src="bookdown_files/figure-html/GGTimeSeriesGroupFGrid-1.png" alt="월별 시계열 그래프 : facet_grid() 함수 이용" width="50%" />
 <p class="caption">
-Figure 13.26: 월별 시계열 그래프 : facet_grid() 함수 이용
+Figure 13.29: 월별 시계열 그래프 : facet_grid() 함수 이용
 </p>
 </div>
-<div class="sourceCode" id="cb530"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb530-1"><a href="선-그래프와-시계열-그래프.html#cb530-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 월별 시계열 그래프 : facet_grid() 함수 이용</span></span>
-<span id="cb530-2"><a href="선-그래프와-시계열-그래프.html#cb530-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, </span>
-<span id="cb530-3"><a href="선-그래프와-시계열-그래프.html#cb530-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Time,                         </span>
-<span id="cb530-4"><a href="선-그래프와-시계열-그래프.html#cb530-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp,</span>
-<span id="cb530-5"><a href="선-그래프와-시계열-그래프.html#cb530-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> Month,                        </span>
-<span id="cb530-6"><a href="선-그래프와-시계열-그래프.html#cb530-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Month)) <span class="sc">+</span>                    </span>
-<span id="cb530-7"><a href="선-그래프와-시계열-그래프.html#cb530-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>,                 </span>
-<span id="cb530-8"><a href="선-그래프와-시계열-그래프.html#cb530-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb530-9"><a href="선-그래프와-시계열-그래프.html#cb530-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.5</span>,                     </span>
-<span id="cb530-10"><a href="선-그래프와-시계열-그래프.html#cb530-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">shape =</span> <span class="dv">19</span>) <span class="sc">+</span>                       </span>
-<span id="cb530-11"><a href="선-그래프와-시계열-그래프.html#cb530-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ylim</span>(<span class="dv">50</span>, <span class="fu">max</span>(airquality<span class="sc">$</span>Temp)) <span class="sc">+</span>             </span>
-<span id="cb530-12"><a href="선-그래프와-시계열-그래프.html#cb530-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;월별 시계열 그래프 : facet_grid() 함수 이용&quot;</span>)  <span class="sc">+</span></span>
-<span id="cb530-13"><a href="선-그래프와-시계열-그래프.html#cb530-13" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_grid</span>(Month <span class="sc">~</span> .)                                 <span class="co"># facet_grid() 함수 이용</span></span></code></pre></div>
+<div class="sourceCode" id="cb534"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb534-1"><a href="선-그래프와-시계열-그래프.html#cb534-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 월별 시계열 그래프 : facet_grid() 함수 이용</span></span>
+<span id="cb534-2"><a href="선-그래프와-시계열-그래프.html#cb534-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, </span>
+<span id="cb534-3"><a href="선-그래프와-시계열-그래프.html#cb534-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Time,                         </span>
+<span id="cb534-4"><a href="선-그래프와-시계열-그래프.html#cb534-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp,</span>
+<span id="cb534-5"><a href="선-그래프와-시계열-그래프.html#cb534-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> Month,                        </span>
+<span id="cb534-6"><a href="선-그래프와-시계열-그래프.html#cb534-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Month)) <span class="sc">+</span>                    </span>
+<span id="cb534-7"><a href="선-그래프와-시계열-그래프.html#cb534-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>,                 </span>
+<span id="cb534-8"><a href="선-그래프와-시계열-그래프.html#cb534-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb534-9"><a href="선-그래프와-시계열-그래프.html#cb534-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.5</span>,                     </span>
+<span id="cb534-10"><a href="선-그래프와-시계열-그래프.html#cb534-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">shape =</span> <span class="dv">19</span>) <span class="sc">+</span>                       </span>
+<span id="cb534-11"><a href="선-그래프와-시계열-그래프.html#cb534-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ylim</span>(<span class="dv">50</span>, <span class="fu">max</span>(airquality<span class="sc">$</span>Temp)) <span class="sc">+</span>             </span>
+<span id="cb534-12"><a href="선-그래프와-시계열-그래프.html#cb534-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;월별 시계열 그래프 : facet_grid() 함수 이용&quot;</span>)  <span class="sc">+</span></span>
+<span id="cb534-13"><a href="선-그래프와-시계열-그래프.html#cb534-13" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_grid</span>(Month <span class="sc">~</span> .)                                 <span class="co"># facet_grid() 함수 이용</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGTimeSeriesGroupFGrid-2"></span>
 <img src="bookdown_files/figure-html/GGTimeSeriesGroupFGrid-2.png" alt="월별 시계열 그래프 : facet_grid() 함수 이용" width="50%" />
 <p class="caption">
-Figure 13.27: 월별 시계열 그래프 : facet_grid() 함수 이용
+Figure 13.30: 월별 시계열 그래프 : facet_grid() 함수 이용
 </p>
 </div>
 </div>
 <div id="facet_wrap-함수-이용-6" class="section level4" number="13.3.4.3">
 <h4><span class="header-section-number">13.3.4.3</span> <code>facet_wrap()</code> 함수 이용</h4>
-<div class="sourceCode" id="cb531"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb531-1"><a href="선-그래프와-시계열-그래프.html#cb531-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 월별 시계열 그래프 : facet_wrap() 함수 이용</span></span>
-<span id="cb531-2"><a href="선-그래프와-시계열-그래프.html#cb531-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, </span>
-<span id="cb531-3"><a href="선-그래프와-시계열-그래프.html#cb531-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Time,                         </span>
-<span id="cb531-4"><a href="선-그래프와-시계열-그래프.html#cb531-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp,</span>
-<span id="cb531-5"><a href="선-그래프와-시계열-그래프.html#cb531-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> Month,                        </span>
-<span id="cb531-6"><a href="선-그래프와-시계열-그래프.html#cb531-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Month)) <span class="sc">+</span>                    </span>
-<span id="cb531-7"><a href="선-그래프와-시계열-그래프.html#cb531-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>,                 </span>
-<span id="cb531-8"><a href="선-그래프와-시계열-그래프.html#cb531-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb531-9"><a href="선-그래프와-시계열-그래프.html#cb531-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.5</span>,                     </span>
-<span id="cb531-10"><a href="선-그래프와-시계열-그래프.html#cb531-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">shape =</span> <span class="dv">19</span>) <span class="sc">+</span>                       </span>
-<span id="cb531-11"><a href="선-그래프와-시계열-그래프.html#cb531-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ylim</span>(<span class="dv">50</span>, <span class="fu">max</span>(airquality<span class="sc">$</span>Temp)) <span class="sc">+</span>             </span>
-<span id="cb531-12"><a href="선-그래프와-시계열-그래프.html#cb531-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;월별 시계열 그래프 : facet_wrap() 함수 이용&quot;</span>)  <span class="sc">+</span></span>
-<span id="cb531-13"><a href="선-그래프와-시계열-그래프.html#cb531-13" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_wrap</span>( <span class="sc">~</span> Month)               <span class="co"># facet_wrap() 함수 이용</span></span></code></pre></div>
+<div class="sourceCode" id="cb535"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb535-1"><a href="선-그래프와-시계열-그래프.html#cb535-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 월별 시계열 그래프 : facet_wrap() 함수 이용</span></span>
+<span id="cb535-2"><a href="선-그래프와-시계열-그래프.html#cb535-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, </span>
+<span id="cb535-3"><a href="선-그래프와-시계열-그래프.html#cb535-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Time,                         </span>
+<span id="cb535-4"><a href="선-그래프와-시계열-그래프.html#cb535-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp,</span>
+<span id="cb535-5"><a href="선-그래프와-시계열-그래프.html#cb535-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> Month,                        </span>
+<span id="cb535-6"><a href="선-그래프와-시계열-그래프.html#cb535-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Month)) <span class="sc">+</span>                    </span>
+<span id="cb535-7"><a href="선-그래프와-시계열-그래프.html#cb535-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>,                 </span>
+<span id="cb535-8"><a href="선-그래프와-시계열-그래프.html#cb535-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb535-9"><a href="선-그래프와-시계열-그래프.html#cb535-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.5</span>,                     </span>
+<span id="cb535-10"><a href="선-그래프와-시계열-그래프.html#cb535-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">shape =</span> <span class="dv">19</span>) <span class="sc">+</span>                       </span>
+<span id="cb535-11"><a href="선-그래프와-시계열-그래프.html#cb535-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ylim</span>(<span class="dv">50</span>, <span class="fu">max</span>(airquality<span class="sc">$</span>Temp)) <span class="sc">+</span>             </span>
+<span id="cb535-12"><a href="선-그래프와-시계열-그래프.html#cb535-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;월별 시계열 그래프 : facet_wrap() 함수 이용&quot;</span>)  <span class="sc">+</span></span>
+<span id="cb535-13"><a href="선-그래프와-시계열-그래프.html#cb535-13" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_wrap</span>( <span class="sc">~</span> Month)               <span class="co"># facet_wrap() 함수 이용</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:GGTimeSeriesGroupFWrap"></span>
 <img src="bookdown_files/figure-html/GGTimeSeriesGroupFWrap-1.png" alt="월별 시계열 그래프 : facet_wrap() 함수 이용" width="672" />
 <p class="caption">
-Figure 13.28: 월별 시계열 그래프 : facet_wrap() 함수 이용
+Figure 13.31: 월별 시계열 그래프 : facet_wrap() 함수 이용
 </p>
 </div>
 <p><a href="선-그래프와-시계열-그래프.html#선-그래프와-시계열-그래프">Go Top</a></p>
 </div>
 </div>
-<div id="theme의-사용-5" class="section level3" number="13.3.5">
+<div id="theme의-사용-6" class="section level3" number="13.3.5">
 <h3><span class="header-section-number">13.3.5</span> Theme의 사용</h3>
 <p>히스토그램에서 <a href="gg히스토그램.html#UsignThemes">Theme을 사용</a>하였듯이, 시계열 그래프에서도 Theme을 사용할 수 있습니다.</p>
 <p>다음의 예는 앞서 작성한 <a href="선-그래프와-시계열-그래프.html#MonthlyTimeSeries">월별 시계열 그래프</a>에 <a href="gg히스토그램.html#UsignThemes">히스토그램에서 Theme으로 사용</a>한 <code>ggplot2::theme_classic() +</code> 이하 부분을 <strong>복사해서 붙여 넣기</strong>한 것입니다.</p>
-<div class="sourceCode" id="cb532"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb532-1"><a href="선-그래프와-시계열-그래프.html#cb532-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 웗별 시계열 그래프 : Theme의 사용</span></span>
-<span id="cb532-2"><a href="선-그래프와-시계열-그래프.html#cb532-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, </span>
-<span id="cb532-3"><a href="선-그래프와-시계열-그래프.html#cb532-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Time,                         </span>
-<span id="cb532-4"><a href="선-그래프와-시계열-그래프.html#cb532-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp,</span>
-<span id="cb532-5"><a href="선-그래프와-시계열-그래프.html#cb532-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> Month,                         </span>
-<span id="cb532-6"><a href="선-그래프와-시계열-그래프.html#cb532-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Month)) <span class="sc">+</span>                     </span>
-<span id="cb532-7"><a href="선-그래프와-시계열-그래프.html#cb532-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>,                 </span>
-<span id="cb532-8"><a href="선-그래프와-시계열-그래프.html#cb532-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb532-9"><a href="선-그래프와-시계열-그래프.html#cb532-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.5</span>,                     </span>
-<span id="cb532-10"><a href="선-그래프와-시계열-그래프.html#cb532-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">shape =</span> <span class="dv">19</span>) <span class="sc">+</span>                       </span>
-<span id="cb532-11"><a href="선-그래프와-시계열-그래프.html#cb532-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ylim</span>(<span class="dv">50</span>, <span class="fu">max</span>(airquality<span class="sc">$</span>Temp)) <span class="sc">+</span>             </span>
-<span id="cb532-12"><a href="선-그래프와-시계열-그래프.html#cb532-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;웗별 시계열 그래프 : Theme의 사용&quot;</span>)  <span class="sc">+</span></span>
-<span id="cb532-13"><a href="선-그래프와-시계열-그래프.html#cb532-13" aria-hidden="true" tabindex="-1"></a>   ggplot2<span class="sc">::</span><span class="fu">theme_classic</span>() <span class="sc">+</span>                                         <span class="co"># 그래프 테마 지정</span></span>
-<span id="cb532-14"><a href="선-그래프와-시계열-그래프.html#cb532-14" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
-<span id="cb532-15"><a href="선-그래프와-시계열-그래프.html#cb532-15" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;italic&quot;</span>, </span>
-<span id="cb532-16"><a href="선-그래프와-시계열-그래프.html#cb532-16" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
-<span id="cb532-17"><a href="선-그래프와-시계열-그래프.html#cb532-17" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
-<span id="cb532-18"><a href="선-그래프와-시계열-그래프.html#cb532-18" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
-<span id="cb532-19"><a href="선-그래프와-시계열-그래프.html#cb532-19" aria-hidden="true" tabindex="-1"></a>                 <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
-<span id="cb532-20"><a href="선-그래프와-시계열-그래프.html#cb532-20" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;bold.italic&quot;</span>, </span>
-<span id="cb532-21"><a href="선-그래프와-시계열-그래프.html#cb532-21" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
-<span id="cb532-22"><a href="선-그래프와-시계열-그래프.html#cb532-22" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
-<span id="cb532-23"><a href="선-그래프와-시계열-그래프.html#cb532-23" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span>       <span class="co"># X축과 Y축의 서식 스타일 지정</span></span>
-<span id="cb532-24"><a href="선-그래프와-시계열-그래프.html#cb532-24" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)              <span class="co"># Y 값의 천단위에 콤마 표시</span></span></code></pre></div>
+<div class="sourceCode" id="cb536"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb536-1"><a href="선-그래프와-시계열-그래프.html#cb536-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 웗별 시계열 그래프 : Theme의 사용</span></span>
+<span id="cb536-2"><a href="선-그래프와-시계열-그래프.html#cb536-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, </span>
+<span id="cb536-3"><a href="선-그래프와-시계열-그래프.html#cb536-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Time,                         </span>
+<span id="cb536-4"><a href="선-그래프와-시계열-그래프.html#cb536-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> Temp,</span>
+<span id="cb536-5"><a href="선-그래프와-시계열-그래프.html#cb536-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> Month,                         </span>
+<span id="cb536-6"><a href="선-그래프와-시계열-그래프.html#cb536-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> Month)) <span class="sc">+</span>                     </span>
+<span id="cb536-7"><a href="선-그래프와-시계열-그래프.html#cb536-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>,                 </span>
+<span id="cb536-8"><a href="선-그래프와-시계열-그래프.html#cb536-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb536-9"><a href="선-그래프와-시계열-그래프.html#cb536-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.5</span>,                     </span>
+<span id="cb536-10"><a href="선-그래프와-시계열-그래프.html#cb536-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">shape =</span> <span class="dv">19</span>) <span class="sc">+</span>                       </span>
+<span id="cb536-11"><a href="선-그래프와-시계열-그래프.html#cb536-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ylim</span>(<span class="dv">50</span>, <span class="fu">max</span>(airquality<span class="sc">$</span>Temp)) <span class="sc">+</span>             </span>
+<span id="cb536-12"><a href="선-그래프와-시계열-그래프.html#cb536-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggtitle</span>(<span class="st">&quot;웗별 시계열 그래프 : Theme의 사용&quot;</span>)  <span class="sc">+</span></span>
+<span id="cb536-13"><a href="선-그래프와-시계열-그래프.html#cb536-13" aria-hidden="true" tabindex="-1"></a>   ggplot2<span class="sc">::</span><span class="fu">theme_classic</span>() <span class="sc">+</span>                                         <span class="co"># 그래프 테마 지정</span></span>
+<span id="cb536-14"><a href="선-그래프와-시계열-그래프.html#cb536-14" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
+<span id="cb536-15"><a href="선-그래프와-시계열-그래프.html#cb536-15" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;italic&quot;</span>, </span>
+<span id="cb536-16"><a href="선-그래프와-시계열-그래프.html#cb536-16" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
+<span id="cb536-17"><a href="선-그래프와-시계열-그래프.html#cb536-17" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb536-18"><a href="선-그래프와-시계열-그래프.html#cb536-18" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb536-19"><a href="선-그래프와-시계열-그래프.html#cb536-19" aria-hidden="true" tabindex="-1"></a>                 <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size  =</span> <span class="dv">10</span>, </span>
+<span id="cb536-20"><a href="선-그래프와-시계열-그래프.html#cb536-20" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">face  =</span> <span class="st">&quot;bold.italic&quot;</span>, </span>
+<span id="cb536-21"><a href="선-그래프와-시계열-그래프.html#cb536-21" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>, </span>
+<span id="cb536-22"><a href="선-그래프와-시계열-그래프.html#cb536-22" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb536-23"><a href="선-그래프와-시계열-그래프.html#cb536-23" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span>       <span class="co"># X축과 Y축의 서식 스타일 지정</span></span>
+<span id="cb536-24"><a href="선-그래프와-시계열-그래프.html#cb536-24" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)              <span class="co"># Y 값의 천단위에 콤마 표시</span></span></code></pre></div>
 <pre><code>## Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which will
 ## replace the existing scale.</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:GGTimeSeriesTheme"></span>
 <img src="bookdown_files/figure-html/GGTimeSeriesTheme-1.png" alt="웗별 시계열 그래프 : Theme의 사용" width="672" />
 <p class="caption">
-Figure 13.29: 웗별 시계열 그래프 : Theme의 사용
+Figure 13.32: 웗별 시계열 그래프 : Theme의 사용
 </p>
 </div>
 <p><a href="선-그래프와-시계열-그래프.html#선-그래프와-시계열-그래프">Go Top</a></p>

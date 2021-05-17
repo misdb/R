@@ -415,6 +415,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.1" data-path="버블-그래프.html"><a href="버블-그래프.html#데이터-세트-8"><i class="fa fa-check"></i><b>13.2.1</b> 데이터 세트</a></li>
 <li class="chapter" data-level="13.2.2" data-path="버블-그래프.html"><a href="버블-그래프.html#기본-버블-그래프"><i class="fa fa-check"></i><b>13.2.2</b> 기본 버블 그래프</a></li>
 <li class="chapter" data-level="13.2.3" data-path="버블-그래프.html"><a href="버블-그래프.html#텍스트-레이블-추가"><i class="fa fa-check"></i><b>13.2.3</b> 텍스트 레이블 추가</a></li>
+<li class="chapter" data-level="13.2.4" data-path="버블-그래프.html"><a href="버블-그래프.html#그룹별-버블-그래프-그리기"><i class="fa fa-check"></i><b>13.2.4</b> 그룹별 버블 그래프 그리기</a></li>
+<li class="chapter" data-level="13.2.5" data-path="버블-그래프.html"><a href="버블-그래프.html#theme의-사용-5"><i class="fa fa-check"></i><b>13.2.5</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html"><i class="fa fa-check"></i><b>13.3</b> 선 그래프와 시계열 그래프</a>
 <ul>
@@ -422,7 +424,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3.2" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#기본-선-그래프-그리기"><i class="fa fa-check"></i><b>13.3.2</b> 기본 선 그래프 그리기</a></li>
 <li class="chapter" data-level="13.3.3" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#시계열-그래프의-옵션-설정하기"><i class="fa fa-check"></i><b>13.3.3</b> 시계열 그래프의 옵션 설정하기</a></li>
 <li class="chapter" data-level="13.3.4" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#그룹별-시계열-그래프-그리기"><i class="fa fa-check"></i><b>13.3.4</b> 그룹별 시계열 그래프 그리기</a></li>
-<li class="chapter" data-level="13.3.5" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#theme의-사용-5"><i class="fa fa-check"></i><b>13.3.5</b> Theme의 사용</a></li>
+<li class="chapter" data-level="13.3.5" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#theme의-사용-6"><i class="fa fa-check"></i><b>13.3.5</b> Theme의 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="13.4" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html"><i class="fa fa-check"></i><b>13.4</b> 이차원 밀도 그래프</a>
 <ul>
@@ -558,12 +560,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="slider-control" class="section level2" number="16.3">
 <h2><span class="header-section-number">16.3</span> Slider Control</h2>
 <p><code>slider(start point, end point, step= , initial = )</code> 의 형태로 슬라이더 조작 옵션을 설정하고, 이 옵션 객체를 그래프의 조작하고자 하는 부분에 할당을 하면 됩니다. 말이 좀 어려운데요, 아래 히스토그램에서 Bin size 를 3부터 100까지의 범위 내에서 5 씩 증가하게끔 해놓고, 처음 만들어졌을 때의 디폴트는 20으로 설정한 예제입니다. 동적 그래프의 특성을 직관적으로 이해할 수 있도록 화면캡쳐와 함께 동영상 캡쳐도 해서 올립니다. 왼쪽의 슬라이드 바를 좌우로 조절할 때마다 우측 plots 창의 히스토그램이 어떻게 바뀌는지 확인해보기 바랍니다.</p>
-<div class="sourceCode" id="cb748"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb748-1"><a href="slider-control.html#cb748-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb748-2"><a href="slider-control.html#cb748-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Slider Control</span></span>
-<span id="cb748-3"><a href="slider-control.html#cb748-3" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb748-4"><a href="slider-control.html#cb748-4" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
-<span id="cb748-5"><a href="slider-control.html#cb748-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(Cars93<span class="sc">$</span>Price, <span class="at">breaks =</span> bin_slider),  </span>
-<span id="cb748-6"><a href="slider-control.html#cb748-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">bin_slider=</span><span class="fu">slider</span>(<span class="dv">3</span>,<span class="dv">100</span>, <span class="at">step=</span><span class="dv">5</span>, <span class="at">initial =</span> <span class="dv">20</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb752"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb752-1"><a href="slider-control.html#cb752-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb752-2"><a href="slider-control.html#cb752-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Slider Control</span></span>
+<span id="cb752-3"><a href="slider-control.html#cb752-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb752-4"><a href="slider-control.html#cb752-4" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
+<span id="cb752-5"><a href="slider-control.html#cb752-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(Cars93<span class="sc">$</span>Price, <span class="at">breaks =</span> bin_slider),  </span>
+<span id="cb752-6"><a href="slider-control.html#cb752-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">bin_slider=</span><span class="fu">slider</span>(<span class="dv">3</span>,<span class="dv">100</span>, <span class="at">step=</span><span class="dv">5</span>, <span class="at">initial =</span> <span class="dv">20</span>))</span></code></pre></div>
 <pre><code>## Error in manipulate(hist(Cars93$Price, breaks = bin_slider), bin_slider = slider(3, : The manipulate package must be run from within RStudio</code></pre>
 </div>
             </section>
