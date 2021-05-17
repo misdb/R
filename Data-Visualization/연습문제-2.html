@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>14.1 레이더 차트(radar chart), or 거미줄 그림(spider plot) | Data Visualization with R</title>
+  <title>연습문제 | Data Visualization with R</title>
   <meta name="description" content="The output format for book is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="14.1 레이더 차트(radar chart), or 거미줄 그림(spider plot) | Data Visualization with R" />
+  <meta property="og:title" content="연습문제 | Data Visualization with R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="14.1 레이더 차트(radar chart), or 거미줄 그림(spider plot) | Data Visualization with R" />
+  <meta name="twitter:title" content="연습문제 | Data Visualization with R" />
   
   <meta name="twitter:description" content="The output format for book is bookdown::gitbook." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="개-이상-변수의-다변량-그래프.html"/>
-<link rel="next" href="별-그래프.html"/>
+<link rel="prev" href="범주형-데이터요인의-수준-순서-바꾸기.html"/>
+<link rel="next" href="다변량-변수-범주형-데이터.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -562,175 +562,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="레이더-차트radar-chart-or-거미줄-그림spider-plot" class="section level2" number="14.1">
-<h2><span class="header-section-number">14.1</span> 레이더 차트(radar chart), or 거미줄 그림(spider plot)</h2>
-<p>이번 포스팅에서는 <strong>(1) 레이더 차트 (radar chart)</strong>에 대해서 소개하겠습니다. 방사형의 레이더 차트가 마치 거미줄을 닮아서 <strong>거미줄 그림 (spider plot)</strong>이라고도 부릅니다.</p>
-<p><strong>별 그림 (star plot)</strong> 도 레이더 차트와 형태는 거의 유사한데요, 약간 현태가 다른 점이 있고 <code>stars</code> 라는 R 패키지가 별도로 있고 해서 다음번에 따로 설명을 드리겠습니다.</p>
-<div id="데이터-세트-15" class="section level3" number="14.1.1">
-<h3><span class="header-section-number">14.1.1</span> 데이터 세트</h3>
-<p>R 실습에 사용할 데이터는 <code>MASS</code> 패키지에 내장되어 있는 <code>Cars93</code> 데이터프레임입니다. 분석 대상 변수로는 <code>차 유형(Type)</code>, <code>가격(Price)</code>, <code>고속도로연비(MPG.highway)</code>, <code>마력(Horsepower)</code>, <code>분당회전수RPM(RPM)</code>, <code>길이(Length)</code>, <code>무게(Weight)</code> 등의 7개 변수입니다.</p>
-<div class="sourceCode" id="cb665"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb665-1"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb665-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb665-2"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb665-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
-<pre class="bg-warning"><code>## &#39;data.frame&#39;:    93 obs. of  27 variables:
-##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
-##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
-##  $ Type              : Factor w/ 6 levels &quot;Compact&quot;,&quot;Large&quot;,..: 4 3 1 3 3 3 2 2 3 2 ...
-##  $ Min.Price         : num  12.9 29.2 25.9 30.8 23.7 14.2 19.9 22.6 26.3 33 ...
-##  $ Price             : num  15.9 33.9 29.1 37.7 30 15.7 20.8 23.7 26.3 34.7 ...
-##  $ Max.Price         : num  18.8 38.7 32.3 44.6 36.2 17.3 21.7 24.9 26.3 36.3 ...
-##  $ MPG.city          : int  25 18 20 19 22 22 19 16 19 16 ...
-##  $ MPG.highway       : int  31 25 26 26 30 31 28 25 27 25 ...
-##  $ AirBags           : Factor w/ 3 levels &quot;Driver &amp; Passenger&quot;,..: 3 1 2 1 2 2 2 2 2 2 ...
-##  $ DriveTrain        : Factor w/ 3 levels &quot;4WD&quot;,&quot;Front&quot;,..: 2 2 2 2 3 2 2 3 2 2 ...
-##  $ Cylinders         : Factor w/ 6 levels &quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,..: 2 4 4 4 2 2 4 4 4 5 ...
-##  $ EngineSize        : num  1.8 3.2 2.8 2.8 3.5 2.2 3.8 5.7 3.8 4.9 ...
-##  $ Horsepower        : int  140 200 172 172 208 110 170 180 170 200 ...
-##  $ RPM               : int  6300 5500 5500 5500 5700 5200 4800 4000 4800 4100 ...
-##  $ Rev.per.mile      : int  2890 2335 2280 2535 2545 2565 1570 1320 1690 1510 ...
-##  $ Man.trans.avail   : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 1 1 1 1 1 ...
-##  $ Fuel.tank.capacity: num  13.2 18 16.9 21.1 21.1 16.4 18 23 18.8 18 ...
-##  $ Passengers        : int  5 5 5 6 4 6 6 6 5 6 ...
-##  $ Length            : int  177 195 180 193 186 189 200 216 198 206 ...
-##  $ Wheelbase         : int  102 115 102 106 109 105 111 116 108 114 ...
-##  $ Width             : int  68 71 67 70 69 69 74 78 73 73 ...
-##  $ Turn.circle       : int  37 38 37 37 39 41 42 45 41 43 ...
-##  $ Rear.seat.room    : num  26.5 30 28 31 27 28 30.5 30.5 26.5 35 ...
-##  $ Luggage.room      : int  11 15 14 17 13 16 17 21 14 18 ...
-##  $ Weight            : int  2705 3560 3375 3405 3640 2880 3470 4105 3495 3620 ...
-##  $ Origin            : Factor w/ 2 levels &quot;USA&quot;,&quot;non-USA&quot;: 2 2 2 2 2 1 1 1 1 1 ...
-##  $ Make              : Factor w/ 93 levels &quot;Acura Integra&quot;,..: 1 2 4 3 5 6 7 9 8 10 ...</code></pre>
-</div>
-<div id="데이터-전처리-1" class="section level3" number="14.1.2">
-<h3><span class="header-section-number">14.1.2</span> 데이터 전처리</h3>
-<div id="차-유형별-분할표-작성" class="section level4" number="14.1.2.1">
-<h4><span class="header-section-number">14.1.2.1</span> 차 유형별 분할표 작성</h4>
-<p>먼저 <code>table()</code> 함수를 사용하여 차 유형별 분할표를 만들어보았습니다. 6종류의 <code>차 유형</code>별로 10~20여대씩 분포하고 있음을 알 수 있습니다.</p>
-<div class="sourceCode" id="cb667"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb667-1"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb667-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cross tabulation by car type</span></span>
-<span id="cb667-2"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb667-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Cars93<span class="sc">$</span>Type)</span></code></pre></div>
-<pre class="bg-warning"><code>## 
-## Compact   Large Midsize   Small  Sporty     Van 
-##      16      11      22      21      14       9</code></pre>
-</div>
-<div id="차-유형별-평균-구하기" class="section level4" number="14.1.2.2">
-<h4><span class="header-section-number">14.1.2.2</span> 차 유형별 평균 구하기</h4>
-<p>다음으로, <code>차 유형(Type)</code>별로 <code>가격(Price)</code>, <code>고속도로연비(MPG.highway)</code>, <code>마력(Housepower)</code>, <code>분당회전수RPM(RPM)</code>, <code>길이(Length)</code>, <code>무게(Weight)</code> 등 6개 변수별 <strong>평균(mean)</strong>을 구해보겠습니다.</p>
-<p><code>doBy</code> package 의 <code>summaryBy()</code> 함수를 사용하면 연속형변수의 다변량 데이터에 일괄적으로 요약통계량을 편리하게 계산할 수 있습니다. <code>Base</code> package가 아니므로 <code>install.packages("doBy")</code>로 설치하시고, <code>library(doBy)</code>로 호출한 후에 <code>summaryBy()</code> 함수의 <code>FUN = c(mean, min, max, sd, ...)</code> 처럼 원하는 통계량 함수를 입력하면 됩니다. 이번에는 평균만 사용할 것이므로 아래 예에서는 <code>FUN = c(mean)</code> 만 입력하였습니다.</p>
-<div class="sourceCode" id="cb669"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb669-1"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb669-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mean of multivariates by Car Type</span></span>
-<span id="cb669-2"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb669-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;doBy&quot;)</span></span>
-<span id="cb669-3"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb669-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(doBy)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;doBy&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
-## 
-##     order_by</code></pre>
-<div class="sourceCode" id="cb672"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb672-1"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb672-1" aria-hidden="true" tabindex="-1"></a>mean_by_Type <span class="ot">&lt;-</span> <span class="fu">summaryBy</span>(MPG.highway <span class="sc">+</span> RPM <span class="sc">+</span> Horsepower <span class="sc">+</span> Weight <span class="sc">+</span> Length <span class="sc">+</span> Price <span class="sc">~</span> Type, </span>
-<span id="cb672-2"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb672-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">data=</span>Cars93, </span>
-<span id="cb672-3"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb672-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">FUN =</span> <span class="fu">c</span>(mean))</span>
-<span id="cb672-4"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb672-4" aria-hidden="true" tabindex="-1"></a>mean_by_Type</span></code></pre></div>
-<pre class="bg-warning"><code>##      Type MPG.highway.mean RPM.mean Horsepower.mean Weight.mean Length.mean
-## 1 Compact               30     5362             131        2918         182
-## 2   Large               27     4673             179        3695         205
-## 3 Midsize               27     5336             173        3400         193
-## 4   Small               35     5633              91        2313         167
-## 5  Sporty               29     5393             160        2900         175
-## 6     Van               22     4744             149        3831         186
-##   Price.mean
-## 1         18
-## 2         24
-## 3         27
-## 4         10
-## 5         19
-## 6         19</code></pre>
-</div>
-</div>
-<div id="레이더-차트-그리기" class="section level3" number="14.1.3">
-<h3><span class="header-section-number">14.1.3</span> 레이더 차트 그리기</h3>
-<div id="패키지-설치-2" class="section level4" number="14.1.3.1">
-<h4><span class="header-section-number">14.1.3.1</span> 패키지 설치</h4>
-<p>다음으로, 레이더 차트(radar chart)를 그리려면 <code>fmsb</code> Package 를 사용합니다. <code>install.packages("fmsb")</code>로 설치하고, <code>library(fmsb)</code>로 호출해보겠습니다.</p>
-<div class="sourceCode" id="cb674"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb674-1"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb674-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;fmsb&quot;)</span></span>
-<span id="cb674-2"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb674-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fmsb)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;fmsb&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:vcd&#39;:
-## 
-##     oddsratio</code></pre>
-</div>
-<div id="radarchart-함수" class="section level4" number="14.1.3.2">
-<h4><span class="header-section-number">14.1.3.2</span> <code>radarchart()</code> 함수</h4>
-<p><code>fmsb</code> Package의 <code>radarchart()</code> 함수를 사용하기 위한 데이터 형태는</p>
+<div id="연습문제-2" class="section level2 unnumbered">
+<h2>연습문제</h2>
+<div id="section" class="section level3 unnumbered">
+<h3>1.</h3>
+<p>Cars93 데이터 세트에서 다음의</p>
+<ul>
+<li>MPG.highway</li>
+<li>EngineSize</li>
+<li>Horsepower</li>
+<li>Fuel.tank.capacity</li>
+</ul>
+<p>등의 숫자형 변수를</p>
 <ol style="list-style-type: decimal">
-<li><p>데이터 구조는 Dataframe</p></li>
-<li><p>첫번째 행(1st row)에 최대값(max value)</p></li>
-<li><p>두번째 행(2nd row)에 최소값(min value)</p></li>
-<li><p>세번째 행부터는 원래의 관측값</p></li>
+<li>히스토그램</li>
+<li>커널 밀도 곡선</li>
+<li>박스 그래프</li>
+<li>바이올린 그래프 등에서 학습한 것에 적용하여 시각화하시오.</li>
 </ol>
-<p>이 오도록 데이터를 전처리해주어야 합니다.</p>
 </div>
-<div id="radrchart-함수를-사용하기-위한-데이터-준비" class="section level4" number="14.1.3.3">
-<h4><span class="header-section-number">14.1.3.3</span> <code>radrchart()</code> 함수를 사용하기 위한 데이터 준비</h4>
-<p><strong>[ fmsb Package의 radrchart() 함수 사용하기 위한 데이터 준비 ]</strong></p>
-<p><img src="images/22680B4F56BC10DA15.png" alt="img" style="zoom:100%;" /></p>
-<div id="사용자-정의-함수-만들기-1" class="section level5" number="14.1.3.3.1">
-<h5><span class="header-section-number">14.1.3.3.1</span> 사용자 정의 함수 만들기</h5>
-<p>R 사용자정의함수로 첫번째 행에 최대값, 두번째 행에 최소값이 오도록 하여 Dataframe으로 묶는 명령어는 아래와 같습니다.</p>
-<div class="sourceCode" id="cb677"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb677-1"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb677-1" aria-hidden="true" tabindex="-1"></a><span class="co"># manipulating dataset for radar chart</span></span>
-<span id="cb677-2"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb677-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data frame includes possible maximum values as row 1 </span></span>
-<span id="cb677-3"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb677-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and possible minimum values as row 2</span></span>
-<span id="cb677-4"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb677-4" aria-hidden="true" tabindex="-1"></a>df_radarchart <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
-<span id="cb677-5"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb677-5" aria-hidden="true" tabindex="-1"></a>   df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(df)</span>
-<span id="cb677-6"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb677-6" aria-hidden="true" tabindex="-1"></a>   dfmax <span class="ot">&lt;-</span> <span class="fu">apply</span>(df, <span class="dv">2</span>, max) </span>
-<span id="cb677-7"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb677-7" aria-hidden="true" tabindex="-1"></a>   dfmin <span class="ot">&lt;-</span> <span class="fu">apply</span>(df, <span class="dv">2</span>, min) </span>
-<span id="cb677-8"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb677-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">as.data.frame</span>(<span class="fu">rbind</span>(dfmax, dfmin, df))</span>
-<span id="cb677-9"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb677-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-</div>
-<div id="변수의-표준화" class="section level5" number="14.1.3.3.2">
-<h5><span class="header-section-number">14.1.3.3.2</span> 변수의 표준화</h5>
-<p>사용자정의함수에 더하여 <code>scale()</code> 함수를 사용해서 6개의 변수를 <strong>표준화</strong> 하였습니다.</p>
-<div class="sourceCode" id="cb678"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb678-1"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb678-1" aria-hidden="true" tabindex="-1"></a><span class="co"># maximum value as row 1, minimum value as row 2 : user-defined function df_radarchart</span></span>
-<span id="cb678-2"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb678-2" aria-hidden="true" tabindex="-1"></a><span class="co"># standardization : scale()</span></span>
-<span id="cb678-3"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb678-3" aria-hidden="true" tabindex="-1"></a>mean_by_Type_scale <span class="ot">&lt;-</span> <span class="fu">df_radarchart</span>(<span class="fu">scale</span>(mean_by_Type[,<span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>)]))</span>
-<span id="cb678-4"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb678-4" aria-hidden="true" tabindex="-1"></a>mean_by_Type_scale</span></code></pre></div>
-<pre class="bg-warning"><code>##    MPG.highway.mean RPM.mean Horsepower.mean Weight.mean Length.mean Price.mean
-## 1              1.61     1.14           0.986        1.14       1.533      1.279
-## 2             -1.42    -1.33          -1.730       -1.51      -1.319     -1.634
-## 11             0.36     0.44          -0.502       -0.45      -0.187     -0.260
-## 21            -0.34    -1.33           0.986        0.91       1.533      0.781
-## 3             -0.34     0.38           0.790        0.39       0.603      1.279
-## 4              1.61     1.14          -1.730       -1.51      -1.319     -1.634
-## 5              0.12     0.52           0.393       -0.48      -0.711     -0.058
-## 6             -1.42    -1.15           0.064        1.14       0.081     -0.108</code></pre>
+<div id="section-1" class="section level3 unnumbered">
+<h3>2.</h3>
+<p>그룹별 그래프 작성시에는 <strong>자동차 유형(<code>Type</code>)</strong> 변수를 그룹 변수로 사용하시오.</p>
+
 </div>
 </div>
-<div id="레이더-차트-그리기-1" class="section level4" number="14.1.3.4">
-<h4><span class="header-section-number">14.1.3.4</span> 레이더 차트 그리기</h4>
-<p>드디어 <code>radarchart()</code> 함수를 사용해서 레이더 차트를 그려보겠습니다. 각 옵션에 대한 기능은 아래 R 명령어에 부가설명을 달아놓았습니다.</p>
-<p>범례는 <code>legend()</code> 함수를 사용해서 왼쪽 상단에 추가하였습니다.</p>
-<div class="sourceCode" id="cb680"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb680-1"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb680-1" aria-hidden="true" tabindex="-1"></a><span class="co"># radar chart (or spider plot)</span></span>
-<span id="cb680-2"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb680-2" aria-hidden="true" tabindex="-1"></a><span class="fu">radarchart</span>(<span class="at">df =</span> mean_by_Type_scale, <span class="co"># The data frame to be used to draw radarchart</span></span>
-<span id="cb680-3"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb680-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">seg =</span> <span class="dv">6</span>, <span class="co"># The number of segments for each axis </span></span>
-<span id="cb680-4"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb680-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">pty =</span> <span class="dv">16</span>, <span class="co"># A vector to specify point symbol: Default 16 (closed circle)</span></span>
-<span id="cb680-5"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb680-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">pcol =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="co"># A vector of color codes for plot data</span></span>
-<span id="cb680-6"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb680-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">plty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="co"># A vector of line types for plot data</span></span>
-<span id="cb680-7"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb680-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">plwd =</span> <span class="dv">2</span>, <span class="co"># A vector of line widths for plot data</span></span>
-<span id="cb680-8"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb680-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">title =</span> <span class="fu">c</span>(<span class="st">&quot;radar chart by Car Types&quot;</span>) <span class="co"># putting title at the top-middle</span></span>
-<span id="cb680-9"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb680-9" aria-hidden="true" tabindex="-1"></a>            )</span>
-<span id="cb680-10"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb680-10" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb680-11"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb680-11" aria-hidden="true" tabindex="-1"></a><span class="co"># adding legend</span></span>
-<span id="cb680-12"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#cb680-12" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> mean_by_Type<span class="sc">$</span>Type, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>), <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-90-1.png" width="672" /></p>
-<p>선의 형태(<code>plty</code>)나 선의 색깔(<code>pcol</code>)을 프로그래밍 편하라고 <code>1:6</code> 이라고 했는데요, 원하는 선 모양이나 색깔을 순서대로 지정할 수 있습니다.</p>
-<p>다음번 포스팅에서는 <strong>별 그림(star graph)</strong>에 대해서 알아보겠습니다.</p>
-</div>
-</div>
-</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="개-이상-변수의-다변량-그래프.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="별-그래프.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="범주형-데이터요인의-수준-순서-바꾸기.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="다변량-변수-범주형-데이터.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
