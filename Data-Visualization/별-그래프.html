@@ -563,8 +563,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="데이터-세트-16" class="section level3" number="14.2.1">
 <h3><span class="header-section-number">14.2.1</span> 데이터 세트</h3>
 <p>실습을 위해서 <code>MASS</code> Package에 내장된 <code>Cars93</code> dataframe을 사용하겠습니다. 이전 포스팅 레이더 차트(radar chart) 와 비교하기 쉽도록 이번에도 <code>차종(Type)</code>, <code>가격(Price)</code>, <code>고속도로연비(MPG.highway)</code>, <code>마력(Horsepower)</code>, <code>분당회전수(RPM)</code>, <code>길이(Length)</code>, <code>무게(Weight)</code> 의 7개 변수를 똑같이 사용하겠습니다.</p>
-<div class="sourceCode" id="cb686"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb686-1"><a href="별-그래프.html#cb686-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
-<span id="cb686-2"><a href="별-그래프.html#cb686-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb677"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb677-1"><a href="별-그래프.html#cb677-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
+<span id="cb677-2"><a href="별-그래프.html#cb677-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
 <pre class="bg-warning"><code>## &#39;data.frame&#39;:    93 obs. of  27 variables:
 ##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
 ##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
@@ -599,19 +599,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="요약-통계량-구하기" class="section level4" number="14.2.2.1">
 <h4><span class="header-section-number">14.2.2.1</span> 요약 통계량 구하기</h4>
 <p>93개의 차량 관측치가 있는데요, 이것을 6개의 <code>차종(Type)</code>을 기준으로 <strong>평균 통계량</strong>으로 요약한 후에, 차종별로 6개의 평균치 다변량 변수를 가지고 별 그래프를 그려보겠습니다.</p>
-<div class="sourceCode" id="cb688"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb688-1"><a href="별-그래프.html#cb688-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cross tabulation by Car Type</span></span>
-<span id="cb688-2"><a href="별-그래프.html#cb688-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Cars93<span class="sc">$</span>Type)</span></code></pre></div>
+<div class="sourceCode" id="cb679"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb679-1"><a href="별-그래프.html#cb679-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cross tabulation by Car Type</span></span>
+<span id="cb679-2"><a href="별-그래프.html#cb679-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Cars93<span class="sc">$</span>Type)</span></code></pre></div>
 <pre class="bg-warning"><code>## 
 ## Compact   Large Midsize   Small  Sporty     Van 
 ##      16      11      22      21      14       9</code></pre>
-<div class="sourceCode" id="cb690"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb690-1"><a href="별-그래프.html#cb690-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mean of multivariates by Car Type</span></span>
-<span id="cb690-2"><a href="별-그래프.html#cb690-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;doBy&quot;)</span></span>
-<span id="cb690-3"><a href="별-그래프.html#cb690-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(doBy)</span>
-<span id="cb690-4"><a href="별-그래프.html#cb690-4" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb690-5"><a href="별-그래프.html#cb690-5" aria-hidden="true" tabindex="-1"></a>mean_by_Type <span class="ot">&lt;-</span> <span class="fu">summaryBy</span>(MPG.highway <span class="sc">+</span> RPM <span class="sc">+</span> Horsepower <span class="sc">+</span> Weight <span class="sc">+</span> Length <span class="sc">+</span> Price <span class="sc">~</span> Type, </span>
-<span id="cb690-6"><a href="별-그래프.html#cb690-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data=</span>Cars93, </span>
-<span id="cb690-7"><a href="별-그래프.html#cb690-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">FUN =</span> <span class="fu">c</span>(mean))</span>
-<span id="cb690-8"><a href="별-그래프.html#cb690-8" aria-hidden="true" tabindex="-1"></a>mean_by_Type</span></code></pre></div>
+<div class="sourceCode" id="cb681"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb681-1"><a href="별-그래프.html#cb681-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mean of multivariates by Car Type</span></span>
+<span id="cb681-2"><a href="별-그래프.html#cb681-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;doBy&quot;)</span></span>
+<span id="cb681-3"><a href="별-그래프.html#cb681-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(doBy)</span>
+<span id="cb681-4"><a href="별-그래프.html#cb681-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb681-5"><a href="별-그래프.html#cb681-5" aria-hidden="true" tabindex="-1"></a>mean_by_Type <span class="ot">&lt;-</span> <span class="fu">summaryBy</span>(MPG.highway <span class="sc">+</span> RPM <span class="sc">+</span> Horsepower <span class="sc">+</span> Weight <span class="sc">+</span> Length <span class="sc">+</span> Price <span class="sc">~</span> Type, </span>
+<span id="cb681-6"><a href="별-그래프.html#cb681-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data=</span>Cars93, </span>
+<span id="cb681-7"><a href="별-그래프.html#cb681-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">FUN =</span> <span class="fu">c</span>(mean))</span>
+<span id="cb681-8"><a href="별-그래프.html#cb681-8" aria-hidden="true" tabindex="-1"></a>mean_by_Type</span></code></pre></div>
 <pre class="bg-warning"><code>##      Type MPG.highway.mean RPM.mean Horsepower.mean Weight.mean Length.mean
 ## 1 Compact               30     5362             131        2918         182
 ## 2   Large               27     4673             179        3695         205
@@ -630,9 +630,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="라벨링하기" class="section level4" number="14.2.2.2">
 <h4><span class="header-section-number">14.2.2.2</span> 라벨링하기</h4>
 <p><code>stars()</code> 함수에서는<code>rownames</code> 를 가져다가 labeling 을 합니다. 현재 rownames 는 1, 2,…, 6 의 숫자로 되어있으므로, 이를 <code>차종(Type)</code> 이름으로 변경하도록 하겠습니다.</p>
-<div class="sourceCode" id="cb692"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb692-1"><a href="별-그래프.html#cb692-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creating row names with Type</span></span>
-<span id="cb692-2"><a href="별-그래프.html#cb692-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(mean_by_Type) <span class="ot">&lt;-</span> mean_by_Type<span class="sc">$</span>Type</span>
-<span id="cb692-3"><a href="별-그래프.html#cb692-3" aria-hidden="true" tabindex="-1"></a>mean_by_Type</span></code></pre></div>
+<div class="sourceCode" id="cb683"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb683-1"><a href="별-그래프.html#cb683-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creating row names with Type</span></span>
+<span id="cb683-2"><a href="별-그래프.html#cb683-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(mean_by_Type) <span class="ot">&lt;-</span> mean_by_Type<span class="sc">$</span>Type</span>
+<span id="cb683-3"><a href="별-그래프.html#cb683-3" aria-hidden="true" tabindex="-1"></a>mean_by_Type</span></code></pre></div>
 <pre class="bg-warning"><code>##            Type MPG.highway.mean RPM.mean Horsepower.mean Weight.mean
 ## Compact Compact               30     5362             131        2918
 ## Large     Large               27     4673             179        3695
@@ -654,18 +654,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">14.2.2.3</span> 변수명 바꾸기</h4>
 <p><code>doBy</code> Package로 요약통계량을 생성하면 변수명 뒤에 자동으로 통계량 이름이 따라 붙습니다. 이번 예제의 경우에는 평균을 구했으므로 <code>MPG.highway.mean</code>, <code>RPM.mean</code>, … 이런 식으로요. 변수명이 너무 길다보니 나중에 labeling 할 때 옆으로 삐죽 튀어나가서 보기 싫어서요, 변수명을 좀더 짧게 변경해보겠습니다.</p>
 <p>변수명 뒤에 <code>.mean</code> 을 생략하고 사용하겠습니다. 위에 <code>rownames()</code> 함수는 <code>stars()</code> 함수를 사용하려면 꼭 해줘야 하는 것이구요, 아래의 <code>renames()</code>는 필수사항은 아닙니다.</p>
-<div class="sourceCode" id="cb694"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb694-1"><a href="별-그래프.html#cb694-1" aria-hidden="true" tabindex="-1"></a><span class="co"># renaming of variables</span></span>
-<span id="cb694-2"><a href="별-그래프.html#cb694-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape)</span>
-<span id="cb694-3"><a href="별-그래프.html#cb694-3" aria-hidden="true" tabindex="-1"></a>mean_by_Type <span class="ot">&lt;-</span> <span class="fu">rename</span>(mean_by_Type, </span>
-<span id="cb694-4"><a href="별-그래프.html#cb694-4" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">c</span>(<span class="at">MPG.highway.mean =</span> <span class="st">&quot;MPG.highway&quot;</span>,  </span>
-<span id="cb694-5"><a href="별-그래프.html#cb694-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">RPM.mean =</span> <span class="st">&quot;RPM&quot;</span>,  </span>
-<span id="cb694-6"><a href="별-그래프.html#cb694-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Horsepower.mean =</span> <span class="st">&quot;Horsepower&quot;</span>,  </span>
-<span id="cb694-7"><a href="별-그래프.html#cb694-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Weight.mean =</span> <span class="st">&quot;Weight&quot;</span>, </span>
-<span id="cb694-8"><a href="별-그래프.html#cb694-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Length.mean =</span> <span class="st">&quot;Length&quot;</span>, </span>
-<span id="cb694-9"><a href="별-그래프.html#cb694-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Price.mean =</span> <span class="st">&quot;Price&quot;</span></span>
-<span id="cb694-10"><a href="별-그래프.html#cb694-10" aria-hidden="true" tabindex="-1"></a>                         )</span>
-<span id="cb694-11"><a href="별-그래프.html#cb694-11" aria-hidden="true" tabindex="-1"></a>                       )</span>
-<span id="cb694-12"><a href="별-그래프.html#cb694-12" aria-hidden="true" tabindex="-1"></a>mean_by_Type</span></code></pre></div>
+<div class="sourceCode" id="cb685"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb685-1"><a href="별-그래프.html#cb685-1" aria-hidden="true" tabindex="-1"></a><span class="co"># renaming of variables</span></span>
+<span id="cb685-2"><a href="별-그래프.html#cb685-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape)</span>
+<span id="cb685-3"><a href="별-그래프.html#cb685-3" aria-hidden="true" tabindex="-1"></a>mean_by_Type <span class="ot">&lt;-</span> <span class="fu">rename</span>(mean_by_Type, </span>
+<span id="cb685-4"><a href="별-그래프.html#cb685-4" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">c</span>(<span class="at">MPG.highway.mean =</span> <span class="st">&quot;MPG.highway&quot;</span>,  </span>
+<span id="cb685-5"><a href="별-그래프.html#cb685-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">RPM.mean =</span> <span class="st">&quot;RPM&quot;</span>,  </span>
+<span id="cb685-6"><a href="별-그래프.html#cb685-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Horsepower.mean =</span> <span class="st">&quot;Horsepower&quot;</span>,  </span>
+<span id="cb685-7"><a href="별-그래프.html#cb685-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Weight.mean =</span> <span class="st">&quot;Weight&quot;</span>, </span>
+<span id="cb685-8"><a href="별-그래프.html#cb685-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Length.mean =</span> <span class="st">&quot;Length&quot;</span>, </span>
+<span id="cb685-9"><a href="별-그래프.html#cb685-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Price.mean =</span> <span class="st">&quot;Price&quot;</span></span>
+<span id="cb685-10"><a href="별-그래프.html#cb685-10" aria-hidden="true" tabindex="-1"></a>                         )</span>
+<span id="cb685-11"><a href="별-그래프.html#cb685-11" aria-hidden="true" tabindex="-1"></a>                       )</span>
+<span id="cb685-12"><a href="별-그래프.html#cb685-12" aria-hidden="true" tabindex="-1"></a>mean_by_Type</span></code></pre></div>
 <pre class="bg-warning"><code>##            Type MPG.highway  RPM Horsepower Weight Length Price
 ## Compact Compact          30 5362        131   2918    182    18
 ## Large     Large          27 4673        179   3695    205    24
@@ -693,22 +693,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>key.loc = c(7.5, 1.5) 는 x, y 좌표 위치에 각 변수들의 이름(unit key)을 범례로 집어넣습니다.</p>
 </blockquote>
 <p>말로 설명해놓긴 했는데요, 잘 이해가 안갈수도 있겠습니다. 아래에 <code>stars()</code> 함수를 복사해놓고서 옵션마다 하나씩 ‘<code>#</code>’을 붙여가면서 실행을 해보시기 바랍니다. 그러면’<code>#</code>’을 붙이기 전과 비교가 될테고, 옵션별 기능을 바로 확인할 수 있습니다.</p>
-<div class="sourceCode" id="cb696"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb696-1"><a href="별-그래프.html#cb696-1" aria-hidden="true" tabindex="-1"></a><span class="co"># star plot</span></span>
-<span id="cb696-2"><a href="별-그래프.html#cb696-2" aria-hidden="true" tabindex="-1"></a><span class="fu">stars</span>(mean_by_Type[, <span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>], <span class="co"># dataframe or matrix</span></span>
-<span id="cb696-3"><a href="별-그래프.html#cb696-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">locations =</span> <span class="cn">NULL</span>, <span class="co"># locations = NULL, the segment plots will be placed in a rectangular grid</span></span>
-<span id="cb696-4"><a href="별-그래프.html#cb696-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">nrow =</span> <span class="dv">2</span>, <span class="co"># number of rows at a square layout (w/locations = NULL)</span></span>
-<span id="cb696-5"><a href="별-그래프.html#cb696-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">ncol =</span> <span class="dv">4</span>, <span class="co"># number of columns at a square layout (w/locations = NULL)</span></span>
-<span id="cb696-6"><a href="별-그래프.html#cb696-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">scale =</span> <span class="cn">TRUE</span>, <span class="co"># the columns are scaled independently (max in each column: 1, min: 0)</span></span>
-<span id="cb696-7"><a href="별-그래프.html#cb696-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">full =</span> <span class="cn">TRUE</span>, <span class="co"># TRUE: occupy a full circle, FALSE : semi-circle</span></span>
-<span id="cb696-8"><a href="별-그래프.html#cb696-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">radius =</span> <span class="cn">TRUE</span>, <span class="co"># the radii corresponding to each variable in the data will be drawn</span></span>
-<span id="cb696-9"><a href="별-그래프.html#cb696-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">frame.plot =</span> <span class="cn">TRUE</span>, <span class="co"># if TRUE, the plot region is framed</span></span>
-<span id="cb696-10"><a href="별-그래프.html#cb696-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">&quot;Star plot - means of multivariate by Car Type&quot;</span>, <span class="co"># a main title for the plot</span></span>
-<span id="cb696-11"><a href="별-그래프.html#cb696-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">cex =</span> <span class="dv">1</span>, <span class="co"># size of label character (by default, cex = 1)</span></span>
-<span id="cb696-12"><a href="별-그래프.html#cb696-12" aria-hidden="true" tabindex="-1"></a>      <span class="co"># labels = NULL # if NULL, no attempt is made to construct labels</span></span>
-<span id="cb696-13"><a href="별-그래프.html#cb696-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">lwd =</span> <span class="dv">1</span>, <span class="co"># line width (by default, lwd = 1)</span></span>
-<span id="cb696-14"><a href="별-그래프.html#cb696-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">key.loc =</span> <span class="fu">c</span>(<span class="fl">7.5</span>, <span class="fl">1.5</span>) <span class="co"># vector with x and y coordinates of the unit key</span></span>
-<span id="cb696-15"><a href="별-그래프.html#cb696-15" aria-hidden="true" tabindex="-1"></a>      )</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-93-1.png" width="672" /></p>
+<div class="sourceCode" id="cb687"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb687-1"><a href="별-그래프.html#cb687-1" aria-hidden="true" tabindex="-1"></a><span class="co"># star plot</span></span>
+<span id="cb687-2"><a href="별-그래프.html#cb687-2" aria-hidden="true" tabindex="-1"></a><span class="fu">stars</span>(mean_by_Type[, <span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>], <span class="co"># dataframe or matrix</span></span>
+<span id="cb687-3"><a href="별-그래프.html#cb687-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">locations =</span> <span class="cn">NULL</span>, <span class="co"># locations = NULL, the segment plots will be placed in a rectangular grid</span></span>
+<span id="cb687-4"><a href="별-그래프.html#cb687-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">nrow =</span> <span class="dv">2</span>, <span class="co"># number of rows at a square layout (w/locations = NULL)</span></span>
+<span id="cb687-5"><a href="별-그래프.html#cb687-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">ncol =</span> <span class="dv">4</span>, <span class="co"># number of columns at a square layout (w/locations = NULL)</span></span>
+<span id="cb687-6"><a href="별-그래프.html#cb687-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">scale =</span> <span class="cn">TRUE</span>, <span class="co"># the columns are scaled independently (max in each column: 1, min: 0)</span></span>
+<span id="cb687-7"><a href="별-그래프.html#cb687-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">full =</span> <span class="cn">TRUE</span>, <span class="co"># TRUE: occupy a full circle, FALSE : semi-circle</span></span>
+<span id="cb687-8"><a href="별-그래프.html#cb687-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">radius =</span> <span class="cn">TRUE</span>, <span class="co"># the radii corresponding to each variable in the data will be drawn</span></span>
+<span id="cb687-9"><a href="별-그래프.html#cb687-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">frame.plot =</span> <span class="cn">TRUE</span>, <span class="co"># if TRUE, the plot region is framed</span></span>
+<span id="cb687-10"><a href="별-그래프.html#cb687-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">&quot;Star plot - means of multivariate by Car Type&quot;</span>, <span class="co"># a main title for the plot</span></span>
+<span id="cb687-11"><a href="별-그래프.html#cb687-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">cex =</span> <span class="dv">1</span>, <span class="co"># size of label character (by default, cex = 1)</span></span>
+<span id="cb687-12"><a href="별-그래프.html#cb687-12" aria-hidden="true" tabindex="-1"></a>      <span class="co"># labels = NULL # if NULL, no attempt is made to construct labels</span></span>
+<span id="cb687-13"><a href="별-그래프.html#cb687-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">lwd =</span> <span class="dv">1</span>, <span class="co"># line width (by default, lwd = 1)</span></span>
+<span id="cb687-14"><a href="별-그래프.html#cb687-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">key.loc =</span> <span class="fu">c</span>(<span class="fl">7.5</span>, <span class="fl">1.5</span>) <span class="co"># vector with x and y coordinates of the unit key</span></span>
+<span id="cb687-15"><a href="별-그래프.html#cb687-15" aria-hidden="true" tabindex="-1"></a>      )</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
 </div>
 <div id="stars-함수로-레이터-차트-그리기" class="section level4" number="14.2.3.2">
 <h4><span class="header-section-number">14.2.3.2</span> <code>stars()</code> 함수로 레이터 차트 그리기</h4>
@@ -716,21 +716,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>radius = FALSE</code> 로 바꾸어서 반지름 선은 표시하지 않게끔 하였습니다. 6개 <code>차종(Type)</code>의 그래프가 중첩이 되다 보니 <code>radius = TRUE</code> 로 했더니 선이 겹쳐서 아예 안보이는게 있어서요.</p>
 <p>관측치들의 다변량 변수 간에 존재하는 패턴에 대해서 관심이 있는 분석가라면 아무래도 그룹별로 <strong>선 색깔</strong>을 달리하여 그린 레이더 차트 (or 거미줄 그림)가 별 그래프(star chart)보다는 좀더 유용한 편입니다. <code>col.lines = c(1:6)</code> 옵션으로 6개 <strong>차종(Type)별 색깔을 구분</strong>하였습니다.</p>
 <p><strong>범례(legend)</strong>는 <code>legend(x= , y= , ...)</code> 함수로 추가를 하였습니다. x, y 좌표는 몇 번 숫자를 넣어보고 시행착오를 거치면서 적당한 좌표를 찾아나가야 합니다. “<code>topright</code>,” “<code>topleft</code>” 이런 식으로 범례 좌표를 지정했더니 레이더 차트랑 자꾸 겹쳐서요. ^^;</p>
-<div class="sourceCode" id="cb697"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb697-1"><a href="별-그래프.html#cb697-1" aria-hidden="true" tabindex="-1"></a><span class="co"># radar chart (or spider chart) </span></span>
-<span id="cb697-2"><a href="별-그래프.html#cb697-2" aria-hidden="true" tabindex="-1"></a><span class="fu">stars</span>(mean_by_Type[, <span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>], </span>
-<span id="cb697-3"><a href="별-그래프.html#cb697-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">locations =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), </span>
-<span id="cb697-4"><a href="별-그래프.html#cb697-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">key.loc =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), </span>
-<span id="cb697-5"><a href="별-그래프.html#cb697-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">scale =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb697-6"><a href="별-그래프.html#cb697-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">radius =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb697-7"><a href="별-그래프.html#cb697-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">cex =</span> <span class="dv">1</span>, </span>
-<span id="cb697-8"><a href="별-그래프.html#cb697-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">lty =</span> <span class="dv">2</span>, </span>
-<span id="cb697-9"><a href="별-그래프.html#cb697-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.lines =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>), </span>
-<span id="cb697-10"><a href="별-그래프.html#cb697-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">lwd =</span> <span class="dv">2</span>, </span>
-<span id="cb697-11"><a href="별-그래프.html#cb697-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">&quot;radar chart - means of multivariate by Car Type&quot;</span> </span>
-<span id="cb697-12"><a href="별-그래프.html#cb697-12" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb697-13"><a href="별-그래프.html#cb697-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb697-14"><a href="별-그래프.html#cb697-14" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x=</span><span class="dv">1</span>, <span class="at">y=</span><span class="dv">1</span>, <span class="at">legend =</span> mean_by_Type<span class="sc">$</span>Type, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>), <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
+<div class="sourceCode" id="cb688"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb688-1"><a href="별-그래프.html#cb688-1" aria-hidden="true" tabindex="-1"></a><span class="co"># radar chart (or spider chart) </span></span>
+<span id="cb688-2"><a href="별-그래프.html#cb688-2" aria-hidden="true" tabindex="-1"></a><span class="fu">stars</span>(mean_by_Type[, <span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>], </span>
+<span id="cb688-3"><a href="별-그래프.html#cb688-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">locations =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), </span>
+<span id="cb688-4"><a href="별-그래프.html#cb688-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">key.loc =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), </span>
+<span id="cb688-5"><a href="별-그래프.html#cb688-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">scale =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb688-6"><a href="별-그래프.html#cb688-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">radius =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb688-7"><a href="별-그래프.html#cb688-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">cex =</span> <span class="dv">1</span>, </span>
+<span id="cb688-8"><a href="별-그래프.html#cb688-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">lty =</span> <span class="dv">2</span>, </span>
+<span id="cb688-9"><a href="별-그래프.html#cb688-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.lines =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>), </span>
+<span id="cb688-10"><a href="별-그래프.html#cb688-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">lwd =</span> <span class="dv">2</span>, </span>
+<span id="cb688-11"><a href="별-그래프.html#cb688-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">&quot;radar chart - means of multivariate by Car Type&quot;</span> </span>
+<span id="cb688-12"><a href="별-그래프.html#cb688-12" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb688-13"><a href="별-그래프.html#cb688-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb688-14"><a href="별-그래프.html#cb688-14" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x=</span><span class="dv">1</span>, <span class="at">y=</span><span class="dv">1</span>, <span class="at">legend =</span> mean_by_Type<span class="sc">$</span>Type, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>), <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
 <p>위에 <code>stars()</code> 함수로 레이더 차트를 그리기는 했는데요, 이전 포스팅에서 <code>fmsb</code> Package의 <code>radarchart()</code> 함수로 그린 radar chart 보다는 가독성이 좀 떨어져보입니다.</p>
 <p><strong>여러 개의 그룹</strong>을 레이더 차트 (radar chart)로 보려면 <code>fmsb</code> Package의 <code>radarchart()</code> 함수를 사용하고, <strong>개별 그룹 단위</strong>로 분리해서 보려면 graphics Package의 <code>stars()</code> 함수로 별 그림 (star plot)을 그려서 보면 좋을 것 같습니다.</p>
 <p>다음 번에는 <strong>평행 좌표 그림 (parallel coordinate plot)</strong>에 대해서 알아보겠습니다.</p>
@@ -747,33 +747,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="데이터-불러오기" class="section level4" number="14.2.4.2">
 <h4><span class="header-section-number">14.2.4.2</span> 데이터 불러오기</h4>
-<div class="sourceCode" id="cb698"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb698-1"><a href="별-그래프.html#cb698-1" aria-hidden="true" tabindex="-1"></a>crime <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;http://datasets.flowingdata.com/crimeRatesByState-formatted.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb689"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb689-1"><a href="별-그래프.html#cb689-1" aria-hidden="true" tabindex="-1"></a>crime <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;http://datasets.flowingdata.com/crimeRatesByState-formatted.csv&quot;</span>)</span></code></pre></div>
 <p>이렇게 R-studio에서 데이터를 확인 할 수 있습니다.</p>
 </div>
 <div id="데이터-전처리-2" class="section level4" number="14.2.4.3">
 <h4><span class="header-section-number">14.2.4.3</span> 데이터 전처리</h4>
 <p>다음으로는 스타차트 명령어를 사용하기 전에, 데이터를 다듬는 과정입니다.</p>
 <p>불러온 데이터를 살펴보면 이렇게 <strong>첫 번째 열</strong>이 주의 이름이 아니라, 숫자로 설정되어 있습니다. 이를 <strong>주 이름</strong>으로 변경하도록 하겠습니다.</p>
-<div class="sourceCode" id="cb699"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb699-1"><a href="별-그래프.html#cb699-1" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(crime) <span class="ot">&lt;-</span> crime<span class="sc">$</span>state</span>
-<span id="cb699-2"><a href="별-그래프.html#cb699-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb699-3"><a href="별-그래프.html#cb699-3" aria-hidden="true" tabindex="-1"></a>crime <span class="ot">&lt;-</span> crime[,<span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb690"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb690-1"><a href="별-그래프.html#cb690-1" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(crime) <span class="ot">&lt;-</span> crime<span class="sc">$</span>state</span>
+<span id="cb690-2"><a href="별-그래프.html#cb690-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb690-3"><a href="별-그래프.html#cb690-3" aria-hidden="true" tabindex="-1"></a>crime <span class="ot">&lt;-</span> crime[,<span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>]</span></code></pre></div>
 <p>이렇게 첫 번째 열이 원하던 대로 주 이름으로 변경되었습니다.</p>
 </div>
 <div id="stars-함수로-차트-그리기" class="section level4" number="14.2.4.4">
 <h4><span class="header-section-number">14.2.4.4</span> stars() 함수로 차트 그리기</h4>
 <p>이제 스타차트를 생성하는 명령어를 입력해봅니다.</p>
-<div class="sourceCode" id="cb700"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb700-1"><a href="별-그래프.html#cb700-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stars</span>(crime)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-97-1.png" width="672" /></p>
-<p>스타차트의 모양새를 갖추긴 했지만, 뭔가 균형도 안맞고 복잡해 보입니다. 이를 조정하기 위해 <code>flip.labels</code>변수를 조정해 줍니다.</p>
-<div class="sourceCode" id="cb701"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb701-1"><a href="별-그래프.html#cb701-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stars</span>(crime, <span class="at">flip.labels=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb691"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb691-1"><a href="별-그래프.html#cb691-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stars</span>(crime)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
+<p>스타차트의 모양새를 갖추긴 했지만, 뭔가 균형도 안맞고 복잡해 보입니다. 이를 조정하기 위해 <code>flip.labels</code>변수를 조정해 줍니다.</p>
+<div class="sourceCode" id="cb692"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb692-1"><a href="별-그래프.html#cb692-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stars</span>(crime, <span class="at">flip.labels=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
 <p><code>flip.labels</code>설정을 기본값인 <code>TRUE</code>에서 <code>FALSE</code>로 변경한 결과입니다. 이전보다 확실이 안정된 느낌입니다.</p>
 <p>그리고 <code>key.loc=c(6, 2)</code>를 지정해 준다.</p>
-<div class="sourceCode" id="cb702"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb702-1"><a href="별-그래프.html#cb702-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stars</span>(crime, <span class="at">flip.labels=</span><span class="cn">FALSE</span>, <span class="at">key.loc=</span><span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">2</span>))</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
-<p>그 다음 이 스타차트를 절반만 사용해서 표시하는 방법으로 <code>full = FALSE</code>를 지정해 준다.</p>
-<div class="sourceCode" id="cb703"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb703-1"><a href="별-그래프.html#cb703-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stars</span>(crime, <span class="at">flip.labels=</span><span class="cn">FALSE</span>, <span class="at">key.loc=</span><span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">2</span>), <span class="at">full=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb693"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb693-1"><a href="별-그래프.html#cb693-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stars</span>(crime, <span class="at">flip.labels=</span><span class="cn">FALSE</span>, <span class="at">key.loc=</span><span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">2</span>))</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
+<p>그 다음 이 스타차트를 절반만 사용해서 표시하는 방법으로 <code>full = FALSE</code>를 지정해 준다.</p>
+<div class="sourceCode" id="cb694"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb694-1"><a href="별-그래프.html#cb694-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stars</span>(crime, <span class="at">flip.labels=</span><span class="cn">FALSE</span>, <span class="at">key.loc=</span><span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">2</span>), <span class="at">full=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
 <p>이처럼 이전 명령어에서 ’<code>full</code>’을 <code>FALSE</code>로 설정해 주면 됩니다.</p>
 <p>실행하면 plot창에서 확인 하실 수 있습니다.</p>
 <p>그리고 그 다음으로 살펴볼 것은 ’나이팅게일 차트’입니다.</p>
@@ -781,8 +781,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="나이팅-게일-차트-그리기" class="section level4" number="14.2.4.5">
 <h4><span class="header-section-number">14.2.4.5</span> 나이팅 게일 차트 그리기</h4>
 <p>지금까지 사용한 명령어에서 다른 부분을 추가하면 나이팅게일차트로 표현이 가능합니다.</p>
-<div class="sourceCode" id="cb704"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb704-1"><a href="별-그래프.html#cb704-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stars</span>(crime, <span class="at">flip.labels=</span><span class="cn">FALSE</span>, <span class="at">key.loc=</span><span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">2</span>), <span class="at">draw.segments=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
+<div class="sourceCode" id="cb695"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb695-1"><a href="별-그래프.html#cb695-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stars</span>(crime, <span class="at">flip.labels=</span><span class="cn">FALSE</span>, <span class="at">key.loc=</span><span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">2</span>), <span class="at">draw.segments=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
 <p><code>draw.segments</code> 부분을 <code>TRUE</code>로 설정해주면 이렇게 알록달록 나이팅게일차트를 얻을 수 있습니다.^^</p>
 <p>만들어진 차트를 일러스트레이터를 이용해서 보정해보면 좋은 결과가 있을 것 같습니다^^.</p>
 </div>
