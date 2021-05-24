@@ -64,7 +64,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -159,7 +158,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="r-그래프-패키지-소개-graphics-lattice-ggplot2.html"><a href="r-그래프-패키지-소개-graphics-lattice-ggplot2.html"><i class="fa fa-check"></i><b>2</b> R 그래프 패키지 소개 (Graphics, Lattice, ggplot2)</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="주요-그래프용-패키지.html"><a href="주요-그래프용-패키지.html"><i class="fa fa-check"></i><b>2.1</b> 주요 그래프용 패키지</a></li>
+<li class="chapter" data-level="2.1" data-path="주요-그래프-패키지.html"><a href="주요-그래프-패키지.html"><i class="fa fa-check"></i><b>2.1</b> 주요 그래프 패키지</a></li>
 <li class="chapter" data-level="2.2" data-path="패키지의-설치.html"><a href="패키지의-설치.html"><i class="fa fa-check"></i><b>2.2</b> 패키지의 설치</a>
 <ul>
 <li class="chapter" data-level="" data-path="패키지의-설치.html"><a href="패키지의-설치.html#참고자료"><i class="fa fa-check"></i>참고자료</a></li>
@@ -399,8 +398,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2" data-path="모자이크-그림.html"><a href="모자이크-그림.html"><i class="fa fa-check"></i><b>12.2</b> 모자이크 그림</a>
 <ul>
 <li class="chapter" data-level="12.2.1" data-path="모자이크-그림.html"><a href="모자이크-그림.html#데이터-세트와-패키지"><i class="fa fa-check"></i><b>12.2.1</b> 데이터 세트와 패키지</a></li>
-<li class="chapter" data-level="12.2.2" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림-그리기"><i class="fa fa-check"></i><b>12.2.2</b> 모자이크 그림 그리기</a></li>
-<li class="chapter" data-level="12.2.3" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림에-라벨-추가하기"><i class="fa fa-check"></i><b>12.2.3</b> 모자이크 그림에 라벨 추가하기</a></li>
+<li class="chapter" data-level="12.2.2" data-path="모자이크-그림.html"><a href="모자이크-그림.html#기본-모자이크-그림-그리기"><i class="fa fa-check"></i><b>12.2.2</b> 기본 모자이크 그림 그리기</a></li>
+<li class="chapter" data-level="12.2.3" data-path="모자이크-그림.html"><a href="모자이크-그림.html#분할-방향"><i class="fa fa-check"></i><b>12.2.3</b> 분할 방향</a></li>
+<li class="chapter" data-level="12.2.4" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림의-채우기-색"><i class="fa fa-check"></i><b>12.2.4</b> 모자이크 그림의 채우기 색</a></li>
+<li class="chapter" data-level="12.2.5" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림에-라벨-추가하기"><i class="fa fa-check"></i><b>12.2.5</b> 모자이크 그림에 라벨 추가하기</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="다변량-변수-연속형-데이터.html"><a href="다변량-변수-연속형-데이터.html"><i class="fa fa-check"></i><b>13</b> 다변량 변수 - 연속형 데이터</a>
@@ -577,69 +578,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="데이터-세트-14" class="section level3" number="13.9.2">
 <h3><span class="header-section-number">13.9.2</span> 데이터 세트</h3>
 <p><code>MASS</code> 패키지에 내장되어 있는 <code>Cars93</code> 데이터 프레임이며, <code>차종(Type)</code>, <code>실린더(Cylinders)</code> 별 <code>고속도로연비(MPG.highway)</code> 를 사용하여 히트맵(Heat map)을 그려보겠습니다.</p>
-<div class="sourceCode" id="cb658"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb658-1"><a href="히트맵.html#cb658-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb658-2"><a href="히트맵.html#cb658-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb645"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb645-1"><a href="히트맵.html#cb645-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb645-2"><a href="히트맵.html#cb645-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
 </div>
 <div id="히트맵-그리기" class="section level3" number="13.9.3">
 <h3><span class="header-section-number">13.9.3</span> 히트맵 그리기</h3>
 <p><code>ggplot2</code>는 별도의 설치 및 호출이 필요하므로 아래의 절차를 먼저 거치고 히트맵을 그려보겠습니다.</p>
 <div id="패키지-설치-1" class="section level4" number="13.9.3.1">
 <h4><span class="header-section-number">13.9.3.1</span> 패키지 설치</h4>
-<div class="sourceCode" id="cb659"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb659-1"><a href="히트맵.html#cb659-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb646"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb646-1"><a href="히트맵.html#cb646-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 </div>
 <div id="히트맵-그리기-1" class="section level4" number="13.9.3.2">
 <h4><span class="header-section-number">13.9.3.2</span> 히트맵 그리기</h4>
 <p>x축에 <code>차종(Type)</code>, y축에 <code>실린더개수(Cylinders)</code>별로 <code>고속도로연비(MPG.highway)</code>에 따라서 색을 달리하여 히트맵을 <code>geom_tile()</code> 함수를 사용해 그려보겠습니다.</p>
-<div class="sourceCode" id="cb660"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb660-1"><a href="히트맵.html#cb660-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Type, Cylinders 별 MPG.highway Heatmap : geom_tile()</span></span>
-<span id="cb660-2"><a href="히트맵.html#cb660-2" aria-hidden="true" tabindex="-1"></a>a1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Type, <span class="at">y=</span>Cylinders, <span class="at">fill=</span>MPG.highway)) <span class="sc">+</span></span>
-<span id="cb660-3"><a href="히트맵.html#cb660-3" aria-hidden="true" tabindex="-1"></a>          <span class="fu">geom_tile</span>()</span>
-<span id="cb660-4"><a href="히트맵.html#cb660-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb660-5"><a href="히트맵.html#cb660-5" aria-hidden="true" tabindex="-1"></a>a1</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
+<div class="sourceCode" id="cb647"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb647-1"><a href="히트맵.html#cb647-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Type, Cylinders 별 MPG.highway Heatmap : geom_tile()</span></span>
+<span id="cb647-2"><a href="히트맵.html#cb647-2" aria-hidden="true" tabindex="-1"></a>a1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Type, <span class="at">y=</span>Cylinders, <span class="at">fill=</span>MPG.highway)) <span class="sc">+</span></span>
+<span id="cb647-3"><a href="히트맵.html#cb647-3" aria-hidden="true" tabindex="-1"></a>          <span class="fu">geom_tile</span>()</span>
+<span id="cb647-4"><a href="히트맵.html#cb647-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb647-5"><a href="히트맵.html#cb647-5" aria-hidden="true" tabindex="-1"></a>a1</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
 </div>
 <div id="차의-크기를-고려한-히트맵" class="section level4" number="13.9.3.3">
 <h4><span class="header-section-number">13.9.3.3</span> 차의 크기를 고려한 히트맵</h4>
 <p>위의 히트맵을 보면 x축에 <code>차종(Type)</code>이 차의 크기 순서가 아니라 알파벳 순서로 되어 있다보니 색깔이 경향성이 없이 무작위하게 채워져있어 보입니다. x축을 <strong>차의 크기</strong>를 감안한 순서대로, 즉, “<code>Small</code>,” “<code>Compact</code>,” “<code>Midsize</code>,” “<code>Sporty</code>,” “<code>Large</code>,” “<code>Van</code>” 의 순서대로 <code>scale_x_discrete(limits=...)</code> 를 사용해 바꾸어보겠습니다.</p>
-<div class="sourceCode" id="cb661"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb661-1"><a href="히트맵.html#cb661-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x축 순서 바꾸기 : scale_x_discrete(limits=...)</span></span>
-<span id="cb661-2"><a href="히트맵.html#cb661-2" aria-hidden="true" tabindex="-1"></a>a2 <span class="ot">&lt;-</span> a1 <span class="sc">+</span> </span>
-<span id="cb661-3"><a href="히트맵.html#cb661-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">scale_x_discrete</span>(<span class="at">limits=</span><span class="fu">c</span>(<span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Van&quot;</span>))</span>
-<span id="cb661-4"><a href="히트맵.html#cb661-4" aria-hidden="true" tabindex="-1"></a>a2</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
+<div class="sourceCode" id="cb648"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb648-1"><a href="히트맵.html#cb648-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x축 순서 바꾸기 : scale_x_discrete(limits=...)</span></span>
+<span id="cb648-2"><a href="히트맵.html#cb648-2" aria-hidden="true" tabindex="-1"></a>a2 <span class="ot">&lt;-</span> a1 <span class="sc">+</span> </span>
+<span id="cb648-3"><a href="히트맵.html#cb648-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">scale_x_discrete</span>(<span class="at">limits=</span><span class="fu">c</span>(<span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Van&quot;</span>))</span>
+<span id="cb648-4"><a href="히트맵.html#cb648-4" aria-hidden="true" tabindex="-1"></a>a2</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
 <p>위의 히트맵을 보니 크기가 작을 수록, 실린더 개수가 작을 수록 고속도로 연비가 높으며, 그 반대는 고속도로 연비가 낮아짐을 한눈에 단박에 파악할 수 있게 되었습니다.</p>
 <p><a href="히트맵.html#히트맵">Go Top</a></p>
 </div>
 <div id="geom_raster-함수를-이용한-히트맵" class="section level4" number="13.9.3.4">
 <h4><span class="header-section-number">13.9.3.4</span> <code>geom_raster()</code> 함수를 이용한 히트맵</h4>
 <p>이번에는 <code>geom_raster()</code> 함수를 사용해 히트맵을 그려보겠습니다. 결과적으로 <code>geom_tile()</code>과 차이가 거의 없다는 것을 알 수 있습니다.</p>
-<div class="sourceCode" id="cb662"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb662-1"><a href="히트맵.html#cb662-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Type, Cylinders 별 MPG.highway Heatmap : geom_raster()</span></span>
-<span id="cb662-2"><a href="히트맵.html#cb662-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Type, <span class="at">y=</span>Cylinders, <span class="at">fill=</span>MPG.highway)) <span class="sc">+</span></span>
-<span id="cb662-3"><a href="히트맵.html#cb662-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_raster</span>() <span class="sc">+</span> </span>
-<span id="cb662-4"><a href="히트맵.html#cb662-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_x_discrete</span>(<span class="at">limits=</span><span class="fu">c</span>(<span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Van&quot;</span>))</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
+<div class="sourceCode" id="cb649"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb649-1"><a href="히트맵.html#cb649-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Type, Cylinders 별 MPG.highway Heatmap : geom_raster()</span></span>
+<span id="cb649-2"><a href="히트맵.html#cb649-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Type, <span class="at">y=</span>Cylinders, <span class="at">fill=</span>MPG.highway)) <span class="sc">+</span></span>
+<span id="cb649-3"><a href="히트맵.html#cb649-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_raster</span>() <span class="sc">+</span> </span>
+<span id="cb649-4"><a href="히트맵.html#cb649-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_x_discrete</span>(<span class="at">limits=</span><span class="fu">c</span>(<span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Van&quot;</span>))</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
 </div>
 <div id="연속형-숫자-데이터의-히트맵" class="section level4" number="13.9.3.5">
 <h4><span class="header-section-number">13.9.3.5</span> 연속형 숫자 데이터의 히트맵</h4>
 <p><strong>연속형 숫자형 값을 가지는 히트맵의 색상을 <code>scale_fill_gradient(low = "colour 1", high = "colour 2")</code> 옵션을 사용해서 다르게 설정</strong>해보도록 하겠습니다. (kusscd 님, 댓글로 방법 공유해주셔서 감사합니다 ^^)</p>
-<div class="sourceCode" id="cb663"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb663-1"><a href="히트맵.html#cb663-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Type, <span class="at">y=</span>Cylinders, <span class="at">fill=</span>MPG.highway)) <span class="sc">+</span> <span class="co"># filling with numeric value</span></span>
-<span id="cb663-2"><a href="히트맵.html#cb663-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
-<span id="cb663-3"><a href="히트맵.html#cb663-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">scale_x_discrete</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, </span>
-<span id="cb663-4"><a href="히트맵.html#cb663-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Van&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb663-5"><a href="히트맵.html#cb663-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;yellow&quot;</span>, <span class="at">high =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb663-6"><a href="히트맵.html#cb663-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;Heatmap of MPG.highway by Type &amp; Cylinders&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
+<div class="sourceCode" id="cb650"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb650-1"><a href="히트맵.html#cb650-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x=</span>Type, <span class="at">y=</span>Cylinders, <span class="at">fill=</span>MPG.highway)) <span class="sc">+</span> <span class="co"># filling with numeric value</span></span>
+<span id="cb650-2"><a href="히트맵.html#cb650-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
+<span id="cb650-3"><a href="히트맵.html#cb650-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">scale_x_discrete</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, </span>
+<span id="cb650-4"><a href="히트맵.html#cb650-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Van&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb650-5"><a href="히트맵.html#cb650-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;yellow&quot;</span>, <span class="at">high =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb650-6"><a href="히트맵.html#cb650-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;Heatmap of MPG.highway by Type &amp; Cylinders&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
 </div>
 <div id="범주형-문자-데이터의-히트맵" class="section level4" number="13.9.3.6">
 <h4><span class="header-section-number">13.9.3.6</span> 범주형 문자 데이터의 히트맵</h4>
 <p>다음으로, <strong>범주형 자료로 히트맵의 색상을 채우는 경우에 <code>scale_fill_manual(values = c("colour 1", "colour 2", ...)</code> 을 옵션을 사용해서 색상을 사용자가 직접 지정</strong>해주는 방법을 2개 범주를 가지는 간단한 예시를 들어서 설명하겠습니다.</p>
-<div class="sourceCode" id="cb664"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb664-1"><a href="히트맵.html#cb664-1" aria-hidden="true" tabindex="-1"></a>my.df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">XCoord =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>), </span>
-<span id="cb664-2"><a href="히트맵.html#cb664-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">YCoord =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>), </span>
-<span id="cb664-3"><a href="히트맵.html#cb664-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Seg =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>))</span>
-<span id="cb664-4"><a href="히트맵.html#cb664-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb664-5"><a href="히트맵.html#cb664-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(my.df, <span class="fu">aes</span>(<span class="at">x=</span>XCoord, <span class="at">y=</span>YCoord, <span class="at">fill=</span>Seg)) <span class="sc">+</span>     <span class="co"># filling with categorical value</span></span>
-<span id="cb664-6"><a href="히트맵.html#cb664-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_tile</span>(<span class="at">colour=</span><span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
-<span id="cb664-7"><a href="히트맵.html#cb664-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb664-8"><a href="히트맵.html#cb664-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;Heatmap with 2 categories with scale_fill_manual()&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
+<div class="sourceCode" id="cb651"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb651-1"><a href="히트맵.html#cb651-1" aria-hidden="true" tabindex="-1"></a>my.df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">XCoord =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>), </span>
+<span id="cb651-2"><a href="히트맵.html#cb651-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">YCoord =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>), </span>
+<span id="cb651-3"><a href="히트맵.html#cb651-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Seg =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>))</span>
+<span id="cb651-4"><a href="히트맵.html#cb651-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb651-5"><a href="히트맵.html#cb651-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(my.df, <span class="fu">aes</span>(<span class="at">x=</span>XCoord, <span class="at">y=</span>YCoord, <span class="at">fill=</span>Seg)) <span class="sc">+</span>     <span class="co"># filling with categorical value</span></span>
+<span id="cb651-6"><a href="히트맵.html#cb651-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_tile</span>(<span class="at">colour=</span><span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb651-7"><a href="히트맵.html#cb651-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb651-8"><a href="히트맵.html#cb651-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;Heatmap with 2 categories with scale_fill_manual()&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
 <p><a href="히트맵.html#히트맵">Go Top</a></p>
 </div>
 </div>

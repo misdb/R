@@ -64,7 +64,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -159,7 +158,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="r-그래프-패키지-소개-graphics-lattice-ggplot2.html"><a href="r-그래프-패키지-소개-graphics-lattice-ggplot2.html"><i class="fa fa-check"></i><b>2</b> R 그래프 패키지 소개 (Graphics, Lattice, ggplot2)</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="주요-그래프용-패키지.html"><a href="주요-그래프용-패키지.html"><i class="fa fa-check"></i><b>2.1</b> 주요 그래프용 패키지</a></li>
+<li class="chapter" data-level="2.1" data-path="주요-그래프-패키지.html"><a href="주요-그래프-패키지.html"><i class="fa fa-check"></i><b>2.1</b> 주요 그래프 패키지</a></li>
 <li class="chapter" data-level="2.2" data-path="패키지의-설치.html"><a href="패키지의-설치.html"><i class="fa fa-check"></i><b>2.2</b> 패키지의 설치</a>
 <ul>
 <li class="chapter" data-level="" data-path="패키지의-설치.html"><a href="패키지의-설치.html#참고자료"><i class="fa fa-check"></i>참고자료</a></li>
@@ -399,8 +398,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2" data-path="모자이크-그림.html"><a href="모자이크-그림.html"><i class="fa fa-check"></i><b>12.2</b> 모자이크 그림</a>
 <ul>
 <li class="chapter" data-level="12.2.1" data-path="모자이크-그림.html"><a href="모자이크-그림.html#데이터-세트와-패키지"><i class="fa fa-check"></i><b>12.2.1</b> 데이터 세트와 패키지</a></li>
-<li class="chapter" data-level="12.2.2" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림-그리기"><i class="fa fa-check"></i><b>12.2.2</b> 모자이크 그림 그리기</a></li>
-<li class="chapter" data-level="12.2.3" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림에-라벨-추가하기"><i class="fa fa-check"></i><b>12.2.3</b> 모자이크 그림에 라벨 추가하기</a></li>
+<li class="chapter" data-level="12.2.2" data-path="모자이크-그림.html"><a href="모자이크-그림.html#기본-모자이크-그림-그리기"><i class="fa fa-check"></i><b>12.2.2</b> 기본 모자이크 그림 그리기</a></li>
+<li class="chapter" data-level="12.2.3" data-path="모자이크-그림.html"><a href="모자이크-그림.html#분할-방향"><i class="fa fa-check"></i><b>12.2.3</b> 분할 방향</a></li>
+<li class="chapter" data-level="12.2.4" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림의-채우기-색"><i class="fa fa-check"></i><b>12.2.4</b> 모자이크 그림의 채우기 색</a></li>
+<li class="chapter" data-level="12.2.5" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림에-라벨-추가하기"><i class="fa fa-check"></i><b>12.2.5</b> 모자이크 그림에 라벨 추가하기</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="다변량-변수-연속형-데이터.html"><a href="다변량-변수-연속형-데이터.html"><i class="fa fa-check"></i><b>13</b> 다변량 변수 - 연속형 데이터</a>
@@ -565,18 +566,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="picker-control" class="section level2" number="16.4">
 <h2><span class="header-section-number">16.4</span> Picker Control</h2>
 <p>히스토그램에 대상 변수를 선택할 수 있는 Picker Control 예제입니다.</p>
-<div class="sourceCode" id="cb754"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb754-1"><a href="picker-control.html#cb754-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Picker Control</span></span>
-<span id="cb754-2"><a href="picker-control.html#cb754-2" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
-<span id="cb754-3"><a href="picker-control.html#cb754-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(Cars93[, continuous_variable], </span>
-<span id="cb754-4"><a href="picker-control.html#cb754-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> continuous_variable),</span>
-<span id="cb754-5"><a href="picker-control.html#cb754-5" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb754-6"><a href="picker-control.html#cb754-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">continuous_variable =</span> <span class="fu">picker</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Price&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb741"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb741-1"><a href="picker-control.html#cb741-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Picker Control</span></span>
+<span id="cb741-2"><a href="picker-control.html#cb741-2" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
+<span id="cb741-3"><a href="picker-control.html#cb741-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(Cars93[, continuous_variable], </span>
+<span id="cb741-4"><a href="picker-control.html#cb741-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> continuous_variable),</span>
+<span id="cb741-5"><a href="picker-control.html#cb741-5" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb741-6"><a href="picker-control.html#cb741-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">continuous_variable =</span> <span class="fu">picker</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Price&quot;</span>))</span></code></pre></div>
 <pre><code>## Error in manipulate(hist(Cars93[, continuous_variable], freq = FALSE, : The manipulate package must be run from within RStudio</code></pre>
 <p>산포도의 x축, <code>무게(Weight)</code>과 y축, <code>고속도로연비(MPG.highway)</code>은 정해져있고, <code>차종(Type)</code>별로 산포도를 보고 싶을 때 <code>차종(Type)</code>을 왼쪽의 Picker Control 상자로 만들어서 바로 바로 차종별로 선택해 가면서 산포도를 보는 프로그램 예제입니다.</p>
-<div class="sourceCode" id="cb756"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb756-1"><a href="picker-control.html#cb756-1" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
-<span id="cb756-2"><a href="picker-control.html#cb756-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data=</span>Cars93[Cars93<span class="sc">$</span>Type <span class="sc">==</span> Type,]),</span>
-<span id="cb756-3"><a href="picker-control.html#cb756-3" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb756-4"><a href="picker-control.html#cb756-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">Type =</span> <span class="fu">picker</span>(<span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Van&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb743"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb743-1"><a href="picker-control.html#cb743-1" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
+<span id="cb743-2"><a href="picker-control.html#cb743-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data=</span>Cars93[Cars93<span class="sc">$</span>Type <span class="sc">==</span> Type,]),</span>
+<span id="cb743-3"><a href="picker-control.html#cb743-3" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb743-4"><a href="picker-control.html#cb743-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">Type =</span> <span class="fu">picker</span>(<span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Van&quot;</span>))</span></code></pre></div>
 <pre><code>## Error in manipulate(plot(MPG.highway ~ Weight, data = Cars93[Cars93$Type == : The manipulate package must be run from within RStudio</code></pre>
 </div>
             </section>

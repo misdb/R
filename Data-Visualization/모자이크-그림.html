@@ -64,7 +64,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -159,7 +158,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="r-그래프-패키지-소개-graphics-lattice-ggplot2.html"><a href="r-그래프-패키지-소개-graphics-lattice-ggplot2.html"><i class="fa fa-check"></i><b>2</b> R 그래프 패키지 소개 (Graphics, Lattice, ggplot2)</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="주요-그래프용-패키지.html"><a href="주요-그래프용-패키지.html"><i class="fa fa-check"></i><b>2.1</b> 주요 그래프용 패키지</a></li>
+<li class="chapter" data-level="2.1" data-path="주요-그래프-패키지.html"><a href="주요-그래프-패키지.html"><i class="fa fa-check"></i><b>2.1</b> 주요 그래프 패키지</a></li>
 <li class="chapter" data-level="2.2" data-path="패키지의-설치.html"><a href="패키지의-설치.html"><i class="fa fa-check"></i><b>2.2</b> 패키지의 설치</a>
 <ul>
 <li class="chapter" data-level="" data-path="패키지의-설치.html"><a href="패키지의-설치.html#참고자료"><i class="fa fa-check"></i>참고자료</a></li>
@@ -399,8 +398,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2" data-path="모자이크-그림.html"><a href="모자이크-그림.html"><i class="fa fa-check"></i><b>12.2</b> 모자이크 그림</a>
 <ul>
 <li class="chapter" data-level="12.2.1" data-path="모자이크-그림.html"><a href="모자이크-그림.html#데이터-세트와-패키지"><i class="fa fa-check"></i><b>12.2.1</b> 데이터 세트와 패키지</a></li>
-<li class="chapter" data-level="12.2.2" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림-그리기"><i class="fa fa-check"></i><b>12.2.2</b> 모자이크 그림 그리기</a></li>
-<li class="chapter" data-level="12.2.3" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림에-라벨-추가하기"><i class="fa fa-check"></i><b>12.2.3</b> 모자이크 그림에 라벨 추가하기</a></li>
+<li class="chapter" data-level="12.2.2" data-path="모자이크-그림.html"><a href="모자이크-그림.html#기본-모자이크-그림-그리기"><i class="fa fa-check"></i><b>12.2.2</b> 기본 모자이크 그림 그리기</a></li>
+<li class="chapter" data-level="12.2.3" data-path="모자이크-그림.html"><a href="모자이크-그림.html#분할-방향"><i class="fa fa-check"></i><b>12.2.3</b> 분할 방향</a></li>
+<li class="chapter" data-level="12.2.4" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림의-채우기-색"><i class="fa fa-check"></i><b>12.2.4</b> 모자이크 그림의 채우기 색</a></li>
+<li class="chapter" data-level="12.2.5" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림에-라벨-추가하기"><i class="fa fa-check"></i><b>12.2.5</b> 모자이크 그림에 라벨 추가하기</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="다변량-변수-연속형-데이터.html"><a href="다변량-변수-연속형-데이터.html"><i class="fa fa-check"></i><b>13</b> 다변량 변수 - 연속형 데이터</a>
@@ -565,133 +566,151 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="모자이크-그림" class="section level2" number="12.2">
 <h2><span class="header-section-number">12.2</span> 모자이크 그림</h2>
 <p><strong>모자이크 그림(Mosaic Chart)</strong>은 Marimekko chart, Eikosogram 이라고도 하는데요, 특히 <strong>2개 이상의 다변량 변수를 한꺼번에 그림으로 나타내어 탐색적 분석</strong>을 할 때 아주 유용합니다.</p>
+<p><strong>모자이크 그림</strong>은 다변량 범주형 데이터 간의 관계를 파악할 수 있게 해 줍니다.</p>
+<p>모자이크 그림은 <code>vcd</code> 패키지의 <code>mosaic()</code> 함수를 이용하겠으며, 데이터는 <code>MASS</code> 패키지의 <code>cars93</code>데이터 프레임 내에 있는 차종(<code>Type</code>), 구동방식(<code>DriveTrain</code>) 그리고 제조국(<code>Origin</code>) 등의 3개 변수를 모자이크 그림으로 시각화해 보겠습니다.</p>
+<p><code>vcd</code> 패키지의 <code>mosaic()</code> 함수를 이용하겠습니다.</p>
 <div id="데이터-세트와-패키지" class="section level3" number="12.2.1">
 <h3><span class="header-section-number">12.2.1</span> 데이터 세트와 패키지</h3>
-<p>모자이크 그림은 <code>vcd</code> 패키지의 <code>mosaic()</code> 함수를 이용하겠으며, 데이터는 <code>MASS</code> 패키지의 <code>cars93</code>데이터 프레임 내에 있는 차종(<code>Type</code>), 제조국(<code>Origin</code>), <code>DriveTrain</code>(<code>Rear</code>, <code>Front</code>, <code>4WD</code>) 등의 3개 변수를 모자이크 그림으로 표현해 보겠습니다.</p>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb461-1"><a href="모자이크-그림.html#cb461-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vcd 패키지 설치 및 불러오기</span></span>
-<span id="cb461-2"><a href="모자이크-그림.html#cb461-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;vcd&quot;)</span></span>
-<span id="cb461-3"><a href="모자이크-그림.html#cb461-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span>
-<span id="cb461-4"><a href="모자이크-그림.html#cb461-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb461-5"><a href="모자이크-그림.html#cb461-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 세트</span></span>
-<span id="cb461-6"><a href="모자이크-그림.html#cb461-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb461-7"><a href="모자이크-그림.html#cb461-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb453-1"><a href="모자이크-그림.html#cb453-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vcd 패키지 설치 및 불러오기</span></span>
+<span id="cb453-2"><a href="모자이크-그림.html#cb453-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;vcd&quot;)</span></span>
+<span id="cb453-3"><a href="모자이크-그림.html#cb453-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span>
+<span id="cb453-4"><a href="모자이크-그림.html#cb453-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb453-5"><a href="모자이크-그림.html#cb453-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 세트</span></span>
+<span id="cb453-6"><a href="모자이크-그림.html#cb453-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb453-7"><a href="모자이크-그림.html#cb453-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
 <p><a href="모자이크-그림.html#모자이크-그림">Go Top</a></p>
 </div>
-<div id="모자이크-그림-그리기" class="section level3" number="12.2.2">
-<h3><span class="header-section-number">12.2.2</span> 모자이크 그림 그리기</h3>
-<div id="세로-방향의-모자이크-그림" class="section level4" number="12.2.2.1">
-<h4><span class="header-section-number">12.2.2.1</span> 세로 방향의 모자이크 그림</h4>
-<p><code>vcd</code> 패키지 설치, 호출 후에 차종(<code>Type</code>)과 제조국(<code>Origin</code>) 2개의 변수를 가지고, 세로 방향(<code>direction="v"</code>) 으로 모자이크 그림을 그려보겠습니다.</p>
-<p><code>table()</code> 함수를 써서 분할표를 먼저 만들고, 이걸 가져다가 모자이크 그림을 그리게 됩니다.</p>
-<div class="sourceCode" id="cb462"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb462-1"><a href="모자이크-그림.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 모자이크 그림 : 차종(Type) &amp; 제조국(Origin) - 세로 방향</span></span>
-<span id="cb462-2"><a href="모자이크-그림.html#cb462-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Type과 Origin의 분할표를 구합니다.</span></span>
-<span id="cb462-3"><a href="모자이크-그림.html#cb462-3" aria-hidden="true" tabindex="-1"></a>table_1 <span class="ot">&lt;-</span> <span class="fu">with</span>(Cars93, <span class="fu">table</span>(Type, Origin))</span>
-<span id="cb462-4"><a href="모자이크-그림.html#cb462-4" aria-hidden="true" tabindex="-1"></a>table_1</span></code></pre></div>
-<pre class="bg-warning"><code>##          Origin
-## Type      USA non-USA
-##   Compact   7       9
-##   Large    11       0
-##   Midsize  10      12
-##   Small     7      14
-##   Sporty    8       6
-##   Van       5       4</code></pre>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb464-1"><a href="모자이크-그림.html#cb464-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 모자이크 그림을 그립니다.</span></span>
-<span id="cb464-2"><a href="모자이크-그림.html#cb464-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>(table_1, </span>
-<span id="cb464-3"><a href="모자이크-그림.html#cb464-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">gp=</span><span class="fu">gpar</span>(<span class="at">fill =</span> <span class="fu">c</span>(<span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;blue&quot;</span>)), </span>
-<span id="cb464-4"><a href="모자이크-그림.html#cb464-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">direction =</span> <span class="st">&quot;v&quot;</span>,                                   <span class="co"># 세로</span></span>
-<span id="cb464-5"><a href="모자이크-그림.html#cb464-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">main =</span> <span class="st">&quot;차종별 제조국별 모자이크 그림 : vcd 패키지의 mosaic() 함수 사용&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:VCDMosaic"></span>
-<img src="bookdown_files/figure-html/VCDMosaic-1.png" alt="차종별 제조국별 모자이크 그림 : vcd 패키지의 mosaic() 함수 사용" width="672" />
+<div id="기본-모자이크-그림-그리기" class="section level3" number="12.2.2">
+<h3><span class="header-section-number">12.2.2</span> 기본 모자이크 그림 그리기</h3>
+<div id="일변량-범주형-데이터" class="section level4" number="12.2.2.1">
+<h4><span class="header-section-number">12.2.2.1</span> 일변량 범주형 데이터</h4>
+<p>먼저 범주형 변수인 <strong>자동차의 종류(<code>Type</code>)</strong> 만을 기본 모자이크 그림으로 그려 보겠습니다.</p>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb454-1"><a href="모자이크-그림.html#cb454-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>( <span class="sc">~</span> Type, <span class="at">data =</span> Cars93,</span>
+<span id="cb454-2"><a href="모자이크-그림.html#cb454-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;자동차 종류의 모자이크 그림&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:VCDMosaicOneVar"></span>
+<img src="bookdown_files/figure-html/VCDMosaicOneVar-1.png" alt="자동차 종류의 모자이크 그림" width="672" />
 <p class="caption">
-Figure 12.9: 차종별 제조국별 모자이크 그림 : vcd 패키지의 mosaic() 함수 사용
+Figure 12.9: 자동차 종류의 모자이크 그림
+</p>
+</div>
+<p><code>Cars93</code> 데이터 세트가 자동차의 종류(<code>Type</code>) 별로 수평(<strong>h</strong>orizontal)으로 분할되어 표시가 됩니다.</p>
+</div>
+<div id="변량-범주형-데이터" class="section level4" number="12.2.2.2">
+<h4><span class="header-section-number">12.2.2.2</span> 2변량 범주형 데이터</h4>
+<p>이제 자동차의 종류(<code>Type</code>)와 구동 방식(<code>DriveTrain</code>) 2개의 범주형 변수를 모자이크 그람으로 시각화 해 보겠습니다.</p>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb455-1"><a href="모자이크-그림.html#cb455-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>(DriveTrain <span class="sc">~</span> Type, <span class="at">data =</span> Cars93,</span>
+<span id="cb455-2"><a href="모자이크-그림.html#cb455-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&quot;차종별 구동 방식 모자이크 그림&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:VCDMosaicTwoVar"></span>
+<img src="bookdown_files/figure-html/VCDMosaicTwoVar-1.png" alt="차종별 구동 방식 모자이크 그림" width="672" />
+<p class="caption">
+Figure 12.10: 차종별 구동 방식 모자이크 그림
+</p>
+</div>
+<p><code>Cars93</code> 데이터 세트가 1차적으로 자동차의 종류(<code>Type</code>) 별로 수평(<strong>h</strong>orizontal)으로 분할되고, 2차적으로 각 자종차의 종류별로 구동 방식(<code>DriveTrain</code>)이 수직(<strong>v</strong>ertical)으로 분할되어 표시되고 있음을 알 수 있습니다.</p>
+</div>
+<div id="변량-범주형-모자이크-그림" class="section level4" number="12.2.2.3">
+<h4><span class="header-section-number">12.2.2.3</span> 3변량 범주형 모자이크 그림</h4>
+<p>이번에는 자동차의 종류(<code>Type</code>)와 구동 방식(<code>DriveTrain</code>) 그리고 제조국(<code>Origin</code>) 등 3개의 범주형 변수를 모자이크 그람으로 시각화 해 보겠습니다.</p>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb456-1"><a href="모자이크-그림.html#cb456-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>( Origin <span class="sc">~</span> Type <span class="sc">+</span> DriveTrain, <span class="at">data =</span> Cars93,</span>
+<span id="cb456-2"><a href="모자이크-그림.html#cb456-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;3변량 범주형 모자이크 그림&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:VCDMosaicThreeVar"></span>
+<img src="bookdown_files/figure-html/VCDMosaicThreeVar-1.png" alt="3변량 범주형 모자이크 그림" width="672" />
+<p class="caption">
+Figure 12.11: 3변량 범주형 모자이크 그림
+</p>
+</div>
+<p><code>Cars93</code> 데이터 세트가 1차적으로 자동차의 종류(<code>Type</code>) 별로 수평(<strong>h</strong>orizontal)으로 분할되고, 2차적으로 각 자종차의 종류별로 구동 방식(<code>DriveTrain</code>)이 수직(<strong>v</strong>ertical)으로 분할되어 표시되고 그리고 3차적으로 제조국(<code>Origin</code>) 별로 수평(<strong>h</strong>orizontal)으로 분할되어 표시되고 있음을 알 수 있습니다.</p>
+</div>
+</div>
+<div id="분할-방향" class="section level3" number="12.2.3">
+<h3><span class="header-section-number">12.2.3</span> 분할 방향</h3>
+<p>앞에서 살펴본 바와 같이 3 개의 범주형 변수에 대한 분할 방향은 다음과 같습니다.</p>
+<ul>
+<li><code>Type</code> : 수평</li>
+<li><code>DriveTrain</code> : 수직</li>
+<li><code>Origin</code> : 수평</li>
+</ul>
+<p><strong>수평 분할(horizontal splits)</strong>로 시작하여 방향을 바꾸어 가는 것이 <strong>기본적인 분할 방향</strong> 패턴입니다.</p>
+<p>따라서 앞에서 살펴본 3변량 모자이크 그림은 다음과 같이 <code>direction =</code> 모수를 이용하여 동일한 그림을 그릴 수 있습니다.</p>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb457-1"><a href="모자이크-그림.html#cb457-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>( Origin <span class="sc">~</span> Type <span class="sc">+</span> DriveTrain, <span class="at">data =</span> Cars93,</span>
+<span id="cb457-2"><a href="모자이크-그림.html#cb457-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">direction =</span> <span class="fu">c</span>(<span class="st">&quot;h&quot;</span>, <span class="st">&quot;v&quot;</span>, <span class="st">&quot;h&quot;</span>),</span>
+<span id="cb457-3"><a href="모자이크-그림.html#cb457-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;3변량 범주형 모자이크 그림&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:VCDMosaicDirection"></span>
+<img src="bookdown_files/figure-html/VCDMosaicDirection-1.png" alt="3변량 범주형 모자이크 그림 : 분할 방향" width="672" />
+<p class="caption">
+Figure 12.12: 3변량 범주형 모자이크 그림 : 분할 방향
+</p>
+</div>
+<div id="분할-방향의-변경" class="section level4" number="12.2.3.1">
+<h4><span class="header-section-number">12.2.3.1</span> 분할 방향의 변경</h4>
+<p>이러한 분할 방향은 우리가 원하는대로 변경할 수 있습니다. 예를 들어, 모든 변수들은 수직으로 분할하고, 마지막 변수만 수평으로 분할하는 더블데커 플롯을 그릴 수 있습니다.</p>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb458-1"><a href="모자이크-그림.html#cb458-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>( Origin <span class="sc">~</span> Type <span class="sc">+</span> DriveTrain, <span class="at">data =</span> Cars93,</span>
+<span id="cb458-2"><a href="모자이크-그림.html#cb458-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">direction =</span> <span class="fu">c</span>(<span class="st">&quot;v&quot;</span>, <span class="st">&quot;v&quot;</span>, <span class="st">&quot;h&quot;</span>),</span>
+<span id="cb458-3"><a href="모자이크-그림.html#cb458-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;3변량 범주형 모자이크 그림 : 분할 방향의 변경&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:VCDMosaicDirChg"></span>
+<img src="bookdown_files/figure-html/VCDMosaicDirChg-1.png" alt="3변량 범주형 모자이크 그림 : 분할 방향의 변경" width="672" />
+<p class="caption">
+Figure 12.13: 3변량 범주형 모자이크 그림 : 분할 방향의 변경
+</p>
+</div>
+<p>여기서 분할 방향 벡터 <code>direction = c("v", "v", "h")</code>는 <code>Origin ~ Type + DriveTrain</code> 공식에 있는 변수 (<code>Type</code>, <code>DriveTrain</code>, <code>Origin</code>)의 순서로 적용이 됩니다. 즉, ~ 기호 앞에 있는 변수가 제일 마지막 변수(주로 분석에서는 이 변수를 <strong>종속변수</strong>라고 합니다.)가 됩니다.</p>
+</div>
+</div>
+<div id="모자이크-그림의-채우기-색" class="section level3" number="12.2.4">
+<h3><span class="header-section-number">12.2.4</span> 모자이크 그림의 채우기 색</h3>
+<p>채우기 색을 적용할 수 있으며, 마지막 컷 차원(마지막 변수)에 따라서 자동 반복(recyling)됩니다.</p>
+<p>다음과 같이 <code>highlighting_fill =</code> 모수로 채우기 색을 설정할 수 있습니다.</p>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb459-1"><a href="모자이크-그림.html#cb459-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>( Origin <span class="sc">~</span> Type <span class="sc">+</span> DriveTrain, <span class="at">data =</span> Cars93,</span>
+<span id="cb459-2"><a href="모자이크-그림.html#cb459-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">highlighting_fill =</span> <span class="fu">c</span>(<span class="st">&quot;grey90&quot;</span>, <span class="st">&quot;cornflowerblue&quot;</span>),</span>
+<span id="cb459-3"><a href="모자이크-그림.html#cb459-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;모자이크 그림 : 채우기 색&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:VCDMosaicFill"></span>
+<img src="bookdown_files/figure-html/VCDMosaicFill-1.png" alt="모자이크 그림 : 채우기 색" width="672" />
+<p class="caption">
+Figure 12.14: 모자이크 그림 : 채우기 색
 </p>
 </div>
 </div>
-<div id="가로-방향의-모자이크-그림" class="section level4" number="12.2.2.2">
-<h4><span class="header-section-number">12.2.2.2</span> 가로 방향의 모자이크 그림</h4>
-<p>차종(<code>Type</code>)과 제조국(<code>Origin</code>) 2개의 변수를 가지고, 모자이크 그림을 <strong>가로 방향 (<code>direction="h"</code>)</strong> 으로 그리면 아래와 같습니다. <code>Origin</code>이 <code>y</code>축에 있던 것이 <code>x</code>축으로 바뀌었습니다.</p>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb465-1"><a href="모자이크-그림.html#cb465-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 모자이크 그림을 그립니다 : 가로 방향</span></span>
-<span id="cb465-2"><a href="모자이크-그림.html#cb465-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>(table_1, </span>
-<span id="cb465-3"><a href="모자이크-그림.html#cb465-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">gp=</span><span class="fu">gpar</span>(<span class="at">fill =</span> <span class="fu">c</span>(<span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;blue&quot;</span>)), </span>
-<span id="cb465-4"><a href="모자이크-그림.html#cb465-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">direction =</span> <span class="st">&quot;h&quot;</span>,                                             <span class="co"># 가로</span></span>
-<span id="cb465-5"><a href="모자이크-그림.html#cb465-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&quot;차종별 제조국별 모자이크 그림 : 가로 방향&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:VCDMosaicHoriz"></span>
-<img src="bookdown_files/figure-html/VCDMosaicHoriz-1.png" alt="차종별 제조국별 모자이크 그림 : 가로 방향" width="672" />
+<div id="모자이크-그림에-라벨-추가하기" class="section level3" number="12.2.5">
+<h3><span class="header-section-number">12.2.5</span> 모자이크 그림에 라벨 추가하기</h3>
+<div id="축-레이블-회전-시키기" class="section level4" number="12.2.5.1">
+<h4><span class="header-section-number">12.2.5.1</span> 축 레이블 회전 시키기</h4>
+<p><code>rot_labels =</code> 벡터는 변수의 분할 순서가 아닌 <strong>위, 오른쪽, 아래, 왼쪽</strong> 순으로 네 측면의 회전율을 설정해 줍니다.</p>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb460-1"><a href="모자이크-그림.html#cb460-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>( Origin <span class="sc">~</span> Type <span class="sc">+</span> DriveTrain, <span class="at">data =</span> Cars93,</span>
+<span id="cb460-2"><a href="모자이크-그림.html#cb460-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">highlighting_fill =</span> <span class="fu">c</span>(<span class="st">&quot;grey90&quot;</span>, <span class="st">&quot;cornflowerblue&quot;</span>),</span>
+<span id="cb460-3"><a href="모자이크-그림.html#cb460-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">labeling =</span> <span class="fu">labeling_border</span>(<span class="at">rot_labels =</span> <span class="fu">c</span>(<span class="dv">45</span>, <span class="sc">-</span><span class="dv">45</span>, <span class="dv">0</span>, <span class="dv">45</span>)),</span>
+<span id="cb460-4"><a href="모자이크-그림.html#cb460-4" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb460-5"><a href="모자이크-그림.html#cb460-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;모자이크 그림 : 채우기 색&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:VCDMosaicRotLabel"></span>
+<img src="bookdown_files/figure-html/VCDMosaicRotLabel-1.png" alt="모자이크 그림 : 축 레이블 회전" width="672" />
 <p class="caption">
-Figure 12.10: 차종별 제조국별 모자이크 그림 : 가로 방향
+Figure 12.15: 모자이크 그림 : 축 레이블 회전
 </p>
 </div>
 </div>
-<div id="세-변수의-모자이크-그림" class="section level4" number="12.2.2.3">
-<h4><span class="header-section-number">12.2.2.3</span> 세 변수의 모자이크 그림</h4>
-<p>이번에는 변수를 하나 더 추가해서 차종(<code>Type</code>), 제조국(<code>Origin</code>), <code>DriveTrain</code> 의 3개의 변수를 가지고 모자이크 그림을 그려보겠습니다.</p>
-<p>먼저 <code>table()함수</code>를 써서 3개 변수에 대한 <strong>분할표</strong>를 만들고, 이를 가져다가 모자이크 그림을 그리게 됩니다.</p>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb466-1"><a href="모자이크-그림.html#cb466-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 모자이크 그림 : 차종(Type) &amp; 제조국(Origin) &amp; DriveTrain(Rear, Front, 4WD)</span></span>
-<span id="cb466-2"><a href="모자이크-그림.html#cb466-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 세로 방향</span></span>
-<span id="cb466-3"><a href="모자이크-그림.html#cb466-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb466-4"><a href="모자이크-그림.html#cb466-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 3개 변수별 범주 확인</span></span>
-<span id="cb466-5"><a href="모자이크-그림.html#cb466-5" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(Cars93<span class="sc">$</span>Type)</span></code></pre></div>
-<pre class="bg-warning"><code>## [1] &quot;Compact&quot; &quot;Large&quot;   &quot;Midsize&quot; &quot;Small&quot;   &quot;Sporty&quot;  &quot;Van&quot;</code></pre>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb468-1"><a href="모자이크-그림.html#cb468-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(Cars93<span class="sc">$</span>Origin)</span></code></pre></div>
-<pre class="bg-warning"><code>## [1] &quot;USA&quot;     &quot;non-USA&quot;</code></pre>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb470-1"><a href="모자이크-그림.html#cb470-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(Cars93<span class="sc">$</span>DriveTrain)</span></code></pre></div>
-<pre class="bg-warning"><code>## [1] &quot;4WD&quot;   &quot;Front&quot; &quot;Rear&quot;</code></pre>
-<div class="sourceCode" id="cb472"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb472-1"><a href="모자이크-그림.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3개 변수의 분할표를 구합니다.</span></span>
-<span id="cb472-2"><a href="모자이크-그림.html#cb472-2" aria-hidden="true" tabindex="-1"></a>table_2 <span class="ot">&lt;-</span> <span class="fu">with</span>(Cars93, <span class="fu">table</span>(Type, Origin, DriveTrain))</span>
-<span id="cb472-3"><a href="모자이크-그림.html#cb472-3" aria-hidden="true" tabindex="-1"></a>table_2</span></code></pre></div>
-<pre class="bg-warning"><code>## , , DriveTrain = 4WD
-## 
-##          Origin
-## Type      USA non-USA
-##   Compact   0       1
-##   Large     0       0
-##   Midsize   0       0
-##   Small     0       2
-##   Sporty    2       0
-##   Van       3       2
-## 
-## , , DriveTrain = Front
-## 
-##          Origin
-## Type      USA non-USA
-##   Compact   7       6
-##   Large     7       0
-##   Midsize   9       8
-##   Small     7      12
-##   Sporty    2       5
-##   Van       2       2
-## 
-## , , DriveTrain = Rear
-## 
-##          Origin
-## Type      USA non-USA
-##   Compact   0       2
-##   Large     4       0
-##   Midsize   1       4
-##   Small     0       0
-##   Sporty    4       1
-##   Van       0       0</code></pre>
-<div class="sourceCode" id="cb474"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb474-1"><a href="모자이크-그림.html#cb474-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3개 벼누의 모자이크 그림을 그립니다.</span></span>
-<span id="cb474-2"><a href="모자이크-그림.html#cb474-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>(table_2, </span>
-<span id="cb474-3"><a href="모자이크-그림.html#cb474-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">gp=</span><span class="fu">gpar</span>(<span class="at">fill=</span><span class="fu">c</span>(<span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>)), </span>
-<span id="cb474-4"><a href="모자이크-그림.html#cb474-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">direction=</span><span class="st">&quot;v&quot;</span>, </span>
-<span id="cb474-5"><a href="모자이크-그림.html#cb474-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">main=</span><span class="st">&quot;차종, 제조국 그리고 DriveTrain의 모자이크 그림 : 세로 방향&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:VCDMosaicMultiVars"></span>
-<img src="bookdown_files/figure-html/VCDMosaicMultiVars-1.png" alt="차종, 제조국 그리고 DriveTrain의 모자이크 그림 : 세로 방향" width="672" />
+<div id="레이블-축약" class="section level4" number="12.2.5.2">
+<h4><span class="header-section-number">12.2.5.2</span> 레이블 축약</h4>
+<p>레이블은 (<code>direction =</code> 에서와 같이) 분할 순서대로 축약할 수 있습니다. 레이블 축약 알고리즘은 모음을 제거한 지정한 수의 문자를 반환합니다.</p>
+<p>자세한 사항은 <code>? label_border</code>를 참고하기 바랍니다.</p>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb461-1"><a href="모자이크-그림.html#cb461-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>( Origin <span class="sc">~</span> Type <span class="sc">+</span> DriveTrain, <span class="at">data =</span> Cars93,</span>
+<span id="cb461-2"><a href="모자이크-그림.html#cb461-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">highlighting_fill =</span> <span class="fu">c</span>(<span class="st">&quot;grey90&quot;</span>, <span class="st">&quot;cornflowerblue&quot;</span>),</span>
+<span id="cb461-3"><a href="모자이크-그림.html#cb461-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">labeling =</span> <span class="fu">labeling_border</span>(<span class="at">rot_labels =</span> <span class="fu">c</span>(<span class="dv">45</span>, <span class="sc">-</span><span class="dv">45</span>, <span class="dv">0</span>, <span class="dv">45</span>),</span>
+<span id="cb461-4"><a href="모자이크-그림.html#cb461-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">abbreviate_labs =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>)),</span>
+<span id="cb461-5"><a href="모자이크-그림.html#cb461-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;모자이크 그림 : 레이블 축약&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:VCDMosaicAbbLabel"></span>
+<img src="bookdown_files/figure-html/VCDMosaicAbbLabel-1.png" alt="모자이크 그림 : 레이블 축약" width="672" />
 <p class="caption">
-Figure 12.11: 차종, 제조국 그리고 DriveTrain의 모자이크 그림 : 세로 방향
+Figure 12.16: 모자이크 그림 : 레이블 축약
 </p>
 </div>
-<p><a href="모자이크-그림.html#모자이크-그림">Go Top</a></p>
+<p><code>abbreviate_labs = c(3, 2, 4)</code>은 공식에 있는 3개의 범주형 변수에 대해 (<code>Type</code>, <code>DriveTrain</code>, <code>Origin</code>) 순으로 각각 3글자, 2글자, 4글자 등으로 축약해 줍니다.</p>
 </div>
-</div>
-<div id="모자이크-그림에-라벨-추가하기" class="section level3" number="12.2.3">
-<h3><span class="header-section-number">12.2.3</span> 모자이크 그림에 라벨 추가하기</h3>
-<p>마지막으로, 모자이크 그림에 <strong>비율 라벨(Mosaic Chart with Percentage Label)</strong>을 추가해 보겠습니다.</p>
-<div class="sourceCode" id="cb475"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb475-1"><a href="모자이크-그림.html#cb475-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 비율 라벨 추가 (Mosaic Chart with Percentage Labels)</span></span>
-<span id="cb475-2"><a href="모자이크-그림.html#cb475-2" aria-hidden="true" tabindex="-1"></a>table_1 <span class="ot">&lt;-</span> <span class="fu">with</span>(Cars93, <span class="fu">table</span>(Type, Origin))</span>
-<span id="cb475-3"><a href="모자이크-그림.html#cb475-3" aria-hidden="true" tabindex="-1"></a>proportions <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">prop.table</span>(table_1) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>)        <span class="co"># 백분율, 소수점 첫째자리 반올림</span></span>
-<span id="cb475-4"><a href="모자이크-그림.html#cb475-4" aria-hidden="true" tabindex="-1"></a>proportions</span></code></pre></div>
+<div id="비율-레이블-추가하기" class="section level4" number="12.2.5.3">
+<h4><span class="header-section-number">12.2.5.3</span> 비율 레이블 추가하기</h4>
+<p>마지막으로, 모자이크 그림에 <strong>비율 레이블(Mosaic Chart with Percentage Label)</strong>을 추가해 보겠습니다.</p>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb462-1"><a href="모자이크-그림.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 비율 라벨 추가 (Mosaic Chart with Percentage Labels)</span></span>
+<span id="cb462-2"><a href="모자이크-그림.html#cb462-2" aria-hidden="true" tabindex="-1"></a>table_1 <span class="ot">&lt;-</span> <span class="fu">with</span>(Cars93, <span class="fu">table</span>(Type, Origin))</span>
+<span id="cb462-3"><a href="모자이크-그림.html#cb462-3" aria-hidden="true" tabindex="-1"></a>proportions <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">prop.table</span>(table_1) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>)        <span class="co"># 백분율, 소수점 첫째자리 반올림</span></span>
+<span id="cb462-4"><a href="모자이크-그림.html#cb462-4" aria-hidden="true" tabindex="-1"></a>proportions</span></code></pre></div>
 <pre class="bg-warning"><code>##          Origin
 ## Type       USA non-USA
 ##   Compact  7.5     9.7
@@ -700,38 +719,44 @@ Figure 12.11: 차종, 제조국 그리고 DriveTrain의 모자이크 그림 : �
 ##   Small    7.5    15.1
 ##   Sporty   8.6     6.5
 ##   Van      5.4     4.3</code></pre>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb477-1"><a href="모자이크-그림.html#cb477-1" aria-hidden="true" tabindex="-1"></a>values <span class="ot">&lt;-</span> <span class="fu">c</span>(table_1)</span>
-<span id="cb477-2"><a href="모자이크-그림.html#cb477-2" aria-hidden="true" tabindex="-1"></a>rowvarcat <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;USA&quot;</span>,<span class="st">&quot;non_USA&quot;</span>)</span>
-<span id="cb477-3"><a href="모자이크-그림.html#cb477-3" aria-hidden="true" tabindex="-1"></a>columnvarcat <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Compact&quot;</span>,<span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Van&quot;</span>)</span>
-<span id="cb477-4"><a href="모자이크-그림.html#cb477-4" aria-hidden="true" tabindex="-1"></a>names<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;Origin&quot;</span>, <span class="st">&quot;Type&quot;</span>)</span>
-<span id="cb477-5"><a href="모자이크-그림.html#cb477-5" aria-hidden="true" tabindex="-1"></a>dims <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">6</span>)</span>
-<span id="cb477-6"><a href="모자이크-그림.html#cb477-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb477-7"><a href="모자이크-그림.html#cb477-7" aria-hidden="true" tabindex="-1"></a>TABS <span class="ot">&lt;-</span> <span class="fu">structure</span>( <span class="fu">c</span>(values), </span>
-<span id="cb477-8"><a href="모자이크-그림.html#cb477-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">.Dim =</span> <span class="fu">as.integer</span>(dims), </span>
-<span id="cb477-9"><a href="모자이크-그림.html#cb477-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">.Dimnames =</span> <span class="fu">structure</span>( <span class="fu">list</span>(rowvarcat, columnvarcat ),</span>
-<span id="cb477-10"><a href="모자이크-그림.html#cb477-10" aria-hidden="true" tabindex="-1"></a>                    <span class="at">.Names =</span> <span class="fu">c</span>(names) ) , <span class="at">class =</span> <span class="st">&quot;table&quot;</span>) </span>
-<span id="cb477-11"><a href="모자이크-그림.html#cb477-11" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb477-12"><a href="모자이크-그림.html#cb477-12" aria-hidden="true" tabindex="-1"></a>PROPORTIONS <span class="ot">&lt;-</span> <span class="fu">structure</span>( <span class="fu">c</span>(proportions), </span>
-<span id="cb477-13"><a href="모자이크-그림.html#cb477-13" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.Dim =</span> <span class="fu">as.integer</span>(dims), </span>
-<span id="cb477-14"><a href="모자이크-그림.html#cb477-14" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.Dimnames =</span> <span class="fu">structure</span>( <span class="fu">list</span>(rowvarcat,columnvarcat ),</span>
-<span id="cb477-15"><a href="모자이크-그림.html#cb477-15" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.Names =</span> <span class="fu">c</span>(names) ) , <span class="at">class =</span> <span class="st">&quot;table&quot;</span>) </span>
-<span id="cb477-16"><a href="모자이크-그림.html#cb477-16" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb477-17"><a href="모자이크-그림.html#cb477-17" aria-hidden="true" tabindex="-1"></a>TABSPROPORTIONS <span class="ot">&lt;-</span> <span class="fu">structure</span>( <span class="fu">c</span>(<span class="fu">paste</span>(proportions,<span class="st">&quot;%&quot;</span>,<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="st">&quot;(&quot;</span>,values,<span class="st">&quot;)&quot;</span>,<span class="at">sep=</span><span class="st">&quot;&quot;</span>)), </span>
-<span id="cb477-18"><a href="모자이크-그림.html#cb477-18" aria-hidden="true" tabindex="-1"></a>                               <span class="at">.Dim =</span> <span class="fu">as.integer</span>(dims), </span>
-<span id="cb477-19"><a href="모자이크-그림.html#cb477-19" aria-hidden="true" tabindex="-1"></a>                               <span class="at">.Dimnames =</span> <span class="fu">structure</span>( <span class="fu">list</span>(rowvarcat,columnvarcat ),</span>
-<span id="cb477-20"><a href="모자이크-그림.html#cb477-20" aria-hidden="true" tabindex="-1"></a>                               <span class="at">.Names =</span> <span class="fu">c</span>(names) ) , <span class="at">class =</span> <span class="st">&quot;table&quot;</span>) </span>
-<span id="cb477-21"><a href="모자이크-그림.html#cb477-21" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb477-22"><a href="모자이크-그림.html#cb477-22" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>(TABS, </span>
-<span id="cb477-23"><a href="모자이크-그림.html#cb477-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb477-24"><a href="모자이크-그림.html#cb477-24" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&quot;Mosaic Chart by Car Type and Origin, with Percentage Labels&quot;</span>)</span>
-<span id="cb477-25"><a href="모자이크-그림.html#cb477-25" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb477-26"><a href="모자이크-그림.html#cb477-26" aria-hidden="true" tabindex="-1"></a><span class="fu">labeling_cells</span>(<span class="at">text=</span>TABSPROPORTIONS, <span class="at">clip_cells=</span><span class="cn">FALSE</span>)(TABS)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb464-1"><a href="모자이크-그림.html#cb464-1" aria-hidden="true" tabindex="-1"></a>values <span class="ot">&lt;-</span> <span class="fu">c</span>(table_1)</span>
+<span id="cb464-2"><a href="모자이크-그림.html#cb464-2" aria-hidden="true" tabindex="-1"></a>rowvarcat <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;USA&quot;</span>,<span class="st">&quot;non_USA&quot;</span>)</span>
+<span id="cb464-3"><a href="모자이크-그림.html#cb464-3" aria-hidden="true" tabindex="-1"></a>columnvarcat <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Compact&quot;</span>,<span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Van&quot;</span>)</span>
+<span id="cb464-4"><a href="모자이크-그림.html#cb464-4" aria-hidden="true" tabindex="-1"></a>names<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;Origin&quot;</span>, <span class="st">&quot;Type&quot;</span>)</span>
+<span id="cb464-5"><a href="모자이크-그림.html#cb464-5" aria-hidden="true" tabindex="-1"></a>dims <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">6</span>)</span>
+<span id="cb464-6"><a href="모자이크-그림.html#cb464-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb464-7"><a href="모자이크-그림.html#cb464-7" aria-hidden="true" tabindex="-1"></a>TABS <span class="ot">&lt;-</span> <span class="fu">structure</span>( <span class="fu">c</span>(values), </span>
+<span id="cb464-8"><a href="모자이크-그림.html#cb464-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">.Dim =</span> <span class="fu">as.integer</span>(dims), </span>
+<span id="cb464-9"><a href="모자이크-그림.html#cb464-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">.Dimnames =</span> <span class="fu">structure</span>( <span class="fu">list</span>(rowvarcat, columnvarcat ),</span>
+<span id="cb464-10"><a href="모자이크-그림.html#cb464-10" aria-hidden="true" tabindex="-1"></a>                    <span class="at">.Names =</span> <span class="fu">c</span>(names) ) , <span class="at">class =</span> <span class="st">&quot;table&quot;</span>) </span>
+<span id="cb464-11"><a href="모자이크-그림.html#cb464-11" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb464-12"><a href="모자이크-그림.html#cb464-12" aria-hidden="true" tabindex="-1"></a>PROPORTIONS <span class="ot">&lt;-</span> <span class="fu">structure</span>( <span class="fu">c</span>(proportions), </span>
+<span id="cb464-13"><a href="모자이크-그림.html#cb464-13" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.Dim =</span> <span class="fu">as.integer</span>(dims), </span>
+<span id="cb464-14"><a href="모자이크-그림.html#cb464-14" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.Dimnames =</span> <span class="fu">structure</span>( <span class="fu">list</span>(rowvarcat,columnvarcat ),</span>
+<span id="cb464-15"><a href="모자이크-그림.html#cb464-15" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.Names =</span> <span class="fu">c</span>(names) ) , <span class="at">class =</span> <span class="st">&quot;table&quot;</span>) </span>
+<span id="cb464-16"><a href="모자이크-그림.html#cb464-16" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb464-17"><a href="모자이크-그림.html#cb464-17" aria-hidden="true" tabindex="-1"></a>TABSPROPORTIONS <span class="ot">&lt;-</span> <span class="fu">structure</span>( <span class="fu">c</span>(<span class="fu">paste</span>(proportions,<span class="st">&quot;%&quot;</span>,<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="st">&quot;(&quot;</span>,values,<span class="st">&quot;)&quot;</span>,<span class="at">sep=</span><span class="st">&quot;&quot;</span>)), </span>
+<span id="cb464-18"><a href="모자이크-그림.html#cb464-18" aria-hidden="true" tabindex="-1"></a>                               <span class="at">.Dim =</span> <span class="fu">as.integer</span>(dims), </span>
+<span id="cb464-19"><a href="모자이크-그림.html#cb464-19" aria-hidden="true" tabindex="-1"></a>                               <span class="at">.Dimnames =</span> <span class="fu">structure</span>( <span class="fu">list</span>(rowvarcat,columnvarcat ),</span>
+<span id="cb464-20"><a href="모자이크-그림.html#cb464-20" aria-hidden="true" tabindex="-1"></a>                               <span class="at">.Names =</span> <span class="fu">c</span>(names) ) , <span class="at">class =</span> <span class="st">&quot;table&quot;</span>) </span>
+<span id="cb464-21"><a href="모자이크-그림.html#cb464-21" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb464-22"><a href="모자이크-그림.html#cb464-22" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>(TABS, </span>
+<span id="cb464-23"><a href="모자이크-그림.html#cb464-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb464-24"><a href="모자이크-그림.html#cb464-24" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&quot;자동차 종류별 제조국의 비율 레이블&quot;</span>)</span>
+<span id="cb464-25"><a href="모자이크-그림.html#cb464-25" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb464-26"><a href="모자이크-그림.html#cb464-26" aria-hidden="true" tabindex="-1"></a><span class="fu">labeling_cells</span>(<span class="at">text=</span>TABSPROPORTIONS, <span class="at">clip_cells=</span><span class="cn">FALSE</span>)(TABS)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:VCDMosaicPercLabel"></span>
+<img src="bookdown_files/figure-html/VCDMosaicPercLabel-1.png" alt="모자이크 그림 : 비율 레이블" width="672" />
+<p class="caption">
+Figure 12.17: 모자이크 그림 : 비율 레이블
+</p>
+</div>
 <ul>
 <li>Michael Friendly’s book “<a href="http://euclid.psych.yorku.ca/SCS/vcd/">Visualizing Categorical Data</a>” 예제 참고</li>
 </ul>
 <p><a href="모자이크-그림.html#모자이크-그림">Go Top</a></p>
 
+</div>
 </div>
 </div>
 <!-- </div> -->

@@ -64,7 +64,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -159,7 +158,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="r-그래프-패키지-소개-graphics-lattice-ggplot2.html"><a href="r-그래프-패키지-소개-graphics-lattice-ggplot2.html"><i class="fa fa-check"></i><b>2</b> R 그래프 패키지 소개 (Graphics, Lattice, ggplot2)</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="주요-그래프용-패키지.html"><a href="주요-그래프용-패키지.html"><i class="fa fa-check"></i><b>2.1</b> 주요 그래프용 패키지</a></li>
+<li class="chapter" data-level="2.1" data-path="주요-그래프-패키지.html"><a href="주요-그래프-패키지.html"><i class="fa fa-check"></i><b>2.1</b> 주요 그래프 패키지</a></li>
 <li class="chapter" data-level="2.2" data-path="패키지의-설치.html"><a href="패키지의-설치.html"><i class="fa fa-check"></i><b>2.2</b> 패키지의 설치</a>
 <ul>
 <li class="chapter" data-level="" data-path="패키지의-설치.html"><a href="패키지의-설치.html#참고자료"><i class="fa fa-check"></i>참고자료</a></li>
@@ -399,8 +398,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2" data-path="모자이크-그림.html"><a href="모자이크-그림.html"><i class="fa fa-check"></i><b>12.2</b> 모자이크 그림</a>
 <ul>
 <li class="chapter" data-level="12.2.1" data-path="모자이크-그림.html"><a href="모자이크-그림.html#데이터-세트와-패키지"><i class="fa fa-check"></i><b>12.2.1</b> 데이터 세트와 패키지</a></li>
-<li class="chapter" data-level="12.2.2" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림-그리기"><i class="fa fa-check"></i><b>12.2.2</b> 모자이크 그림 그리기</a></li>
-<li class="chapter" data-level="12.2.3" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림에-라벨-추가하기"><i class="fa fa-check"></i><b>12.2.3</b> 모자이크 그림에 라벨 추가하기</a></li>
+<li class="chapter" data-level="12.2.2" data-path="모자이크-그림.html"><a href="모자이크-그림.html#기본-모자이크-그림-그리기"><i class="fa fa-check"></i><b>12.2.2</b> 기본 모자이크 그림 그리기</a></li>
+<li class="chapter" data-level="12.2.3" data-path="모자이크-그림.html"><a href="모자이크-그림.html#분할-방향"><i class="fa fa-check"></i><b>12.2.3</b> 분할 방향</a></li>
+<li class="chapter" data-level="12.2.4" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림의-채우기-색"><i class="fa fa-check"></i><b>12.2.4</b> 모자이크 그림의 채우기 색</a></li>
+<li class="chapter" data-level="12.2.5" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림에-라벨-추가하기"><i class="fa fa-check"></i><b>12.2.5</b> 모자이크 그림에 라벨 추가하기</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="다변량-변수-연속형-데이터.html"><a href="다변량-변수-연속형-데이터.html"><i class="fa fa-check"></i><b>13</b> 다변량 변수 - 연속형 데이터</a>
@@ -735,136 +736,8 @@ Figure 10.25: 제조국별 파이 차트 3 - facet_wrap() 함수 이용
 </div>
 <div id="연습문제-1" class="section level3 unnumbered">
 <h3>연습문제</h3>
-<div id="cars93의-범주형-변수-확인하기-1" class="section level4" number="10.2.5.4">
-<h4><span class="header-section-number">10.2.5.4</span> <code>Cars93</code>의 범주형 변수 확인하기</h4>
-<div id="cars93-데이터-세트에-있는-범주형-변수factor들을-확인하시오.-1" class="section level5" number="10.2.5.4.1">
-<h5><span class="header-section-number">10.2.5.4.1</span> <code>Cars93</code> 데이터 세트에 있는 범주형 변수(factor)들을 확인하시오.</h5>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb306-1"><a href="파이-차트-1.html#cb306-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb306-2"><a href="파이-차트-1.html#cb306-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb306-3"><a href="파이-차트-1.html#cb306-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb306-4"><a href="파이-차트-1.html#cb306-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">dim</span>(Cars93)[<span class="dv">2</span>]) {</span>
-<span id="cb306-5"><a href="파이-차트-1.html#cb306-5" aria-hidden="true" tabindex="-1"></a>     <span class="cf">if</span> (<span class="fu">class</span>(Cars93[ , i]) <span class="sc">==</span> <span class="st">&quot;factor&quot;</span>) { </span>
-<span id="cb306-6"><a href="파이-차트-1.html#cb306-6" aria-hidden="true" tabindex="-1"></a>          f <span class="ot">&lt;-</span> <span class="fu">c</span>(f, <span class="fu">names</span>(Cars93)[i])</span>
-<span id="cb306-7"><a href="파이-차트-1.html#cb306-7" aria-hidden="true" tabindex="-1"></a>          g <span class="ot">&lt;-</span> <span class="fu">c</span>(g, i)</span>
-<span id="cb306-8"><a href="파이-차트-1.html#cb306-8" aria-hidden="true" tabindex="-1"></a>     }</span>
-<span id="cb306-9"><a href="파이-차트-1.html#cb306-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb306-10"><a href="파이-차트-1.html#cb306-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb306-11"><a href="파이-차트-1.html#cb306-11" aria-hidden="true" tabindex="-1"></a>f  <span class="co"># 범주형 변수의 이름</span></span></code></pre></div>
-<pre class="bg-warning"><code>## [1] &quot;Manufacturer&quot;    &quot;Model&quot;           &quot;Type&quot;            &quot;AirBags&quot;        
-## [5] &quot;DriveTrain&quot;      &quot;Cylinders&quot;       &quot;Man.trans.avail&quot; &quot;Origin&quot;         
-## [9] &quot;Make&quot;</code></pre>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb308-1"><a href="파이-차트-1.html#cb308-1" aria-hidden="true" tabindex="-1"></a>g  <span class="co"># Cars93 데이터 세트에서의 범주형 변수의 컬럼 색인 번호</span></span></code></pre></div>
-<pre class="bg-warning"><code>## [1]  1  2  3  9 10 11 16 26 27</code></pre>
-</div>
-<div id="cars93-데이터-세트에-있는-범주형-변수factor들-중-수준levels이-6-이하인-변수를-확인하시오.-1" class="section level5" number="10.2.5.4.2">
-<h5><span class="header-section-number">10.2.5.4.2</span> <code>Cars93</code> 데이터 세트에 있는 범주형 변수(factor)들 중 수준(levels)이 6 이하인 변수를 확인하시오.</h5>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb310-1"><a href="파이-차트-1.html#cb310-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb310-2"><a href="파이-차트-1.html#cb310-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb310-3"><a href="파이-차트-1.html#cb310-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(g)) {</span>
-<span id="cb310-4"><a href="파이-차트-1.html#cb310-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">length</span>(<span class="fu">levels</span>(Cars93[ ,g[i]])) <span class="sc">&lt;=</span> <span class="dv">6</span>) l <span class="ot">&lt;-</span> <span class="fu">c</span>(l, g[i])</span>
-<span id="cb310-5"><a href="파이-차트-1.html#cb310-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb310-6"><a href="파이-차트-1.html#cb310-6" aria-hidden="true" tabindex="-1"></a>l</span></code></pre></div>
-<pre class="bg-warning"><code>## [1]  3  9 10 11 16 26</code></pre>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb312-1"><a href="파이-차트-1.html#cb312-1" aria-hidden="true" tabindex="-1"></a>Cars93_fac <span class="ot">&lt;-</span> Cars93[, l]</span>
-<span id="cb312-2"><a href="파이-차트-1.html#cb312-2" aria-hidden="true" tabindex="-1"></a>Cars93_fac</span></code></pre></div>
-<pre class="bg-warning"><code>##       Type            AirBags DriveTrain Cylinders Man.trans.avail  Origin
-## 1    Small               None      Front         4             Yes non-USA
-## 2  Midsize Driver &amp; Passenger      Front         6             Yes non-USA
-## 3  Compact        Driver only      Front         6             Yes non-USA
-## 4  Midsize Driver &amp; Passenger      Front         6             Yes non-USA
-## 5  Midsize        Driver only       Rear         4             Yes non-USA
-## 6  Midsize        Driver only      Front         4              No     USA
-## 7    Large        Driver only      Front         6              No     USA
-## 8    Large        Driver only       Rear         6              No     USA
-## 9  Midsize        Driver only      Front         6              No     USA
-## 10   Large        Driver only      Front         8              No     USA
-## 11 Midsize Driver &amp; Passenger      Front         8              No     USA
-## 12 Compact               None      Front         4             Yes     USA
-## 13 Compact        Driver only      Front         4             Yes     USA
-## 14  Sporty Driver &amp; Passenger       Rear         6             Yes     USA
-## 15 Midsize               None      Front         4              No     USA
-## 16     Van               None      Front         6              No     USA
-## 17     Van               None        4WD         6              No     USA
-## 18   Large        Driver only       Rear         8              No     USA
-## 19  Sporty        Driver only       Rear         8             Yes     USA
-## 20   Large Driver &amp; Passenger      Front         6              No     USA
-## 21 Compact Driver &amp; Passenger      Front         4              No     USA
-## 22   Large        Driver only      Front         6              No     USA
-## 23   Small               None      Front         4             Yes     USA
-## 24   Small        Driver only      Front         4             Yes     USA
-## 25 Compact        Driver only      Front         4             Yes     USA
-## 26     Van        Driver only        4WD         6              No     USA
-## 27 Midsize        Driver only      Front         4              No     USA
-## 28  Sporty        Driver only        4WD         6             Yes     USA
-## 29   Small               None      Front         4             Yes     USA
-## 30   Large Driver &amp; Passenger      Front         6              No     USA
-## 31   Small               None      Front         4             Yes     USA
-## 32   Small               None      Front         4             Yes     USA
-## 33 Compact               None      Front         4             Yes     USA
-## 34  Sporty        Driver only       Rear         4             Yes     USA
-## 35  Sporty        Driver only      Front         4             Yes     USA
-## 36     Van        Driver only        4WD         6             Yes     USA
-## 37 Midsize        Driver only      Front         6              No     USA
-## 38   Large        Driver only       Rear         8              No     USA
-## 39   Small               None      Front         3             Yes non-USA
-## 40  Sporty        Driver only      Front         4             Yes non-USA
-## 41  Sporty Driver &amp; Passenger      Front         4             Yes non-USA
-## 42   Small        Driver only      Front         4             Yes non-USA
-## 43 Compact Driver &amp; Passenger      Front         4             Yes non-USA
-## 44   Small               None      Front         4             Yes non-USA
-## 45   Small               None      Front         4             Yes non-USA
-## 46  Sporty               None      Front         4             Yes non-USA
-## 47 Midsize               None      Front         4             Yes non-USA
-## 48 Midsize        Driver only       Rear         8              No non-USA
-## 49 Midsize        Driver only      Front         6             Yes non-USA
-## 50 Midsize Driver &amp; Passenger       Rear         6             Yes non-USA
-## 51 Midsize Driver &amp; Passenger      Front         6              No     USA
-## 52   Large Driver &amp; Passenger       Rear         8              No     USA
-## 53   Small               None      Front         4             Yes non-USA
-## 54   Small               None      Front         4             Yes non-USA
-## 55 Compact        Driver only      Front         4             Yes non-USA
-## 56     Van               None        4WD         6              No non-USA
-## 57  Sporty        Driver only       Rear    rotary             Yes non-USA
-## 58 Compact        Driver only       Rear         4             Yes non-USA
-## 59 Midsize Driver &amp; Passenger       Rear         6              No non-USA
-## 60  Sporty        Driver only      Front         4             Yes     USA
-## 61 Midsize               None       Rear         6              No     USA
-## 62   Small               None      Front         4             Yes non-USA
-## 63 Midsize        Driver only      Front         6              No non-USA
-## 64   Small        Driver only      Front         4             Yes non-USA
-## 65 Compact        Driver only      Front         4             Yes non-USA
-## 66     Van               None      Front         6              No non-USA
-## 67 Midsize        Driver only      Front         6              No non-USA
-## 68 Compact               None      Front         4              No     USA
-## 69 Midsize        Driver only      Front         4              No     USA
-## 70     Van               None      Front         6              No     USA
-## 71   Large        Driver only      Front         6              No     USA
-## 72  Sporty               None        4WD         4             Yes     USA
-## 73   Small               None      Front         4             Yes     USA
-## 74 Compact               None      Front         4             Yes     USA
-## 75  Sporty Driver &amp; Passenger       Rear         6             Yes     USA
-## 76 Midsize               None      Front         6             Yes     USA
-## 77   Large Driver &amp; Passenger      Front         6              No     USA
-## 78 Compact        Driver only      Front         4             Yes non-USA
-## 79   Small        Driver only      Front         4             Yes     USA
-## 80   Small               None        4WD         3             Yes non-USA
-## 81   Small               None        4WD         4             Yes non-USA
-## 82 Compact        Driver only        4WD         4             Yes non-USA
-## 83   Small               None      Front         3             Yes non-USA
-## 84   Small        Driver only      Front         4             Yes non-USA
-## 85  Sporty        Driver only      Front         4             Yes non-USA
-## 86 Midsize        Driver only      Front         4             Yes non-USA
-## 87     Van        Driver only        4WD         4             Yes non-USA
-## 88   Small               None      Front         4             Yes non-USA
-## 89     Van               None      Front         5             Yes non-USA
-## 90 Compact               None      Front         4             Yes non-USA
-## 91  Sporty               None      Front         6             Yes non-USA
-## 92 Compact        Driver only       Rear         4             Yes non-USA
-## 93 Midsize Driver &amp; Passenger      Front         5             Yes non-USA</code></pre>
-</div>
-</div>
-<div id="다음의-범주형-변수를-막대-그래프를-이용하여-시각화-하려-합니다.-1" class="section level4" number="10.2.5.5">
-<h4><span class="header-section-number">10.2.5.5</span> 다음의 범주형 변수를 막대 그래프를 이용하여 시각화 하려 합니다.</h4>
+<div id="다음의-범주형-변수를-파이-차트트를-이용하여-시각화-하려-합니다." class="section level4 unnumbered">
+<h4>1. 다음의 범주형 변수를 파이 차트트를 이용하여 시각화 하려 합니다.</h4>
 <ol style="list-style-type: decimal">
 <li>AirBags</li>
 <li>DriveTrain</li>
@@ -872,120 +745,120 @@ Figure 10.25: 제조국별 파이 차트 3 - facet_wrap() 함수 이용
 <li>Man.trans.avail</li>
 <li>Origin</li>
 </ol>
-<div id="각각의-범주형-변수에-대한-기본-파이-차트를-작성하시오." class="section level5" number="10.2.5.5.1">
-<h5><span class="header-section-number">10.2.5.5.1</span> 각각의 범주형 변수에 대한 기본 파이 차트를 작성하시오.</h5>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb314-1"><a href="파이-차트-1.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> AirBags)) <span class="sc">+</span></span>
-<span id="cb314-2"><a href="파이-차트-1.html#cb314-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb314-3"><a href="파이-차트-1.html#cb314-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
-<span id="cb314-4"><a href="파이-차트-1.html#cb314-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;기본 파이 차트 : AirBags&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb315-1"><a href="파이-차트-1.html#cb315-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
-<span id="cb315-2"><a href="파이-차트-1.html#cb315-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb315-3"><a href="파이-차트-1.html#cb315-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
-<span id="cb315-4"><a href="파이-차트-1.html#cb315-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;기본 파이 차트 : DriveTrain&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-31-2.png" width="672" /></p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb316-1"><a href="파이-차트-1.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> Cylinders)) <span class="sc">+</span></span>
-<span id="cb316-2"><a href="파이-차트-1.html#cb316-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb316-3"><a href="파이-차트-1.html#cb316-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
-<span id="cb316-4"><a href="파이-차트-1.html#cb316-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;기본 파이 차트 : Cylinders&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-31-3.png" width="672" /></p>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb317-1"><a href="파이-차트-1.html#cb317-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> Man.trans.avail)) <span class="sc">+</span></span>
-<span id="cb317-2"><a href="파이-차트-1.html#cb317-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb317-3"><a href="파이-차트-1.html#cb317-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
-<span id="cb317-4"><a href="파이-차트-1.html#cb317-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;기본 파이 차트 : Man.trans.avail&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-31-4.png" width="672" /></p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb318-1"><a href="파이-차트-1.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> Origin)) <span class="sc">+</span></span>
-<span id="cb318-2"><a href="파이-차트-1.html#cb318-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb318-3"><a href="파이-차트-1.html#cb318-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
-<span id="cb318-4"><a href="파이-차트-1.html#cb318-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;기본 파이 차트 : Origin&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-31-5.png" width="672" /></p>
+<div id="각각의-범주형-변수에-대한-기본-파이-차트를-작성하시오." class="section level5 unnumbered">
+<h5>1-1. 각각의 범주형 변수에 대한 기본 파이 차트를 작성하시오.</h5>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb306-1"><a href="파이-차트-1.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> AirBags)) <span class="sc">+</span></span>
+<span id="cb306-2"><a href="파이-차트-1.html#cb306-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb306-3"><a href="파이-차트-1.html#cb306-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb306-4"><a href="파이-차트-1.html#cb306-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;기본 파이 차트 : AirBags&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb307-1"><a href="파이-차트-1.html#cb307-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
+<span id="cb307-2"><a href="파이-차트-1.html#cb307-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb307-3"><a href="파이-차트-1.html#cb307-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb307-4"><a href="파이-차트-1.html#cb307-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;기본 파이 차트 : DriveTrain&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-29-2.png" width="672" /></p>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb308-1"><a href="파이-차트-1.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> Cylinders)) <span class="sc">+</span></span>
+<span id="cb308-2"><a href="파이-차트-1.html#cb308-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb308-3"><a href="파이-차트-1.html#cb308-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb308-4"><a href="파이-차트-1.html#cb308-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;기본 파이 차트 : Cylinders&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-29-3.png" width="672" /></p>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb309-1"><a href="파이-차트-1.html#cb309-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> Man.trans.avail)) <span class="sc">+</span></span>
+<span id="cb309-2"><a href="파이-차트-1.html#cb309-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb309-3"><a href="파이-차트-1.html#cb309-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb309-4"><a href="파이-차트-1.html#cb309-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;기본 파이 차트 : Man.trans.avail&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-29-4.png" width="672" /></p>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb310-1"><a href="파이-차트-1.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> Origin)) <span class="sc">+</span></span>
+<span id="cb310-2"><a href="파이-차트-1.html#cb310-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb310-3"><a href="파이-차트-1.html#cb310-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb310-4"><a href="파이-차트-1.html#cb310-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;기본 파이 차트 : Origin&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-29-5.png" width="672" /></p>
 </div>
-<div id="각각의-범주형-변수에-대한-불스-아이-차트를-작성하시오." class="section level5" number="10.2.5.5.2">
-<h5><span class="header-section-number">10.2.5.5.2</span> 각각의 범주형 변수에 대한 불스 아이 차트를 작성하시오.</h5>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb319-1"><a href="파이-차트-1.html#cb319-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> AirBags)) <span class="sc">+</span></span>
+<div id="각각의-범주형-변수에-대한-불스-아이-차트를-작성하시오." class="section level5 unnumbered">
+<h5>1-2. 각각의 범주형 변수에 대한 불스 아이 차트를 작성하시오.</h5>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb311-1"><a href="파이-차트-1.html#cb311-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> AirBags)) <span class="sc">+</span></span>
+<span id="cb311-2"><a href="파이-차트-1.html#cb311-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb311-3"><a href="파이-차트-1.html#cb311-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
+<span id="cb311-4"><a href="파이-차트-1.html#cb311-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;불스 아이 차트 : AirBags&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb312-1"><a href="파이-차트-1.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
+<span id="cb312-2"><a href="파이-차트-1.html#cb312-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb312-3"><a href="파이-차트-1.html#cb312-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
+<span id="cb312-4"><a href="파이-차트-1.html#cb312-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;불스 아이 차트 : DriveTrain&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-30-2.png" width="672" /></p>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb313-1"><a href="파이-차트-1.html#cb313-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> Cylinders)) <span class="sc">+</span></span>
+<span id="cb313-2"><a href="파이-차트-1.html#cb313-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb313-3"><a href="파이-차트-1.html#cb313-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
+<span id="cb313-4"><a href="파이-차트-1.html#cb313-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;불스 아이 차트 : Cylinders&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-30-3.png" width="672" /></p>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb314-1"><a href="파이-차트-1.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> Man.trans.avail)) <span class="sc">+</span></span>
+<span id="cb314-2"><a href="파이-차트-1.html#cb314-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb314-3"><a href="파이-차트-1.html#cb314-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
+<span id="cb314-4"><a href="파이-차트-1.html#cb314-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;불스 아이 차트 : Man.trans.avail&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-30-4.png" width="672" /></p>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb315-1"><a href="파이-차트-1.html#cb315-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> Origin)) <span class="sc">+</span></span>
+<span id="cb315-2"><a href="파이-차트-1.html#cb315-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb315-3"><a href="파이-차트-1.html#cb315-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
+<span id="cb315-4"><a href="파이-차트-1.html#cb315-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;불스 아이 차트 : Origin&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-30-5.png" width="672" /></p>
+</div>
+<div id="각각의-범주형-변수에-대한-coxcomb-plot을-작성하시오." class="section level5 unnumbered">
+<h5>1-3. 각각의 범주형 변수에 대한 Coxcomb Plot을 작성하시오.</h5>
+<p>Coxcomb Plot 1 :</p>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb316-1"><a href="파이-차트-1.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> AirBags, <span class="at">fill =</span> AirBags)) <span class="sc">+</span></span>
+<span id="cb316-2"><a href="파이-차트-1.html#cb316-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb316-3"><a href="파이-차트-1.html#cb316-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
+<span id="cb316-4"><a href="파이-차트-1.html#cb316-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Coxcomb Plot 1 : AirBags&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb317-1"><a href="파이-차트-1.html#cb317-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> DriveTrain, <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
+<span id="cb317-2"><a href="파이-차트-1.html#cb317-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb317-3"><a href="파이-차트-1.html#cb317-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
+<span id="cb317-4"><a href="파이-차트-1.html#cb317-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Coxcomb Plot 2 : DriveTrain&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-31-2.png" width="672" /></p>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb318-1"><a href="파이-차트-1.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Cylinders, <span class="at">fill =</span> Cylinders)) <span class="sc">+</span></span>
+<span id="cb318-2"><a href="파이-차트-1.html#cb318-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb318-3"><a href="파이-차트-1.html#cb318-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
+<span id="cb318-4"><a href="파이-차트-1.html#cb318-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Coxcomb Plot 2 : Cylinders&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-31-3.png" width="672" /></p>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb319-1"><a href="파이-차트-1.html#cb319-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Man.trans.avail, <span class="at">fill =</span> Man.trans.avail)) <span class="sc">+</span></span>
 <span id="cb319-2"><a href="파이-차트-1.html#cb319-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb319-3"><a href="파이-차트-1.html#cb319-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
-<span id="cb319-4"><a href="파이-차트-1.html#cb319-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;불스 아이 차트 : AirBags&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb320-1"><a href="파이-차트-1.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
+<span id="cb319-4"><a href="파이-차트-1.html#cb319-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Coxcomb Plot 2 : Man.trans.avail&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-31-4.png" width="672" /></p>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb320-1"><a href="파이-차트-1.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Origin, <span class="at">fill =</span> Origin)) <span class="sc">+</span></span>
 <span id="cb320-2"><a href="파이-차트-1.html#cb320-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb320-3"><a href="파이-차트-1.html#cb320-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
-<span id="cb320-4"><a href="파이-차트-1.html#cb320-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;불스 아이 차트 : DriveTrain&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-32-2.png" width="672" /></p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb321-1"><a href="파이-차트-1.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> Cylinders)) <span class="sc">+</span></span>
+<span id="cb320-4"><a href="파이-차트-1.html#cb320-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Coxcomb Plot 1 : Origin&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-31-5.png" width="672" /></p>
+<p>Coxcomb Plot 2 :</p>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb321-1"><a href="파이-차트-1.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> AirBags, <span class="at">fill =</span> AirBags)) <span class="sc">+</span></span>
 <span id="cb321-2"><a href="파이-차트-1.html#cb321-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb321-3"><a href="파이-차트-1.html#cb321-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
-<span id="cb321-4"><a href="파이-차트-1.html#cb321-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;불스 아이 차트 : Cylinders&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-32-3.png" width="672" /></p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb322-1"><a href="파이-차트-1.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> Man.trans.avail)) <span class="sc">+</span></span>
+<span id="cb321-3"><a href="파이-차트-1.html#cb321-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb321-4"><a href="파이-차트-1.html#cb321-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Coxcomb Plot 2 : AirBags&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb322-1"><a href="파이-차트-1.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> DriveTrain, <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
 <span id="cb322-2"><a href="파이-차트-1.html#cb322-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb322-3"><a href="파이-차트-1.html#cb322-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
-<span id="cb322-4"><a href="파이-차트-1.html#cb322-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;불스 아이 차트 : Man.trans.avail&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-32-4.png" width="672" /></p>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb323-1"><a href="파이-차트-1.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> Origin)) <span class="sc">+</span></span>
+<span id="cb322-3"><a href="파이-차트-1.html#cb322-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb322-4"><a href="파이-차트-1.html#cb322-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Coxcomb Plot 2 : DriveTrain&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-32-2.png" width="672" /></p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb323-1"><a href="파이-차트-1.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Cylinders, <span class="at">fill =</span> Cylinders)) <span class="sc">+</span></span>
 <span id="cb323-2"><a href="파이-차트-1.html#cb323-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb323-3"><a href="파이-차트-1.html#cb323-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
-<span id="cb323-4"><a href="파이-차트-1.html#cb323-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;불스 아이 차트 : Origin&quot;</span>)</span></code></pre></div>
+<span id="cb323-3"><a href="파이-차트-1.html#cb323-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb323-4"><a href="파이-차트-1.html#cb323-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Coxcomb Plot 2 : Cylinders&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-32-3.png" width="672" /></p>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb324-1"><a href="파이-차트-1.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Man.trans.avail, <span class="at">fill =</span> Man.trans.avail)) <span class="sc">+</span></span>
+<span id="cb324-2"><a href="파이-차트-1.html#cb324-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb324-3"><a href="파이-차트-1.html#cb324-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb324-4"><a href="파이-차트-1.html#cb324-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Coxcomb Plot 2 : Man.trans.avail&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-32-4.png" width="672" /></p>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb325-1"><a href="파이-차트-1.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Origin, <span class="at">fill =</span> Origin)) <span class="sc">+</span></span>
+<span id="cb325-2"><a href="파이-차트-1.html#cb325-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb325-3"><a href="파이-차트-1.html#cb325-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb325-4"><a href="파이-차트-1.html#cb325-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Coxcomb Plot 2 : Origin&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/unnamed-chunk-32-5.png" width="672" /></p>
 </div>
-<div id="각각의-범주형-변수에-대한-coxcomb-plot을-작성하시오." class="section level5" number="10.2.5.5.3">
-<h5><span class="header-section-number">10.2.5.5.3</span> 각각의 범주형 변수에 대한 Coxcomb Plot을 작성하시오.</h5>
-<p>Coxcomb Plot 1 :</p>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb324-1"><a href="파이-차트-1.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> AirBags, <span class="at">fill =</span> AirBags)) <span class="sc">+</span></span>
-<span id="cb324-2"><a href="파이-차트-1.html#cb324-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb324-3"><a href="파이-차트-1.html#cb324-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
-<span id="cb324-4"><a href="파이-차트-1.html#cb324-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Coxcomb Plot 1 : AirBags&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb325-1"><a href="파이-차트-1.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> DriveTrain, <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
-<span id="cb325-2"><a href="파이-차트-1.html#cb325-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb325-3"><a href="파이-차트-1.html#cb325-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
-<span id="cb325-4"><a href="파이-차트-1.html#cb325-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Coxcomb Plot 2 : DriveTrain&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-33-2.png" width="672" /></p>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb326-1"><a href="파이-차트-1.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Cylinders, <span class="at">fill =</span> Cylinders)) <span class="sc">+</span></span>
-<span id="cb326-2"><a href="파이-차트-1.html#cb326-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb326-3"><a href="파이-차트-1.html#cb326-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
-<span id="cb326-4"><a href="파이-차트-1.html#cb326-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Coxcomb Plot 2 : Cylinders&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-33-3.png" width="672" /></p>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb327-1"><a href="파이-차트-1.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Man.trans.avail, <span class="at">fill =</span> Man.trans.avail)) <span class="sc">+</span></span>
-<span id="cb327-2"><a href="파이-차트-1.html#cb327-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb327-3"><a href="파이-차트-1.html#cb327-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
-<span id="cb327-4"><a href="파이-차트-1.html#cb327-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Coxcomb Plot 2 : Man.trans.avail&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-33-4.png" width="672" /></p>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb328-1"><a href="파이-차트-1.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Origin, <span class="at">fill =</span> Origin)) <span class="sc">+</span></span>
-<span id="cb328-2"><a href="파이-차트-1.html#cb328-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb328-3"><a href="파이-차트-1.html#cb328-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
-<span id="cb328-4"><a href="파이-차트-1.html#cb328-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Coxcomb Plot 1 : Origin&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-33-5.png" width="672" /></p>
-<p>Coxcomb Plot 2 :</p>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb329-1"><a href="파이-차트-1.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> AirBags, <span class="at">fill =</span> AirBags)) <span class="sc">+</span></span>
-<span id="cb329-2"><a href="파이-차트-1.html#cb329-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb329-3"><a href="파이-차트-1.html#cb329-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
-<span id="cb329-4"><a href="파이-차트-1.html#cb329-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Coxcomb Plot 2 : AirBags&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb330-1"><a href="파이-차트-1.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> DriveTrain, <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
-<span id="cb330-2"><a href="파이-차트-1.html#cb330-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb330-3"><a href="파이-차트-1.html#cb330-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
-<span id="cb330-4"><a href="파이-차트-1.html#cb330-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Coxcomb Plot 2 : DriveTrain&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-34-2.png" width="672" /></p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb331-1"><a href="파이-차트-1.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Cylinders, <span class="at">fill =</span> Cylinders)) <span class="sc">+</span></span>
-<span id="cb331-2"><a href="파이-차트-1.html#cb331-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb331-3"><a href="파이-차트-1.html#cb331-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
-<span id="cb331-4"><a href="파이-차트-1.html#cb331-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Coxcomb Plot 2 : Cylinders&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-34-3.png" width="672" /></p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb332-1"><a href="파이-차트-1.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Man.trans.avail, <span class="at">fill =</span> Man.trans.avail)) <span class="sc">+</span></span>
-<span id="cb332-2"><a href="파이-차트-1.html#cb332-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb332-3"><a href="파이-차트-1.html#cb332-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
-<span id="cb332-4"><a href="파이-차트-1.html#cb332-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Coxcomb Plot 2 : Man.trans.avail&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-34-4.png" width="672" /></p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb333-1"><a href="파이-차트-1.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Origin, <span class="at">fill =</span> Origin)) <span class="sc">+</span></span>
-<span id="cb333-2"><a href="파이-차트-1.html#cb333-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb333-3"><a href="파이-차트-1.html#cb333-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
-<span id="cb333-4"><a href="파이-차트-1.html#cb333-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Coxcomb Plot 2 : Origin&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-34-5.png" width="672" /></p>
 </div>
-</div>
-<div id="다음의-각각의-범주형-변수에-대하여-자동차-유형type-변수를-그룹으로-하여-그룹별-파이-차트를-작성하시오.-facet_wrap-ncol-3-함수를-이용하시오." class="section level4" number="10.2.5.6">
-<h4><span class="header-section-number">10.2.5.6</span> 다음의 각각의 범주형 변수에 대하여 자동차 유형(Type) 변수를 그룹으로 하여 그룹별 파이 차트를 작성하시오. <code>facet_wrap( , ncol = 3)</code> 함수를 이용하시오.</h4>
+<div id="다음의-각각의-범주형-변수에-대하여-자동차-유형type-변수를-그룹으로-하여-그룹별-파이-차트를-작성하시오.-facet_wrap-ncol-3-함수를-이용하시오." class="section level4 unnumbered">
+<h4>2. 다음의 각각의 범주형 변수에 대하여 자동차 유형(Type) 변수를 그룹으로 하여 그룹별 파이 차트를 작성하시오. <code>facet_wrap( , ncol = 3)</code> 함수를 이용하시오.</h4>
 <ol style="list-style-type: decimal">
 <li>AirBags =&gt; Type</li>
 <li>DriveTrain =&gt; Type</li>
@@ -993,36 +866,36 @@ Figure 10.25: 제조국별 파이 차트 3 - facet_wrap() 함수 이용
 <li>Man.trans.avail =&gt; Type</li>
 <li>Origin =&gt; Type</li>
 </ol>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb334-1"><a href="파이-차트-1.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> AirBags)) <span class="sc">+</span></span>
-<span id="cb334-2"><a href="파이-차트-1.html#cb334-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb334-3"><a href="파이-차트-1.html#cb334-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
-<span id="cb334-4"><a href="파이-차트-1.html#cb334-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb334-5"><a href="파이-차트-1.html#cb334-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;자동차 유형별 파이 차트 : AirBags&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb335-1"><a href="파이-차트-1.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
-<span id="cb335-2"><a href="파이-차트-1.html#cb335-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb335-3"><a href="파이-차트-1.html#cb335-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
-<span id="cb335-4"><a href="파이-차트-1.html#cb335-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb335-5"><a href="파이-차트-1.html#cb335-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;자동차 유형별 파이 차트 : DriveTrain&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-35-2.png" width="672" /></p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb336-1"><a href="파이-차트-1.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> Cylinders)) <span class="sc">+</span></span>
-<span id="cb336-2"><a href="파이-차트-1.html#cb336-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb336-3"><a href="파이-차트-1.html#cb336-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
-<span id="cb336-4"><a href="파이-차트-1.html#cb336-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb336-5"><a href="파이-차트-1.html#cb336-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;자동차 유형별 파이 차트 : Cylinders&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-35-3.png" width="672" /></p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb337-1"><a href="파이-차트-1.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> Man.trans.avail)) <span class="sc">+</span></span>
-<span id="cb337-2"><a href="파이-차트-1.html#cb337-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb337-3"><a href="파이-차트-1.html#cb337-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
-<span id="cb337-4"><a href="파이-차트-1.html#cb337-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb337-5"><a href="파이-차트-1.html#cb337-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;자동차 유형별 파이 차트 : Man.trans.avail&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-35-4.png" width="672" /></p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb338-1"><a href="파이-차트-1.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> Origin)) <span class="sc">+</span></span>
-<span id="cb338-2"><a href="파이-차트-1.html#cb338-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb338-3"><a href="파이-차트-1.html#cb338-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
-<span id="cb338-4"><a href="파이-차트-1.html#cb338-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb338-5"><a href="파이-차트-1.html#cb338-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;자동차 유형별 파이 차트 : Origin&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-35-5.png" width="672" /></p>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb326-1"><a href="파이-차트-1.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> AirBags)) <span class="sc">+</span></span>
+<span id="cb326-2"><a href="파이-차트-1.html#cb326-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb326-3"><a href="파이-차트-1.html#cb326-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb326-4"><a href="파이-차트-1.html#cb326-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb326-5"><a href="파이-차트-1.html#cb326-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;자동차 유형별 파이 차트 : AirBags&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb327-1"><a href="파이-차트-1.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> DriveTrain)) <span class="sc">+</span></span>
+<span id="cb327-2"><a href="파이-차트-1.html#cb327-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb327-3"><a href="파이-차트-1.html#cb327-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb327-4"><a href="파이-차트-1.html#cb327-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb327-5"><a href="파이-차트-1.html#cb327-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;자동차 유형별 파이 차트 : DriveTrain&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-33-2.png" width="672" /></p>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb328-1"><a href="파이-차트-1.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> Cylinders)) <span class="sc">+</span></span>
+<span id="cb328-2"><a href="파이-차트-1.html#cb328-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb328-3"><a href="파이-차트-1.html#cb328-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb328-4"><a href="파이-차트-1.html#cb328-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb328-5"><a href="파이-차트-1.html#cb328-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;자동차 유형별 파이 차트 : Cylinders&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-33-3.png" width="672" /></p>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb329-1"><a href="파이-차트-1.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> Man.trans.avail)) <span class="sc">+</span></span>
+<span id="cb329-2"><a href="파이-차트-1.html#cb329-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb329-3"><a href="파이-차트-1.html#cb329-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb329-4"><a href="파이-차트-1.html#cb329-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb329-5"><a href="파이-차트-1.html#cb329-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;자동차 유형별 파이 차트 : Man.trans.avail&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-33-4.png" width="672" /></p>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb330-1"><a href="파이-차트-1.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> Origin)) <span class="sc">+</span></span>
+<span id="cb330-2"><a href="파이-차트-1.html#cb330-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb330-3"><a href="파이-차트-1.html#cb330-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb330-4"><a href="파이-차트-1.html#cb330-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> Type, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb330-5"><a href="파이-차트-1.html#cb330-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;자동차 유형별 파이 차트 : Origin&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-33-5.png" width="672" /></p>
 <p><a href="파이-차트-1.html#파이-차트-1">Go Top</a></p>
 
 </div>

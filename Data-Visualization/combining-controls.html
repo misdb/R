@@ -64,7 +64,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -159,7 +158,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="r-그래프-패키지-소개-graphics-lattice-ggplot2.html"><a href="r-그래프-패키지-소개-graphics-lattice-ggplot2.html"><i class="fa fa-check"></i><b>2</b> R 그래프 패키지 소개 (Graphics, Lattice, ggplot2)</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="주요-그래프용-패키지.html"><a href="주요-그래프용-패키지.html"><i class="fa fa-check"></i><b>2.1</b> 주요 그래프용 패키지</a></li>
+<li class="chapter" data-level="2.1" data-path="주요-그래프-패키지.html"><a href="주요-그래프-패키지.html"><i class="fa fa-check"></i><b>2.1</b> 주요 그래프 패키지</a></li>
 <li class="chapter" data-level="2.2" data-path="패키지의-설치.html"><a href="패키지의-설치.html"><i class="fa fa-check"></i><b>2.2</b> 패키지의 설치</a>
 <ul>
 <li class="chapter" data-level="" data-path="패키지의-설치.html"><a href="패키지의-설치.html#참고자료"><i class="fa fa-check"></i>참고자료</a></li>
@@ -399,8 +398,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2" data-path="모자이크-그림.html"><a href="모자이크-그림.html"><i class="fa fa-check"></i><b>12.2</b> 모자이크 그림</a>
 <ul>
 <li class="chapter" data-level="12.2.1" data-path="모자이크-그림.html"><a href="모자이크-그림.html#데이터-세트와-패키지"><i class="fa fa-check"></i><b>12.2.1</b> 데이터 세트와 패키지</a></li>
-<li class="chapter" data-level="12.2.2" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림-그리기"><i class="fa fa-check"></i><b>12.2.2</b> 모자이크 그림 그리기</a></li>
-<li class="chapter" data-level="12.2.3" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림에-라벨-추가하기"><i class="fa fa-check"></i><b>12.2.3</b> 모자이크 그림에 라벨 추가하기</a></li>
+<li class="chapter" data-level="12.2.2" data-path="모자이크-그림.html"><a href="모자이크-그림.html#기본-모자이크-그림-그리기"><i class="fa fa-check"></i><b>12.2.2</b> 기본 모자이크 그림 그리기</a></li>
+<li class="chapter" data-level="12.2.3" data-path="모자이크-그림.html"><a href="모자이크-그림.html#분할-방향"><i class="fa fa-check"></i><b>12.2.3</b> 분할 방향</a></li>
+<li class="chapter" data-level="12.2.4" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림의-채우기-색"><i class="fa fa-check"></i><b>12.2.4</b> 모자이크 그림의 채우기 색</a></li>
+<li class="chapter" data-level="12.2.5" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림에-라벨-추가하기"><i class="fa fa-check"></i><b>12.2.5</b> 모자이크 그림에 라벨 추가하기</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="다변량-변수-연속형-데이터.html"><a href="다변량-변수-연속형-데이터.html"><i class="fa fa-check"></i><b>13</b> 다변량 변수 - 연속형 데이터</a>
@@ -565,16 +566,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="combining-controls" class="section level2" number="16.6">
 <h2><span class="header-section-number">16.6</span> Combining Controls</h2>
 <p>이번에는 Picker Control과 Slider Control 두 개를 함께 사용해 보는 예제입니다. Picker Control 로 대상 변수를 선택할 수 있게 하였고, Slider Control 로 Histogram 의 Bin size 를 조절할 수 있도록 해보았습니다.</p>
-<div class="sourceCode" id="cb760"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb760-1"><a href="combining-controls.html#cb760-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Combining Controls</span></span>
-<span id="cb760-2"><a href="combining-controls.html#cb760-2" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb760-3"><a href="combining-controls.html#cb760-3" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
-<span id="cb760-4"><a href="combining-controls.html#cb760-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(Cars93[, continuous_variable], </span>
-<span id="cb760-5"><a href="combining-controls.html#cb760-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">breaks =</span> bin_slider, </span>
-<span id="cb760-6"><a href="combining-controls.html#cb760-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> continuous_variable),</span>
-<span id="cb760-7"><a href="combining-controls.html#cb760-7" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb760-8"><a href="combining-controls.html#cb760-8" aria-hidden="true" tabindex="-1"></a>   <span class="at">continuous_variable =</span> <span class="fu">picker</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Price&quot;</span>), </span>
-<span id="cb760-9"><a href="combining-controls.html#cb760-9" aria-hidden="true" tabindex="-1"></a>   <span class="at">bin_slider =</span> <span class="fu">slider</span>(<span class="dv">5</span>,<span class="dv">50</span>, <span class="at">step=</span><span class="dv">5</span>, <span class="at">initial =</span> <span class="dv">10</span>)</span>
-<span id="cb760-10"><a href="combining-controls.html#cb760-10" aria-hidden="true" tabindex="-1"></a>   )</span></code></pre></div>
+<div class="sourceCode" id="cb747"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb747-1"><a href="combining-controls.html#cb747-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Combining Controls</span></span>
+<span id="cb747-2"><a href="combining-controls.html#cb747-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb747-3"><a href="combining-controls.html#cb747-3" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
+<span id="cb747-4"><a href="combining-controls.html#cb747-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(Cars93[, continuous_variable], </span>
+<span id="cb747-5"><a href="combining-controls.html#cb747-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">breaks =</span> bin_slider, </span>
+<span id="cb747-6"><a href="combining-controls.html#cb747-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> continuous_variable),</span>
+<span id="cb747-7"><a href="combining-controls.html#cb747-7" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb747-8"><a href="combining-controls.html#cb747-8" aria-hidden="true" tabindex="-1"></a>   <span class="at">continuous_variable =</span> <span class="fu">picker</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Price&quot;</span>), </span>
+<span id="cb747-9"><a href="combining-controls.html#cb747-9" aria-hidden="true" tabindex="-1"></a>   <span class="at">bin_slider =</span> <span class="fu">slider</span>(<span class="dv">5</span>,<span class="dv">50</span>, <span class="at">step=</span><span class="dv">5</span>, <span class="at">initial =</span> <span class="dv">10</span>)</span>
+<span id="cb747-10"><a href="combining-controls.html#cb747-10" aria-hidden="true" tabindex="-1"></a>   )</span></code></pre></div>
 <pre><code>## Error in manipulate(hist(Cars93[, continuous_variable], breaks = bin_slider, : The manipulate package must be run from within RStudio</code></pre>
 <div id="참고자료-4" class="section level3 unnumbered">
 <h3>참고자료</h3>
