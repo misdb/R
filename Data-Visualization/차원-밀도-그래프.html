@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>13.4 2차원 밀도 그래프 | Data Visualization with R</title>
+  <meta name="description" content="The output format for book is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="13.4 2차원 밀도 그래프 | Data Visualization with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The output format for book is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="13.4 2차원 밀도 그래프 | Data Visualization with R" />
+  
+  <meta name="twitter:description" content="The output format for book is bookdown::gitbook." />
+  
+
+<meta name="author" content="Dae Ho Kim" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="선-그래프와-시계열-그래프.html"/>
+<link rel="next" href="클리브랜드-점-그래프-1.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.17/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="/">Home</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>서문</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="데이터-시각화.html"><a href="데이터-시각화.html"><i class="fa fa-check"></i><b>0.1</b> 데이터 시각화</a>
+<ul>
+<li class="chapter" data-level="0.1.1" data-path="데이터-시각화.html"><a href="데이터-시각화.html#강의-소개"><i class="fa fa-check"></i><b>0.1.1</b> 강의 소개</a></li>
+<li class="chapter" data-level="0.1.2" data-path="데이터-시각화.html"><a href="데이터-시각화.html#강의-일정"><i class="fa fa-check"></i><b>0.1.2</b> 강의 일정</a></li>
+<li class="chapter" data-level="0.1.3" data-path="데이터-시각화.html"><a href="데이터-시각화.html#강의평가-방법"><i class="fa fa-check"></i><b>0.1.3</b> 강의평가 방법</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>I 서론</b></span></li>
+<li class="chapter" data-level="1" data-path="r-왜-그래프시각화인가-why-graphsvisualization.html"><a href="r-왜-그래프시각화인가-why-graphsvisualization.html"><i class="fa fa-check"></i><b>1</b> R 왜 그래프/시각화인가? (Why Graphs/Visualization?)</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="왜-그래프시각화가-중요할까요.html"><a href="왜-그래프시각화가-중요할까요.html"><i class="fa fa-check"></i><b>1.1</b> 왜 그래프/시각화가 중요할까요?</a></li>
+<li class="chapter" data-level="1.2" data-path="그래프-분석의-예.html"><a href="그래프-분석의-예.html"><i class="fa fa-check"></i><b>1.2</b> 그래프 분석의 예</a></li>
+<li class="chapter" data-level="1.3" data-path="한스-로즐링의-dynamic-visualization.html"><a href="한스-로즐링의-dynamic-visualization.html"><i class="fa fa-check"></i><b>1.3</b> 한스 로즐링의 Dynamic Visualization</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-그래프-패키지-소개-graphics-lattice-ggplot2.html"><a href="r-그래프-패키지-소개-graphics-lattice-ggplot2.html"><i class="fa fa-check"></i><b>2</b> R 그래프 패키지 소개 (Graphics, Lattice, ggplot2)</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="주요-그래프-패키지.html"><a href="주요-그래프-패키지.html"><i class="fa fa-check"></i><b>2.1</b> 주요 그래프 패키지</a></li>
+<li class="chapter" data-level="2.2" data-path="패키지의-설치.html"><a href="패키지의-설치.html"><i class="fa fa-check"></i><b>2.2</b> 패키지의 설치</a>
+<ul>
+<li class="chapter" data-level="" data-path="패키지의-설치.html"><a href="패키지의-설치.html#참고자료"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Base Graphics</b></span></li>
+<li class="chapter" data-level="3" data-path="base-graphics의-주요-함수.html"><a href="base-graphics의-주요-함수.html"><i class="fa fa-check"></i><b>3</b> <code>Base Graphics</code>의 주요 함수</a></li>
+<li class="chapter" data-level="4" data-path="높은-수준의-그래프-함수.html"><a href="높은-수준의-그래프-함수.html"><i class="fa fa-check"></i><b>4</b> 높은 수준의 그래프 함수</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="데이터-세트-cars93.html"><a href="데이터-세트-cars93.html"><i class="fa fa-check"></i><b>4.1</b> 데이터 세트 : <code class="unnumbered">Cars93</code></a></li>
+<li class="chapter" data-level="4.2" data-path="일변량-연속형-데이터-그래프.html"><a href="일변량-연속형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.2</b> 일변량 연속형 데이터 그래프</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="일변량-연속형-데이터-그래프.html"><a href="일변량-연속형-데이터-그래프.html#히스토그램"><i class="fa fa-check"></i><b>4.2.1</b> 히스토그램</a></li>
+<li class="chapter" data-level="4.2.2" data-path="일변량-연속형-데이터-그래프.html"><a href="일변량-연속형-데이터-그래프.html#박스-플롯"><i class="fa fa-check"></i><b>4.2.2</b> 박스 플롯</a></li>
+<li class="chapter" data-level="4.2.3" data-path="일변량-연속형-데이터-그래프.html"><a href="일변량-연속형-데이터-그래프.html#줄기-잎-그래프"><i class="fa fa-check"></i><b>4.2.3</b> 줄기 잎 그래프</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html"><i class="fa fa-check"></i><b>4.3</b> 일변량 범주형 데이타 그래프</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#막대-그래프"><i class="fa fa-check"></i><b>4.3.1</b> 막대 그래프</a></li>
+<li class="chapter" data-level="4.3.2" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#클리브랜드-점-그래프"><i class="fa fa-check"></i><b>4.3.2</b> 클리브랜드 점 그래프</a></li>
+<li class="chapter" data-level="4.3.3" data-path="일변량-범주형-데이타-그래프.html"><a href="일변량-범주형-데이타-그래프.html#파이-차트"><i class="fa fa-check"></i><b>4.3.3</b> 파이 차트</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.4</b> 이변량 연속형 데이터 그래프</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html#산포도"><i class="fa fa-check"></i><b>4.4.1</b> 산포도</a></li>
+<li class="chapter" data-level="4.4.2" data-path="이변량-연속형-데이터-그래프.html"><a href="이변량-연속형-데이터-그래프.html#산포도-행렬"><i class="fa fa-check"></i><b>4.4.2</b> 산포도 행렬</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html"><i class="fa fa-check"></i><b>4.5</b> 이변량 범주형 데이터 그래프</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="이변량-범주형-데이터-그래프.html"><a href="이변량-범주형-데이터-그래프.html#모자이크-그래프"><i class="fa fa-check"></i><b>4.5.1</b> 모자이크 그래프</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="그래프-모수.html"><a href="그래프-모수.html"><i class="fa fa-check"></i><b>5</b> 그래프 모수</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="그래프-모수를-설정하는-2가지-방법.html"><a href="그래프-모수를-설정하는-2가지-방법.html"><i class="fa fa-check"></i><b>5.1</b> 그래프 모수를 설정하는 2가지 방법</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="그래프-모수를-설정하는-2가지-방법.html"><a href="그래프-모수를-설정하는-2가지-방법.html#글로벌-환경-설정"><i class="fa fa-check"></i><b>5.1.1</b> 글로벌 환경 설정</a></li>
+<li class="chapter" data-level="5.1.2" data-path="그래프-모수를-설정하는-2가지-방법.html"><a href="그래프-모수를-설정하는-2가지-방법.html#로컬-환경-설정"><i class="fa fa-check"></i><b>5.1.2</b> 로컬 환경 설정</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="그래프모수-기호.html"><a href="그래프모수-기호.html"><i class="fa fa-check"></i><b>5.2</b> 기호</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="그래프모수-기호.html"><a href="그래프모수-기호.html#기호-모양"><i class="fa fa-check"></i><b>5.2.1</b> 기호 모양</a></li>
+<li class="chapter" data-level="5.2.2" data-path="그래프모수-기호.html"><a href="그래프모수-기호.html#기호-직접-입력"><i class="fa fa-check"></i><b>5.2.2</b> 기호 직접 입력</a></li>
+<li class="chapter" data-level="5.2.3" data-path="그래프모수-기호.html"><a href="그래프모수-기호.html#기호-크기"><i class="fa fa-check"></i><b>5.2.3</b> 기호 크기</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="그래프모수-선.html"><a href="그래프모수-선.html"><i class="fa fa-check"></i><b>5.3</b> 선</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="그래프모수-선.html"><a href="그래프모수-선.html#선-유형"><i class="fa fa-check"></i><b>5.3.1</b> 선 유형</a></li>
+<li class="chapter" data-level="5.3.2" data-path="그래프모수-선.html"><a href="그래프모수-선.html#선-두께"><i class="fa fa-check"></i><b>5.3.2</b> 선 두께</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html"><i class="fa fa-check"></i><b>5.4</b> 색 지정</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#기호-선-문자-등의-디폴트-색-지정"><i class="fa fa-check"></i><b>5.4.1</b> 기호, 선, 문자 등의 디폴트 색 지정</a></li>
+<li class="chapter" data-level="5.4.2" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#축의-척도-색-지정"><i class="fa fa-check"></i><b>5.4.2</b> 축의 척도 색 지정</a></li>
+<li class="chapter" data-level="5.4.3" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#x축과-y축의-제목-색-지정"><i class="fa fa-check"></i><b>5.4.3</b> x축과 y축의 제목 색 지정</a></li>
+<li class="chapter" data-level="5.4.4" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#제목-색-지정"><i class="fa fa-check"></i><b>5.4.4</b> 제목 색 지정</a></li>
+<li class="chapter" data-level="5.4.5" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#부제목-색-지정"><i class="fa fa-check"></i><b>5.4.5</b> 부제목 색 지정</a></li>
+<li class="chapter" data-level="5.4.6" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#그래프-전경-색-지정"><i class="fa fa-check"></i><b>5.4.6</b> 그래프 전경 색 지정</a></li>
+<li class="chapter" data-level="5.4.7" data-path="그래프모수-색-지정.html"><a href="그래프모수-색-지정.html#그래프-배경-색-지정"><i class="fa fa-check"></i><b>5.4.7</b> 그래프 배경 색 지정</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="그래프-영역.html"><a href="그래프-영역.html"><i class="fa fa-check"></i><b>6</b> 그래프 영역</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="플롯-영역-plot-area-내부-마진-영역-inner-margin-area.html"><a href="플롯-영역-plot-area-내부-마진-영역-inner-margin-area.html"><i class="fa fa-check"></i><b>6.1</b> 플롯 영역 (plot area), 내부 마진 영역 (inner margin area)</a></li>
+<li class="chapter" data-level="6.2" data-path="외부-마진-영역-outer-margin-area.html"><a href="외부-마진-영역-outer-margin-area.html"><i class="fa fa-check"></i><b>6.2</b> 외부 마진 영역 (outer margin area)</a></li>
+<li class="chapter" data-level="6.3" data-path="영역-분할결합-방법-1.html"><a href="영역-분할결합-방법-1.html"><i class="fa fa-check"></i><b>6.3</b> 영역 분할/결합 방법 1</a></li>
+<li class="chapter" data-level="6.4" data-path="영역-분할결합-방법-2-layout.html"><a href="영역-분할결합-방법-2-layout.html"><i class="fa fa-check"></i><b>6.4</b> 영역 분할/결합 방법 2 : <code>layout()</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="영역-분할결합-방법-2-layout.html"><a href="영역-분할결합-방법-2-layout.html#참고자료-1"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="낮은-수준의-그래프-함수.html"><a href="낮은-수준의-그래프-함수.html"><i class="fa fa-check"></i><b>7</b> 낮은 수준의 그래프 함수</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="제목과-xy축-레이블-추가하기.html"><a href="제목과-xy축-레이블-추가하기.html"><i class="fa fa-check"></i><b>7.1</b> 제목과 XY축 레이블 추가하기</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="제목과-xy축-레이블-추가하기.html"><a href="제목과-xy축-레이블-추가하기.html#title-함수의-사용법"><i class="fa fa-check"></i><b>7.1.1</b> title() 함수의 사용법</a></li>
+<li class="chapter" data-level="7.1.2" data-path="제목과-xy축-레이블-추가하기.html"><a href="제목과-xy축-레이블-추가하기.html#높은-수준의-함수-이용"><i class="fa fa-check"></i><b>7.1.2</b> 높은 수준의 함수 이용</a></li>
+<li class="chapter" data-level="7.1.3" data-path="제목과-xy축-레이블-추가하기.html"><a href="제목과-xy축-레이블-추가하기.html#낮은-수준의-그래프-함수-이용"><i class="fa fa-check"></i><b>7.1.3</b> 낮은 수준의 그래프 함수 이용</a></li>
+<li class="chapter" data-level="7.1.4" data-path="제목과-xy축-레이블-추가하기.html"><a href="제목과-xy축-레이블-추가하기.html#낮은-수준-함수를-이용한-글자-크기-변경"><i class="fa fa-check"></i><b>7.1.4</b> 낮은 수준 함수를 이용한 글자 크기 변경</a></li>
+<li class="chapter" data-level="7.1.5" data-path="제목과-xy축-레이블-추가하기.html"><a href="제목과-xy축-레이블-추가하기.html#낮은-수준-함수를-이용한-글자-색-변경"><i class="fa fa-check"></i><b>7.1.5</b> 낮은 수준 함수를 이용한 글자 색 변경</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html"><i class="fa fa-check"></i><b>7.2</b> XY축 형태 변환 : <code>axis(side, ...)</code></a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html#x축과-y축의-제거"><i class="fa fa-check"></i><b>7.2.1</b> X축과 Y축의 제거</a></li>
+<li class="chapter" data-level="7.2.2" data-path="xy축-형태-변환-axisside-.html"><a href="xy축-형태-변환-axisside-.html#x축과-y축의-눈금-간격-변경"><i class="fa fa-check"></i><b>7.2.2</b> X축과 Y축의 눈금 간격 변경</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="점-추가.html"><a href="점-추가.html"><i class="fa fa-check"></i><b>7.3</b> 점 추가</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="점-추가.html"><a href="점-추가.html#points-함수의-사용법"><i class="fa fa-check"></i><b>7.3.1</b> points() 함수의 사용법</a></li>
+<li class="chapter" data-level="7.3.2" data-path="점-추가.html"><a href="점-추가.html#점을-추가하는-방법"><i class="fa fa-check"></i><b>7.3.2</b> 점을 추가하는 방법</a></li>
+<li class="chapter" data-level="7.3.3" data-path="점-추가.html"><a href="점-추가.html#점의-속성-추가"><i class="fa fa-check"></i><b>7.3.3</b> 점의 속성 추가</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html"><i class="fa fa-check"></i><b>7.4</b> 직선의 연결과 추가</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html#선형-회귀선의-추가"><i class="fa fa-check"></i><b>7.4.1</b> 선형 회귀선의 추가</a></li>
+<li class="chapter" data-level="7.4.2" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html#비모수-회귀선의-추가"><i class="fa fa-check"></i><b>7.4.2</b> 비모수 회귀선의 추가</a></li>
+<li class="chapter" data-level="7.4.3" data-path="직선의-연결과-추가.html"><a href="직선의-연결과-추가.html#수평선과-수직선의-추가"><i class="fa fa-check"></i><b>7.4.3</b> 수평선과 수직선의 추가</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="문자열-추가.html"><a href="문자열-추가.html"><i class="fa fa-check"></i><b>7.5</b> 문자열 추가</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="문자열-추가.html"><a href="문자열-추가.html#text-함수의-사용"><i class="fa fa-check"></i><b>7.5.1</b> <code>text()</code> 함수의 사용</a></li>
+<li class="chapter" data-level="7.5.2" data-path="문자열-추가.html"><a href="문자열-추가.html#mtext-함수의-사용"><i class="fa fa-check"></i><b>7.5.2</b> <code>mtext()</code> 함수의 사용</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="범례-추가-legendx-y-legend-.html"><a href="범례-추가-legendx-y-legend-.html"><i class="fa fa-check"></i><b>7.6</b> 범례 추가 : <code>legend(x, y, legend, ...)</code></a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="범례-추가-legendx-y-legend-.html"><a href="범례-추가-legendx-y-legend-.html#x-y-좌표를-직접-입력하여-범례-위치-설정"><i class="fa fa-check"></i><b>7.6.1</b> <code>x</code>, <code>y</code> 좌표를 직접 입력하여 범례 위치 설정</a></li>
+<li class="chapter" data-level="7.6.2" data-path="범례-추가-legendx-y-legend-.html"><a href="범례-추가-legendx-y-legend-.html#범례의-위치를-문자열로-지정하기"><i class="fa fa-check"></i><b>7.6.2</b> 범례의 위치를 문자열로 지정하기</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="다각형-추가-polygonx-y.html"><a href="다각형-추가-polygonx-y.html"><i class="fa fa-check"></i><b>7.7</b> 다각형 추가 : polygon(x, y, …)</a>
+<ul>
+<li class="chapter" data-level="" data-path="다각형-추가-polygonx-y.html"><a href="다각형-추가-polygonx-y.html#참고자료-2"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="혼합형-데이터-그래프.html"><a href="혼합형-데이터-그래프.html"><i class="fa fa-check"></i><b>8</b> 혼합형 데이터 그래프</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="통계치-계산하기.html"><a href="통계치-계산하기.html"><i class="fa fa-check"></i><b>8.1</b> 통계치 계산하기</a></li>
+<li class="chapter" data-level="8.2" data-path="기본-그래프-작성하기.html"><a href="기본-그래프-작성하기.html"><i class="fa fa-check"></i><b>8.2</b> 기본 그래프 작성하기</a></li>
+<li class="chapter" data-level="8.3" data-path="x축에-범주형-데이터-표시하기.html"><a href="x축에-범주형-데이터-표시하기.html"><i class="fa fa-check"></i><b>8.3</b> X축에 범주형 데이터 표시하기</a></li>
+<li class="chapter" data-level="8.4" data-path="데이터-레이블-표시하기.html"><a href="데이터-레이블-표시하기.html"><i class="fa fa-check"></i><b>8.4</b> 데이터 레이블 표시하기</a></li>
+<li class="chapter" data-level="8.5" data-path="x축-눈금-표시하기.html"><a href="x축-눈금-표시하기.html"><i class="fa fa-check"></i><b>8.5</b> x축 눈금 표시하기</a></li>
+</ul></li>
+<li class="part"><span><b>III <code>ggplot2</code></b></span></li>
+<li class="chapter" data-level="9" data-path="ggplot-문법.html"><a href="ggplot-문법.html"><i class="fa fa-check"></i><b>9</b> ggplot 문법</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="통계적-그래프.html"><a href="통계적-그래프.html"><i class="fa fa-check"></i><b>9.1</b> 통계적 그래프</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="통계적-그래프.html"><a href="통계적-그래프.html#데이터-세트-선언-ggplot-함수-이용"><i class="fa fa-check"></i><b>9.1.1</b> 데이터 세트 선언 : <code>ggplot()</code> 함수 이용</a></li>
+<li class="chapter" data-level="9.1.2" data-path="통계적-그래프.html"><a href="통계적-그래프.html#심미적-매핑-aes-함수"><i class="fa fa-check"></i><b>9.1.2</b> 심미적 매핑 : <code>aes()</code> 함수</a></li>
+<li class="chapter" data-level="9.1.3" data-path="통계적-그래프.html"><a href="통계적-그래프.html#시각화-개체-geom_funtion"><i class="fa fa-check"></i><b>9.1.3</b> 시각화 개체 : geom_funtion()</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="추가적인-심미적-매핑-탐색.html"><a href="추가적인-심미적-매핑-탐색.html"><i class="fa fa-check"></i><b>9.2</b> 추가적인 심미적 매핑 탐색</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="추가적인-심미적-매핑-탐색.html"><a href="추가적인-심미적-매핑-탐색.html#추가적-심미적-요소"><i class="fa fa-check"></i><b>9.2.1</b> 추가적 심미적 요소</a></li>
+<li class="chapter" data-level="9.2.2" data-path="추가적인-심미적-매핑-탐색.html"><a href="추가적인-심미적-매핑-탐색.html#stat-함수"><i class="fa fa-check"></i><b>9.2.2</b> <code>stat_*()</code> 함수</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="일변량-변수-범주형-데이터.html"><a href="일변량-변수-범주형-데이터.html"><i class="fa fa-check"></i><b>10</b> 일변량 변수 - 범주형 데이터</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="ggbar.html"><a href="ggbar.html"><i class="fa fa-check"></i><b>10.1</b> 막대 그래프</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="ggbar.html"><a href="ggbar.html#데이터-세트-1"><i class="fa fa-check"></i><b>10.1.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="10.1.2" data-path="ggbar.html"><a href="ggbar.html#막대-그래프-활용-방식"><i class="fa fa-check"></i><b>10.1.2</b> 막대 그래프 활용 방식</a></li>
+<li class="chapter" data-level="10.1.3" data-path="ggbar.html"><a href="ggbar.html#x축을-범주형-변수로-한-기본-막대-그래프"><i class="fa fa-check"></i><b>10.1.3</b> x축을 범주형 변수로 한 기본 막대 그래프</a></li>
+<li class="chapter" data-level="10.1.4" data-path="ggbar.html"><a href="ggbar.html#상대-비율-막대-그래프"><i class="fa fa-check"></i><b>10.1.4</b> 상대 비율 막대 그래프</a></li>
+<li class="chapter" data-level="10.1.5" data-path="ggbar.html"><a href="ggbar.html#y축에-변수를-지정한-막대-그래프"><i class="fa fa-check"></i><b>10.1.5</b> Y축에 변수를 지정한 막대 그래프</a></li>
+<li class="chapter" data-level="10.1.6" data-path="ggbar.html"><a href="ggbar.html#막대-그래프에-데이터-레이블-달기"><i class="fa fa-check"></i><b>10.1.6</b> 막대 그래프에 데이터 레이블 달기</a></li>
+<li class="chapter" data-level="10.1.7" data-path="ggbar.html"><a href="ggbar.html#그룹별-막대-그래프"><i class="fa fa-check"></i><b>10.1.7</b> 그룹별 막대 그래프</a></li>
+<li class="chapter" data-level="10.1.8" data-path="ggbar.html"><a href="ggbar.html#UsignThemesInBarPlot"><i class="fa fa-check"></i><b>10.1.8</b> Theme의 사용</a></li>
+<li class="chapter" data-level="" data-path="ggbar.html"><a href="ggbar.html#연습문제"><i class="fa fa-check"></i>연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="파이-차트-1.html"><a href="파이-차트-1.html"><i class="fa fa-check"></i><b>10.2</b> 파이 차트</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="파이-차트-1.html"><a href="파이-차트-1.html#데이터-세트-2"><i class="fa fa-check"></i><b>10.2.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="10.2.2" data-path="파이-차트-1.html"><a href="파이-차트-1.html#기본-파이-차트"><i class="fa fa-check"></i><b>10.2.2</b> 기본 파이 차트</a></li>
+<li class="chapter" data-level="10.2.3" data-path="파이-차트-1.html"><a href="파이-차트-1.html#불스-아이-차트"><i class="fa fa-check"></i><b>10.2.3</b> 불스 아이 차트</a></li>
+<li class="chapter" data-level="10.2.4" data-path="파이-차트-1.html"><a href="파이-차트-1.html#coxcomb-plot"><i class="fa fa-check"></i><b>10.2.4</b> Coxcomb Plot</a></li>
+<li class="chapter" data-level="10.2.5" data-path="파이-차트-1.html"><a href="파이-차트-1.html#그룹별-파이-차트"><i class="fa fa-check"></i><b>10.2.5</b> 그룹별 파이 차트</a></li>
+<li class="chapter" data-level="" data-path="파이-차트-1.html"><a href="파이-차트-1.html#연습문제-1"><i class="fa fa-check"></i>연습문제</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="일변량-변수-연속형-데이터.html"><a href="일변량-변수-연속형-데이터.html"><i class="fa fa-check"></i><b>11</b> 일변량 변수 - 연속형 데이터</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="gg히스토그램.html"><a href="gg히스토그램.html"><i class="fa fa-check"></i><b>11.1</b> 히스토그램</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="gg히스토그램.html"><a href="gg히스토그램.html#데이터-세트-3"><i class="fa fa-check"></i><b>11.1.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="11.1.2" data-path="gg히스토그램.html"><a href="gg히스토그램.html#기본-히스토그램"><i class="fa fa-check"></i><b>11.1.2</b> 기본 히스토그램</a></li>
+<li class="chapter" data-level="11.1.3" data-path="gg히스토그램.html"><a href="gg히스토그램.html#구간-폭의-기본값"><i class="fa fa-check"></i><b>11.1.3</b> 구간 폭의 기본값</a></li>
+<li class="chapter" data-level="11.1.4" data-path="gg히스토그램.html"><a href="gg히스토그램.html#구간의-폭-조정"><i class="fa fa-check"></i><b>11.1.4</b> 구간의 폭 조정</a></li>
+<li class="chapter" data-level="11.1.5" data-path="gg히스토그램.html"><a href="gg히스토그램.html#구간의-수-조정"><i class="fa fa-check"></i><b>11.1.5</b> 구간의 수 조정</a></li>
+<li class="chapter" data-level="11.1.6" data-path="gg히스토그램.html"><a href="gg히스토그램.html#색-지정"><i class="fa fa-check"></i><b>11.1.6</b> 색 지정</a></li>
+<li class="chapter" data-level="11.1.7" data-path="gg히스토그램.html"><a href="gg히스토그램.html#stat_bin-함수의-이용"><i class="fa fa-check"></i><b>11.1.7</b> <code>stat_bin()</code> 함수의 이용</a></li>
+<li class="chapter" data-level="11.1.8" data-path="gg히스토그램.html"><a href="gg히스토그램.html#데이터-레이블-달기"><i class="fa fa-check"></i><b>11.1.8</b> 데이터 레이블 달기</a></li>
+<li class="chapter" data-level="11.1.9" data-path="gg히스토그램.html"><a href="gg히스토그램.html#그룹별-히스토그램"><i class="fa fa-check"></i><b>11.1.9</b> 그룹별 히스토그램</a></li>
+<li class="chapter" data-level="11.1.10" data-path="gg히스토그램.html"><a href="gg히스토그램.html#UsignThemes"><i class="fa fa-check"></i><b>11.1.10</b> Theme의 사용</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="커널-밀도-곡선.html"><a href="커널-밀도-곡선.html"><i class="fa fa-check"></i><b>11.2</b> 커널 밀도 곡선</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="커널-밀도-곡선.html"><a href="커널-밀도-곡선.html#기본-커널-밀도-곡선"><i class="fa fa-check"></i><b>11.2.1</b> 기본 커널 밀도 곡선</a></li>
+<li class="chapter" data-level="11.2.2" data-path="커널-밀도-곡선.html"><a href="커널-밀도-곡선.html#색의-지정과-곡선-추가하기"><i class="fa fa-check"></i><b>11.2.2</b> 색의 지정과 곡선 추가하기</a></li>
+<li class="chapter" data-level="11.2.3" data-path="커널-밀도-곡선.html"><a href="커널-밀도-곡선.html#stat_density-함수의-이용"><i class="fa fa-check"></i><b>11.2.3</b> <code>stat_density()</code> 함수의 이용</a></li>
+<li class="chapter" data-level="11.2.4" data-path="커널-밀도-곡선.html"><a href="커널-밀도-곡선.html#그룹별-커널-밀도-곡선"><i class="fa fa-check"></i><b>11.2.4</b> 그룹별 커널 밀도 곡선</a></li>
+<li class="chapter" data-level="11.2.5" data-path="커널-밀도-곡선.html"><a href="커널-밀도-곡선.html#커널-밀도-곡선의-최정점-표시하기"><i class="fa fa-check"></i><b>11.2.5</b> 커널 밀도 곡선의 최정점 표시하기</a></li>
+<li class="chapter" data-level="11.2.6" data-path="커널-밀도-곡선.html"><a href="커널-밀도-곡선.html#히스토그램과-커널-밀도-곡선-겹쳐-그리기"><i class="fa fa-check"></i><b>11.2.6</b> 히스토그램과 커널 밀도 곡선 겹쳐 그리기</a></li>
+<li class="chapter" data-level="11.2.7" data-path="커널-밀도-곡선.html"><a href="커널-밀도-곡선.html#theme의-사용"><i class="fa fa-check"></i><b>11.2.7</b> Theme의 사용</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="박스-그래프.html"><a href="박스-그래프.html"><i class="fa fa-check"></i><b>11.3</b> 박스 그래프</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="박스-그래프.html"><a href="박스-그래프.html#데이터-세트-4"><i class="fa fa-check"></i><b>11.3.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="11.3.2" data-path="박스-그래프.html"><a href="박스-그래프.html#기본-박스-그래프"><i class="fa fa-check"></i><b>11.3.2</b> 기본 박스 그래프</a></li>
+<li class="chapter" data-level="11.3.3" data-path="박스-그래프.html"><a href="박스-그래프.html#x축의-이름과-척도-없애기"><i class="fa fa-check"></i><b>11.3.3</b> X축의 이름과 척도 없애기</a></li>
+<li class="chapter" data-level="11.3.4" data-path="박스-그래프.html"><a href="박스-그래프.html#이상값의-표현"><i class="fa fa-check"></i><b>11.3.4</b> 이상값의 표현</a></li>
+<li class="chapter" data-level="11.3.5" data-path="박스-그래프.html"><a href="박스-그래프.html#박스-그래프에-데이터를-점으로-표시하기"><i class="fa fa-check"></i><b>11.3.5</b> 박스 그래프에 데이터를 점으로 표시하기</a></li>
+<li class="chapter" data-level="11.3.6" data-path="박스-그래프.html"><a href="박스-그래프.html#수평-박스-그래프"><i class="fa fa-check"></i><b>11.3.6</b> 수평 박스 그래프</a></li>
+<li class="chapter" data-level="11.3.7" data-path="박스-그래프.html"><a href="박스-그래프.html#노치-박스-그래프"><i class="fa fa-check"></i><b>11.3.7</b> 노치 박스 그래프</a></li>
+<li class="chapter" data-level="11.3.8" data-path="박스-그래프.html"><a href="박스-그래프.html#박스-그래프의-색-지정하기"><i class="fa fa-check"></i><b>11.3.8</b> 박스 그래프의 색 지정하기</a></li>
+<li class="chapter" data-level="11.3.9" data-path="박스-그래프.html"><a href="박스-그래프.html#박스-그래프에-평균-추가하기"><i class="fa fa-check"></i><b>11.3.9</b> 박스 그래프에 평균 추가하기</a></li>
+<li class="chapter" data-level="11.3.10" data-path="박스-그래프.html"><a href="박스-그래프.html#stat_boxplot-함수의-이용"><i class="fa fa-check"></i><b>11.3.10</b> <code>stat_boxplot()</code> 함수의 이용</a></li>
+<li class="chapter" data-level="11.3.11" data-path="박스-그래프.html"><a href="박스-그래프.html#그룹별-박스-그래프"><i class="fa fa-check"></i><b>11.3.11</b> 그룹별 박스 그래프</a></li>
+<li class="chapter" data-level="11.3.12" data-path="박스-그래프.html"><a href="박스-그래프.html#두-개의-요인형-변수를-고려한-박스-그래프"><i class="fa fa-check"></i><b>11.3.12</b> 두 개의 요인형 변수를 고려한 박스 그래프</a></li>
+<li class="chapter" data-level="11.3.13" data-path="박스-그래프.html"><a href="박스-그래프.html#theme의-사용-1"><i class="fa fa-check"></i><b>11.3.13</b> Theme의 사용</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html"><i class="fa fa-check"></i><b>11.4</b> 바이올린 그래프</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#데이터-세트-5"><i class="fa fa-check"></i><b>11.4.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="11.4.2" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#기본-바이올린-그래프"><i class="fa fa-check"></i><b>11.4.2</b> 기본 바이올린 그래프</a></li>
+<li class="chapter" data-level="11.4.3" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#바이올린-그래프와-박스-그래프-겹쳐-그리기"><i class="fa fa-check"></i><b>11.4.3</b> 바이올린 그래프와 박스 그래프 겹쳐 그리기</a></li>
+<li class="chapter" data-level="11.4.4" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#x축의-이름과-척도-없애기-1"><i class="fa fa-check"></i><b>11.4.4</b> X축의 이름과 척도 없애기</a></li>
+<li class="chapter" data-level="11.4.5" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#이상값의-표현-1"><i class="fa fa-check"></i><b>11.4.5</b> 이상값의 표현</a></li>
+<li class="chapter" data-level="11.4.6" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#바이올린-그래프에-데이터를-점으로-표시하기"><i class="fa fa-check"></i><b>11.4.6</b> 바이올린 그래프에 데이터를 점으로 표시하기</a></li>
+<li class="chapter" data-level="11.4.7" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#수평-바이올린-그래프"><i class="fa fa-check"></i><b>11.4.7</b> 수평 바이올린 그래프</a></li>
+<li class="chapter" data-level="11.4.8" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#바이올린-그래프의-색-지정하기"><i class="fa fa-check"></i><b>11.4.8</b> 바이올린 그래프의 색 지정하기</a></li>
+<li class="chapter" data-level="11.4.9" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#바이올린-그래프에-평균-추가하기"><i class="fa fa-check"></i><b>11.4.9</b> 바이올린 그래프에 평균 추가하기</a></li>
+<li class="chapter" data-level="11.4.10" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#stat_ydensity-함수의-이용"><i class="fa fa-check"></i><b>11.4.10</b> <code>stat_ydensity()</code> 함수의 이용</a></li>
+<li class="chapter" data-level="11.4.11" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#그룹별-바이올린-그래프"><i class="fa fa-check"></i><b>11.4.11</b> 그룹별 바이올린 그래프</a></li>
+<li class="chapter" data-level="11.4.12" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#두-개의-요인형-변수를-고려한-바이올린-그래프"><i class="fa fa-check"></i><b>11.4.12</b> 두 개의 요인형 변수를 고려한 바이올린 그래프</a></li>
+<li class="chapter" data-level="11.4.13" data-path="바이올린-그래프.html"><a href="바이올린-그래프.html#theme의-사용-2"><i class="fa fa-check"></i><b>11.4.13</b> Theme의 사용</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="범주형-데이터요인의-수준-순서-바꾸기.html"><a href="범주형-데이터요인의-수준-순서-바꾸기.html"><i class="fa fa-check"></i><b>11.5</b> 범주형 데이터(요인)의 수준 순서 바꾸기</a></li>
+<li class="chapter" data-level="" data-path="연습문제-2.html"><a href="연습문제-2.html"><i class="fa fa-check"></i>연습문제</a>
+<ul>
+<li class="chapter" data-level="" data-path="연습문제-2.html"><a href="연습문제-2.html#section"><i class="fa fa-check"></i>1.</a></li>
+<li class="chapter" data-level="" data-path="연습문제-2.html"><a href="연습문제-2.html#section-1"><i class="fa fa-check"></i>2.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="다변량-변수-범주형-데이터.html"><a href="다변량-변수-범주형-데이터.html"><i class="fa fa-check"></i><b>12</b> 다변량 변수 - 범주형 데이터</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html"><i class="fa fa-check"></i><b>12.1</b> 막대 그래프</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html#데이터-세트-6"><i class="fa fa-check"></i><b>12.1.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="12.1.2" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html#일변량-범주형-변수의-시각화"><i class="fa fa-check"></i><b>12.1.2</b> 일변량 범주형 변수의 시각화</a></li>
+<li class="chapter" data-level="12.1.3" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html#범주형-변수의-수준-확인"><i class="fa fa-check"></i><b>12.1.3</b> 범주형 변수의 수준 확인</a></li>
+<li class="chapter" data-level="12.1.4" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html#막대-그래프-1"><i class="fa fa-check"></i><b>12.1.4</b> 막대 그래프</a></li>
+<li class="chapter" data-level="12.1.5" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html#상대-비율-막대-그래프-1"><i class="fa fa-check"></i><b>12.1.5</b> 상대 비율 막대 그래프</a></li>
+<li class="chapter" data-level="12.1.6" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html#ggplot-2CatVarsBarGroup"><i class="fa fa-check"></i><b>12.1.6</b> 그룹별 막대 그래프</a></li>
+<li class="chapter" data-level="12.1.7" data-path="ggplot-bar-2CatVars.html"><a href="ggplot-bar-2CatVars.html#theme의-사용-3"><i class="fa fa-check"></i><b>12.1.7</b> Theme의 사용</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="모자이크-그림.html"><a href="모자이크-그림.html"><i class="fa fa-check"></i><b>12.2</b> 모자이크 그림</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="모자이크-그림.html"><a href="모자이크-그림.html#데이터-세트와-패키지"><i class="fa fa-check"></i><b>12.2.1</b> 데이터 세트와 패키지</a></li>
+<li class="chapter" data-level="12.2.2" data-path="모자이크-그림.html"><a href="모자이크-그림.html#기본-모자이크-그림-그리기"><i class="fa fa-check"></i><b>12.2.2</b> 기본 모자이크 그림 그리기</a></li>
+<li class="chapter" data-level="12.2.3" data-path="모자이크-그림.html"><a href="모자이크-그림.html#분할-방향"><i class="fa fa-check"></i><b>12.2.3</b> 분할 방향</a></li>
+<li class="chapter" data-level="12.2.4" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림의-채우기-색"><i class="fa fa-check"></i><b>12.2.4</b> 모자이크 그림의 채우기 색</a></li>
+<li class="chapter" data-level="12.2.5" data-path="모자이크-그림.html"><a href="모자이크-그림.html#모자이크-그림에-라벨-추가하기"><i class="fa fa-check"></i><b>12.2.5</b> 모자이크 그림에 라벨 추가하기</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="다변량-변수-연속형-데이터.html"><a href="다변량-변수-연속형-데이터.html"><i class="fa fa-check"></i><b>13</b> 다변량 변수 - 연속형 데이터</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="산포도-1.html"><a href="산포도-1.html"><i class="fa fa-check"></i><b>13.1</b> 산포도</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="산포도-1.html"><a href="산포도-1.html#데이터-세트-7"><i class="fa fa-check"></i><b>13.1.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="13.1.2" data-path="산포도-1.html"><a href="산포도-1.html#변수들-간의-상관계수"><i class="fa fa-check"></i><b>13.1.2</b> 변수들 간의 상관계수</a></li>
+<li class="chapter" data-level="13.1.3" data-path="산포도-1.html"><a href="산포도-1.html#산포도-행렬-1"><i class="fa fa-check"></i><b>13.1.3</b> 산포도 행렬</a></li>
+<li class="chapter" data-level="13.1.4" data-path="산포도-1.html"><a href="산포도-1.html#기본-산포도"><i class="fa fa-check"></i><b>13.1.4</b> 기본 산포도</a></li>
+<li class="chapter" data-level="13.1.5" data-path="산포도-1.html"><a href="산포도-1.html#그룹별-산포도-그리기"><i class="fa fa-check"></i><b>13.1.5</b> 그룹별 산포도 그리기</a></li>
+<li class="chapter" data-level="13.1.6" data-path="산포도-1.html"><a href="산포도-1.html#theme의-사용-4"><i class="fa fa-check"></i><b>13.1.6</b> Theme의 사용</a></li>
+<li class="chapter" data-level="13.1.7" data-path="산포도-1.html"><a href="산포도-1.html#회귀선의-표시"><i class="fa fa-check"></i><b>13.1.7</b> 회귀선의 표시</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="버블-그래프.html"><a href="버블-그래프.html"><i class="fa fa-check"></i><b>13.2</b> 버블 그래프</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="버블-그래프.html"><a href="버블-그래프.html#데이터-세트-8"><i class="fa fa-check"></i><b>13.2.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="13.2.2" data-path="버블-그래프.html"><a href="버블-그래프.html#기본-버블-그래프"><i class="fa fa-check"></i><b>13.2.2</b> 기본 버블 그래프</a></li>
+<li class="chapter" data-level="13.2.3" data-path="버블-그래프.html"><a href="버블-그래프.html#텍스트-레이블-추가"><i class="fa fa-check"></i><b>13.2.3</b> 텍스트 레이블 추가</a></li>
+<li class="chapter" data-level="13.2.4" data-path="버블-그래프.html"><a href="버블-그래프.html#그룹별-버블-그래프-그리기"><i class="fa fa-check"></i><b>13.2.4</b> 그룹별 버블 그래프 그리기</a></li>
+<li class="chapter" data-level="13.2.5" data-path="버블-그래프.html"><a href="버블-그래프.html#theme의-사용-5"><i class="fa fa-check"></i><b>13.2.5</b> Theme의 사용</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html"><i class="fa fa-check"></i><b>13.3</b> 선 그래프와 시계열 그래프</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#데이터-세트-9"><i class="fa fa-check"></i><b>13.3.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="13.3.2" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#기본-선-그래프-그리기"><i class="fa fa-check"></i><b>13.3.2</b> 기본 선 그래프 그리기</a></li>
+<li class="chapter" data-level="13.3.3" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#시계열-그래프의-옵션-설정하기"><i class="fa fa-check"></i><b>13.3.3</b> 시계열 그래프의 옵션 설정하기</a></li>
+<li class="chapter" data-level="13.3.4" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#그룹별-시계열-그래프-그리기"><i class="fa fa-check"></i><b>13.3.4</b> 그룹별 시계열 그래프 그리기</a></li>
+<li class="chapter" data-level="13.3.5" data-path="선-그래프와-시계열-그래프.html"><a href="선-그래프와-시계열-그래프.html#theme의-사용-6"><i class="fa fa-check"></i><b>13.3.5</b> Theme의 사용</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="차원-밀도-그래프.html"><a href="차원-밀도-그래프.html"><i class="fa fa-check"></i><b>13.4</b> 2차원 밀도 그래프</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="차원-밀도-그래프.html"><a href="차원-밀도-그래프.html#데이터-세트-10"><i class="fa fa-check"></i><b>13.4.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="13.4.2" data-path="차원-밀도-그래프.html"><a href="차원-밀도-그래프.html#기본-2차원-밀도-그래프"><i class="fa fa-check"></i><b>13.4.2</b> 기본 2차원 밀도 그래프</a></li>
+<li class="chapter" data-level="13.4.3" data-path="차원-밀도-그래프.html"><a href="차원-밀도-그래프.html#월별로-모양과-색깔-구분하기"><i class="fa fa-check"></i><b>13.4.3</b> 월별로 모양과 색깔 구분하기</a></li>
+<li class="chapter" data-level="13.4.4" data-path="차원-밀도-그래프.html"><a href="차원-밀도-그래프.html#월별-레이블의-추가"><i class="fa fa-check"></i><b>13.4.4</b> 월별 레이블의 추가</a></li>
+<li class="chapter" data-level="13.4.5" data-path="차원-밀도-그래프.html"><a href="차원-밀도-그래프.html#등고선-효과-추가하기"><i class="fa fa-check"></i><b>13.4.5</b> 등고선 효과 추가하기</a></li>
+<li class="chapter" data-level="13.4.6" data-path="차원-밀도-그래프.html"><a href="차원-밀도-그래프.html#facet_wrap-함수-이용-7"><i class="fa fa-check"></i><b>13.4.6</b> <code>facet_wrap()</code> 함수 이용</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="클리브랜드-점-그래프-1.html"><a href="클리브랜드-점-그래프-1.html"><i class="fa fa-check"></i><b>13.5</b> 클리브랜드 점 그래프</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="클리브랜드-점-그래프-1.html"><a href="클리브랜드-점-그래프-1.html#데이터-세트-11"><i class="fa fa-check"></i><b>13.5.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="13.5.2" data-path="클리브랜드-점-그래프-1.html"><a href="클리브랜드-점-그래프-1.html#클리브랜드-점-그래프-그리기"><i class="fa fa-check"></i><b>13.5.2</b> 클리브랜드 점 그래프 그리기</a></li>
+<li class="chapter" data-level="13.5.3" data-path="클리브랜드-점-그래프-1.html"><a href="클리브랜드-점-그래프-1.html#facet_grid-함수-이용-7"><i class="fa fa-check"></i><b>13.5.3</b> <code>facet_grid()</code> 함수 이용</a></li>
+<li class="chapter" data-level="13.5.4" data-path="클리브랜드-점-그래프-1.html"><a href="클리브랜드-점-그래프-1.html#변수의-추가와-모양-변경하기"><i class="fa fa-check"></i><b>13.5.4</b> 변수의 추가와 모양 변경하기</a></li>
+</ul></li>
+<li class="chapter" data-level="13.6" data-path="누적-영역-그래프.html"><a href="누적-영역-그래프.html"><i class="fa fa-check"></i><b>13.6</b> 누적 영역 그래프</a>
+<ul>
+<li class="chapter" data-level="13.6.1" data-path="누적-영역-그래프.html"><a href="누적-영역-그래프.html#데이터-전처리"><i class="fa fa-check"></i><b>13.6.1</b> 데이터 전처리</a></li>
+<li class="chapter" data-level="13.6.2" data-path="누적-영역-그래프.html"><a href="누적-영역-그래프.html#누적영역-그래프-그리기"><i class="fa fa-check"></i><b>13.6.2</b> 누적영역 그래프 그리기</a></li>
+<li class="chapter" data-level="13.6.3" data-path="누적-영역-그래프.html"><a href="누적-영역-그래프.html#누적영역-순서-바꾸기"><i class="fa fa-check"></i><b>13.6.3</b> 누적영역 순서 바꾸기</a></li>
+<li class="chapter" data-level="13.6.4" data-path="누적-영역-그래프.html"><a href="누적-영역-그래프.html#비율-기준의-누적영역-그래프"><i class="fa fa-check"></i><b>13.6.4</b> 비율 기준의 누적영역 그래프</a></li>
+</ul></li>
+<li class="chapter" data-level="13.7" data-path="상관계수-행렬-그래프.html"><a href="상관계수-행렬-그래프.html"><i class="fa fa-check"></i><b>13.7</b> 상관계수 행렬 그래프</a>
+<ul>
+<li class="chapter" data-level="13.7.1" data-path="상관계수-행렬-그래프.html"><a href="상관계수-행렬-그래프.html#데이터-세트-12"><i class="fa fa-check"></i><b>13.7.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="13.7.2" data-path="상관계수-행렬-그래프.html"><a href="상관계수-행렬-그래프.html#상관계수-행렬-그리기"><i class="fa fa-check"></i><b>13.7.2</b> 상관계수 행렬 그리기</a></li>
+</ul></li>
+<li class="chapter" data-level="13.8" data-path="산포도-행렬-그리기.html"><a href="산포도-행렬-그리기.html"><i class="fa fa-check"></i><b>13.8</b> 산포도 행렬 그리기</a>
+<ul>
+<li class="chapter" data-level="13.8.1" data-path="산포도-행렬-그리기.html"><a href="산포도-행렬-그리기.html#데이터-세트-13"><i class="fa fa-check"></i><b>13.8.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="13.8.2" data-path="산포도-행렬-그리기.html"><a href="산포도-행렬-그리기.html#사용자-정의-함수-만들기"><i class="fa fa-check"></i><b>13.8.2</b> 사용자 정의 함수 만들기</a></li>
+<li class="chapter" data-level="13.8.3" data-path="산포도-행렬-그리기.html"><a href="산포도-행렬-그리기.html#산포도-행렬-그리기-1"><i class="fa fa-check"></i><b>13.8.3</b> 산포도 행렬 그리기</a></li>
+</ul></li>
+<li class="chapter" data-level="13.9" data-path="히트맵.html"><a href="히트맵.html"><i class="fa fa-check"></i><b>13.9</b> 히트맵</a>
+<ul>
+<li class="chapter" data-level="13.9.1" data-path="히트맵.html"><a href="히트맵.html#히드맵의-예"><i class="fa fa-check"></i><b>13.9.1</b> 히드맵의 예</a></li>
+<li class="chapter" data-level="13.9.2" data-path="히트맵.html"><a href="히트맵.html#데이터-세트-14"><i class="fa fa-check"></i><b>13.9.2</b> 데이터 세트</a></li>
+<li class="chapter" data-level="13.9.3" data-path="히트맵.html"><a href="히트맵.html#히트맵-그리기"><i class="fa fa-check"></i><b>13.9.3</b> 히트맵 그리기</a></li>
+<li class="chapter" data-level="" data-path="히트맵.html"><a href="히트맵.html#참고자료-3"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV Others</b></span></li>
+<li class="chapter" data-level="14" data-path="개-이상-변수의-다변량-그래프.html"><a href="개-이상-변수의-다변량-그래프.html"><i class="fa fa-check"></i><b>14</b> 3개 이상 변수의 다변량 그래프</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="레이더-차트radar-chart-or-거미줄-그림spider-plot.html"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html"><i class="fa fa-check"></i><b>14.1</b> 레이더 차트(radar chart), or 거미줄 그림(spider plot)</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="레이더-차트radar-chart-or-거미줄-그림spider-plot.html"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#데이터-세트-15"><i class="fa fa-check"></i><b>14.1.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="14.1.2" data-path="레이더-차트radar-chart-or-거미줄-그림spider-plot.html"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#데이터-전처리-1"><i class="fa fa-check"></i><b>14.1.2</b> 데이터 전처리</a></li>
+<li class="chapter" data-level="14.1.3" data-path="레이더-차트radar-chart-or-거미줄-그림spider-plot.html"><a href="레이더-차트radar-chart-or-거미줄-그림spider-plot.html#레이더-차트-그리기"><i class="fa fa-check"></i><b>14.1.3</b> 레이더 차트 그리기</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="별-그래프.html"><a href="별-그래프.html"><i class="fa fa-check"></i><b>14.2</b> 별 그래프</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="별-그래프.html"><a href="별-그래프.html#데이터-세트-16"><i class="fa fa-check"></i><b>14.2.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="14.2.2" data-path="별-그래프.html"><a href="별-그래프.html#데이터-처리"><i class="fa fa-check"></i><b>14.2.2</b> 데이터 처리</a></li>
+<li class="chapter" data-level="14.2.3" data-path="별-그래프.html"><a href="별-그래프.html#별-그래프-그리기"><i class="fa fa-check"></i><b>14.2.3</b> 별 그래프 그리기</a></li>
+<li class="chapter" data-level="14.2.4" data-path="별-그래프.html"><a href="별-그래프.html#나이팅게일-차트"><i class="fa fa-check"></i><b>14.2.4</b> 나이팅게일 차트</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="평행-좌표-그림-parallel-coordinate-plot.html"><a href="평행-좌표-그림-parallel-coordinate-plot.html"><i class="fa fa-check"></i><b>14.3</b> 평행 좌표 그림 (parallel coordinate plot)</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="평행-좌표-그림-parallel-coordinate-plot.html"><a href="평행-좌표-그림-parallel-coordinate-plot.html#데이터-세트-17"><i class="fa fa-check"></i><b>14.3.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="14.3.2" data-path="평행-좌표-그림-parallel-coordinate-plot.html"><a href="평행-좌표-그림-parallel-coordinate-plot.html#데이터-전처리-3"><i class="fa fa-check"></i><b>14.3.2</b> 데이터 전처리</a></li>
+<li class="chapter" data-level="14.3.3" data-path="평행-좌표-그림-parallel-coordinate-plot.html"><a href="평행-좌표-그림-parallel-coordinate-plot.html#평행-좌표-그림-그리기"><i class="fa fa-check"></i><b>14.3.3</b> 평행 좌표 그림 그리기</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html"><a href="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html"><i class="fa fa-check"></i><b>14.4</b> 3차원 산포도 (3 dimensional scatter plot) : <code>scatterplot3d()</code></a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html"><a href="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html#데이터-세트-18"><i class="fa fa-check"></i><b>14.4.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="14.4.2" data-path="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html"><a href="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html#차원-산포도"><i class="fa fa-check"></i><b>14.4.2</b> 3차원 산포도</a></li>
+<li class="chapter" data-level="14.4.3" data-path="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html"><a href="차원-산포도-3-dimensional-scatter-plot-scatterplot3d.html#영화-minority-report"><i class="fa fa-check"></i><b>14.4.3</b> 영화 Minority Report</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html"><i class="fa fa-check"></i><b>14.5</b> 체르노프 얼굴그림 (Chernoff faces) : <code>aplpack</code> package, <code>faces()</code> 함수</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#데이터-세트-19"><i class="fa fa-check"></i><b>14.5.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="14.5.2" data-path="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#체로노프-얼굴그림-그리기"><i class="fa fa-check"></i><b>14.5.2</b> 체로노프 얼굴그림 그리기</a></li>
+<li class="chapter" data-level="14.5.3" data-path="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#산포도에-체르노프-얼굴그림-겹쳐-그르기"><i class="fa fa-check"></i><b>14.5.3</b> 산포도에 체르노프 얼굴그림 겹쳐 그르기</a></li>
+<li class="chapter" data-level="14.5.4" data-path="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#pairs-함수를-사용한-산포도-행렬-그리기"><i class="fa fa-check"></i><b>14.5.4</b> <code>pairs()</code> 함수를 사용한 산포도 행렬 그리기</a></li>
+<li class="chapter" data-level="14.5.5" data-path="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html"><a href="체르노프-얼굴그림-chernoff-faces-aplpack-package-faces-함수.html#r-모자이크-그림-vcd패키지-mosaic-함수"><i class="fa fa-check"></i><b>14.5.5</b> R 모자이크 그림: <code>vcd</code>패키지 <code>mosaic()</code> 함수</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="연속확률분포-곡선.html"><a href="연속확률분포-곡선.html"><i class="fa fa-check"></i><b>15</b> 연속확률분포 곡선</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="연속확률분포-함수.html"><a href="연속확률분포-함수.html"><i class="fa fa-check"></i><b>15.1</b> 연속확률분포 함수</a></li>
+<li class="chapter" data-level="" data-path="패키지-불러오기-2.html"><a href="패키지-불러오기-2.html"><i class="fa fa-check"></i>패키지 불러오기</a></li>
+<li class="chapter" data-level="15.2" data-path="정규분포-함수.html"><a href="정규분포-함수.html"><i class="fa fa-check"></i><b>15.2</b> 정규분포 함수</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="정규분포-함수.html"><a href="정규분포-함수.html#정규분포-확률밀도곡선-stat_functionfun-dnorm"><i class="fa fa-check"></i><b>15.2.1</b> 정규분포 확률밀도곡선 : <code>stat_function(fun = dnorm)</code></a></li>
+<li class="chapter" data-level="15.2.2" data-path="정규분포-함수.html"><a href="정규분포-함수.html#정규분포의-특정-구간에만-색깔-넣기"><i class="fa fa-check"></i><b>15.2.2</b> 정규분포의 특정 구간에만 색깔 넣기</a></li>
+<li class="chapter" data-level="15.2.3" data-path="정규분포-함수.html"><a href="정규분포-함수.html#누적정규분포-cummulative-normal-distribution-stat_functionfun-pnorm"><i class="fa fa-check"></i><b>15.2.3</b> 누적정규분포 (Cummulative Normal Distribution) : stat_function(fun = pnorm)</a></li>
+<li class="chapter" data-level="15.2.4" data-path="정규분포-함수.html"><a href="정규분포-함수.html#정규분포-평균과-분산-지정"><i class="fa fa-check"></i><b>15.2.4</b> 정규분포 : 평균과 분산 지정</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="t-분포-t-distribution-stat-functionfun-dt.html"><a href="t-분포-t-distribution-stat-functionfun-dt.html"><i class="fa fa-check"></i><b>15.3</b> t-분포 (t-Distribution) : <code>stat_function(fun = dt)</code></a></li>
+<li class="chapter" data-level="15.4" data-path="카이제곱분포-확률밀도곡선-stat-functionfun-dchisq.html"><a href="카이제곱분포-확률밀도곡선-stat-functionfun-dchisq.html"><i class="fa fa-check"></i><b>15.4</b> 카이제곱분포 확률밀도곡선 : <code>stat_function(fun = dchisq)</code></a></li>
+<li class="chapter" data-level="15.5" data-path="지수분포-exponential-distribution-stat-functionfun-dexp.html"><a href="지수분포-exponential-distribution-stat-functionfun-dexp.html"><i class="fa fa-check"></i><b>15.5</b> 지수분포 (Exponential Distribution) : <code>stat_function(fun = dexp)</code></a></li>
+<li class="chapter" data-level="15.6" data-path="f-분포-f-distribution-stat-functionfun-df.html"><a href="f-분포-f-distribution-stat-functionfun-df.html"><i class="fa fa-check"></i><b>15.6</b> F 분포 (F Distribution) : <code>stat_function(fun = df)</code></a></li>
+<li class="chapter" data-level="15.7" data-path="감마-분포-gamma-distribution-stat-functionfun-dgamma.html"><a href="감마-분포-gamma-distribution-stat-functionfun-dgamma.html"><i class="fa fa-check"></i><b>15.7</b> 감마 분포 (Gamma Distribution) : <code>stat_function(fun = dgamma)</code></a></li>
+<li class="chapter" data-level="15.8" data-path="일양-분포-uniform-distribution-stat-functionfun-dunif.html"><a href="일양-분포-uniform-distribution-stat-functionfun-dunif.html"><i class="fa fa-check"></i><b>15.8</b> 일양 분포 (Uniform Distribution) :<code>stat_function(fun = dunif)</code></a></li>
+<li class="chapter" data-level="15.9" data-path="상용로그-분포-common-logarithm-distribution-stat-functionfun-log10.html"><a href="상용로그-분포-common-logarithm-distribution-stat-functionfun-log10.html"><i class="fa fa-check"></i><b>15.9</b> 상용로그 분포 (Common Logarithm Distribution) : <code>stat_function(fun = log10)</code></a></li>
+<li class="chapter" data-level="15.10" data-path="사인-함수-곡선sine-function-curve-코사인-함수-곡선cosine-function-curve-stat-functionfun-sin-stat-fuctionfun-cos.html"><a href="사인-함수-곡선sine-function-curve-코사인-함수-곡선cosine-function-curve-stat-functionfun-sin-stat-fuctionfun-cos.html"><i class="fa fa-check"></i><b>15.10</b> 사인 함수 곡선(Sine Function Curve), 코사인 함수 곡선(Cosine Function Curve) : <code>stat_function(fun = sin), stat_fuction(fun = cos)</code></a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="동적-그래프.html"><a href="동적-그래프.html"><i class="fa fa-check"></i><b>16</b> 동적 그래프</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="데이터-세트-20.html"><a href="데이터-세트-20.html"><i class="fa fa-check"></i><b>16.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="16.2" data-path="패키지-불러오기-3.html"><a href="패키지-불러오기-3.html"><i class="fa fa-check"></i><b>16.2</b> 패키지 불러오기</a></li>
+<li class="chapter" data-level="16.3" data-path="slider-control.html"><a href="slider-control.html"><i class="fa fa-check"></i><b>16.3</b> Slider Control</a></li>
+<li class="chapter" data-level="16.4" data-path="picker-control.html"><a href="picker-control.html"><i class="fa fa-check"></i><b>16.4</b> Picker Control</a></li>
+<li class="chapter" data-level="16.5" data-path="checkbox-control.html"><a href="checkbox-control.html"><i class="fa fa-check"></i><b>16.5</b> Checkbox Control</a></li>
+<li class="chapter" data-level="16.6" data-path="combining-controls.html"><a href="combining-controls.html"><i class="fa fa-check"></i><b>16.6</b> Combining Controls</a>
+<ul>
+<li class="chapter" data-level="" data-path="combining-controls.html"><a href="combining-controls.html#참고자료-4"><i class="fa fa-check"></i>참고자료</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Visualization with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="차원-밀도-그래프" class="section level2" number="13.4">
+<h2><span class="header-section-number">13.4</span> 2차원 밀도 그래프</h2>
+<p>연속형 데이터를 시각화할 수 있는 방법 중의 하나가 <strong>이차원 밀도 그래프 (2D Density Plot)</strong> 입니다. <code>ggplot2</code> 패키지에서는 <strong><code>stat_density2d()</code></strong> 함수를 이용하여 이 그래프를 그릴 수 있습니다.</p>
+<p><strong>이차원 밀도 그래프 (2D Density Plot)</strong>은 2차원 커널 밀도 추정치를 구하여 이를 선으로 연결한 그래프 입니다. 우리가 일상 생활 중에 자주 쉽게 접하는 이차원 밀도 그래프로는 <em>지도의 <strong>등고선</strong></em>이나 <em>일기예보</em>의 <strong><em>등압선</em></strong> 등이 있습니다.</p>
+<div id="데이터-세트-10" class="section level3" number="13.4.1">
+<h3><span class="header-section-number">13.4.1</span> 데이터 세트</h3>
+<p>이번 절에서 사용할 데이터는 뉴욕의 기상을 1973년 5월부터 9월까지 매일 측정한 <code>airquality</code> 데이터 세트로 5월과 7월의 두 달의 <code>Wind</code>, <code>Temp</code>를 사용하겠습니다. (<code>airquality</code>는 시계열 데이터이고, 이전 절에서 <code>airquality</code> 데이터 세트를 사용하여 <code>ggplot2</code>로 (시계열 그래프를 그리는 방법)<a href="선-그래프와-시계열-그래프.html#선-그래프와-시계열-그래프">선 그래프와 시계열 그래프</a>을 설명한 바 있으니 참고하시기 바랍니다)</p>
+<p>먼저, <code>airquality</code> 데이터 세트의 <strong>데이터 구조</strong>를 살펴보겠습니다.</p>
+<div class="sourceCode" id="cb525"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb525-1"><a href="차원-밀도-그래프.html#cb525-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb525-2"><a href="차원-밀도-그래프.html#cb525-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb525-3"><a href="차원-밀도-그래프.html#cb525-3" aria-hidden="true" tabindex="-1"></a><span class="co"># airquality 구조 </span></span>
+<span id="cb525-4"><a href="차원-밀도-그래프.html#cb525-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(airquality)</span></code></pre></div>
+<pre class="bg-warning"><code>## &#39;data.frame&#39;:    153 obs. of  11 variables:
+##  $ Ozone        : int  41 36 12 18 NA 28 23 19 8 NA ...
+##  $ Solar.R      : int  190 118 149 313 NA NA 299 99 19 194 ...
+##  $ Wind         : num  7.4 8 12.6 11.5 14.3 14.9 8.6 13.8 20.1 8.6 ...
+##  $ Temp         : int  67 72 74 62 56 66 65 59 61 69 ...
+##  $ Month        : Factor w/ 5 levels &quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Day          : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ Month.ch_temp: chr  &quot;5&quot; &quot;5&quot; &quot;5&quot; &quot;5&quot; ...
+##  $ Day.ch_temp  : chr  &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+##  $ Month.ch     : chr  &quot;05&quot; &quot;05&quot; &quot;05&quot; &quot;05&quot; ...
+##  $ Day.ch       : chr  &quot;01&quot; &quot;02&quot; &quot;03&quot; &quot;04&quot; ...
+##  $ Time         : Date, format: &quot;2021-05-01&quot; &quot;2021-05-02&quot; ...</code></pre>
+<p>5월과 7월의 데이터만 선별해서 새로운 데이터 세트를 만들어 보겠습니다.</p>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb527-1"><a href="차원-밀도-그래프.html#cb527-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5월과 7월만 선택</span></span>
+<span id="cb527-2"><a href="차원-밀도-그래프.html#cb527-2" aria-hidden="true" tabindex="-1"></a>airquality_May_July <span class="ot">&lt;-</span> <span class="fu">subset</span>(airquality, </span>
+<span id="cb527-3"><a href="차원-밀도-그래프.html#cb527-3" aria-hidden="true" tabindex="-1"></a>                               <span class="at">select =</span> <span class="fu">c</span>(Month, Day, Wind, Temp), </span>
+<span id="cb527-4"><a href="차원-밀도-그래프.html#cb527-4" aria-hidden="true" tabindex="-1"></a>                               <span class="at">subset =</span> (Month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">7</span>)))</span>
+<span id="cb527-5"><a href="차원-밀도-그래프.html#cb527-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb527-6"><a href="차원-밀도-그래프.html#cb527-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(airquality_May_July)</span></code></pre></div>
+<pre class="bg-warning"><code>##   Month Day Wind Temp
+## 1     5   1  7.4   67
+## 2     5   2  8.0   72
+## 3     5   3 12.6   74
+## 4     5   4 11.5   62
+## 5     5   5 14.3   56
+## 6     5   6 14.9   66</code></pre>
+<div class="sourceCode" id="cb529"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb529-1"><a href="차원-밀도-그래프.html#cb529-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(airquality_May_July)</span></code></pre></div>
+<pre class="bg-warning"><code>##    Month Day Wind Temp
+## 87     7  26  8.6   82
+## 88     7  27 12.0   86
+## 89     7  28  7.4   88
+## 90     7  29  7.4   86
+## 91     7  30  7.4   83
+## 92     7  31  9.2   81</code></pre>
+</div>
+<div id="기본-2차원-밀도-그래프" class="section level3" number="13.4.2">
+<h3><span class="header-section-number">13.4.2</span> 기본 2차원 밀도 그래프</h3>
+<div id="기본-2차원-밀도-그래프-1" class="section level4" number="13.4.2.1">
+<h4><span class="header-section-number">13.4.2.1</span> 기본 2차원 밀도 그래프</h4>
+<p><code>stat_density2d()</code> 함수를 이용하여 <code>Wind</code>와 <code>Temp</code> 데이터로 부터 2차원 커널 밀도 추청을 합니다. 그리고 이를 이용하여 데이터 포인트들에 대한 기본 2차원 밀도 그래프를 작성하면 다음과 같습니다.</p>
+<div class="sourceCode" id="cb531"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb531-1"><a href="차원-밀도-그래프.html#cb531-1" aria-hidden="true" tabindex="-1"></a>air_basic <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(airquality_May_July, </span>
+<span id="cb531-2"><a href="차원-밀도-그래프.html#cb531-2" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">aes</span>(<span class="at">x =</span> Wind, </span>
+<span id="cb531-3"><a href="차원-밀도-그래프.html#cb531-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">y =</span> Temp))</span>
+<span id="cb531-4"><a href="차원-밀도-그래프.html#cb531-4" aria-hidden="true" tabindex="-1"></a>air_basic <span class="sc">+</span> </span>
+<span id="cb531-5"><a href="차원-밀도-그래프.html#cb531-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>() <span class="sc">+</span></span>
+<span id="cb531-6"><a href="차원-밀도-그래프.html#cb531-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;기본 2차원 밀도 그래프 1&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/StatDensity2dBas1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>[Go Top][이차원 밀도 그래프]</p>
+</div>
+<div id="데이터-포인트-표시하기" class="section level4" number="13.4.2.2">
+<h4><span class="header-section-number">13.4.2.2</span> 데이터 포인트 표시하기</h4>
+<p>기본 2차원 밀도 그래프에 <code>geom_point()</code> 함수를 이용하여 데이터를 점으로 표시할 수 있습니다.</p>
+<div class="sourceCode" id="cb532"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb532-1"><a href="차원-밀도-그래프.html#cb532-1" aria-hidden="true" tabindex="-1"></a>air_basic <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(airquality_May_July, </span>
+<span id="cb532-2"><a href="차원-밀도-그래프.html#cb532-2" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">aes</span>(<span class="at">x =</span> Wind, </span>
+<span id="cb532-3"><a href="차원-밀도-그래프.html#cb532-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">y =</span> Temp))</span>
+<span id="cb532-4"><a href="차원-밀도-그래프.html#cb532-4" aria-hidden="true" tabindex="-1"></a>air_basic <span class="sc">+</span> </span>
+<span id="cb532-5"><a href="차원-밀도-그래프.html#cb532-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>() <span class="sc">+</span></span>
+<span id="cb532-6"><a href="차원-밀도-그래프.html#cb532-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb532-7"><a href="차원-밀도-그래프.html#cb532-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;기본 2차원 밀도 그래프 2&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/StatDensity2dBas2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>[Go Top][이차원 밀도 그래프]</p>
+</div>
+<div id="등고선-높이-표시" class="section level4" number="13.4.2.3">
+<h4><span class="header-section-number">13.4.2.3</span> 등고선 높이 표시</h4>
+<p>한편 등고선의 <strong>높이(height)</strong>를 <code>..level..</code> 을 이용하여 등고선의 색으로 다음과 같이 표현할 수도 있습니다.</p>
+<div class="sourceCode" id="cb533"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb533-1"><a href="차원-밀도-그래프.html#cb533-1" aria-hidden="true" tabindex="-1"></a>air_basic <span class="sc">+</span></span>
+<span id="cb533-2"><a href="차원-밀도-그래프.html#cb533-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>(<span class="fu">aes</span>(<span class="at">colour =</span> ..level..)) <span class="sc">+</span></span>
+<span id="cb533-3"><a href="차원-밀도-그래프.html#cb533-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;기본 2차원 밀도 그래프 : 등고선 높이 표시&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/StatDensity2dBasLevel-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>[Go Top][이차원 밀도 그래프]</p>
+</div>
+<div id="density..의-이용" class="section level4" number="13.4.2.4">
+<h4><span class="header-section-number">13.4.2.4</span> <code>..density..</code>의 이용</h4>
+<p><code>fill =</code> 모수에서 <code>..density..</code>를 다음과 같이 매핑할 수 있습니다.</p>
+<div class="sourceCode" id="cb534"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb534-1"><a href="차원-밀도-그래프.html#cb534-1" aria-hidden="true" tabindex="-1"></a>air_basic <span class="sc">+</span></span>
+<span id="cb534-2"><a href="차원-밀도-그래프.html#cb534-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>(<span class="fu">aes</span>(<span class="at">fill =</span> ..density..),</span>
+<span id="cb534-3"><a href="차원-밀도-그래프.html#cb534-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">geom =</span> <span class="st">&quot;raster&quot;</span>,</span>
+<span id="cb534-4"><a href="차원-밀도-그래프.html#cb534-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">contour =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb534-5"><a href="차원-밀도-그래프.html#cb534-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;기본 2차원 밀도 그래프 : ..density..의 이용 1&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/StatDensity2dBasLevel1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><code>alpha =</code> 모수에서 <code>..density..</code>를 다음과 같이 매핑할 수 있습니다.</p>
+<div class="sourceCode" id="cb535"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb535-1"><a href="차원-밀도-그래프.html#cb535-1" aria-hidden="true" tabindex="-1"></a>air_basic <span class="sc">+</span></span>
+<span id="cb535-2"><a href="차원-밀도-그래프.html#cb535-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb535-3"><a href="차원-밀도-그래프.html#cb535-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>(<span class="fu">aes</span>(<span class="at">alpha =</span> ..density..),</span>
+<span id="cb535-4"><a href="차원-밀도-그래프.html#cb535-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">geom =</span> <span class="st">&quot;tile&quot;</span>,</span>
+<span id="cb535-5"><a href="차원-밀도-그래프.html#cb535-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">contour =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb535-6"><a href="차원-밀도-그래프.html#cb535-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;기본 2차원 밀도 그래프 : ..density..의 이용 2&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/StatDensity2dBasLevel2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>[Go Top][이차원 밀도 그래프]</p>
+</div>
+<div id="geom_density2d_filled-함수" class="section level4" number="13.4.2.5">
+<h4><span class="header-section-number">13.4.2.5</span> <code>geom_density2d_filled()</code> 함수</h4>
+<p><code>geom_density2d_filled()</code> 함수를 이용할 수도 있습니다.</p>
+<div class="sourceCode" id="cb536"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb536-1"><a href="차원-밀도-그래프.html#cb536-1" aria-hidden="true" tabindex="-1"></a>air_basic <span class="sc">+</span></span>
+<span id="cb536-2"><a href="차원-밀도-그래프.html#cb536-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb536-3"><a href="차원-밀도-그래프.html#cb536-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density2d_filled</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb536-4"><a href="차원-밀도-그래프.html#cb536-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;기본 2차원 밀도 그래프 : geom_density2d_filled() 함수 이용&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/StatDensity2dFilled-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>[Go Top][이차원 밀도 그래프]</p>
+</div>
+</div>
+<div id="월별로-모양과-색깔-구분하기" class="section level3" number="13.4.3">
+<h3><span class="header-section-number">13.4.3</span> 월별로 모양과 색깔 구분하기</h3>
+<p>월을 나타내는 <code>Month</code> 변수가 정수형이기 때문에 이를 문자형 변수 <code>Month.ch</code> 라는 새로운 <strong>문자형 변수</strong>로 변환한 다음, 이를 사용해서 이차원 밀도 그래프를 <code>Month.ch</code> 별로 <strong>모양(<code>shape =</code> )</strong>과 <strong>색깔(<code>color =</code> )</strong>을 구분해서 그려보겠습니다.</p>
+<div id="숫자형-month를-문자형-month.ch로-변환하기" class="section level4" number="13.4.3.1">
+<h4><span class="header-section-number">13.4.3.1</span> 숫자형 <code>Month</code>를 문자형 <code>Month.ch</code>로 변환하기</h4>
+<p>정수형인 <code>Month</code>를 <code>as.character()</code> 함수를 이용하여 다음과 같이 문자형으로 변환시킬 수 있습니다.</p>
+<div class="sourceCode" id="cb537"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb537-1"><a href="차원-밀도-그래프.html#cb537-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Month를 문자형 변수로 변환</span></span>
+<span id="cb537-2"><a href="차원-밀도-그래프.html#cb537-2" aria-hidden="true" tabindex="-1"></a>airquality_May_July <span class="ot">&lt;-</span> <span class="fu">transform</span>(airquality_May_July, </span>
+<span id="cb537-3"><a href="차원-밀도-그래프.html#cb537-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">Month.ch =</span> <span class="fu">as.character</span>(Month))</span>
+<span id="cb537-4"><a href="차원-밀도-그래프.html#cb537-4" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb537-5"><a href="차원-밀도-그래프.html#cb537-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(airquality_May_July, class)</span></code></pre></div>
+<pre class="bg-warning"><code>##       Month         Day        Wind        Temp    Month.ch 
+##    &quot;factor&quot;   &quot;integer&quot;   &quot;numeric&quot;   &quot;integer&quot; &quot;character&quot;</code></pre>
+<p>[Go Top][이차원 밀도 그래프]</p>
+</div>
+<div id="색-바꾸기" class="section level4" number="13.4.3.2">
+<h4><span class="header-section-number">13.4.3.2</span> 색 바꾸기</h4>
+<p><code>ggplot()</code> 함수 내의 <code>aes()</code> 함수에 <code>colour =</code> 모수를 이용하여 2차원 커널 밀도 곡선과 점의 색을 바꿀 수 있습니다. 여기서는 월별로 그 모양을 바꿔야 하기 때문에 <code>aes()</code> 함수 내에 <code>colour = Month.ch</code> 를 입력해 줍니다.</p>
+<div class="sourceCode" id="cb539"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb539-1"><a href="차원-밀도-그래프.html#cb539-1" aria-hidden="true" tabindex="-1"></a>air_basic1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(airquality_May_July, </span>
+<span id="cb539-2"><a href="차원-밀도-그래프.html#cb539-2" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">aes</span>(<span class="at">x =</span> Wind, </span>
+<span id="cb539-3"><a href="차원-밀도-그래프.html#cb539-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">y =</span> Temp,</span>
+<span id="cb539-4"><a href="차원-밀도-그래프.html#cb539-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">colour =</span> Month.ch))</span>
+<span id="cb539-5"><a href="차원-밀도-그래프.html#cb539-5" aria-hidden="true" tabindex="-1"></a>air_basic1 <span class="sc">+</span> </span>
+<span id="cb539-6"><a href="차원-밀도-그래프.html#cb539-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>() <span class="sc">+</span></span>
+<span id="cb539-7"><a href="차원-밀도-그래프.html#cb539-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb539-8"><a href="차원-밀도-그래프.html#cb539-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;2차원 밀도 그래프 : 색 바꾸기&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/StatDensity2dPointCol-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>[Go Top][이차원 밀도 그래프]</p>
+</div>
+<div id="점의-모양-바꾸기" class="section level4" number="13.4.3.3">
+<h4><span class="header-section-number">13.4.3.3</span> 점의 모양 바꾸기</h4>
+<p><code>ggplot()</code> 함수 내의 <code>aes()</code> 함수에 <code>shape =</code> 모수를 이용하여 점의 모양을 바꿀 수 있습니다. 여기서는 월별로 그 모양을 바꿔야 하기 때문에 <code>aes()</code> 함수 내에 <code>shape = Month.ch</code> 를 입력해 줍니다.</p>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb540-1"><a href="차원-밀도-그래프.html#cb540-1" aria-hidden="true" tabindex="-1"></a>air_basic2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(airquality_May_July, </span>
+<span id="cb540-2"><a href="차원-밀도-그래프.html#cb540-2" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">aes</span>(<span class="at">x =</span> Wind, </span>
+<span id="cb540-3"><a href="차원-밀도-그래프.html#cb540-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">y =</span> Temp,</span>
+<span id="cb540-4"><a href="차원-밀도-그래프.html#cb540-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">shape =</span> Month.ch))</span>
+<span id="cb540-5"><a href="차원-밀도-그래프.html#cb540-5" aria-hidden="true" tabindex="-1"></a>air_basic2 <span class="sc">+</span> </span>
+<span id="cb540-6"><a href="차원-밀도-그래프.html#cb540-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>() <span class="sc">+</span></span>
+<span id="cb540-7"><a href="차원-밀도-그래프.html#cb540-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb540-8"><a href="차원-밀도-그래프.html#cb540-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;2차원 밀도 그래프 : 점의 모양 바꾸기&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/StatDensity2dPointShape-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="점의-크기-바꾸기" class="section level4" number="13.4.3.4">
+<h4><span class="header-section-number">13.4.3.4</span> 점의 크기 바꾸기</h4>
+<p><code>ggplot()</code> 함수 내의 <code>geom_point()</code> 함수에 <code>size =</code> 모수를 이용하여 점의 크기을 바꿀 수 있습니다. 여기서는 월별로 그 모양을 바꿔야 하기 때문에 <code>geom_point()</code> 함수 내에 <code>size = 3</code> 을 입력해 보겠습니다.</p>
+<div class="sourceCode" id="cb541"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb541-1"><a href="차원-밀도-그래프.html#cb541-1" aria-hidden="true" tabindex="-1"></a>air_basic2 <span class="sc">+</span> </span>
+<span id="cb541-2"><a href="차원-밀도-그래프.html#cb541-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>() <span class="sc">+</span></span>
+<span id="cb541-3"><a href="차원-밀도-그래프.html#cb541-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb541-4"><a href="차원-밀도-그래프.html#cb541-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;2차원 밀도 그래프 : 점의 크기 바꾸기&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/StatDensity2dPointSize-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>[Go Top][이차원 밀도 그래프]</p>
+</div>
+<div id="선의-모양-바꾸기" class="section level4" number="13.4.3.5">
+<h4><span class="header-section-number">13.4.3.5</span> 선의 모양 바꾸기</h4>
+<p><code>stat_density2d()</code> 함수 내의 <code>aes()</code> 함수에 <code>linetype = Month.ch</code> 를 입력하여 등고선의 모양을 월 별(<code>Month.ch</code>)로 달리할 수 있습니다.</p>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb542-1"><a href="차원-밀도-그래프.html#cb542-1" aria-hidden="true" tabindex="-1"></a>air_basic2 <span class="sc">+</span> </span>
+<span id="cb542-2"><a href="차원-밀도-그래프.html#cb542-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>(<span class="fu">aes</span>(<span class="at">linetype =</span> Month.ch)) <span class="sc">+</span></span>
+<span id="cb542-3"><a href="차원-밀도-그래프.html#cb542-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb542-4"><a href="차원-밀도-그래프.html#cb542-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;2차원 밀도 그래프 : 선의 모양 바꾸기&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/StatDensity2dLineType-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>[Go Top][이차원 밀도 그래프]</p>
+</div>
+</div>
+<div id="월별-레이블의-추가" class="section level3" number="13.4.4">
+<h3><span class="header-section-number">13.4.4</span> 월별 레이블의 추가</h3>
+<p>범례가 있기는 하지만 사용자의 가독성을 조금 더 높여주기 위해 2차원 밀도 그래프의 5월, 7월 두 집단의 중앙 부위에 “년/월”을 <code>annotate()</code> 함수를 이용하여 “<code>text</code>”로 <strong>레이블을 추가</strong>할 수 있습니다.</p>
+<div class="sourceCode" id="cb543"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb543-1"><a href="차원-밀도-그래프.html#cb543-1" aria-hidden="true" tabindex="-1"></a>air_basic2 <span class="sc">+</span> </span>
+<span id="cb543-2"><a href="차원-밀도-그래프.html#cb543-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>() <span class="sc">+</span></span>
+<span id="cb543-3"><a href="차원-밀도-그래프.html#cb543-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;2차원 밀도 그래프 : 레이블의 추가&quot;</span>) <span class="sc">+</span></span>
+<span id="cb543-4"><a href="차원-밀도-그래프.html#cb543-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">11</span>, <span class="at">y=</span><span class="dv">65</span>, <span class="at">label=</span><span class="st">&quot;1973년 5월&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb543-5"><a href="차원-밀도-그래프.html#cb543-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">9</span>, <span class="at">y=</span> <span class="dv">83</span>, <span class="at">label=</span><span class="st">&quot;1973년 7월&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/StatDensity2dLabel-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>[Go Top][이차원 밀도 그래프]</p>
+</div>
+<div id="등고선-효과-추가하기" class="section level3" number="13.4.5">
+<h3><span class="header-section-number">13.4.5</span> 등고선 효과 추가하기</h3>
+<p>그림이 조금 재미가 없네요… 등고선에 그래디언트 효과를 줘서 <strong>히트맵</strong> 형태로 표현을 해 보겠습니다.</p>
+<p><code>stat_density2d()</code> 함수 내에 <code>aes()</code> 함수를 이용하여 등고선 효과를 추가합니다.</p>
+<p>그리고, <code>scale_fill_gradient()</code> 함수와 <code>scale_alpha()</code> 함수도 추가해 줍니다.</p>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb544-1"><a href="차원-밀도-그래프.html#cb544-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2차원 밀도 그래프 : 등고선 효과</span></span>
+<span id="cb544-2"><a href="차원-밀도-그래프.html#cb544-2" aria-hidden="true" tabindex="-1"></a>air_basic2 <span class="sc">+</span> </span>
+<span id="cb544-3"><a href="차원-밀도-그래프.html#cb544-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>(<span class="fu">aes</span>(                 </span>
+<span id="cb544-4"><a href="차원-밀도-그래프.html#cb544-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">fill =</span> ..level.., </span>
+<span id="cb544-5"><a href="차원-밀도-그래프.html#cb544-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">alpha =</span> ..level..), </span>
+<span id="cb544-6"><a href="차원-밀도-그래프.html#cb544-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">size =</span> <span class="fl">0.01</span>, </span>
+<span id="cb544-7"><a href="차원-밀도-그래프.html#cb544-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">bins =</span> <span class="dv">20</span>,                                    <span class="co"># 등고선 간격 조절</span></span>
+<span id="cb544-8"><a href="차원-밀도-그래프.html#cb544-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">geom =</span> <span class="st">&quot;polygon&quot;</span>) <span class="sc">+</span></span>
+<span id="cb544-9"><a href="차원-밀도-그래프.html#cb544-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;green&quot;</span>, <span class="at">high =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb544-10"><a href="차원-밀도-그래프.html#cb544-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_alpha</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>), <span class="at">guide =</span> <span class="cn">FALSE</span>)             <span class="sc">+</span></span>
+<span id="cb544-11"><a href="차원-밀도-그래프.html#cb544-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;2차원 밀도 그래프 : 등고선 효과 1&quot;</span>) <span class="sc">+</span></span>
+<span id="cb544-12"><a href="차원-밀도-그래프.html#cb544-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">11</span>, <span class="at">y=</span><span class="dv">65</span>, <span class="at">label=</span><span class="st">&quot;1973년 5월&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb544-13"><a href="차원-밀도-그래프.html#cb544-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">9</span>, <span class="at">y=</span> <span class="dv">83</span>, <span class="at">label=</span><span class="st">&quot;1973년 7월&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/StatDens2DLine-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>그래도 뭔가 불만이 있네요.. 등고선을 없애고 부드럽게 표현해 보겠습니다. <code>ggplot()</code> 함수 내의 <code>colour = Month.ch</code>을 제거하고 다시 한번 더 그려보지요…</p>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb545-1"><a href="차원-밀도-그래프.html#cb545-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2차원 밀도 그래프 : 등고선 효과</span></span>
+<span id="cb545-2"><a href="차원-밀도-그래프.html#cb545-2" aria-hidden="true" tabindex="-1"></a>air_basic <span class="sc">+</span></span>
+<span id="cb545-3"><a href="차원-밀도-그래프.html#cb545-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>(<span class="fu">aes</span>(<span class="at">fill =</span> ..level.., </span>
+<span id="cb545-4"><a href="차원-밀도-그래프.html#cb545-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">alpha =</span> ..level..), </span>
+<span id="cb545-5"><a href="차원-밀도-그래프.html#cb545-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">size =</span> <span class="fl">0.01</span>, </span>
+<span id="cb545-6"><a href="차원-밀도-그래프.html#cb545-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">bins =</span> <span class="dv">20</span>,   <span class="co"># 등고선 간격 조절</span></span>
+<span id="cb545-7"><a href="차원-밀도-그래프.html#cb545-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">geom =</span> <span class="st">&quot;polygon&quot;</span>) <span class="sc">+</span></span>
+<span id="cb545-8"><a href="차원-밀도-그래프.html#cb545-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;green&quot;</span>, <span class="at">high =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb545-9"><a href="차원-밀도-그래프.html#cb545-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_alpha</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>), <span class="at">guide =</span> <span class="cn">FALSE</span>)             <span class="sc">+</span></span>
+<span id="cb545-10"><a href="차원-밀도-그래프.html#cb545-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;2차원 밀도 그래프 : 등고선 효과 2&quot;</span>) <span class="sc">+</span></span>
+<span id="cb545-11"><a href="차원-밀도-그래프.html#cb545-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">11</span>, <span class="at">y=</span><span class="dv">65</span>, <span class="at">label=</span><span class="st">&quot;1973년 5월&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb545-12"><a href="차원-밀도-그래프.html#cb545-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">9</span>, <span class="at">y=</span> <span class="dv">83</span>, <span class="at">label=</span><span class="st">&quot;1973년 7월&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/StatDens2DPolyGon-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>참고로 <code>aes()</code> 함수 내의 <code>bins =</code> 는 등고선 간의 간격 갯수라고 이해하면 좋겠습니다. 간격의 갯수가 많아질수록 등고선의 간격이 좁아지겠지요…. <code>bins</code>의 값을 5, 10, 15, 20, 25, 30 등으로 수정하면서 다시 그려보기 바랍니다.</p>
+<p>[Go Top][이차원 밀도 그래프]</p>
+</div>
+<div id="facet_wrap-함수-이용-7" class="section level3" number="13.4.6">
+<h3><span class="header-section-number">13.4.6</span> <code>facet_wrap()</code> 함수 이용</h3>
+<p>한번 더 해 보지요… 이번에는 앞에서 제거한 <code>Month.ch</code> 변수를 <code>facet_wrap()</code> 함수 안에 추가해서 그림을 다시 그려보겠습니다. 그러면 5월과 7월의 지도가 따로 그려지겠지요…</p>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb546-1"><a href="차원-밀도-그래프.html#cb546-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2차원 밀도 그래프 : facet_wrap() 함수 이용</span></span>
+<span id="cb546-2"><a href="차원-밀도-그래프.html#cb546-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>airquality_May_July, <span class="fu">aes</span>(<span class="at">x=</span>Wind, <span class="at">y=</span>Temp)) <span class="sc">+</span></span>
+<span id="cb546-3"><a href="차원-밀도-그래프.html#cb546-3" aria-hidden="true" tabindex="-1"></a><span class="co">#  geom_point(size=4) + </span></span>
+<span id="cb546-4"><a href="차원-밀도-그래프.html#cb546-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>(</span>
+<span id="cb546-5"><a href="차원-밀도-그래프.html#cb546-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">fill =</span> ..level.., </span>
+<span id="cb546-6"><a href="차원-밀도-그래프.html#cb546-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha =</span> ..level..), </span>
+<span id="cb546-7"><a href="차원-밀도-그래프.html#cb546-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="fl">0.01</span>, </span>
+<span id="cb546-8"><a href="차원-밀도-그래프.html#cb546-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">bins =</span> <span class="dv">20</span>,                                    <span class="co"># 등고선 간격 조절</span></span>
+<span id="cb546-9"><a href="차원-밀도-그래프.html#cb546-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">geom =</span> <span class="st">&quot;polygon&quot;</span>) <span class="sc">+</span></span>
+<span id="cb546-10"><a href="차원-밀도-그래프.html#cb546-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;green&quot;</span>, <span class="at">high =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb546-11"><a href="차원-밀도-그래프.html#cb546-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_alpha</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>), <span class="at">guide =</span> <span class="cn">FALSE</span>)             <span class="sc">+</span></span>
+<span id="cb546-12"><a href="차원-밀도-그래프.html#cb546-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;2D desity plot of Wind and Tmep, at1973. May/July by Colour&quot;</span>) <span class="sc">+</span></span>
+<span id="cb546-13"><a href="차원-밀도-그래프.html#cb546-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">11</span>, <span class="at">y=</span><span class="dv">65</span>, <span class="at">label=</span><span class="st">&quot;May, 1973&quot;</span>, <span class="at">alpha=</span><span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb546-14"><a href="차원-밀도-그래프.html#cb546-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">9</span>, <span class="at">y=</span> <span class="dv">83</span>, <span class="at">label=</span><span class="st">&quot;July, 1973&quot;</span>, <span class="at">alpha=</span><span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb546-15"><a href="차원-밀도-그래프.html#cb546-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(Month.ch))</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/StatDens2DFacWrap-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>[Go Top][이차원 밀도 그래프]</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="선-그래프와-시계열-그래프.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="클리브랜드-점-그래프-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>

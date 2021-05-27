@@ -435,9 +435,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html"><i class="fa fa-check"></i><b>13.4</b> 이차원 밀도 그래프</a>
 <ul>
 <li class="chapter" data-level="13.4.1" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#데이터-세트-10"><i class="fa fa-check"></i><b>13.4.1</b> 데이터 세트</a></li>
-<li class="chapter" data-level="13.4.2" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#aes에-범주형-변수-지정하기"><i class="fa fa-check"></i><b>13.4.2</b> <code>aes()</code>에 범주형 변수 지정하기</a></li>
-<li class="chapter" data-level="13.4.3" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#커널-밀도-추정치-계산"><i class="fa fa-check"></i><b>13.4.3</b> 커널 밀도 추정치 계산</a></li>
-<li class="chapter" data-level="13.4.4" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#라벨-추가"><i class="fa fa-check"></i><b>13.4.4</b> 라벨 추가</a></li>
+<li class="chapter" data-level="13.4.2" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#기본-2차원-밀도-그래프"><i class="fa fa-check"></i><b>13.4.2</b> 기본 2차원 밀도 그래프</a></li>
+<li class="chapter" data-level="13.4.3" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#월별로-모양과-색깔-구분하기"><i class="fa fa-check"></i><b>13.4.3</b> 월별로 모양과 색깔 구분하기</a></li>
+<li class="chapter" data-level="13.4.4" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#월별-레이블의-추가"><i class="fa fa-check"></i><b>13.4.4</b> 월별 레이블의 추가</a></li>
 <li class="chapter" data-level="13.4.5" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#등고선-효과-추가하기"><i class="fa fa-check"></i><b>13.4.5</b> 등고선 효과 추가하기</a></li>
 <li class="chapter" data-level="13.4.6" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#facet_wrap-함수-이용-7"><i class="fa fa-check"></i><b>13.4.6</b> <code>facet_wrap()</code> 함수 이용</a></li>
 </ul></li>
@@ -566,18 +566,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="picker-control" class="section level2" number="16.4">
 <h2><span class="header-section-number">16.4</span> Picker Control</h2>
 <p>히스토그램에 대상 변수를 선택할 수 있는 Picker Control 예제입니다.</p>
-<div class="sourceCode" id="cb741"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb741-1"><a href="picker-control.html#cb741-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Picker Control</span></span>
-<span id="cb741-2"><a href="picker-control.html#cb741-2" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
-<span id="cb741-3"><a href="picker-control.html#cb741-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(Cars93[, continuous_variable], </span>
-<span id="cb741-4"><a href="picker-control.html#cb741-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> continuous_variable),</span>
-<span id="cb741-5"><a href="picker-control.html#cb741-5" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb741-6"><a href="picker-control.html#cb741-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">continuous_variable =</span> <span class="fu">picker</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Price&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb747"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb747-1"><a href="picker-control.html#cb747-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Picker Control</span></span>
+<span id="cb747-2"><a href="picker-control.html#cb747-2" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
+<span id="cb747-3"><a href="picker-control.html#cb747-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(Cars93[, continuous_variable], </span>
+<span id="cb747-4"><a href="picker-control.html#cb747-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> continuous_variable),</span>
+<span id="cb747-5"><a href="picker-control.html#cb747-5" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb747-6"><a href="picker-control.html#cb747-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">continuous_variable =</span> <span class="fu">picker</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Price&quot;</span>))</span></code></pre></div>
 <pre><code>## Error in manipulate(hist(Cars93[, continuous_variable], freq = FALSE, : The manipulate package must be run from within RStudio</code></pre>
 <p>산포도의 x축, <code>무게(Weight)</code>과 y축, <code>고속도로연비(MPG.highway)</code>은 정해져있고, <code>차종(Type)</code>별로 산포도를 보고 싶을 때 <code>차종(Type)</code>을 왼쪽의 Picker Control 상자로 만들어서 바로 바로 차종별로 선택해 가면서 산포도를 보는 프로그램 예제입니다.</p>
-<div class="sourceCode" id="cb743"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb743-1"><a href="picker-control.html#cb743-1" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
-<span id="cb743-2"><a href="picker-control.html#cb743-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data=</span>Cars93[Cars93<span class="sc">$</span>Type <span class="sc">==</span> Type,]),</span>
-<span id="cb743-3"><a href="picker-control.html#cb743-3" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb743-4"><a href="picker-control.html#cb743-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">Type =</span> <span class="fu">picker</span>(<span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Van&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb749"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb749-1"><a href="picker-control.html#cb749-1" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
+<span id="cb749-2"><a href="picker-control.html#cb749-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plot</span>(MPG.highway <span class="sc">~</span> Weight, <span class="at">data=</span>Cars93[Cars93<span class="sc">$</span>Type <span class="sc">==</span> Type,]),</span>
+<span id="cb749-3"><a href="picker-control.html#cb749-3" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb749-4"><a href="picker-control.html#cb749-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">Type =</span> <span class="fu">picker</span>(<span class="st">&quot;Compact&quot;</span>, <span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Midsize&quot;</span>, <span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Sporty&quot;</span>, <span class="st">&quot;Van&quot;</span>))</span></code></pre></div>
 <pre><code>## Error in manipulate(plot(MPG.highway ~ Weight, data = Cars93[Cars93$Type == : The manipulate package must be run from within RStudio</code></pre>
 </div>
             </section>

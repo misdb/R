@@ -435,9 +435,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html"><i class="fa fa-check"></i><b>13.4</b> 이차원 밀도 그래프</a>
 <ul>
 <li class="chapter" data-level="13.4.1" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#데이터-세트-10"><i class="fa fa-check"></i><b>13.4.1</b> 데이터 세트</a></li>
-<li class="chapter" data-level="13.4.2" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#aes에-범주형-변수-지정하기"><i class="fa fa-check"></i><b>13.4.2</b> <code>aes()</code>에 범주형 변수 지정하기</a></li>
-<li class="chapter" data-level="13.4.3" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#커널-밀도-추정치-계산"><i class="fa fa-check"></i><b>13.4.3</b> 커널 밀도 추정치 계산</a></li>
-<li class="chapter" data-level="13.4.4" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#라벨-추가"><i class="fa fa-check"></i><b>13.4.4</b> 라벨 추가</a></li>
+<li class="chapter" data-level="13.4.2" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#기본-2차원-밀도-그래프"><i class="fa fa-check"></i><b>13.4.2</b> 기본 2차원 밀도 그래프</a></li>
+<li class="chapter" data-level="13.4.3" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#월별로-모양과-색깔-구분하기"><i class="fa fa-check"></i><b>13.4.3</b> 월별로 모양과 색깔 구분하기</a></li>
+<li class="chapter" data-level="13.4.4" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#월별-레이블의-추가"><i class="fa fa-check"></i><b>13.4.4</b> 월별 레이블의 추가</a></li>
 <li class="chapter" data-level="13.4.5" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#등고선-효과-추가하기"><i class="fa fa-check"></i><b>13.4.5</b> 등고선 효과 추가하기</a></li>
 <li class="chapter" data-level="13.4.6" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#facet_wrap-함수-이용-7"><i class="fa fa-check"></i><b>13.4.6</b> <code>facet_wrap()</code> 함수 이용</a></li>
 </ul></li>
@@ -565,11 +565,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="t-분포-t-distribution-stat_functionfun-dt" class="section level2" number="15.3">
 <h2><span class="header-section-number">15.3</span> t-분포 (t-Distribution) : <code>stat_function(fun = dt)</code></h2>
-<div class="sourceCode" id="cb726"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb726-1"><a href="t-분포-t-distribution-stat-functionfun-dt.html#cb726-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t-분포 : fun = dt </span></span>
-<span id="cb726-2"><a href="t-분포-t-distribution-stat-functionfun-dt.html#cb726-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span></span>
-<span id="cb726-3"><a href="t-분포-t-distribution-stat-functionfun-dt.html#cb726-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">stat_function</span>(<span class="at">fun=</span>dt, <span class="at">args=</span><span class="fu">list</span>(<span class="at">df=</span><span class="dv">2</span>), <span class="at">colour=</span><span class="st">&quot;red&quot;</span>, <span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb726-4"><a href="t-분포-t-distribution-stat-functionfun-dt.html#cb726-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;t-Distribution of df=2&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
+<div class="sourceCode" id="cb732"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb732-1"><a href="t-분포-t-distribution-stat-functionfun-dt.html#cb732-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t-분포 : fun = dt </span></span>
+<span id="cb732-2"><a href="t-분포-t-distribution-stat-functionfun-dt.html#cb732-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span></span>
+<span id="cb732-3"><a href="t-분포-t-distribution-stat-functionfun-dt.html#cb732-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">stat_function</span>(<span class="at">fun=</span>dt, <span class="at">args=</span><span class="fu">list</span>(<span class="at">df=</span><span class="dv">2</span>), <span class="at">colour=</span><span class="st">&quot;red&quot;</span>, <span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb732-4"><a href="t-분포-t-distribution-stat-functionfun-dt.html#cb732-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ggtitle</span>(<span class="st">&quot;t-Distribution of df=2&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-120-1.png" width="672" /></p>
 </div>
             </section>
 
