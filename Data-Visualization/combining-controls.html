@@ -441,12 +441,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4.5" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#등고선-효과-추가하기"><i class="fa fa-check"></i><b>13.4.5</b> 등고선 효과 추가하기</a></li>
 <li class="chapter" data-level="13.4.6" data-path="이차원-밀도-그래프.html"><a href="이차원-밀도-그래프.html#facet_wrap-함수-이용-7"><i class="fa fa-check"></i><b>13.4.6</b> <code>facet_wrap()</code> 함수 이용</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="클리브랜드-점-그래프-1.html"><a href="클리브랜드-점-그래프-1.html"><i class="fa fa-check"></i><b>13.5</b> 클리브랜드 점 그래프</a>
+<li class="chapter" data-level="13.5" data-path="클리블랜드-점-그래프.html"><a href="클리블랜드-점-그래프.html"><i class="fa fa-check"></i><b>13.5</b> 클리블랜드 점 그래프</a>
 <ul>
-<li class="chapter" data-level="13.5.1" data-path="클리브랜드-점-그래프-1.html"><a href="클리브랜드-점-그래프-1.html#데이터-세트-11"><i class="fa fa-check"></i><b>13.5.1</b> 데이터 세트</a></li>
-<li class="chapter" data-level="13.5.2" data-path="클리브랜드-점-그래프-1.html"><a href="클리브랜드-점-그래프-1.html#클리브랜드-점-그래프-그리기"><i class="fa fa-check"></i><b>13.5.2</b> 클리브랜드 점 그래프 그리기</a></li>
-<li class="chapter" data-level="13.5.3" data-path="클리브랜드-점-그래프-1.html"><a href="클리브랜드-점-그래프-1.html#facet_grid-함수-이용-7"><i class="fa fa-check"></i><b>13.5.3</b> <code>facet_grid()</code> 함수 이용</a></li>
-<li class="chapter" data-level="13.5.4" data-path="클리브랜드-점-그래프-1.html"><a href="클리브랜드-점-그래프-1.html#변수의-추가와-모양-변경하기"><i class="fa fa-check"></i><b>13.5.4</b> 변수의 추가와 모양 변경하기</a></li>
+<li class="chapter" data-level="13.5.1" data-path="클리블랜드-점-그래프.html"><a href="클리블랜드-점-그래프.html#데이터-세트-11"><i class="fa fa-check"></i><b>13.5.1</b> 데이터 세트</a></li>
+<li class="chapter" data-level="13.5.2" data-path="클리블랜드-점-그래프.html"><a href="클리블랜드-점-그래프.html#기본-클리블랜드-점-그래프"><i class="fa fa-check"></i><b>13.5.2</b> 기본 클리블랜드 점 그래프</a></li>
+<li class="chapter" data-level="13.5.3" data-path="클리블랜드-점-그래프.html"><a href="클리블랜드-점-그래프.html#그룹별-클리블랜드-점-그래프"><i class="fa fa-check"></i><b>13.5.3</b> 그룹별 클리블랜드 점 그래프</a></li>
+<li class="chapter" data-level="13.5.4" data-path="클리블랜드-점-그래프.html"><a href="클리블랜드-점-그래프.html#데이터-레이블-표시"><i class="fa fa-check"></i><b>13.5.4</b> 데이터 레이블 표시</a></li>
+<li class="chapter" data-level="13.5.5" data-path="클리블랜드-점-그래프.html"><a href="클리블랜드-점-그래프.html#테마-사용"><i class="fa fa-check"></i><b>13.5.5</b> 테마 사용</a></li>
 </ul></li>
 <li class="chapter" data-level="13.6" data-path="누적-영역-그래프.html"><a href="누적-영역-그래프.html"><i class="fa fa-check"></i><b>13.6</b> 누적 영역 그래프</a>
 <ul>
@@ -566,16 +567,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="combining-controls" class="section level2" number="16.6">
 <h2><span class="header-section-number">16.6</span> Combining Controls</h2>
 <p>이번에는 Picker Control과 Slider Control 두 개를 함께 사용해 보는 예제입니다. Picker Control 로 대상 변수를 선택할 수 있게 하였고, Slider Control 로 Histogram 의 Bin size 를 조절할 수 있도록 해보았습니다.</p>
-<div class="sourceCode" id="cb753"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb753-1"><a href="combining-controls.html#cb753-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Combining Controls</span></span>
-<span id="cb753-2"><a href="combining-controls.html#cb753-2" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb753-3"><a href="combining-controls.html#cb753-3" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
-<span id="cb753-4"><a href="combining-controls.html#cb753-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(Cars93[, continuous_variable], </span>
-<span id="cb753-5"><a href="combining-controls.html#cb753-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">breaks =</span> bin_slider, </span>
-<span id="cb753-6"><a href="combining-controls.html#cb753-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> continuous_variable),</span>
-<span id="cb753-7"><a href="combining-controls.html#cb753-7" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb753-8"><a href="combining-controls.html#cb753-8" aria-hidden="true" tabindex="-1"></a>   <span class="at">continuous_variable =</span> <span class="fu">picker</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Price&quot;</span>), </span>
-<span id="cb753-9"><a href="combining-controls.html#cb753-9" aria-hidden="true" tabindex="-1"></a>   <span class="at">bin_slider =</span> <span class="fu">slider</span>(<span class="dv">5</span>,<span class="dv">50</span>, <span class="at">step=</span><span class="dv">5</span>, <span class="at">initial =</span> <span class="dv">10</span>)</span>
-<span id="cb753-10"><a href="combining-controls.html#cb753-10" aria-hidden="true" tabindex="-1"></a>   )</span></code></pre></div>
+<div class="sourceCode" id="cb754"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb754-1"><a href="combining-controls.html#cb754-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Combining Controls</span></span>
+<span id="cb754-2"><a href="combining-controls.html#cb754-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb754-3"><a href="combining-controls.html#cb754-3" aria-hidden="true" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
+<span id="cb754-4"><a href="combining-controls.html#cb754-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(Cars93[, continuous_variable], </span>
+<span id="cb754-5"><a href="combining-controls.html#cb754-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">breaks =</span> bin_slider, </span>
+<span id="cb754-6"><a href="combining-controls.html#cb754-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> continuous_variable),</span>
+<span id="cb754-7"><a href="combining-controls.html#cb754-7" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb754-8"><a href="combining-controls.html#cb754-8" aria-hidden="true" tabindex="-1"></a>   <span class="at">continuous_variable =</span> <span class="fu">picker</span>(<span class="st">&quot;MPG.highway&quot;</span>, <span class="st">&quot;Weight&quot;</span>, <span class="st">&quot;Price&quot;</span>), </span>
+<span id="cb754-9"><a href="combining-controls.html#cb754-9" aria-hidden="true" tabindex="-1"></a>   <span class="at">bin_slider =</span> <span class="fu">slider</span>(<span class="dv">5</span>,<span class="dv">50</span>, <span class="at">step=</span><span class="dv">5</span>, <span class="at">initial =</span> <span class="dv">10</span>)</span>
+<span id="cb754-10"><a href="combining-controls.html#cb754-10" aria-hidden="true" tabindex="-1"></a>   )</span></code></pre></div>
 <pre><code>## Error in manipulate(hist(Cars93[, continuous_variable], breaks = bin_slider, : The manipulate package must be run from within RStudio</code></pre>
 <div id="참고자료-4" class="section level3 unnumbered">
 <h3>참고자료</h3>
