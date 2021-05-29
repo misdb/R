@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>13.7 상관계수 행렬 그래프 | Data Visualization with R</title>
+  <title>16.2 패키지 불러오기 | Data Visualization with R</title>
   <meta name="description" content="The output format for book is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="13.7 상관계수 행렬 그래프 | Data Visualization with R" />
+  <meta property="og:title" content="16.2 패키지 불러오기 | Data Visualization with R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="13.7 상관계수 행렬 그래프 | Data Visualization with R" />
+  <meta name="twitter:title" content="16.2 패키지 불러오기 | Data Visualization with R" />
   
   <meta name="twitter:description" content="The output format for book is bookdown::gitbook." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="누적-영역-그래프.html"/>
-<link rel="next" href="산포도-행렬-그리기.html"/>
+<link rel="prev" href="데이터-세트-20.html"/>
+<link rel="next" href="slider-control.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -565,155 +565,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="상관계수-행렬-그래프" class="section level2" number="13.7">
-<h2><span class="header-section-number">13.7</span> 상관계수 행렬 그래프</h2>
-<p>다수의 변수간 상관관계를 파악하려고 할 때, 회귀분석에서 종속변수와 독립변수간 선형관계를 파악하거나 독립변수간 다중공선성을 파악하려고 할 때 사용하는 분석 기법이 <strong>상관계수 행렬</strong>이며, 시각화 방법이 <strong>산포도 행렬</strong>과 <strong>상관계수 행렬 Plot</strong> (correlation matrix plot) 입니다.</p>
-<p>이번 절에서는 상관계수 행렬 Plot을 중심으로 해서 corrplot 패키지 사용법을 알아보겠습니다.</p>
-<div id="데이터-세트-12" class="section level3" number="13.7.1">
-<h3><span class="header-section-number">13.7.1</span> 데이터 세트</h3>
-<p>예제로 사용한 데이터는 뉴욕의 1973년도 공기의 질을 측정한 <code>airquality</code> 데이터셋의 <code>Ozone</code>, <code>Solar.R</code>, <code>Wind</code>, <code>Temp</code> 4개의 변수가 되겠습니다.</p>
-<div class="sourceCode" id="cb590"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb590-1"><a href="상관계수-행렬-그래프.html#cb590-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(airquality)</span></code></pre></div>
-<pre class="bg-warning"><code>## &#39;data.frame&#39;:    153 obs. of  11 variables:
-##  $ Ozone        : int  41 36 12 18 NA 28 23 19 8 NA ...
-##  $ Solar.R      : int  190 118 149 313 NA NA 299 99 19 194 ...
-##  $ Wind         : num  7.4 8 12.6 11.5 14.3 14.9 8.6 13.8 20.1 8.6 ...
-##  $ Temp         : int  67 72 74 62 56 66 65 59 61 69 ...
-##  $ Month        : Factor w/ 5 levels &quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
-##  $ Day          : int  1 2 3 4 5 6 7 8 9 10 ...
-##  $ Month.ch_temp: chr  &quot;5&quot; &quot;5&quot; &quot;5&quot; &quot;5&quot; ...
-##  $ Day.ch_temp  : chr  &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
-##  $ Month.ch     : chr  &quot;05&quot; &quot;05&quot; &quot;05&quot; &quot;05&quot; ...
-##  $ Day.ch       : chr  &quot;01&quot; &quot;02&quot; &quot;03&quot; &quot;04&quot; ...
-##  $ Time         : Date, format: &quot;2021-05-01&quot; &quot;2021-05-02&quot; ...</code></pre>
-<div id="결측값-처리" class="section level4" number="13.7.1.1">
-<h4><span class="header-section-number">13.7.1.1</span> 결측값 처리</h4>
-<p>상관계수 분석을 할 때 결측값이 있으면 <code>NA</code> 값이 나오게 되므로 사전에 결측값을 처리하는 것이 필요합니다. <code>Ozone</code>과 <code>Solar.R</code>이 결측값이 각각 37개, 7개 있다보니 아래처럼 상관계수가 <code>NA</code>가 나왔습니다.</p>
-<div class="sourceCode" id="cb592"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb592-1"><a href="상관계수-행렬-그래프.html#cb592-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Month, Day는 빼기</span></span>
-<span id="cb592-2"><a href="상관계수-행렬-그래프.html#cb592-2" aria-hidden="true" tabindex="-1"></a>airquality_1 <span class="ot">&lt;-</span> airquality[,<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)]</span>
-<span id="cb592-3"><a href="상관계수-행렬-그래프.html#cb592-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb592-4"><a href="상관계수-행렬-그래프.html#cb592-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 결측값 확인</span></span>
-<span id="cb592-5"><a href="상관계수-행렬-그래프.html#cb592-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality_1<span class="sc">$</span>Ozone)) <span class="co"># 37</span></span></code></pre></div>
-<pre class="bg-warning"><code>## [1] 37</code></pre>
-<div class="sourceCode" id="cb594"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb594-1"><a href="상관계수-행렬-그래프.html#cb594-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality_1<span class="sc">$</span>Solar.R)) <span class="co"># 7</span></span></code></pre></div>
-<pre class="bg-warning"><code>## [1] 7</code></pre>
-<div class="sourceCode" id="cb596"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb596-1"><a href="상관계수-행렬-그래프.html#cb596-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality_1<span class="sc">$</span>Wind)) <span class="co"># 0</span></span></code></pre></div>
-<pre class="bg-warning"><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb598"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb598-1"><a href="상관계수-행렬-그래프.html#cb598-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality_1<span class="sc">$</span>Temp)) <span class="co"># 0</span></span></code></pre></div>
-<pre class="bg-warning"><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb600"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb600-1"><a href="상관계수-행렬-그래프.html#cb600-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 결측값 있는 상태에서 상관계수 계산했을 때</span></span>
-<span id="cb600-2"><a href="상관계수-행렬-그래프.html#cb600-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(airquality_1)</span></code></pre></div>
-<pre class="bg-warning"><code>##         Ozone Solar.R  Wind  Temp
-## Ozone       1      NA    NA    NA
-## Solar.R    NA       1    NA    NA
-## Wind       NA      NA  1.00 -0.46
-## Temp       NA      NA -0.46  1.00</code></pre>
-<p><code>na.omit()</code> 함수를 사용하여 결측값이 있는 행 전체를 삭제한 후에 상관계수를 구해보면 아래와 같습니다.</p>
-<div class="sourceCode" id="cb602"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb602-1"><a href="상관계수-행렬-그래프.html#cb602-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 결측값 있는 행 전체 삭제</span></span>
-<span id="cb602-2"><a href="상관계수-행렬-그래프.html#cb602-2" aria-hidden="true" tabindex="-1"></a>airquality_2 <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(airquality_1)</span>
-<span id="cb602-3"><a href="상관계수-행렬-그래프.html#cb602-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(airquality_2)</span></code></pre></div>
-<pre class="bg-warning"><code>## &#39;data.frame&#39;:    111 obs. of  4 variables:
-##  $ Ozone  : int  41 36 12 18 23 19 8 16 11 14 ...
-##  $ Solar.R: int  190 118 149 313 299 99 19 256 290 274 ...
-##  $ Wind   : num  7.4 8 12.6 11.5 8.6 13.8 20.1 9.7 9.2 10.9 ...
-##  $ Temp   : int  67 72 74 62 65 59 61 69 66 68 ...
-##  - attr(*, &quot;na.action&quot;)= &#39;omit&#39; Named int [1:42] 5 6 10 11 25 26 27 32 33 34 ...
-##   ..- attr(*, &quot;names&quot;)= chr [1:42] &quot;5&quot; &quot;6&quot; &quot;10&quot; &quot;11&quot; ...</code></pre>
-<div class="sourceCode" id="cb604"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb604-1"><a href="상관계수-행렬-그래프.html#cb604-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality_2<span class="sc">$</span>Ozone)) <span class="co"># 0</span></span></code></pre></div>
-<pre class="bg-warning"><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb606"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb606-1"><a href="상관계수-행렬-그래프.html#cb606-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(airquality_2<span class="sc">$</span>Solar.R)) <span class="co"># 0</span></span></code></pre></div>
-<pre class="bg-warning"><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb608"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb608-1"><a href="상관계수-행렬-그래프.html#cb608-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 상관계수 계산</span></span>
-<span id="cb608-2"><a href="상관계수-행렬-그래프.html#cb608-2" aria-hidden="true" tabindex="-1"></a>airquality_cor <span class="ot">&lt;-</span> <span class="fu">cor</span>(airquality_2)</span>
-<span id="cb608-3"><a href="상관계수-행렬-그래프.html#cb608-3" aria-hidden="true" tabindex="-1"></a>airquality_cor</span></code></pre></div>
-<pre class="bg-warning"><code>##         Ozone Solar.R  Wind  Temp
-## Ozone    1.00    0.35 -0.61  0.70
-## Solar.R  0.35    1.00 -0.13  0.29
-## Wind    -0.61   -0.13  1.00 -0.50
-## Temp     0.70    0.29 -0.50  1.00</code></pre>
-<p><code>corrplot</code> 패키지의 <code>corrplot()</code> 함수는 상관계수 행렬 데이터셋을 가지고 그래프를 그리므로 아래처럼 결측값을 제거한 후의 데이터셋을 가지고 미리 상관계수 행렬을 계산해두어야 합니다.</p>
-</div>
-<div id="패키지-설치" class="section level4" number="13.7.1.2">
-<h4><span class="header-section-number">13.7.1.2</span> 패키지 설치</h4>
-<p><code>corrplot</code> 패키지는 별도의 설치 및 호출이 필요한 패키지이므로 아래의 절차를 거칩니다.</p>
-<div class="sourceCode" id="cb610"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb610-1"><a href="상관계수-행렬-그래프.html#cb610-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;corrplot&quot;)</span></span>
-<span id="cb610-2"><a href="상관계수-행렬-그래프.html#cb610-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot) </span></code></pre></div>
-<pre><code>## corrplot 0.84 loaded</code></pre>
-<p><a href="상관계수-행렬-그래프.html#상관계수-행렬-그래프">Go Top</a></p>
-</div>
-</div>
-<div id="상관계수-행렬-그리기" class="section level3" number="13.7.2">
-<h3><span class="header-section-number">13.7.2</span> 상관계수 행렬 그리기</h3>
-<div id="산포도-행렬-그림" class="section level4" number="13.7.2.1">
-<h4><span class="header-section-number">13.7.2.1</span> 산포도 행렬 그림</h4>
-<p>산포도 행렬 그림 (scatter matrix plot)을 복습해보자면 아래와 같습니다.</p>
-<div class="sourceCode" id="cb612"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb612-1"><a href="상관계수-행렬-그래프.html#cb612-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot matrix </span></span>
-<span id="cb612-2"><a href="상관계수-행렬-그래프.html#cb612-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(airquality_2)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
-</div>
-<div id="상관계수-행렬-그리기-1" class="section level4" number="13.7.2.2">
-<h4><span class="header-section-number">13.7.2.2</span> 상관계수 행렬 그리기</h4>
-<p>correlation plot의 <code>method</code> 에는 <code>method = c("circle", "square", "ellipse", "number", "shade", "color", "pie")</code> 등이 있으며, <code>method</code>별로 하나씩 예를 들어보겠습니다.</p>
-<div id="methodcircle" class="section level5" number="13.7.2.2.1">
-<h5><span class="header-section-number">13.7.2.2.1</span> <code>method="circle"</code></h5>
-<div class="sourceCode" id="cb613"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb613-1"><a href="상관계수-행렬-그래프.html#cb613-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(airquality_cor, <span class="at">method=</span><span class="st">&quot;circle&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
-</div>
-<div id="methodsquare" class="section level5" number="13.7.2.2.2">
-<h5><span class="header-section-number">13.7.2.2.2</span> <code>method="square"</code></h5>
-<div class="sourceCode" id="cb614"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb614-1"><a href="상관계수-행렬-그래프.html#cb614-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(airquality_cor, <span class="at">method=</span><span class="st">&quot;square&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
-</div>
-<div id="methodellipse" class="section level5" number="13.7.2.2.3">
-<h5><span class="header-section-number">13.7.2.2.3</span> <code>method="ellipse"</code></h5>
-<div class="sourceCode" id="cb615"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb615-1"><a href="상관계수-행렬-그래프.html#cb615-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(airquality_cor, <span class="at">method=</span><span class="st">&quot;ellipse&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
-</div>
-<div id="methodnumber" class="section level5" number="13.7.2.2.4">
-<h5><span class="header-section-number">13.7.2.2.4</span> <code>method="number"</code></h5>
-<div class="sourceCode" id="cb616"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb616-1"><a href="상관계수-행렬-그래프.html#cb616-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(airquality_cor, <span class="at">method=</span><span class="st">&quot;number&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
-</div>
-<div id="methodshade" class="section level5" number="13.7.2.2.5">
-<h5><span class="header-section-number">13.7.2.2.5</span> <code>method="shade"</code></h5>
-<div class="sourceCode" id="cb617"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb617-1"><a href="상관계수-행렬-그래프.html#cb617-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(airquality_cor, <span class="at">method=</span><span class="st">&quot;shade&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
-</div>
-<div id="methodcolor" class="section level5" number="13.7.2.2.6">
-<h5><span class="header-section-number">13.7.2.2.6</span> <code>method="color"</code></h5>
-<div class="sourceCode" id="cb618"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb618-1"><a href="상관계수-행렬-그래프.html#cb618-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(airquality_cor, <span class="at">method=</span><span class="st">&quot;color&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
-</div>
-<div id="methodpie" class="section level5" number="13.7.2.2.7">
-<h5><span class="header-section-number">13.7.2.2.7</span> <code>method="pie"</code></h5>
-<div class="sourceCode" id="cb619"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb619-1"><a href="상관계수-행렬-그래프.html#cb619-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(airquality_cor, <span class="at">method=</span><span class="st">&quot;pie&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
-<p>마지막으로 <code>method="shade"</code>, <strong>상관관계 방향성 제시, 대각선 값 미제시, 상관계수 숫지 검정색</strong>으로 해서 추가해서 corrplot을 그려보겠습니다. <code>order</code> 는 <strong>FPC(First Principle Component), hclust(hierarchical clustering)</strong>, <strong>AOE(Angular Order of Engenvectors)</strong> 등이 있으며, 정렬 기준을 지정해주면 같은 색깔 끼리 뭉쳐서 보일 수 있도록 정렬을 시켜줘서 보기에, 해석하기에 더 좋게 보여줍니다.</p>
-<div class="sourceCode" id="cb620"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb620-1"><a href="상관계수-행렬-그래프.html#cb620-1" aria-hidden="true" tabindex="-1"></a><span class="co"># corrplot</span></span>
-<span id="cb620-2"><a href="상관계수-행렬-그래프.html#cb620-2" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(airquality_cor, </span>
-<span id="cb620-3"><a href="상관계수-행렬-그래프.html#cb620-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">method=</span><span class="st">&quot;shade&quot;</span>, <span class="co"># 색 입힌 사각형</span></span>
-<span id="cb620-4"><a href="상관계수-행렬-그래프.html#cb620-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">addshade=</span><span class="st">&quot;all&quot;</span>, <span class="co"># 상관관계 방향선 제시</span></span>
-<span id="cb620-5"><a href="상관계수-행렬-그래프.html#cb620-5" aria-hidden="true" tabindex="-1"></a>          <span class="co"># shade.col=NA, # 상관관계 방향선 미제시</span></span>
-<span id="cb620-6"><a href="상관계수-행렬-그래프.html#cb620-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">tl.col=</span><span class="st">&quot;red&quot;</span>, <span class="co"># 라벨 색 지정</span></span>
-<span id="cb620-7"><a href="상관계수-행렬-그래프.html#cb620-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">tl.srt=</span><span class="dv">30</span>, <span class="co"># 위쪽 라벨 회전 각도</span></span>
-<span id="cb620-8"><a href="상관계수-행렬-그래프.html#cb620-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">diag=</span><span class="cn">FALSE</span>, <span class="co"># 대각선 값 미제시</span></span>
-<span id="cb620-9"><a href="상관계수-행렬-그래프.html#cb620-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">addCoef.col=</span><span class="st">&quot;black&quot;</span>, <span class="co"># 상관계수 숫자 색</span></span>
-<span id="cb620-10"><a href="상관계수-행렬-그래프.html#cb620-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">order=</span><span class="st">&quot;FPC&quot;</span> <span class="co"># &quot;FPC&quot;: First Principle Component</span></span>
-<span id="cb620-11"><a href="상관계수-행렬-그래프.html#cb620-11" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># &quot;hclust&quot; : hierarchical clustering</span></span>
-<span id="cb620-12"><a href="상관계수-행렬-그래프.html#cb620-12" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># &quot;AOE&quot; : Angular Order of Eigenvectors</span></span>
-<span id="cb620-13"><a href="상관계수-행렬-그래프.html#cb620-13" aria-hidden="true" tabindex="-1"></a>          )</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
-<p><a href="상관계수-행렬-그래프.html#상관계수-행렬-그래프">Go Top</a></p>
-</div>
-</div>
-</div>
+<div id="패키지-불러오기-5" class="section level2" number="16.2">
+<h2><span class="header-section-number">16.2</span> 패키지 불러오기</h2>
+<p>먼저, <code>manipulate</code> 패키지를 별도 설치하고 호출해 보겠습니다.</p>
+<div class="sourceCode" id="cb741"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb741-1"><a href="패키지-불러오기-5.html#cb741-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;manipulate&quot;)</span></span>
+<span id="cb741-2"><a href="패키지-불러오기-5.html#cb741-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(manipulate)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;manipulate&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:aplpack&#39;:
+## 
+##     slider</code></pre>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="누적-영역-그래프.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="산포도-행렬-그리기.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="데이터-세트-20.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="slider-control.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
